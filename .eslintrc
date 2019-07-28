@@ -1,0 +1,18 @@
+{
+  "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "extends": ["airbnb-base", "react-app"],
+    "globals": {
+      "document": true,
+      "window": true,
+      "allowTemplateLiterals": true
+    },
+    "rules": {
+      "no-console": [1, { "allow": ["error"] }],
+      "no-debugger": 1,
+      "class-methods-use-this": 0,
+      "linebreak-style": 0 
+    }
+  }
