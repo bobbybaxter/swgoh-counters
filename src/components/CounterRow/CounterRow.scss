@@ -2,18 +2,12 @@
   display: flex;
   width: 100%;
   flex-direction: row;
-  // margin: 10px 0;
 }
 
-// .col-2 {
-//   padding-left: 0;
-//   padding-right: 0;
-// }
-
-// .col-5 {
-//   padding-left: 0;
-//   padding-right: 0;
-// }
+.borderSpace {
+  margin-right: 15px;
+  padding-right: 15px;
+}
 
 .countersRow {
   display: flex;
@@ -27,25 +21,52 @@
 }
 
 .counterCard {
-  // padding: 0 5px 15px 0px;
   box-shadow: none;
 }
 
-// .opponentCard {
-//   // padding-bottom: 15px;
-// }
+.counterMiddleBorder {
+  width: 15px;
+  padding: 0 15px;
+  margin: 0 15px;
+}
+
+.hardCounter {
+  border: 2px solid rgb(228, 71, 71);
+}
+
+.hardCountersRow {
+  display: flex;
+  flex-direction: row;
+  // padding-right: 15px;
+  // margin-right: 15px;
+}
+
+.softCounter {
+  border: 2px solid #9B47E4;
+}
+
+.softCountersRow {
+  display: flex;
+  flex-direction: row;
+  // padding-left: 15px;
+  // margin-left: 15px;
+}
+
+.opponentImg {
+  border: 2px solid #9B47E4;
+}
 
 .teamName {
   font-weight: 400;
   font-size: .8rem;
+  margin: 0;
 }
 
 .toonImg {
-  width: 40px;
-  height: 40px;
-  border: 2px solid #9B47E4;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  margin-right: 5px;
+  margin: 0 2.5px;
 }
 
 @media only screen and (min-width:768px) {
@@ -53,9 +74,6 @@
   .toonImg {
     width: 45px;
     height: 45px;
-    border: 2px solid #9B47E4;
-    border-radius: 50%;
-    margin-right: 5px;
   }
 }
 
@@ -64,9 +82,6 @@
   .toonImg {
     width: 55px;
     height: 55px;
-    border: 2px solid #9B47E4;
-    border-radius: 50%;
-    margin-right: 5px;
   }
 }
 
@@ -75,9 +90,6 @@
   .toonImg {
     width: 65px;
     height: 65px;
-    border: 2px solid #9B47E4;
-    border-radius: 50%;
-    margin-right: 5px;
   }
 }
 

@@ -129,9 +129,8 @@ class Counters5v5 extends React.Component {
     return (
       <div className="Counters5v5">
         <div className="columnTitles">
-          <h1 className="col-2">Team</h1>
-          <h1 className="col-5">Hard Counter</h1>
-          <h1 className="col-5">Soft Counter</h1>
+          <h1 className="col-3">Team</h1>
+          <h1 className="col-9">Counters</h1>
         </div>
         <div className="columnTeams">
           {buildCounterRows}

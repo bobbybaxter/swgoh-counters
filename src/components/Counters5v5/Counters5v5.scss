@@ -7,9 +7,22 @@
 .columnTitles {
   display: flex;
   flex-direction: row;
+  margin-top: 10px;
+  h1 {
+    font-size: 1.7rem;
+  }
 }
 
 .columnTeams {
   display: flex;
   flex-direction: column;
+}
+
+@media only screen and (min-width:768px) {
+  /* for desktop */
+  .columnTitles {
+    h1 {
+      font-size: 2rem;
+    }
+  }
 }
