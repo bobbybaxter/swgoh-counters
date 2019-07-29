@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/swgoh-counters/static/css/main.b33107a5.chunk.css",
-    "main.js": "/swgoh-counters/static/js/main.539f3468.chunk.js",
-    "main.js.map": "/swgoh-counters/static/js/main.539f3468.chunk.js.map",
+    "main.css": "/swgoh-counters/static/css/main.9d459e67.chunk.css",
+    "main.js": "/swgoh-counters/static/js/main.df5a5817.chunk.js",
+    "main.js.map": "/swgoh-counters/static/js/main.df5a5817.chunk.js.map",
     "runtime~main.js": "/swgoh-counters/static/js/runtime~main.a8d86a92.js",
     "runtime~main.js.map": "/swgoh-counters/static/js/runtime~main.a8d86a92.js.map",
     "static/css/2.266e55a5.chunk.css": "/swgoh-counters/static/css/2.266e55a5.chunk.css",
     "static/js/2.712ad1c8.chunk.js": "/swgoh-counters/static/js/2.712ad1c8.chunk.js",
     "static/js/2.712ad1c8.chunk.js.map": "/swgoh-counters/static/js/2.712ad1c8.chunk.js.map",
     "index.html": "/swgoh-counters/index.html",
-    "precache-manifest.30db93e69a295673003152a598d1dce3.js": "/swgoh-counters/precache-manifest.30db93e69a295673003152a598d1dce3.js",
+    "precache-manifest.ee4fe0e018457e303cbff73d66e515ff.js": "/swgoh-counters/precache-manifest.ee4fe0e018457e303cbff73d66e515ff.js",
     "service-worker.js": "/swgoh-counters/service-worker.js",
     "static/css/2.266e55a5.chunk.css.map": "/swgoh-counters/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.b33107a5.chunk.css.map": "/swgoh-counters/static/css/main.b33107a5.chunk.css.map"
+    "static/css/main.9d459e67.chunk.css.map": "/swgoh-counters/static/css/main.9d459e67.chunk.css.map"
   }
 }
