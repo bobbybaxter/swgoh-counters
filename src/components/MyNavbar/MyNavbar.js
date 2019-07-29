@@ -26,7 +26,7 @@ class MyNavbar extends React.Component {
     return (
       <div className="MyNavbar">
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">SWGOH Counters</NavbarBrand>
+          <NavbarBrand href="/counters5v5">SWGOH Counters</NavbarBrand>
           {/* <NavbarToggler onClick={this.toggle} /> */}
           {/* <Collapse isOpen={this.state.isOpen} navbar> */}
             {/* <Nav className="ml-auto" navbar>
