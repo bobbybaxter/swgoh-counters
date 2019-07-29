@@ -48,8 +48,8 @@ class CounterRow extends React.Component {
             <img
               className="toonImg"
               src={opponentTeam.leaderImage}
-              title={opponentTeam.leaderName}
-              alt={opponentTeam.leadername}
+              title={opponentTeam.name}
+              alt={opponentTeam.name}
             />
           </div>
         </div>
