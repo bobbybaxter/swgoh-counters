@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "093b6fda9894e9c13dd98b17f20cd81c",
+    "revision": "9484ec73c3ef661b37cde787c014f474",
     "url": "/swgoh-counters/index.html"
   },
   {
