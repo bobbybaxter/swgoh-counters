@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/swgoh-counters/static/css/main.f3157415.chunk.css",
+    "main.css": "/swgoh-counters/static/css/main.393445af.chunk.css",
     "main.js": "/swgoh-counters/static/js/main.fa58fbeb.chunk.js",
     "main.js.map": "/swgoh-counters/static/js/main.fa58fbeb.chunk.js.map",
     "runtime~main.js": "/swgoh-counters/static/js/runtime~main.a8d86a92.js",
@@ -9,9 +9,9 @@
     "static/js/2.712ad1c8.chunk.js": "/swgoh-counters/static/js/2.712ad1c8.chunk.js",
     "static/js/2.712ad1c8.chunk.js.map": "/swgoh-counters/static/js/2.712ad1c8.chunk.js.map",
     "index.html": "/swgoh-counters/index.html",
-    "precache-manifest.81245d363a5841d31f75c38b6382e026.js": "/swgoh-counters/precache-manifest.81245d363a5841d31f75c38b6382e026.js",
+    "precache-manifest.266daef6f093197414d0e3106bffe78c.js": "/swgoh-counters/precache-manifest.266daef6f093197414d0e3106bffe78c.js",
     "service-worker.js": "/swgoh-counters/service-worker.js",
     "static/css/2.266e55a5.chunk.css.map": "/swgoh-counters/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.f3157415.chunk.css.map": "/swgoh-counters/static/css/main.f3157415.chunk.css.map"
+    "static/css/main.393445af.chunk.css.map": "/swgoh-counters/static/css/main.393445af.chunk.css.map"
   }
 }
