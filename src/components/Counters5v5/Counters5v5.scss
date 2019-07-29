@@ -18,6 +18,24 @@
   flex-direction: column;
 }
 
+.hardCounterColorBox {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-color: #e44747;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+.softCounterColorBox {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-color: #9B47E4;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
 @media only screen and (min-width:768px) {
   /* for desktop */
   .columnTitles {
