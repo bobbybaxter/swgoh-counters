@@ -17,9 +17,9 @@ class App extends React.Component {
             <MyNavbar />
             <div>
                 <Switch>
-                  <Counters5v5 path="/counters5v5" />
+                  <Counters5v5 path="/swgoh-counters" />
                   {/* <Counters3v3 path="/counters3v3" /> */}
-                  <Redirect from="*" to="/" />
+                  <Redirect from="*" to="/swgoh-counters" />
                 </Switch>
             </div>
           </React.Fragment>
