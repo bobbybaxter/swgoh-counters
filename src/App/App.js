@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter, Switch,
+  BrowserRouter, Redirect, Switch,
 } from 'react-router-dom';
 
 import MyNavbar from '../components/MyNavbar/MyNavbar';
@@ -19,7 +19,7 @@ class App extends React.Component {
                 <Switch>
                   <Counters5v5 path="/counters5v5" />
                   {/* <Counters3v3 path="/counters3v3" /> */}
-                  {/* <Redirect from="*" to="/swgoh-counters" /> */}
+                  <Redirect from="*" to="/" />
                 </Switch>
             </div>
           </React.Fragment>

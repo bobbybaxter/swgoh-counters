@@ -4,9 +4,9 @@ import {
   Navbar,
   // NavbarToggler,
   NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
+  // Nav,
+  // NavItem,
+  // NavLink,
 } from 'reactstrap';
 
 import './MyNavbar.scss';
@@ -26,15 +26,15 @@ class MyNavbar extends React.Component {
     return (
       <div className="MyNavbar">
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/counters5v5">SWGOH Counters</NavbarBrand>
-          <Nav className="ml-auto" navbar>
+          <NavbarBrand>SWGOH Counters</NavbarBrand>
+          {/* <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink href="/counters5v5">5v5</NavLink>
             </NavItem>
             {/* <NavItem>
               <NavLink href="/3v3">3v3</NavLink>
             </NavItem> */}
-          </Nav>
+          {/* </Nav> */}
           {/* <NavbarToggler onClick={this.toggle} /> */}
           {/* <Collapse isOpen={this.state.isOpen} navbar> */}
             {/* <Nav className="ml-auto" navbar>
