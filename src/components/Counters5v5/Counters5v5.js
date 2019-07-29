@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 
 import CounterRow from '../CounterRow/CounterRow';
@@ -129,13 +130,23 @@ class Counters5v5 extends React.Component {
     return (
       <div className="Counters5v5">
         <div className="columnTitles">
-          <h1 className="col-2">Team</h1>
-          <h1 className="col-5">Hard Counter</h1>
-          <h1 className="col-5">Soft Counter</h1>
+          <h1 className="col-3">Team</h1>
+          <h1 className="col-9">Counters</h1>
         </div>
         <div className="columnTeams">
           {buildCounterRows}
         </div>
+        <footer className="my-3">
+          <div className="d-flex flex-row justify-content-center align-items-center">
+          <span className="hardCounterColorBox"></span>
+            <p className="mb-0 mr-4">Hard Counter</p>
+          <span className="softCounterColorBox"></span>
+            <p className="mb-0">Soft Counter</p>
+          </div>
+          <div className="mt-3">
+            <strong>Note:</strong> Darth Revan (with or without Malak) is a hard counter unless it is listed as a soft counter<br/>
+          </div>
+        </footer>
       </div>
     );
   }
