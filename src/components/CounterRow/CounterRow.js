@@ -5,37 +5,60 @@ import './CounterRow.scss';
 class CounterRow extends React.Component {
   buildHardCounters = () => {
     const { counterTeams } = this.props;
-    const exp = counterTeams.map(counterTeam => (
-      <div key={counterTeam.leaderName}>
-          <img
+    const exp = counterTeams
+      .filter(x => x.isHardCounter === true)
+      .map(counterTeam => (
+      <div key={counterTeam.counterId} className="countersRow counterCard">
+        <img
           className="toonImg"
-          src={counterTeam.leaderImage}
-          title={counterTeam.leaderName}
-          alt={counterTeam.leaderName}
+          src={counterTeam.oppLeaderImage}
+          title={counterTeam.counterTeamName}
+          alt={counterTeam.counterTeamName}
         />
       </div>
-    ));
+      ));
+    return exp;
+  }
+
+  buildSoftCounters = () => {
+    const { counterTeams } = this.props;
+    const exp = counterTeams
+      .filter(x => x.isHardCounter === false)
+      .map(counterTeam => (
+      <div key={counterTeam.counterId} className="countersRow counterCard">
+        <img
+          className="toonImg"
+          src={counterTeam.oppLeaderImage}
+          title={counterTeam.counterTeamName}
+          alt={counterTeam.counterTeamName}
+        />
+      </div>
+      ));
     return exp;
   }
 
   render() {
     let renderedRow;
-    if (this.props.opponentTeam) {
-      const { opponentTeam } = this.props;
+    if (this.props.teamWithCharData) {
+      const opponentTeam = this.props.teamWithCharData;
 
       renderedRow = <div className="CounterRow">
-        <div className="col-2">
-          <img
-            className="toonImg"
-            src={opponentTeam.leaderImage}
-            title={opponentTeam.leaderName}
-            alt={opponentTeam.leadername}
-          />
+        <div className="countersRow col-2 justify-content-center border-dark border-bottom">
+          <div className="opponentCard">
+            <img
+              className="toonImg"
+              src={opponentTeam.leaderImage}
+              title={opponentTeam.leaderName}
+              alt={opponentTeam.leadername}
+            />
+          </div>
         </div>
-        <div className="col-5">
+        <div className="countersRow col-5 border-dark border-bottom border-left border-right">
           {this.buildHardCounters()}
         </div>
-        <p className="col-5">Soft Counter</p>
+        <div className="countersRow col-5 border-dark border-bottom">
+          {this.buildSoftCounters()}
+        </div>
       </div>;
     } else {
       renderedRow = null;

@@ -1,3 +1,11 @@
 .MyNavbar {
   display: block;
 }
+
+.navbar {
+  // background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 100%), rgba(34, 47, 48, 0.75);
+  // border: 2px solid #364C4D;
+  // box-sizing: border-box;
+  box-shadow: inset 4px 4px 15px rgba(255, 255, 255, 0.1), inset -4px -4px 15px rgba(255, 255, 255, 0.1);
+}
+

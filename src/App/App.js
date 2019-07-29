@@ -15,16 +15,10 @@ class App extends React.Component {
         <BrowserRouter>
           <React.Fragment>
             <MyNavbar />
-            <div className="container">
+            <div>
                 <Switch>
                   <Counters5v5 path="/counters5v5" />
                   {/* <Counters3v3 path="/counters3v3" /> */}
-                  {/* <PublicRoute path="/auth" component={Auth} authed={authed} />
-
-                  <PrivateRoute path="/home" component={Home} authed={authed} />
-                  <PrivateRoute path="/squad-manager" component={SquadManager} authed={authed} />
-                  <PrivateRoute path="/squad-list/:id" component={SquadList} authed={authed} /> */}
-
                   <Redirect from="*" to="/counters5v5" />
                 </Switch>
             </div>
