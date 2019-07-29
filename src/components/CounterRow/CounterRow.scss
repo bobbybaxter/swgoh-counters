@@ -41,9 +41,43 @@
 }
 
 .toonImg {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   border: 2px solid #9B47E4;
   border-radius: 50%;
   margin-right: 5px;
 }
+
+@media only screen and (min-width:768px) {
+  /* for desktop */
+  .toonImg {
+    width: 45px;
+    height: 45px;
+    border: 2px solid #9B47E4;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  /* for desktop */
+  .toonImg {
+    width: 55px;
+    height: 55px;
+    border: 2px solid #9B47E4;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  /* for desktop */
+  .toonImg {
+    width: 65px;
+    height: 65px;
+    border: 2px solid #9B47E4;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+}
+
