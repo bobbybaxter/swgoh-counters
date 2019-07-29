@@ -1,0 +1,49 @@
+.CounterRow {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  // margin: 10px 0;
+}
+
+// .col-2 {
+//   padding-left: 0;
+//   padding-right: 0;
+// }
+
+// .col-5 {
+//   padding-left: 0;
+//   padding-right: 0;
+// }
+
+.countersRow {
+  display: flex;
+  flex-flow: row wrap;
+  // justify-content: space-evenly;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  // background: linear-gradient(180deg, rgba(27, 78, 125, 0) 0%, #1B4E7D 55.73%);
+  box-shadow: inset 4px 4px 15px rgba(255, 255, 255, 0.1), inset -4px -4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.counterCard {
+  // padding: 0 5px 15px 0px;
+  box-shadow: none;
+}
+
+// .opponentCard {
+//   // padding-bottom: 15px;
+// }
+
+.teamName {
+  font-weight: 400;
+  font-size: .8rem;
+}
+
+.toonImg {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #9B47E4;
+  border-radius: 50%;
+  margin-right: 5px;
+}
