@@ -1,5 +1,6 @@
 {
   "name": "swgoh-counters",
+  "homepage": "https://bobbybaxter.github.io/swgoh-counters",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +8,7 @@
     "bootstrap": "^4.3.1",
     "eslint-config-airbnb-base": "^13.2.0",
     "firebase": "^6.3.3",
+    "gh-pages": "^2.0.1",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -19,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
