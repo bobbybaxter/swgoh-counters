@@ -19,7 +19,7 @@ class App extends React.Component {
                 <Switch>
                   <Counters5v5 path="/counters5v5" />
                   {/* <Counters3v3 path="/counters3v3" /> */}
-                  <Redirect from="*" to="/counters5v5" />
+                  <Redirect from="*" to="/swgoh-counters" />
                 </Switch>
             </div>
           </React.Fragment>
