@@ -17,27 +17,27 @@ class CounterRow extends React.Component {
                   <h6>Opponent Team</h6>
                   <h5>{teamWithCharData.name}</h5>
                   <div className="detailsToonRow mb-2">
-                    <img alt={teamWithCharData.leaderName} className="toonImg opponentImg" src={teamWithCharData.leaderImage} />
-                    {(teamWithCharData.toon2Name) ? (<img alt={teamWithCharData.toon2Name} className="toonImg opponentImg" src={teamWithCharData.toon2Image} />) : ''}
-                    {(teamWithCharData.toon3Name) ? (<img alt={teamWithCharData.toon3Name} className="toonImg opponentImg" src={teamWithCharData.toon3Image} />) : ''}
-                    {(teamWithCharData.toon4Name) ? (<img alt={teamWithCharData.toon4Name} className="toonImg opponentImg" src={teamWithCharData.toon4Image} />) : ''}
-                    {(teamWithCharData.toon5Name) ? (<img alt={teamWithCharData.toon5Name} className="toonImg opponentImg" src={teamWithCharData.toon5Image} />) : ''}
+                    <img alt={teamWithCharData.leaderName} className="toonImg opponentImg" title={teamWithCharData.leaderName} src={teamWithCharData.leaderImage} />
+                    {(teamWithCharData.toon2Name) ? (<img alt={teamWithCharData.toon2Name} className="toonImg opponentImg" title={teamWithCharData.toon2Name} src={teamWithCharData.toon2Image} />) : ''}
+                    {(teamWithCharData.toon3Name) ? (<img alt={teamWithCharData.toon3Name} className="toonImg opponentImg" title={teamWithCharData.toon3Name} src={teamWithCharData.toon3Image} />) : ''}
+                    {(teamWithCharData.toon4Name) ? (<img alt={teamWithCharData.toon4Name} className="toonImg opponentImg" title={teamWithCharData.toon4Name} src={teamWithCharData.toon4Image} />) : ''}
+                    {(teamWithCharData.toon5Name) ? (<img alt={teamWithCharData.toon5Name} className="toonImg opponentImg" title={teamWithCharData.toon5Name} src={teamWithCharData.toon5Image} />) : ''}
                   </div>
                   <p><i><strong>Subs: </strong>{teamWithCharData.subs}</i></p>
-                  <p><strong>Details: </strong>{teamWithCharData.description}</p>
+                  {(teamWithCharData.description) ? (<p><strong>Details: </strong>{teamWithCharData.description}</p>) : ''}
                 </div>
                 <div className="detailsDivRight col-6">
                   <h6>Counter Team</h6>
                   <h5>{counterTeam.counterTeamName}</h5>
                   <div className="detailsToonRow mb-2">
-                    <img alt={counterTeam.oppLeaderName} className="toonImg opponentImg" src={counterTeam.oppLeaderImage} />
-                    {(counterTeam.oppToon2Name) ? (<img alt={counterTeam.oppToon2Name} className="toonImg opponentImg" src={counterTeam.oppToon2Image} />) : ''}
-                    {(counterTeam.oppToon3Name) ? (<img alt={counterTeam.oppToon3Name} className="toonImg opponentImg" src={counterTeam.oppToon3Image} />) : ''}
-                    {(counterTeam.oppToon4Name) ? (<img alt={counterTeam.oppToon4Name} className="toonImg opponentImg" src={counterTeam.oppToon4Image} />) : ''}
-                    {(counterTeam.oppToon5Name) ? (<img alt={counterTeam.oppToon5Name} className="toonImg opponentImg" src={counterTeam.oppToon5Image} />) : ''}
+                    <img alt={counterTeam.oppLeaderName} className="toonImg opponentImg" title={teamWithCharData.oppLeaderName} src={counterTeam.oppLeaderImage} />
+                    {(counterTeam.oppToon2Name) ? (<img alt={counterTeam.oppToon2Name} className="toonImg opponentImg" title={counterTeam.toon2Name} src={counterTeam.oppToon2Image} />) : ''}
+                    {(counterTeam.oppToon3Name) ? (<img alt={counterTeam.oppToon3Name} className="toonImg opponentImg" title={counterTeam.toon3Name} src={counterTeam.oppToon3Image} />) : ''}
+                    {(counterTeam.oppToon4Name) ? (<img alt={counterTeam.oppToon4Name} className="toonImg opponentImg" title={counterTeam.toon4Name} src={counterTeam.oppToon4Image} />) : ''}
+                    {(counterTeam.oppToon5Name) ? (<img alt={counterTeam.oppToon5Name} className="toonImg opponentImg" title={counterTeam.toon5Name} src={counterTeam.oppToon5Image} />) : ''}
                   </div>
-                  <p><i><strong>Subs: </strong>{teamWithCharData.subs}</i></p>
-                  <p><strong>Counter Strategy: </strong>{teamWithCharData.counterStrategy}</p>
+                  <p><i><strong>Subs: </strong>{counterTeam.subs}</i></p>
+                  {(teamWithCharData.counterStrategy) ? (<p><strong>Counter Strategy: </strong>{teamWithCharData.counterStrategy}</p>) : ''}
                 </div>
               </div>
             </UncontrolledCollapse>

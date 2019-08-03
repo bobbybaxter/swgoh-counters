@@ -31,6 +31,7 @@ class Counters5v5 extends React.Component {
           newMatchup.oppToon4Name = team.toon4Name;
           newMatchup.oppToon5Name = team.toon5Name;
           newMatchup.counterTeamName = team.name;
+          newMatchup.subs = team.subs;
         } else {
           return '';
         }
@@ -144,6 +145,7 @@ class Counters5v5 extends React.Component {
           <div className="mt-3">
             <strong>Note:</strong> Darth Revan (with or without Malak) is a hard counter unless it is listed as a soft counter<br/>
           </div>
+          <small>See a mistake or have a suggestion?  Submit an issue on <a href="https://github.com/bobbybaxter/swgoh-counters/issues">Github.</a></small>
         </footer>
       </div>
     );
