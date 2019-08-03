@@ -135,6 +135,7 @@ class Counters5v5 extends React.Component {
         <div className="columnTeams">
           {buildCounterRows}
         </div>
+        <small>Click on a counter team to see more info.</small>
         <footer className="my-3">
           <div className="d-flex flex-row justify-content-center align-items-center">
           <span className="hardCounterColorBox"></span>
