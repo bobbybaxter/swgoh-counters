@@ -1,13 +1,17 @@
 .CounterRow {
   display: flex;
   width: 100%;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .borderSpace {
   margin-right: 15px;
   padding-right: 15px;
 }
+
+// .countersDetails {
+//   box-shadow: inset 4px 4px 15px rgba(255, 255, 255, 0.1), inset -4px -4px 15px rgba(255, 255, 255, 0.1);
+// }
 
 .countersRow {
   display: flex;
@@ -28,6 +32,14 @@
   width: 15px;
   padding: 0 15px;
   margin: 0 15px;
+}
+
+.countersDetails {
+  font-size: .8rem;
+
+  p {
+    margin: 8px 0;
+  }
 }
 
 .hardCounter {

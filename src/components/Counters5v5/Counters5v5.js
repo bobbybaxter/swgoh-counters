@@ -1,3 +1,5 @@
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable global-require */
 /* eslint-disable max-len */
 import React from 'react';
 
@@ -5,7 +7,7 @@ import CounterRow from '../CounterRow/CounterRow';
 
 import teamsData from '../../helpers/data/teamsData';
 import countersData from '../../helpers/data/countersData';
-import characterData from '../../helpers/data/characterData';
+import characterData from '../../helpers/data/characters.json';
 
 import './Counters5v5.scss';
 
@@ -46,7 +48,7 @@ class Counters5v5 extends React.Component {
     const { characters } = this.state;
     const newTeam = { ...team };
     characters.map((character) => {
-      const characterImg = `https://swgoh.gg${character.image}`;
+      const characterImg = require(`${character.image}`);
       if (character.name === team.oppLeaderName) {
         newTeam.oppLeaderId = character.base_id;
         newTeam.oppLeaderImage = characterImg;
@@ -83,12 +85,6 @@ class Counters5v5 extends React.Component {
     return newTeam;
   }
 
-  getCharacters = () => {
-    characterData.getAllCharacters()
-      .then(res => this.setState({ characters: res }))
-      .catch(err => console.error(err));
-  }
-
   getCounters = () => {
     countersData.getCounters()
       .then(res => this.setState({ counters: res }))
@@ -102,9 +98,11 @@ class Counters5v5 extends React.Component {
   }
 
   componentDidMount() {
-    this.getCharacters();
-    this.getTeams();
-    this.getCounters();
+    if (characterData) {
+      this.setState({ characters: characterData.data });
+      this.getTeams();
+      this.getCounters();
+    }
   }
 
   render() {
