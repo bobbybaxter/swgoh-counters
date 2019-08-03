@@ -1,3 +1,5 @@
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable global-require */
 /* eslint-disable max-len */
 import React from 'react';
 
@@ -5,7 +7,7 @@ import CounterRow from '../CounterRow/CounterRow';
 
 import teamsData from '../../helpers/data/teamsData';
 import countersData from '../../helpers/data/countersData';
-import characterData from '../../helpers/data/characterData';
+import characterData from '../../helpers/data/characters.json';
 
 import './Counters5v5.scss';
 
@@ -29,6 +31,7 @@ class Counters5v5 extends React.Component {
           newMatchup.oppToon4Name = team.toon4Name;
           newMatchup.oppToon5Name = team.toon5Name;
           newMatchup.counterTeamName = team.name;
+          newMatchup.subs = team.subs;
         } else {
           return '';
         }
@@ -46,7 +49,7 @@ class Counters5v5 extends React.Component {
     const { characters } = this.state;
     const newTeam = { ...team };
     characters.map((character) => {
-      const characterImg = `https://swgoh.gg${character.image}`;
+      const characterImg = require(`${character.image}`);
       if (character.name === team.oppLeaderName) {
         newTeam.oppLeaderId = character.base_id;
         newTeam.oppLeaderImage = characterImg;
@@ -83,12 +86,6 @@ class Counters5v5 extends React.Component {
     return newTeam;
   }
 
-  getCharacters = () => {
-    characterData.getAllCharacters()
-      .then(res => this.setState({ characters: res }))
-      .catch(err => console.error(err));
-  }
-
   getCounters = () => {
     countersData.getCounters()
       .then(res => this.setState({ counters: res }))
@@ -102,9 +99,11 @@ class Counters5v5 extends React.Component {
   }
 
   componentDidMount() {
-    this.getCharacters();
-    this.getTeams();
-    this.getCounters();
+    if (characterData) {
+      this.setState({ characters: characterData.data });
+      this.getTeams();
+      this.getCounters();
+    }
   }
 
   render() {
@@ -146,6 +145,7 @@ class Counters5v5 extends React.Component {
           <div className="mt-3">
             <strong>Note:</strong> Darth Revan (with or without Malak) is a hard counter unless it is listed as a soft counter<br/>
           </div>
+          <small>See a mistake or have a suggestion?  Submit an issue on <a href="https://github.com/bobbybaxter/swgoh-counters/issues">Github.</a></small>
         </footer>
       </div>
     );
