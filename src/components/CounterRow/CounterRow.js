@@ -25,6 +25,7 @@ class CounterRow extends React.Component {
                   </div>
                   <p><i><strong>Subs: </strong>{teamWithCharData.subs}</i></p>
                   {(teamWithCharData.description) ? (<p><strong>Details: </strong>{teamWithCharData.description}</p>) : ''}
+                  {(teamWithCharData.counterStrategy) ? (<p><strong>General Strategy: </strong>{teamWithCharData.counterStrategy}</p>) : ''}
                 </div>
                 <div className="detailsDivRight col-6">
                   <h6>Counter Team</h6>
@@ -37,7 +38,7 @@ class CounterRow extends React.Component {
                     {(counterTeam.oppToon5Name) ? (<img alt={counterTeam.oppToon5Name} className="toonImg opponentImg" title={counterTeam.toon5Name} src={counterTeam.oppToon5Image} />) : ''}
                   </div>
                   <p><i><strong>Subs: </strong>{counterTeam.subs}</i></p>
-                  {(teamWithCharData.counterStrategy) ? (<p><strong>Counter Strategy: </strong>{teamWithCharData.counterStrategy}</p>) : ''}
+                  {(counterTeam.description) ? (<p><strong>Strategy: </strong>{counterTeam.description}</p>) : 'Coming soon'}
                 </div>
               </div>
             </UncontrolledCollapse>
