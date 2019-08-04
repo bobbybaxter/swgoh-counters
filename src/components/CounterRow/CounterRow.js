@@ -38,7 +38,7 @@ class CounterRow extends React.Component {
                     {(counterTeam.oppToon5Name) ? (<img alt={counterTeam.oppToon5Name} className="toonImg opponentImg" title={counterTeam.toon5Name} src={counterTeam.oppToon5Image} />) : ''}
                   </div>
                   <p><i><strong>Subs: </strong>{counterTeam.subs}</i></p>
-                  {(counterTeam.description) ? (<p><strong>Strategy: </strong>{counterTeam.description}</p>) : ''}
+                  {(counterTeam.description) ? (<p><strong>Strategy: </strong>{counterTeam.description}</p>) : 'Coming soon'}
                 </div>
               </div>
             </UncontrolledCollapse>
