@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/swgoh-counters/static/css/main.8dac579d.chunk.css",
+    "main.css": "/swgoh-counters/static/css/main.d5bd4845.chunk.css",
     "main.js": "/swgoh-counters/static/js/main.3654668b.chunk.js",
     "main.js.map": "/swgoh-counters/static/js/main.3654668b.chunk.js.map",
     "runtime~main.js": "/swgoh-counters/static/js/runtime~main.a8d86a92.js",
@@ -9,10 +9,10 @@
     "static/js/2.5b43002b.chunk.js": "/swgoh-counters/static/js/2.5b43002b.chunk.js",
     "static/js/2.5b43002b.chunk.js.map": "/swgoh-counters/static/js/2.5b43002b.chunk.js.map",
     "index.html": "/swgoh-counters/index.html",
-    "precache-manifest.1cb219769e58f567961cd1ed55ec138c.js": "/swgoh-counters/precache-manifest.1cb219769e58f567961cd1ed55ec138c.js",
+    "precache-manifest.f98028de72ccbf562d449aff528139c6.js": "/swgoh-counters/precache-manifest.f98028de72ccbf562d449aff528139c6.js",
     "service-worker.js": "/swgoh-counters/service-worker.js",
     "static/css/2.266e55a5.chunk.css.map": "/swgoh-counters/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.8dac579d.chunk.css.map": "/swgoh-counters/static/css/main.8dac579d.chunk.css.map",
+    "static/css/main.d5bd4845.chunk.css.map": "/swgoh-counters/static/css/main.d5bd4845.chunk.css.map",
     "static/media/ADMINISTRATORLANDO.png": "/swgoh-counters/static/media/ADMINISTRATORLANDO.097648ad.png",
     "static/media/ADMIRALACKBAR.png": "/swgoh-counters/static/media/ADMIRALACKBAR.532dfe18.png",
     "static/media/AHSOKATANO.png": "/swgoh-counters/static/media/AHSOKATANO.d7c6995a.png",
