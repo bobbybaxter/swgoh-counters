@@ -146,10 +146,11 @@ class Counters5v5 extends React.Component {
             <h6 className="mb-0">Soft Counter</h6>
           </div>
           <div className="py-3">
-            <span className="py-3 border-bottom border-dark"><strong>Note:</strong> Darth Revan (with or without Malak) is a hard counter unless it is listed as a soft counter<br/></span>
+            <strong>Note:</strong> Darth Revan (with or without Malak) is a hard counter unless it is listed as a soft counter<br/>
           </div>
+          <div className="offset-2 col-8 border-dark border-top"></div>
           <p className="pt-3 pb-0">
-            <small>
+            <small className=" pt-3">
               See a mistake or have a suggestion?
               Leave a comment on my <a href="https://docs.google.com/spreadsheets/d/1RVo7ej1PE06FKkwS1q5_slB9YLLQX3EF-dN98MkFmOM/edit#gid=1364839479">Google Sheet</a> or submit an issue on <a href="https://github.com/bobbybaxter/swgoh-counters/issues">Github.</a>
             </small>

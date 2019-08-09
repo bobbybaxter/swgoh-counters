@@ -108,10 +108,9 @@ class CounterRow extends React.Component {
             </div>
           </div>
           <div className="countersRow col-9 border-dark border-bottom border-left">
-            <div className={hardCounters.length > 0 && softCounters.length > 0 ? 'hardCountersRow borderSpace border-dark border-right' : 'hardCountersRow'}>
+            <div className="insideCountersRow">
               {this.buildHardCounters()}
-            </div>
-            <div className="softCountersRow border-dark">
+              <div className={hardCounters.length > 0 && softCounters.length > 0 ? 'borderSpace border-dark border-right' : ''}></div>
               {this.buildSoftCounters()}
             </div>
           </div>
