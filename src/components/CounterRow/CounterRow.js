@@ -14,7 +14,7 @@ class CounterRow extends React.Component {
             <UncontrolledCollapse toggler={togglerId}>
               <div className="d-flex flex-row">
                 <div className="detailsDivLeft col-6 border-dark border-right">
-                  <h6>Opponent Team</h6>
+                  <h6 className="text-secondary">Opponent Team</h6>
                   <h5>{teamWithCharData.name}</h5>
                   <div className="detailsToonRow mb-2">
                     <img alt={teamWithCharData.leaderName} className="toonImg opponentImg" title={teamWithCharData.leaderName} src={teamWithCharData.leaderImage} />
@@ -23,12 +23,12 @@ class CounterRow extends React.Component {
                     {(teamWithCharData.toon4Name) ? (<img alt={teamWithCharData.toon4Name} className="toonImg opponentImg" title={teamWithCharData.toon4Name} src={teamWithCharData.toon4Image} />) : ''}
                     {(teamWithCharData.toon5Name) ? (<img alt={teamWithCharData.toon5Name} className="toonImg opponentImg" title={teamWithCharData.toon5Name} src={teamWithCharData.toon5Image} />) : ''}
                   </div>
-                  <p><i><strong>Subs: </strong>{teamWithCharData.subs}</i></p>
-                  {(teamWithCharData.description) ? (<p><strong>Details: </strong>{teamWithCharData.description}</p>) : ''}
-                  {(teamWithCharData.counterStrategy) ? (<p><strong>General Strategy: </strong>{teamWithCharData.counterStrategy}</p>) : ''}
+                  {(teamWithCharData.subs) ? (<p><small><strong className="text-secondary">Subs: </strong>{teamWithCharData.subs}</small></p>) : ''}
+                  {(teamWithCharData.description) ? (<p><strong className="text-secondary">Details: </strong>{teamWithCharData.description}</p>) : ''}
+                  {(teamWithCharData.counterStrategy) ? (<p><strong className="text-secondary">General Strategy: </strong>{teamWithCharData.counterStrategy}</p>) : (<p className="text-secondary"><small>You can help me add common substitutions, a general counter strategy, or details about this team by leaving a comment on my <a href="https://docs.google.com/spreadsheets/d/1RVo7ej1PE06FKkwS1q5_slB9YLLQX3EF-dN98MkFmOM/edit#gid=1364839479">Google Sheet</a> or submitting an issue on <a href="https://github.com/bobbybaxter/swgoh-counters/issues">Github.</a></small></p>)}
                 </div>
                 <div className="detailsDivRight col-6">
-                  <h6>Counter Team</h6>
+                  <h6 className="text-secondary">Counter Team</h6>
                   <h5>{counterTeam.counterTeamName}</h5>
                   <div className="detailsToonRow mb-2">
                     <img alt={counterTeam.oppLeaderName} className="toonImg opponentImg" title={teamWithCharData.oppLeaderName} src={counterTeam.oppLeaderImage} />
@@ -37,8 +37,8 @@ class CounterRow extends React.Component {
                     {(counterTeam.oppToon4Name) ? (<img alt={counterTeam.oppToon4Name} className="toonImg opponentImg" title={counterTeam.toon4Name} src={counterTeam.oppToon4Image} />) : ''}
                     {(counterTeam.oppToon5Name) ? (<img alt={counterTeam.oppToon5Name} className="toonImg opponentImg" title={counterTeam.toon5Name} src={counterTeam.oppToon5Image} />) : ''}
                   </div>
-                  <p><i><strong>Subs: </strong>{counterTeam.subs}</i></p>
-                  {(counterTeam.description) ? (<p><strong>Strategy: </strong>{counterTeam.description}</p>) : 'Coming soon'}
+                  {(counterTeam.subs) ? (<p><small><strong className="text-secondary">Subs: </strong>{counterTeam.subs}</small></p>) : ''}
+                  {(counterTeam.description) ? (<p><strong className="text-secondary">Strategy: </strong>{counterTeam.description}</p>) : (<p className="text-secondary"><small>Do you know the strategy to beat the {teamWithCharData.name} team with {counterTeam.counterTeamName}?  If so, leave a comment on my <a href="https://docs.google.com/spreadsheets/d/1RVo7ej1PE06FKkwS1q5_slB9YLLQX3EF-dN98MkFmOM/edit#gid=1364839479">Google Sheet</a> or submit an issue on <a href="https://github.com/bobbybaxter/swgoh-counters/issues">Github.</a></small></p>)}
                 </div>
               </div>
             </UncontrolledCollapse>
