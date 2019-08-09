@@ -129,24 +129,31 @@ class Counters5v5 extends React.Component {
     return (
       <div className="Counters5v5">
         <div className="columnTitles">
-          <h1 className="col-3">Team</h1>
-          <h1 className="col-9">Counters</h1>
+          <h1 className="col-3 mb-0">Team</h1>
+          <div className="col-9">
+            <h1 className="mb-0">Counters</h1>
+            <small className="m-0 p-0 text-secondary">Click on a counter team to see more info.</small>
+          </div>
         </div>
         <div className="columnTeams">
           {buildCounterRows}
         </div>
-        <small>Click on a counter team to see more info.</small>
-        <footer className="my-3">
+        <footer className="mt-3">
           <div className="d-flex flex-row justify-content-center align-items-center">
           <span className="hardCounterColorBox"></span>
             <h6 className="mb-0 mr-4">Hard Counter</h6>
           <span className="softCounterColorBox"></span>
             <h6 className="mb-0">Soft Counter</h6>
           </div>
-          <div className="mt-3">
-            <strong>Note:</strong> Darth Revan (with or without Malak) is a hard counter unless it is listed as a soft counter<br/>
+          <div className="py-3">
+            <span className="py-3 border-bottom border-dark"><strong>Note:</strong> Darth Revan (with or without Malak) is a hard counter unless it is listed as a soft counter<br/></span>
           </div>
-          <small>See a mistake or have a suggestion?  Submit an issue on <a href="https://github.com/bobbybaxter/swgoh-counters/issues">Github.</a></small>
+          <p className="pt-3 pb-0">
+            <small>
+              See a mistake or have a suggestion?
+              Leave a comment on my <a href="https://docs.google.com/spreadsheets/d/1RVo7ej1PE06FKkwS1q5_slB9YLLQX3EF-dN98MkFmOM/edit#gid=1364839479">Google Sheet</a> or submit an issue on <a href="https://github.com/bobbybaxter/swgoh-counters/issues">Github.</a>
+            </small>
+          </p>
         </footer>
       </div>
     );
