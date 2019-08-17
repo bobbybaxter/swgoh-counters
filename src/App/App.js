@@ -2,13 +2,20 @@ import React from 'react';
 import {
   BrowserRouter, Redirect, Switch,
 } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import Counters5v5 from '../components/Counters5v5/Counters5v5';
 
 import './App.scss';
 
+
 class App extends React.Component {
+  initializeReactGA() {
+    ReactGA.initialize('UA-145850319-1');
+    ReactGA.pageview('/swgoh-counters');
+  }
+
   render() {
     return (
       <div className="App">
