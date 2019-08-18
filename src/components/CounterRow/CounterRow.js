@@ -1,17 +1,15 @@
 import React from 'react';
-import { UncontrolledCollapse } from 'reactstrap';
+import { Collapse } from 'reactstrap';
 
 import './CounterRow.scss';
 
 class CounterRow extends React.Component {
   buildDescriptions = () => {
-    const { counterTeams, teamWithCharData } = this.props;
+    const { collapse, counterTeams, teamWithCharData } = this.props;
     const matchupDetails = counterTeams
-      .map((counterTeam) => {
-        const togglerId = `${counterTeam.counterId}`;
-        return (
+      .map(counterTeam => (
           <div className="countersDetails my-2" key={counterTeam.counterId}>
-            <UncontrolledCollapse toggler={togglerId}>
+            <Collapse isOpen={counterTeam.counterId === collapse}>
               <div className="d-flex flex-row">
                 <div className="detailsDivLeft col-6 border-dark border-right">
                   <h6 className="text-secondary">Opponent Team</h6>
@@ -41,10 +39,9 @@ class CounterRow extends React.Component {
                   {(counterTeam.description) ? (<p><strong className="text-secondary">Strategy: </strong>{counterTeam.description}</p>) : (<p className="text-secondary"><small>Do you know the strategy to beat the {teamWithCharData.name} team with {counterTeam.counterTeamName}?  If so, leave a comment on my <a href="https://docs.google.com/spreadsheets/d/1RVo7ej1PE06FKkwS1q5_slB9YLLQX3EF-dN98MkFmOM/edit?usp=sharing">Google Sheet</a> or submit an issue on <a href="https://github.com/bobbybaxter/swgoh-counters/issues">Github.</a></small></p>)}
                 </div>
               </div>
-            </UncontrolledCollapse>
+            </Collapse>
           </div>
-        );
-      });
+      ));
     return matchupDetails;
   };
 
@@ -58,6 +55,7 @@ class CounterRow extends React.Component {
         <img
           id={counterTeam.counterId}
           className="toonImg hardCounter"
+          onClick={this.toggle}
           src={counterTeam.oppLeaderImage}
           title={counterTeam.counterTeamName}
           alt={counterTeam.counterTeamName}
@@ -77,6 +75,7 @@ class CounterRow extends React.Component {
         <img
           id={counterTeam.counterId}
           className="toonImg softCounter"
+          onClick={this.toggle}
           src={counterTeam.oppLeaderImage}
           title={counterTeam.counterTeamName}
           alt={counterTeam.counterTeamName}
@@ -84,6 +83,10 @@ class CounterRow extends React.Component {
       </div>
       ));
     return exp;
+  }
+
+  toggle = (e) => {
+    this.props.toggleCollapse(e.target.id);
   }
 
   render() {
