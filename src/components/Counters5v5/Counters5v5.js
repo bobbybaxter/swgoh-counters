@@ -16,6 +16,7 @@ class Counters5v5 extends React.Component {
     characters: [],
     counters: [],
     teams: [],
+    collapse: {},
   }
 
   buildMatchup = (matchup) => {
@@ -106,8 +107,10 @@ class Counters5v5 extends React.Component {
     }
   }
 
+  toggleCollapse = input => (this.setState({ collapse: this.state.collapse === input ? null : input }));
+
   render() {
-    const { counters, teams } = this.state;
+    const { collapse, counters, teams } = this.state;
     const buildCounterRows = teams.map((team) => {
       const counterMatchups = counters.filter(x => x.opponentTeam === team.id);
       if (counterMatchups.length > 0) {
@@ -118,9 +121,11 @@ class Counters5v5 extends React.Component {
         });
         const teamWithCharData = this.buildTeam(team);
         return <CounterRow
+          collapse={collapse}
           counterTeams={counterTeams}
           key={team.id}
           teamWithCharData={teamWithCharData}
+          toggleCollapse={this.toggleCollapse}
         />;
       }
       return '';
