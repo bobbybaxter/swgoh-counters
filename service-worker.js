@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/swgoh-counters/precache-manifest.651d940ae4465ac8b7a725964b5e8928.js"
+  "/swgoh-counters/precache-manifest.9bf560d9b631851a0ede13cb2bb934ec.js"
 );
 
 self.addEventListener('message', (event) => {
