@@ -156,8 +156,7 @@ class Counters5v5 extends React.Component {
           <div className="offset-2 col-8 border-dark border-top"></div>
           <p className="pt-3 pb-0">
             <small className=" pt-3">
-              See a mistake or have a suggestion?
-              Leave a comment on my <a href="https://docs.google.com/spreadsheets/d/1RVo7ej1PE06FKkwS1q5_slB9YLLQX3EF-dN98MkFmOM/edit?usp=sharing">Google Sheet</a> or submit an issue on <a href="https://github.com/bobbybaxter/swgoh-counters/issues">Github.</a>
+              See a mistake or have a suggestion? <a href="/submissionForm">Submit an Issue.</a>
             </small>
           </p>
         </footer>
