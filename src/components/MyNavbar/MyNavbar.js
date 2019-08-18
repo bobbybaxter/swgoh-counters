@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  // Collapse,
+  Collapse,
   Navbar,
-  // NavbarToggler,
+  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
@@ -27,28 +27,17 @@ class MyNavbar extends React.Component {
       <div className="MyNavbar">
         <Navbar color="dark" dark expand="md">
           <NavbarBrand>SWGOH Counters</NavbarBrand>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink href="https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true">Submit an Issue</NavLink>
-            </NavItem>
-            {/* <NavItem>
-              <NavLink href="/counters5v5">5v5</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/3v3">3v3</NavLink>
-            </NavItem> */}
-          </Nav>
-          {/* <NavbarToggler onClick={this.toggle} />
+          <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <Nav className="ml-auto text-center" navbar>
               <NavItem>
-                <NavLink href="/5v5/">5v5</NavLink>
+                <NavLink href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/3v3/">3v3</NavLink>
+                <NavLink href="https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true">Submit an Issue</NavLink>
               </NavItem>
             </Nav>
-          </Collapse> */}
+          </Collapse>
         </Navbar>
       </div>
     );
