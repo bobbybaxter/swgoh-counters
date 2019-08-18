@@ -156,7 +156,7 @@ class Counters5v5 extends React.Component {
           <div className="offset-2 col-8 border-dark border-top"></div>
           <p className="pt-3 pb-0">
             <small className=" pt-3">
-              See a mistake or have a suggestion? <a href="/submissionForm">Submit an Issue.</a>
+              See a mistake or have a suggestion? <a href="https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true">Submit an Issue.</a>
             </small>
           </p>
         </footer>

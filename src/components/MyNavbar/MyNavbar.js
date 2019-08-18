@@ -29,7 +29,7 @@ class MyNavbar extends React.Component {
           <NavbarBrand href="/">SWGOH Counters</NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/submissionForm">Submit an Issue</NavLink>
+              <NavLink href="https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true">Submit an Issue</NavLink>
             </NavItem>
             {/* <NavItem>
               <NavLink href="/counters5v5">5v5</NavLink>
