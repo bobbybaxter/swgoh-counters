@@ -26,7 +26,7 @@ class MyNavbar extends React.Component {
     return (
       <div className="MyNavbar">
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">SWGOH Counters</NavbarBrand>
+          <NavbarBrand>SWGOH Counters</NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink href="https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true">Submit an Issue</NavLink>
