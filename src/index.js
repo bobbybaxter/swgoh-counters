@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.scss';
+import ReactGA from 'react-ga';
 import App from './App/App';
 import * as serviceWorker from './serviceWorker';
+
+ReactGA.initialize('UA-145850319-1');
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

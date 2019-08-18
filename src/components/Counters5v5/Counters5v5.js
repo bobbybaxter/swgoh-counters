@@ -152,7 +152,7 @@ class Counters5v5 extends React.Component {
           <p className="pt-3 pb-0">
             <small className=" pt-3">
               See a mistake or have a suggestion?
-              Leave a comment on my <a href="https://docs.google.com/spreadsheets/d/1RVo7ej1PE06FKkwS1q5_slB9YLLQX3EF-dN98MkFmOM/edit#gid=1364839479">Google Sheet</a> or submit an issue on <a href="https://github.com/bobbybaxter/swgoh-counters/issues">Github.</a>
+              Leave a comment on my <a href="https://docs.google.com/spreadsheets/d/1RVo7ej1PE06FKkwS1q5_slB9YLLQX3EF-dN98MkFmOM/edit?usp=sharing">Google Sheet</a> or submit an issue on <a href="https://github.com/bobbybaxter/swgoh-counters/issues">Github.</a>
             </small>
           </p>
         </footer>
