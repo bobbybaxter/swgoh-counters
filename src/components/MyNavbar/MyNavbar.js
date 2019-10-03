@@ -31,6 +31,9 @@ class MyNavbar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto text-center" navbar>
               <NavItem>
+                <NavLink href="https://patreon.com/saiastrange">Patreon</NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</NavLink>
               </NavItem>
               <NavItem>
