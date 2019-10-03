@@ -3,9 +3,9 @@ A companion app for the mobile game Star Wars: Galaxy of Heroes, which provides 
 
 **Website:** [https://bobbybaxter.github.io/swgoh-counters](https://bobbybaxter.github.io/swgoh-counters)
 
-**Patreon:** [https://patreon.com/saiastrange](https://patreon.com/saiastrange)
-
 **Wiki:** [https://github.com/bobbybaxter/swgoh-counters/wiki](https://github.com/bobbybaxter/swgoh-counters/wiki)
+
+**Patreon:** [https://patreon.com/saiastrange](https://patreon.com/saiastrange)
 
 ## Screenshots
 ![image of star wars counters site](https://raw.githubusercontent.com/bobbybaxter/swgoh-counters/master/src/assets/screenshot.png)
