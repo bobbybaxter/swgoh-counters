@@ -36,6 +36,9 @@ class MyNavbar extends React.Component {
               <NavItem>
                 <NavLink href="https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true">Submit an Issue</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink href="https://patreon.com/saiastrange">Patreon</NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
