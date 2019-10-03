@@ -133,6 +133,9 @@ class Counters5v5 extends React.Component {
 
     return (
       <div className="Counters5v5">
+          <div className="py-3">
+            <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
+          </div>
         <div className="columnTitles">
           <h1 className="col-3 mb-0">Team</h1>
           <div className="col-9">
@@ -154,11 +157,9 @@ class Counters5v5 extends React.Component {
             <strong>Note:</strong> Darth Revan (with or without Malak) is a hard counter unless it is listed as a soft counter<br/>
           </div>
           <div className="offset-2 col-8 border-dark border-top"></div>
-          <p className="pt-3 pb-0">
-            <small className=" pt-3">
-              See a mistake or have a suggestion? <a href="https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true">Submit an Issue.</a>
-            </small>
-          </p>
+          <div className="py-3">
+            <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
+          </div>
         </footer>
       </div>
     );
