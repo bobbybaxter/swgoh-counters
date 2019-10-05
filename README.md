@@ -5,6 +5,8 @@ A companion app for the mobile game Star Wars: Galaxy of Heroes, which provides 
 
 **Wiki:** [https://github.com/bobbybaxter/swgoh-counters/wiki](https://github.com/bobbybaxter/swgoh-counters/wiki)
 
+**Discord:** [https://discord.gg/eCnE48h](https://discord.gg/eCnE48h)
+
 **Patreon:** [https://patreon.com/saiastrange](https://patreon.com/saiastrange)
 
 ## Screenshots
