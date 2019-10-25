@@ -6,7 +6,7 @@ import './CounterRow.scss';
 
 class CounterRow extends React.Component {
   buildDescriptions = () => {
-    // const submissionForm = 'https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true';
+    const submissionForm = 'https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true';
     const discordLink = 'https://discord.gg/eCnE48h';
     const { collapse, counterTeams, teamWithCharData } = this.props;
     const matchupDetails = counterTeams
@@ -26,8 +26,8 @@ class CounterRow extends React.Component {
                   </div>
                   {(teamWithCharData.subs) ? (<p><small><strong className="text-secondary">Subs: </strong>{teamWithCharData.subs}</small></p>) : ''}
                   {(teamWithCharData.description) ? (<p><strong className="text-secondary">Details: </strong>{teamWithCharData.description}</p>) : ''}
-                  {/* {(teamWithCharData.counterStrategy) ? (<p><strong className="text-secondary">General Strategy: </strong>{teamWithCharData.counterStrategy}</p>) : (<p className="text-secondary"><small>You can help me add common substitutions, a general counter strategy, or details about this team by <a href={submissionForm}>submiting an issue.</a></small></p>)} */}
-                  {(teamWithCharData.counterStrategy) ? (<p><strong className="text-secondary">General Strategy: </strong>{teamWithCharData.counterStrategy}</p>) : (<p className="text-secondary"><small>You can help me add common substitutions, a general counter strategy, or details about this team by letting me know on <a href={discordLink}>Discord.</a></small></p>)}
+                  {(teamWithCharData.counterStrategy) ? (<p><strong className="text-secondary">General Strategy: </strong>{teamWithCharData.counterStrategy}</p>) : (<p className="text-secondary"><small>You can help me add common substitutions, a general counter strategy, or details about this team by <a href={submissionForm}>submiting an issue.</a></small></p>)}
+                  {(teamWithCharData.counterStrategy) ? '' : (<p className="text-secondary"><small>You can also join me on <a href={discordLink}>Discord</a> to discuss counters a little further.</small></p>)}
                 </div>
                 <div className="detailsDivRight col-6">
                   <h6 className="text-secondary">Counter Team</h6>
@@ -40,8 +40,8 @@ class CounterRow extends React.Component {
                     {(counterTeam.oppToon5Name) ? (<img alt={counterTeam.oppToon5Name} className="toonImg opponentImg" title={counterTeam.toon5Name} src={counterTeam.oppToon5Image} />) : ''}
                   </div>
                   {(counterTeam.subs) ? (<p><small><strong className="text-secondary">Subs: </strong>{counterTeam.subs}</small></p>) : ''}
-                  {/* {(counterTeam.description) ? (<p><strong className="text-secondary">Strategy: </strong>{counterTeam.description}</p>) : (<p className="text-secondary"><small>Do you know the strategy to beat the {teamWithCharData.name} team with {counterTeam.counterTeamName}?  If so, please <a href={submissionForm}>submit an issue.</a></small></p>)} */}
-                  {(counterTeam.description) ? (<p><strong className="text-secondary">Strategy: </strong>{counterTeam.description}</p>) : (<p className="text-secondary"><small>Do you know the strategy to beat the {teamWithCharData.name} team with {counterTeam.counterTeamName}?  If so, please let me know on <a href={discordLink}>Discord.</a></small></p>)}
+                  {(counterTeam.description) ? (<p><strong className="text-secondary">Strategy: </strong>{counterTeam.description}</p>) : (<p className="text-secondary"><small>Do you know the strategy to beat the {teamWithCharData.name} team with {counterTeam.counterTeamName}?  If so, please <a href={submissionForm}>submit an issue.</a></small></p>)}
+                  {(counterTeam.description) ? '' : (<p className="text-secondary"><small>You can also join me on <a href={discordLink}>Discord</a> to start a discussion regarding this team.</small></p>)}
                 </div>
               </div>
             </Collapse>
