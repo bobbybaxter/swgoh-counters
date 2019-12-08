@@ -50,7 +50,9 @@ class Counters5v5 extends React.Component {
     const { characters } = this.state;
     const newTeam = { ...team };
     characters.map((character) => {
-      const characterImg = require(`${character.image}`);
+      const characterImgRoute = character.image.split('/u/').pop().split('/')[0];
+      // const characterImg = require(`${character.image}`);
+      const characterImg = require(`./characterImages/${characterImgRoute}.png`);
       if (character.name === team.oppLeaderName) {
         newTeam.oppLeaderId = character.base_id;
         newTeam.oppLeaderImage = characterImg;
