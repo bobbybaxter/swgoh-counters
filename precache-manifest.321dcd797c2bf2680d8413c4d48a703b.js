@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0e4174c07e98fc222134d630f1ece816",
+    "revision": "95d79e8e5da788978e62eb64001df557",
     "url": "/swgoh-counters/index.html"
   },
   {
-    "revision": "298358318ccbd3f98b63",
+    "revision": "f4ca332540969001b84d",
     "url": "/swgoh-counters/static/css/2.266e55a5.chunk.css"
   },
   {
-    "revision": "c1fa9a9070510618864c",
+    "revision": "b04cc22378ca5e17ac81",
     "url": "/swgoh-counters/static/css/main.938961ac.chunk.css"
   },
   {
-    "revision": "298358318ccbd3f98b63",
-    "url": "/swgoh-counters/static/js/2.68b04fd3.chunk.js"
+    "revision": "f4ca332540969001b84d",
+    "url": "/swgoh-counters/static/js/2.1449922e.chunk.js"
   },
   {
-    "revision": "c1fa9a9070510618864c",
-    "url": "/swgoh-counters/static/js/main.b9a9b37e.chunk.js"
+    "revision": "b04cc22378ca5e17ac81",
+    "url": "/swgoh-counters/static/js/main.9583e3d2.chunk.js"
   },
   {
     "revision": "ddd0edbc27f0c8afbeeb",
@@ -42,6 +42,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "f7362bd0ad0ce2be32dbcd12b95a4eb6",
     "url": "/swgoh-counters/static/media/ANAKINKNIGHT.f7362bd0.png"
+  },
+  {
+    "revision": "89663bcbcd7a6e25465ee5e638f72358",
+    "url": "/swgoh-counters/static/media/ARCTROOPER501ST.89663bcb.png"
   },
   {
     "revision": "0c8c207cbe76934ad9c533e151320c64",
@@ -280,6 +284,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/swgoh-counters/static/media/GENERALKENOBI.1b214f00.png"
   },
   {
+    "revision": "00369182035a9c1e3259aa1384d8c7f5",
+    "url": "/swgoh-counters/static/media/GENERALSKYWALKER.00369182.png"
+  },
+  {
     "revision": "3997e10ecfa42df54df830ac529f3f32",
     "url": "/swgoh-counters/static/media/GEONOSIANBROODALPHA.3997e10e.png"
   },
@@ -402,6 +410,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "6674faa3bd3369d306a7540eb897c463",
     "url": "/swgoh-counters/static/media/JYNERSO.6674faa3.png"
+  },
+  {
+    "revision": "92c1f5c2f8603ffbbccc248c19acf553",
+    "url": "/swgoh-counters/static/media/KIADIMUNDI.92c1f5c2.png"
   },
   {
     "revision": "2d112fff3309de018914d03b8a4cbb90",
