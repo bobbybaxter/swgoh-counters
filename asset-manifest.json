@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.css": "/swgoh-counters/static/css/main.938961ac.chunk.css",
-    "main.js": "/swgoh-counters/static/js/main.0f31ecb2.chunk.js",
-    "main.js.map": "/swgoh-counters/static/js/main.0f31ecb2.chunk.js.map",
-    "runtime~main.js": "/swgoh-counters/static/js/runtime~main.a8d86a92.js",
-    "runtime~main.js.map": "/swgoh-counters/static/js/runtime~main.a8d86a92.js.map",
-    "static/css/2.266e55a5.chunk.css": "/swgoh-counters/static/css/2.266e55a5.chunk.css",
-    "static/js/2.8b1ca8e0.chunk.js": "/swgoh-counters/static/js/2.8b1ca8e0.chunk.js",
-    "static/js/2.8b1ca8e0.chunk.js.map": "/swgoh-counters/static/js/2.8b1ca8e0.chunk.js.map",
+    "main.css": "/swgoh-counters/static/css/main.2d70646c.chunk.css",
+    "main.js": "/swgoh-counters/static/js/main.3c7e24bd.chunk.js",
+    "main.js.map": "/swgoh-counters/static/js/main.3c7e24bd.chunk.js.map",
+    "runtime-main.js": "/swgoh-counters/static/js/runtime-main.bad23076.js",
+    "runtime-main.js.map": "/swgoh-counters/static/js/runtime-main.bad23076.js.map",
+    "static/css/2.17e5ed98.chunk.css": "/swgoh-counters/static/css/2.17e5ed98.chunk.css",
+    "static/js/2.62aebad0.chunk.js": "/swgoh-counters/static/js/2.62aebad0.chunk.js",
+    "static/js/2.62aebad0.chunk.js.map": "/swgoh-counters/static/js/2.62aebad0.chunk.js.map",
     "index.html": "/swgoh-counters/index.html",
-    "precache-manifest.0fbec90c01990db94321d2566114a84b.js": "/swgoh-counters/precache-manifest.0fbec90c01990db94321d2566114a84b.js",
+    "precache-manifest.7d486d48858ce15a77287d5311f4a89a.js": "/swgoh-counters/precache-manifest.7d486d48858ce15a77287d5311f4a89a.js",
     "service-worker.js": "/swgoh-counters/service-worker.js",
-    "static/css/2.266e55a5.chunk.css.map": "/swgoh-counters/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.938961ac.chunk.css.map": "/swgoh-counters/static/css/main.938961ac.chunk.css.map",
+    "static/css/2.17e5ed98.chunk.css.map": "/swgoh-counters/static/css/2.17e5ed98.chunk.css.map",
+    "static/css/main.2d70646c.chunk.css.map": "/swgoh-counters/static/css/main.2d70646c.chunk.css.map",
+    "static/js/2.62aebad0.chunk.js.LICENSE": "/swgoh-counters/static/js/2.62aebad0.chunk.js.LICENSE",
     "static/media/ADMINISTRATORLANDO.png": "/swgoh-counters/static/media/ADMINISTRATORLANDO.097648ad.png",
     "static/media/ADMIRALACKBAR.png": "/swgoh-counters/static/media/ADMIRALACKBAR.532dfe18.png",
     "static/media/AHSOKATANO.png": "/swgoh-counters/static/media/AHSOKATANO.d7c6995a.png",
@@ -74,9 +75,11 @@
     "static/media/FIRSTORDERSPECIALFORCESPILOT.png": "/swgoh-counters/static/media/FIRSTORDERSPECIALFORCESPILOT.a99bf3ee.png",
     "static/media/FIRSTORDERTIEPILOT.png": "/swgoh-counters/static/media/FIRSTORDERTIEPILOT.c13f4e2a.png",
     "static/media/FIRSTORDERTROOPER.png": "/swgoh-counters/static/media/FIRSTORDERTROOPER.eefbaf5c.png",
+    "static/media/FOSITHTROOPER.png": "/swgoh-counters/static/media/FOSITHTROOPER.c87769a3.png",
     "static/media/FULCRUMAHSOKA.png": "/swgoh-counters/static/media/FULCRUMAHSOKA.9a103cbb.png",
     "static/media/GAMORREANGUARD.png": "/swgoh-counters/static/media/GAMORREANGUARD.6a1cdfcb.png",
     "static/media/GARSAXON.png": "/swgoh-counters/static/media/GARSAXON.16976afc.png",
+    "static/media/GENERALHUX.png": "/swgoh-counters/static/media/GENERALHUX.764de95f.png",
     "static/media/GENERALKENOBI.png": "/swgoh-counters/static/media/GENERALKENOBI.1b214f00.png",
     "static/media/GENERALSKYWALKER.png": "/swgoh-counters/static/media/GENERALSKYWALKER.00369182.png",
     "static/media/GEONOSIANBROODALPHA.png": "/swgoh-counters/static/media/GEONOSIANBROODALPHA.3997e10e.png",
@@ -183,5 +186,12 @@
     "static/media/ZAALBAR.png": "/swgoh-counters/static/media/ZAALBAR.c8cfa0f7.png",
     "static/media/ZAMWESELL.png": "/swgoh-counters/static/media/ZAMWESELL.44c17e40.png",
     "static/media/ZEBS3.png": "/swgoh-counters/static/media/ZEBS3.1dbe915e.png"
-  }
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bad23076.js",
+    "static/css/2.17e5ed98.chunk.css",
+    "static/js/2.62aebad0.chunk.js",
+    "static/css/main.2d70646c.chunk.css",
+    "static/js/main.3c7e24bd.chunk.js"
+  ]
 }

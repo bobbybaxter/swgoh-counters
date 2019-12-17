@@ -1,27 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4ae6927497fbbf9c539d177b098e69ad",
+    "revision": "50f761cdfd07d53b05efc16ab03fe42a",
     "url": "/swgoh-counters/index.html"
   },
   {
-    "revision": "7d61967ed09dfaa81ea0",
-    "url": "/swgoh-counters/static/css/2.266e55a5.chunk.css"
+    "revision": "8024f45af216cb51cde9",
+    "url": "/swgoh-counters/static/css/2.17e5ed98.chunk.css"
   },
   {
-    "revision": "43eb54e1af9ecd908d8b",
-    "url": "/swgoh-counters/static/css/main.938961ac.chunk.css"
+    "revision": "21ab23799ac34c8aeb82",
+    "url": "/swgoh-counters/static/css/main.2d70646c.chunk.css"
   },
   {
-    "revision": "7d61967ed09dfaa81ea0",
-    "url": "/swgoh-counters/static/js/2.8b1ca8e0.chunk.js"
+    "revision": "8024f45af216cb51cde9",
+    "url": "/swgoh-counters/static/js/2.62aebad0.chunk.js"
   },
   {
-    "revision": "43eb54e1af9ecd908d8b",
-    "url": "/swgoh-counters/static/js/main.0f31ecb2.chunk.js"
+    "revision": "41f379c42f2f5d4cec8b7d3a07ed9f23",
+    "url": "/swgoh-counters/static/js/2.62aebad0.chunk.js.LICENSE"
   },
   {
-    "revision": "ddd0edbc27f0c8afbeeb",
-    "url": "/swgoh-counters/static/js/runtime~main.a8d86a92.js"
+    "revision": "21ab23799ac34c8aeb82",
+    "url": "/swgoh-counters/static/js/main.3c7e24bd.chunk.js"
+  },
+  {
+    "revision": "c4e801436fc169c7fc2c",
+    "url": "/swgoh-counters/static/js/runtime-main.bad23076.js"
   },
   {
     "revision": "097648add22acba1aa34d754618565f9",
@@ -268,6 +272,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/swgoh-counters/static/media/FIRSTORDERTROOPER.eefbaf5c.png"
   },
   {
+    "revision": "c87769a3877c7848140fb0cfd4b059e4",
+    "url": "/swgoh-counters/static/media/FOSITHTROOPER.c87769a3.png"
+  },
+  {
     "revision": "9a103cbb8d265bc8864e068f73c430e6",
     "url": "/swgoh-counters/static/media/FULCRUMAHSOKA.9a103cbb.png"
   },
@@ -278,6 +286,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "16976afcec5f163ab572ba496b6d624a",
     "url": "/swgoh-counters/static/media/GARSAXON.16976afc.png"
+  },
+  {
+    "revision": "764de95f83c3562e70eb5d63565a66e2",
+    "url": "/swgoh-counters/static/media/GENERALHUX.764de95f.png"
   },
   {
     "revision": "1b214f00f9f78392536b932cee7e01e5",
