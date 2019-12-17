@@ -1,10 +1,11 @@
 import React from 'react';
 import {
-  BrowserRouter, Redirect, Switch,
+  HashRouter, Redirect, Route, Switch,
 } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
 import MyNavbar from '../components/MyNavbar/MyNavbar';
+import Counters3v3 from '../components/Counters3v3/Counters3v3';
 import Counters5v5 from '../components/Counters5v5/Counters5v5';
 
 import './App.scss';
@@ -17,18 +18,19 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <BrowserRouter>
+        <HashRouter basename="/" hashType="slash">
             <React.Fragment>
               <MyNavbar />
               <div>
                   <Switch>
-                    <Counters5v5 path="/swgoh-counters" />
-                    {/* <Counters3v3 path="/counters3v3" /> */}
-                    <Redirect from="*" to="/swgoh-counters" />
+                    <Route exact path="/5v5" component={ Counters5v5 }/>
+                    <Route exact path="/3v3" component={ Counters3v3 }/>
+
+                    <Redirect from="*" to="/5v5" />
                   </Switch>
               </div>
             </React.Fragment>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     );
   }

@@ -9,9 +9,9 @@ import teamsData from '../../helpers/data/teamsData';
 import countersData from '../../helpers/data/countersData';
 import characterData from '../../helpers/data/characters.json';
 
-import './Counters5v5.scss';
+import './Counters3v3.scss';
 
-class Counters5v5 extends React.Component {
+class Counters3v3 extends React.Component {
   state = {
     characters: [],
     counters: [],
@@ -29,8 +29,6 @@ class Counters5v5 extends React.Component {
           newMatchup.oppLeaderName = team.leaderName;
           newMatchup.oppToon2Name = team.toon2Name;
           newMatchup.oppToon3Name = team.toon3Name;
-          newMatchup.oppToon4Name = team.toon4Name;
-          newMatchup.oppToon5Name = team.toon5Name;
           newMatchup.counterTeamName = team.name;
           newMatchup.subs = team.subs;
         } else {
@@ -52,7 +50,7 @@ class Counters5v5 extends React.Component {
     characters.map((character) => {
       const characterImgRoute = character.image.split('/u/').pop().split('/')[0];
       // const characterImg = require(`${character.image}`);
-      const characterImg = require(`./characterImages/${characterImgRoute}.png`);
+      const characterImg = require(`../Counters5v5/characterImages/${characterImgRoute}.png`);
       if (character.name === team.oppLeaderName) {
         newTeam.oppLeaderId = character.base_id;
         newTeam.oppLeaderImage = characterImg;
@@ -62,12 +60,6 @@ class Counters5v5 extends React.Component {
       } else if (character.name === team.oppToon3Name) {
         newTeam.oppToon3Id = character.base_id;
         newTeam.oppToon3Image = characterImg;
-      } else if (character.name === team.oppToon4Name) {
-        newTeam.oppToon4Id = character.base_id;
-        newTeam.oppToon4Image = characterImg;
-      } else if (character.name === team.oppToon5Name) {
-        newTeam.oppToon5Id = character.base_id;
-        newTeam.oppToon5Image = characterImg;
       } else if (character.name === team.leaderName) {
         newTeam.leaderId = character.base_id;
         newTeam.leaderImage = characterImg;
@@ -77,12 +69,6 @@ class Counters5v5 extends React.Component {
       } else if (character.name === team.toon3Name) {
         newTeam.toon3Id = character.base_id;
         newTeam.toon3Image = characterImg;
-      } else if (character.name === team.toon4Name) {
-        newTeam.toon4Id = character.base_id;
-        newTeam.toon4Image = characterImg;
-      } else if (character.name === team.toon5Name) {
-        newTeam.toon5Id = character.base_id;
-        newTeam.toon5Image = characterImg;
       }
       return '';
     });
@@ -113,38 +99,37 @@ class Counters5v5 extends React.Component {
 
   render() {
     const { collapse, counters, teams } = this.state;
-    const buildCounterRows = teams
-      .map((team) => {
-        const counterMatchups = counters
-          .filter(x => x.battleType === '5v5')
-          .filter(x => x.opponentTeam === team.id);
-        if (counterMatchups.length > 0) {
-          const counterTeams = [];
-          counterMatchups.map((matchup) => {
-            const matchupWithData = this.buildMatchup(matchup);
-            return counterTeams.push(matchupWithData);
-          });
-          const teamWithCharData = this.buildTeam(team);
-          return <CounterRow
+    const buildCounterRows = teams.map((team) => {
+      const counterMatchups = counters
+        .filter(x => x.battleType === '3v3')
+        .filter(x => x.opponentTeam === team.id);
+      if (counterMatchups.length > 0) {
+        const counterTeams = [];
+        counterMatchups.map((matchup) => {
+          const matchupWithData = this.buildMatchup(matchup);
+          return counterTeams.push(matchupWithData);
+        });
+        const teamWithCharData = this.buildTeam(team);
+        return <CounterRow
           collapse={collapse}
           counterTeams={counterTeams}
           key={team.id}
           teamWithCharData={teamWithCharData}
           toggleCollapse={this.toggleCollapse}
         />;
-        }
-        return '';
-      });
+      }
+      return '';
+    });
 
     return (
-      <div className="Counters5v5">
+      <div className="Counters3v3">
           <div className="py-3">
             <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
           </div>
         <div className="columnTitles">
           <h1 className="col-3 mb-0">Team</h1>
           <div className="col-9">
-            <h1 className="mb-0">5v5 Counters</h1>
+            <h1 className="mb-0">3v3 Counters</h1>
             <small className="m-0 p-0 text-secondary">Click on a counter team to see more info.</small>
           </div>
         </div>
@@ -171,4 +156,4 @@ class Counters5v5 extends React.Component {
   }
 }
 
-export default Counters5v5;
+export default Counters3v3;
