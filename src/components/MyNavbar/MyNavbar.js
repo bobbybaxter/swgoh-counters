@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -30,6 +31,12 @@ class MyNavbar extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto text-center" navbar>
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/5v5">5v5</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/3v3/">3v3</NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink href="https://discord.gg/eCnE48h">Discord</NavLink>
               </NavItem>
