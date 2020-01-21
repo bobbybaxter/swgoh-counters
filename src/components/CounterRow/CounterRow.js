@@ -11,8 +11,8 @@ class CounterRow extends React.Component {
     const { collapse, counterTeams, teamWithCharData } = this.props;
     const matchupDetails = counterTeams
       .map(counterTeam => (
-          <div className="countersDetails my-2" key={counterTeam.counterId}>
-            <Collapse isOpen={counterTeam.counterId === collapse}>
+          <div className="countersDetails my-2" key={counterTeam.id}>
+            <Collapse isOpen={counterTeam.id === collapse}>
               <div className="d-flex flex-row">
                 <div className="detailsDivLeft col-6 border-dark border-right">
                   <h6 className="text-secondary">Opponent Team</h6>
@@ -56,9 +56,9 @@ class CounterRow extends React.Component {
       .filter(x => x.isHardCounter === true)
       .map(counterTeam => (
       // Hard Counter Div
-      <div key={counterTeam.counterId} className="countersRow counterCard">
+      <div key={counterTeam.id} className="countersRow counterCard">
         <img
-          id={counterTeam.counterId}
+          id={counterTeam.id}
           className="toonImg hardCounter"
           onClick={this.toggle}
           src={counterTeam.oppLeaderImage}
@@ -76,9 +76,9 @@ class CounterRow extends React.Component {
       .filter(x => x.isHardCounter === false)
       .map(counterTeam => (
       // Soft Counter Div
-      <div key={counterTeam.counterId} className="countersRow counterCard">
+      <div key={counterTeam.id} className="countersRow counterCard">
         <img
-          id={counterTeam.counterId}
+          id={counterTeam.id}
           className="toonImg softCounter"
           onClick={this.toggle}
           src={counterTeam.oppLeaderImage}

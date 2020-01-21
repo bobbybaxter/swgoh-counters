@@ -5,9 +5,9 @@ import React from 'react';
 
 import CounterRow from '../CounterRow/CounterRow';
 
-import teamsData from '../../helpers/data/teamsData';
-import countersData from '../../helpers/data/countersData';
 import characterData from '../../helpers/data/characters.json';
+import counterData from '../../helpers/data/counterData';
+import counterSquadData from '../../helpers/data/counterSquadData';
 
 import './Counters3v3.scss';
 
@@ -25,7 +25,7 @@ class Counters3v3 extends React.Component {
       const { teams } = this.state;
       const newMatchup = { ...matchup };
       teams.map((team) => {
-        if (team.id === newMatchup.counterTeam) {
+        if (team.id === newMatchup.counterTeamId) {
           newMatchup.oppLeaderName = team.leaderName;
           newMatchup.oppToon2Name = team.toon2Name;
           newMatchup.oppToon3Name = team.toon3Name;
@@ -76,13 +76,13 @@ class Counters3v3 extends React.Component {
   }
 
   getCounters = () => {
-    countersData.getCounters()
+    counterData.getCounters()
       .then(res => this.setState({ counters: res }))
       .catch(err => console.error(err));
   }
 
   getTeams = () => {
-    teamsData.getTeams()
+    counterSquadData.getCounterSquads()
       .then(res => this.setState({ teams: res }))
       .catch(err => console.error(err));
   }
@@ -102,7 +102,7 @@ class Counters3v3 extends React.Component {
     const buildCounterRows = teams.map((team) => {
       const counterMatchups = counters
         .filter(x => x.battleType === '3v3')
-        .filter(x => x.opponentTeam === team.id);
+        .filter(x => x.opponentTeamId === team.id);
       if (counterMatchups.length > 0) {
         const counterTeams = [];
         counterMatchups.map((matchup) => {
