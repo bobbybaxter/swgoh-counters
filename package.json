@@ -24,7 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && gh-pages -d build"
+    "deploy": "npm run build && gh-pages -d build",
+    "aws-build": "aws cp build s3://saiastrange.com --recursive"
   },
   "eslintConfig": {
     "extends": "react-app"
