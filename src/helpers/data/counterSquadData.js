@@ -1,9 +1,8 @@
 import axios from 'axios';
-
-const baseUrl = 'https://localhost:44384/api';
+import apiData from '../apiData.json';
 
 const getCounterSquads = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/counterSquad/`)
+  axios.get(`${apiData.baseUrl}/counterSquad/`)
     .then(res => resolve(res.data))
     .catch(err => reject(err));
 });
