@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "50f761cdfd07d53b05efc16ab03fe42a",
+    "revision": "c2f9c629dad5b29b59930af2c098f123",
     "url": "/swgoh-counters/index.html"
   },
   {
-    "revision": "8024f45af216cb51cde9",
+    "revision": "b679fc1488c3308ab44d",
     "url": "/swgoh-counters/static/css/2.17e5ed98.chunk.css"
   },
   {
-    "revision": "21ab23799ac34c8aeb82",
+    "revision": "30cbd7fbf98db87bf80c",
     "url": "/swgoh-counters/static/css/main.2d70646c.chunk.css"
   },
   {
-    "revision": "8024f45af216cb51cde9",
-    "url": "/swgoh-counters/static/js/2.62aebad0.chunk.js"
+    "revision": "b679fc1488c3308ab44d",
+    "url": "/swgoh-counters/static/js/2.43b16233.chunk.js"
   },
   {
     "revision": "41f379c42f2f5d4cec8b7d3a07ed9f23",
-    "url": "/swgoh-counters/static/js/2.62aebad0.chunk.js.LICENSE"
+    "url": "/swgoh-counters/static/js/2.43b16233.chunk.js.LICENSE"
   },
   {
-    "revision": "21ab23799ac34c8aeb82",
-    "url": "/swgoh-counters/static/js/main.3c7e24bd.chunk.js"
+    "revision": "30cbd7fbf98db87bf80c",
+    "url": "/swgoh-counters/static/js/main.431f6091.chunk.js"
   },
   {
     "revision": "c4e801436fc169c7fc2c",
@@ -234,6 +234,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "1d47d44bd565bf79281261a359bec45a",
     "url": "/swgoh-counters/static/media/ENFYSNEST.1d47d44b.png"
+  },
+  {
+    "revision": "7dc13610487b70d3492cd014222bbfef",
+    "url": "/swgoh-counters/static/media/EPIXFINN.7dc13610.png"
+  },
+  {
+    "revision": "8530f5418c0e4f17d7bf0a76139fc74a",
+    "url": "/swgoh-counters/static/media/EPIXPOE.8530f541.png"
   },
   {
     "revision": "e42a21434253dcfad876ef9649a5b5fc",
