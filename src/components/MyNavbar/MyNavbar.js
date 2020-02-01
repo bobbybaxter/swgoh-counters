@@ -1,4 +1,6 @@
 import React from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Collapse,
@@ -17,6 +19,11 @@ class MyNavbar extends React.Component {
     isOpen: false,
   }
 
+  logoutClickEvent = (e) => {
+    e.preventDefault();
+    firebase.auth().signOut();
+  }
+
   toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen,
@@ -24,6 +31,8 @@ class MyNavbar extends React.Component {
   }
 
   render() {
+    const { authenticated } = this.props;
+
     return (
       <div className="MyNavbar">
         <Navbar color="dark" dark expand="md">
@@ -34,9 +43,13 @@ class MyNavbar extends React.Component {
               <NavItem>
                 <NavLink tag={RRNavLink} to="/5v5">5v5</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink tag={RRNavLink} to="/3v3/">3v3</NavLink>
-              </NavItem>
+              {
+                authenticated === true
+                  ? <NavItem>
+                      <NavLink tag={RRNavLink} to="/3v3">3v3</NavLink>
+                    </NavItem>
+                  : ''
+              }
               <NavItem>
                 <NavLink href="https://discord.gg/eCnE48h">Discord</NavLink>
               </NavItem>
@@ -46,9 +59,15 @@ class MyNavbar extends React.Component {
               <NavItem>
                 <NavLink href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</NavLink>
               </NavItem>
-              {/* <NavItem>
-                <NavLink href="https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true">Submit an Issue</NavLink>
-              </NavItem> */}
+              {
+                authenticated === false
+                  ? <NavItem>
+                      <NavLink tag={RRNavLink} to="/auth">Login</NavLink>
+                    </NavItem>
+                  : <NavItem>
+                      <NavLink href="#" onClick={this.logoutClickEvent}>Logout</NavLink>
+                    </NavItem>
+              }
             </Nav>
           </Collapse>
         </Navbar>
