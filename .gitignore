@@ -2,6 +2,7 @@
 
 # proprietary information
 **/helpers/apiData.json
+**/helpers/apiKeys.json
 
 # dependencies
 /node_modules
