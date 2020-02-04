@@ -10,6 +10,7 @@ import Auth from '../components/Auth/Auth';
 import Counters3v3 from '../components/Counters3v3/Counters3v3';
 import Counters5v5 from '../components/Counters5v5/Counters5v5';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
+import Profile from '../components/Profile/Profile';
 
 import firebaseConnection from '../helpers/data/firebaseConnection';
 
@@ -64,10 +65,11 @@ class App extends React.Component {
               <div>
                   <Switch>
                     <Route exact path="/5v5" component={Counters5v5} authenticated={authenticated}/>
+                    <Route exact path="/3v3" component={Counters3v3} authenticated={authenticated}/>
 
                     <PublicRoute path="/auth" component={Auth} authenticated={authenticated} />
 
-                    <PrivateRoute path="/3v3" component={Counters3v3} authenticated={authenticated}/>
+                    <PrivateRoute path="/profile" component={Profile} authenticated={authenticated}/>
 
                     <Redirect from="*" to="/5v5" />
                   </Switch>

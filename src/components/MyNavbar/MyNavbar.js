@@ -43,10 +43,13 @@ class MyNavbar extends React.Component {
               <NavItem>
                 <NavLink tag={RRNavLink} to="/5v5">5v5</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/3v3">3v3</NavLink>
+              </NavItem>
               {
                 authenticated === true
                   ? <NavItem>
-                      <NavLink tag={RRNavLink} to="/3v3">3v3</NavLink>
+                      <NavLink tag={RRNavLink} to="/Profile">Profile</NavLink>
                     </NavItem>
                   : ''
               }
