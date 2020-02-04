@@ -40,7 +40,6 @@ class App extends React.Component {
   authUser = (user) => {
     if (user) {
       this.setState({ authenticated: true });
-      console.error(firebase.auth().currentUser.email);
     } else {
       this.setState({ authenticated: false });
     }
