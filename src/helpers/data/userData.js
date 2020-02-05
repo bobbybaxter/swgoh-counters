@@ -14,4 +14,10 @@ const getUserByFirebaseUid = firebaseUid => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-export default { createUser, getUserByFirebaseUid };
+const updateUserInfo = allyCode => new Promise((resolve, reject) => {
+  axios.put(`https://localhost:44384/api/user/allyCode/${allyCode}`)
+    .then(res => resolve(res.data))
+    .catch(err => reject(err));
+});
+
+export default { createUser, getUserByFirebaseUid, updateUserInfo };
