@@ -14,8 +14,8 @@ const getUserByFirebaseUid = firebaseUid => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-const updateUserInfo = allyCode => new Promise((resolve, reject) => {
-  axios.put(`https://localhost:44384/api/user/allyCode/${allyCode}`)
+const updateUserInfo = userModel => new Promise((resolve, reject) => {
+  axios.put(`https://localhost:44384/api/user/allyCode/${userModel.allyCode}`, { userModel })
     .then(res => resolve(res.data))
     .catch(err => reject(err));
 });

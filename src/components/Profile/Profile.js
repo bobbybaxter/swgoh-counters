@@ -15,16 +15,25 @@ import './Profile.scss';
 
 class Profile extends React.Component {
   state = {
-    firebaseUid: [],
-    userEmail: [],
-    allyCode: [],
-    userInfo: [],
+    userModel: {
+      id: '',
+      allyCode: '',
+      email: '',
+      firebaseUid: '',
+      username: '',
+    },
     inputValue: '',
   }
 
   componentDidMount() {
     const user = firebase.auth().currentUser;
-    this.setState({ userEmail: user.email, firebaseUid: user.uid });
+    this.setState(prevState => ({
+      userModel: {
+        ...prevState.userModel,
+        email: user.email,
+        firebaseUid: user.uid,
+      },
+    }));
     this.validateAccount(user.uid);
   }
 
@@ -33,11 +42,21 @@ class Profile extends React.Component {
   }
 
   submitAllyCode = (e) => {
+    const { inputValue } = this.state;
     e.preventDefault();
-    swgohData.getUserData(this.state.inputValue)
+    swgohData.getUserData(inputValue)
       .then((res) => {
-        console.error(res);
+        console.error(res.data);
+        const playerInfo = res.data;
+        this.setState(prevState => ({
+          userModel: {
+            ...prevState.userModel,
+            allyCode: playerInfo.ally_code,
+            username: playerInfo.name,
+          },
+        }));
       })
+      .then(() => userData.updateUserInfo(this.state.userModel))
       .catch(err => console.error(err));
   }
 
@@ -45,7 +64,13 @@ class Profile extends React.Component {
     userData.getUserByFirebaseUid(firebaseUid)
       .then((res) => {
         if (res !== '') {
-          this.setState({ allyCode: res.allyCode });
+          this.setState(prevState => ({
+            userModel: {
+              ...prevState.userModel,
+              id: res.id,
+              allyCode: res.allyCode,
+            },
+          }));
         } else {
           userData.createUser();
           console.error('user created');
@@ -55,19 +80,19 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { allyCode } = this.state;
+    const { userModel } = this.state;
     const printAllyCodeInput = () => {
       let allyCodeBlock = '';
-      if (allyCode === null) {
+      if (userModel.allyCode === null) {
         allyCodeBlock = <InputGroup className="col-4">
                             <Input value={this.state.inputValue} onChange={this.handleInputChange} placeholder="Input Ally Code"/>
                             <InputGroupAddon addonType="append" onClick={this.submitAllyCode}><Button>Submit</Button></InputGroupAddon>
                         </InputGroup>;
       } else {
         // eslint-disable-next-line eqeqeq
-        allyCode == ''
+        userModel.allyCode == ''
           ? allyCodeBlock = ''
-          : allyCodeBlock = `<h3>Ally Code: ${allyCode}</h3>`;
+          : allyCodeBlock = <h3>Ally Code: {userModel.allyCode}</h3>;
       }
       return allyCodeBlock;
     };
