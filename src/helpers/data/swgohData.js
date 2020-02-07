@@ -1,7 +1,8 @@
 import axios from 'axios';
+import apiData from '../apiData.json';
 
 const getAllCharacters = () => new Promise((resolve, reject) => {
-  axios.get('https://cors-anywhere.herokuapp.com/https://swgoh.gg/api/characters/')
+  axios.get(`${apiData.swgohBaseUrl}/characters/`)
     .then((res) => {
       const rawCharacters = res.data;
       const newCharacters = rawCharacters.map((char) => {
@@ -33,7 +34,7 @@ const getCharactersBySquad = (
   toon4Name,
   toon5Name,
 ) => new Promise((resolve, reject) => {
-  axios.get('https://cors-anywhere.herokuapp.com/https://swgoh.gg/api/characters/')
+  axios.get(`${apiData.swgohBaseUrl}/characters/`)
     .then((res) => {
       const rawCharacters = res.data;
       const tempSquad = [];
@@ -67,4 +68,10 @@ const getCharactersBySquad = (
     .catch(err => reject(err));
 });
 
-export default { getAllCharacters, getCharactersBySquad };
+const getUserData = allyCode => new Promise((resolve, reject) => {
+  axios.get(`${apiData.swgohBaseUrl}/player/${allyCode}`)
+    .then(res => resolve(res.data))
+    .catch(err => reject(err));
+});
+
+export default { getAllCharacters, getCharactersBySquad, getUserData };
