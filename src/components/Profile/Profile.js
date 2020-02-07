@@ -46,17 +46,22 @@ class Profile extends React.Component {
     e.preventDefault();
     swgohData.getUserData(inputValue)
       .then((res) => {
-        console.error(res.data);
-        const playerInfo = res.data;
+        const newUserModel = {
+          allyCode: res.data.ally_code,
+          username: res.data.name,
+        };
+        return newUserModel;
+      })
+      .then((newUserModel) => {
         this.setState(prevState => ({
           userModel: {
             ...prevState.userModel,
-            allyCode: playerInfo.ally_code,
-            username: playerInfo.name,
+            allyCode: newUserModel.allyCode,
+            username: newUserModel.username,
           },
         }));
+        userData.updateUserInfo(this.state.userModel);
       })
-      .then(() => userData.updateUserInfo(this.state.userModel))
       .catch(err => console.error(err));
   }
 
@@ -83,16 +88,13 @@ class Profile extends React.Component {
     const { userModel } = this.state;
     const printAllyCodeInput = () => {
       let allyCodeBlock = '';
-      if (userModel.allyCode === null) {
+      if (userModel.allyCode === null || userModel.allyCode === '') {
         allyCodeBlock = <InputGroup className="col-4">
-                            <Input value={this.state.inputValue} onChange={this.handleInputChange} placeholder="Input Ally Code"/>
-                            <InputGroupAddon addonType="append" onClick={this.submitAllyCode}><Button>Submit</Button></InputGroupAddon>
+                          <Input value={this.state.inputValue} onChange={this.handleInputChange} placeholder="Input Ally Code"/>
+                          <InputGroupAddon addonType="append" onClick={this.submitAllyCode}><Button>Submit</Button></InputGroupAddon>
                         </InputGroup>;
       } else {
-        // eslint-disable-next-line eqeqeq
-        userModel.allyCode == ''
-          ? allyCodeBlock = ''
-          : allyCodeBlock = <h3>Ally Code: {userModel.allyCode}</h3>;
+        allyCodeBlock = <h3>Ally Code: {userModel.allyCode}</h3>;
       }
       return allyCodeBlock;
     };

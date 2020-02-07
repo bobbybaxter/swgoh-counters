@@ -15,8 +15,14 @@ const getUserByFirebaseUid = firebaseUid => new Promise((resolve, reject) => {
 });
 
 const updateUserInfo = userModel => new Promise((resolve, reject) => {
-  axios.put(`https://localhost:44384/api/user/allyCode/${userModel.allyCode}`, { userModel })
-    .then(res => resolve(res.data))
+  axios.put(`https://localhost:44384/api/user/${userModel.id}`, {
+    Id: userModel.id,
+    AllyCode: userModel.allyCode,
+    Email: userModel.email,
+    FirebaseUid: userModel.firebaseUid,
+    Username: userModel.username,
+  })
+    .then(() => resolve(console.error('profile updated')))
     .catch(err => reject(err));
 });
 
