@@ -1,21 +1,20 @@
 import axios from 'axios';
-// import apiData from '../apiData.json';
+import apiData from '../apiData.json';
 
 const createUser = () => new Promise((resolve, reject) => {
-  axios.post('https://localhost:44384/api/user/')
+  axios.post(`${apiData.baseUrl}/user/`)
     .then(res => resolve(res.data))
     .catch(err => reject(err));
 });
 
 const getUserByFirebaseUid = firebaseUid => new Promise((resolve, reject) => {
-  // axios.get(`${apiData.baseUrl}/user/`)
-  axios.get(`https://localhost:44384/api/user/firebase/${firebaseUid}`)
+  axios.get(`${apiData.baseUrl}/user/firebase/${firebaseUid}`)
     .then(res => resolve(res.data))
     .catch(err => reject(err));
 });
 
 const updateUserInfo = userModel => new Promise((resolve, reject) => {
-  axios.put(`https://localhost:44384/api/user/${userModel.id}`, {
+  axios.put(`${apiData.baseUrl}/user/${userModel.id}`, {
     Id: userModel.id,
     AllyCode: userModel.allyCode,
     Email: userModel.email,

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import apiData from '../apiData.json';
 
 const getCounters = () => new Promise((resolve, reject) => {
-  axios.get('https://api.sheety.co/e505ae20-ec5b-46e8-a86f-7149b9823b64')
+  axios.get(`${apiData.counterSheetUrl}`)
     .then((res) => {
       resolve(res.data);
     })
@@ -9,7 +10,7 @@ const getCounters = () => new Promise((resolve, reject) => {
 });
 
 const getTeams = () => new Promise((resolve, reject) => {
-  axios.get('https://api.sheety.co/a710e43e-2721-45bb-b722-dafafea5b152')
+  axios.get(`${apiData.teamSheetUrl}`)
     .then((res) => {
       resolve(res.data);
     })
