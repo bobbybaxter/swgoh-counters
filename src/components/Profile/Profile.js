@@ -28,13 +28,15 @@ class Profile extends React.Component {
   componentDidMount() {
     const user = firebase.auth().currentUser;
     this.setState(prevState => ({
-      userModel: {
-        ...prevState.userModel,
-        email: user.email,
-        firebaseUid: user.uid,
-      },
+      userModel: { ...prevState.userModel, email: user.email, firebaseUid: user.uid },
     }));
     this.validateAccount(user.uid);
+  }
+
+  setUserIdAndAllyCode = (res) => {
+    this.setState(prevState => ({
+      userModel: { ...prevState.userModel, id: res.id, allyCode: res.allyCode },
+    }));
   }
 
   handleInputChange = (e) => {
@@ -46,10 +48,7 @@ class Profile extends React.Component {
     e.preventDefault();
     swgohData.getUserData(inputValue)
       .then((res) => {
-        const newUserModel = {
-          allyCode: res.data.ally_code,
-          username: res.data.name,
-        };
+        const newUserModel = { allyCode: res.data.ally_code, username: res.data.name };
         return newUserModel;
       })
       .then((newUserModel) => {
@@ -69,15 +68,10 @@ class Profile extends React.Component {
     userData.getUserByFirebaseUid(firebaseUid)
       .then((res) => {
         if (res !== '') {
-          this.setState(prevState => ({
-            userModel: {
-              ...prevState.userModel,
-              id: res.id,
-              allyCode: res.allyCode,
-            },
-          }));
+          this.setUserIdAndAllyCode(res);
         } else {
           userData.createUser();
+          this.setUserIdAndAllyCode(res);
           console.error('user created');
         }
       })
