@@ -13,6 +13,8 @@ import MyNavbar from '../components/MyNavbar/MyNavbar';
 import Profile from '../components/Profile/Profile';
 
 import firebaseConnection from '../helpers/data/firebaseConnection';
+import swgohData from '../helpers/data/swgohData';
+import userData from '../helpers/data/userData';
 
 import './App.scss';
 
@@ -20,26 +22,39 @@ firebaseConnection();
 
 const PrivateRoute = ({ component: Component, authenticated, ...rest }) => {
   const routeChecker = props => (authenticated === true
-    ? (<Component {...props} />)
+    ? (<Component {...props} {...rest} />)
     : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
   return <Route {...rest} render={props => routeChecker(props)} />;
 };
 
 const PublicRoute = ({ component: Component, authenticated, ...rest }) => {
   const routeChecker = props => (authenticated === false
-    ? (<Component {...props} />)
+    ? (<Component {...props} {...rest} />)
     : (<Redirect to={{ pathname: '/5v5', state: { from: props.location } }} />));
   return <Route {...rest} render={props => routeChecker(props)} />;
 };
 
 class App extends React.Component {
   state = {
+    userModel: {
+      id: '',
+      allyCode: '',
+      email: '',
+      firebaseUid: '',
+      username: '',
+    },
+    userInfo: {},
     authenticated: false,
   }
 
-  authUser = (user) => {
-    if (user) {
+  authUser = (authUser) => {
+    if (authUser) {
       this.setState({ authenticated: true });
+      const fbUser = firebase.auth().currentUser;
+      this.setState(prevState => ({
+        userModel: { ...prevState.userModel, email: fbUser.email, firebaseUid: fbUser.uid },
+      }));
+      this.validateAccount(fbUser.uid);
     } else {
       this.setState({ authenticated: false });
     }
@@ -54,8 +69,63 @@ class App extends React.Component {
     this.removeListener();
   }
 
+  getSwgohData = (allyCode) => {
+    swgohData.getUserData(allyCode)
+      .then(res => this.setState({
+        userInfo: res,
+      }))
+      .catch(err => console.error(err));
+  }
+
+  setUserInfo = (res) => {
+    this.setState(prevState => ({
+      userModel: {
+        ...prevState.userModel, id: res.id, allyCode: res.allyCode, username: res.username,
+      },
+    }));
+  }
+
+  submitAllyCode = (e, allyCode) => {
+    e.preventDefault();
+    swgohData.getUserData(allyCode)
+      .then((res) => {
+        const newUserModel = { allyCode: res.data.ally_code, username: res.data.name };
+        return newUserModel;
+      })
+      .then((newUserModel) => {
+        this.setState(prevState => ({
+          userModel: {
+            ...prevState.userModel,
+            allyCode: newUserModel.allyCode,
+            username: newUserModel.username,
+          },
+        }));
+        userData.updateUserInfo(this.state.userModel);
+      })
+      .catch(err => console.error(err));
+  }
+
+  validateAccount = (firebaseUid) => {
+    userData.getUserByFirebaseUid(firebaseUid)
+      .then((res) => {
+        if (res !== '') {
+          this.setUserInfo(res);
+        } else {
+          userData.createUser().then((response) => {
+            this.setUserInfo(response);
+          });
+          console.error('user created');
+        }
+      })
+      .catch(err => console.error(err));
+  }
+
   render() {
-    const { authenticated } = this.state;
+    const { authenticated, userModel } = this.state;
+    if (userModel.allyCode) {
+      // console.error('userModel.allyCode', userModel.allyCode);
+      this.getSwgohData(this.state.userModel.allyCode);
+    }
     return (
       <div className="App">
         <BrowserRouter>
@@ -68,7 +138,15 @@ class App extends React.Component {
 
                     <PublicRoute path="/auth" component={Auth} authenticated={authenticated} />
 
-                    <PrivateRoute path="/profile" component={Profile} authenticated={authenticated}/>
+                    <PrivateRoute
+                      path="/profile"
+                      component={Profile}
+                      authenticated={authenticated}
+
+                      handleInputChange={this.handleInputChange}
+                      submitAllyCode={this.submitAllyCode}
+                      userModel={userModel}
+                    />
 
                     <Redirect from="*" to="/5v5" />
                   </Switch>

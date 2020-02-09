@@ -70,7 +70,9 @@ const getCharactersBySquad = (
 
 const getUserData = allyCode => new Promise((resolve, reject) => {
   axios.get(`${apiData.swgohBaseUrl}/player/${allyCode}`)
-    .then(res => resolve(res.data))
+    .then((res) => {
+      resolve(res.data);
+    })
     .catch(err => reject(err));
 });
 
