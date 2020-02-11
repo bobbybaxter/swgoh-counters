@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import {
   InputGroup,
@@ -6,6 +7,8 @@ import {
   Button,
 } from 'reactstrap';
 
+import ProfileBody from '../ProfileBody/ProfileBody';
+
 import './Profile.scss';
 
 class Profile extends React.Component {
@@ -13,34 +16,66 @@ class Profile extends React.Component {
     inputValue: '',
   }
 
+  handleFetchDataButton = (e) => {
+    e.preventDefault();
+    this.props.getSwgohData(this.props.userModel.allyCode);
+  }
+
   handleInputChange = (e) => {
     this.setState({ inputValue: e.target.value });
   }
 
   handleSubmitButton = (e) => {
-    this.props.submitAllyCode(e, this.state.inputValue);
+    e.preventDefault();
+    this.props.submitAllyCode(this.state.inputValue);
   }
 
   render() {
     const { userModel } = this.props;
-    const printAllyCodeInput = () => {
-      let allyCodeBlock = '';
-      if (userModel.allyCode === null || userModel.allyCode === '' || userModel.allyCode === undefined) {
-        allyCodeBlock = <InputGroup className="col-4">
-                          <Input value={this.state.inputValue} onChange={this.handleInputChange} placeholder="Input Ally Code"/>
-                          <InputGroupAddon addonType="append" onClick={this.handleSubmitButton}><Button>Submit</Button></InputGroupAddon>
-                        </InputGroup>;
-      } else {
-        allyCodeBlock = <h3>Ally Code: {userModel.allyCode}</h3>;
-      }
-      return allyCodeBlock;
-    };
+    let printAllyCodeInput;
+    let printFetchButton;
+    let printProfileBody;
+    let printUserName;
+    if (userModel.allyCode) {
+      printAllyCodeInput = <h5>Ally Code: {userModel.allyCode}</h5>;
+      printFetchButton = <button className="col-1 btn btn-primary" onClick={this.handleFetchDataButton}>Fetch Data</button>;
+      printProfileBody = <ProfileBody />;
+      printUserName = <h1 className="col-10">{userModel.username}</h1>;
+    } else {
+      printAllyCodeInput = <InputGroup className="col-4">
+                        <Input value={this.state.inputValue} onChange={this.handleInputChange} placeholder="Input Ally Code"/>
+                        <InputGroupAddon addonType="append" onClick={this.handleSubmitButton}><Button>Submit</Button></InputGroupAddon>
+                      </InputGroup>;
+      printFetchButton = '';
+      printProfileBody = '';
+      printUserName = <h1 className="col-10">Profile</h1>;
+    }
+    // const printAllyCodeInput = userModel.allyCode
+    //   ? <h5>Ally Code: {userModel.allyCode}</h5>
+    //   : <InputGroup className="col-4">
+    //       <Input value={this.state.inputValue} onChange={this.handleInputChange} placeholder="Input Ally Code"/>
+    //       <InputGroupAddon addonType="append" onClick={this.handleSubmitButton}><Button>Submit</Button></InputGroupAddon>
+    //     </InputGroup>;
+    // const printFetchButton = userModel.allyCode
+    //   ? <button className="col-1 btn btn-primary" onClick={this.handleFetchDataButton}>Fetch Data</button>
+    //   : '';
+    // const printProfileBody = userModel.allyCode
+    //   ? <ProfileBody />
+    //   : '';
+    // const printUserName = userModel.username
+    //   ? <h1 className="col-10">{userModel.username}</h1>
+    //   : <h1 className="col-10">Profile</h1>;
     return (
-      <div>
-        <h1>Profile</h1>
-        <div className="allyCodeBox">
-          { printAllyCodeInput() }
+      <div className="Profile">
+        <div className="col-12 profileHead">
+          <span className="col-1"></span>
+          { printUserName }
+          { printFetchButton }
         </div>
+        <div className="allyCodeBox">
+          { printAllyCodeInput }
+        </div>
+        { printProfileBody }
       </div>
     );
   }

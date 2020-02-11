@@ -55,6 +55,9 @@ class App extends React.Component {
         userModel: { ...prevState.userModel, email: fbUser.email, firebaseUid: fbUser.uid },
       }));
       this.validateAccount(fbUser.uid);
+      if (localStorage.getItem('userInfo')) {
+        console.error('there is user info');
+      }
     } else {
       this.setState({ authenticated: false });
     }
@@ -74,6 +77,7 @@ class App extends React.Component {
       .then(res => this.setState({
         userInfo: res,
       }))
+      .then(() => localStorage.setItem('userInfo', JSON.stringify(this.state.userInfo)))
       .catch(err => console.error(err));
   }
 
@@ -85,8 +89,7 @@ class App extends React.Component {
     }));
   }
 
-  submitAllyCode = (e, allyCode) => {
-    e.preventDefault();
+  submitAllyCode = (allyCode) => {
     swgohData.getUserData(allyCode)
       .then((res) => {
         const newUserModel = { allyCode: res.data.ally_code, username: res.data.name };
@@ -122,10 +125,6 @@ class App extends React.Component {
 
   render() {
     const { authenticated, userModel } = this.state;
-    if (userModel.allyCode) {
-      // console.error('userModel.allyCode', userModel.allyCode);
-      this.getSwgohData(this.state.userModel.allyCode);
-    }
     return (
       <div className="App">
         <BrowserRouter>
@@ -144,6 +143,7 @@ class App extends React.Component {
                       authenticated={authenticated}
 
                       handleInputChange={this.handleInputChange}
+                      getSwgohData={this.getSwgohData}
                       submitAllyCode={this.submitAllyCode}
                       userModel={userModel}
                     />

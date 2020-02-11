@@ -1,8 +1,18 @@
 .Profile {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.profileHead {
+  display: flex;
+  flex-direction: row;
 }
 
 .allyCodeBox {
+  display: contents;
   text-align: -webkit-center;
 }
 
