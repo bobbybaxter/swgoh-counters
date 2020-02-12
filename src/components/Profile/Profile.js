@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react';
 import {
   InputGroup,
@@ -31,7 +30,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { userModel } = this.props;
+    const { userInfo, userModel } = this.props;
     let printAllyCodeInput;
     let printFetchButton;
     let printProfileBody;
@@ -39,7 +38,7 @@ class Profile extends React.Component {
     if (userModel.allyCode) {
       printAllyCodeInput = <h5>Ally Code: {userModel.allyCode}</h5>;
       printFetchButton = <button className="col-1 btn btn-primary" onClick={this.handleFetchDataButton}>Fetch Data</button>;
-      printProfileBody = <ProfileBody />;
+      printProfileBody = <ProfileBody userInfo={userInfo} />;
       printUserName = <h1 className="col-10">{userModel.username}</h1>;
     } else {
       printAllyCodeInput = <InputGroup className="col-4">
@@ -50,21 +49,6 @@ class Profile extends React.Component {
       printProfileBody = '';
       printUserName = <h1 className="col-10">Profile</h1>;
     }
-    // const printAllyCodeInput = userModel.allyCode
-    //   ? <h5>Ally Code: {userModel.allyCode}</h5>
-    //   : <InputGroup className="col-4">
-    //       <Input value={this.state.inputValue} onChange={this.handleInputChange} placeholder="Input Ally Code"/>
-    //       <InputGroupAddon addonType="append" onClick={this.handleSubmitButton}><Button>Submit</Button></InputGroupAddon>
-    //     </InputGroup>;
-    // const printFetchButton = userModel.allyCode
-    //   ? <button className="col-1 btn btn-primary" onClick={this.handleFetchDataButton}>Fetch Data</button>
-    //   : '';
-    // const printProfileBody = userModel.allyCode
-    //   ? <ProfileBody />
-    //   : '';
-    // const printUserName = userModel.username
-    //   ? <h1 className="col-10">{userModel.username}</h1>
-    //   : <h1 className="col-10">Profile</h1>;
     return (
       <div className="Profile">
         <div className="col-12 profileHead">

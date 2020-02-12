@@ -56,7 +56,7 @@ class App extends React.Component {
       }));
       this.validateAccount(fbUser.uid);
       if (localStorage.getItem('userInfo')) {
-        console.error('there is user info');
+        this.setState({ userInfo: JSON.parse(localStorage.getItem('userInfo')) });
       }
     } else {
       this.setState({ authenticated: false });
@@ -124,7 +124,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { authenticated, userModel } = this.state;
+    const { authenticated, userInfo, userModel } = this.state;
     return (
       <div className="App">
         <BrowserRouter>
@@ -145,6 +145,7 @@ class App extends React.Component {
                       handleInputChange={this.handleInputChange}
                       getSwgohData={this.getSwgohData}
                       submitAllyCode={this.submitAllyCode}
+                      userInfo={userInfo}
                       userModel={userModel}
                     />
 

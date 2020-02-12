@@ -1,3 +1,9 @@
 .ProfileBody {
   display: flex;
+  flex-direction: column;
+}
+
+.pbHead {
+  display: flex;
+  flex-direction: row;
 }
