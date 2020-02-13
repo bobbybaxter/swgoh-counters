@@ -35,10 +35,16 @@ class Profile extends React.Component {
     let printFetchButton;
     let printProfileBody;
     let printUserName;
-    if (userModel.allyCode) {
-      printAllyCodeInput = <h5>Ally Code: {userModel.allyCode}</h5>;
-      printFetchButton = <button className="col-1 btn btn-primary" onClick={this.handleFetchDataButton}>Fetch Data</button>;
+
+    if (userInfo.units) {
       printProfileBody = <ProfileBody userInfo={userInfo} />;
+    } else {
+      printProfileBody = '';
+    }
+
+    if (userModel.allyCode) {
+      printAllyCodeInput = <h5><strong className="text-secondary">Ally Code: </strong>{userModel.allyCode}</h5>;
+      printFetchButton = <button className="col-1 btn btn-primary" onClick={this.handleFetchDataButton}>Fetch Data</button>;
       printUserName = <h1 className="col-10">{userModel.username}</h1>;
     } else {
       printAllyCodeInput = <InputGroup className="col-4">
@@ -46,7 +52,6 @@ class Profile extends React.Component {
                         <InputGroupAddon addonType="append" onClick={this.handleSubmitButton}><Button>Submit</Button></InputGroupAddon>
                       </InputGroup>;
       printFetchButton = '';
-      printProfileBody = '';
       printUserName = <h1 className="col-10">Profile</h1>;
     }
     return (

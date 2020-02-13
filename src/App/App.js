@@ -74,8 +74,16 @@ class App extends React.Component {
 
   getSwgohData = (allyCode) => {
     swgohData.getUserData(allyCode)
-      .then(res => this.setState({
-        userInfo: res,
+      .then((res) => {
+        const refactoredUnits = [];
+        res.units.forEach((unit) => {
+          refactoredUnits.push(unit.data);
+        });
+        const editedResponse = { data: res.data, units: refactoredUnits };
+        return editedResponse;
+      })
+      .then(editedResponse => this.setState({
+        userInfo: editedResponse,
       }))
       .then(() => localStorage.setItem('userInfo', JSON.stringify(this.state.userInfo)))
       .catch(err => console.error(err));
