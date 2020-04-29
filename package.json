@@ -2,29 +2,36 @@
   "name": "swgoh-counters",
   "homepage": "https://bobbybaxter.github.io/swgoh-counters",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
+  "proxy": "https://localhost:5000/",
   "dependencies": {
     "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
     "eslint-config-airbnb-base": "^13.2.0",
+    "express": "^4.17.1",
     "firebase": "^6.6.2",
     "gh-pages": "^2.1.1",
     "history": "^4.10.1",
     "node-sass": "^4.13.0",
+    "nodemon": "^2.0.3",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-ga": "^2.7.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
-    "reactstrap": "^8.2.0"
+    "reactstrap": "^8.2.0",
+    "require-directory": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && gh-pages -d build"
+    "deploy": "npm run build && gh-pages -d build",
+    "dev-server": "nodemon server/server.js"
   },
   "eslintConfig": {
     "extends": "react-app"

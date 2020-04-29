@@ -113,6 +113,7 @@ class Counters5v5 extends React.Component {
 
   render() {
     const { collapse, counters, teams } = this.state;
+    console.error('teams', teams);
     const buildCounterRows = teams
       .map((team) => {
         const counterMatchups = counters

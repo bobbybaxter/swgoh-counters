@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "SWGOH Counters",
+  "name": "SWGOH Counters",
   "icons": [
     {
       "src": "favicon.ico",
