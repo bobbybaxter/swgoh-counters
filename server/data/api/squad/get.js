@@ -1,5 +1,9 @@
 const axios = require('axios');
 
-module.exports = app => async function getAllSquads() {
-  await axios.get('https://api.sheety.co/a710e43e-2721-45bb-b722-dafafea5b152');
-};
+const { squadSheet } = require('../../../.config.json');
+
+module.exports = app => new Promise((resolve, reject) => {
+  axios.get(squadSheet)
+    .then(res => resolve(res.data))
+    .catch(err => reject(err));
+});
