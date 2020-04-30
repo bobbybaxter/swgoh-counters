@@ -7,6 +7,5 @@ module.exports = (app) => {
 
   return router
     .use(middleware.context)
-    .use('/', require('./get')(app))
-    .use('/:counterId', require('./getById')(app));
+    .get('/', require('./get')(app));
 };

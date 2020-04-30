@@ -8,8 +8,8 @@ module.exports = (app) => {
     .use(bodyParser.json());
 
   router
-    .use('/api/cards', require('./counter')(app))
-    .use('/api/cards', require('./squad')(app));
+    .use('/api/counters', require('./counter')(app))
+    .use('/api/squads', require('./squad')(app));
 
   return router;
 };
