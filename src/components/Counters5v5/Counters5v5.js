@@ -29,7 +29,10 @@ const Counters5v5 = () => {
 
   const getCounters = () => {
     countersData.getCounters()
-      .then(res => setCounters(res))
+      .then((res) => {
+        console.log('res :>> ', res);
+        setCounters(res);
+      })
       .catch(err => console.error(err));
   };
 
