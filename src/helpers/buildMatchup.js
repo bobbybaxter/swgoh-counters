@@ -1,5 +1,5 @@
 /* eslint-disable import/no-dynamic-require */
-import buildTeam from './buildTeam';
+import buildSquad from './buildSquad';
 
 export default function buildMatchup(matchupToBuild, teamSize, allTeams, allCharacters) {
   const matchup = matchupToBuild;
@@ -13,14 +13,14 @@ export default function buildMatchup(matchupToBuild, teamSize, allTeams, allChar
     matchup.oppToon5Name = filteredTeam.toon5Name;
     matchup.counterTeamName = filteredTeam.name;
     matchup.subs = filteredTeam.subs;
-    return buildTeam(matchup, 5, allCharacters);
+    return buildSquad(matchup, 5, allCharacters);
   } if (filteredTeam && teamSize === 3) {
     matchup.oppLeaderName = filteredTeam.leaderName;
     matchup.oppToon2Name = filteredTeam.toon2Name;
     matchup.oppToon3Name = filteredTeam.toon3Name;
     matchup.counterTeamName = filteredTeam.name;
     matchup.subs = filteredTeam.subs;
-    return buildTeam(matchup, 3, allCharacters);
+    return buildSquad(matchup, 3, allCharacters);
   }
   return [];
 }

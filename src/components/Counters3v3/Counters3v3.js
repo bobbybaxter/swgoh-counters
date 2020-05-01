@@ -5,24 +5,24 @@ import React, { useState, useEffect } from 'react';
 
 import CounterRow from '../CounterRow/CounterRow';
 
-import teamsData from '../../helpers/data/teamsData';
+import squadsData from '../../helpers/data/squadsData';
 import countersData from '../../helpers/data/countersData';
 import characterData from '../../helpers/data/characters.json';
 import buildMatchup from '../../helpers/buildMatchup';
-import buildTeam from '../../helpers/buildTeam';
+import buildSquad from '../../helpers/buildSquad';
 
 import './Counters3v3.scss';
 
 const Counters3v3 = () => {
   const [characters, setCharacters] = useState([]);
   const [counters, setCounters] = useState([]);
-  const [teams, setTeams] = useState([]);
+  const [squads, setSquads] = useState([]);
   const [collapse, setCollapse] = useState([]);
 
   useEffect(() => {
     if (characterData) {
       setCharacters(characterData.data);
-      getTeams();
+      getSquads();
       getCounters();
     }
   }, []);
@@ -33,26 +33,26 @@ const Counters3v3 = () => {
       .catch(err => console.error(err));
   };
 
-  const getTeams = () => {
-    teamsData.getTeams()
-      .then(res => setTeams(res))
+  const getSquads = () => {
+    squadsData.getSquads()
+      .then(res => setSquads(res))
       .catch(err => console.error(err));
   };
 
   const toggleCollapse = input => (setCollapse(collapse === input ? null : input));
 
-  const buildCounterRows = teams.map((team) => {
+  const buildCounterRows = squads.map((squad) => {
     const counterMatchups = counters
       .filter(x => x.battleType === '3v3')
-      .filter(x => x.opponentTeam === team.id);
+      .filter(x => x.opponentTeam === squad.id);
     if (counterMatchups.length > 0) {
-      const teamWithCharData = buildTeam(team, 3, characters);
-      const counterTeams = counterMatchups.map(matchup => buildMatchup(matchup, 3, teams, characters));
+      const squadWithCharData = buildSquad(squad, 3, characters);
+      const counterTeams = counterMatchups.map(matchup => buildMatchup(matchup, 3, squads, characters));
       return <CounterRow
               collapse={collapse}
               counterTeams={counterTeams}
-              key={team.id}
-              teamWithCharData={teamWithCharData}
+              key={squad.id}
+              squadWithCharData={squadWithCharData}
               toggleCollapse={toggleCollapse}
             />;
     }

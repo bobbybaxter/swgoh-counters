@@ -1,5 +1,5 @@
-const getCounters = async () => {
-  const response = await fetch('api/counters');
+const getSquads = async () => {
+  const response = await fetch('api/squads');
   const body = await response.json();
 
   if (response.status !== 200) {
@@ -8,4 +8,4 @@ const getCounters = async () => {
   return body;
 };
 
-export default { getCounters };
+export default { getSquads };
