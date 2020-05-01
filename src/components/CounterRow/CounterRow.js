@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react';
 
 import BuildDescriptions from '../BuildDescriptions/BuildDescriptions';
@@ -18,7 +17,9 @@ export default function CounterRow(props) {
   const toggle = (e) => { toggleCollapse(e.target.id); };
   const hardCounters = counterTeams.filter(x => x.isHardCounter === true);
   const softCounters = counterTeams.filter(x => x.isHardCounter === false);
-  const divider = <div className={hardCounters.length > 0 && softCounters.length > 0 ? 'borderSpace border-dark border-right' : ''}></div>;
+  const divider = <div className={hardCounters.length > 0 && softCounters.length > 0
+    ? 'borderSpace border-dark border-right'
+    : ''}></div>;
   const renderedRow = <div className="CounterRow">
         <div className="d-flex flex-row">
 
