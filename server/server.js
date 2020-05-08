@@ -16,7 +16,6 @@ module.exports = (app) => {
   const PORT = process.env.PORT || 5000;
 
   server.use(cors({
-
     origin: function originCheck(origin, callback) {
       // allow requests with no origin like mobile apps or curl requests
       if (!origin) {
@@ -30,8 +29,6 @@ module.exports = (app) => {
       console.log('origin passed :>> ', origin);
       return callback(null, true);
     },
-
-    credentials: true,
   }));
 
   server.use(require('./routes')(app));

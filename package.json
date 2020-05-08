@@ -32,7 +32,7 @@
     "deploy": "npm run build && gh-pages -d build",
     "server": "nodemon server/index.js",
     "dev": "concurrently \"npm run server\" \"npm start\"",
-    "test:deploy": "npm run build && aws s3 sync build/ s3://saiastrange.com"
+    "client:deploy": "npm run build && aws s3 sync build/ s3://saiastrange.com"
   },
   "eslintConfig": {
     "extends": "react-app"

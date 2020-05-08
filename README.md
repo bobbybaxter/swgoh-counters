@@ -24,4 +24,17 @@ A companion app for the mobile game Star Wars: Galaxy of Heroes, which provides 
 ***Note**: if you want to make a production build of this project, type `npm run build`.  This will create a folder called build with all the minified code you need.*
 
 ## How to deploy
+Github Pages:
 - In your terminal, type `npm run deploy`
+  - this will build what is currently on your branch and post it to your `origin gh-pages` ref, then delete the build folder
+
+Client:
+- In your terminal, type `npm run client:deploy`
+  - this assumes you have installed the Amazon Web Services CLI and have created an S3 bucket
+  - you will need to change the name of the bucket in `package.json`
+  - this doesn't require a commit - it will build what is currently on your branch and sync it with your S3 bucket
+
+Server:
+- In your terminal, type `eb deploy`
+  - this assumes you have installed the Elastic Beanstalk CLI and initialized it and created an Elastic Beanstalk instance for the server to run on.
+  - this will deploy the latest commit
