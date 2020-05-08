@@ -6,6 +6,7 @@ const server = express();
 const allowedOrigins = [
   'http://localhost:3000',
   'https://saiastrange.com',
+  'http://saiastrange.com',
 ];
 
 module.exports = (app) => {
