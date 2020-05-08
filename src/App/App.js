@@ -11,6 +11,10 @@ import Counters5v5 from '../components/Counters5v5/Counters5v5';
 import './App.scss';
 
 class App extends React.Component {
+  state = {
+    data: null,
+  }
+
   componentDidMount() {
     ReactGA.pageview(window.location.pathname);
   }

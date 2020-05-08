@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "saiastrange api",
+  "main": "index.js",
+  "proxy": "http://127.0.0.1:5000",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bobbybaxter/swgoh-counters.git"
+  },
+  "author": "Bob Baxter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bobbybaxter/swgoh-counters/issues"
+  },
+  "homepage": "https://github.com/bobbybaxter/swgoh-counters#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "require-directory": "^2.1.1"
+  }
+}

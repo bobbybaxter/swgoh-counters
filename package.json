@@ -1,30 +1,38 @@
 {
   "name": "swgoh-counters",
-  "homepage": "https://bobbybaxter.github.io/swgoh-counters",
+  "homepage": "https://saiastrange.com",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
+  "proxy": "http://127.0.0.1:5000",
   "dependencies": {
-    "axios": "^0.19.0",
     "bootstrap": "^4.4.1",
+    "concurrently": "^5.2.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^13.2.0",
-    "firebase": "^6.6.2",
-    "gh-pages": "^2.1.1",
+    "firebase": "^7.14.2",
     "history": "^4.10.1",
-    "node-sass": "^4.13.0",
+    "jquery": "^1.9.1",
+    "node-sass": "^4.14.0",
+    "nodemon": "^2.0.3",
     "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-ga": "^2.7.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0",
-    "reactstrap": "^8.2.0"
+    "react-scripts": "^3.4.1",
+    "reactstrap": "^8.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --ignore server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && gh-pages -d build"
+    "deploy": "npm run build && gh-pages -d build",
+    "server": "nodemon server/index.js",
+    "dev": "concurrently \"npm run server\" \"npm start\"",
+    "client:deploy": "npm run build && aws s3 sync build/ s3://saiastrange.com"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -40,5 +48,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
