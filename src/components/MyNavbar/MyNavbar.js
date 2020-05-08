@@ -46,6 +46,9 @@ class MyNavbar extends React.Component {
               <NavItem>
                 <NavLink href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</NavLink>
               </NavItem>
+              <NavItem>
+              <NavLink tag={RRNavLink} to="/profile">Profile</NavLink>
+              </NavItem>
               {/* <NavItem>
                 <NavLink href="https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true">Submit an Issue</NavLink>
               </NavItem> */}

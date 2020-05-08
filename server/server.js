@@ -26,7 +26,6 @@ module.exports = (app) => {
         const msg = `The CORS policy for this site does not allow access from the specified Origin of ${origin}.`;
         return callback(new Error(msg), false);
       }
-      console.log('origin passed :>> ', origin);
       return callback(null, true);
     },
   }));
