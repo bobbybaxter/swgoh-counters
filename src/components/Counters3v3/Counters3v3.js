@@ -5,8 +5,8 @@ import React, { useState, useEffect } from 'react';
 
 import CounterRow from '../CounterRow/CounterRow';
 
-import squadsData from '../../helpers/data/squadsData';
-import countersData from '../../helpers/data/countersData';
+import getSquadData from '../../helpers/data/squadsData';
+import getCounterData from '../../helpers/data/countersData';
 import characterData from '../../helpers/data/characters.json';
 import buildMatchup from '../../helpers/buildMatchup';
 import buildSquad from '../../helpers/buildSquad';
@@ -28,13 +28,13 @@ const Counters3v3 = () => {
   }, []);
 
   const getCounters = () => {
-    countersData.getCounters()
+    getCounterData()
       .then(res => setCounters(res))
       .catch(err => console.error(err));
   };
 
   const getSquads = () => {
-    squadsData.getSquads()
+    getSquadData()
       .then(res => setSquads(res))
       .catch(err => console.error(err));
   };
