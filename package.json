@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": true,
   "proxy": "http://127.0.0.1:5000",
+  "scarfSettings.enabled": false,
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
@@ -23,6 +24,7 @@
     "react-ga": "^2.7.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
+    "react-table": "^7.0.4",
     "reactstrap": "^8.4.1"
   },
   "scripts": {

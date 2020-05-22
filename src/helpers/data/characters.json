@@ -273,11 +273,11 @@
 			"gear": ["9999", "9999", "9999", "9999", "9999", "9999"]
 		}],
 		"alignment": "Light Side",
-		"categories": ["Resistance", "Tank"],
+		"categories": ["Fleet Commander", "Resistance", "Tank"],
 		"ability_classes": ["AoE", "Daze", "Defense Down", "Dispel", "Evasion Down", "Foresight", "Taunt"],
 		"role": "Tank",
-		"ship": "",
-		"ship_slot": null,
+		"ship": "CAPITALRADDUS",
+		"ship_slot": 0,
 		"activate_shard_count": 25
 	}, {
 		"name": "ARC Trooper",
@@ -1399,6 +1399,62 @@
 		"ship": "COMMANDSHUTTLE",
 		"ship_slot": 1,
 		"activate_shard_count": 50
+	}, {
+		"name": "Cara Dune",
+		"base_id": "CARADUNE",
+		"pk": 444,
+		"url": "http://swgoh.gg/characters/cara-dune/",
+		"image": "/game-asset/u/CARADUNE/",
+		"power": 29347,
+		"description": "A Scoundrel/Rebel Tank who gains benefits when being led by either.",
+		"combat_type": 1,
+		"gear_levels": [{
+			"tier": 1,
+			"gear": ["001", "002", "003", "004", "004", "005"]
+		}, {
+			"tier": 2,
+			"gear": ["025", "021", "015", "028", "028", "034"]
+		}, {
+			"tier": 3,
+			"gear": ["062", "076", "050", "041", "069", "049"]
+		}, {
+			"tier": 4,
+			"gear": ["055", "058", "024", "055", "060", "074"]
+		}, {
+			"tier": 5,
+			"gear": ["093", "043", "086", "051", "084", "079"]
+		}, {
+			"tier": 6,
+			"gear": ["075", "055", "092", "092", "093", "097"]
+		}, {
+			"tier": 7,
+			"gear": ["102", "079", "106", "024", "100", "099"]
+		}, {
+			"tier": 8,
+			"gear": ["108", "101", "099", "112", "118", "117"]
+		}, {
+			"tier": 9,
+			"gear": ["117", "102", "096", "101", "106", "111"]
+		}, {
+			"tier": 10,
+			"gear": ["144", "116", "129", "125", "116", "144"]
+		}, {
+			"tier": 11,
+			"gear": ["109", "129", "146", "134", "144", "142"]
+		}, {
+			"tier": 12,
+			"gear": ["158", "159", "160", "168", "168", "G12Finisher_CARADUNE_C"]
+		}, {
+			"tier": 13,
+			"gear": ["9999", "9999", "9999", "9999", "9999", "9999"]
+		}],
+		"alignment": "Light Side",
+		"categories": ["Rebel", "Scoundrel", "Tank"],
+		"ability_classes": ["AoE", "Gain Turn Meter", "Remove Turn Meter", "Revive", "Stealth", "Stun", "Taunt"],
+		"role": "Tank",
+		"ship": "",
+		"ship_slot": null,
+		"activate_shard_count": 25
 	}, {
 		"name": "Carth Onasi",
 		"base_id": "CARTHONASI",
@@ -4081,11 +4137,11 @@
 			"gear": ["9999", "9999", "9999", "9999", "9999", "9999"]
 		}],
 		"alignment": "Dark Side",
-		"categories": ["First Order", "Leader", "Support"],
+		"categories": ["First Order", "Fleet Commander", "Leader", "Support"],
 		"ability_classes": ["Advantage", "AoE", "Assist", "Counter", "Dispel", "Gain Turn Meter", "Reset Cooldown"],
 		"role": "Support",
-		"ship": "",
-		"ship_slot": null,
+		"ship": "CAPITALFINALIZER",
+		"ship_slot": 0,
 		"activate_shard_count": 25
 	}, {
 		"name": "General Kenobi",
@@ -4644,6 +4700,62 @@
 		"categories": ["Attacker", "Bounty Hunters", "Leader", "Scoundrel"],
 		"ability_classes": ["AoE", "Bonus Attack", "Counter", "Dispel", "Gain Turn Meter", "Remove Turn Meter", "Stun", "Thermal Detonator"],
 		"role": "Leader",
+		"ship": "",
+		"ship_slot": null,
+		"activate_shard_count": 25
+	}, {
+		"name": "Greef Karga",
+		"base_id": "GREEFKARGA",
+		"pk": 446,
+		"url": "http://swgoh.gg/characters/greef-karga/",
+		"image": "/game-asset/u/GREEFKARGA/",
+		"power": 33112,
+		"description": "Bounty Hunter Support that provides recovery and assist calls",
+		"combat_type": 1,
+		"gear_levels": [{
+			"tier": 1,
+			"gear": ["001", "002", "003", "004", "004", "005"]
+		}, {
+			"tier": 2,
+			"gear": ["025", "021", "015", "028", "028", "034"]
+		}, {
+			"tier": 3,
+			"gear": ["062", "076", "050", "041", "069", "049"]
+		}, {
+			"tier": 4,
+			"gear": ["055", "058", "024", "055", "060", "074"]
+		}, {
+			"tier": 5,
+			"gear": ["093", "043", "086", "051", "084", "079"]
+		}, {
+			"tier": 6,
+			"gear": ["075", "055", "092", "092", "093", "097"]
+		}, {
+			"tier": 7,
+			"gear": ["102", "079", "106", "024", "100", "099"]
+		}, {
+			"tier": 8,
+			"gear": ["108", "101", "099", "112", "118", "117"]
+		}, {
+			"tier": 9,
+			"gear": ["117", "102", "096", "101", "106", "111"]
+		}, {
+			"tier": 10,
+			"gear": ["144", "116", "129", "125", "116", "144"]
+		}, {
+			"tier": 11,
+			"gear": ["109", "129", "146", "134", "144", "142"]
+		}, {
+			"tier": 12,
+			"gear": ["158", "159", "160", "166", "168", "G12Finisher_GREEFKARGA_A"]
+		}, {
+			"tier": 13,
+			"gear": ["9999", "9999", "9999", "9999", "9999", "9999"]
+		}],
+		"alignment": "Light Side",
+		"categories": ["Bounty Hunters", "Leader", "Scoundrel", "Support"],
+		"ability_classes": ["Assist", "Counter", "Daze", "Dispel", "Gain Turn Meter", "Leader: +Critical", "Offense Up", "Stealth", "Tenacity Up"],
+		"role": "Support",
 		"ship": "",
 		"ship_slot": null,
 		"activate_shard_count": 25
@@ -5370,7 +5482,7 @@
 		}],
 		"alignment": "Dark Side",
 		"categories": ["Attacker", "Bounty Hunters", "Leader", "Scoundrel", "Separatist"],
-		"ability_classes": ["AoE", "Dispel", "Gain Turn Meter", "Healing Immunity", "Leader: +Critical", "Leader: +Speed", "Leader: +Tenacity", "Revive", "Taunt"],
+		"ability_classes": ["AoE", "Counter", "Dispel", "Gain Turn Meter", "Healing Immunity", "Leader: +Critical", "Leader: +Speed", "Leader: +Tenacity", "Revive", "Taunt"],
 		"role": "Leader",
 		"ship": "",
 		"ship_slot": null,
@@ -8176,6 +8288,62 @@
 		"ship_slot": null,
 		"activate_shard_count": 25
 	}, {
+		"name": "Rey",
+		"base_id": "GLREY",
+		"pk": 434,
+		"url": "http://swgoh.gg/characters/rey/",
+		"image": "/game-asset/u/GLREY/",
+		"power": 41896,
+		"description": "Resistance Leader who safeguards her allies by providing powerful shields and delivering high damage",
+		"combat_type": 1,
+		"gear_levels": [{
+			"tier": 1,
+			"gear": ["002", "003", "004", "006", "001", "011"]
+		}, {
+			"tier": 2,
+			"gear": ["011", "022", "018", "013", "022", "028"]
+		}, {
+			"tier": 3,
+			"gear": ["032", "041", "060", "037", "034", "049"]
+		}, {
+			"tier": 4,
+			"gear": ["049", "024", "060", "053", "040", "078"]
+		}, {
+			"tier": 5,
+			"gear": ["071", "081", "073", "048", "069", "079"]
+		}, {
+			"tier": 6,
+			"gear": ["088", "074", "077", "088", "093", "097"]
+		}, {
+			"tier": 7,
+			"gear": ["046", "110", "092", "086", "078", "113"]
+		}, {
+			"tier": 8,
+			"gear": ["117", "108", "112", "117", "113", "107"]
+		}, {
+			"tier": 9,
+			"gear": ["173", "117", "103", "173", "117", "111"]
+		}, {
+			"tier": 10,
+			"gear": ["173", "144", "139", "173", "105", "144"]
+		}, {
+			"tier": 11,
+			"gear": ["173", "128", "145", "173", "141", "142"]
+		}, {
+			"tier": 12,
+			"gear": ["165", "164", "165", "171", "171", "G12Finisher_GLREY_B"]
+		}, {
+			"tier": 13,
+			"gear": ["9999", "9999", "9999", "9999", "9999", "9999"]
+		}],
+		"alignment": "Light Side",
+		"categories": ["Attacker", "Galactic Legend", "Leader", "Resistance"],
+		"ability_classes": ["AoE", "Counter", "Dispel", "Gain Turn Meter", "Leader: +Max Health", "Leader: +Speed", "Revive", "Stun"],
+		"role": "Leader",
+		"ship": "",
+		"ship_slot": null,
+		"activate_shard_count": 330
+	}, {
 		"name": "Rey (Jedi Training)",
 		"base_id": "REYJEDITRAINING",
 		"pk": 250,
@@ -9128,6 +9296,62 @@
 		"ship_slot": 0,
 		"activate_shard_count": 50
 	}, {
+		"name": "Supreme Leader Kylo Ren",
+		"base_id": "SUPREMELEADERKYLOREN",
+		"pk": 441,
+		"url": "http://swgoh.gg/characters/supreme-leader-kylo-ren/",
+		"image": "/game-asset/u/SUPREMELEADERKYLOREN/",
+		"power": 41896,
+		"description": "Destructive Leader of the First Order who overpowers his enemies with brutal attacks",
+		"combat_type": 1,
+		"gear_levels": [{
+			"tier": 1,
+			"gear": ["004", "001", "001", "005", "005", "003"]
+		}, {
+			"tier": 2,
+			"gear": ["019", "017", "015", "028", "025", "034"]
+		}, {
+			"tier": 3,
+			"gear": ["004", "028", "049", "053", "060", "049"]
+		}, {
+			"tier": 4,
+			"gear": ["061", "051", "056", "068", "073", "074"]
+		}, {
+			"tier": 5,
+			"gear": ["076", "060", "074", "089", "079", "086"]
+		}, {
+			"tier": 6,
+			"gear": ["079", "089", "079", "086", "091", "092"]
+		}, {
+			"tier": 7,
+			"gear": ["068", "092", "097", "110", "109", "113"]
+		}, {
+			"tier": 8,
+			"gear": ["112", "117", "109", "106", "117", "118"]
+		}, {
+			"tier": 9,
+			"gear": ["117", "172", "117", "126", "172", "116"]
+		}, {
+			"tier": 10,
+			"gear": ["172", "144", "172", "145", "138", "139"]
+		}, {
+			"tier": 11,
+			"gear": ["117", "172", "172", "140", "141", "142"]
+		}, {
+			"tier": 12,
+			"gear": ["158", "160", "165", "171", "171", "G12Finisher_SUPREMELEADERKYLOREN_A"]
+		}, {
+			"tier": 13,
+			"gear": ["9999", "9999", "9999", "9999", "9999", "9999"]
+		}],
+		"alignment": "Dark Side",
+		"categories": ["Attacker", "First Order", "Galactic Legend", "Leader"],
+		"ability_classes": ["Advantage", "AoE", "Buff Immunity", "Counter", "Dispel", "Gain Turn Meter", "Leader: +Max Health", "Revive", "Stun", "Taunt"],
+		"role": "Leader",
+		"ship": "",
+		"ship_slot": null,
+		"activate_shard_count": 330
+	}, {
 		"name": "T3-M4",
 		"base_id": "T3_M4",
 		"pk": 286,
@@ -9292,6 +9516,62 @@
 		"categories": ["Ewok", "Leader", "Tank"],
 		"ability_classes": ["Dispel", "Gain Turn Meter", "Remove Turn Meter", "Stealth"],
 		"role": "Tank",
+		"ship": "",
+		"ship_slot": null,
+		"activate_shard_count": 25
+	}, {
+		"name": "The Mandalorian",
+		"base_id": "THEMANDALORIAN",
+		"pk": 447,
+		"url": "http://swgoh.gg/characters/the-mandalorian/",
+		"image": "/game-asset/u/THEMANDALORIAN/",
+		"power": 32328,
+		"description": "Powerful Mandalorian bounty hunter who relies on critical hits to overwhelm his enemies",
+		"combat_type": 1,
+		"gear_levels": [{
+			"tier": 1,
+			"gear": ["006", "006", "010", "001", "003", "001"]
+		}, {
+			"tier": 2,
+			"gear": ["034", "026", "029", "017", "011", "012"]
+		}, {
+			"tier": 3,
+			"gear": ["049", "056", "034", "053", "069", "057"]
+		}, {
+			"tier": 4,
+			"gear": ["069", "049", "081", "074", "024", "036"]
+		}, {
+			"tier": 5,
+			"gear": ["069", "084", "079", "081", "024", "040"]
+		}, {
+			"tier": 6,
+			"gear": ["097", "089", "049", "092", "101", "048"]
+		}, {
+			"tier": 7,
+			"gear": ["108", "106", "087", "101", "091", "102"]
+		}, {
+			"tier": 8,
+			"gear": ["109", "108", "113", "172", "117", "118"]
+		}, {
+			"tier": 9,
+			"gear": ["092", "113", "113", "117", "119", "125"]
+		}, {
+			"tier": 10,
+			"gear": ["103", "116", "129", "138", "173", "139"]
+		}, {
+			"tier": 11,
+			"gear": ["135", "149", "138", "142", "141", "145"]
+		}, {
+			"tier": 12,
+			"gear": ["158", "160", "165", "170", "171", "G12Finisher_THEMANDALORIAN_B"]
+		}, {
+			"tier": 13,
+			"gear": ["9999", "9999", "9999", "9999", "9999", "9999"]
+		}],
+		"alignment": "Light Side",
+		"categories": ["Attacker", "Bounty Hunters", "Leader", "Scoundrel"],
+		"ability_classes": ["Assist", "Counter", "Gain Turn Meter", "Leader: +Critical", "Leader: +Speed", "Leader: +Tenacity", "Revive"],
+		"role": "Leader",
 		"ship": "",
 		"ship_slot": null,
 		"activate_shard_count": 25
@@ -9681,7 +9961,7 @@
 			"gear": ["9999", "9999", "9999", "9999", "9999", "9999"]
 		}],
 		"alignment": "Light Side",
-		"categories": ["Attacker", "Scoundrel", "Smuggler"],
+		"categories": ["Attacker", "Resistance", "Scoundrel", "Smuggler"],
 		"ability_classes": ["AoE", "Daze", "Dispel", "Gain Turn Meter", "Reset Cooldown", "Speed Down", "Stun"],
 		"role": "Attacker",
 		"ship": "",
@@ -9737,7 +10017,7 @@
 			"gear": ["9999", "9999", "9999", "9999", "9999", "9999"]
 		}],
 		"alignment": "Light Side",
-		"categories": ["Attacker", "Scoundrel", "Smuggler"],
+		"categories": ["Attacker", "Resistance", "Scoundrel", "Smuggler"],
 		"ability_classes": ["Ability Block", "AoE", "Bonus Attack", "Counter", "Gain Turn Meter", "Reset Cooldown", "Stun"],
 		"role": "Attacker",
 		"ship": "",

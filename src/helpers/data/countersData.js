@@ -1,4 +1,4 @@
-export default async function getCounters() {
+export default async function getCounterData() {
   const response = await fetch(process.env.REACT_APP_COUNTER_API_URL);
   const body = await response.json();
 

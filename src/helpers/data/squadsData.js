@@ -1,4 +1,4 @@
-export default async function getSquads() {
+export default async function getSquadData() {
   const response = await fetch(process.env.REACT_APP_SQUAD_API_URL);
   const body = await response.json();
 
