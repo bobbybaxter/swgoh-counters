@@ -17,6 +17,7 @@ export default function Profile() {
   const [allyCode, setAllyCode] = useState();
   const [allCharacters, setAllCharacters] = useState();
   const [userData, setUserData] = useState();
+  const [userUnits, setUserUnits] = useState();
 
   const importCharacterData = () => {
     if (localStorage.getItem('characterData')) {
@@ -24,6 +25,12 @@ export default function Profile() {
     } else {
       setAllCharacters(characterData.data);
       localStorage.setItem('characterData', JSON.stringify(characterData.data));
+    }
+  };
+
+  const importUserUnits = () => {
+    if (localStorage.getItem('userUnits')) {
+      setUserUnits(JSON.parse(localStorage.getItem('userUnits')));
     }
   };
 
@@ -35,11 +42,13 @@ export default function Profile() {
 
   useEffect(() => {
     importCharacterData();
+    importUserUnits();
     importUserData();
   }, []);
 
   const clearAllyCode = () => {
     localStorage.clear();
+    setUserUnits('');
     setUserData('');
   };
 
@@ -49,22 +58,26 @@ export default function Profile() {
 
   const submitAllyCode = () => {
     getPlayerData(allyCode)
-      .then(res => res.units.map((char) => {
-        const flatChar = flatten(char);
-        flatChar.relic_tier -= 1;
-        return flatChar;
-      }).filter(char => char.combat_type !== 2))
+      .then((res) => {
+        setUserData(res.data);
+        localStorage.setItem('userData', JSON.stringify(res.data));
+        return res.units.map((char) => {
+          const flatChar = flatten(char);
+          flatChar.relic_tier -= 1;
+          return flatChar;
+        }).filter(char => char.combat_type !== 2);
+      })
       .then(res => mergeCharacterAndPlayerData(allCharacters, res))
       .then((res) => {
         res.sort((char1, char2) => (char1.name < char2.name ? -1 : 1));
-        setUserData(res);
-        localStorage.setItem('userData', JSON.stringify(res));
+        setUserUnits(res);
+        localStorage.setItem('userUnits', JSON.stringify(res));
       });
   };
 
   // temp
   // const handleMerge = () => {
-  //   mergeCharacterAndPlayerData(allCharacters, userData);
+  //   mergeCharacterAndPlayerData(allCharacters, userUnits);
   // };
 
   const allyCodeForm = <Form inline>
@@ -82,16 +95,16 @@ export default function Profile() {
 
   return (
     <div className="Profile container">
-      <h1>Profile</h1>
-      {userData ? '' : allyCodeForm}
+      <h1>{userData ? userData.name : ''}</h1>
+      {userUnits ? '' : allyCodeForm}
       <div className="profileButtons">
-        <Button className="btn-sm" onClick={clearAllyCode}>Clear Ally Code</Button>
+        {userUnits ? <Button className="btn-sm" onClick={clearAllyCode}>Clear Ally Code</Button> : '' }
       </div>
       {/* <Button onClick={handleMerge}>Merge</Button> */}
 
-      {userData
+      {userUnits
         ? <CharacterTable
-          userData={userData}
+          userUnits={userUnits}
           />
         : ''
       }

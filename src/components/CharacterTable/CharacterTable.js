@@ -19,20 +19,17 @@ export default function CharacterTable(props) {
   let searchInput = '';
 
   useEffect(() => {
-    if (props.userData) {
-      const unflattenedCharacters = props.userData;
+    if (props.userUnits) {
+      const unflattenedCharacters = props.userUnits;
       setCharacters(unflattenedCharacters);
       setFilteredCharacters(unflattenedCharacters);
     }
-  }, [props.userData]);
+  }, [props.userUnits]);
 
   const columns = React.useMemo(
     () => [
       // accessor is the "key" in the data
-      {
-        Header: 'Name',
-        accessor: 'name',
-      },
+      { Header: 'Name', accessor: 'name' },
       { Header: 'Power', accessor: 'power' },
       { Header: 'Rarity', accessor: 'rarity' },
       { Header: 'Level', accessor: 'level' },
@@ -150,7 +147,7 @@ export default function CharacterTable(props) {
   return (
     <div className="CharacterTable">
       {searchBar}
-      {mainTable}
+      {props.userUnits ? mainTable : ''}
     </div>
   );
 }

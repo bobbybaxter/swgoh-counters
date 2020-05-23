@@ -12,6 +12,7 @@ export default function CounterRow(props) {
     counterTeams,
     squadWithCharData: opponentTeam,
     toggleCollapse,
+    view,
   } = props;
 
   const toggle = (e) => { toggleCollapse(e.target.id); };
@@ -27,7 +28,7 @@ export default function CounterRow(props) {
           <div className="countersRow col-3 justify-content-center border-dark border-bottom">
             <div className="opponentCard">
               <img
-                className="toonImg opponentImg"
+                className="toonImg grayImg"
                 src={opponentTeam.leaderImage}
                 title={opponentTeam.name}
                 alt={opponentTeam.name}
@@ -52,6 +53,7 @@ export default function CounterRow(props) {
             collapse={collapse}
             counterTeams={counterTeams}
             squadWithCharData={opponentTeam}
+            view={view}
           />
         </div>
       </div>;

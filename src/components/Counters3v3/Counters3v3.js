@@ -2,13 +2,16 @@
 /* eslint-disable global-require */
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
+import {
+  Button,
+} from 'reactstrap';
 
 import CounterRow from '../CounterRow/CounterRow';
 
 import getSquadData from '../../helpers/data/squadsData';
 import getCounterData from '../../helpers/data/countersData';
 import characterData from '../../helpers/data/characters.json';
-import buildMatchup from '../../helpers/buildMatchup';
+import buildOpponentTeam from '../../helpers/buildOpponentTeam';
 import buildSquad from '../../helpers/buildSquad';
 
 import './Counters3v3.scss';
@@ -18,6 +21,7 @@ const Counters3v3 = () => {
   const [counters, setCounters] = useState([]);
   const [squads, setSquads] = useState([]);
   const [collapse, setCollapse] = useState([]);
+  const [view, setView] = useState('normal');
 
   useEffect(() => {
     if (characterData) {
@@ -42,37 +46,64 @@ const Counters3v3 = () => {
   const toggleCollapse = input => (setCollapse(collapse === input ? null : input));
 
   const buildCounterRows = squads.map((squad) => {
-    const counterMatchups = counters
-      .filter(x => x.battleType === '3v3')
-      .filter(x => x.opponentTeam === squad.id);
-    if (counterMatchups.length > 0) {
-      const squadWithCharData = buildSquad(squad, 3, characters);
-      const counterTeams = counterMatchups.map(matchup => buildMatchup(matchup, 3, squads, characters));
+    const counterMatchups = () => {
+      if (view === 'normal') {
+        return counters
+          .filter(x => x.battleType === '3v3')
+          .filter(x => x.opponentTeam === squad.id);
+      } if (view === 'reverse') {
+        return counters
+          .filter(x => x.battleType === '3v3')
+          .filter(x => x.counterTeam === squad.id);
+      }
+      return '';
+    };
+    if (counterMatchups().length) {
+      // adds ids and images
+      const leftSideSquad = buildSquad(squad, 3, characters);
+      // adds finds characters from counterMatchups and builds objects for them to be displayed
+      const rightSideSquads = counterMatchups().map(matchup => buildOpponentTeam(matchup, 3, squads, characters, view));
       return <CounterRow
               collapse={collapse}
-              counterTeams={counterTeams}
+              counterTeams={rightSideSquads}
               key={squad.id}
-              squadWithCharData={squadWithCharData}
+              squadWithCharData={leftSideSquad}
               toggleCollapse={toggleCollapse}
+              view={view}
             />;
     }
     return '';
   });
 
+  const handleReverseCounter = () => {
+    setView(view === 'normal' ? 'reverse' : 'normal');
+  };
+
   return (
       <div className="Counters3v3">
-          <div className="py-3">
-            <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
-          </div>
+        <div className="py-3">
+          <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
+        </div>
+        <div className="profileButtons container">
+          <Button className="btn-sm" onClick={handleReverseCounter}>
+            {view === 'normal' ? 'Normal View' : 'Reverse View'}
+          </Button>
+        </div>
         <div className="columnTitles">
-          <h1 className="col-3 mb-0">Team</h1>
+          <h1 className="col-3 mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
           <div className="col-9">
-            <h1 className="mb-0">3v3 Counters</h1>
-            <small className="m-0 p-0 text-secondary">Click on a counter team to see more info.</small>
+            <h1 className="mb-0">{view === 'normal' ? '3v3 Counters' : '3v3 Opponents'}</h1>
+            <small className="m-0 p-0 text-secondary">
+              {
+                view === 'normal'
+                  ? 'Click on a counter team to see more info.'
+                  : 'Click on an opponent team to see more info.'
+              }
+            </small>
           </div>
         </div>
         <div className="columnTeams">
-          {buildCounterRows}
+          {buildCounterRows || ''}
         </div>
         <footer className="mt-3">
           <div className="d-flex flex-row justify-content-center align-items-center">
