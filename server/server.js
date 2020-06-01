@@ -13,6 +13,7 @@ const allowedOrigins = [
 ];
 
 module.exports = (app) => {
+  const { log } = app;
   const PORT = process.env.PORT || 5000;
 
   server.use(cors({
@@ -32,6 +33,7 @@ module.exports = (app) => {
 
   server.use(require('./routes')(app));
 
+  log.info(`Listening on port ${PORT}`);
   server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
   return server;

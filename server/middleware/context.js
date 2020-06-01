@@ -20,5 +20,7 @@ module.exports = function context(req, res, next) {
     now: new Date(),
   };
 
+  console.log('req.context :>> ', req.context);
+
   return next();
 };

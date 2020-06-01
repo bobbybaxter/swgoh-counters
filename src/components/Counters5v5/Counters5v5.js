@@ -84,7 +84,7 @@ const Counters5v5 = () => {
         <div className="py-3">
           <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
         </div>
-        <div className="profileButtons container">
+        <div className="profileButtons">
           <Button className="btn-sm" onClick={handleReverseCounter}>
             {view === 'normal' ? 'Normal View' : 'Reverse View'}
           </Button>

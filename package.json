@@ -13,7 +13,7 @@
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^13.2.0",
-    "firebase": "^7.14.3",
+    "firebase": "^7.14.6",
     "history": "^4.10.1",
     "jquery": "^3.5.1",
     "node-sass": "^4.14.1",
@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "npm run build && gh-pages -d build",
-    "server": "nodemon server/index.js",
+    "server": "LOG_LEVEL=debug nodemon server/index.js | pino-pretty",
     "dev": "concurrently \"npm run server\" \"npm start\"",
     "client:deploy": "npm run build && aws s3 sync build/ s3://saiastrange.com"
   },
@@ -52,5 +52,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "pino-pretty": "^4.0.0"
+  }
 }

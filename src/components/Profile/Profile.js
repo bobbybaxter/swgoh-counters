@@ -94,20 +94,22 @@ export default function Profile() {
   </Form>;
 
   return (
-    <div className="Profile container">
-      <h1>{userData ? userData.name : ''}</h1>
-      {userUnits ? '' : allyCodeForm}
-      <div className="profileButtons">
-        {userUnits ? <Button className="btn-sm" onClick={clearAllyCode}>Clear Ally Code</Button> : '' }
-      </div>
-      {/* <Button onClick={handleMerge}>Merge</Button> */}
+    <div className="Profile">
+      <div className="profileWrapper">
+        <h1>{userData ? userData.name : ''}</h1>
+        {userUnits ? '' : allyCodeForm}
+        <div className="profileButtons">
+          {userUnits ? <Button className="btn-sm" onClick={clearAllyCode}>Clear Ally Code</Button> : '' }
+        </div>
+        {/* <Button onClick={handleMerge}>Merge</Button> */}
 
-      {userUnits
-        ? <CharacterTable
-          userUnits={userUnits}
-          />
-        : ''
-      }
+        {userUnits
+          ? <CharacterTable
+            userUnits={userUnits}
+            />
+          : ''
+        }
+      </div>
     </div>
   );
 }

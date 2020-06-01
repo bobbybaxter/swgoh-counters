@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Collapse,
@@ -9,27 +9,49 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import './MyNavbar.scss';
 
-class MyNavbar extends React.Component {
-  state = {
-    isOpen: false,
-  }
+export default function MyNavbar(props) {
+  const [isOpen, setIsOpen] = useState(false);
 
-  toggle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen,
+  const toggle = () => setIsOpen(!isOpen);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
+    return firebase.auth().signInWithPopup(provider).then((cred) => {
+      // get token from Firebase and save it to session storage
+      cred.user.getIdToken()
+        .then(token => sessionStorage.setItem('token', token));
     });
-  }
+  };
 
-  render() {
-    return (
+  const handleLogout = (e) => {
+    e.preventDefault();
+    firebase.auth().signOut();
+  };
+
+  const selectLoginOrLogout = props.authenticated
+    ? (
+      <NavItem>
+        <NavLink href="#" onClick={handleLogout}>Logout</NavLink>
+      </NavItem>
+    )
+    : (
+      <NavItem>
+        <NavLink href="#" onClick={handleLogin}>Login</NavLink>
+      </NavItem>
+    );
+
+  return (
       <div className="MyNavbar">
         <Navbar color="dark" dark expand="md">
           <NavbarBrand>SWGOH Counters</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarToggler onClick={toggle} />
+          <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto text-center" navbar>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/5v5">5v5</NavLink>
@@ -38,26 +60,24 @@ class MyNavbar extends React.Component {
                 <NavLink tag={RRNavLink} to="/3v3/">3v3</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://discord.gg/eCnE48h">Discord</NavLink>
+                <NavLink tag={RRNavLink} to="/profile">Profile</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/submit">Submit Issue</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="https://patreon.com/saiastrange">Patreon</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</NavLink>
+                <NavLink href="https://discord.gg/eCnE48h">Discord</NavLink>
               </NavItem>
               <NavItem>
-              <NavLink tag={RRNavLink} to="/profile">Profile</NavLink>
+                <NavLink href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</NavLink>
               </NavItem>
-              {/* <NavItem>
-                <NavLink href="https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true">Submit an Issue</NavLink>
-              </NavItem> */}
+              {selectLoginOrLogout}
             </Nav>
           </Collapse>
         </Navbar>
       </div>
-    );
-  }
+  );
 }
-
-export default MyNavbar;
