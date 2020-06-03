@@ -1,21 +1,21 @@
 import axios from 'axios';
 
-const createUser = () => new Promise((resolve, reject) => {
+const createUser = userId => new Promise((resolve, reject) => {
   // console.log('createUser path');
+  const url = `${process.env.REACT_APP_API_URL}/api/user/`;
+  const data = { id: userId };
+  const headers = { Authorization: `Bearer ${sessionStorage.getItem('token')}` };
 
-  axios.post(`${process.env.REACT_APP_API_URL}/api/user/`, {
-    headers: {
-      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-    },
-  })
+  // TODO: get the data to actually write to the database!
+  axios.post(url, data, headers)
     .then(res => resolve(res.data))
     .catch(err => reject(err));
 });
 
-const getUserByFirebaseUid = firebaseUid => new Promise((resolve, reject) => {
+const getUserByFirebaseAuthUid = firebaseAuthUid => new Promise((resolve, reject) => {
   // console.log('getUserByFirebaseUid path');
 
-  axios.get(`${process.env.REACT_APP_API_URL}/api/firebase/${firebaseUid}`, {
+  axios.get(`${process.env.REACT_APP_API_URL}/api/firebase/${firebaseAuthUid}`, {
     headers: {
       Authorization: `Bearer ${sessionStorage.getItem('token')}`,
     },
@@ -37,4 +37,4 @@ const updateUserInfo = user => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-export default { createUser, getUserByFirebaseUid, updateUserInfo };
+export default { createUser, getUserByFirebaseAuthUid, updateUserInfo };

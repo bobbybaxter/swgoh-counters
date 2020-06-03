@@ -1,7 +1,10 @@
 // const admin = require('../../../setup/firebase');
 
-module.exports = async function createUser(req, res) {
+module.exports = async function createUser() {
   return 'createUser Response';
+  //   firebase.database().ref(`users/${user.id}`).set({
+  //   userName
+  // })
   // const {
   //   email,
   //   password,

@@ -47,16 +47,8 @@ class App extends React.Component {
 
   authenticateUser = (authUser) => {
     if (authUser) {
+      this.validateAccount(authUser.uid);
       this.setState({ authenticated: true });
-      const firebaseUser = firebase.auth().currentUser;
-      this.setState(prevState => ({
-        user: {
-          ...prevState.user,
-          email: firebaseUser.email,
-          firebaseUid: firebaseUser.uid,
-        },
-      }));
-      this.validateAccount(firebaseUser.uid);
     } else {
       this.setState({ authenticated: false });
     }
@@ -70,26 +62,29 @@ class App extends React.Component {
   setUserInfo = (res) => {
     this.setState(prevState => ({
       user: {
-        ...prevState.user, id: res.id, allyCode: res.allyCode,
+        ...prevState.user,
+        email: res.email,
+        firebaseUid: res.firebaseUid,
+        allyCode: res.allyCode,
+        id: res.id,
       },
     }));
   }
 
-  validateAccount = (firebaseUid) => {
-    firebaseData.getUserByFirebaseUid(firebaseUid)
+  validateAccount = (firebaseAuthUid) => {
+    firebaseData.getUserByFirebaseAuthUid(firebaseAuthUid)
       .then((res) => {
         if (res !== '') {
-          return console.log('res has something :>> ', res);
-          // this.setUserInfo(res);
+          this.setUserInfo(res);
+          return console.log(`Firebase user ${res.email} validated`);
         }
-        return console.log('res has nothing :>> ', res);
-        // firebaseData.createUser().then((response) => {
-        //   this.setUserInfo(response);
-
-        // console.error('user created');
+        console.log('No Firebase user found in DB');
+        firebaseData.createUser(firebaseAuthUid)
+          .then(response => this.setUserInfo(response));
+        return console.error('User created in Firebase');
       })
       .catch(err => console.error(err));
-  }
+  };
 
   render() {
     const { authenticated } = this.state;
