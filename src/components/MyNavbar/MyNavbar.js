@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Collapse,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink,
+  UncontrolledDropdown,
 } from 'reactstrap';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -22,11 +26,18 @@ export default function MyNavbar(props) {
   const handleLogin = (e) => {
     e.preventDefault();
     const provider = new firebase.auth.GoogleAuthProvider();
-    return firebase.auth().signInWithPopup(provider).then((cred) => {
-      // get token from Firebase and save it to session storage
-      cred.user.getIdToken()
-        .then(token => sessionStorage.setItem('token', token));
+    provider.setCustomParameters({
+      prompt: 'select_account',
     });
+    firebase.auth().signInWithPopup(provider)
+      .then((cred) => {
+      // get token from Firebase and save it to session storage
+        cred.user.getIdToken(true)
+          .then(token => sessionStorage.setItem('token', token));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleLogout = (e) => {
@@ -59,21 +70,20 @@ export default function MyNavbar(props) {
               <NavItem>
                 <NavLink tag={RRNavLink} to="/3v3/">3v3</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink tag={RRNavLink} to="/profile">Profile</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={RRNavLink} to="/submit">Submit Issue</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://patreon.com/saiastrange">Patreon</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://discord.gg/eCnE48h">Discord</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</NavLink>
-              </NavItem>
+              { !props.authenticated ? '' : (
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/profile">Profile</NavLink>
+                </NavItem>
+              ) }
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>Support</DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem tag={RRNavLink} to="/submit">Submit Issue</DropdownItem>
+                  <DropdownItem href="https://patreon.com/saiastrange">Patreon</DropdownItem>
+                  <DropdownItem href="https://discord.gg/eCnE48h">Discord</DropdownItem>
+                  <DropdownItem href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
               {selectLoginOrLogout}
             </Nav>
           </Collapse>

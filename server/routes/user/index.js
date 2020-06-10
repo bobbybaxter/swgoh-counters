@@ -3,14 +3,11 @@ const { Router } = require('express');
 const router = new Router();
 
 module.exports = (app) => {
-  const { middleware, log } = app;
-
-  log.info(middleware.context);
+  const { middleware } = app;
 
   return router
+    .use(middleware.auth)
     .use(middleware.context)
-    .use('/', require('./create')(app))
-    .use('/:id', require('./update')(app));
+    .post('/', require('./create')(app))
+    .patch('/:id', require('./update')(app));
 };
-
-// .use(middleware.auth)

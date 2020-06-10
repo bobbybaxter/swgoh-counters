@@ -12,9 +12,9 @@ import mergeCharacterAndPlayerData from '../../helpers/mergeCharacterAndPlayerDa
 import CharacterTable from '../CharacterTable/CharacterTable';
 
 import './Profile.scss';
+import firebaseData from '../../helpers/data/firebaseData';
 
-export default function Profile() {
-  const [allyCode, setAllyCode] = useState();
+export default function Profile(props) {
   const [allCharacters, setAllCharacters] = useState();
   const [userData, setUserData] = useState();
   const [userUnits, setUserUnits] = useState();
@@ -52,20 +52,29 @@ export default function Profile() {
     setUserData('');
   };
 
-  const handleAllyCode = (e) => {
-    setAllyCode(e.target.value);
-  };
+  const fixRelicTierLevels = res => res.units.map((char) => {
+    const flatChar = flatten(char);
+    switch (flatChar.relic_tier) {
+      case 1:
+        flatChar.relic_tier = 0;
+        break;
+      case 2:
+        flatChar.relic_tier = 1;
+        break;
+      default:
+        flatChar.relic_tier -= 2;
+    }
+    return flatChar;
+  });
 
-  const submitAllyCode = () => {
-    getPlayerData(allyCode)
+  const submitAllyCode = (e) => {
+    e.preventDefault();
+    firebaseData.updateUserInfo(props.user);
+    getPlayerData(props.user.allyCode)
       .then((res) => {
         setUserData(res.data);
         localStorage.setItem('userData', JSON.stringify(res.data));
-        return res.units.map((char) => {
-          const flatChar = flatten(char);
-          flatChar.relic_tier -= 1;
-          return flatChar;
-        }).filter(char => char.combat_type !== 2);
+        return fixRelicTierLevels(res).filter(char => char.combat_type !== 2);
       })
       .then(res => mergeCharacterAndPlayerData(allCharacters, res))
       .then((res) => {
@@ -87,10 +96,10 @@ export default function Profile() {
         name="allyCode"
         id="allyCode"
         placeholder="Ally Code"
-        onChange={handleAllyCode}
+        onChange={props.handleAllyCode}
       />
     </FormGroup>
-    <Button onClick={submitAllyCode}>Submit</Button>
+    <Button type="submit" onClick={submitAllyCode}>Submit</Button>
   </Form>;
 
   return (

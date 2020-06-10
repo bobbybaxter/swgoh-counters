@@ -17,10 +17,10 @@ import buildSquad from '../../helpers/buildSquad';
 import './Counters3v3.scss';
 
 const Counters3v3 = () => {
-  const [characters, setCharacters] = useState();
-  const [counters, setCounters] = useState();
-  const [squads, setSquads] = useState();
-  const [collapse, setCollapse] = useState();
+  const [characters, setCharacters] = useState([]);
+  const [counters, setCounters] = useState([]);
+  const [squads, setSquads] = useState([]);
+  const [collapse, setCollapse] = useState([]);
   const [view, setView] = useState('normal');
 
   useEffect(() => {
