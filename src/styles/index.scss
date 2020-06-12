@@ -16,3 +16,9 @@ code {
 p {
   font-family: "Roboto Condensed",
 }
+
+.contentWrapper {
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+}

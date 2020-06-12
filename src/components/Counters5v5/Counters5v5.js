@@ -81,31 +81,30 @@ const Counters5v5 = () => {
 
   return (
       <div className="Counters5v5">
-        <div className="py-3">
-          <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
-        </div>
-        <div className="profileButtons">
-          <Button className="btn-sm" onClick={handleReverseCounter}>
-            {view === 'normal' ? 'Normal View' : 'Reverse View'}
-          </Button>
-        </div>
-        <div className="columnTitles">
-          <h1 className="col-3 mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
-          <div className="col-9">
-            <h1 className="mb-0">{view === 'normal' ? '5v5 Counters' : '5v5 Opponents'}</h1>
-            <small className="m-0 p-0 text-secondary">
-              {
-                view === 'normal'
-                  ? 'Click on a counter team to see more info.'
-                  : 'Click on an opponent team to see more info.'
-              }
-            </small>
+        <div className="contentWrapper">
+          <div className="py-3">
+            <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
           </div>
-        </div>
-        <div className="columnTeams">
-          {buildCounterRows || ''}
-        </div>
-        <footer className="mt-3">
+          <div className="columnTitles">
+            <h1 className="col-3 mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
+            <div className="col-8">
+              <h1 className="mb-0">{view === 'normal' ? '5v5 Counters' : '5v5 Opponents'}</h1>
+              <small className="m-0 p-0 text-secondary">
+                {
+                  view === 'normal'
+                    ? 'Click on a counter team to see more info.'
+                    : 'Click on an opponent team to see more info.'
+                }
+              </small>
+            </div>
+            <Button className="btn-sm col-1 reverseCounterButton" onClick={handleReverseCounter}>
+              {view === 'normal' ? 'Normal View' : 'Reverse View'}
+            </Button>
+          </div>
+          <div className="columnTeams">
+            {buildCounterRows || ''}
+          </div>
+          <footer className="mt-3">
           <div className="d-flex flex-row justify-content-center align-items-center">
           <span className="hardCounterColorBox"></span>
             <h6 className="mb-0 mr-4">Hard Counter</h6>
@@ -120,6 +119,7 @@ const Counters5v5 = () => {
             <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
           </div>
         </footer>
+        </div>
       </div>
   );
 };

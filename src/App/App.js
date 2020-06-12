@@ -49,6 +49,13 @@ class App extends React.Component {
     if (authUser) {
       const user = { id: authUser.uid, email: authUser.email };
       this.validateAccount(user);
+      firebase.auth().getRedirectResult()
+        .then((result) => {
+          if (result.credential) {
+            result.user.getIdToken(true)
+              .then(token => sessionStorage.setItem('token', token));
+          }
+        });
       this.setState({ authenticated: true });
     } else {
       this.setState({ authenticated: false });
@@ -66,6 +73,18 @@ class App extends React.Component {
     this.setState({ user });
   };
 
+  handleClearAllyCode = () => {
+    const user = {
+      id: this.state.user.id,
+      allyCode: '',
+      email: this.state.user.email,
+      isPatron: this.state.user.isPatron,
+    };
+    console.log('user :>> ', user);
+    this.setState(user);
+    firebaseData.updateUserInfo(user);
+  };
+
   setUserInfo = (res) => {
     this.setState(prevState => ({
       user: {
@@ -76,13 +95,12 @@ class App extends React.Component {
         isPatron: res.isPatron,
       },
     }));
-  }
+  };
 
   validateAccount = (user) => {
     firebaseData.getUserByFirebaseAuthUid(user.id)
       .then((res) => {
         if (res !== '') {
-          console.log('res :>> ', res);
           this.setUserInfo(res);
           return console.log(`Firebase user ${res.email} validated`);
         }
@@ -111,6 +129,7 @@ class App extends React.Component {
                       path="/profile"
                       authenticated={authenticated}
                       component={Profile}
+                      handleClearAllyCode={this.handleClearAllyCode}
                       handleAllyCode={this.handleAllyCode}
                       user={user}
                     />

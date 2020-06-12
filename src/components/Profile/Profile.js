@@ -1,55 +1,74 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button, Form, FormGroup, Input,
 } from 'reactstrap';
 
-import characterData from '../../helpers/data/characters.json';
+import allCharacters from '../../helpers/data/characters.json';
 import getPlayerData from '../../helpers/data/playerData';
 
 import flatten from '../../helpers/flatten';
 import mergeCharacterAndPlayerData from '../../helpers/mergeCharacterAndPlayerData';
 
 import CharacterTable from '../CharacterTable/CharacterTable';
+import RefreshTimer from '../RefreshTimer/RefreshTimer';
 
 import './Profile.scss';
 import firebaseData from '../../helpers/data/firebaseData';
 
+// TEST: treating /db as localStorage
+// import userDataDb from '../../helpers/fakeDb/userData.json';
+// import userUnitsDb from '../../helpers/fakeDb/userUnits.json';
+
+const userUnitsInStorage = JSON.parse(localStorage.getItem('userUnits'));
+const userDataInStorage = JSON.parse(localStorage.getItem('userData'));
+const timeoutDateInStorage = JSON.parse(localStorage.getItem('timeoutDate'));
+const isRefreshDisabledInStorage = JSON.parse(localStorage.getItem('isRefreshDisabled'));
+
 export default function Profile(props) {
-  const [allCharacters, setAllCharacters] = useState();
-  const [userData, setUserData] = useState();
-  const [userUnits, setUserUnits] = useState();
+  const [userData, setUserData] = useState(userDataInStorage || '');
+  const [userUnits, setUserUnits] = useState(userUnitsInStorage || '');
+  const [isRefreshDisabled, setIsRefreshDisabled] = useState(isRefreshDisabledInStorage || false);
+  const [timeoutCompletionDate, setTimeoutCompletionDate] = useState(timeoutDateInStorage || '');
 
-  const importCharacterData = () => {
-    if (localStorage.getItem('characterData')) {
-      setAllCharacters(JSON.parse(localStorage.getItem('characterData')));
-    } else {
-      setAllCharacters(characterData.data);
-      localStorage.setItem('characterData', JSON.stringify(characterData.data));
-    }
+  const setTimeout = () => {
+    // const timeoutDate = new Date().getTime() + 10000;
+    const timeoutDate = new Date().getTime() + 86400000;
+    setTimeoutCompletionDate(timeoutDate);
+    localStorage.setItem('timeoutDate', timeoutDate);
   };
 
-  const importUserUnits = () => {
-    if (localStorage.getItem('userUnits')) {
-      setUserUnits(JSON.parse(localStorage.getItem('userUnits')));
-    }
-  };
-
-  const importUserData = () => {
-    if (localStorage.getItem('userData')) {
-      setUserData(JSON.parse(localStorage.getItem('userData')));
-    }
+  const setPlayerData = () => {
+    // setUserData(userDataDb);
+    // localStorage.setItem('userData', JSON.stringify(userDataDb));
+    // setUserUnits(userUnitsDb);
+    // localStorage.setItem('userUnits', JSON.stringify(userUnitsDb));
+    getPlayerData(props.user.allyCode)
+      .then((res) => {
+        setUserData(res.data);
+        localStorage.setItem('userData', JSON.stringify(res.data));
+        return fixRelicTierLevels(res).filter(char => char.combat_type !== 2);
+      })
+      .then(res => mergeCharacterAndPlayerData(allCharacters.data, res))
+      .then((res) => {
+        res.sort((char1, char2) => (char1.name < char2.name ? -1 : 1));
+        setUserUnits(res);
+        localStorage.setItem('userUnits', JSON.stringify(res));
+      });
   };
 
   useEffect(() => {
-    importCharacterData();
-    importUserUnits();
-    importUserData();
+    if (!userData && props.user.allyCode) {
+      setPlayerData();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const clearAllyCode = () => {
-    localStorage.clear();
+    localStorage.removeItem('userData');
+    localStorage.removeItem('userUnits');
     setUserUnits('');
     setUserData('');
+    props.handleClearAllyCode();
   };
 
   const fixRelicTierLevels = res => res.units.map((char) => {
@@ -67,21 +86,28 @@ export default function Profile(props) {
     return flatChar;
   });
 
+  const refreshPlayerData = (e) => {
+    e.preventDefault();
+    setPlayerData();
+    setTimeout();
+  };
+
+  const disableRefreshButtons = (e) => {
+    setIsRefreshDisabled(true);
+    localStorage.setItem('isRefreshDisabled', true);
+  };
+
+  const enableRefreshButtons = (e) => {
+    setIsRefreshDisabled(false);
+    localStorage.setItem('isRefreshDisabled', false);
+  };
+
   const submitAllyCode = (e) => {
     e.preventDefault();
+    console.log('props.user :>> ', props.user);
     firebaseData.updateUserInfo(props.user);
-    getPlayerData(props.user.allyCode)
-      .then((res) => {
-        setUserData(res.data);
-        localStorage.setItem('userData', JSON.stringify(res.data));
-        return fixRelicTierLevels(res).filter(char => char.combat_type !== 2);
-      })
-      .then(res => mergeCharacterAndPlayerData(allCharacters, res))
-      .then((res) => {
-        res.sort((char1, char2) => (char1.name < char2.name ? -1 : 1));
-        setUserUnits(res);
-        localStorage.setItem('userUnits', JSON.stringify(res));
-      });
+    setPlayerData();
+    setTimeout();
   };
 
   // temp
@@ -108,7 +134,16 @@ export default function Profile(props) {
         <h1>{userData ? userData.name : ''}</h1>
         {userUnits ? '' : allyCodeForm}
         <div className="profileButtons">
-          {userUnits ? <Button className="btn-sm" onClick={clearAllyCode}>Clear Ally Code</Button> : '' }
+          <RefreshTimer
+            key="refreshTimer"
+            timeoutCompletionDate={timeoutCompletionDate}
+            haveUserUnits={!!userUnits}
+            refreshPlayerData={refreshPlayerData}
+            clearAllyCode={clearAllyCode}
+            isRefreshDisabled={isRefreshDisabled}
+            enableRefreshButtons={enableRefreshButtons}
+            disableRefreshButtons={disableRefreshButtons}
+          />
         </div>
         {/* <Button onClick={handleMerge}>Merge</Button> */}
 

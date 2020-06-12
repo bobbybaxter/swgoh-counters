@@ -29,19 +29,14 @@ export default function MyNavbar(props) {
     provider.setCustomParameters({
       prompt: 'select_account',
     });
-    firebase.auth().signInWithPopup(provider)
-      .then((cred) => {
-      // get token from Firebase and save it to session storage
-        cred.user.getIdToken(true)
-          .then(token => sessionStorage.setItem('token', token));
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    firebase.auth().signInWithRedirect(provider);
   };
 
   const handleLogout = (e) => {
     e.preventDefault();
+    localStorage.removeItem('userData');
+    localStorage.removeItem('userUnits');
+    sessionStorage.setItem('token', '');
     firebase.auth().signOut();
   };
 
@@ -76,7 +71,7 @@ export default function MyNavbar(props) {
                 </NavItem>
               ) }
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>Support</DropdownToggle>
+                <DropdownToggle nav caret>Links</DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem tag={RRNavLink} to="/submit">Submit Issue</DropdownItem>
                   <DropdownItem href="https://patreon.com/saiastrange">Patreon</DropdownItem>
