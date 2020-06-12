@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
 }
 
 .columnTitles {
@@ -11,6 +12,13 @@
   h1 {
     font-size: 1.7rem;
   }
+}
+
+.reverseCounterButton {
+  height: 50%;
+  font-size: .75rem;
+  text-align: center;
+  padding: .25rem;
 }
 
 .columnTeams {
@@ -54,5 +62,9 @@
     h1 {
       font-size: 2rem;
     }
+  }
+
+  .reverseCounterButton {
+    font-size: .9rem;
   }
 }

@@ -1,0 +1,19 @@
+.Profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+}
+
+.profileButtons {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}

@@ -1,35 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Collapse,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink,
+  UncontrolledDropdown,
 } from 'reactstrap';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import './MyNavbar.scss';
 
-class MyNavbar extends React.Component {
-  state = {
-    isOpen: false,
-  }
+export default function MyNavbar(props) {
+  const [isOpen, setIsOpen] = useState(false);
 
-  toggle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen,
+  const toggle = () => setIsOpen(!isOpen);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({
+      prompt: 'select_account',
     });
-  }
+    firebase.auth().signInWithRedirect(provider);
+  };
 
-  render() {
-    return (
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem('userData');
+    localStorage.removeItem('userUnits');
+    sessionStorage.setItem('token', '');
+    firebase.auth().signOut();
+  };
+
+  const selectLoginOrLogout = props.authenticated
+    ? (
+      <NavItem>
+        <NavLink href="#" onClick={handleLogout}>Logout</NavLink>
+      </NavItem>
+    )
+    : (
+      <NavItem>
+        <NavLink href="#" onClick={handleLogin}>Login</NavLink>
+      </NavItem>
+    );
+
+  return (
       <div className="MyNavbar">
         <Navbar color="dark" dark expand="md">
           <NavbarBrand>SWGOH Counters</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarToggler onClick={toggle} />
+          <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto text-center" navbar>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/5v5">5v5</NavLink>
@@ -37,24 +65,24 @@ class MyNavbar extends React.Component {
               <NavItem>
                 <NavLink tag={RRNavLink} to="/3v3/">3v3</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="https://discord.gg/eCnE48h">Discord</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://patreon.com/saiastrange">Patreon</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</NavLink>
-              </NavItem>
-              {/* <NavItem>
-                <NavLink href="https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true">Submit an Issue</NavLink>
-              </NavItem> */}
+              { !props.authenticated ? '' : (
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/profile">Profile</NavLink>
+                </NavItem>
+              ) }
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>Links</DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem tag={RRNavLink} to="/submit">Submit Issue</DropdownItem>
+                  <DropdownItem href="https://patreon.com/saiastrange">Patreon</DropdownItem>
+                  <DropdownItem href="https://discord.gg/eCnE48h">Discord</DropdownItem>
+                  <DropdownItem href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+              {selectLoginOrLogout}
             </Nav>
           </Collapse>
         </Navbar>
       </div>
-    );
-  }
+  );
 }
-
-export default MyNavbar;

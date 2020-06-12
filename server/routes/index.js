@@ -9,7 +9,9 @@ module.exports = (app) => {
 
   router
     .use('/api/counters', require('./counter')(app))
-    .use('/api/squads', require('./squad')(app));
+    .use('/api/squads', require('./squad')(app))
+    .use('/api/user', require('./user')(app))
+    .use('/api/firebase', require('./firebase')(app));
 
   return router;
 };

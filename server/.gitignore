@@ -1,3 +1,8 @@
+node_modules
+
+# Firebase
+firebase-service-account.json
+firebase-config.js
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

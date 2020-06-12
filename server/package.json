@@ -6,8 +6,8 @@
   "proxy": "http://127.0.0.1:5000",
   "scripts": {
     "test": "test",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "LOG_LEVEL=debug node index.js | pino-pretty",
+    "dev": "LOG_LEVEL=debug nodemon index.js | pino-pretty"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,13 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-pino-logger": "^5.0.0",
+    "firebase": "^7.14.6",
+    "firebase-admin": "^8.12.1",
+    "pino": "^6.3.1",
     "require-directory": "^2.1.1"
+  },
+  "devDependencies": {
+    "pino-pretty": "^4.0.0"
   }
 }
