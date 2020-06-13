@@ -33,13 +33,16 @@ const PrivateRoute = ({ component: Component, authenticated, ...rest }) => {
 //   return <Route {...rest} render={props => routeChecker(props)} />;
 // };
 
+// TODO: raise the state of counters and squads
+// so they aren't called every time a user moves between 5v5 and 3v3
 class App extends React.Component {
   state = {
     user: {
       id: '',
       allyCode: '',
       email: '',
-      isPatron: false,
+      patreonId: '',
+      patronStatus: '',
     },
     data: null,
     authenticated: false,
@@ -74,14 +77,17 @@ class App extends React.Component {
   };
 
   handleClearAllyCode = () => {
+    const {
+      id, allyCode, email, patreonId, patronStatus,
+    } = this.state;
     const user = {
-      id: this.state.user.id,
-      allyCode: '',
-      email: this.state.user.email,
-      isPatron: this.state.user.isPatron,
+      id,
+      allyCode,
+      email,
+      patreonId,
+      patronStatus,
     };
-    console.log('user :>> ', user);
-    this.setState(user);
+    this.setState({ user });
     firebaseData.updateUserInfo(user);
   };
 
@@ -92,7 +98,18 @@ class App extends React.Component {
         email: res.email,
         allyCode: res.allyCode,
         id: res.id,
-        isPatron: res.isPatron,
+        patreonId: res.patreonId,
+        patronStatus: res.patronStatus,
+      },
+    }));
+  };
+
+  unlinkPatreonAccount = () => {
+    this.setState(prevState => ({
+      user: {
+        ...prevState.user,
+        patreonId: '',
+        patronStatus: '',
       },
     }));
   };
@@ -121,8 +138,9 @@ class App extends React.Component {
               <MyNavbar authenticated={authenticated}/>
               <div>
                   <Switch>
-                    <Route exact path="/5v5" component={ Counters5v5 }/>
-                    <Route exact path="/3v3" component={ Counters3v3 }/>
+                    <Route exact path="/5v5" render={props => <Counters5v5 {...props} user={user}/>} />
+                    <Route exact path="/3v3" render={props => <Counters3v3 {...props} user={user}/>} />
+                    {/* <Route exact path="/3v3" component={ Counters3v3 } user={user}/> */}
                     <Route exact path="/submit" component={ SubmissionForm } />
 
                     <PrivateRoute
@@ -131,6 +149,7 @@ class App extends React.Component {
                       component={Profile}
                       handleClearAllyCode={this.handleClearAllyCode}
                       handleAllyCode={this.handleAllyCode}
+                      unlinkPatreonAccount={this.unlinkPatreonAccount}
                       user={user}
                     />
 

@@ -12,6 +12,8 @@ import {
 
 import './CharacterTable.scss';
 
+// TODO: Add proptypes
+// TODO: Add tests
 export default function CharacterTable(props) {
   const [characters, setCharacters] = useState([]);
   const [filteredCharacters, setFilteredCharacters] = useState([]);

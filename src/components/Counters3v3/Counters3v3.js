@@ -16,7 +16,10 @@ import buildSquad from '../../helpers/buildSquad';
 
 import './Counters3v3.scss';
 
-const Counters3v3 = () => {
+// TODO: consolidate shared code with Counters5v5
+// TODO: Add proptypes
+// TODO: Add tests
+const Counters3v3 = (props) => {
   const [characters, setCharacters] = useState([]);
   const [counters, setCounters] = useState([]);
   const [squads, setSquads] = useState([]);
@@ -79,12 +82,18 @@ const Counters3v3 = () => {
     setView(view === 'normal' ? 'reverse' : 'normal');
   };
 
+  const togglePatreonButton = props.user.patreonId
+    ? ''
+    : <div className="py-3">
+        <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
+      </div>;
+
+  // TODO: add a loading screen
+  // TODO: add Adsense code (removed when there is a linked patreon account)
   return (
       <div className="Counters3v3">
         <div className="contentWrapper">
-          <div className="py-3">
-            <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
-          </div>
+        {togglePatreonButton}
           <div className="columnTitles">
             <h1 className="col-3 mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
             <div className="col-8">
@@ -115,9 +124,7 @@ const Counters3v3 = () => {
             <strong>Note:</strong> Darth Revan (with or without Malak) is a hard counter unless it is listed as a soft counter<br/>
           </div>
           <div className="offset-2 col-8 border-dark border-top"></div>
-          <div className="py-3">
-            <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
-          </div>
+          {togglePatreonButton}
         </footer>
         </div>
       </div>

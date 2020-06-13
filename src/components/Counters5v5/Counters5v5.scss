@@ -1,3 +1,4 @@
+// raise shared code with Counters3v3
 .Counters5v5 {
   display: flex;
   flex-direction: column;
@@ -12,13 +13,6 @@
   h1 {
     font-size: 1.7rem;
   }
-}
-
-.reverseCounterButton {
-  height: 50%;
-  font-size: .75rem;
-  text-align: center;
-  padding: .25rem;
 }
 
 .columnTeams {
@@ -38,7 +32,6 @@
 .patreonBtn {
   background: rgba(255, 0, 0, 0.863);
   color: whitesmoke;
-  // display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -62,9 +55,5 @@
     h1 {
       font-size: 2rem;
     }
-  }
-
-  .reverseCounterButton {
-    font-size: .9rem;
   }
 }

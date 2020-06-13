@@ -11,7 +11,8 @@ module.exports = (app) => {
     .use('/api/counters', require('./counter')(app))
     .use('/api/squads', require('./squad')(app))
     .use('/api/user', require('./user')(app))
-    .use('/api/firebase', require('./firebase')(app));
+    .use('/api/firebase', require('./firebase')(app))
+    .use('/api/patreon', require('./patreon')(app));
 
   return router;
 };
