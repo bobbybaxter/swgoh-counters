@@ -52,6 +52,9 @@ export default function MyNavbar(props) {
       </NavItem>
     );
 
+  // TODO: Add proptypes
+  // TODO: Add tests
+  // TODO: remove when loading
   return (
       <div className="MyNavbar">
         <Navbar color="dark" dark expand="md">

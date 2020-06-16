@@ -1,6 +1,8 @@
 import React from 'react';
 import { Collapse } from 'reactstrap';
 
+// TODO: Add proptypes
+// TODO: Add tests
 export default function BuildDescriptions(props) {
   const submissionForm = 'https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true';
   const discordLink = 'https://discord.gg/eCnE48h';

@@ -22,3 +22,22 @@ p {
   align-items: center;
   width: 95%;
 }
+
+.reverseCounterButton {
+  height: 50%;
+  font-size: .5rem;
+  text-align: center;
+  padding: .25rem;
+}
+
+@media only screen and (min-width:600px) {
+  .reverseCounterButton {
+    font-size: .75rem;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .reverseCounterButton {
+    font-size: 1rem;
+  }
+}

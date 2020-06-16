@@ -1,5 +1,7 @@
 import React from 'react';
 
+// TODO: Add proptypes
+// TODO: Add tests
 export default function BuildHardCounters(props) {
   const { counterTeams, toggle } = props;
   const teams = counterTeams

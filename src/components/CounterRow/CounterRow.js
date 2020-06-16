@@ -6,6 +6,8 @@ import BuildSoftCounters from '../BuildSoftCounters/BuildSoftCounters';
 
 import './CounterRow.scss';
 
+// TODO: Add proptypes
+// TODO: Add tests
 export default function CounterRow(props) {
   const {
     collapse,

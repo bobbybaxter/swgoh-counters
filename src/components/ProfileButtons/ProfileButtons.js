@@ -1,11 +1,15 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { Button } from 'reactstrap';
 
+// import firebaseData from '../../helpers/data/firebaseData';
+
 import convertToTwoDigits from '../../helpers/convertToTwoDigits';
 
-import './RefreshTimer.scss';
+import './ProfileButtons.scss';
 
-export default function RefreshTimer(props) {
+// TODO: Add proptypes
+// TODO: Add tests
+export default function ProfileButtons(props) {
   const timeoutDateInStorage = JSON.parse(localStorage.getItem('timeoutDate'));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const calculateTimeLeft = useCallback(() => {
@@ -64,7 +68,7 @@ export default function RefreshTimer(props) {
   }, [props, timerComponents.length]);
 
   return (
-    <div className="RefreshTimer">
+    <div className="ProfileButtons">
       <div className="refreshElements">
         {
           !props.haveUserUnits

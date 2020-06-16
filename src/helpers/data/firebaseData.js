@@ -21,10 +21,30 @@ const getUserByFirebaseAuthUid = firebaseAuthUid => new Promise((resolve, reject
 
 const updateUserInfo = user => new Promise((resolve, reject) => {
   axios.patch(`${process.env.REACT_APP_API_URL}/api/user/${user.id}`,
-    { allyCode: user.allyCode },
+    {
+      allyCode: user.allyCode,
+      email: user.email,
+      patreonId: user.patreonId,
+      patronStatus: user.patronStatus,
+    },
     { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
     .then(res => resolve(res.data))
     .catch(err => reject(err));
 });
 
-export default { createUser, getUserByFirebaseAuthUid, updateUserInfo };
+const unlinkPatreonAccount = user => new Promise((resolve, reject) => {
+  axios.patch(`${process.env.REACT_APP_API_URL}/api/user/${user.id}`,
+    {
+      allyCode: user.allyCode,
+      email: user.email,
+      patreonId: '',
+      patronStatus: '',
+    },
+    { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
+    .then(res => resolve(res.data))
+    .catch(err => reject(err));
+});
+
+export default {
+  createUser, getUserByFirebaseAuthUid, updateUserInfo, unlinkPatreonAccount,
+};
