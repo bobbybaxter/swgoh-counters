@@ -36,11 +36,11 @@ module.exports = app => async function handleRedirect(req, res) {
       }
 
       console.log('redirect on success :>> ');
-      res.redirect(process.env.RETURN_URL);
+      res.redirect('https://saiastrange.com');
     })
     .catch((err) => {
       console.log('Error with Patron verification');
       console.log(err);
-      res.redirect(process.env.RETURN_URL);
+      res.redirect('https://saiastrange.com');
     });
 };
