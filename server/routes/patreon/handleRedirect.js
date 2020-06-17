@@ -8,9 +8,6 @@ module.exports = app => async function handleRedirect(req, res) {
   const myCampaignId = '3137849';
   let token;
 
-  // TODO: try to change redirects to returns
-  // so i can take action on the results on the client side
-
   await patreon.getTokens(code, redirect)
     .then(({ access_token }) => { // gets Patreon access token from client link to Patreon button
       token = access_token;

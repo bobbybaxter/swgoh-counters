@@ -7,8 +7,6 @@ import {
 import ReactGA from 'react-ga';
 
 import MyNavbar from '../components/MyNavbar/MyNavbar';
-import Counters3v3 from '../components/Counters3v3/Counters3v3';
-import Counters5v5 from '../components/Counters5v5/Counters5v5';
 import Profile from '../components/Profile/Profile';
 import SubmissionForm from '../components/SubmissionForm/SubmissionForm';
 
@@ -16,6 +14,14 @@ import firebaseConnection from '../helpers/data/firebaseConnection';
 import firebaseData from '../helpers/data/firebaseData';
 
 import './App.scss';
+import characterData from '../helpers/data/characters.json';
+import getSquadData from '../helpers/data/squadsData';
+import getCounterData from '../helpers/data/countersData';
+
+import buildOpponentTeam from '../helpers/buildOpponentTeam';
+import buildSquad from '../helpers/buildSquad';
+import Counters5v5 from '../components/Counters5v5/Counters5v5';
+import Counters3v3 from '../components/Counters3v3/Counters3v3';
 
 firebaseConnection();
 
@@ -33,19 +39,25 @@ const PrivateRoute = ({ component: Component, authenticated, ...rest }) => {
 //   return <Route {...rest} render={props => routeChecker(props)} />;
 // };
 
-// TODO: raise the state of counters and squads
-// so they aren't called every time a user moves between 5v5 and 3v3
+const defaultUser = {
+  id: '',
+  allyCode: '',
+  email: '',
+  patreonId: '',
+  patronStatus: '',
+};
+
 class App extends React.Component {
   state = {
-    user: {
-      id: '',
-      allyCode: '',
-      email: '',
-      patreonId: '',
-      patronStatus: '',
-    },
+    user: defaultUser,
     data: null,
     authenticated: false,
+    characters: characterData.data,
+    squads: [],
+    countersNormal5v5: [],
+    countersReverse5v5: [],
+    countersNormal3v3: [],
+    countersReverse3v3: [],
   }
 
   authenticateUser = (authUser) => {
@@ -65,9 +77,63 @@ class App extends React.Component {
     }
   }
 
+  buildSquadObjects = (res, squad, size, view) => {
+    // get the correct counter info
+    const counterInfo = res
+      .filter(x => x.battleType === `${size}v${size}`)
+      .filter(x => (view === 'normal'
+        ? x.opponentTeam === squad.id
+        : x.counterTeam === squad.id
+      ));
+
+    // get the left side squad
+    const leftSideSquad = buildSquad(squad, size, this.state.characters);
+
+    // get the right side squads
+    const rightSideSquads = counterInfo
+      .map(matchup => buildOpponentTeam(
+        matchup, size, this.state.squads, this.state.characters, view,
+      ));
+
+    // put them into an object and push into state
+    const squadObject = rightSideSquads.length ? { leftSideSquad, rightSideSquads } : '';
+    return squadObject;
+  }
+
+  getCounters = async () => {
+    await getCounterData()
+      .then((res) => {
+        // seems verbose, but it queues up all of the
+        // counters at once before distributing to child components
+        const normal5 = [];
+        const reverse5 = [];
+        const normal3 = [];
+        const reverse3 = [];
+        this.state.squads.forEach((squad) => {
+          normal5.push(this.buildSquadObjects(res, squad, 5, 'normal'));
+          reverse5.push(this.buildSquadObjects(res, squad, 5, 'reverse'));
+          normal3.push(this.buildSquadObjects(res, squad, 3, 'normal'));
+          reverse3.push(this.buildSquadObjects(res, squad, 3, 'reverse'));
+        });
+        this.setState({ countersNormal5v5: normal5.filter(x => x !== '') });
+        this.setState({ countersReverse5v5: reverse5.filter(x => x !== '') });
+        this.setState({ countersNormal3v3: normal3.filter(x => x !== '') });
+        this.setState({ countersReverse3v3: reverse3.filter(x => x !== '') });
+      })
+      .catch(err => console.error(err));
+  };
+
+  getSquads = async () => {
+    await getSquadData()
+      .then(res => this.setState({ squads: res }))
+      .then(() => this.getCounters())
+      .catch(err => console.error(err));
+  };
+
   componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged(this.authenticateUser);
     ReactGA.pageview(window.location.pathname);
+    this.getSquads();
   }
 
   handleAllyCode = (e) => {
@@ -90,6 +156,10 @@ class App extends React.Component {
     this.setState({ user });
     firebaseData.updateUserInfo(user);
   };
+
+  handleLogout = () => {
+    this.setState({ user: defaultUser });
+  }
 
   setUserInfo = (res) => {
     this.setState(prevState => ({
@@ -135,12 +205,26 @@ class App extends React.Component {
       <div className="App">
         <BrowserRouter basename="/" hashType="slash">
             <React.Fragment>
-              <MyNavbar authenticated={authenticated}/>
+              <MyNavbar
+                authenticated={authenticated}
+                handleLogout={this.handleLogout}
+              />
               <div>
                   <Switch>
-                    <Route exact path="/5v5" render={props => <Counters5v5 {...props} user={user}/>} />
-                    <Route exact path="/3v3" render={props => <Counters3v3 {...props} user={user}/>} />
-                    {/* <Route exact path="/3v3" component={ Counters3v3 } user={user}/> */}
+                    <Route exact path="/5v5" render={props => <Counters5v5
+                        {...props}
+                        user={user}
+                        countersNormal={this.state.countersNormal5v5}
+                        countersReverse={this.state.countersReverse5v5}
+                      />
+                    } />
+                    <Route exact path="/3v3" render={props => <Counters3v3
+                        {...props}
+                        user={user}
+                        countersNormal={this.state.countersNormal3v3}
+                        countersReverse={this.state.countersReverse3v3}
+                      />
+                    } />
                     <Route exact path="/submit" component={ SubmissionForm } />
 
                     <PrivateRoute

@@ -6,6 +6,7 @@
   "proxy": "http://127.0.0.1:5000",
   "scripts": {
     "test": "jest --coverage",
+    "test:ci": "jest",
     "test:watch": "jest --watch",
     "cover:show": "open ./coverage/index.html",
     "start": "LOG_LEVEL=debug node index.js | pino-pretty",
