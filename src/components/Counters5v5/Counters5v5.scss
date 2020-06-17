@@ -6,15 +6,6 @@
   align-items: center;
 }
 
-.columnTitles {
-  display: flex;
-  flex-direction: row;
-  margin-top: 10px;
-  h1 {
-    font-size: 1.7rem;
-  }
-}
-
 .columnTeams {
   display: flex;
   flex-direction: column;
@@ -47,13 +38,4 @@
   background-color: #9B47E4;
   border-radius: 100px;
   margin-right: 10px;
-}
-
-@media only screen and (min-width:768px) {
-  /* for desktop */
-  .columnTitles {
-    h1 {
-      font-size: 2rem;
-    }
-  }
 }
