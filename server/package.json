@@ -5,7 +5,10 @@
   "main": "index.js",
   "proxy": "http://127.0.0.1:5000",
   "scripts": {
-    "test": "test",
+    "test": "jest --coverage",
+    "test:ci": "jest",
+    "test:watch": "jest --watch",
+    "cover:show": "open ./coverage/index.html",
     "start": "LOG_LEVEL=debug node index.js | pino-pretty",
     "dev": "LOG_LEVEL=debug nodemon index.js | pino-pretty"
   },
@@ -33,6 +36,8 @@
     "require-directory": "^2.1.1"
   },
   "devDependencies": {
+    "jest": "^26.0.1",
+    "jest-circus": "^26.0.1",
     "pino-pretty": "^4.0.0"
   }
 }

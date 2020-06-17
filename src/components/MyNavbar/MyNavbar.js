@@ -38,6 +38,7 @@ export default function MyNavbar(props) {
     localStorage.removeItem('userUnits');
     sessionStorage.setItem('token', '');
     firebase.auth().signOut();
+    props.handleLogout();
   };
 
   const selectLoginOrLogout = props.authenticated
@@ -54,7 +55,6 @@ export default function MyNavbar(props) {
 
   // TODO: Add proptypes
   // TODO: Add tests
-  // TODO: remove when loading
   return (
       <div className="MyNavbar">
         <Navbar color="dark" dark expand="md">
