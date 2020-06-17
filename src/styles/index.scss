@@ -17,15 +17,31 @@ p {
   font-family: "Roboto Condensed",
 }
 
+.columnTitles {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  h1 {
+    font-size: 1.2rem;
+  }
+  font-size: .85rem;
+}
+
 .contentWrapper {
   flex-direction: column;
   align-items: center;
   width: 95%;
 }
 
+.countersDetails {
+  h5 {
+    font-size: 1rem;
+  }
+}
+
 .reverseCounterButton {
   height: 50%;
-  font-size: .5rem;
+  font-size: .7rem;
   text-align: center;
   padding: .25rem;
 }
@@ -39,5 +55,19 @@ p {
 @media only screen and (min-width:768px) {
   .reverseCounterButton {
     font-size: 1rem;
+  }
+
+  .columnTitles {
+    h1 {
+      font-size: 2rem;
+    }
+
+    font-size: 1rem;
+  }
+
+  .countersDetails {
+    h5 {
+      font-size: 1.2rem;
+    }
   }
 }

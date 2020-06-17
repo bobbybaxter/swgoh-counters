@@ -86,7 +86,7 @@ const Counters3v3 = (props) => {
 
           <div className="columnTitles">
             <h1 className="col-3 mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
-            <div className="col-8">
+            <div className="col-7">
               <h1 className="mb-0">{view === 'normal' ? '3v3 Counters' : '3v3 Opponents'}</h1>
               <small className="m-0 p-0 text-secondary">
                 {
@@ -96,7 +96,7 @@ const Counters3v3 = (props) => {
                 }
               </small>
             </div>
-            <Button className="btn-sm col-1 reverseCounterButton" onClick={handleReverseCounter}>
+            <Button className="btn-sm col-2 reverseCounterButton" onClick={handleReverseCounter}>
               {view === 'normal' ? 'Normal View' : 'Reverse View'}
             </Button>
           </div>

@@ -10,7 +10,8 @@
     "test:watch": "jest --watch",
     "cover:show": "open ./coverage/index.html",
     "start": "LOG_LEVEL=debug node index.js | pino-pretty",
-    "dev": "LOG_LEVEL=debug nodemon index.js | pino-pretty"
+    "dev": "LOG_LEVEL=debug nodemon index.js | pino-pretty",
+    "fix-node-modules": "find ./node_modules/* -mtime +10950 -exec touch {} \\;"
   },
   "repository": {
     "type": "git",

@@ -5,7 +5,6 @@ const createUser = user => new Promise((resolve, reject) => {
     user,
     { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
     .then((res) => {
-      console.log('createUser response :>> ', res);
       resolve(res.data);
     })
     .catch(err => reject(err));
@@ -15,7 +14,6 @@ const getUserByFirebaseAuthUid = firebaseAuthUid => new Promise((resolve, reject
   axios.get(`${process.env.REACT_APP_API_URL}/api/firebase/${firebaseAuthUid}`,
     { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
     .then((res) => {
-      console.log('getUserByFirebaseAuthUid response :>> ', res);
       resolve(res.data);
     })
     .catch(err => reject(err));
@@ -31,7 +29,6 @@ const updateUserInfo = user => new Promise((resolve, reject) => {
     },
     { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
     .then((res) => {
-      console.log('updateUserInfo response :>> ', res);
       resolve(res.data);
     })
     .catch(err => reject(err));
@@ -47,7 +44,6 @@ const unlinkPatreonAccount = user => new Promise((resolve, reject) => {
     },
     { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
     .then((res) => {
-      console.log('unlinkPatreonAccount response :>> ', res);
       resolve(res.data);
     })
     .catch(err => reject(err));
