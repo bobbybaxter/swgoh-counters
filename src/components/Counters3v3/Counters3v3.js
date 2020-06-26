@@ -7,6 +7,7 @@ import React, {
 import {
   Button,
 } from 'reactstrap';
+import MetaTags from 'react-meta-tags';
 
 import './Counters3v3.scss';
 
@@ -15,6 +16,7 @@ const CounterRow = lazy(() => import('../CounterRow/CounterRow'));
 // TODO: consolidate shared code with Counters5v5
 // TODO: Add proptypes
 // TODO: Add tests
+// TODO: Add react-meta-tags
 const Counters3v3 = (props) => {
   const [collapse, setCollapse] = useState([]);
   const [view, setView] = useState('normal');
@@ -79,6 +81,14 @@ const Counters3v3 = (props) => {
 
   return (
       <div className="Counters3v3">
+        <MetaTags>
+          <title>3v3 Counters</title>
+          <meta name="description" content="3v3 counters for the mobile game Star Wars: Galaxy of Heroes"/>
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </MetaTags>
+        <script data-ad-client="ca-pub-9103583527998968" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
         <div className="contentWrapper">
 
         {togglePatreonButton}

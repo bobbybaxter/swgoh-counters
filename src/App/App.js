@@ -1,36 +1,42 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable max-len */
 import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import {
-  BrowserRouter, Redirect, Route, Switch,
+  BrowserRouter,
+  // Redirect,
+  Route,
+  Switch,
 } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
+import './App.scss';
+
+import Counters3v3 from '../components/Counters3v3/Counters3v3';
+import Counters5v5 from '../components/Counters5v5/Counters5v5';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
-import Profile from '../components/Profile/Profile';
+import NotFound from '../components/NotFound/NotFound';
+// import Profile from '../components/Profile/Profile';
 import SubmissionForm from '../components/SubmissionForm/SubmissionForm';
 
+import characterData from '../helpers/data/characters.json';
 import firebaseConnection from '../helpers/data/firebaseConnection';
 import firebaseData from '../helpers/data/firebaseData';
-
-import './App.scss';
-import characterData from '../helpers/data/characters.json';
-import getSquadData from '../helpers/data/squadsData';
 import getCounterData from '../helpers/data/countersData';
+import getSquadData from '../helpers/data/squadsData';
 
 import buildOpponentTeam from '../helpers/buildOpponentTeam';
 import buildSquad from '../helpers/buildSquad';
-import Counters5v5 from '../components/Counters5v5/Counters5v5';
-import Counters3v3 from '../components/Counters3v3/Counters3v3';
 
 firebaseConnection();
 
-const PrivateRoute = ({ component: Component, authenticated, ...rest }) => {
-  const routeChecker = props => (authenticated === true
-    ? (<Component {...props} {...rest} />)
-    : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
-  return <Route {...rest} render={props => routeChecker(props)} />;
-};
+// const PrivateRoute = ({ component: Component, authenticated, ...rest }) => {
+//   const routeChecker = props => (authenticated === true
+//     ? (<Component {...props} {...rest} />)
+//     : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
+//   return <Route {...rest} render={props => routeChecker(props)} />;
+// };
 
 // const PublicRoute = ({ component: Component, authenticated, ...rest }) => {
 //   const routeChecker = props => (authenticated === false
@@ -211,7 +217,7 @@ class App extends React.Component {
               />
               <div>
                   <Switch>
-                    <Route exact path="/5v5" render={props => <Counters5v5
+                    <Route exact path="/" render={props => <Counters5v5
                         {...props}
                         user={user}
                         countersNormal={this.state.countersNormal5v5}
@@ -226,18 +232,18 @@ class App extends React.Component {
                       />
                     } />
                     <Route exact path="/submit" component={ SubmissionForm } />
-
+{/*
                     <PrivateRoute
-                      path="/profile"
+                      exact path="/profile"
                       authenticated={authenticated}
                       component={Profile}
                       handleClearAllyCode={this.handleClearAllyCode}
                       handleAllyCode={this.handleAllyCode}
                       unlinkPatreonAccount={this.unlinkPatreonAccount}
                       user={user}
-                    />
+                    /> */}
 
-                    <Redirect from="*" to="/5v5" />
+                    <Route component={NotFound} />
                   </Switch>
               </div>
             </React.Fragment>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Button, Form, FormGroup, Input,
 } from 'reactstrap';
+import MetaTags from 'react-meta-tags';
 
 import allCharacters from '../../helpers/data/characters.json';
 import getPlayerData from '../../helpers/data/playerData';
@@ -29,6 +30,7 @@ const patreonLink = `https://patreon.com/oauth2/authorize?response_type=code&cli
 
 // TODO: Add proptypes
 // TODO: Add tests
+// TODO: Add react-meta-tags
 export default function Profile(props) {
   const [userData, setUserData] = useState(userDataInStorage || '');
   const [userUnits, setUserUnits] = useState(userUnitsInStorage || '');
@@ -147,6 +149,12 @@ export default function Profile(props) {
 
   return (
     <div className="Profile">
+      <MetaTags>
+        <title>Profile</title>
+        <meta name="description" content="Link your SWGOH allycode and Patreon email"/>
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </MetaTags>
       <div className="profileWrapper">
         <h1>{userData ? userData.name : ''}</h1>
         {userUnits ? '' : allyCodeForm}

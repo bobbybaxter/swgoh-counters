@@ -1,0 +1,6 @@
+User-agent: *
+
+Disallow:
+
+Sitemap: https://swgohcounters.com/sitemap.xml
+
