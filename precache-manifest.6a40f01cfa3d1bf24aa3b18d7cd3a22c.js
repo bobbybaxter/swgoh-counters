@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c2f9c629dad5b29b59930af2c098f123",
+    "revision": "731223279b9d8f3650d4723944bfaaa8",
     "url": "/swgoh-counters/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/swgoh-counters/static/css/2.17e5ed98.chunk.css"
   },
   {
-    "revision": "30cbd7fbf98db87bf80c",
+    "revision": "5da92effcc564cc2a772",
     "url": "/swgoh-counters/static/css/main.2d70646c.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/swgoh-counters/static/js/2.43b16233.chunk.js.LICENSE"
   },
   {
-    "revision": "30cbd7fbf98db87bf80c",
-    "url": "/swgoh-counters/static/js/main.431f6091.chunk.js"
+    "revision": "5da92effcc564cc2a772",
+    "url": "/swgoh-counters/static/js/main.5079bf5e.chunk.js"
   },
   {
     "revision": "c4e801436fc169c7fc2c",
