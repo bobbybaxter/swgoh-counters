@@ -7,10 +7,10 @@ const server = express();
 const allowedOrigins = [
   'http://localhost:3000',
   'https://localhost:3000',
-  'http://saiastrange.com',
-  'https://saiastrange.com',
-  'http://www.saiastrange.com',
-  'https://www.saiastrange.com',
+  'http://swgohcounters.com',
+  'https://swgohcounters.com',
+  'http://www.swgohcounters.com',
+  'https://www.swgohcounters.com',
 ];
 
 module.exports = (app) => {

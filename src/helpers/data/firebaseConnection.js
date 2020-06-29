@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import fbConfig from '../../.firebase.config.json';
+import fbConfig from '../../setup/config/.firebase.config.json';
 
 const firebaseApp = () => {
   if (!firebase.apps.length) {
