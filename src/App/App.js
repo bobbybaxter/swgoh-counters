@@ -1,12 +1,12 @@
 import React from 'react';
-import {
-  HashRouter, Redirect, Route, Switch,
-} from 'react-router-dom';
+// import {
+//   HashRouter, Redirect, Route, Switch,
+// } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
-import MyNavbar from '../components/MyNavbar/MyNavbar';
-import Counters3v3 from '../components/Counters3v3/Counters3v3';
-import Counters5v5 from '../components/Counters5v5/Counters5v5';
+// import MyNavbar from '../components/MyNavbar/MyNavbar';
+// import Counters3v3 from '../components/Counters3v3/Counters3v3';
+// import Counters5v5 from '../components/Counters5v5/Counters5v5';
 
 import './App.scss';
 
@@ -18,7 +18,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <HashRouter basename="/" hashType="slash">
+        <div className='rerouteDiv'>
+          <p>we've moved to <a href="https://swgohcounters.com">swgohcounters.com</a></p>
+        </div>
+        {/* <HashRouter basename="/" hashType="slash">
             <React.Fragment>
               <MyNavbar />
               <div>
@@ -30,7 +33,7 @@ class App extends React.Component {
                   </Switch>
               </div>
             </React.Fragment>
-        </HashRouter>
+        </HashRouter> */}
       </div>
     );
   }
