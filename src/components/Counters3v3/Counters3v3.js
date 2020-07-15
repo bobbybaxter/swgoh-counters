@@ -27,7 +27,7 @@ const Counters3v3 = (props) => {
 
   const toggleCollapse = input => (setCollapse(collapse === input ? null : input));
 
-  const buildCounterRows = selectedCounters.length
+  const buildCounterRows = selectedCounters && selectedCounters.length > 0
     ? selectedCounters.map(counter => <CounterRow
         collapse={collapse}
         counterTeams={counter.rightSideSquads}

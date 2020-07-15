@@ -19,31 +19,33 @@ const rightList = [
 
 export default function addImageRefs(countersToBuild, allCharacters) {
   const characters = [...allCharacters];
-  const counters = [...countersToBuild];
-  counters.forEach((counter) => {
-    const { leftSideSquad, rightSideSquads } = counter;
+  const counters = countersToBuild;
+  if (counters) {
+    counters.forEach((counter) => {
+      const { leftSideSquad, rightSideSquads } = counter;
 
-    leftList.forEach((prop) => {
-      const matchedCharacter = characters.find(char => char.name === leftSideSquad[`${prop}Name`]);
-      if (matchedCharacter) {
-        const characterImgRoute = matchedCharacter ? matchedCharacter.image.split('/u/').pop().split('/')[0] : null;
-        const characterImg = require(`../components/Counters5v5/characterImages/${characterImgRoute}.png`);
-        leftSideSquad[`${prop}Id`] = matchedCharacter.base_id || null;
-        leftSideSquad[`${prop}Image`] = characterImg || null;
-      }
-    });
-
-    rightSideSquads.forEach((rsSquad) => {
-      rightList.forEach((prop) => {
-        const matchedCharacter = characters.find(char => char.name === rsSquad[`${prop}Name`]);
+      leftList.forEach((prop) => {
+        const matchedCharacter = characters.find(char => char.name === leftSideSquad[`${prop}Name`]);
         if (matchedCharacter) {
-          const characterImgRoute = matchedCharacter.image.split('/u/').pop().split('/')[0];
+          const characterImgRoute = matchedCharacter ? matchedCharacter.image.split('/u/').pop().split('/')[0] : null;
           const characterImg = require(`../components/Counters5v5/characterImages/${characterImgRoute}.png`);
-          rsSquad[`${prop}Id`] = matchedCharacter.base_id || null;
-          rsSquad[`${prop}Image`] = characterImg || null;
+          leftSideSquad[`${prop}Id`] = matchedCharacter.base_id || null;
+          leftSideSquad[`${prop}Image`] = characterImg || null;
         }
       });
+
+      rightSideSquads.forEach((rsSquad) => {
+        rightList.forEach((prop) => {
+          const matchedCharacter = characters.find(char => char.name === rsSquad[`${prop}Name`]);
+          if (matchedCharacter) {
+            const characterImgRoute = matchedCharacter.image.split('/u/').pop().split('/')[0];
+            const characterImg = require(`../components/Counters5v5/characterImages/${characterImgRoute}.png`);
+            rsSquad[`${prop}Id`] = matchedCharacter.base_id || null;
+            rsSquad[`${prop}Image`] = characterImg || null;
+          }
+        });
+      });
     });
-  });
+  }
   return counters;
 }
