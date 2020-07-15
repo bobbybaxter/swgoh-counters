@@ -83,22 +83,24 @@ class App extends React.Component {
 
   getCounters = async () => {
     const counters = await getCounterData();
-    const countersNormal5v5 = addImageRefs(counters.countersNormal5v5, this.state.characters);
-    const countersReverse5v5 = addImageRefs(counters.countersReverse5v5, this.state.characters);
-    const countersNormal3v3 = addImageRefs(counters.countersNormal3v3, this.state.characters);
-    const countersReverse3v3 = addImageRefs(counters.countersReverse3v3, this.state.characters);
-    this.setState({
-      squads: counters.squads,
-      countersNormal5v5,
-      countersReverse5v5,
-      countersNormal3v3,
-      countersReverse3v3,
-    });
-    sessionStorage.setItem('squads', JSON.stringify(this.state.squads));
-    sessionStorage.setItem('countersNormal5v5', JSON.stringify(this.state.countersNormal5v5));
-    sessionStorage.setItem('countersReverse5v5', JSON.stringify(this.state.countersReverse5v5));
-    sessionStorage.setItem('countersNormal3v3', JSON.stringify(this.state.countersNormal3v3));
-    sessionStorage.setItem('countersReverse3v3', JSON.stringify(this.state.countersReverse3v3));
+    if (counters) {
+      const countersNormal5v5 = addImageRefs(counters.countersNormal5v5, this.state.characters);
+      const countersReverse5v5 = addImageRefs(counters.countersReverse5v5, this.state.characters);
+      const countersNormal3v3 = addImageRefs(counters.countersNormal3v3, this.state.characters);
+      const countersReverse3v3 = addImageRefs(counters.countersReverse3v3, this.state.characters);
+      this.setState({
+        squads: counters.squads,
+        countersNormal5v5,
+        countersReverse5v5,
+        countersNormal3v3,
+        countersReverse3v3,
+      });
+      sessionStorage.setItem('squads', JSON.stringify(this.state.squads));
+      sessionStorage.setItem('countersNormal5v5', JSON.stringify(this.state.countersNormal5v5));
+      sessionStorage.setItem('countersReverse5v5', JSON.stringify(this.state.countersReverse5v5));
+      sessionStorage.setItem('countersNormal3v3', JSON.stringify(this.state.countersNormal3v3));
+      sessionStorage.setItem('countersReverse3v3', JSON.stringify(this.state.countersReverse3v3));
+    }
   };
 
   componentDidMount() {
