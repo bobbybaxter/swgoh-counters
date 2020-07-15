@@ -40,7 +40,9 @@
     "client:deploy": "npm run build && aws s3 sync build/ s3://swgohcounters.com"
   },
   "reactSnap": {
-    "puppeteerArgs": ["--disable-web-security"]
+    "puppeteerArgs": [
+      "--disable-web-security"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
