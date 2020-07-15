@@ -24,10 +24,8 @@ import characterData from '../helpers/data/characters.json';
 import firebaseConnection from '../helpers/data/firebaseConnection';
 import firebaseData from '../helpers/data/firebaseData';
 import getCounterData from '../helpers/data/countersData';
-import getSquadData from '../helpers/data/squadsData';
 
-import buildOpponentTeam from '../helpers/buildOpponentTeam';
-import buildSquad from '../helpers/buildSquad';
+import addImageRefs from '../helpers/addImageRefs';
 
 firebaseConnection();
 
@@ -59,11 +57,11 @@ class App extends React.Component {
     data: null,
     authenticated: false,
     characters: characterData.data,
-    squads: [],
-    countersNormal5v5: [],
-    countersReverse5v5: [],
-    countersNormal3v3: [],
-    countersReverse3v3: [],
+    squads: JSON.parse(sessionStorage.getItem('squads')) || [],
+    countersNormal5v5: JSON.parse(sessionStorage.getItem('countersNormal5v5')) || [],
+    countersReverse5v5: JSON.parse(sessionStorage.getItem('countersReverse5v5')) || [],
+    countersNormal3v3: JSON.parse(sessionStorage.getItem('countersNormal3v3')) || [],
+    countersReverse3v3: JSON.parse(sessionStorage.getItem('countersReverse3v3')) || [],
   }
 
   authenticateUser = (authUser) => {
@@ -83,63 +81,32 @@ class App extends React.Component {
     }
   }
 
-  buildSquadObjects = (res, squad, size, view) => {
-    // get the correct counter info
-    const counterInfo = res
-      .filter(x => x.battleType === `${size}v${size}`)
-      .filter(x => (view === 'normal'
-        ? x.opponentTeam === squad.id
-        : x.counterTeam === squad.id
-      ));
-
-    // get the left side squad
-    const leftSideSquad = buildSquad(squad, size, this.state.characters);
-
-    // get the right side squads
-    const rightSideSquads = counterInfo
-      .map(matchup => buildOpponentTeam(
-        matchup, size, this.state.squads, this.state.characters, view,
-      ));
-
-    // put them into an object and push into state
-    const squadObject = rightSideSquads.length ? { leftSideSquad, rightSideSquads } : '';
-    return squadObject;
-  }
-
   getCounters = async () => {
-    await getCounterData()
-      .then((res) => {
-        // seems verbose, but it queues up all of the
-        // counters at once before distributing to child components
-        const normal5 = [];
-        const reverse5 = [];
-        const normal3 = [];
-        const reverse3 = [];
-        this.state.squads.forEach((squad) => {
-          normal5.push(this.buildSquadObjects(res, squad, 5, 'normal'));
-          reverse5.push(this.buildSquadObjects(res, squad, 5, 'reverse'));
-          normal3.push(this.buildSquadObjects(res, squad, 3, 'normal'));
-          reverse3.push(this.buildSquadObjects(res, squad, 3, 'reverse'));
-        });
-        this.setState({ countersNormal5v5: normal5.filter(x => x !== '') });
-        this.setState({ countersReverse5v5: reverse5.filter(x => x !== '') });
-        this.setState({ countersNormal3v3: normal3.filter(x => x !== '') });
-        this.setState({ countersReverse3v3: reverse3.filter(x => x !== '') });
-      })
-      .catch(err => console.error(err));
-  };
-
-  getSquads = async () => {
-    await getSquadData()
-      .then(res => this.setState({ squads: res }))
-      .then(() => this.getCounters())
-      .catch(err => console.error(err));
+    const counters = await getCounterData();
+    const countersNormal5v5 = addImageRefs(counters.countersNormal5v5, this.state.characters);
+    const countersReverse5v5 = addImageRefs(counters.countersReverse5v5, this.state.characters);
+    const countersNormal3v3 = addImageRefs(counters.countersNormal3v3, this.state.characters);
+    const countersReverse3v3 = addImageRefs(counters.countersReverse3v3, this.state.characters);
+    this.setState({
+      squads: counters.squads,
+      countersNormal5v5,
+      countersReverse5v5,
+      countersNormal3v3,
+      countersReverse3v3,
+    });
+    sessionStorage.setItem('squads', JSON.stringify(this.state.squads));
+    sessionStorage.setItem('countersNormal5v5', JSON.stringify(this.state.countersNormal5v5));
+    sessionStorage.setItem('countersReverse5v5', JSON.stringify(this.state.countersReverse5v5));
+    sessionStorage.setItem('countersNormal3v3', JSON.stringify(this.state.countersNormal3v3));
+    sessionStorage.setItem('countersReverse3v3', JSON.stringify(this.state.countersReverse3v3));
   };
 
   componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged(this.authenticateUser);
     ReactGA.pageview(window.location.pathname);
-    this.getSquads();
+    if (!sessionStorage.getItem('squads')) {
+      this.getCounters();
+    }
   }
 
   handleAllyCode = (e) => {
@@ -232,7 +199,8 @@ class App extends React.Component {
                       />
                     } />
                     <Route exact path="/submit" component={ SubmissionForm } />
-{/*
+
+                    {/*
                     <PrivateRoute
                       exact path="/profile"
                       authenticated={authenticated}
