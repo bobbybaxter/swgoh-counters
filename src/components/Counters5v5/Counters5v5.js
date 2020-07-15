@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 /* eslint-disable max-len */
@@ -49,35 +50,29 @@ const Counters5v5 = (props) => {
 
   const toggleTopAd = props.user.patreonId
     ? ''
-    : <div>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        {/* <!-- 5v5 Top ad --> */}
-        <ins className="adsbygoogle"
-          style={{ display: 'block' }}
-          data-ad-client="ca-pub-9103583527998968"
-          data-ad-slot="2779553573"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+    : <div id="734594543">
+          <script type="text/javascript">
+              try {
+                  window._mNHandle.queue.push(() => {
+                    window._mNDetails.loadTag('734594543', '728x90', '734594543');
+                  })
+              }
+              catch (error) {}
+          </script>
       </div>;
 
-  const toggleBottomAd = props.user.patreonId
-    ? ''
-    : <div>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        {/* <!-- 5v5 Bottom Ad --> */}
-        <ins className="adsbygoogle"
-          style={{ display: 'block' }}
-          data-ad-client="ca-pub-9103583527998968"
-          data-ad-slot="7648736876"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>;
+  // const toggleBottomAd = props.user.patreonId
+  //   ? ''
+  //   : <div id="734594543">
+  //         <script type="text/javascript">
+  //             try {
+  //                 window._mNHandle.queue.push(function (){
+  //                     window._mNDetails.loadTag("734594543", "728x90", "734594543");
+  //                 });
+  //             }
+  //             catch (error) {}
+  //         </script>
+  //     </div>
 
   return (
       <div className="Counters5v5">
@@ -116,7 +111,7 @@ const Counters5v5 = (props) => {
             </div>
           </Suspense>
           <footer className="mt-3">
-            {toggleBottomAd}
+            {/* {toggleBottomAd} */}
 
             <div className="d-flex flex-row justify-content-center align-items-center">
               <span className="hardCounterColorBox"></span>
