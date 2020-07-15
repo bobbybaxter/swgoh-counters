@@ -39,6 +39,7 @@
     "dev": "concurrently \"npm run server\" \"npm start\"",
     "client:deploy": "npm run build && aws s3 sync build/ s3://swgohcounters.com"
   },
+  "skipThirdPartyRequests": true,
   "reactSnap": {
     "puppeteerArgs": [
       "--disable-web-security"

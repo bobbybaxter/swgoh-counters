@@ -48,14 +48,17 @@ export default function BuildDescriptions(props) {
         description: counterDescription,
       } = counterTeam;
 
+      const createCounterDescription = () => ({ __html: counterDescription });
+      const createCounterStrategy = () => ({ __html: counterStrategy });
+
       const selectDescriptionData = (side) => {
         if (side === 'left') {
           if (view === 'normal') {
             return (
               <>
-                {(description) ? (<p><strong className="text-secondary">Details: </strong>{description}</p>) : ''}
+                {(description) ? (<p className="text-left"><strong className="text-secondary">Details: </strong>{description}</p>) : ''}
                 {(counterStrategy)
-                  ? (<p><strong className="text-secondary">General Strategy: </strong>{counterStrategy}</p>)
+                  ? (<p className="text-left"><strong className="text-secondary">General Strategy: </strong><span dangerouslySetInnerHTML={createCounterStrategy()}></span></p>)
                   : (<p className="text-secondary"><small>You can help me add common substitutions, a general counter strategy, or details about this team by <a href={submissionForm}>submiting an issue.</a></small></p>)}
                 {(counterStrategy) ? '' : (<p className="text-secondary"><small>You can also join me on <a href={discordLink}>Discord</a> to discuss counters a little further.</small></p>)}
               </>
@@ -64,7 +67,7 @@ export default function BuildDescriptions(props) {
           return (
             <>
             {(counterDescription)
-              ? (<p><strong className="text-secondary">Specific Strategy: </strong>{counterDescription}</p>)
+              ? (<p className="text-left"><strong className="text-secondary ">Specific Strategy: </strong><span dangerouslySetInnerHTML={createCounterDescription()}></span></p>)
               : (<p className="text-secondary"><small>Do you know the strategy to beat the {oppTeamName} team with {name}?  If so, please <a href={submissionForm}>submit an issue.</a></small></p>)}
             {(counterDescription) ? '' : (<p className="text-secondary"><small>You can also join me on <a href={discordLink}>Discord</a> to start a discussion regarding this team.</small></p>)}
             </>
@@ -75,7 +78,7 @@ export default function BuildDescriptions(props) {
             return (
               <>
                 {(counterDescription)
-                  ? (<p><strong className="text-secondary">Specific Strategy: </strong>{counterDescription}</p>)
+                  ? (<p className="text-left"><strong className="text-secondary">Specific Strategy: </strong><span dangerouslySetInnerHTML={createCounterDescription()}></span></p>)
                   : (<p className="text-secondary"><small>Do you know the strategy to beat the {name} team with {oppTeamName}?  If so, please <a href={submissionForm}>submit an issue.</a></small></p>)}
                 {(counterDescription) ? '' : (<p className="text-secondary"><small>You can also join me on <a href={discordLink}>Discord</a> to start a discussion regarding this team.</small></p>)}
               </>
@@ -83,9 +86,9 @@ export default function BuildDescriptions(props) {
           }
           return (
             <>
-              {(oppDetails) ? (<p><strong className="text-secondary">Details: </strong>{oppDetails}</p>) : ''}
+              {(oppDetails) ? (<p className="text-left"><strong className="text-secondary">Details: </strong>{oppDetails}</p>) : ''}
               {(oppCounterStrategy)
-                ? (<p><strong className="text-secondary">General Strategy: </strong>{oppCounterStrategy}</p>)
+                ? (<p className="text-left"><strong className="text-secondary">General Strategy: </strong><span dangerouslySetInnerHTML={createCounterStrategy()}></span></p>)
                 : (<p className="text-secondary"><small>You can help me add common substitutions, a general counter strategy, or details about this team by <a href={submissionForm}>submiting an issue.</a></small></p>)}
               {(oppCounterStrategy) ? '' : (<p className="text-secondary"><small>You can also join me on <a href={discordLink}>Discord</a> to discuss counters a little further.</small></p>)}
             </>
