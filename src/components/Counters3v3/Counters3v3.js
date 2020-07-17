@@ -45,37 +45,43 @@ const Counters3v3 = (props) => {
   const togglePatreonButton = props.user.patreonId
     ? ''
     : <div className="py-3">
-        <a href="https://patreon.com/saiastrange" className="btn patreonBtn">SUPPORT US ON PATREON!</a>
-      </div>;
+        <a href="https://patreon.com/saiastrange" className="btn patreonBtn">
+          SUPPORT US ON PATREON<br/>
+          <small>AND REMOVE ADS!</small>
+        </a>
+    </div>;
 
   const toggleTopAd = props.user.patreonId
     ? ''
-    : <div id="734594543">
-        <script type="text/javascript">
-            try {
-                window._mNHandle.queue.push(() => {
-                  window._mNDetails.loadTag('734594543', '728x90', '734594543');
-                })
-            }
-            catch (error) {}
+    : <div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        {/* <!-- 5v5 Top ad --> */}
+        <ins className="adsbygoogle"
+            style={{ display: 'block' }}
+            data-ad-client="ca-pub-9103583527998968"
+            data-ad-slot="7848951384"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
-    </div>;
+      </div>;
 
-  // const toggleBottomAd = props.user.patreonId
-  //   ? ''
-  //   : <div>
-  //       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  //       {/* <!-- 3v3 Bottom Ad --> */}
-  //       <ins className="adsbygoogle"
-  //           style={{ display: 'block' }}
-  //           data-ad-client="ca-pub-9103583527998968"
-  //           data-ad-slot="9162033056"
-  //           data-ad-format="auto"
-  //           data-full-width-responsive="true"></ins>
-  //       <script>
-  //           (adsbygoogle = window.adsbygoogle || []).push({});
-  //       </script>
-  //     </div>;
+  const toggleBottomAd = props.user.patreonId
+    ? ''
+    : <div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        {/* <!-- 5v5 Bottom Ad --> */}
+        <ins className="adsbygoogle"
+            style={{ display: 'block' }}
+            data-ad-client="ca-pub-9103583527998968"
+            data-ad-slot="9162033056"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>;
 
   return (
       <div className="Counters3v3">
@@ -114,7 +120,7 @@ const Counters3v3 = (props) => {
             </div>
           </Suspense>
           <footer className="mt-3">
-            {/* {toggleBottomAd} */}
+            {toggleBottomAd}
 
             <div className="d-flex flex-row justify-content-center align-items-center">
               <span className="hardCounterColorBox"></span>

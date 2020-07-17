@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import {
   BrowserRouter,
-  // Redirect,
+  Redirect,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -17,7 +17,7 @@ import Counters3v3 from '../components/Counters3v3/Counters3v3';
 import Counters5v5 from '../components/Counters5v5/Counters5v5';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import NotFound from '../components/NotFound/NotFound';
-// import Profile from '../components/Profile/Profile';
+import Account from '../components/Account/Account';
 import SubmissionForm from '../components/SubmissionForm/SubmissionForm';
 
 import characterData from '../helpers/data/characters.json';
@@ -29,19 +29,12 @@ import addImageRefs from '../helpers/addImageRefs';
 
 firebaseConnection();
 
-// const PrivateRoute = ({ component: Component, authenticated, ...rest }) => {
-//   const routeChecker = props => (authenticated === true
-//     ? (<Component {...props} {...rest} />)
-//     : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
-//   return <Route {...rest} render={props => routeChecker(props)} />;
-// };
-
-// const PublicRoute = ({ component: Component, authenticated, ...rest }) => {
-//   const routeChecker = props => (authenticated === false
-//     ? (<Component {...props} {...rest} />)
-//     : (<Redirect to={{ pathname: '/5v5', state: { from: props.location } }} />));
-//   return <Route {...rest} render={props => routeChecker(props)} />;
-// };
+const PrivateRoute = ({ component: Component, authenticated, ...rest }) => {
+  const routeChecker = props => (authenticated === true
+    ? (<Component {...props} {...rest} />)
+    : (<Redirect to={{ pathname: '/', state: { from: props.location } }} />));
+  return <Route {...rest} render={props => routeChecker(props)} />;
+};
 
 const defaultUser = {
   id: '',
@@ -202,16 +195,16 @@ class App extends React.Component {
                     } />
                     <Route exact path="/submit" component={ SubmissionForm } />
 
-                    {/*
+
                     <PrivateRoute
-                      exact path="/profile"
+                      exact path="/account"
                       authenticated={authenticated}
-                      component={Profile}
+                      component={Account}
                       handleClearAllyCode={this.handleClearAllyCode}
                       handleAllyCode={this.handleAllyCode}
                       unlinkPatreonAccount={this.unlinkPatreonAccount}
                       user={user}
-                    /> */}
+                    />
 
                     <Route component={NotFound} />
                   </Switch>
