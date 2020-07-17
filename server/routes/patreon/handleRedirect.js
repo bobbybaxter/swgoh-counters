@@ -33,11 +33,11 @@ module.exports = app => async function handleRedirect(req, res) {
       }
 
       console.log('redirect on success :>> ');
-      res.redirect('https://swgohcounters.com');
+      res.redirect(process.env.BASE_URL);
     })
     .catch((err) => {
       console.log('Error with Patron verification');
       console.log(err);
-      res.redirect('https://swgohcounters.com');
+      res.redirect(process.env.BASE_URL);
     });
 };

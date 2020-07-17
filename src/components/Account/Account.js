@@ -11,9 +11,9 @@ import flatten from '../../helpers/flatten';
 import mergeCharacterAndPlayerData from '../../helpers/mergeCharacterAndPlayerData';
 
 import CharacterTable from '../CharacterTable/CharacterTable';
-import ProfileButtons from '../ProfileButtons/ProfileButtons';
+import AccountButtons from '../AccountButtons/AccountButtons';
 
-import './Profile.scss';
+import './Account.scss';
 import firebaseData from '../../helpers/data/firebaseData';
 
 // TEST: treating /db as localStorage
@@ -25,21 +25,20 @@ const userDataInStorage = JSON.parse(localStorage.getItem('userData'));
 const timeoutDateInStorage = JSON.parse(localStorage.getItem('timeoutDate'));
 const isRefreshDisabledInStorage = JSON.parse(localStorage.getItem('isRefreshDisabled'));
 
-// TODO: config proxy the localhost redirects
-const patreonLink = `https://patreon.com/oauth2/authorize?response_type=code&client_id=${process.env.REACT_APP_PATREON_CLIENT_ID}&redirect_uri=http://localhost:5000/api/patreon/redirect&scope=identity${encodeURI('[email]')}%20identity`;
+const patreonLink = `https://patreon.com/oauth2/authorize?response_type=code&client_id=${process.env.REACT_APP_PATREON_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_PATREON_REDIRECT}&scope=identity${encodeURI('[email]')}%20identity`;
 
 // TODO: Add proptypes
 // TODO: Add tests
 // TODO: Add react-meta-tags
-export default function Profile(props) {
+export default function Account(props) {
   const [userData, setUserData] = useState(userDataInStorage || '');
   const [userUnits, setUserUnits] = useState(userUnitsInStorage || '');
   const [isRefreshDisabled, setIsRefreshDisabled] = useState(isRefreshDisabledInStorage || false);
   const [timeoutCompletionDate, setTimeoutCompletionDate] = useState(timeoutDateInStorage || '');
 
   const setTimeout = () => {
-    const timeoutDate = new Date().getTime() + 10000;
-    // const timeoutDate = new Date().getTime() + 86400000;
+    // const timeoutDate = new Date().getTime() + 10000; // used for testing
+    const timeoutDate = new Date().getTime() + 86400000;
     setTimeoutCompletionDate(timeoutDate);
     localStorage.setItem('timeoutDate', timeoutDate);
   };
@@ -140,37 +139,59 @@ export default function Profile(props) {
   };
 
   const togglePatreonButton = !props.user.patreonId
-    ? <Button className="btn-sm mr-1" href={patreonLink}>
+    ? <Button className="btn-sm" href={patreonLink}>
           Link Patreon
         </Button>
-    : <Button className="btn-sm mr-1" onClick={handleUnlinkPatreonAccount}>
+    : <Button className="btn-sm" onClick={handleUnlinkPatreonAccount}>
           Unlink Patreon
         </Button>;
 
   return (
-    <div className="Profile">
+    <div className="Account">
       <MetaTags>
-        <title>Profile</title>
+        <title>Account</title>
         <meta name="description" content="Link your SWGOH allycode and Patreon email"/>
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </MetaTags>
-      <div className="profileWrapper">
-        <h1>{userData ? userData.name : ''}</h1>
-        {userUnits ? '' : allyCodeForm}
-        {togglePatreonButton}
-        <div className="profileButtons">
-          <ProfileButtons
-            user={props.user}
-            key="profileButtons"
-            timeoutCompletionDate={timeoutCompletionDate}
-            haveUserUnits={!!userUnits}
-            refreshPlayerData={refreshPlayerData}
-            clearAllyCode={clearAllyCode}
-            isRefreshDisabled={isRefreshDisabled}
-            enableRefreshButtons={enableRefreshButtons}
-            disableRefreshButtons={disableRefreshButtons}
-          />
+      <div className="accountWrapper">
+        <div className="accountHeader">
+          <div className="accountHeaderLeft col-4">
+          </div>
+          <div className="accountHeaderCenter col-4">
+            {userUnits ? <h1>{userData.name}</h1> : allyCodeForm}
+          </div>
+          <div className="accountHeaderRight col-4">
+            <table>
+              <tbody>
+                <tr>
+                  <td>Ally Code: </td>
+                  <td>{userData ? userData.ally_code : ''}</td>
+                </tr>
+                <tr>
+                  <td>Last Updated: </td>
+                  <td>{userData ? new Date(userData.last_updated).toLocaleString() : ''}</td>
+                </tr>
+                <tr>
+                  <td>Patreon: </td>
+                  <td>{togglePatreonButton}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div className="accountButtons">
+              <AccountButtons
+                user={props.user}
+                key="accountButtons"
+                timeoutCompletionDate={timeoutCompletionDate}
+                haveUserUnits={!!userUnits}
+                refreshPlayerData={refreshPlayerData}
+                clearAllyCode={clearAllyCode}
+                isRefreshDisabled={isRefreshDisabled}
+                enableRefreshButtons={enableRefreshButtons}
+                disableRefreshButtons={disableRefreshButtons}
+              />
+            </div>
+          </div>
         </div>
         {/* <Button onClick={handleMerge}>Merge</Button> */}
 

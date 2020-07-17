@@ -5,11 +5,11 @@ import { Button } from 'reactstrap';
 
 import convertToTwoDigits from '../../helpers/convertToTwoDigits';
 
-import './ProfileButtons.scss';
+import './AccountButtons.scss';
 
 // TODO: Add proptypes
 // TODO: Add tests
-export default function ProfileButtons(props) {
+export default function AccountButtons(props) {
   const timeoutDateInStorage = JSON.parse(localStorage.getItem('timeoutDate'));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const calculateTimeLeft = useCallback(() => {
@@ -68,8 +68,8 @@ export default function ProfileButtons(props) {
   }, [props, timerComponents.length]);
 
   return (
-    <div className="ProfileButtons">
-      <div className="refreshElements">
+    <div className="AccountButtons">
+      <div className="refreshElements mt-1">
         {
           !props.haveUserUnits
             ? ''
