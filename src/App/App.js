@@ -207,6 +207,7 @@ class App extends React.Component {
                     />
 
                     <Route component={NotFound} />
+                    <Redirect from="*" to="/" />
                   </Switch>
               </div>
             </React.Fragment>

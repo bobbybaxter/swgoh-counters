@@ -11,13 +11,14 @@ import {
 import MetaTags from 'react-meta-tags';
 
 import './Counters5v5.scss';
+import AdsenseAd from '../AdsenseAd/AdsenseAd';
+
+const isSnap = navigator.userAgent === 'ReactSnap';
 
 const CounterRow = lazy(() => import('../CounterRow/CounterRow'));
 
-// TODO: consolidate shared code with Counters3v3
 // TODO: Add proptypes
 // TODO: Add tests
-// TODO: Add react-meta-tags
 const Counters5v5 = (props) => {
   const [collapse, setCollapse] = useState([]);
   const [view, setView] = useState('normal');
@@ -51,37 +52,9 @@ const Counters5v5 = (props) => {
         </a>
     </div>;
 
-  const toggleTopAd = props.user.patreonId
+  const toggleAd = adSlot => (isSnap
     ? ''
-    : <div>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        {/* <!-- 5v5 Top ad --> */}
-        <ins className="adsbygoogle"
-            style={{ display: 'block' }}
-            data-ad-client="ca-pub-9103583527998968"
-            data-ad-slot="2779553573"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>;
-
-  const toggleBottomAd = props.user.patreonId
-    ? ''
-    : <div>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        {/* <!-- 5v5 Bottom Ad --> */}
-        <ins className="adsbygoogle"
-            style={{ display: 'block' }}
-            data-ad-client="ca-pub-9103583527998968"
-            data-ad-slot="7648736876"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>;
+    : <AdsenseAd adSlot={adSlot}/>);
 
   return (
       <div className="Counters5v5">
@@ -91,12 +64,12 @@ const Counters5v5 = (props) => {
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </MetaTags>
-        <script data-ad-client="ca-pub-9103583527998968" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
         <div className="contentWrapper">
 
           {togglePatreonButton}
-          {toggleTopAd}
+          <div>
+            {props.user.patreonId ? '' : toggleAd('2779553573')}
+          </div>
 
           <div className="columnTitles">
             <h1 className="col-3 mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
@@ -120,7 +93,10 @@ const Counters5v5 = (props) => {
             </div>
           </Suspense>
           <footer className="mt-3">
-            {toggleBottomAd}
+          {togglePatreonButton}
+          <div>
+            {props.user.patreonId ? '' : toggleAd('7648736876')}
+          </div>
 
             <div className="d-flex flex-row justify-content-center align-items-center">
               <span className="hardCounterColorBox"></span>
@@ -132,8 +108,6 @@ const Counters5v5 = (props) => {
               <strong>Note:</strong> Darth Revan (with or without Malak) is a hard counter unless it is listed as a soft counter<br/>
             </div>
             <div className="offset-2 col-8 border-dark border-top"></div>
-
-            {togglePatreonButton}
           </footer>
         </div>
       </div>
