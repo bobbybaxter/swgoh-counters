@@ -66,7 +66,7 @@ export default function MyNavbar(props) {
                 <NavLink tag={RRNavLink} exact to="/">5v5</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={RRNavLink} to="/3v3/">3v3</NavLink>
+                <NavLink tag={RRNavLink} to="/3v3">3v3</NavLink>
               </NavItem>
               { !props.authenticated ? '' : (
                 <NavItem>
