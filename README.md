@@ -1,7 +1,7 @@
 # SWGOH Counters
 A companion app for the mobile game Star Wars: Galaxy of Heroes, which provides PvP team counters using React.js as a front-end framework and Google Sheets as a back-end.
 
-**Website:** [https://bobbybaxter.github.io/swgoh-counters](https://swgohcounters.com)
+**Website:** [https://swgohcounters.com](https://swgohcounters.com)
 
 **Wiki:** [https://github.com/bobbybaxter/swgoh-counters/wiki](https://github.com/bobbybaxter/swgoh-counters/wiki)
 
