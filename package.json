@@ -36,7 +36,7 @@
     "eject": "react-scripts eject",
     "deploy": "npm run build && gh-pages -d build",
     "server": "LOG_LEVEL=debug nodemon server/index.js | pino-pretty",
-    "dev": "concurrently \"npm run server\" \"npm start\"",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm start\"",
     "client:deploy": "npm run build && aws s3 sync build/ s3://swgohcounters.com"
   },
   "skipThirdPartyRequests": true,

@@ -1,6 +1,9 @@
 /node_modules
 /coverage
 
+# Google API
+/google-sheets-service-account.json
+
 # Firebase
 firebase-service-account.json
 firebase-config.js

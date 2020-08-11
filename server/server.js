@@ -31,6 +31,7 @@ module.exports = (app) => {
       return callback(null, true);
     },
   }));
+  server.options('*', cors()); // Enable CORS-Pre-Flight
 
   server.use(require('./routes')(app));
 
