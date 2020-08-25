@@ -48,7 +48,7 @@ const Counters3v3 = (props) => {
     : <div className="py-3">
         <a href="https://patreon.com/saiastrange" className="btn patreonBtn">
           SUPPORT US ON PATREON<br/>
-          <small>AND REMOVE ADS!</small>
+          <small>TO REMOVE ADS!</small>
         </a>
     </div>;
 
@@ -92,19 +92,19 @@ const Counters3v3 = (props) => {
               {buildCounterRows || ''}
             </div>
           </Suspense>
-          <footer className="mt-3">
+          <footer>
           {togglePatreonButton}
           <div>
             {props.user.patreonId ? '' : toggleAd('9162033056')}
           </div>
 
-            <div className="d-flex flex-row justify-content-center align-items-center">
+            <div className="py-3 d-flex flex-row justify-content-center align-items-center">
               <span className="hardCounterColorBox"></span>
                 <h6 className="mb-0 mr-4">Hard Counter</h6>
               <span className="softCounterColorBox"></span>
                 <h6 className="mb-0">Soft Counter</h6>
             </div>
-            <div className="py-3">
+            <div className="pb-3">
               <strong>Note:</strong> Darth Revan (with or without Malak) is a hard counter unless it is listed as a soft counter<br/>
             </div>
             <div className="offset-2 col-8 border-dark border-top"></div>
