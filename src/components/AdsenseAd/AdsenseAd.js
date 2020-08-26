@@ -27,7 +27,7 @@ class AdsenseAd extends React.Component {
     } = this.props;
     return (
       <div className="AdsenseAd">
-        <div key={adSlot} className="adslot_1">
+        <div key={adSlot} className="adslot_1 py-1">
           <ins
             className="adsbygoogle"
             style={{
@@ -35,7 +35,7 @@ class AdsenseAd extends React.Component {
               'min-width': '400px',
               'max-width': '970px',
               width: '100%',
-              height: '90p',
+              height: '90px',
             }}
             data-ad-client="ca-pub-9103583527998968"
             data-ad-slot={adSlot}

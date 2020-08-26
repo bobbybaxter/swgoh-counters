@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Collapse,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
+  // DropdownItem,
+  // DropdownMenu,
+  // DropdownToggle,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
+  // UncontrolledDropdown,
 } from 'reactstrap';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -68,12 +68,26 @@ export default function MyNavbar(props) {
               <NavItem>
                 <NavLink tag={RRNavLink} to="/3v3">3v3</NavLink>
               </NavItem>
+              <span className="navDivider border-left border-secondary"></span>
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/submit">Submit Issue</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://patreon.com/saiastrange">Patreon</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://discord.gg/eCnE48h">Discord</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</NavLink>
+              </NavItem>
+              <span className="navDivider border-left border-secondary"></span>
               { !props.authenticated ? '' : (
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/account">Account</NavLink>
                 </NavItem>
               ) }
-              <UncontrolledDropdown nav inNavbar>
+              {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>Links</DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem tag={RRNavLink} to="/submit">Submit Issue</DropdownItem>
@@ -81,7 +95,7 @@ export default function MyNavbar(props) {
                   <DropdownItem href="https://discord.gg/eCnE48h">Discord</DropdownItem>
                   <DropdownItem href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</DropdownItem>
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
               {selectLoginOrLogout}
             </Nav>
           </Collapse>
