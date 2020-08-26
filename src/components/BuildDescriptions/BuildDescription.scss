@@ -1,0 +1,18 @@
+.videoButton {
+  font-size: .7rem;
+  text-align: center;
+  padding: .25rem;
+  box-shadow: inset 4px 4px 15px rgba(0, 0, 0, 0.15), inset -4px -4px 15px rgba(255, 255, 255, 0.15);
+}
+
+@media only screen and (min-width:600px) {
+  .videoButton {
+    font-size: .75rem;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .videoButton {
+    font-size: 1rem;
+  }
+}
