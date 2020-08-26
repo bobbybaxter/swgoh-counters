@@ -2,16 +2,12 @@ import React, { useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Collapse,
-  // DropdownItem,
-  // DropdownMenu,
-  // DropdownToggle,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink,
-  // UncontrolledDropdown,
 } from 'reactstrap';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -57,7 +53,7 @@ export default function MyNavbar(props) {
   // TODO: Add tests
   return (
       <div className="MyNavbar">
-        <Navbar color="dark" dark expand="md">
+        <Navbar dark expand="md">
           <NavbarBrand>SWGOH Counters</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
@@ -87,15 +83,6 @@ export default function MyNavbar(props) {
                   <NavLink tag={RRNavLink} to="/account">Account</NavLink>
                 </NavItem>
               ) }
-              {/* <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>Links</DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem tag={RRNavLink} to="/submit">Submit Issue</DropdownItem>
-                  <DropdownItem href="https://patreon.com/saiastrange">Patreon</DropdownItem>
-                  <DropdownItem href="https://discord.gg/eCnE48h">Discord</DropdownItem>
-                  <DropdownItem href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown> */}
               {selectLoginOrLogout}
             </Nav>
           </Collapse>

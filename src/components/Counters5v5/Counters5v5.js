@@ -83,7 +83,7 @@ const Counters5v5 = (props) => {
                 }
               </small>
             </div>
-            <Button className="btn-sm col-2 reverseCounterButton" onClick={handleReverseCounter}>
+            <Button className="btn-sm col-2 reverseCounterButton" color="warning" onClick={handleReverseCounter}>
               {view === 'normal' ? 'Normal View' : 'Reverse View'}
             </Button>
           </div>
