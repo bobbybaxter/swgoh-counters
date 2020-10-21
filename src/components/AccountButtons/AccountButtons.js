@@ -1,5 +1,8 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { Button } from 'reactstrap';
+import { importSquadData } from '../../helpers/data/squadsData';
+import { getAllCharacters, importCharacterData } from '../../helpers/data/characterData';
+import { importCounterData } from '../../helpers/data/countersData';
 
 // import firebaseData from '../../helpers/data/firebaseData';
 
@@ -67,6 +70,28 @@ export default function AccountButtons(props) {
     }
   }, [props, timerComponents.length]);
 
+  const importCharacters = async () => {
+    const characters = await getAllCharacters();
+    const response = await importCharacterData(characters);
+    console.log('response :>> ', response);
+  };
+
+  const importSquads = async () => {
+    try {
+      await importSquadData();
+    } catch (err) {
+      console.log('err :>> ', err);
+    }
+  };
+
+  const importCounters = async () => {
+    try {
+      await importCounterData();
+    } catch (err) {
+      console.log('err :>> ', err);
+    }
+  };
+
   return (
     <div className="AccountButtons">
       <div className="refreshElements mt-1">
@@ -87,6 +112,30 @@ export default function AccountButtons(props) {
                 onClick={props.clearAllyCode}
                 disabled={props.isRefreshDisabled}
               >Clear Ally Code</Button>
+        }
+        {
+          !props.haveUserUnits
+            ? ''
+            : <Button
+                className="btn-sm ml-1"
+                onClick={importCharacters}
+              >Import Characters</Button>
+        }
+        {
+          !props.haveUserUnits
+            ? ''
+            : <Button
+                className="btn-sm mx-1"
+                onClick={importSquads}
+              >Import Squads</Button>
+        }
+        {
+          !props.haveUserUnits
+            ? ''
+            : <Button
+                className="btn-sm"
+                onClick={importCounters}
+              >Import Counters</Button>
         }
       </div>
       {

@@ -1,0 +1,2 @@
+SELECT id
+FROM squad

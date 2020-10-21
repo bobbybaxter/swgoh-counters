@@ -8,8 +8,10 @@ module.exports = (app) => {
     .use(bodyParser.json());
 
   router
-    .use('/api/counters', require('./counter')(app))
-    .use('/api/squads', require('./squad')(app))
+    .use('/api/import', require('./import')(app))
+    .use('/api/character', require('./character')(app))
+    .use('/api/counter', require('./counter')(app))
+    .use('/api/squad', require('./squad')(app))
     .use('/api/user', require('./user')(app))
     .use('/api/firebase', require('./firebase')(app))
     .use('/api/patreon', require('./patreon')(app));

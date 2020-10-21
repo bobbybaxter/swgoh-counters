@@ -9,11 +9,13 @@ const renameKeys = (keysMap, objToMap) => {
     {},
   );
 
-  if (test.hasOwnProperty('toon1Req')) { test.leaderReq = (test.leaderReq === 'true'); }
-  if (test.hasOwnProperty('toon2Req')) { test.toon2Req = (test.toon2Req === 'true'); }
-  if (test.hasOwnProperty('toon3Req')) { test.toon3Req = (test.toon3Req === 'true'); }
-  if (test.hasOwnProperty('toon4Req')) { test.toon4Req = (test.toon4Req === 'true'); }
-  if (test.hasOwnProperty('toon5Req')) { test.toon5Req = (test.toon5Req === 'true'); }
+  if (!test.hasOwnProperty('description')) { test.description = ''; }
+  if (!test.hasOwnProperty('video')) { test.video = ''; }
+  if (test.hasOwnProperty('leaderReq')) { test.leaderReq = (test.leaderReq === 'TRUE'); }
+  if (test.hasOwnProperty('toon2Req')) { test.toon2Req = (test.toon2Req === 'TRUE'); }
+  if (test.hasOwnProperty('toon3Req')) { test.toon3Req = (test.toon3Req === 'TRUE'); }
+  if (test.hasOwnProperty('toon4Req')) { test.toon4Req = (test.toon4Req === 'TRUE'); }
+  if (test.hasOwnProperty('toon5Req')) { test.toon5Req = (test.toon5Req === 'TRUE'); }
   if (test.hasOwnProperty('stratNeeded')) { test.stratNeeded = (test.stratNeeded === 'TRUE'); }
   if (test.hasOwnProperty('isHardCounter')) { test.isHardCounter = (test.isHardCounter === 'TRUE'); }
 

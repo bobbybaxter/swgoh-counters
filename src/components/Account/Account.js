@@ -29,7 +29,6 @@ const patreonLink = `https://patreon.com/oauth2/authorize?response_type=code&cli
 
 // TODO: Add proptypes
 // TODO: Add tests
-// TODO: Add react-meta-tags
 export default function Account(props) {
   const [userData, setUserData] = useState(userDataInStorage || '');
   const [userUnits, setUserUnits] = useState(userUnitsInStorage || '');

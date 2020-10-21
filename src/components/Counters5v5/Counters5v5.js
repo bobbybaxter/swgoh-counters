@@ -1,43 +1,57 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
 /* eslint-disable max-len */
 import React, {
-  useState, Suspense, lazy,
+  useEffect, useState,
 } from 'react';
-import {
-  Button,
-} from 'reactstrap';
+import { Button } from 'reactstrap';
 import MetaTags from 'react-meta-tags';
+import PropTypes from 'prop-types';
 
 import './Counters5v5.scss';
 import AdsenseAd from '../AdsenseAd/AdsenseAd';
+import { getSquadStubs } from '../../helpers/data/squadsData';
+import CounterRow from '../CounterRow/CounterRow';
 
 const isSnap = navigator.userAgent === 'ReactSnap';
 
-const CounterRow = lazy(() => import('../CounterRow/CounterRow'));
-
-// TODO: Add proptypes
 // TODO: Add tests
-const Counters5v5 = (props) => {
-  const [collapse, setCollapse] = useState([]);
+const Counters5v5 = React.memo((props) => {
+  Counters5v5.propTypes = {
+    user: PropTypes.shape({
+      allyCode: PropTypes.string,
+      email: PropTypes.string,
+      id: PropTypes.string,
+      patreonId: PropTypes.string,
+      patronStatus: PropTypes.string,
+    }).isRequired,
+  };
+
+  const [collapse, setCollapse] = useState(null);
   const [view, setView] = useState('normal');
+  const [stubsNormal, setStubsNormal] = useState();
+  const [stubsReverse, setStubsReverse] = useState();
 
-  const { countersNormal, countersReverse } = props;
-  const selectedCounters = view === 'normal' ? countersNormal : countersReverse;
+  useEffect(() => {
+    async function getStubs() {
+      const { normal, reverse } = await getSquadStubs('5v5');
+      await setStubsNormal(normal);
+      await setStubsReverse(reverse);
+    }
 
+    getStubs();
+  }, []);
+
+  const selectedStubs = view === 'normal' ? stubsNormal : stubsReverse;
   const toggleCollapse = input => (setCollapse(collapse === input ? null : input));
 
-  const buildCounterRows = selectedCounters && selectedCounters.length > 0
-    ? selectedCounters.map(counter => <CounterRow
-        collapse={collapse}
-        counterTeams={counter.rightSideSquads}
-        key={counter.leftSideSquad.id}
-        squadWithCharData={counter.leftSideSquad}
-        toggleCollapse={toggleCollapse}
-        view={view}
-      />)
-    : '';
+  const buildCounterRows = selectedStubs && selectedStubs.length
+    ? selectedStubs.map(stub => <CounterRow
+            collapse={collapse}
+            key={`${view}_5v5_${stub.id}`}
+            leftSquadStub={stub}
+            toggleCollapse={toggleCollapse}
+            view={view}
+          />)
+    : null;
 
   const handleReverseCounter = () => {
     setView(view === 'normal' ? 'reverse' : 'normal');
@@ -87,11 +101,11 @@ const Counters5v5 = (props) => {
               {view === 'normal' ? 'Normal View' : 'Reverse View'}
             </Button>
           </div>
-          <Suspense fallback={<div className="dark">Loading...</div>}>
-            <div className="columnTeams">
-              {buildCounterRows || ''}
-            </div>
-          </Suspense>
+
+          <div className="columnTeams">
+            {buildCounterRows || ''}
+          </div>
+
           <footer>
             {togglePatreonButton}
             <div>
@@ -112,6 +126,6 @@ const Counters5v5 = (props) => {
         </div>
       </div>
   );
-};
+});
 
 export default Counters5v5;

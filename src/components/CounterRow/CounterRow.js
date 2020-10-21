@@ -1,28 +1,87 @@
-import React from 'react';
+/* eslint-disable max-len */
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import getImage from '../../helpers/getImage';
 
-import BuildDescriptions from '../BuildDescriptions/BuildDescriptions';
-import BuildHardCounters from '../BuildHardCounters/BuildHardCounters';
-import BuildSoftCounters from '../BuildSoftCounters/BuildSoftCounters';
+import CounterRowDescription from '../CounterRowDescription/CounterRowDescription';
+import CounterRowSquad from '../CounterRowSquad/CounterRowSquad';
 
 import './CounterRow.scss';
+import { getCounterStubsBySquadId } from '../../helpers/data/countersData';
 
-// TODO: Add proptypes
 // TODO: Add tests
 export default function CounterRow(props) {
+  CounterRow.propTypes = {
+    collapse: PropTypes.string,
+    leftSquadStub: PropTypes.object.isRequired,
+    toggleCollapse: PropTypes.func.isRequired,
+    view: PropTypes.string.isRequired,
+  };
+
   const {
-    collapse,
-    counterTeams,
-    squadWithCharData: opponentTeam,
-    toggleCollapse,
-    view,
+    collapse, leftSquadStub, toggleCollapse, view,
   } = props;
 
+  const storedStubs = JSON.parse(sessionStorage.getItem(`${view}_${leftSquadStub.id}`));
+  const [counterStubs, setCounterStubs] = useState(storedStubs);
+
   const toggle = (e) => { toggleCollapse(e.target.id); };
-  const hardCounters = counterTeams.filter(x => x.isHardCounter === true);
-  const softCounters = counterTeams.filter(x => x.isHardCounter === false);
+
+  useEffect(() => {
+    // abortController cleans up cancelled requests
+    const abortController = new AbortController();
+    const opts = { signal: abortController.signal };
+
+    // TODO: get indexedDB to work
+    async function getCounterStubs() {
+      try {
+        console.log('still requested');
+        const stubs = await getCounterStubsBySquadId(leftSquadStub.id, view, '5v5', opts);
+        setCounterStubs(stubs);
+        sessionStorage.setItem(`${view}_${leftSquadStub.id}`, JSON.stringify(stubs));
+      } catch (e) {
+        abortController.abort();
+        if (!abortController.signal.aborted) {
+          console.log('e :>> ', e);
+        }
+      }
+    }
+
+    if (!counterStubs) {
+      getCounterStubs();
+    }
+
+    return () => {
+      abortController.abort();
+    };
+  }, [counterStubs, leftSquadStub.id, view]);
+
+  const hardCounters = counterStubs ? counterStubs.rightSquadStubs.filter(x => x.isHardCounter === 1) : [];
+  const softCounters = counterStubs ? counterStubs.rightSquadStubs.filter(x => x.isHardCounter === 0) : [];
   const divider = <div className={hardCounters.length > 0 && softCounters.length > 0
     ? 'borderSpace border-dark border-right'
     : ''}></div>;
+
+  const buildCounters = (squads, type) => squads
+    .map(squad => <CounterRowSquad
+        key={`${view}_5v5_${squad.counterId}_row`}
+        squad={squad}
+        toggle={toggle}
+        type={type}
+      />);
+
+  const buildCounterDescriptions = counterStubs
+    ? counterStubs.rightSquadStubs.map(rightSquadStub => (
+        <CounterRowDescription
+          collapse={collapse}
+          key={`${view}_5v5_${rightSquadStub.counterId}_description`}
+          rightSquadStub={rightSquadStub}
+          view={view}
+        />
+    ))
+    : null;
+
+  // TODO: make button to add counters, possibly add a circle with a plus sign after the last soft counter
   const renderedRow = <div className="CounterRow">
         <div className="d-flex flex-row">
 
@@ -31,32 +90,27 @@ export default function CounterRow(props) {
             <div className="opponentCard">
               <img
                 className="toonImg grayImg"
-                src={opponentTeam.leaderImage}
-                title={opponentTeam.name}
-                alt={opponentTeam.name}
+                src={ getImage(leftSquadStub.toon1Id) }
+                title={leftSquadStub.name}
+                alt={leftSquadStub.name}
               />
-              <h6 className="teamName">{opponentTeam.name}</h6>
+              <h6 className="teamName">{leftSquadStub.name}</h6>
             </div>
           </div>
 
           {/* Right Side Counter Div */}
           <div className="countersRow col-9 border-dark border-bottom border-left">
             <div className="insideCountersRow">
-              <BuildHardCounters counterTeams={counterTeams} toggle={toggle} />
+              {hardCounters ? buildCounters(hardCounters, 'hard') : []}
               {divider}
-              <BuildSoftCounters counterTeams={counterTeams} toggle={toggle} />
+              {softCounters ? buildCounters(softCounters, 'soft') : []}
             </div>
           </div>
         </div>
 
         {/* Collapsable Description Card */}
         <div>
-          <BuildDescriptions
-            collapse={collapse}
-            counterTeams={counterTeams}
-            squadWithCharData={opponentTeam}
-            view={view}
-          />
+          {buildCounterDescriptions}
         </div>
       </div>;
 

@@ -3,7 +3,6 @@ import MetaTags from 'react-meta-tags';
 
 import './SubmissionForm.scss';
 
-// TODO: Add react-meta-tags
 export default function SubmissionForm() {
   return (
     <div className="SubmissionForm">

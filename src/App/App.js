@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable max-len */
 import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -20,12 +18,9 @@ import NotFound from '../components/NotFound/NotFound';
 import Account from '../components/Account/Account';
 import SubmissionForm from '../components/SubmissionForm/SubmissionForm';
 
-import characterData from '../helpers/data/characters.json';
 import firebaseConnection from '../helpers/data/firebaseConnection';
 import firebaseData from '../helpers/data/firebaseData';
-import getCounterData from '../helpers/data/countersData';
-
-import addImageRefs from '../helpers/addImageRefs';
+import { getSquadData, getSquadVersionDate } from '../helpers/data/squadsData';
 
 firebaseConnection();
 
@@ -44,17 +39,16 @@ const defaultUser = {
   patronStatus: '',
 };
 
+const storedVersionDate = sessionStorage.getItem('squadVersionDate');
+const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
+
 class App extends React.Component {
   state = {
     user: defaultUser,
     data: null,
     authenticated: false,
-    characters: characterData.data,
-    squads: JSON.parse(sessionStorage.getItem('squads')) || [],
-    countersNormal5v5: JSON.parse(sessionStorage.getItem('countersNormal5v5')) || [],
-    countersReverse5v5: JSON.parse(sessionStorage.getItem('countersReverse5v5')) || [],
-    countersNormal3v3: JSON.parse(sessionStorage.getItem('countersNormal3v3')) || [],
-    countersReverse3v3: JSON.parse(sessionStorage.getItem('countersReverse3v3')) || [],
+    squadVersionDate: storedVersionDate,
+    squads: storedSquads,
   }
 
   authenticateUser = (authUser) => {
@@ -74,33 +68,32 @@ class App extends React.Component {
     }
   }
 
-  getCounters = async () => {
-    const counters = await getCounterData();
-    if (counters) {
-      const countersNormal5v5 = addImageRefs(counters.countersNormal5v5, this.state.characters);
-      const countersReverse5v5 = addImageRefs(counters.countersReverse5v5, this.state.characters);
-      const countersNormal3v3 = addImageRefs(counters.countersNormal3v3, this.state.characters);
-      const countersReverse3v3 = addImageRefs(counters.countersReverse3v3, this.state.characters);
-      this.setState({
-        squads: counters.squads,
-        countersNormal5v5,
-        countersReverse5v5,
-        countersNormal3v3,
-        countersReverse3v3,
-      });
-      sessionStorage.setItem('squads', JSON.stringify(this.state.squads));
-      sessionStorage.setItem('countersNormal5v5', JSON.stringify(this.state.countersNormal5v5));
-      sessionStorage.setItem('countersReverse5v5', JSON.stringify(this.state.countersReverse5v5));
-      sessionStorage.setItem('countersNormal3v3', JSON.stringify(this.state.countersNormal3v3));
-      sessionStorage.setItem('countersReverse3v3', JSON.stringify(this.state.countersReverse3v3));
-    }
-  };
+  getSquads = async () => {
+    const results = await getSquadData();
+    this.setState({ squads: results });
+    sessionStorage.setItem('squads', JSON.stringify(results));
+  }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged(this.authenticateUser);
     ReactGA.pageview(window.location.pathname);
-    if (!sessionStorage.getItem('squads')) {
-      this.getCounters();
+
+    const storedDate = sessionStorage.getItem('squadVersionDate');
+    const { lastUpdate } = await getSquadVersionDate();
+
+    // gets squads every time = remove after testing
+    // this.getSquads();
+
+    if (!storedDate) {
+      sessionStorage.setItem('squadVersionDate', lastUpdate);
+      this.setState({ squadVersionDate: lastUpdate });
+      this.getSquads();
+    }
+
+    if (storedDate && storedDate < lastUpdate) {
+      sessionStorage.setItem('squadVersionDate', lastUpdate);
+      this.setState({ squadVersionDate: lastUpdate });
+      this.getSquads();
     }
   }
 
@@ -182,17 +175,15 @@ class App extends React.Component {
                     <Route exact path="/" render={props => <Counters5v5
                         {...props}
                         user={user}
-                        countersNormal={this.state.countersNormal5v5}
-                        countersReverse={this.state.countersReverse5v5}
+                        // squads={squads}
                       />
                     } />
-                    <Route exact path="/3v3" render={props => <Counters3v3
+                    {/* <Route exact path="/3v3" render={props => <Counters3v3
                         {...props}
                         user={user}
-                        countersNormal={this.state.countersNormal3v3}
-                        countersReverse={this.state.countersReverse3v3}
+                        squads={squads}
                       />
-                    } />
+                    } /> */}
                     <Route exact path="/submit" component={ SubmissionForm } />
 
 

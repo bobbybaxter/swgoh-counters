@@ -7,14 +7,16 @@
   "proxy": "http://127.0.0.1:5000",
   "scarfSettings.enabled": false,
   "dependencies": {
+    "@loadable/component": "^5.13.2",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "concurrently": "^5.2.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^13.2.0",
-    "firebase": "^7.15.2",
+    "firebase": "^7.22.0",
     "history": "^4.10.1",
+    "idb": "^5.0.7",
     "jquery": "^3.5.1",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
@@ -24,12 +26,13 @@
     "react-ga": "^2.7.0",
     "react-meta-tags": "^0.7.4",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^3.4.3",
     "react-table": "^7.2.1",
     "reactstrap": "^8.4.1"
   },
   "scripts": {
     "start": "react-scripts start --ignore server",
+    "lint": "eslint . --fix",
     "build": "react-scripts build",
     "postbuild": "react-snap --disable-web-security",
     "test": "react-scripts test",
@@ -45,8 +48,43 @@
       "--disable-web-security"
     ]
   },
+  "eslintIgnore": [
+    "**/*.sql"
+  ],
   "eslintConfig": {
-    "extends": "react-app"
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "extends": [
+      "airbnb-base",
+      "react-app"
+    ],
+    "globals": {
+      "document": true,
+      "window": true,
+      "allowTemplateLiterals": true
+    },
+    "reportUnusedDisableDirectives": true,
+    "root": true,
+    "rules": {
+      "no-console": [
+        1,
+        {
+          "allow": [
+            "error",
+            "log"
+          ]
+        }
+      ],
+      "no-debugger": 1,
+      "class-methods-use-this": 0,
+      "linebreak-style": 0,
+      "global-require": "off"
+    }
   },
   "browserslist": {
     "production": [

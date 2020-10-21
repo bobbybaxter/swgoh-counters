@@ -1,0 +1,14 @@
+SELECT
+	s.id,
+	s.name,
+  sv.toon1Id,
+	c2.latestCounterVersion
+FROM squad s
+JOIN squadVersion sv ON s.latestVersionId = sv.id
+JOIN (SELECT ??, MAX(cv.createdOn) AS 'latestCounterVersion'
+	FROM counter c
+	JOIN counterVersion cv ON c.latestVersionId = cv.id
+	WHERE battleType = ?
+	GROUP BY ??) c2 ON ?? = s.id
+ORDER BY s.name
+LIMIT 1
