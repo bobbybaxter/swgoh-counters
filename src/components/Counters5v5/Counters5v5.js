@@ -48,6 +48,7 @@ const Counters5v5 = React.memo((props) => {
             collapse={collapse}
             key={`${view}_5v5_${stub.id}`}
             leftSquadStub={stub}
+            size="5v5"
             toggleCollapse={toggleCollapse}
             view={view}
           />)

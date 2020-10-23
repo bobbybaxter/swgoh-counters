@@ -175,15 +175,15 @@ class App extends React.Component {
                     <Route exact path="/" render={props => <Counters5v5
                         {...props}
                         user={user}
-                        // squads={squads}
-                      />
-                    } />
-                    {/* <Route exact path="/3v3" render={props => <Counters3v3
+                      />}
+                    />
+
+                    <Route exact path="/3v3" render={props => <Counters3v3
                         {...props}
                         user={user}
-                        squads={squads}
-                      />
-                    } /> */}
+                      />}
+                    />
+
                     <Route exact path="/submit" component={ SubmissionForm } />
 
 

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import getImage from '../../helpers/getImage';
+import { IDBService } from '../../setup/IndexedDB';
 
 import CounterRowDescription from '../CounterRowDescription/CounterRowDescription';
 import CounterRowSquad from '../CounterRowSquad/CounterRowSquad';
@@ -14,16 +15,16 @@ export default function CounterRow(props) {
   CounterRow.propTypes = {
     collapse: PropTypes.string,
     leftSquadStub: PropTypes.object.isRequired,
+    size: PropTypes.string.isRequired,
     toggleCollapse: PropTypes.func.isRequired,
     view: PropTypes.string.isRequired,
   };
 
   const {
-    collapse, leftSquadStub, toggleCollapse, view,
+    collapse, leftSquadStub, size, toggleCollapse, view,
   } = props;
 
-  const storedStubs = JSON.parse(sessionStorage.getItem(`${view}_${leftSquadStub.id}`));
-  const [counterStubs, setCounterStubs] = useState(storedStubs);
+  const [counterStubs, setCounterStubs] = useState();
 
   const toggle = (e) => { toggleCollapse(e.target.id); };
 
@@ -31,30 +32,37 @@ export default function CounterRow(props) {
     // abortController cleans up cancelled requests
     const abortController = new AbortController();
     const opts = { signal: abortController.signal };
+    const counterStubId = `${size}_${view}_${leftSquadStub.id}`;
 
-    // TODO: get indexedDB to work
     async function getCounterStubs() {
-      try {
-        console.log('still requested');
-        const stubs = await getCounterStubsBySquadId(leftSquadStub.id, view, '5v5', opts);
-        setCounterStubs(stubs);
-        sessionStorage.setItem(`${view}_${leftSquadStub.id}`, JSON.stringify(stubs));
-      } catch (e) {
-        abortController.abort();
-        if (!abortController.signal.aborted) {
-          console.log('e :>> ', e);
+      const storedStubs = await IDBService.get('counterStubs', counterStubId);
+
+      if (storedStubs) {
+        setCounterStubs(storedStubs);
+      } else {
+        try {
+          const stubs = await getCounterStubsBySquadId(leftSquadStub.id, view, size, opts);
+          setCounterStubs(stubs);
+          const objectToStore = {
+            id: counterStubId,
+            counterVersion: stubs.counterVersion,
+            rightSquadStubs: stubs.rightSquadStubs,
+          };
+          IDBService.put('counterStubs', objectToStore);
+        } catch (e) {
+          abortController.abort();
+          if (!abortController.signal.aborted) {
+            console.log('e :>> ', e);
+          }
         }
       }
     }
 
-    if (!counterStubs) {
-      getCounterStubs();
-    }
-
+    getCounterStubs();
     return () => {
       abortController.abort();
     };
-  }, [counterStubs, leftSquadStub.id, view]);
+  }, [leftSquadStub.id, size, view]);
 
   const hardCounters = counterStubs ? counterStubs.rightSquadStubs.filter(x => x.isHardCounter === 1) : [];
   const softCounters = counterStubs ? counterStubs.rightSquadStubs.filter(x => x.isHardCounter === 0) : [];

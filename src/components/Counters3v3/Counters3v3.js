@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 import React, {
-  useEffect, useState, Suspense, lazy,
+  useEffect, useState,
 } from 'react';
 import { Button } from 'reactstrap';
 import MetaTags from 'react-meta-tags';
@@ -9,11 +8,10 @@ import PropTypes from 'prop-types';
 
 import './Counters3v3.scss';
 import AdsenseAd from '../AdsenseAd/AdsenseAd';
-import { get3v3counters, get3v3versionDates } from '../../helpers/data/countersData';
+import { getSquadStubs } from '../../helpers/data/squadsData';
+import CounterRow from '../CounterRow/CounterRow';
 
 const isSnap = navigator.userAgent === 'ReactSnap';
-
-const CounterRow = lazy(() => import('../CounterRow/CounterRow'));
 
 // TODO: Add tests
 const Counters3v3 = React.memo((props) => {
@@ -27,62 +25,34 @@ const Counters3v3 = React.memo((props) => {
     }).isRequired,
   };
 
-  const storedCountersNormal = JSON.parse(sessionStorage.getItem('countersNormal3v3')) || [];
-  const storedCountersReverse = JSON.parse(sessionStorage.getItem('countersReverse3v3')) || [];
-  const storedVersionDate = sessionStorage.getItem('counter3v3versionDate') || [];
-
-  const [collapse, setCollapse] = useState([]);
+  const [collapse, setCollapse] = useState(null);
   const [view, setView] = useState('normal');
-  const [countersNormal, setCountersNormal] = useState(storedCountersNormal);
-  const [countersReverse, setCountersReverse] = useState(storedCountersReverse);
-  const [VersionDate3v3, setVersionDate3v3] = useState(storedVersionDate);
+  const [stubsNormal, setStubsNormal] = useState();
+  const [stubsReverse, setStubsReverse] = useState();
 
-  // checks for latest 5v5 updates and fetches if sessionStorage is out of date
-  // useEffect(() => {
-  //   const storedDate = sessionStorage.getItem('counter3v3versionDate') || [];
+  useEffect(() => {
+    async function getStubs() {
+      const { normal, reverse } = await getSquadStubs('3v3');
+      await setStubsNormal(normal);
+      await setStubsReverse(reverse);
+    }
 
-  //   async function get3v3version() {
-  //     const { lastUpdate } = await get3v3versionDates();
+    getStubs();
+  }, []);
 
-  //     async function getCounters() {
-  //       const results = await get3v3counters();
-  //       setCountersNormal(results.countersNormal);
-  //       setCountersReverse(results.countersReverse);
-  //       sessionStorage.setItem('countersNormal3v3', JSON.stringify(results.countersNormal));
-  //       sessionStorage.setItem('countersReverse3v3', JSON.stringify(results.countersReverse));
-  //     }
-
-  //     // gets counters every time - remove after testing
-  //     await getCounters();
-
-  //     if (!storedDate) {
-  //       setVersionDate3v3(lastUpdate);
-  //       sessionStorage.setItem('counter3v3versionDate', lastUpdate);
-  //       await getCounters();
-  //     }
-
-  //     if (storedDate < lastUpdate) {
-  //       setVersionDate3v3(lastUpdate);
-  //       sessionStorage.setItem('counter3v3versionDate', lastUpdate);
-  //       await getCounters();
-  //     }
-  //   }
-
-  //   get3v3version();
-  // }, []);
-
-  const selectedCounters = view === 'normal' ? countersNormal : countersReverse;
+  const selectedStubs = view === 'normal' ? stubsNormal : stubsReverse;
   const toggleCollapse = input => (setCollapse(collapse === input ? null : input));
-  const buildCounterRows = selectedCounters && selectedCounters.length > 0
-    ? selectedCounters.map(counter => <CounterRow
-      collapse={collapse}
-      rightSquads={counter.rightSquads}
-      key={counter.leftSquad.id}
-      leftSquad={counter.leftSquad}
-      toggleCollapse={toggleCollapse}
-      view={view}
-      />)
-    : '';
+
+  const buildCounterRows = selectedStubs && selectedStubs.length
+    ? selectedStubs.map(stub => <CounterRow
+            collapse={collapse}
+            key={`${view}_3v3_${stub.id}`}
+            leftSquadStub={stub}
+            size="3v3"
+            toggleCollapse={toggleCollapse}
+            view={view}
+          />)
+    : null;
 
   const handleReverseCounter = () => {
     setView(view === 'normal' ? 'reverse' : 'normal');
@@ -133,11 +103,9 @@ const Counters3v3 = React.memo((props) => {
             </Button>
           </div>
 
-          <Suspense fallback={<div className="dark">Loading...</div>}>
-            <div className="columnTeams">
-              {buildCounterRows || ''}
-            </div>
-          </Suspense>
+          <div className="columnTeams">
+            {buildCounterRows || ''}
+          </div>
 
           <footer>
           {togglePatreonButton}

@@ -4,6 +4,7 @@ import { Collapse } from 'reactstrap';
 import DescriptionCard from '../DescriptionCard/DescriptionCard';
 
 import { getCounterById } from '../../helpers/data/countersData';
+import { IDBService } from '../../setup/IndexedDB';
 
 // TODO: Add tests
 export default function CounterRowDescription(props) {
@@ -27,13 +28,20 @@ export default function CounterRowDescription(props) {
     const opts = { signal: abortController.signal };
 
     async function getCounter() {
-      try {
-        const result = await getCounterById(counterId, opts);
-        setCounter(result);
-      } catch (e) {
-        abortController.abort();
-        if (!abortController.signal.aborted) {
-          console.log('e :>> ', e);
+      const storedCounter = await IDBService.get('counters', counterId);
+
+      if (storedCounter) {
+        setCounter(storedCounter);
+      } else {
+        try {
+          const result = await getCounterById(counterId, opts);
+          setCounter(result);
+          IDBService.put('counters', result);
+        } catch (e) {
+          abortController.abort();
+          if (!abortController.signal.aborted) {
+            console.log('e :>> ', e);
+          }
         }
       }
     }

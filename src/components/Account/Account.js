@@ -16,10 +16,6 @@ import AccountButtons from '../AccountButtons/AccountButtons';
 import './Account.scss';
 import firebaseData from '../../helpers/data/firebaseData';
 
-// TEST: treating /db as localStorage
-// import userDataDb from '../../helpers/fakeDb/userData.json';
-// import userUnitsDb from '../../helpers/fakeDb/userUnits.json';
-
 const userUnitsInStorage = JSON.parse(localStorage.getItem('userUnits'));
 const userDataInStorage = JSON.parse(localStorage.getItem('userData'));
 const timeoutDateInStorage = JSON.parse(localStorage.getItem('timeoutDate'));
@@ -36,17 +32,12 @@ export default function Account(props) {
   const [timeoutCompletionDate, setTimeoutCompletionDate] = useState(timeoutDateInStorage || '');
 
   const setTimeout = () => {
-    // const timeoutDate = new Date().getTime() + 10000; // used for testing
     const timeoutDate = new Date().getTime() + 86400000;
     setTimeoutCompletionDate(timeoutDate);
     localStorage.setItem('timeoutDate', timeoutDate);
   };
 
   const setPlayerData = () => {
-    // setUserData(userDataDb);
-    // localStorage.setItem('userData', JSON.stringify(userDataDb));
-    // setUserUnits(userUnitsDb);
-    // localStorage.setItem('userUnits', JSON.stringify(userUnitsDb));
     getPlayerData(props.user.allyCode)
       .then((res) => {
         setUserData(res.data);
@@ -113,11 +104,6 @@ export default function Account(props) {
     setPlayerData();
     setTimeout();
   };
-
-  // temp
-  // const handleMerge = () => {
-  //   mergeCharacterAndPlayerData(allCharacters, userUnits);
-  // };
 
   const allyCodeForm = <Form inline>
     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
@@ -192,7 +178,6 @@ export default function Account(props) {
             </div>
           </div>
         </div>
-        {/* <Button onClick={handleMerge}>Merge</Button> */}
 
         {userUnits
           ? <CharacterTable
