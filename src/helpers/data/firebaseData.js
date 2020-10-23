@@ -26,6 +26,7 @@ const updateUserInfo = user => new Promise((resolve, reject) => {
       email: user.email,
       patreonId: user.patreonId,
       patronStatus: user.patronStatus,
+      username: user.username,
     },
     { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
     .then((res) => {
@@ -41,6 +42,7 @@ const unlinkPatreonAccount = user => new Promise((resolve, reject) => {
       email: user.email,
       patreonId: '',
       patronStatus: '',
+      username: user.username,
     },
     { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
     .then((res) => {

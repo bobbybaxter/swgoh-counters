@@ -4,6 +4,7 @@ module.exports = async function createUser(user, firebaseDb) {
     allyCode: '',
     patreonId: '',
     patronStatus: '',
+    username: '',
   });
   return user;
 };

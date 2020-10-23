@@ -37,6 +37,7 @@ const defaultUser = {
   email: '',
   patreonId: '',
   patronStatus: '',
+  username: '',
 };
 
 const storedVersionDate = sessionStorage.getItem('squadVersionDate');
@@ -81,9 +82,6 @@ class App extends React.Component {
     const storedDate = sessionStorage.getItem('squadVersionDate');
     const { lastUpdate } = await getSquadVersionDate();
 
-    // gets squads every time = remove after testing
-    // this.getSquads();
-
     if (!storedDate) {
       sessionStorage.setItem('squadVersionDate', lastUpdate);
       this.setState({ squadVersionDate: lastUpdate });
@@ -105,7 +103,7 @@ class App extends React.Component {
 
   handleClearAllyCode = () => {
     const {
-      id, allyCode, email, patreonId, patronStatus,
+      id, allyCode, email, patreonId, patronStatus, username,
     } = this.state;
     const user = {
       id,
@@ -113,6 +111,7 @@ class App extends React.Component {
       email,
       patreonId,
       patronStatus,
+      username,
     };
     this.setState({ user });
     firebaseData.updateUserInfo(user);
@@ -131,6 +130,7 @@ class App extends React.Component {
         id: res.id,
         patreonId: res.patreonId,
         patronStatus: res.patronStatus,
+        username: res.username,
       },
     }));
   };

@@ -1,7 +1,7 @@
 module.exports = app => async function updateUser(req, res) {
   const { id } = req.params;
   const {
-    allyCode, email, patreonId, patronStatus,
+    allyCode, email, patreonId, patronStatus, username,
   } = req.body;
 
   const payload = {
@@ -10,6 +10,7 @@ module.exports = app => async function updateUser(req, res) {
     email,
     patreonId,
     patronStatus,
+    username,
   };
 
   const user = await app.data.user.update(payload, app.firebaseDb);

@@ -22,6 +22,7 @@ const Counters3v3 = React.memo((props) => {
       id: PropTypes.string,
       patreonId: PropTypes.string,
       patronStatus: PropTypes.string,
+      username: PropTypes.string,
     }).isRequired,
   };
 

@@ -59,6 +59,26 @@ export default function Account(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    // adds usernames to old accounts that don't currently have them
+    async function updateUser() {
+      if (userData && props.user.allyCode && !props.user.username) {
+        console.log('if statement was run');
+        const userToUpdate = {
+          id: props.user.id,
+          allyCode: props.user.allyCode,
+          email: props.user.email,
+          patreonId: props.user.patreonId,
+          patronStatus: props.user.patronStatus,
+          username: userData.name,
+        };
+        await firebaseData.updateUserInfo(userToUpdate);
+      }
+    }
+
+    updateUser();
+  }, [props.user.allyCode, props.user.email, props.user.id, props.user.patreonId, props.user.patronStatus, props.user.username, userData]);
+
   const clearAllyCode = () => {
     localStorage.removeItem('userData');
     localStorage.removeItem('userUnits');

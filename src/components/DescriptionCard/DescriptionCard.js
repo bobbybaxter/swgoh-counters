@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import getImage from '../../helpers/getImage';
 // import { Button } from 'reactstrap';
 
-// TODO: add proptypes
 // TODO: add videos
 // TODO: add subs
 // TODO: add createdOn and createdBy
