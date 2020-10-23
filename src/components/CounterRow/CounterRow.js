@@ -72,7 +72,7 @@ export default function CounterRow(props) {
 
   const buildCounters = (squads, type) => squads
     .map(squad => <CounterRowSquad
-        key={`${view}_5v5_${squad.counterId}_row`}
+        key={`${view}_${size}_${squad.counterId}_row`}
         squad={squad}
         toggle={toggle}
         type={type}
@@ -82,8 +82,9 @@ export default function CounterRow(props) {
     ? counterStubs.rightSquadStubs.map(rightSquadStub => (
         <CounterRowDescription
           collapse={collapse}
-          key={`${view}_5v5_${rightSquadStub.counterId}_description`}
+          key={`${view}_${size}_${rightSquadStub.counterId}_description`}
           rightSquadStub={rightSquadStub}
+          size={size}
           view={view}
         />
     ))

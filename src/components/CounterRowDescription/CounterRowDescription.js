@@ -10,12 +10,13 @@ import { IDBService } from '../../setup/IndexedDB';
 export default function CounterRowDescription(props) {
   CounterRowDescription.propTypes = {
     collapse: PropTypes.string,
-    rightSquadStub: PropTypes.object,
-    view: PropTypes.string,
+    rightSquadStub: PropTypes.object.isRequired,
+    size: PropTypes.string.isRequired,
+    view: PropTypes.string.isRequired,
   };
 
   const {
-    collapse, rightSquadStub, view,
+    collapse, rightSquadStub, size, view,
   } = props;
 
   const [counter, setCounter] = useState();
@@ -58,6 +59,7 @@ export default function CounterRowDescription(props) {
             <div className="d-flex flex-row">
               <DescriptionCard
                 counter={counter}
+                size={size}
                 view={view}
               />
             </div>

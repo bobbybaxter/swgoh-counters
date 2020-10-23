@@ -11,6 +11,7 @@ import getImage from '../../helpers/getImage';
 export default function DescriptionCard(props) {
   DescriptionCard.propTypes = {
     counter: PropTypes.object,
+    size: PropTypes.string,
     view: PropTypes.string,
   };
 
@@ -21,6 +22,7 @@ export default function DescriptionCard(props) {
   const discordLink = 'https://discord.gg/eCnE48h';
   const {
     counter,
+    size,
     view,
   } = props;
 
@@ -98,6 +100,7 @@ export default function DescriptionCard(props) {
     const toon3Image = toon1Id ? getImage(toon3Id) : null;
     const toon4Image = toon1Id ? getImage(toon4Id) : null;
     const toon5Image = toon1Id ? getImage(toon5Id) : null;
+
     return (
       <>
         <h5>{name}</h5>
@@ -105,8 +108,8 @@ export default function DescriptionCard(props) {
           <img alt={toon1Name} className="toonImg grayImg" title={toon1Name} src={toon1Image} />
           {(toon2Name) ? (<img alt={toon2Name} className="toonImg grayImg" title={toon2Name} src={toon2Image} />) : ''}
           {(toon3Name) ? (<img alt={toon3Name} className="toonImg grayImg" title={toon3Name} src={toon3Image} />) : ''}
-          {(toon4Name) ? (<img alt={toon4Name} className="toonImg grayImg" title={toon4Name} src={toon4Image} />) : ''}
-          {(toon5Name) ? (<img alt={toon5Name} className="toonImg grayImg" title={toon5Name} src={toon5Image} />) : ''}
+          {(toon4Name && size === '5v5') ? (<img alt={toon4Name} className="toonImg grayImg" title={toon4Name} src={toon4Image} />) : ''}
+          {(toon5Name && size === '5v5') ? (<img alt={toon5Name} className="toonImg grayImg" title={toon5Name} src={toon5Image} />) : ''}
         </div>
         {(oppSubs) ? (<p><small><strong className="text-secondary">Subs: </strong>{oppSubs}</small></p>) : ''}
       </>
