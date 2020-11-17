@@ -1,9 +1,9 @@
 module.exports = app => async (req, res) => {
   const createdSquad = await app.data.squad.create(app, req.body);
 
-  if (createdSquad !== 'ok') {
+  if (createdSquad.res !== 'ok') {
     res.status('400').send('Squad was not created.');
   }
 
-  res.send(createdSquad);
+  res.send(createdSquad.squadId);
 };

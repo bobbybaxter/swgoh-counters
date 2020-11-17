@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import getImage from '../../helpers/getImage';
+import buildSquadHeader from '../../helpers/buildSquadHeader';
 // import { Button } from 'reactstrap';
 
 // TODO: add videos
@@ -70,7 +70,7 @@ export default function DescriptionCard(props) {
       return (
         <>
       {(counterDescription)
-        ? (<p className="text-left"><strong className="text-secondary ">Specific Strategy: </strong><span dangerouslySetInnerHTML={createCounterDescription(counterDescription)}></span></p>)
+        ? (<p className="text-left"><strong className="text-secondary ">Counter Strategy: </strong><span dangerouslySetInnerHTML={createCounterDescription(counterDescription)}></span></p>)
         : (<p className="text-secondary"><small>Do you know the specific strategy for {name}?  If so, please <a href={submissionForm}>submit an issue.</a></small></p>)}
       {(counterDescription) ? '' : (<p className="text-secondary"><small>You can also join me on <a href={discordLink}>Discord</a> to start a discussion regarding this team.</small></p>)}
         </>
@@ -79,53 +79,19 @@ export default function DescriptionCard(props) {
     return '';
   };
 
-  const buildDescriptionCardTop = (squad) => {
-    const {
-      name,
-      toon1Id,
-      toon2Id,
-      toon3Id,
-      toon4Id,
-      toon5Id,
-      toon1Name,
-      toon2Name,
-      toon3Name,
-      toon4Name,
-      toon5Name,
-    } = squad || {};
-
-    const toon1Image = toon1Id ? getImage(toon1Id) : null;
-    const toon2Image = toon1Id ? getImage(toon2Id) : null;
-    const toon3Image = toon1Id ? getImage(toon3Id) : null;
-    const toon4Image = toon1Id ? getImage(toon4Id) : null;
-    const toon5Image = toon1Id ? getImage(toon5Id) : null;
-
-    return (
-      <>
-        <h5>{name}</h5>
-        <div className="detailsToonRow mb-2">
-          <img alt={toon1Name} className="toonImg grayImg" title={toon1Name} src={toon1Image} />
-          {(toon2Name) ? (<img alt={toon2Name} className="toonImg grayImg" title={toon2Name} src={toon2Image} />) : ''}
-          {(toon3Name) ? (<img alt={toon3Name} className="toonImg grayImg" title={toon3Name} src={toon3Image} />) : ''}
-          {(toon4Name && size === '5v5') ? (<img alt={toon4Name} className="toonImg grayImg" title={toon4Name} src={toon4Image} />) : ''}
-          {(toon5Name && size === '5v5') ? (<img alt={toon5Name} className="toonImg grayImg" title={toon5Name} src={toon5Image} />) : ''}
-        </div>
-        {(oppSubs) ? (<p><small><strong className="text-secondary">Subs: </strong>{oppSubs}</small></p>) : ''}
-      </>
-    );
-  };
-
   return (
     <>
     <div className="detailsDivLeft col-6 border-dark border-right">
       <h6 className="text-secondary">{view === 'normal' ? 'Opponent Team' : 'Counter Team'}</h6>
-      {leftSquad ? buildDescriptionCardTop(leftSquad) : ''}
+      {leftSquad ? buildSquadHeader(leftSquad, size) : ''}
+      {(oppSubs) ? (<p><small><strong className="text-secondary">Subs: </strong>{oppSubs}</small></p>) : ''}
       { view === 'normal' ? buildOpponentDescription(leftSquad) : buildCounterDescription(leftSquad) }
     </div>
 
     <div className="detailsDivRight col-6">
       <h6 className="text-secondary">{view === 'normal' ? 'Counter Team' : 'Opponent Team'}</h6>
-      {rightSquad ? buildDescriptionCardTop(rightSquad) : ''}
+      {rightSquad ? buildSquadHeader(rightSquad, size) : ''}
+      {(oppSubs) ? (<p><small><strong className="text-secondary">Subs: </strong>{oppSubs}</small></p>) : ''}
       { view === 'normal' ? buildCounterDescription(rightSquad) : buildOpponentDescription(rightSquad) }
     </div>
     </>

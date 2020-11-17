@@ -1,40 +1,40 @@
-.CounterRow {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-}
+// .CounterRow {
+//   display: flex;
+//   width: 100%;
+//   flex-direction: column;
+// }
 
-.borderSpace {
-  margin-right: 20px;
-  padding-right: 20px;
-}
+// .borderSpace {
+//   margin-right: 20px;
+//   padding-right: 20px;
+// }
 
-.countersRow {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  box-shadow: inset 4px 4px 15px rgba(255, 255, 255, 0.1), inset -4px -4px 15px rgba(255, 255, 255, 0.1);
-}
+// .countersRow {
+//   display: flex;
+//   flex-flow: row wrap;
+//   align-items: center;
+//   padding-top: 5px;
+//   padding-bottom: 5px;
+//   box-shadow: inset 4px 4px 15px rgba(255, 255, 255, 0.1), inset -4px -4px 15px rgba(255, 255, 255, 0.1);
+// }
 
-.counterCard {
-  box-shadow: none;
-}
+// .counterCard {
+//   box-shadow: none;
+// }
 
-.counterMiddleBorder {
-  width: 15px;
-  padding: 0 15px;
-  margin: 0 15px;
-}
+// .counterMiddleBorder {
+//   width: 15px;
+//   padding: 0 15px;
+//   margin: 0 15px;
+// }
 
-.countersDetails {
-  font-size: .85rem;
+// .countersDetails {
+//   font-size: .85rem;
 
-  p {
-    margin: 8px 0;
-  }
-}
+//   p {
+//     margin: 8px 0;
+//   }
+// }
 
 .grayImg {
   border: 2px solid gray;
@@ -44,20 +44,20 @@
   border: 2px solid #e44747;
 }
 
-.insideCountersRow {
-  display: flex;
-  flex-flow: row wrap;
-}
+// .insideCountersRow {
+//   display: flex;
+//   flex-flow: row wrap;
+// }
 
 .softCounter {
   border: 2px solid #9B47E4;
 }
 
-.teamName {
-  font-weight: 400;
-  font-size: .8rem;
-  margin: 0;
-}
+// .teamName {
+//   font-weight: 400;
+//   font-size: .8rem;
+//   margin: 0;
+// }
 
 .toonImg {
   width: 35px;
@@ -73,14 +73,14 @@
     height: 45px;
   }
 
-  .borderSpace {
-    margin-right: 25px;
-    padding-right: 25px;
-  }
+  // .borderSpace {
+  //   margin-right: 25px;
+  //   padding-right: 25px;
+  // }
 
-  .countersDetails {
-    font-size: .9rem;
-  }
+  // .countersDetails {
+  //   font-size: .9rem;
+  // }
 
 }
 
@@ -91,14 +91,14 @@
     height: 55px;
   }
 
-  .borderSpace {
-    margin-right: 29px;
-    padding-right: 29px;
-  }
+  // .borderSpace {
+  //   margin-right: 29px;
+  //   padding-right: 29px;
+  // }
 
-  .countersDetails {
-    font-size: .95rem;
-  }
+  // .countersDetails {
+  //   font-size: .95rem;
+  // }
 }
 
 @media only screen and (min-width:1200px) {
@@ -108,13 +108,13 @@
     height: 65px;
   }
 
-  .borderSpace {
-    margin-right: 35px;
-    padding-right: 35px;
-  }
+  // .borderSpace {
+  //   margin-right: 35px;
+  //   padding-right: 35px;
+  // }
 
-  .countersDetails {
-    font-size: 1rem;
-  }
+  // .countersDetails {
+  //   font-size: 1rem;
+  // }
 }
 

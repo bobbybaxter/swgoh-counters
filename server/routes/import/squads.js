@@ -10,11 +10,6 @@ module.exports = app => async (req, res) => {
       toon3Name,
       toon4Name,
       toon5Name,
-      leaderReq,
-      toon2Req,
-      toon3Req,
-      toon4Req,
-      toon5Req,
     } = squad;
 
     const toon1 = await app.data.character.getByName(app, leaderName);
@@ -32,15 +27,11 @@ module.exports = app => async (req, res) => {
       toon3Id: toon3.id,
       toon4Id: toon4.id,
       toon5Id: toon5.id,
-      isToon1Req: leaderReq === true ? 1 : 0,
-      isToon2Req: toon2Req === true ? 1 : 0,
-      isToon3Req: toon3Req === true ? 1 : 0,
-      isToon4Req: toon4Req === true ? 1 : 0,
-      isToon5Req: toon5Req === true ? 1 : 0,
     };
 
     await app.data.squad.create(app, squadToCreate);
   });
 
+  console.log('squad import complete');
   res.send('ok');
 };

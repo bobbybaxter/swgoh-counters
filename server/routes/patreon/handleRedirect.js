@@ -32,12 +32,10 @@ module.exports = app => async function handleRedirect(req, res) {
         app.data.user.addPatronInfoToFirebase(patron, firebaseDb);
       }
 
-      console.log('redirect on success :>> ');
       res.redirect(process.env.BASE_URL);
     })
     .catch((err) => {
-      console.log('Error with Patron verification');
-      console.log(err);
+      console.error('error with Patreon verification', err);
       res.redirect(process.env.BASE_URL);
     });
 };

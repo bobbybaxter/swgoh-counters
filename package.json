@@ -8,27 +8,34 @@
   "scarfSettings.enabled": false,
   "dependencies": {
     "@loadable/component": "^5.13.2",
+    "@storybook/addon-controls": "^6.0.28",
+    "@storybook/addon-knobs": "^6.0.28",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "concurrently": "^5.2.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.22.1",
     "firebase": "^7.22.0",
     "history": "^4.10.1",
     "idb": "^5.0.7",
     "jquery": "^3.5.1",
+    "lodash": "^4.17.20",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-ga": "^2.7.0",
+    "react-icons": "^3.11.0",
     "react-meta-tags": "^0.7.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "react-table": "^7.2.1",
-    "reactstrap": "^8.4.1"
+    "reactstrap": "^8.4.1",
+    "styled-components": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start --ignore server",
@@ -40,7 +47,9 @@
     "deploy": "npm run build && gh-pages -d build",
     "server": "LOG_LEVEL=debug nodemon server/index.js | pino-pretty",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm start\"",
-    "client:deploy": "npm run build && aws s3 sync build/ s3://swgohcounters.com"
+    "client:deploy": "npm run build && aws s3 sync build/ s3://swgohcounters.com",
+    "storybook": "start-storybook -p 6006 -s public --no-dll",
+    "build-storybook": "build-storybook -s public --no-dll"
   },
   "skipThirdPartyRequests": true,
   "reactSnap": {
@@ -68,6 +77,17 @@
       "window": true,
       "allowTemplateLiterals": true
     },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "paths": [
+            "./",
+            "./src",
+            "./server"
+          ]
+        }
+      }
+    },
     "reportUnusedDisableDirectives": true,
     "root": true,
     "rules": {
@@ -76,6 +96,7 @@
         {
           "allow": [
             "error",
+            "info",
             "log"
           ]
         }
@@ -99,7 +120,16 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-essentials": "^6.0.28",
+    "@storybook/addon-links": "^6.0.28",
+    "@storybook/node-logger": "^6.0.28",
+    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/react": "^6.0.28",
+    "babel-loader": "^8.1.0",
     "pino-pretty": "^4.0.0",
+    "react-is": "^17.0.1",
     "react-snap": "^1.23.0"
   }
 }

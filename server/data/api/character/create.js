@@ -9,6 +9,7 @@ module.exports = async ({ database }, { id, name }) => {
   const response = new Promise((res, rej) => {
     database.query(sql, variables, (error, results) => {
       if (error) { return rej(error); }
+      console.info(`${name} successfully created with id: ${id}`);
       return res('ok');
     });
   });

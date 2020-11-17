@@ -16,13 +16,5 @@ module.exports = (app) => {
     database,
   });
 
-  // pool.getConnection((error) => {
-  //   if (error) {
-  //     console.error(error);
-  //   } else {
-  //     console.log('Successfully connected to the database.');
-  //   }
-  // });
-
   return pool;
 };

@@ -25,10 +25,20 @@ module.exports = app => async (req, res) => {
       isHardCounter: isHardCounter === true ? 1 : 0,
       battleType,
       description,
+      isToon2Req: false,
+      isToon3Req: false,
+      isToon4Req: false,
+      isToon5Req: false,
+      toon1Zetas: '',
+      toon2Zetas: '',
+      toon3Zetas: '',
+      toon4Zetas: '',
+      toon5Zetas: '',
     };
 
     await app.data.counter.create(app, counterToCreate);
   });
 
+  console.log('counter import complete');
   res.send('ok');
 };

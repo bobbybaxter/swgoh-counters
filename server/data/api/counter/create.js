@@ -8,6 +8,15 @@ module.exports = async ({ database }, {
   isHardCounter,
   battleType,
   description,
+  isToon2Req,
+  isToon3Req,
+  isToon4Req,
+  isToon5Req,
+  toon1Zetas,
+  toon2Zetas,
+  toon3Zetas,
+  toon4Zetas,
+  toon5Zetas,
 }) => {
   const versionSql = fs.readFileSync(path.join(__dirname, './sql/createVersion.sql')).toString();
   const sql = fs.readFileSync(path.join(__dirname, './sql/create.sql')).toString();
@@ -20,6 +29,15 @@ module.exports = async ({ database }, {
     isHardCounter,
     battleType,
     description,
+    isToon2Req,
+    isToon3Req,
+    isToon4Req,
+    isToon5Req,
+    toon1Zetas,
+    toon2Zetas,
+    toon3Zetas,
+    toon4Zetas,
+    toon5Zetas,
     new Date().toISOString(),
     'user1',
   ];
@@ -68,13 +86,13 @@ module.exports = async ({ database }, {
                 });
               }
 
-              return console.log(`Counter for ${counterId} successfully updated.`);
+              return console.info(`Counter for ${counterId} successfully updated.`);
             });
 
             return '';
           });
 
-          console.log(`Counter Version for ${counterId} successfully created.`);
+          console.info(`Counter Version for ${counterId} successfully created.`);
           connection.release();
           return res('ok');
         });

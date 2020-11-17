@@ -63,13 +63,13 @@ module.exports = async ({ database }, id, {
                 });
               }
 
-              return console.log(`Counter for ${id} successfully updated.`);
+              return console.info(`Counter for ${id} successfully updated.`);
             });
 
             return '';
           });
 
-          console.log(`Counter Version for ${id} successfully added.`);
+          console.info(`Counter Version for ${id} successfully added.`);
           connection.release();
           return res('ok');
         });

@@ -11,7 +11,6 @@ module.exports = async ({ database }, squadToUpdate, {
   toon3Id,
   toon4Id,
   toon5Id,
-  isToon1Req,
   isToon2Req,
   isToon3Req,
   isToon4Req,
@@ -53,7 +52,6 @@ module.exports = async ({ database }, squadToUpdate, {
     toon3Id,
     toon4Id,
     toon5Id,
-    isToon1Req,
     isToon2Req,
     isToon3Req,
     isToon4Req,
@@ -116,7 +114,7 @@ module.exports = async ({ database }, squadToUpdate, {
                       });
                     }
 
-                    return console.log(`Squad Versions for ${oldSquadId} successfully updated to ${id}, and Squad for ${id} successfully updated.`);
+                    return console.info(`Squad Versions for ${oldSquadId} successfully updated to ${id}, and Squad for ${id} successfully updated.`);
                   });
 
                   return '';
@@ -132,13 +130,13 @@ module.exports = async ({ database }, squadToUpdate, {
                 });
               }
 
-              return console.log(`Squad for ${id} successfully updated.`);
+              return console.info(`Squad for ${id} successfully updated.`);
             });
 
             return '';
           });
 
-          console.log(`Squad Version for ${id} successfully added.`);
+          console.info(`Squad Version for ${id} successfully added.`);
           connection.release();
           return res('ok');
         });

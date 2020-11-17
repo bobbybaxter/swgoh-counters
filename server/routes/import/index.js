@@ -8,6 +8,6 @@ module.exports = (app) => {
   return router
     .use(middleware.context)
     .get('/counters', require('./counters')(app))
-    .post('/characters', require('./characters')(app))
+    .get('/characters', require('./characters')(app))
     .get('/squads', require('./squads')(app));
 };

@@ -38,7 +38,7 @@ class DBService {
         .objectStore(tablespace)
         .get(key),
     ).catch((error) => {
-      console.log(error);
+      console.error(error);
     });
   }
 
@@ -50,7 +50,7 @@ class DBService {
         .index(indexName)
         .getAll(index),
     ).catch((error) => {
-      console.log(error);
+      console.error(error);
     });
   }
 
@@ -67,7 +67,7 @@ class DBService {
         .objectStore(tablespace)
         .put(object);
     }).catch((error) => {
-      console.log(error);
+      console.error(error);
     });
   }
 
@@ -78,7 +78,7 @@ class DBService {
         .objectStore(tablespace)
         .delete(key),
     ).catch((error) => {
-      console.log(error);
+      console.error(error);
     });
   }
 
@@ -89,7 +89,7 @@ class DBService {
         .objectStore(tablespace)
         .clear(),
     ).catch((error) => {
-      console.log(error);
+      console.error(error);
     });
   }
 }

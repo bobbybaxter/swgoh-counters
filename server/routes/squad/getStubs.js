@@ -6,6 +6,6 @@ module.exports = app => async (req, res) => {
     normal,
     reverse,
   };
-  // squadStubs.sort((a, b) => ((a.name > b.name) ? 1 : -1));
+
   res.send(squadStubs);
 };

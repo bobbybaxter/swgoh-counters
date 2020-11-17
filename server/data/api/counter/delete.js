@@ -42,13 +42,13 @@ module.exports = async ({ database }, id) => {
                 });
               }
 
-              return console.log(`Squad Versions for ${id} successfully deleted.`);
+              return console.info(`Squad Versions for ${id} successfully deleted.`);
             });
 
             return '';
           });
 
-          console.log(`Squad for ${id} successfully deleted.`);
+          console.info(`Squad for ${id} successfully deleted.`);
           connection.release();
           return res('ok');
         });

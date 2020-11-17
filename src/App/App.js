@@ -8,19 +8,20 @@ import {
   Switch,
 } from 'react-router-dom';
 import ReactGA from 'react-ga';
+import _ from 'lodash';
 
 import './App.scss';
 
-import Counters3v3 from '../components/Counters3v3/Counters3v3';
-import Counters5v5 from '../components/Counters5v5/Counters5v5';
+import CountersPage from '../components/CountersPage/index';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import NotFound from '../components/NotFound/NotFound';
-import Account from '../components/Account/Account';
+import Account from '../components/Account/index';
 import SubmissionForm from '../components/SubmissionForm/SubmissionForm';
 
 import firebaseConnection from '../helpers/data/firebaseConnection';
 import firebaseData from '../helpers/data/firebaseData';
-import { getSquadData, getSquadVersionDate } from '../helpers/data/squadsData';
+import { getSquadData } from '../helpers/data/squadsData';
+import { getAllCharacters } from '../helpers/data/characterData';
 
 firebaseConnection();
 
@@ -40,16 +41,18 @@ const defaultUser = {
   username: '',
 };
 
-const storedVersionDate = sessionStorage.getItem('squadVersionDate');
 const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
+const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 
+// TODO: write a script that deletes all associated counters if a squad is deleted
 class App extends React.Component {
   state = {
     user: defaultUser,
     data: null,
     authenticated: false,
-    squadVersionDate: storedVersionDate,
+    characters: storedCharacters,
     squads: storedSquads,
+    view: 'normal',
   }
 
   authenticateUser = (authUser) => {
@@ -71,28 +74,25 @@ class App extends React.Component {
 
   getSquads = async () => {
     const results = await getSquadData();
-    this.setState({ squads: results });
-    sessionStorage.setItem('squads', JSON.stringify(results));
+    if (!_.isEqual(results, this.state.squads)) {
+      this.setState({ squads: results });
+      sessionStorage.setItem('squads', JSON.stringify(results));
+    }
+  }
+
+  reload = () => window.location.reload();
+
+  getCharacters = async () => {
+    const results = await getAllCharacters();
+    this.setState({ characters: results });
+    sessionStorage.setItem('characters', JSON.stringify(results));
   }
 
   async componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged(this.authenticateUser);
     ReactGA.pageview(window.location.pathname);
-
-    const storedDate = sessionStorage.getItem('squadVersionDate');
-    const { lastUpdate } = await getSquadVersionDate();
-
-    if (!storedDate) {
-      sessionStorage.setItem('squadVersionDate', lastUpdate);
-      this.setState({ squadVersionDate: lastUpdate });
-      this.getSquads();
-    }
-
-    if (storedDate && storedDate < lastUpdate) {
-      sessionStorage.setItem('squadVersionDate', lastUpdate);
-      this.setState({ squadVersionDate: lastUpdate });
-      this.getSquads();
-    }
+    this.getCharacters();
+    this.getSquads();
   }
 
   handleAllyCode = (e) => {
@@ -119,6 +119,10 @@ class App extends React.Component {
 
   handleLogout = () => {
     this.setState({ user: defaultUser });
+  }
+
+  handleViewBtn = () => {
+    this.setState({ view: this.state.view === 'normal' ? 'reverse' : 'normal' });
   }
 
   setUserInfo = (res) => {
@@ -150,37 +154,48 @@ class App extends React.Component {
       .then((res) => {
         if (res !== '') {
           this.setUserInfo(res);
-          return console.log(`Firebase user ${res.email} validated`);
+          return console.info(`Firebase user ${res.email} validated`);
         }
-        console.log('No Firebase user found in DB');
+        console.info('No Firebase user found in DB');
         firebaseData.createUser(user)
           .then(response => this.setUserInfo(response));
-        return console.log('User created in Firebase');
+        return console.info('User created in Firebase');
       })
       .catch(err => console.error(err));
   };
 
   render() {
-    const { authenticated, user } = this.state;
+    const { authenticated, user, view } = this.state;
     return (
-      <div className="App">
+      <div id="App" className="App">
         <BrowserRouter basename="/" hashType="slash">
             <React.Fragment>
               <MyNavbar
                 authenticated={authenticated}
                 handleLogout={this.handleLogout}
               />
+              <div id="modal"></div>
               <div>
                   <Switch>
-                    <Route exact path="/" render={props => <Counters5v5
+                    <Route exact path="/" render={props => <CountersPage
                         {...props}
+                        authenticated={authenticated}
+                        handleViewBtn={this.handleViewBtn}
+                        reload={this.reload}
+                        size={'5v5'}
                         user={user}
+                        view={view}
                       />}
                     />
 
-                    <Route exact path="/3v3" render={props => <Counters3v3
+                    <Route exact path="/3v3" render={props => <CountersPage
                         {...props}
+                        authenticated={authenticated}
+                        handleViewBtn={this.handleViewBtn}
+                        reload={this.reload}
+                        size={'3v3'}
                         user={user}
+                        view={view}
                       />}
                     />
 

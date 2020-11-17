@@ -7,7 +7,6 @@ module.exports = app => async (req, res) => {
   const rightSquadStubs = await app.data.counter.getCounterStubs(app, squadId, view, type);
 
   if (_.isEmpty(rightSquadStubs)) {
-    console.log('rightSquadStubs :>> ', rightSquadStubs);
     res.send(rightSquadStubs);
   } else {
     rightSquadStubs.sort((a, b) => ((a.name > b.name) ? 1 : -1));

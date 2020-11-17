@@ -8,7 +8,7 @@ module.exports = async ({ database }) => {
     database.query(sql, (error, results) => {
       if (error) { rej(error); }
 
-      const parsedResults = JSON.parse(JSON.stringify(results));
+      const parsedResults = JSON.parse(JSON.stringify(results)) || {};
       if (!parsedResults.length) {
         return rej(new Error("Squads don't exist"));
       }

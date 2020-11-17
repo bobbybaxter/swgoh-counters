@@ -33,21 +33,23 @@ const buildSquadObjects = (res, squads, squad, size, view) => {
 
 module.exports = async ({ database }) => {
   const unparsedSquads = await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Teams?key=${apiKey}`);
-  const unparsedCounters = await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Counters?key=${apiKey}`);
+  // const unparsedCounters = await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Counters?key=${apiKey}`);
   const parsedSquads = parseGoogleSheet(unparsedSquads.data.values);
-  const parsedCounters = parseGoogleSheet(unparsedCounters.data.values);
+  // const parsedCounters = parseGoogleSheet(unparsedCounters.data.values);
 
-  const normal5 = [];
-  const reverse5 = [];
-  const normal3 = [];
-  const reverse3 = [];
+  // const normal5 = [];
+  // const reverse5 = [];
+  // const normal3 = [];
+  // const reverse3 = [];
 
-  parsedSquads.forEach((squad) => {
-    normal5.push(buildSquadObjects(parsedCounters, parsedSquads, squad, 5, 'normal'));
-    reverse5.push(buildSquadObjects(parsedCounters, parsedSquads, squad, 5, 'reverse'));
-    normal3.push(buildSquadObjects(parsedCounters, parsedSquads, squad, 3, 'normal'));
-    reverse3.push(buildSquadObjects(parsedCounters, parsedSquads, squad, 3, 'reverse'));
-  });
+  // parsedSquads.forEach((squad) => {
+  //   normal5.push(buildSquadObjects(parsedCounters, parsedSquads, squad, 5, 'normal'));
+  //   reverse5.push(buildSquadObjects(parsedCounters, parsedSquads, squad, 5, 'reverse'));
+  //   normal3.push(buildSquadObjects(parsedCounters, parsedSquads, squad, 3, 'normal'));
+  //   reverse3.push(buildSquadObjects(parsedCounters, parsedSquads, squad, 3, 'reverse'));
+  // });
+
+  // console.log('parsedSquads :>> ', parsedSquads);
 
   return parsedSquads;
 };

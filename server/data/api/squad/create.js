@@ -11,23 +11,11 @@ module.exports = async ({ database }, {
   toon3Id,
   toon4Id,
   toon5Id,
-  isToon1Req,
-  isToon2Req,
-  isToon3Req,
-  isToon4Req,
-  isToon5Req,
 }) => {
   const versionSql = fs.readFileSync(path.join(__dirname, './sql/createVersion.sql')).toString();
   const sql = fs.readFileSync(path.join(__dirname, './sql/create.sql')).toString();
   const versionId = nanoid();
   const squadId = nanoid();
-  // const squadId = name.normalize('NFD')
-  //   .replace(/[\u0300-\u036f]/g, '')
-  //   .replace(/[.',/#!$%^&*;:{}=\-_`~()+]/g, '')
-  //   .toUpperCase()
-  //   .split(' ')
-  //   .join('_')
-  //   .slice(0, 50);
 
   const versionVariables = [
     versionId,
@@ -39,11 +27,6 @@ module.exports = async ({ database }, {
     toon3Id,
     toon4Id,
     toon5Id,
-    isToon1Req,
-    isToon2Req,
-    isToon3Req,
-    isToon4Req,
-    isToon5Req,
     new Date().toISOString(),
     'user1',
   ];
@@ -91,13 +74,13 @@ module.exports = async ({ database }, {
                 });
               }
 
-              return console.log(`Squad for ${squadId} successfully updated.`);
+              return console.info(`Squad for ${squadId} successfully updated.`);
             });
 
             return '';
           });
 
-          console.log(`Squad Version for ${squadId} successfully created.`);
+          console.info(`Squad Version for ${squadId} successfully created.`);
           connection.release();
           return res('ok');
         });
@@ -106,7 +89,8 @@ module.exports = async ({ database }, {
   });
 
   try {
-    return await response;
+    const res = await response;
+    return { res, squadId };
   } catch (err) {
     return new Error(err);
   }

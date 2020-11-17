@@ -20,6 +20,22 @@ export async function getCounterById(id, opts) {
   return body;
 }
 
+export async function addCounter(counter) {
+  const response = await fetch(`${baseUrl}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': ['application/json'],
+    },
+    body: JSON.stringify(counter),
+  });
+
+  if (response.status !== 200) {
+    throw Error(response.body.message);
+  }
+
+  return 'ok';
+}
+
 export async function importCounterData() {
   const response = await fetch(`${process.env.REACT_APP_API_URL}/api/import/counters`);
 

@@ -1,30 +1,28 @@
-import axios from 'axios';
+const baseUrl = `${process.env.REACT_APP_API_URL}/api/character`;
 
-export function getAllCharacters() {
-  const characters = new Promise((resolve, reject) => {
-    axios.get('https://cors-anywhere.herokuapp.com/https://swgoh.gg/api/characters/')
-      .then((res) => {
-        const rawCharacters = res.data;
-        const newCharacters = rawCharacters.map(char => ({
-          id: char.base_id,
-          name: char.name,
-        }));
-        resolve(newCharacters);
-      })
-      .catch(err => reject(err));
-  });
+export async function getAllCharactersOld() {
+  const response = await fetch(`${baseUrl}/old`);
+  const body = await response.json();
 
-  return characters;
+  if (response.status !== 200) {
+    throw Error(body.message);
+  }
+
+  return body;
 }
 
-export async function importCharacterData(characters) {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/import/characters`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': ['application/json'],
-    },
-    body: JSON.stringify(characters),
-  });
+export async function getAllCharacters() {
+  const response = await fetch(baseUrl);
+  const body = await response.json();
+
+  if (response.status !== 200) {
+    throw Error(body.message);
+  }
+  return body;
+}
+
+export async function importCharacterData() {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/import/characters`);
 
   if (response.status !== 200) {
     throw Error(response.body.message);
