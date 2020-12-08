@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import {
   Form, FormGroup, Modal, ModalBody, ModalFooter, ModalHeader,
 } from 'reactstrap';
@@ -16,7 +16,6 @@ export const FormLeftSide = styled.div`
   display: flex;
   flex-direction: column;
   overflow: initial;
-  position: relative;
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -32,7 +31,6 @@ export const FormRightSide = styled.div`
   display: flex;
   flex-direction: column;
   overflow: initial;
-  position: relative;
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;

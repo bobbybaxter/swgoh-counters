@@ -1,11 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import getImage from 'src/helpers/getImage';
 import { colors } from 'src/styles/colors';
 
-import LockBtn from './LockBtn';
+import { LockBtn } from '../shared/Locks';
 import { ToonName } from './style';
 import ToonImg from '../shared/ToonImg';
+
+export const CharCard = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export const NewSquadChar = styled.div`
   display: flex;
@@ -25,10 +30,6 @@ export const NewSquadChar = styled.div`
   @media only screen and (min-width:1200px) {
     width: 85px;
   }
-`;
-
-export const SquadCard = styled.div`
-  // margin: 0 .25rem .25rem .25rem;
 `;
 
 export const Wrapper = styled.div`
@@ -55,7 +56,7 @@ export default function CharacterPool({
     };
 
     return (
-      <SquadCard key={`${toon.id}_${i}`}>
+      <CharCard key={`${toon.id}_${i}`}>
         <LockBtn
           index={i}
           color="link"
@@ -74,7 +75,7 @@ export default function CharacterPool({
           />
           <ToonName isRow={true}>{toon.name}</ToonName>
         </NewSquadChar>
-      </SquadCard>
+      </CharCard>
     );
   });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const StyledCharBtn = styled(Button)`
   display: flex;

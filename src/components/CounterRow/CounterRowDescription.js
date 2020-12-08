@@ -62,18 +62,14 @@ export default function CounterRowDescription({
     };
   }, [counterId, rightSquadStub.counterCreatedOn]);
 
-  // TODO: test later to see if you prefer collapse first (showing a gap between rows)
-  // or description first (no gap between rows)
   return (
     <DescriptionCardWrapper key={counterId}>
       <Collapse isOpen={counterId === collapse}>
-        <div className="d-flex flex-row">
-          <DescriptionCard
+          {counter && <DescriptionCard
             counter={counter}
             size={size}
             view={view}
-          />
-        </div>
+          />}
       </Collapse>
     </DescriptionCardWrapper>
   );

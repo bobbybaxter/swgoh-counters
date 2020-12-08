@@ -3,7 +3,6 @@ import { Button, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-import buildSquadHeader from 'src/helpers/buildSquadHeader';
 import useInputValue from 'src/helpers/hooks/useInputValue';
 import { addSquad } from 'src/helpers/data/squadsData';
 import { addCounter } from 'src/helpers/data/countersData';
@@ -19,6 +18,7 @@ import {
   StyledModalFooter,
   StyledModalHeader,
 } from './style';
+import SquadHeader from '../shared/SquadHeader';
 import CharacterPool from './CharacterPool';
 import NewSquadDisplay from './NewSquadDisplay';
 import SquadDetailForm from './SquadDetailForm';
@@ -60,7 +60,7 @@ export default function ModalAddCounter({
   const [isHardCounter, setIsHardCounter] = useState(false);
   const [isNewCounter, setIsNewCounter] = useState(true);
   const [isNewSquad, setIsNewSquad] = useState(true);
-  const [isPoolViewRow, setIsPoolViewRow] = useState(true);
+  const [isPoolViewRow] = useState(true);
   const [leftSquad, setLeftSquad] = useState();
   const strategy = useInputValue('');
   const [squads] = useState(storedSquads);
@@ -141,11 +141,8 @@ export default function ModalAddCounter({
     checkExistingSquad(currentSquadNames);
   };
 
-  // const handlePoolView = (e) => {
-  //   e.preventDefault();
-  //   setIsPoolViewRow(!isPoolViewRow);
-  // };
-
+  // TODO: configure this to handle reverse counters
+  // TODO: consider changing scroll bar color on modal
   const handleSubmitButton = async (e) => {
     e.preventDefault();
     if (!isNewCounter
@@ -240,8 +237,8 @@ export default function ModalAddCounter({
           {/* New squad form */}
           <FormLeftSide>
             <OpponentBox>
-              {leftSquad && buildSquadHeader(leftSquad, size)}
-              <h6 className="text-secondary m-0">vs</h6>
+              {leftSquad && <SquadHeader size={size} squad={leftSquad} />}
+              <h6 className="text-secondary mb-1">vs</h6>
               <NewSquadDisplay
                 isHardCounter={isHardCounter}
                 removeCharacter={removeCharacter}
@@ -249,9 +246,6 @@ export default function ModalAddCounter({
                 tempSquad={tempSquad}
               />
             </OpponentBox>
-            {/* <div className="m-3">
-              <Button color="warning" size="sm" onClick={handlePoolView}>Change View</Button>
-            </div> */}
             <CharacterPool
               addCharacter={addCharacter}
               characters={characters}
@@ -291,7 +285,6 @@ export default function ModalAddCounter({
               <FormStrategy>
                 <Label for="squadDescription" className="text-secondary pb-3">Counter Strategy</Label>
                 <Input
-                  id="squadDescription"
                   name="squadDescriptionInput"
                   placeholder={strategyPlaceholder()}
                   rows="3"

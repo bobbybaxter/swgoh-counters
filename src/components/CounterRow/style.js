@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { CounterRow } from 'src/styles/style';
 
 export const CounterRowWrapper = styled.div`
@@ -10,8 +10,6 @@ export const DescriptionCardWrapper = styled.div`
   p {
     margin: 8px 0;
   }
-  margin-top: .5rem;
-  margin-bottom: .5rem;
 
   @media only screen and (min-width:768px) {
     font-size: .9rem;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { ContainerRow } from 'src/styles/style';
 import { colors } from 'src/styles/colors';
 
