@@ -1,15 +1,10 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
+
+import { importCharacterData, importCounterData, importSquadData } from 'src/helpers/data';
+import { convertToTwoDigits } from 'src/helpers';
 import { AccountButtonsWrapper, RefreshElements } from './style';
-
-import { importSquadData } from '../../helpers/data/squadsData';
-import { importCharacterData } from '../../helpers/data/characterData';
-import { importCounterData } from '../../helpers/data/countersData';
-
-// import firebaseData from '../../helpers/data/firebaseData';
-
-import convertToTwoDigits from '../../helpers/convertToTwoDigits';
 
 // TODO: Add tests
 export default function AccountButtons(props) {

@@ -5,25 +5,6 @@ export const CounterRowWrapper = styled.div`
   width: 100%;
 `;
 
-export const DescriptionCardWrapper = styled.div`
-  font-size: .85rem;
-  p {
-    margin: 8px 0;
-  }
-
-  @media only screen and (min-width:768px) {
-    font-size: .9rem;
-  }
-
-  @media only screen and (min-width:992px) {
-    font-size: .95rem;
-  }
-
-  @media only screen and (min-width:1200px) {
-    font-size: 1rem;
-  }
-`;
-
 export const Divider = styled.div`
   margin-right: 20px;
   padding-right: 20px;

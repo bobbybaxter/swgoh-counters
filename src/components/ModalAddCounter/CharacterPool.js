@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import getImage from 'src/helpers/getImage';
+import { getImage } from 'src/helpers';
 import PropTypes from 'prop-types';
 
-import CharacterPoolBtn from '../shared/CharacterPoolBtn';
-import ToonImg from '../shared/ToonImg';
+import CharacterPoolBtn from 'src/components/shared/CharacterPoolBtn';
+import ToonImg from 'src/components/shared/ToonImg';
 
 import { ToonName } from './style';
 

@@ -11,10 +11,6 @@ module.exports = async ({ database }, squadToUpdate, {
   toon3Id,
   toon4Id,
   toon5Id,
-  isToon2Req,
-  isToon3Req,
-  isToon4Req,
-  isToon5Req,
 }) => {
   let oldSquadId;
   let variables;
@@ -52,10 +48,6 @@ module.exports = async ({ database }, squadToUpdate, {
     toon3Id,
     toon4Id,
     toon5Id,
-    isToon2Req,
-    isToon3Req,
-    isToon4Req,
-    isToon5Req,
     new Date().toISOString(),
     'user1',
   ];

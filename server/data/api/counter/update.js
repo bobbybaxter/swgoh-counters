@@ -2,10 +2,19 @@ const fs = require('fs');
 const path = require('path');
 const { nanoid } = require('nanoid');
 
-module.exports = async ({ database }, id, {
+module.exports = async ({ database }, { id }, {
   isHardCounter,
   battleType,
   description,
+  isToon2Req,
+  isToon3Req,
+  isToon4Req,
+  isToon5Req,
+  toon1Zetas,
+  toon2Zetas,
+  toon3Zetas,
+  toon4Zetas,
+  toon5Zetas,
 }) => {
   const versionSql = fs.readFileSync(path.join(__dirname, './sql/createVersion.sql')).toString();
   const sql = fs.readFileSync(path.join(__dirname, './sql/update.sql')).toString();
@@ -17,6 +26,15 @@ module.exports = async ({ database }, id, {
     isHardCounter,
     battleType,
     description,
+    isToon2Req,
+    isToon3Req,
+    isToon4Req,
+    isToon5Req,
+    toon1Zetas,
+    toon2Zetas,
+    toon3Zetas,
+    toon4Zetas,
+    toon5Zetas,
     new Date().toISOString(),
     'user1',
   ];

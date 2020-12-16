@@ -39,6 +39,6 @@ module.exports = app => async (req, res) => {
     await app.data.counter.create(app, counterToCreate);
   });
 
-  console.log('counter import complete');
+  console.info('counter import complete');
   res.send('ok');
 };

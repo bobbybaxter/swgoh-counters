@@ -32,6 +32,6 @@ module.exports = app => async (req, res) => {
     await app.data.squad.create(app, squadToCreate);
   });
 
-  console.log('squad import complete');
+  console.info('squad import complete');
   res.send('ok');
 };

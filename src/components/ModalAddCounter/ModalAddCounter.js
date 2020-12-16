@@ -3,10 +3,14 @@ import { Button, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-import useInputValue from 'src/helpers/hooks/useInputValue';
-import { addSquad } from 'src/helpers/data/squadsData';
-import { addCounter } from 'src/helpers/data/countersData';
+import SquadHeader from 'src/components/shared/SquadHeader';
+import { useInputValue } from 'src/helpers/';
+import { addCounter, addSquad } from 'src/helpers/data';
 
+import CharacterPool from './CharacterPool';
+import NewSquadDisplay from './NewSquadDisplay';
+import SquadDetailForm from './SquadDetailForm';
+import ZetaForm from './ZetaForm';
 import {
   FormLeftSide,
   FormRightSide,
@@ -18,11 +22,18 @@ import {
   StyledModalFooter,
   StyledModalHeader,
 } from './style';
-import SquadHeader from '../shared/SquadHeader';
-import CharacterPool from './CharacterPool';
-import NewSquadDisplay from './NewSquadDisplay';
-import SquadDetailForm from './SquadDetailForm';
-import ZetaForm from './ZetaForm';
+
+const defaultTempSquadInfo = {
+  id: '',
+  name: '',
+  description: '',
+  counterStrategy: '',
+  toon1Id: '',
+  toon2Id: '',
+  toon3Id: '',
+  toon4Id: '',
+  toon5Id: '',
+};
 
 const defaultToon = {
   id: 'BLANK',
@@ -41,7 +52,7 @@ const buildDefaultSquad = () => {
 
 // TODO: Add tests
 export default function ModalAddCounter({
-  counterStubs, isOpen, leftSquadStub, reload, size, toggle, view, ...props
+  counterStubs, isOpen, leftSquadStub, reload, size, toggle, ...props
 }) {
   ModalAddCounter.propTypes = {
     counterStubs: PropTypes.object.isRequired,
@@ -50,7 +61,6 @@ export default function ModalAddCounter({
     reload: PropTypes.func,
     size: PropTypes.string,
     toggle: PropTypes.func.isRequired,
-    view: PropTypes.string,
   };
 
   const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
@@ -66,7 +76,7 @@ export default function ModalAddCounter({
   const [squads] = useState(storedSquads);
   const [squadMatch, setSquadMatch] = useState('');
   const [tempSquad, setTempSquad] = useState(buildDefaultSquad());
-  const [tempSquadInfo, setTempSquadInfo] = useState({ id: '', name: '' });
+  const [tempSquadInfo, setTempSquadInfo] = useState(defaultTempSquadInfo);
 
   useEffect(() => {
     async function getLeftSquad() {
@@ -84,22 +94,42 @@ export default function ModalAddCounter({
 
   const checkExistingSquad = (squadToCheck) => {
     const squadLeader = squadToCheck.shift();
-    const squadNonLeaders = squadToCheck.slice(0);
+    const squadMembers = squadToCheck.slice(0);
     const matchedSquad = squads.find(squad => squad.toon1Name === squadLeader
       && _.isEqual(
-        squadNonLeaders.sort(),
+        squadMembers.sort(),
         [squad.toon2Name, squad.toon3Name, squad.toon4Name, squad.toon5Name].sort(),
       ));
 
     if (!matchedSquad) {
       setIsNewSquad(true);
       setIsNewCounter(true);
-      setTempSquadInfo({ id: '', name: tempSquadInfo.name });
+      setTempSquadInfo({
+        id: '',
+        name: tempSquadInfo.name,
+        description: '',
+        counterStrategy: '',
+        toon1Id: (characters.find(x => x.name === squadLeader)).id || 'BLANK',
+        toon2Id: (characters.find(x => x.name === squadMembers[0])).id || 'BLANK',
+        toon3Id: (characters.find(x => x.name === squadMembers[1])).id || 'BLANK',
+        toon4Id: (characters.find(x => x.name === squadMembers[2])).id || 'BLANK',
+        toon5Id: (characters.find(x => x.name === squadMembers[3])).id || 'BLANK',
+      });
     }
 
     if (matchedSquad) {
       setIsNewSquad(false);
-      setTempSquadInfo({ id: matchedSquad.id, name: matchedSquad.name });
+      setTempSquadInfo({
+        id: matchedSquad.id,
+        name: matchedSquad.name,
+        description: matchedSquad.description,
+        counterStrategy: matchedSquad.counterStrategy,
+        toon1Id: matchedSquad.toon1Id,
+        toon2Id: matchedSquad.toon2Id,
+        toon3Id: matchedSquad.toon3Id,
+        toon4Id: matchedSquad.toon4Id,
+        toon5Id: matchedSquad.toon5Id,
+      });
       checkExistingCounter(matchedSquad.id);
     }
   };
@@ -141,10 +171,11 @@ export default function ModalAddCounter({
     checkExistingSquad(currentSquadNames);
   };
 
-  // TODO: configure this to handle reverse counters
   // TODO: consider changing scroll bar color on modal
   const handleSubmitButton = async (e) => {
     e.preventDefault();
+    // blocks submission if this counter already exists, if the squad name is in use,
+    // the squad name is blank, or the squad leader is blank
     if (!isNewCounter
       || !!squadMatch
       || tempSquadInfo.name === ''
@@ -152,10 +183,11 @@ export default function ModalAddCounter({
       console.error('please add or correct squad name or members');
     } else {
       if (!tempSquadInfo.id) {
+        // if this is a new squad, create a new squad then add counter
         const addSquadResponse = await addSquad({
           name: tempSquadInfo.name,
-          description: '',
-          counterStrategy: '',
+          description: tempSquadInfo.description,
+          counterStrategy: tempSquadInfo.counterStrategy,
           toon1Id: tempSquad[0].id,
           toon2Id: tempSquad[1].id,
           toon3Id: tempSquad[2].id,
@@ -189,6 +221,7 @@ export default function ModalAddCounter({
       }
 
       if (tempSquadInfo.id) {
+        // if this is an existing squad, just add the counter
         const addCounterResponse = await addCounter({
           opponentSquadId: leftSquadStub.id,
           counterSquadId: tempSquadInfo.id,
@@ -218,18 +251,9 @@ export default function ModalAddCounter({
 
   const closeBtn = <button className="close text-white" onClick={toggle}>&times;</button>;
 
-  const strategyPlaceholder = () => {
-    if (leftSquad) {
-      return view === 'normal'
-        ? `Please explain how to beat ${leftSquad.name} with this counter.`
-        : `Please explain how ${leftSquad.name} beats this opponent.`;
-    }
-    return '';
-  };
-
   return (
     <ModalAddCounterWrapper isOpen={isOpen} toggle={toggle}>
-      <StyledModalHeader close={closeBtn}>{view === 'normal' ? 'Add Counter' : 'Add Opponent'}</StyledModalHeader>
+      <StyledModalHeader close={closeBtn}>Add Counter</StyledModalHeader>
 
       <StyledModalBody>
         <StyledForm>
@@ -258,6 +282,7 @@ export default function ModalAddCounter({
             <SquadDetailForm
               buildDefaultSquad={buildDefaultSquad}
               checkExistingSquad={checkExistingSquad}
+              defaultTempSquadInfo={defaultTempSquadInfo}
               isHardCounter={isHardCounter}
               isNewCounter={isNewCounter}
               isNewSquad={isNewSquad}
@@ -270,28 +295,27 @@ export default function ModalAddCounter({
               tempSquadInfo={tempSquadInfo}
               squadMatch={squadMatch}
               squads={squads}
-              view={view}
             />
 
             <div>
               {/* Zetas */}
-              <ZetaForm
+              {isNewCounter && <ZetaForm
                 characters={characters}
                 setTempSquad={setTempSquad}
                 tempSquad={tempSquad}
-              />
+              />}
 
               {/* Counter Strategy Box */}
-              <FormStrategy>
+              {isNewCounter && <FormStrategy>
                 <Label for="squadDescription" className="text-secondary pb-3">Counter Strategy</Label>
                 <Input
                   name="squadDescriptionInput"
-                  placeholder={strategyPlaceholder()}
+                  placeholder={leftSquad && `Please explain how to beat ${leftSquad.name} with this counter.`}
                   rows="3"
                   type="textarea"
                   {...strategy}
                 />
-              </FormStrategy>
+              </FormStrategy>}
             </div>
           </FormRightSide>
         </StyledForm>

@@ -4,7 +4,15 @@ import {
 } from 'reactstrap';
 import MetaTags from 'react-meta-tags';
 import PropTypes from 'prop-types';
+
+import CharacterTable from 'src/components/CharacterTable/CharacterTable';
+
+import { flatten, mergeCharacterAndPlayerData } from 'src/helpers';
+import allCharacters from 'src/helpers/data/characters.json';
+import { getPlayerData, firebaseData } from 'src/helpers/data';
 import { ContainerColumn } from 'src/styles/style';
+
+import AccountButtons from './AccountButtons';
 import {
   AccountHeader,
   AccountHeaderCenter,
@@ -12,17 +20,6 @@ import {
   AccountHeaderRight,
   AccountWrapper,
 } from './style';
-
-import allCharacters from '../../helpers/data/characters.json';
-import getPlayerData from '../../helpers/data/playerData';
-
-import flatten from '../../helpers/flatten';
-import mergeCharacterAndPlayerData from '../../helpers/mergeCharacterAndPlayerData';
-
-import CharacterTable from '../CharacterTable/CharacterTable';
-import AccountButtons from './AccountButtons';
-
-import firebaseData from '../../helpers/data/firebaseData';
 
 const userUnitsInStorage = JSON.parse(localStorage.getItem('userUnits'));
 const userDataInStorage = JSON.parse(localStorage.getItem('userData'));

@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Collapse } from 'reactstrap';
-import DescriptionCard from '../DescriptionCard/DescriptionCard';
 
-import { getCounterById } from '../../helpers/data/countersData';
-import { IDBService } from '../../setup/IndexedDB';
-import { DescriptionCardWrapper } from './style';
+import DescriptionCard from 'src/components/DescriptionCard/DescriptionCard';
+
+import { getCounterById } from 'src/helpers/data';
+import { IDBService } from 'src/setup/IndexedDB';
+
+import { DescriptionCardWrapper } from 'src/styles/style';
 
 // TODO: Add tests
 export default function CounterRowDescription({
-  collapse, rightSquadStub, size, view, ...props
+  collapse, counterStubs, reload, rightSquadStub, size, view, ...props
 }) {
   CounterRowDescription.propTypes = {
     collapse: PropTypes.string,
+    counterStubs: PropTypes.object.isRequired,
+    reload: PropTypes.func,
     rightSquadStub: PropTypes.object.isRequired,
     size: PropTypes.string.isRequired,
     view: PropTypes.string.isRequired,
@@ -67,6 +71,8 @@ export default function CounterRowDescription({
       <Collapse isOpen={counterId === collapse}>
           {counter && <DescriptionCard
             counter={counter}
+            counterStubs={counterStubs}
+            reload={reload}
             size={size}
             view={view}
           />}

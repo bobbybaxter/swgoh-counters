@@ -87,3 +87,33 @@ export const CounterRow = styled.div`
 export const CounterCard = styled(CounterRow)`
   box-shadow: none;
 `;
+
+export const DescriptionCardWrapper = styled.div`
+  font-size: .85rem;
+  p {
+    margin: 8px 0;
+  }
+
+  @media only screen and (min-width:768px) {
+    font-size: .9rem;
+  }
+
+  @media only screen and (min-width:992px) {
+    font-size: .95rem;
+  }
+
+  @media only screen and (min-width:1200px) {
+    font-size: 1rem;
+  }
+`;
+
+export const EditMenu = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  p, a {
+    padding: 0 .25rem;
+    margin: 0 !important;
+  }
+`;

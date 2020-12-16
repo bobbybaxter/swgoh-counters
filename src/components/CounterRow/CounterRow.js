@@ -2,22 +2,22 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+
+import ModalAddCounter from 'src/components/ModalAddCounter/ModalAddCounter';
+import ModalPortal from 'src/components/ModalPortal/ModalPortal';
+import ToonImg from 'src/components/shared/ToonImg';
+
+import { getImage, useToggle } from 'src/helpers';
+import { getCounterStubsBySquadId } from 'src/helpers/data';
+import { IDBService } from 'src/setup/IndexedDB';
 import { CounterCard } from 'src/styles/style';
-import {
-  CounterRowWrapper, Divider, LeftDiv, RightDiv, RightDivWrapper, SquadTitle,
-} from './style';
-import getImage from '../../helpers/getImage';
-import { IDBService } from '../../setup/IndexedDB';
-import useToggle from '../../helpers/hooks/useToggle';
 
 import CounterRowDescription from './CounterRowDescription';
 import CounterRowSquad from './CounterRowSquad';
-import ModalPortal from '../ModalPortal/ModalPortal';
-import ModalAddCounter from '../ModalAddCounter';
-import ToonImg from '../shared/ToonImg';
-
+import {
+  CounterRowWrapper, Divider, LeftDiv, RightDiv, RightDivWrapper, SquadTitle,
+} from './style';
 import './CounterRow.scss';
-import { getCounterStubsBySquadId } from '../../helpers/data/countersData';
 
 // TODO: Add tests
 const CounterRow = React.memo(({
@@ -126,13 +126,16 @@ const CounterRow = React.memo(({
         squad={squad}
         toggle={toggle}
         type={type}
+        view={view}
       />);
 
   const buildCounterDescriptions = !_.isEmpty(counterStubs)
     && counterStubs.rightSquadStubs.map(rightSquadStub => (
         <CounterRowDescription
           collapse={collapse}
+          counterStubs={counterStubs}
           key={`${view}_${size}_${rightSquadStub.counterId}_description`}
+          reload={reload}
           rightSquadStub={rightSquadStub}
           size={size}
           view={view}
@@ -161,7 +164,7 @@ const CounterRow = React.memo(({
             {hardCounters ? buildCounters(hardCounters, 'hard') : []}
             {divider}
             {softCounters ? buildCounters(softCounters, 'soft') : []}
-            {authenticated
+            {authenticated && view === 'normal'
               ? <>
                   <CounterCard key={`addCounterButton_${counterStubId}`}>
                     <ToonImg
@@ -181,7 +184,6 @@ const CounterRow = React.memo(({
                         reload={reload}
                         size={size}
                         toggle={setIsOpen}
-                        view={view}
                       />
                     </ModalPortal>
                   )}

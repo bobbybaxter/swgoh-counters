@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
+
+import AdsenseAd from 'src/components/AdsenseAd/AdsenseAd';
+import CounterRow from 'src/components/CounterRow/CounterRow';
+import MetaTags from 'src/components/shared/MetaTags';
+import PatreonButton from 'src/components/shared/PatreonButton';
+
 import { ContainerColumn } from 'src/styles/style';
-import PatreonButton from '../shared/PatreonButton';
-import MetaTags from '../shared/MetaTags';
+import { getSquadStubs } from 'src/helpers/data';
+
 import ColorIndicator from './ColorIndicator';
-
-import AdsenseAd from '../AdsenseAd/AdsenseAd';
-import CounterRow from '../CounterRow';
-
-import { getSquadStubs } from '../../helpers/data/squadsData';
 import { CountersPageWrapper } from './style';
 
 const isSnap = navigator.userAgent === 'ReactSnap';

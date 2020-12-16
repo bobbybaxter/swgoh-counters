@@ -1,9 +1,15 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
+import { format } from 'date-fns';
 import { Button, UncontrolledCollapse } from 'reactstrap';
-import SquadHeader from '../shared/SquadHeader';
-import { DescriptionCardWrapper } from '../CounterRow/style';
+
+import ModalEditCounter from 'src/components/ModalEditCounter/ModalEditCounter';
+import ModalPortal from 'src/components/ModalPortal/ModalPortal';
+import SquadHeader from 'src/components/shared/SquadHeader';
+import { useToggle } from 'src/helpers';
+import { DescriptionCardWrapper, EditMenu } from 'src/styles/style';
 
 const TopWrapper = styled.div`
   display: flex;
@@ -70,6 +76,7 @@ const DetailsDivRight = styled.div`
 // TODO: add videos
 // TODO: add createdOn and createdBy
 // TODO: add CRUD functionality
+// TODO: move styled components to a style.js file
 const defaultSquad = {
   id: '',
   name: '',
@@ -90,9 +97,17 @@ const defaultSquad = {
   createdBy: '',
 };
 
-export default function DescriptionCard({ counter, size, view }) {
+export default function DescriptionCard({
+  counter,
+  counterStubs,
+  reload,
+  size,
+  view,
+}) {
   DescriptionCard.propTypes = {
     counter: PropTypes.object,
+    counterStubs: PropTypes.object.isRequired,
+    reload: PropTypes.func,
     size: PropTypes.string,
     view: PropTypes.string,
   };
@@ -100,6 +115,7 @@ export default function DescriptionCard({ counter, size, view }) {
   const [leftSquad, setLeftSquad] = useState(defaultSquad);
   const [rightSquad, setRightSquad] = useState(defaultSquad);
   const [zetaData, setZetaData] = useState();
+  const [isOpen, setIsOpen] = useToggle(false);
 
   const submissionForm = 'https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true';
   const discordLink = 'https://discord.gg/eCnE48h';
@@ -180,7 +196,7 @@ export default function DescriptionCard({ counter, size, view }) {
             <UncontrolledCollapse toggler={`#zetaReqs_${id}`} className="p-1">
               {zetaData.map((zeta, i) => (zeta.length > 0
                 ? (
-                  <DescriptionText key={`${zeta}${i}`} className="text-left m-0 p-0"><strong className="text-secondary">{rightSquad[`toon${i + 1}Name`]}: </strong> {zeta.join(', ')}</DescriptionText>
+                  <DescriptionText key={`${zeta}${i}`} className="text-left m-0 p-0"><strong className="text-secondary">{view === 'normal' ? rightSquad[`toon${i + 1}Name`] : leftSquad[`toon${i + 1}Name`]}: </strong> {zeta.join(', ')}</DescriptionText>
                 )
                 : ''))}
             </UncontrolledCollapse>
@@ -206,16 +222,21 @@ export default function DescriptionCard({ counter, size, view }) {
     <TopWrapper>
       <DetailsDivLeft>
         <h6 className="text-secondary mb-1">{view === 'normal' ? 'Opponent Team' : 'Counter Team'}</h6>
-        {leftSquad && <SquadHeader size={size} squad={leftSquad} />}
+        {view === 'normal'
+          ? leftSquad && <SquadHeader size={size} squad={leftSquad} />
+          : leftSquad && <SquadHeader counter={counter} showLocks={true} size={size} squad={leftSquad} />
+        }
         { view === 'normal' ? buildOpponentDetails(leftSquad) : buildCounterDetails() }
       </DetailsDivLeft>
 
       <DetailsDivRight>
         <h6 className="text-secondary mb-1">{view === 'normal' ? 'Counter Team' : 'Opponent Team'}</h6>
         {
-          rightSquad
-          && rightSquad.id
-          && <SquadHeader counter={counter} showLocks={true} size={size} squad={rightSquad} />
+          view === 'normal'
+            ? rightSquad && rightSquad.id
+            && <SquadHeader counter={counter} showLocks={true} size={size} squad={rightSquad} />
+            : rightSquad && rightSquad.id
+            && <SquadHeader size={size} squad={rightSquad} />
         }
         { view === 'normal' ? buildCounterDetails() : buildOpponentDetails(rightSquad) }
       </DetailsDivRight>
@@ -223,7 +244,31 @@ export default function DescriptionCard({ counter, size, view }) {
     </TopWrapper>
     <BottomWrapper>
       {buildCounterStrategy(rightSquad)}
+      <EditMenu>
+        {/* TODO: only show edit button to Patrons */}
+        {/* TODO: make edit button open a modal to change the counter info */}
+        <p><a href="#" onClick={() => setIsOpen(true)}><small>edit counter</small></a></p>
+        {/* TODO: make the date a link that goes to a History page for the counter */}
+        <p><small>last updated on: {format(new Date(counter.createdOn), 'MMM d, yyyy')}</small></p>
+        {/* TODO: make the username a link that goes to a page for the user */}
+        <p><small>by: {counter.createdBy}</small></p>
+      </EditMenu>
     </BottomWrapper>
+    {isOpen && (
+      <ModalPortal>
+        <ModalEditCounter
+          counter={counter}
+          counterStubs={counterStubs}
+          isOpen={isOpen}
+          leftSquad={leftSquad}
+          reload={reload}
+          rightSquad={rightSquad}
+          size={size}
+          toggle={setIsOpen}
+          view={view}
+        />
+      </ModalPortal>
+    )}
     </>
   );
 }

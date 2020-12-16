@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import { colors } from 'src/styles/colors';
+import { getImage } from 'src/helpers';
 import ToonImg from './ToonImg';
-import getImage from '../../helpers/getImage';
 import { LockImg } from './Locks';
 
 export const CharCard = styled.div`

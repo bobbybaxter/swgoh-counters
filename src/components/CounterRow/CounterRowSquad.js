@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CounterCard } from 'src/styles/style';
+
+import ToonImg from 'src/components/shared/ToonImg';
+import { getImage } from 'src/helpers';
 import { colors } from 'src/styles/colors';
-import ToonImg from '../shared/ToonImg';
-import getImage from '../../helpers/getImage';
+import { CounterCard } from 'src/styles/style';
 
 // TODO: Add tests
 export default function CounterRowSquad({

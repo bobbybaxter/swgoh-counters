@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import getImage from 'src/helpers/getImage';
+import PropTypes from 'prop-types';
+
+import { LockBtn } from 'src/components/shared/Locks';
+import ToonImg from 'src/components/shared/ToonImg';
+import { getImage } from 'src/helpers';
 import { colors } from 'src/styles/colors';
 
-import { LockBtn } from '../shared/Locks';
 import { ToonName } from './style';
-import ToonImg from '../shared/ToonImg';
 
 export const CharCard = styled.div`
   display: flex;
@@ -39,9 +41,24 @@ export const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export default function CharacterPool({
-  isHardCounter, removeCharacter, setTempSquad, tempSquad, ...props
+export default function NewSquadDisplay({
+  doesTempMatchSource,
+  isHardCounter,
+  removeCharacter,
+  setTempSquad,
+  sourceSquad,
+  tempSquad,
+  ...props
 }) {
+  NewSquadDisplay.propTypes = {
+    doesTempMatchSource: PropTypes.bool,
+    isHardCounter: PropTypes.bool.isRequired,
+    removeCharacter: PropTypes.func.isRequired,
+    setTempSquad: PropTypes.func.isRequired,
+    sourceSquad: PropTypes.array,
+    tempSquad: PropTypes.array.isRequired,
+  };
+
   const buildSquadDisplay = tempSquad.map((toon, i) => {
     const handleNewSquadLock = (e) => {
       e.preventDefault();
@@ -49,7 +66,7 @@ export default function CharacterPool({
 
       // only allows isReq/lock toggling on toons that aren't the leader and aren't blank
       if (i !== 0 && tempSquadCopy[i].id !== 'BLANK') {
-        tempSquadCopy[i].isReq = !tempSquadCopy[i].isReq;
+        tempSquadCopy[i].isReq = tempSquadCopy[i].isReq === 1 ? 0 : 1;
 
         setTempSquad(tempSquadCopy);
       }
@@ -60,7 +77,7 @@ export default function CharacterPool({
         <LockBtn
           index={i}
           color="link"
-          isOn={toon.isReq}
+          isOn={doesTempMatchSource ? sourceSquad[i].isReq : toon.isReq}
           onClick={handleNewSquadLock}
         />
         <NewSquadChar>

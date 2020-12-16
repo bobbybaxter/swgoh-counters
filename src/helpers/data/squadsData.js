@@ -28,6 +28,24 @@ export async function addSquad(squad) {
   return { status: 'ok', squadId: body };
 }
 
+export async function updateSquad(squad) {
+  const response = await fetch(`${baseUrl}/${squad.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': ['application/json'],
+    },
+    body: JSON.stringify(squad),
+  });
+  const body = await response.text();
+
+  if (response.status !== 200) {
+    throw Error(body);
+  }
+
+  return 'ok';
+}
+
+
 export async function getSquadStubs(size) {
   const response = await fetch(`${baseUrl}/stubs/${size}`);
   const body = await response.json();

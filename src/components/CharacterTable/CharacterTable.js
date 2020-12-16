@@ -1,14 +1,9 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from 'react';
 import {
-  Table,
-  Form, FormGroup, Input,
+  Table, Form, FormGroup, Input,
 } from 'reactstrap';
-import {
-  useTable,
-  useSortBy,
-} from 'react-table';
-
+import { useTable, useSortBy } from 'react-table';
 
 import './CharacterTable.scss';
 

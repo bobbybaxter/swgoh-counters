@@ -1,27 +1,23 @@
 import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import {
-  BrowserRouter,
-  Redirect,
-  Route,
-  Switch,
-} from 'react-router-dom';
 import ReactGA from 'react-ga';
 import _ from 'lodash';
+import {
+  BrowserRouter, Redirect, Route, Switch,
+} from 'react-router-dom';
+
+import Account from 'src/components/Account/Account';
+import CountersPage from 'src/components/CountersPage/CountersPage';
+import MyNavbar from 'src/components/MyNavbar/MyNavbar';
+import NotFound from 'src/components/NotFound/NotFound';
+import SubmissionForm from 'src/components/SubmissionForm/SubmissionForm';
+
+import {
+  firebaseConnection, firebaseData, getSquadData, getAllCharacters,
+} from 'src/helpers/data';
 
 import './App.scss';
-
-import CountersPage from '../components/CountersPage/index';
-import MyNavbar from '../components/MyNavbar/MyNavbar';
-import NotFound from '../components/NotFound/NotFound';
-import Account from '../components/Account/index';
-import SubmissionForm from '../components/SubmissionForm/SubmissionForm';
-
-import firebaseConnection from '../helpers/data/firebaseConnection';
-import firebaseData from '../helpers/data/firebaseData';
-import { getSquadData } from '../helpers/data/squadsData';
-import { getAllCharacters } from '../helpers/data/characterData';
 
 firebaseConnection();
 

@@ -36,6 +36,23 @@ export async function addCounter(counter) {
   return 'ok';
 }
 
+export async function updateCounter(counter) {
+  const response = await fetch(`${baseUrl}/${counter.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': ['application/json'],
+    },
+    body: JSON.stringify(counter),
+  });
+  const body = await response.text();
+
+  if (response.status !== 200) {
+    throw Error(body);
+  }
+
+  return 'ok';
+}
+
 export async function importCounterData() {
   const response = await fetch(`${process.env.REACT_APP_API_URL}/api/import/counters`);
 

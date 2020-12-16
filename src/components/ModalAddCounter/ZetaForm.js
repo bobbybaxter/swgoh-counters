@@ -16,17 +16,24 @@ export const Wrapper = styled.div`
 `;
 
 export default function ZetaForm({
-  characters, setTempSquad, tempSquad, ...props
+  characters,
+  doesTempMatchSource,
+  setTempSquad,
+  sourceSquad,
+  tempSquad,
+  ...props
 }) {
   ZetaForm.propTypes = {
     characters: PropTypes.array.isRequired,
+    doesTempMatchSource: PropTypes.bool,
     setTempSquad: PropTypes.func.isRequired,
+    sourceSquad: PropTypes.array,
     tempSquad: PropTypes.array.isRequired,
   };
 
   const buildZetaSelectors = () => tempSquad
-    .map((char, i) => {
-      const zetaList = (characters.find(x => x.id === char.id) || {}).zetas;
+    .map((toon, i) => {
+      const zetaList = (characters.find(x => x.id === toon.id) || {}).zetas;
       const handleZetaSelector = (e) => {
         e.preventDefault();
         const tempSquadCopy = [...tempSquad];
@@ -36,7 +43,7 @@ export default function ZetaForm({
 
       return zetaList.length > 0
         ? <FormZetaReq key={`${i}_zetaReq`}>
-          <Label for={`${i}_zetaReq`} size="sm" className="text-secondary col-6">{char.name}</Label>
+          <Label for={`${i}_zetaReq`} size="sm" className="text-secondary col-6">{toon.name}</Label>
           <Input
             className="col-6"
             id={`${i}_zetaReq`}
@@ -45,6 +52,7 @@ export default function ZetaForm({
             bsSize="sm"
             multiple
             onChange={handleZetaSelector}
+            value={doesTempMatchSource ? sourceSquad[i].zetas : toon.zetas}
           >
             {zetaList.map(zeta => <option key={zeta}>{zeta}</option>)}
           </Input>
