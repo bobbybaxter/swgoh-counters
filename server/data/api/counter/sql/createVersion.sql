@@ -14,4 +14,5 @@ SET id = ?,
   toon4Zetas = ?,
   toon5Zetas = ?,
   createdOn = ?,
-  createdBy = ?;
+  createdById = ?,
+  createdByName = ?;

@@ -16,7 +16,8 @@ SELECT
   cv.toon4Zetas,
   cv.toon5Zetas,
 	cv.createdOn,
-	cv.createdBy
+	cv.createdById,
+  cv.createdByName
 FROM counter c
 JOIN counterVersion cv
   ON cv.id = c.latestVersionId 

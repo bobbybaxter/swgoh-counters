@@ -10,7 +10,7 @@ import { AccountButtonsWrapper, RefreshElements } from './style';
 export default function AccountButtons(props) {
   AccountButtons.propTypes = {
     user: PropTypes.object,
-    timeoutCompletionDate: PropTypes.string,
+    timeoutCompletionDate: PropTypes.number,
     haveUserUnits: PropTypes.bool,
     refreshPlayerData: PropTypes.func,
     clearAllyCode: PropTypes.func,

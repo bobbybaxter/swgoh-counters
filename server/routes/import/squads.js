@@ -1,3 +1,5 @@
+const { userId, username } = require('../../.config.json');
+
 module.exports = app => async (req, res) => {
   const squads = await app.data.squad.getOld(app);
   squads.forEach(async (squad) => {
@@ -27,6 +29,8 @@ module.exports = app => async (req, res) => {
       toon3Id: toon3.id,
       toon4Id: toon4.id,
       toon5Id: toon5.id,
+      userId,
+      username,
     };
 
     await app.data.squad.create(app, squadToCreate);

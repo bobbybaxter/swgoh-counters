@@ -42,6 +42,7 @@ const DescriptionButtonsWrapper = styled.div`
 const DescriptionText = styled.p`
   padding: .5rem;
   margin: 0 !important;
+  white-space: pre-line;
 
   @media only screen and (min-width:768px) {
     padding: .5rem;
@@ -74,8 +75,6 @@ const DetailsDivRight = styled.div`
 `;
 
 // TODO: add videos
-// TODO: add createdOn and createdBy
-// TODO: add CRUD functionality
 // TODO: move styled components to a style.js file
 const defaultSquad = {
   id: '',
@@ -94,21 +93,26 @@ const defaultSquad = {
   counterStrategy: '',
   latestVersionId: '',
   createdOn: '',
-  createdBy: '',
+  createdById: '',
+  createdByName: '',
 };
 
 export default function DescriptionCard({
+  authenticated,
   counter,
   counterStubs,
   reload,
   size,
+  user,
   view,
 }) {
   DescriptionCard.propTypes = {
+    authenticated: PropTypes.bool,
     counter: PropTypes.object,
     counterStubs: PropTypes.object.isRequired,
     reload: PropTypes.func,
     size: PropTypes.string,
+    user: PropTypes.object,
     view: PropTypes.string,
   };
 
@@ -157,9 +161,6 @@ export default function DescriptionCard({
     toon5Zetas,
     view]);
 
-  const createCounterDescription = description => ({ __html: description });
-  const createCounterStrategy = counterStrategy => ({ __html: counterStrategy });
-
   const buildOpponentDetails = (squad) => {
     if (squad) {
       const { description, counterStrategy } = squad;
@@ -176,7 +177,7 @@ export default function DescriptionCard({
           }
           {
             counterStrategy && <UncontrolledCollapse toggler={`#generalCounterStrategy_${id}`}>
-              <DescriptionText className="text-left"><strong className="text-secondary">General Strategy: </strong><span dangerouslySetInnerHTML={createCounterStrategy(counterStrategy)}></span></DescriptionText>
+              <DescriptionText className="text-left"><strong className="text-secondary">General Strategy: </strong>{counterStrategy}</DescriptionText>
             </UncontrolledCollapse>
           }
         </>
@@ -210,7 +211,7 @@ export default function DescriptionCard({
     return (
       <>
         {(counterDescription)
-          ? (<DescriptionText className="text-left"><strong className="text-secondary ">Counter Strategy: </strong><span dangerouslySetInnerHTML={createCounterDescription(counterDescription)}></span></DescriptionText>)
+          ? (<DescriptionText className="text-left"><strong className="text-secondary ">Counter Strategy: </strong>{counterDescription}</DescriptionText>)
           : (<DescriptionText className="text-secondary"><small>Do you know the specific strategy for {name}?  If so, please <a href={submissionForm}>submit an issue.</a></small></DescriptionText>)}
         {(counterDescription) ? '' : (<DescriptionText className="text-secondary"><small>You can also join me on <a href={discordLink}>Discord</a> to start a discussion regarding this team.</small></DescriptionText>)}
       </>
@@ -245,13 +246,12 @@ export default function DescriptionCard({
     <BottomWrapper>
       {buildCounterStrategy(rightSquad)}
       <EditMenu>
-        {/* TODO: only show edit button to Patrons */}
-        {/* TODO: make edit button open a modal to change the counter info */}
-        <p><a href="#" onClick={() => setIsOpen(true)}><small>edit counter</small></a></p>
+        {/* only users that have signed in, are active patrons, and have a allyCode can update counters */}
+        {authenticated && user.patronStatus === 'active_patron' && user.username && <p><Button className="p-0 m-0" size="sm" color="link" onClick={() => setIsOpen(true)}><small>edit counter</small></Button></p>}
         {/* TODO: make the date a link that goes to a History page for the counter */}
-        <p><small>last updated on: {format(new Date(counter.createdOn), 'MMM d, yyyy')}</small></p>
+        <p><small>updated on: {format(new Date(counter.createdOn), 'MMM d, yyyy')}</small></p>
         {/* TODO: make the username a link that goes to a page for the user */}
-        <p><small>by: {counter.createdBy}</small></p>
+        <p><small>by: {counter.createdByName}</small></p>
       </EditMenu>
     </BottomWrapper>
     {isOpen && (
@@ -265,6 +265,7 @@ export default function DescriptionCard({
           rightSquad={rightSquad}
           size={size}
           toggle={setIsOpen}
+          user={user}
           view={view}
         />
       </ModalPortal>

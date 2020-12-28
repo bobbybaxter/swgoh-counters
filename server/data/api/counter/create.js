@@ -17,6 +17,8 @@ module.exports = async ({ database }, {
   toon3Zetas,
   toon4Zetas,
   toon5Zetas,
+  userId,
+  username,
 }) => {
   const versionSql = fs.readFileSync(path.join(__dirname, './sql/createVersion.sql')).toString();
   const sql = fs.readFileSync(path.join(__dirname, './sql/create.sql')).toString();
@@ -39,7 +41,8 @@ module.exports = async ({ database }, {
     toon4Zetas,
     toon5Zetas,
     new Date().toISOString(),
-    'user1',
+    userId,
+    username,
   ];
 
   const variables = [

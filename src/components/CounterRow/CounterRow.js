@@ -27,6 +27,7 @@ const CounterRow = React.memo(({
   reload,
   size,
   toggleCollapse,
+  user,
   view,
   ...props
 }) => {
@@ -37,8 +38,8 @@ const CounterRow = React.memo(({
     reload: PropTypes.func,
     size: PropTypes.string.isRequired,
     toggleCollapse: PropTypes.func.isRequired,
-    view: PropTypes.string.isRequired,
     user: PropTypes.object.isRequired,
+    view: PropTypes.string.isRequired,
   };
 
   const [counterStubs, setCounterStubs] = useState();
@@ -132,12 +133,14 @@ const CounterRow = React.memo(({
   const buildCounterDescriptions = !_.isEmpty(counterStubs)
     && counterStubs.rightSquadStubs.map(rightSquadStub => (
         <CounterRowDescription
+          authenticated={authenticated}
           collapse={collapse}
           counterStubs={counterStubs}
           key={`${view}_${size}_${rightSquadStub.counterId}_description`}
           reload={reload}
           rightSquadStub={rightSquadStub}
           size={size}
+          user={user}
           view={view}
         />
     ));
@@ -164,7 +167,7 @@ const CounterRow = React.memo(({
             {hardCounters ? buildCounters(hardCounters, 'hard') : []}
             {divider}
             {softCounters ? buildCounters(softCounters, 'soft') : []}
-            {authenticated && view === 'normal'
+            {authenticated && user.patronStatus === 'active_patron' && user.username && view === 'normal'
               ? <>
                   <CounterCard key={`addCounterButton_${counterStubId}`}>
                     <ToonImg
@@ -184,6 +187,7 @@ const CounterRow = React.memo(({
                         reload={reload}
                         size={size}
                         toggle={setIsOpen}
+                        user={user}
                       />
                     </ModalPortal>
                   )}

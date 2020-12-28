@@ -11,14 +11,24 @@ import { DescriptionCardWrapper } from 'src/styles/style';
 
 // TODO: Add tests
 export default function CounterRowDescription({
-  collapse, counterStubs, reload, rightSquadStub, size, view, ...props
+  authenticated,
+  collapse,
+  counterStubs,
+  reload,
+  rightSquadStub,
+  size,
+  view,
+  user,
+  ...props
 }) {
   CounterRowDescription.propTypes = {
+    authenticated: PropTypes.bool,
     collapse: PropTypes.string,
     counterStubs: PropTypes.object.isRequired,
     reload: PropTypes.func,
     rightSquadStub: PropTypes.object.isRequired,
     size: PropTypes.string.isRequired,
+    user: PropTypes.object,
     view: PropTypes.string.isRequired,
   };
 
@@ -70,10 +80,12 @@ export default function CounterRowDescription({
     <DescriptionCardWrapper key={counterId}>
       <Collapse isOpen={counterId === collapse}>
           {counter && <DescriptionCard
+            authenticated={authenticated}
             counter={counter}
             counterStubs={counterStubs}
             reload={reload}
             size={size}
+            user={user}
             view={view}
           />}
       </Collapse>

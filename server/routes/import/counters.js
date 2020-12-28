@@ -1,3 +1,5 @@
+const { userId, username } = require('../../.config.json');
+
 module.exports = app => async (req, res) => {
   const oldSquads = await app.data.squad.getOld(app);
   const counters = await app.data.counter.getOld(app);
@@ -34,6 +36,8 @@ module.exports = app => async (req, res) => {
       toon3Zetas: '',
       toon4Zetas: '',
       toon5Zetas: '',
+      userId,
+      username,
     };
 
     await app.data.counter.create(app, counterToCreate);

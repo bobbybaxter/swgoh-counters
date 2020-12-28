@@ -16,9 +16,10 @@ module.exports = app => async (req, res) => {
       'toon5Name',
       'latestVersionId',
       'createdOn',
-      'createdBy',
+      'createdById',
+      'createdByName',
     ]),
-    req.body,
+    _.omit(req.body, ['userId']),
   );
 
   if (updateNeeded) {
@@ -27,8 +28,6 @@ module.exports = app => async (req, res) => {
     if (updatedSquad !== 'ok') {
       res.status('400').send('Squad was not updated.');
     }
-
-    res.send('ok');
   }
 
   res.send('ok');

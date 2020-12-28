@@ -1,6 +1,6 @@
 SELECT
 	s.id,
-	s.name,
+	sv.name,
 	sv.toon1Id,
 	char1.name as 'toon1Name',
 	sv.toon2Id,
@@ -15,7 +15,8 @@ SELECT
 	sv.counterStrategy,
 	s.latestVersionId,
 	sv.createdOn,
-	sv.createdBy
+	sv.createdById,
+	sv.createdByName
 FROM squad s
 JOIN squadVersion sv ON sv.id = s.latestVersionId
 JOIN `character` char1 ON char1.id = sv.toon1Id

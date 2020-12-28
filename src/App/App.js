@@ -41,7 +41,8 @@ const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
 const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 
 // TODO: write a script that deletes all associated counters if a squad is deleted
-// TODO: condense helpers into a single file so the import footprints are smaller
+// TODO: add a dropdown for each opponent, so they can be edited
+// TODO: in spreadsheet - replace all <br> tags in counters with \n
 class App extends React.Component {
   state = {
     user: defaultUser,

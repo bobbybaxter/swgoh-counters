@@ -111,6 +111,7 @@ export const EditMenu = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
 
   p, a {
     padding: 0 .25rem;

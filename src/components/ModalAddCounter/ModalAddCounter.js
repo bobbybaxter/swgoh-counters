@@ -52,7 +52,14 @@ const buildDefaultSquad = () => {
 
 // TODO: Add tests
 export default function ModalAddCounter({
-  counterStubs, isOpen, leftSquadStub, reload, size, toggle, ...props
+  counterStubs,
+  isOpen,
+  leftSquadStub,
+  reload,
+  size,
+  toggle,
+  user,
+  ...props
 }) {
   ModalAddCounter.propTypes = {
     counterStubs: PropTypes.object.isRequired,
@@ -61,6 +68,7 @@ export default function ModalAddCounter({
     reload: PropTypes.func,
     size: PropTypes.string,
     toggle: PropTypes.func.isRequired,
+    user: PropTypes.object,
   };
 
   const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
@@ -186,13 +194,15 @@ export default function ModalAddCounter({
         // if this is a new squad, create a new squad then add counter
         const addSquadResponse = await addSquad({
           name: tempSquadInfo.name,
-          description: tempSquadInfo.description,
-          counterStrategy: tempSquadInfo.counterStrategy,
+          description: '',
+          counterStrategy: '',
           toon1Id: tempSquad[0].id,
           toon2Id: tempSquad[1].id,
           toon3Id: tempSquad[2].id,
           toon4Id: tempSquad[3].id,
           toon5Id: tempSquad[4].id,
+          userId: user.id,
+          username: user.username,
         });
 
         if (addSquadResponse.status === 'ok') {
@@ -211,6 +221,8 @@ export default function ModalAddCounter({
             toon3Zetas: tempSquad[2].zetas.toString(),
             toon4Zetas: tempSquad[3].zetas.toString(),
             toon5Zetas: tempSquad[4].zetas.toString(),
+            userId: user.id,
+            username: user.username,
           });
 
           toggle();

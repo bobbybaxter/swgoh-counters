@@ -95,23 +95,24 @@ export default function SquadDetails({
     const newSquadName = e.target.value;
 
     if (!sourceSquad) {
-      const selectedSquad = squads.find(x => x.name === newSquadName) || '';
-      setTempSquadInfo({
-        id: selectedSquad.id,
-        name: selectedSquad.name,
-        description: selectedSquad.description,
-        counterStrategy: selectedSquad.counterStrategy,
-        toon1Id: selectedSquad.toon1Id,
-        toon2Id: selectedSquad.toon2Id,
-        toon3Id: selectedSquad.toon3Id,
-        toon4Id: selectedSquad.toon4Id,
-        toon5Id: selectedSquad.toon5Id,
-      });
-      if (newSquadName === 'Select squad') {
-        setTempSquad(buildDefaultSquad());
-      }
-
       if (!isNewSquad) {
+        const selectedSquad = squads.find(x => x.name === newSquadName) || '';
+        setTempSquadInfo({
+          id: selectedSquad.id,
+          name: selectedSquad.name,
+          description: selectedSquad.description,
+          counterStrategy: selectedSquad.counterStrategy,
+          toon1Id: selectedSquad.toon1Id,
+          toon2Id: selectedSquad.toon2Id,
+          toon3Id: selectedSquad.toon3Id,
+          toon4Id: selectedSquad.toon4Id,
+          toon5Id: selectedSquad.toon5Id,
+        });
+
+        if (newSquadName === 'Select squad') {
+          setTempSquad(buildDefaultSquad());
+        }
+
         if (newSquadName !== 'Select squad') {
           const {
             toon1Id, toon1Name,
@@ -148,6 +149,17 @@ export default function SquadDetails({
         if (rightSquad && rightSquad.name === newSquadName) {
           setSquadMatch('');
         }
+        setTempSquadInfo({
+          id: tempSquadInfo.id,
+          name: newSquadName,
+          description: tempSquadInfo.description,
+          counterStrategy: tempSquadInfo.counterStrategy,
+          toon1Id: tempSquadInfo.toon1Id,
+          toon2Id: tempSquadInfo.toon2Id,
+          toon3Id: tempSquadInfo.toon3Id,
+          toon4Id: tempSquadInfo.toon4Id,
+          toon5Id: tempSquadInfo.toon5Id,
+        });
       }
     } else {
       const matchingSquadName = (squads.find(x => x.name === newSquadName) || {}).name;

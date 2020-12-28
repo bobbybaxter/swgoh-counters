@@ -22,7 +22,7 @@ export async function addSquad(squad) {
   const body = await response.text();
 
   if (response.status !== 200) {
-    throw Error(response.body.message);
+    throw Error(body);
   }
 
   return { status: 'ok', squadId: body };

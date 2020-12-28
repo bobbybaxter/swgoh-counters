@@ -1,6 +1,7 @@
 INSERT INTO squadVersion
 SET id = ?,
   squadId = ?,
+  name = ?,
   description = ?,
   counterStrategy = ?,
   toon1Id = ?,
@@ -9,4 +10,5 @@ SET id = ?,
   toon4Id = ?,
   toon5Id = ?,
   createdOn = ?,
-  createdBy = ?;
+  createdById = ?,
+  createdByName = ?;

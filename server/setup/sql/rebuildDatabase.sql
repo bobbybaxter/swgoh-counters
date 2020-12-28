@@ -12,7 +12,6 @@ DROP TABLE eventTier;
 DROP TABLE eventTierVersion;
 DROP TABLE eventTierSquad;
 DROP TABLE eventTierSquadVersion;
-DROP TABLE `user`;
 DROP TABLE watchlist;
 DROP TABLE userWatchlist;
 DROP TABLE userWatchlistItem;
@@ -21,12 +20,12 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE `squad` (
   `id` VARCHAR(50) PRIMARY KEY NOT NULL,
-  `name` VARCHAR(50) NOT NULL,
   `latestVersionId` VARCHAR(50)
 );
 
 CREATE TABLE `squadVersion` (
   `id` VARCHAR(50) PRIMARY KEY NOT NULL,
+  `name` VARCHAR(50) NOT NULL,
   `squadId` VARCHAR(50),
   `description` VARCHAR(2000),
   `counterStrategy` VARCHAR(2000),
@@ -36,7 +35,8 @@ CREATE TABLE `squadVersion` (
   `toon4Id` VARCHAR(50),
   `toon5Id` VARCHAR(50),
   `createdOn` datetime NOT NULL,
-  `createdBy` VARCHAR(50) NOT NULL
+  `createdById` VARCHAR(50) NOT NULL,
+  `createdByName` VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE `character` (
@@ -67,7 +67,8 @@ CREATE TABLE `counterVersion` (
   `toon4Zetas` VARCHAR(500),
   `toon5Zetas` VARCHAR(500),
   `createdOn` datetime NOT NULL,
-  `createdBy` VARCHAR(50) NOT NULL
+  `createdById` VARCHAR(50) NOT NULL,
+  `createdByName` VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE `videoLink` (
@@ -83,37 +84,40 @@ CREATE TABLE `videoLinkVersion` (
   `link` VARCHAR(255) NOT NULL,
   `description` VARCHAR(50) NOT NULL,
   `createdOn` datetime NOT NULL,
-  `createdBy` VARCHAR(50) NOT NULL
+  `createdById` VARCHAR(50) NOT NULL,
+  `createdByName` VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE `event` (
   `id` VARCHAR(50) PRIMARY KEY NOT NULL,
-  `name` VARCHAR(50) NOT NULL,
   `latestVersionId` VARCHAR(50)
 );
 
 CREATE TABLE `eventVersion` (
   `id` VARCHAR(50) PRIMARY KEY NOT NULL,
+  `name` VARCHAR(50) NOT NULL,
   `eventId` VARCHAR(50) NOT NULL,
   `type` VARCHAR(50) NOT NULL,
   `createdOn` datetime NOT NULL,
-  `createdBy` VARCHAR(50) NOT NULL
+  `createdById` VARCHAR(50) NOT NULL,
+  `createdByName` VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE `eventTier` (
   `id` VARCHAR(50) PRIMARY KEY NOT NULL,
-  `name` VARCHAR(50) NOT NULL,
   `eventId` VARCHAR(50) NOT NULL,
   `latestVersionId` VARCHAR(50)
 );
 
 CREATE TABLE `eventTierVersion` (
   `id` VARCHAR(50) PRIMARY KEY NOT NULL,
+  `name` VARCHAR(50) NOT NULL,
   `eventTierId` VARCHAR(50) NOT NULL,
   `orderNum` int NOT NULL,
   `requirements` VARCHAR(2000),
   `createdOn` datetime NOT NULL,
-  `createdBy` VARCHAR(50) NOT NULL
+  `createdById` VARCHAR(50) NOT NULL,
+  `createdByName` VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE `eventTierSquad` (
@@ -129,12 +133,8 @@ CREATE TABLE `eventTierSquadVersion` (
   `power` int NOT NULL,
   `description` VARCHAR(2000),
   `createdOn` datetime NOT NULL,
-  `createdBy` VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE `user` (
-  `id` VARCHAR(50) PRIMARY KEY NOT NULL,
-  `name` VARCHAR(50) NOT NULL
+  `createdById` VARCHAR(50) NOT NULL,
+  `createdByName` VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE `watchlist` (
@@ -171,33 +171,23 @@ ALTER TABLE `squadVersion` ADD FOREIGN KEY (`toon4Id`) REFERENCES `character` (`
 
 ALTER TABLE `squadVersion` ADD FOREIGN KEY (`toon5Id`) REFERENCES `character` (`id`);
 
-ALTER TABLE `squadVersion` ADD FOREIGN KEY (`createdBy`) REFERENCES `user` (`id`);
-
 ALTER TABLE `counter` ADD FOREIGN KEY (`opponentSquadId`) REFERENCES `squad` (`id`);
 
 ALTER TABLE `counter` ADD FOREIGN KEY (`counterSquadId`) REFERENCES `squad` (`id`);
 
 ALTER TABLE `counter` ADD FOREIGN KEY (`latestVersionId`) REFERENCES `counterVersion` (`id`);
 
-ALTER TABLE `counterVersion` ADD FOREIGN KEY (`createdBy`) REFERENCES `user` (`id`);
-
 ALTER TABLE `videoLink` ADD FOREIGN KEY (`latestVersionId`) REFERENCES `videoLinkVersion` (`id`);
-
-ALTER TABLE `videoLinkVersion` ADD FOREIGN KEY (`createdBy`) REFERENCES `user` (`id`);
 
 ALTER TABLE `event` ADD FOREIGN KEY (`latestVersionId`) REFERENCES `eventVersion` (`id`);
 
 ALTER TABLE `eventVersion` ADD FOREIGN KEY (`eventId`) REFERENCES `event` (`id`);
-
-ALTER TABLE `eventVersion` ADD FOREIGN KEY (`createdBy`) REFERENCES `user` (`id`);
 
 ALTER TABLE `eventTier` ADD FOREIGN KEY (`eventId`) REFERENCES `event` (`id`);
 
 ALTER TABLE `eventTier` ADD FOREIGN KEY (`latestVersionId`) REFERENCES `eventTierVersion` (`id`);
 
 ALTER TABLE `eventTierVersion` ADD FOREIGN KEY (`eventTierId`) REFERENCES `eventTier` (`id`);
-
-ALTER TABLE `eventTierVersion` ADD FOREIGN KEY (`createdBy`) REFERENCES `user` (`id`);
 
 ALTER TABLE `eventTierSquad` ADD FOREIGN KEY (`eventTierId`) REFERENCES `eventTier` (`id`);
 
@@ -206,10 +196,6 @@ ALTER TABLE `eventTierSquad` ADD FOREIGN KEY (`squadId`) REFERENCES `squad` (`id
 ALTER TABLE `eventTierSquad` ADD FOREIGN KEY (`latestVersionId`) REFERENCES `eventTierSquadVersion` (`id`);
 
 ALTER TABLE `eventTierSquadVersion` ADD FOREIGN KEY (`eventTierSquadId`) REFERENCES `eventTierSquad` (`id`);
-
-ALTER TABLE `eventTierSquadVersion` ADD FOREIGN KEY (`createdBy`) REFERENCES `user` (`id`);
-
-ALTER TABLE `userWatchlist` ADD FOREIGN KEY (`userId`) REFERENCES `user` (`id`);
 
 ALTER TABLE `userWatchlist` ADD FOREIGN KEY (`watchlistId`) REFERENCES `watchlist` (`id`);
 

@@ -11,6 +11,8 @@ module.exports = async ({ database }, {
   toon3Id,
   toon4Id,
   toon5Id,
+  userId,
+  username,
 }) => {
   const versionSql = fs.readFileSync(path.join(__dirname, './sql/createVersion.sql')).toString();
   const sql = fs.readFileSync(path.join(__dirname, './sql/create.sql')).toString();
@@ -20,6 +22,7 @@ module.exports = async ({ database }, {
   const versionVariables = [
     versionId,
     squadId,
+    name,
     description,
     counterStrategy,
     toon1Id,
@@ -28,12 +31,12 @@ module.exports = async ({ database }, {
     toon4Id,
     toon5Id,
     new Date().toISOString(),
-    'user1',
+    userId,
+    username,
   ];
 
   const variables = [
     squadId,
-    name,
     versionId,
   ];
 
@@ -92,6 +95,7 @@ module.exports = async ({ database }, {
     const res = await response;
     return { res, squadId };
   } catch (err) {
+    console.log('err :>> ', err);
     return new Error(err);
   }
 };

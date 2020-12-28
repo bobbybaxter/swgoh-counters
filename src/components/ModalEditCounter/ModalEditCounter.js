@@ -60,6 +60,7 @@ export default function ModalEditCounter({
   rightSquad,
   size,
   toggle,
+  user,
   view,
   ...props
 }) {
@@ -72,6 +73,7 @@ export default function ModalEditCounter({
     rightSquad: PropTypes.object,
     size: PropTypes.string,
     toggle: PropTypes.func.isRequired,
+    user: PropTypes.object,
     view: PropTypes.string,
   };
 
@@ -285,7 +287,7 @@ export default function ModalEditCounter({
       || tempSquad[0].id === 'BLANK') {
       console.error('please add or correct squad name or members');
     } else {
-      const editSquadResponse = await updateSquad({
+      const updateSquadResponse = await updateSquad({
         name: tempSquadInfo.name,
         id: tempSquadInfo.id,
         description: tempSquadInfo.description,
@@ -295,9 +297,11 @@ export default function ModalEditCounter({
         toon3Id: tempSquad[2].id,
         toon4Id: tempSquad[3].id,
         toon5Id: tempSquad[4].id,
+        userId: user.id,
+        username: user.username,
       });
 
-      if (editSquadResponse === 'ok') {
+      if (updateSquadResponse === 'ok') {
         await updateCounter({
           id: counter.id,
           opponentSquadId: view === 'normal' ? leftSquad.id : rightSquad.id,
@@ -314,12 +318,14 @@ export default function ModalEditCounter({
           toon3Zetas: tempSquad[2].zetas.toString(),
           toon4Zetas: tempSquad[3].zetas.toString(),
           toon5Zetas: tempSquad[4].zetas.toString(),
+          userId: user.id,
+          username: user.username,
         });
 
         toggle();
         reload();
       } else {
-        console.error('error updating squad', editSquadResponse);
+        console.error('error updating squad', updateSquadResponse);
       }
     }
   };
@@ -393,7 +399,7 @@ export default function ModalEditCounter({
                 <Input
                   name="squadDescriptionInput"
                   placeholder={leftSquad && `Please explain how to beat ${leftSquad.name} with this counter.`}
-                  rows="3"
+                  rows="10"
                   type="textarea"
                   {...strategy}
                 />

@@ -1,6 +1,3 @@
 UPDATE squad 
-SET 
-  id = ?,
-  name = ?,
-  latestVersionId = ?
+SET latestVersionId = ?
 WHERE id = ?;
