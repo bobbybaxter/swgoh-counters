@@ -9,6 +9,7 @@ const LeaderLockBtn = styled(Button)`
   &:focus,
   &.hover,
   &:hover,
+  &:disabled,
   &:not(:disabled):not(.disabled),
   &:not(:disabled):not(.disabled).active,
   &:not(:disabled):not(.disabled):active {
@@ -31,7 +32,6 @@ const StyledLockBtn = styled(Button)`
     border-color: transparent !important;
     color: ${props => (props.$isOn ? '#FFFFFF' : '#2C2C2C')};
     padding-top: 0;
-    // padding-bottom: 0;
   }
 
   &.hover,
@@ -60,7 +60,7 @@ const StyledLockImg = styled.span`
 
 export const LockBtn = ({ isOn, index, ...props }) => (
   index === 0
-    ? <LeaderLockBtn><BsFillLockFill title="Placeholder" alt="Placeholder" /></LeaderLockBtn>
+    ? <LeaderLockBtn disabled><BsFillLockFill title="Placeholder" alt="Placeholder" /></LeaderLockBtn>
     : <StyledLockBtn
           color="link"
           $isOn={isOn}

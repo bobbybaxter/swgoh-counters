@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Collapse } from 'reactstrap';
 
-import DescriptionCard from 'src/components/DescriptionCard/DescriptionCard';
+import CounterCard from 'src/components/DescriptionCards/CounterCard';
 
-import { getCounterById } from 'src/helpers/data';
 import { IDBService } from 'src/setup/IndexedDB';
 
-import { DescriptionCardWrapper } from 'src/styles/style';
+import { getCounterById } from 'src/helpers/data';
+import { CounterCardWrapper } from 'src/styles/style';
 
 // TODO: Add tests
 export default function CounterRowDescription({
@@ -77,9 +77,9 @@ export default function CounterRowDescription({
   }, [counterId, rightSquadStub.counterCreatedOn]);
 
   return (
-    <DescriptionCardWrapper key={counterId}>
+    <CounterCardWrapper key={counterId}>
       <Collapse isOpen={counterId === collapse}>
-          {counter && <DescriptionCard
+          {counter && <CounterCard
             authenticated={authenticated}
             counter={counter}
             counterStubs={counterStubs}
@@ -89,6 +89,6 @@ export default function CounterRowDescription({
             view={view}
           />}
       </Collapse>
-    </DescriptionCardWrapper>
+    </CounterCardWrapper>
   );
 }

@@ -4,7 +4,7 @@ module.exports = app => async (req, res) => {
   const counterToUpdate = await app.data.counter.getById(app, req.params.id);
 
   if (!counterToUpdate) {
-    res.status('400').send('Counter does not exist.');
+    return res.status('400').send('Counter does not exist.');
   }
 
   const updateNeeded = !_.isEqual(
@@ -14,16 +14,16 @@ module.exports = app => async (req, res) => {
       'createdById',
       'createdByName',
     ]),
-    _.omit(req.body, ['userId']),
+    _.omit(req.body, ['userId', 'username']),
   );
 
   if (updateNeeded) {
     const updatedCounter = await app.data.counter.update(app, counterToUpdate, req.body);
 
     if (updatedCounter !== 'ok') {
-      res.status('400').send('Counter was not updated.');
+      return res.status('400').send('Counter was not updated.');
     }
   }
 
-  res.send('ok');
+  return res.send('ok');
 };

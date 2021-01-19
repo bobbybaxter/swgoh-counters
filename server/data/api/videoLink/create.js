@@ -1,9 +1,34 @@
 const fs = require('fs');
 const path = require('path');
+const { nanoid } = require('nanoid');
 
-module.exports = async ({ database }, id) => {
-  const versionSql = fs.readFileSync(path.join(__dirname, './sql/deleteVersions.sql')).toString();
-  const sql = fs.readFileSync(path.join(__dirname, './sql/delete.sql')).toString();
+module.exports = async ({ database }, {
+  subjectId,
+  description,
+  link,
+  userId,
+  username,
+}) => {
+  const versionSql = fs.readFileSync(path.join(__dirname, './sql/createVersion.sql')).toString();
+  const sql = fs.readFileSync(path.join(__dirname, './sql/create.sql')).toString();
+  const versionId = nanoid();
+  const videoLinkId = nanoid();
+
+  const versionVariables = [
+    versionId,
+    videoLinkId,
+    description,
+    link,
+    new Date().toISOString(),
+    userId,
+    username,
+  ];
+
+  const variables = [
+    videoLinkId,
+    subjectId,
+    versionId,
+  ];
 
   const response = new Promise((res, rej) => {
     database.getConnection((databaseConnectionError, connection) => {
@@ -18,28 +43,20 @@ module.exports = async ({ database }, id) => {
           rej(transactionError);
         }
 
-        connection.query(sql, id, (sqlError, sqlResults) => {
-          if (sqlError) {
+        connection.query(versionSql, versionVariables, (versionError, versionResults) => {
+          if (versionError) {
             return connection.rollback(() => {
               connection.release();
-              rej(sqlError);
+              rej(versionError);
             });
           }
 
-          if (sqlResults.affectedRows === 0) {
-            rej(new Error('No rows affected'));
-          }
-
-          connection.query(versionSql, id, (versionError, versionResults) => {
-            if (versionError) {
+          connection.query(sql, variables, (sqlError, sqlResults) => {
+            if (sqlError) {
               return connection.rollback(() => {
                 connection.release();
-                rej(versionError);
+                rej(sqlError);
               });
-            }
-
-            if (versionResults.affectedRows === 0) {
-              rej(new Error('No rows affected'));
             }
 
             connection.commit((commitError) => {
@@ -50,13 +67,13 @@ module.exports = async ({ database }, id) => {
                 });
               }
 
-              return console.info(`Squad Versions for ${id} successfully deleted.`);
+              return console.info(`Video link for ${videoLinkId} successfully updated.`);
             });
 
             return '';
           });
 
-          console.info(`Squad for ${id} successfully deleted.`);
+          console.info(`Video link version for ${videoLinkId} successfully created.`);
           connection.release();
           return res('ok');
         });

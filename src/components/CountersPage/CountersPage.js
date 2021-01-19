@@ -3,6 +3,7 @@ import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 import AdsenseAd from 'src/components/AdsenseAd/AdsenseAd';
+import BlankCounterRow from 'src/components/CounterRow/BlankCounterRow';
 import CounterRow from 'src/components/CounterRow/CounterRow';
 import MetaTags from 'src/components/shared/MetaTags';
 import PatreonButton from 'src/components/shared/PatreonButton';
@@ -16,6 +17,7 @@ import { CountersPageWrapper } from './style';
 const isSnap = navigator.userAgent === 'ReactSnap';
 
 // TODO: Add tests
+// TODO: turn ads back on before deployment
 export default function CountersPage({
   authenticated, handleViewBtn, reload, size, user, view, ...props
 }) {
@@ -77,7 +79,7 @@ export default function CountersPage({
 
       <CountersPageWrapper>
         {!patreonId && <PatreonButton/>}
-        {!patreonId && toggleAd('2779553573')}
+        {/* {!patreonId && toggleAd('2779553573')} */}
 
         <div className="columnTitles">
           <h1 className="col-3 mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
@@ -86,8 +88,8 @@ export default function CountersPage({
             <small className="m-0 p-0 text-secondary">
               {
                 view === 'normal'
-                  ? 'Click on a counter team to see more info.'
-                  : 'Click on an opponent team to see more info.'
+                  ? 'Click on a counter squad to see more info.'
+                  : 'Click on an opponent squad to see more info.'
               }
             </small>
           </div>
@@ -98,11 +100,17 @@ export default function CountersPage({
 
         <div>
           {buildCounterRows || ''}
+          {view === 'normal' && <BlankCounterRow
+            reload={reload}
+            size={size}
+            user={user}
+            view={view}
+          />}
         </div>
 
         <footer>
           {!patreonId && <PatreonButton/>}
-          {!patreonId && toggleAd('7648736876')}
+          {/* {!patreonId && toggleAd('7648736876')} */}
           <ColorIndicator />
           {/* <div className="offset-2 col-8 border-dark border-top"></div> */}
         </footer>

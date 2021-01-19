@@ -88,7 +88,7 @@ export const CounterCard = styled(CounterRow)`
   box-shadow: none;
 `;
 
-export const DescriptionCardWrapper = styled.div`
+export const CounterCardWrapper = styled.div`
   font-size: .85rem;
   p {
     margin: 8px 0;

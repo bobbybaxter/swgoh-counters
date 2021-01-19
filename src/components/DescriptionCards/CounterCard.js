@@ -1,81 +1,28 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { Button, UncontrolledCollapse } from 'reactstrap';
+import _ from 'lodash';
 
-import ModalEditCounter from 'src/components/ModalEditCounter/ModalEditCounter';
+import ModalEditCounter from 'src/components/Modals/ModalEditCounter';
 import ModalPortal from 'src/components/ModalPortal/ModalPortal';
-import SquadHeader from 'src/components/shared/SquadHeader';
 import { useToggle } from 'src/helpers';
-import { DescriptionCardWrapper, EditMenu } from 'src/styles/style';
+import { ContainerColumn, EditMenu } from 'src/styles/style';
+import SquadHeader from 'src/components/shared/SquadHeader';
 
-const TopWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+import {
+  BottomWrapper,
+  DescriptionButtonsWrapper,
+  DescriptionButton,
+  DescriptionText,
+  DetailsDivLeft,
+  DetailsDivRight,
+  TopWrapper,
+  VideoListItemWrapper,
+} from './style';
 
-  @media only screen and (min-width:768px) {
-    flex-direction: row;
-  }
-`;
-
-const BottomWrapper = styled.div`
-  padding: .25rem;
-  border-top: 1px solid #343a40;
-
-  @media only screen and (min-width:768px) {
-    padding: .5rem;
-  }
-`;
-
-const DescriptionButton = styled(Button)`
-  margin: .25rem;
-`;
-
-const DescriptionButtonsWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
-
-const DescriptionText = styled.p`
-  padding: .5rem;
-  margin: 0 !important;
-  white-space: pre-line;
-
-  @media only screen and (min-width:768px) {
-    padding: .5rem;
-  }
-`;
-
-const DetailsDivLeft = styled.div`
-  padding: .5rem;
-
-  @media only screen and (min-width:768px) {
-    border-right: 1px solid #343a40;
-    padding: .5rem;
-    margin: inherit;
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-`;
-
-const DetailsDivRight = styled.div`
-  padding: .5rem;
-  border-top: 1px solid #343a40;
-
-  @media only screen and (min-width:768px) {
-    border-top: none;
-    flex: 0 0 50%;
-    max-width: 50%;
-    padding: .5rem;
-    margin: inherit;
-  }
-`;
-
-// TODO: add videos
-// TODO: move styled components to a style.js file
+// TODO: add video section
 const defaultSquad = {
   id: '',
   name: '',
@@ -97,7 +44,7 @@ const defaultSquad = {
   createdByName: '',
 };
 
-export default function DescriptionCard({
+export default function CounterCard({
   authenticated,
   counter,
   counterStubs,
@@ -106,7 +53,7 @@ export default function DescriptionCard({
   user,
   view,
 }) {
-  DescriptionCard.propTypes = {
+  CounterCard.propTypes = {
     authenticated: PropTypes.bool,
     counter: PropTypes.object,
     counterStubs: PropTypes.object.isRequired,
@@ -120,9 +67,6 @@ export default function DescriptionCard({
   const [rightSquad, setRightSquad] = useState(defaultSquad);
   const [zetaData, setZetaData] = useState();
   const [isOpen, setIsOpen] = useToggle(false);
-
-  const submissionForm = 'https://docs.google.com/forms/d/e/1FAIpQLSetDRLSGQHCNcw1iCKhNbmouBiOg1dseSBERJNGR5OORFx-lQ/viewform?embedded=true';
-  const discordLink = 'https://discord.gg/eCnE48h';
 
   const {
     counterSquadId,
@@ -186,34 +130,45 @@ export default function DescriptionCard({
     return '';
   };
 
-  const buildCounterDetails = () => (
-    <>
-        {zetaData
-        && zetaData.some(x => x.length > 0)
-        && <>
-            <DescriptionCardWrapper>
-              <DescriptionButton id={`zetaReqs_${id}`} size="sm">Required Zetas</DescriptionButton>
-            </DescriptionCardWrapper>
-            <UncontrolledCollapse toggler={`#zetaReqs_${id}`} className="p-1">
-              {zetaData.map((zeta, i) => (zeta.length > 0
-                ? (
-                  <DescriptionText key={`${zeta}${i}`} className="text-left m-0 p-0"><strong className="text-secondary">{view === 'normal' ? rightSquad[`toon${i + 1}Name`] : leftSquad[`toon${i + 1}Name`]}: </strong> {zeta.join(', ')}</DescriptionText>
-                )
-                : ''))}
-            </UncontrolledCollapse>
-        </>}
-    </>
-  );
+  const buildCounterDetails = () => {
+    const shouldPrintZeta = zetaData && zetaData.some(x => x.length > 0);
+    const shouldPrintVideoLinks = !_.isEmpty(counter.videoLinks);
 
-  const buildCounterStrategy = (squad) => {
-    const { name } = squad;
-    const counterDescription = counter.description;
     return (
       <>
-        {(counterDescription)
-          ? (<DescriptionText className="text-left"><strong className="text-secondary ">Counter Strategy: </strong>{counterDescription}</DescriptionText>)
-          : (<DescriptionText className="text-secondary"><small>Do you know the specific strategy for {name}?  If so, please <a href={submissionForm}>submit an issue.</a></small></DescriptionText>)}
-        {(counterDescription) ? '' : (<DescriptionText className="text-secondary"><small>You can also join me on <a href={discordLink}>Discord</a> to start a discussion regarding this team.</small></DescriptionText>)}
+        <DescriptionButtonsWrapper>
+          {shouldPrintZeta && <DescriptionButton id={`zetaReqs_${id}`} size="sm">Required Zetas</DescriptionButton>}
+          {shouldPrintVideoLinks && <DescriptionButton id={`videoLinks_${id}`} size="sm">Videos</DescriptionButton>}
+        </DescriptionButtonsWrapper>
+        {
+          shouldPrintZeta && <UncontrolledCollapse toggler={`#zetaReqs_${id}`} className="p-1">
+            {zetaData.map((zeta, i) => (zeta.length > 0
+              ? (
+                <DescriptionText key={`${zeta}${i}`} className="text-left m-0 p-0"><strong className="text-secondary">{view === 'normal' ? rightSquad[`toon${i + 1}Name`] : leftSquad[`toon${i + 1}Name`]}: </strong> {zeta.join(', ')}</DescriptionText>
+              )
+              : ''))}
+          </UncontrolledCollapse>
+        }
+        {
+          shouldPrintVideoLinks && <UncontrolledCollapse toggler={`#videoLinks_${id}`} className="p`">
+            <ContainerColumn>
+              {counter.videoLinks.map((videoLink) => {
+                const handleButton = () => window.open(videoLink.link);
+                return (
+                <VideoListItemWrapper key={videoLink.id}>
+                  <DescriptionButton size="sm" color="warning" onClick={handleButton}>
+                    {videoLink.description}
+                  </DescriptionButton>
+                  <EditMenu>
+                    <p><small>updated on: {format(new Date(videoLink.createdOn), 'MMM d, yyyy')}</small></p>
+                    <p><small>by: {videoLink.createdByName}</small></p>
+                  </EditMenu>
+                </VideoListItemWrapper>
+                );
+              })}
+            </ContainerColumn>
+          </UncontrolledCollapse>
+        }
       </>
     );
   };
@@ -222,7 +177,7 @@ export default function DescriptionCard({
     <>
     <TopWrapper>
       <DetailsDivLeft>
-        <h6 className="text-secondary mb-1">{view === 'normal' ? 'Opponent Team' : 'Counter Team'}</h6>
+        <h6 className="text-secondary mb-1">{view === 'normal' ? 'Opponent Squad' : 'Counter Squad'}</h6>
         {view === 'normal'
           ? leftSquad && <SquadHeader size={size} squad={leftSquad} />
           : leftSquad && <SquadHeader counter={counter} showLocks={true} size={size} squad={leftSquad} />
@@ -231,7 +186,7 @@ export default function DescriptionCard({
       </DetailsDivLeft>
 
       <DetailsDivRight>
-        <h6 className="text-secondary mb-1">{view === 'normal' ? 'Counter Team' : 'Opponent Team'}</h6>
+        <h6 className="text-secondary mb-1">{view === 'normal' ? 'Counter Squad' : 'Opponent Squad'}</h6>
         {
           view === 'normal'
             ? rightSquad && rightSquad.id
@@ -244,7 +199,11 @@ export default function DescriptionCard({
 
     </TopWrapper>
     <BottomWrapper>
-      {buildCounterStrategy(rightSquad)}
+      {
+        (counter.description
+          ? (<DescriptionText className="text-left"><strong className="text-secondary ">Counter Strategy: </strong>{counter.description}</DescriptionText>)
+          : (<DescriptionText className="text-left"><strong className="text-secondary ">Counter Strategy: </strong></DescriptionText>))
+      }
       <EditMenu>
         {/* only users that have signed in, are active patrons, and have a allyCode can update counters */}
         {authenticated && user.patronStatus === 'active_patron' && user.username && <p><Button className="p-0 m-0" size="sm" color="link" onClick={() => setIsOpen(true)}><small>edit counter</small></Button></p>}

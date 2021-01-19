@@ -26,12 +26,20 @@ module.exports = async ({ database }, id) => {
             });
           }
 
+          if (sqlResults.affectedRows === 0) {
+            rej(new Error('No rows affected'));
+          }
+
           connection.query(versionSql, id, (versionError, versionResults) => {
             if (versionError) {
               return connection.rollback(() => {
                 connection.release();
                 rej(versionError);
               });
+            }
+
+            if (versionResults.affectedRows === 0) {
+              rej(new Error('No rows affected'));
             }
 
             connection.commit((commitError) => {
@@ -42,13 +50,13 @@ module.exports = async ({ database }, id) => {
                 });
               }
 
-              return console.info(`Squad Versions for ${id} successfully deleted.`);
+              return console.info(`Counter Versions for ${id} successfully deleted.`);
             });
 
             return '';
           });
 
-          console.info(`Squad for ${id} successfully deleted.`);
+          console.info(`Counter for ${id} successfully deleted.`);
           connection.release();
           return res('ok');
         });

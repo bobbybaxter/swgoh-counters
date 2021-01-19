@@ -28,3 +28,9 @@ export {
   getOldSquadData,
   importSquadData,
 } from './squadsData';
+
+export {
+  addVideoLink,
+  deleteVideoLink,
+  updateVideoLink,
+} from './videoLinkData';

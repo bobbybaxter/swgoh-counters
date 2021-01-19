@@ -1,0 +1,10 @@
+SELECT
+	vl.id,
+	vl.subjectId,
+	vlv.link,
+	vlv.description,
+	vlv.createdOn,
+	vlv.createdById,
+	vlv.createdByName
+FROM videoLink vl
+JOIN videoLinkVersion vlv ON vlv.id = vl.latestVersionId;

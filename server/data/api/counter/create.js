@@ -104,7 +104,8 @@ module.exports = async ({ database }, {
   });
 
   try {
-    return await response;
+    const res = await response;
+    return { res, counterId };
   } catch (err) {
     return new Error(err);
   }

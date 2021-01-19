@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { LockBtn } from 'src/components/shared/Locks';
 import ToonImg from 'src/components/shared/ToonImg';
 import { getImage } from 'src/helpers';
-import { colors } from 'src/styles/colors';
 
 import { ToonName } from './style';
 
@@ -42,63 +41,74 @@ export const Wrapper = styled.div`
 `;
 
 export default function NewSquadDisplay({
+  color,
   doesTempMatchSource,
-  isHardCounter,
+  hideLocks,
+  isCompact,
   removeCharacter,
   setTempSquad,
+  size,
   sourceSquad,
+  squadMatch,
   tempSquad,
   ...props
 }) {
   NewSquadDisplay.propTypes = {
+    color: PropTypes.string,
     doesTempMatchSource: PropTypes.bool,
-    isHardCounter: PropTypes.bool.isRequired,
-    removeCharacter: PropTypes.func.isRequired,
+    hideLocks: PropTypes.bool,
+    isCompact: PropTypes.bool,
+    removeCharacter: PropTypes.func,
     setTempSquad: PropTypes.func.isRequired,
+    size: PropTypes.string,
     sourceSquad: PropTypes.array,
+    squadMatch: PropTypes.string,
     tempSquad: PropTypes.array.isRequired,
   };
 
-  const buildSquadDisplay = tempSquad.map((toon, i) => {
+  const buildCounterDisplay = tempSquad.map((toon, i) => {
     const handleNewSquadLock = (e) => {
       e.preventDefault();
       const tempSquadCopy = [...tempSquad];
 
       // only allows isReq/lock toggling on toons that aren't the leader and aren't blank
       if (i !== 0 && tempSquadCopy[i].id !== 'BLANK') {
-        tempSquadCopy[i].isReq = tempSquadCopy[i].isReq === 1 ? 0 : 1;
-
+        tempSquadCopy[i].isReq = tempSquadCopy[i].isReq !== true;
         setTempSquad(tempSquadCopy);
       }
     };
 
     return (
-      <CharCard key={`${toon.id}_${i}`}>
-        <LockBtn
+      i < size.charAt(0) && <CharCard key={`${toon.id}_${i}`}>
+        {!hideLocks && <LockBtn
           index={i}
           color="link"
           isOn={doesTempMatchSource ? sourceSquad[i].isReq : toon.isReq}
           onClick={handleNewSquadLock}
-        />
-        <NewSquadChar>
+        />}
+        <NewSquadChar $isCompact={isCompact}>
           <ToonImg
             no-margin
             id={`newToon${i}`}
+            isCompact={isCompact}
             src={ getImage(toon.id) }
             title={toon.name}
             alt={toon.name}
-            color={isHardCounter ? colors.hardCounter : colors.softCounter}
-            onClick={removeCharacter}
+            color={color || 'gray'}
+            onClick={removeCharacter || undefined}
           />
-          <ToonName isRow={true}>{toon.name}</ToonName>
+          <ToonName isCompact={true}>{toon.name}</ToonName>
         </NewSquadChar>
       </CharCard>
     );
   });
 
   return (
-    <Wrapper>
-      {buildSquadDisplay}
-    </Wrapper>
+    <>
+      <Wrapper>
+        {buildCounterDisplay}
+      </Wrapper>
+      {squadMatch && <div className="alert alert-danger mt-3">Squad exists as {squadMatch}</div>}
+    </>
   );
 }

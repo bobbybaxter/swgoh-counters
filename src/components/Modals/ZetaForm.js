@@ -10,7 +10,7 @@ export const FormZetaReq = styled(FormGroup)`
 `;
 
 export const Wrapper = styled.div`
-  border-bottom: 1px solid #343a40;
+  // border-bottom: 1px solid #343a40;
   border-top: 1px solid #343a40;
   padding-top: 1rem;
 `;
@@ -43,20 +43,20 @@ export default function ZetaForm({
 
       return zetaList.length > 0
         ? <FormZetaReq key={`${i}_zetaReq`}>
-          <Label for={`${i}_zetaReq`} size="sm" className="text-secondary col-6">{toon.name}</Label>
-          <Input
-            className="col-6"
-            id={`${i}_zetaReq`}
-            type="select"
-            size={zetaList.length.toString()}
-            bsSize="sm"
-            multiple
-            onChange={handleZetaSelector}
-            value={doesTempMatchSource ? sourceSquad[i].zetas : toon.zetas}
-          >
-            {zetaList.map(zeta => <option key={zeta}>{zeta}</option>)}
-          </Input>
-        </FormZetaReq>
+            <Label for={`${i}_zetaReq`} size="sm" className="text-secondary col-6">{toon.name}</Label>
+            <Input
+              className="col-6"
+              id={`${i}_zetaReq`}
+              type="select"
+              size={zetaList.length.toString()}
+              bsSize="sm"
+              multiple
+              onChange={handleZetaSelector}
+              value={doesTempMatchSource ? sourceSquad[i].zetas : toon.zetas}
+            >
+              {zetaList.map(zeta => <option key={zeta}>{zeta}</option>)}
+            </Input>
+          </FormZetaReq>
         : '';
     });
 

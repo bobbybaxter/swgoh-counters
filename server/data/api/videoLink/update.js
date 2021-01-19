@@ -1,45 +1,63 @@
 const fs = require('fs');
 const path = require('path');
+const { nanoid } = require('nanoid');
 
-module.exports = async ({ database }, id) => {
-  const versionSql = fs.readFileSync(path.join(__dirname, './sql/deleteVersions.sql')).toString();
-  const sql = fs.readFileSync(path.join(__dirname, './sql/delete.sql')).toString();
+module.exports = async ({ database }, { id }, {
+  description,
+  link,
+  userId,
+  username,
+}) => {
+  const versionSql = fs.readFileSync(path.join(__dirname, './sql/createVersion.sql')).toString();
+  const sql = fs.readFileSync(path.join(__dirname, './sql/update.sql')).toString();
+  const versionId = nanoid();
+
+  const versionVariables = [
+    versionId,
+    id,
+    description,
+    link,
+    new Date().toISOString(),
+    userId,
+    username,
+  ];
+
+  const variables = [
+    versionId,
+    id,
+  ];
 
   const response = new Promise((res, rej) => {
+    // gets a database connection
     database.getConnection((databaseConnectionError, connection) => {
       if (databaseConnectionError) {
         connection.release();
         rej(databaseConnectionError);
       }
 
+      // begins a transaction
       connection.beginTransaction((transactionError) => {
         if (transactionError) {
           connection.release();
           rej(transactionError);
         }
 
-        connection.query(sql, id, (sqlError, sqlResults) => {
-          if (sqlError) {
+        // adds a new version of the videoLink
+        connection.query(versionSql, versionVariables, (versionError, versionResults) => {
+          if (versionError) {
             return connection.rollback(() => {
               connection.release();
-              rej(sqlError);
+              rej(versionError);
             });
           }
 
-          if (sqlResults.affectedRows === 0) {
-            rej(new Error('No rows affected'));
-          }
-
-          connection.query(versionSql, id, (versionError, versionResults) => {
-            if (versionError) {
+          // updates the videoLink with the new videoLinkVersion
+          connection.query(sql, variables, (sqlError, sqlResults) => {
+            if (sqlError) {
               return connection.rollback(() => {
                 connection.release();
-                rej(versionError);
+                rej(sqlError);
               });
-            }
-
-            if (versionResults.affectedRows === 0) {
-              rej(new Error('No rows affected'));
             }
 
             connection.commit((commitError) => {
@@ -50,13 +68,13 @@ module.exports = async ({ database }, id) => {
                 });
               }
 
-              return console.info(`Squad Versions for ${id} successfully deleted.`);
+              return console.info(`Video link for ${id} successfully updated.`);
             });
 
             return '';
           });
 
-          console.info(`Squad for ${id} successfully deleted.`);
+          console.info(`Video link version for ${id} successfully added.`);
           connection.release();
           return res('ok');
         });

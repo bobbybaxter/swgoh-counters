@@ -50,13 +50,13 @@ module.exports = async ({ database }, id) => {
                 });
               }
 
-              return console.info(`Squad Versions for ${id} successfully deleted.`);
+              return console.info(`Video link versions for ${id} successfully deleted.`);
             });
 
             return '';
           });
 
-          console.info(`Squad for ${id} successfully deleted.`);
+          console.info(`Video link for ${id} successfully deleted.`);
           connection.release();
           return res('ok');
         });

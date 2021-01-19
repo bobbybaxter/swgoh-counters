@@ -151,10 +151,9 @@ export default function SquadHeader({
     <>
       <h5>{name}</h5>
       <Wrapper className="mb-1">
-
       {
-        displaySquad && displaySquad.map((toon, i) => (
-            <CharCard key={`CharCard_${toon.name}_${i}`}>
+        displaySquad && displaySquad.map((toon, i) => (i < size.charAt(0)
+            && <CharCard key={`CharCard_${toon.name}_${i}`}>
               <NewSquadChar>
                 <ToonImg
                   src={ toon.image }
@@ -174,7 +173,6 @@ export default function SquadHeader({
               </NewSquadChar>
             </CharCard>))
       }
-
       </Wrapper>
     </>
   );

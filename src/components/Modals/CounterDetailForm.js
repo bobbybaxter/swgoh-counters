@@ -1,44 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components/macro';
-import { FormGroup, Input, Label } from 'reactstrap';
+import { Button, Input, Label } from 'reactstrap';
 
-export const FormCheckboxes = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: flex-start;
-  justify-content: center;
-  font-size: .7rem;
-  font-weight: 300;
+import { EditMenu } from 'src/styles/style';
 
-  @media only screen and (min-width:768px) {
-    font-size: .9rem;
-  }
+import { FormCheckboxes, FormDetails, InputWrapper } from './style';
 
-  @media only screen and (min-width:992px) {
-    font-size: 1rem;
-  }
-`;
-
-export const FormSquadDetails = styled(FormGroup)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 0 1rem 0;
-`;
-
-export const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-  padding-left: 0;
-  padding-right: 0;
-`;
-
-export default function SquadDetails({
+export default function CounterDetails({
   buildDefaultSquad,
   checkExistingSquad,
   defaultTempSquadInfo,
@@ -47,17 +15,17 @@ export default function SquadDetails({
   isNewSquad,
   rightSquad,
   setIsHardCounter,
-  setIsNewSquad,
-  setSquadMatch,
   setIsNewCounter,
-  setTempSquadInfo,
+  setIsNewSquad,
+  setSquadNameMatch,
   setTempSquad,
+  setTempSquadInfo,
   tempSquadInfo,
   sourceSquad,
-  squadMatch,
+  squadNameMatch,
   squads,
 }) {
-  SquadDetails.propTypes = {
+  CounterDetails.propTypes = {
     buildDefaultSquad: PropTypes.func.isRequired,
     checkExistingSquad: PropTypes.func.isRequired,
     defaultTempSquadInfo: PropTypes.object.isRequired,
@@ -66,18 +34,19 @@ export default function SquadDetails({
     isNewSquad: PropTypes.bool,
     rightSquad: PropTypes.object,
     setIsHardCounter: PropTypes.func.isRequired,
-    setIsNewSquad: PropTypes.func,
-    setSquadMatch: PropTypes.func.isRequired,
     setIsNewCounter: PropTypes.func.isRequired,
-    setTempSquadInfo: PropTypes.func.isRequired,
+    setIsNewSquad: PropTypes.func,
+    setSquadNameMatch: PropTypes.func.isRequired,
     setTempSquad: PropTypes.func.isRequired,
+    setTempSquadInfo: PropTypes.func.isRequired,
+    squadMatch: PropTypes.string,
     tempSquadInfo: PropTypes.object.isRequired,
     sourceSquad: PropTypes.array,
-    squadMatch: PropTypes.string.isRequired,
+    squadNameMatch: PropTypes.string.isRequired,
     squads: PropTypes.array.isRequired,
   };
 
-  const [sourceSquadName] = useState(tempSquadInfo.name);
+  const [sourceSquadName] = useState(tempSquadInfo.name || 'Counter Squad Name');
 
   const buildSquadDropdown = squads.map(squad => <option id={squad.id} key={`dd_${squad.id}`}>{squad.name}</option>);
 
@@ -85,13 +54,13 @@ export default function SquadDetails({
 
   const handleIsNewSquadCheckbox = () => {
     setIsNewSquad && setIsNewSquad(!isNewSquad);
-    setSquadMatch('');
+    setSquadNameMatch('');
     setIsNewCounter(true);
     setTempSquadInfo(defaultTempSquadInfo);
     setTempSquad(buildDefaultSquad());
   };
 
-  const handleSquadNameInput = (e) => {
+  const handleSquadNameInput = async (e) => {
     const newSquadName = e.target.value;
 
     if (!sourceSquad) {
@@ -138,16 +107,26 @@ export default function SquadDetails({
               id: toon5Id, name: toon5Name, isReq: false, zetas: [],
             },
           ]);
-          checkExistingSquad([toon1Name, toon2Name, toon3Name, toon4Name, toon5Name]);
+          const squadCheck = await checkExistingSquad([
+            toon1Name,
+            toon2Name,
+            toon3Name,
+            toon4Name,
+            toon5Name,
+          ]);
+          setSquadNameMatch(squadCheck.squadMatch);
+          setIsNewCounter(squadCheck.isNewCounter);
+          setIsNewSquad(squadCheck.isNewSquad);
+          setTempSquadInfo(squadCheck.tempSquadInfo);
         }
-        setSquadMatch('');
+        setSquadNameMatch('');
       }
 
       if (isNewSquad) {
         const matchingSquadName = (squads.find(x => x.name === newSquadName) || {}).name;
-        newSquadName === matchingSquadName ? setSquadMatch(matchingSquadName) : setSquadMatch('');
+        newSquadName === matchingSquadName ? setSquadNameMatch(matchingSquadName) : setSquadNameMatch('');
         if (rightSquad && rightSquad.name === newSquadName) {
-          setSquadMatch('');
+          setSquadNameMatch('');
         }
         setTempSquadInfo({
           id: tempSquadInfo.id,
@@ -163,13 +142,13 @@ export default function SquadDetails({
       }
     } else {
       const matchingSquadName = (squads.find(x => x.name === newSquadName) || {}).name;
-      newSquadName === matchingSquadName ? setSquadMatch(matchingSquadName) : setSquadMatch('');
+      newSquadName === matchingSquadName ? setSquadNameMatch(matchingSquadName) : setSquadNameMatch('');
       if (rightSquad && rightSquad.name === newSquadName) {
-        setSquadMatch('');
+        setSquadNameMatch('');
       }
       setTempSquadInfo({
         id: tempSquadInfo.id,
-        name: newSquadName || sourceSquadName,
+        name: newSquadName,
         description: tempSquadInfo.description,
         counterStrategy: tempSquadInfo.counterStrategy,
         toon1Id: tempSquadInfo.toon1Id,
@@ -181,17 +160,28 @@ export default function SquadDetails({
     }
   };
 
+  const handleReset = () => {
+    setSquadNameMatch('');
+    setTempSquadInfo({
+      id: tempSquadInfo.id,
+      name: rightSquad.name,
+      toon1Id: tempSquadInfo.toon1Id,
+      toon2Id: tempSquadInfo.toon2Id,
+      toon3Id: tempSquadInfo.toon3Id,
+      toon4Id: tempSquadInfo.toon4Id,
+      toon5Id: tempSquadInfo.toon5Id,
+    });
+  };
+
   return (
-    <FormSquadDetails>
-      <h6 className="text-secondary">Counter Team Details</h6>
+    <FormDetails $hasMarginBottom={!sourceSquad}>
       <InputWrapper className="col-12">
         <FormCheckboxes className="col-5">
           {!sourceSquad && <Label check className="counterLabel p-0"><Input className="counterInput" type="checkbox" checked={isNewSquad} onChange={handleIsNewSquadCheckbox}/>New Squad?</Label>}
           <Label check className="counterLabel p-0"><Input className="counterInput" type="checkbox" checked={isHardCounter} onChange={handleIsHardCounterCheckbox}/>Hard Counter?</Label>
         </FormCheckboxes>
 
-        {sourceSquad && !squadMatch && <Input className="col-7" type="text" bsSize="sm" placeholder={sourceSquadName} value={tempSquadInfo.name} onChange={handleSquadNameInput}/>}
-        {sourceSquad && squadMatch && <h6 className="m-0 p-0">{tempSquadInfo.name}</h6>}
+        {sourceSquad && <Input className="col-7" type="text" bsSize="sm" placeholder={sourceSquadName} value={tempSquadInfo.name} onChange={handleSquadNameInput}/>}
 
         {!sourceSquad && isNewSquad && <Input className="col-7" type="text" bsSize="sm" placeholder="Squad Name" onChange={handleSquadNameInput}/>}
 
@@ -202,8 +192,13 @@ export default function SquadDetails({
           </Input>
         }
       </InputWrapper>
-      {squadMatch && <div className="alert alert-danger">Squad name is taken</div>}
+      {squadNameMatch && <div className="alert alert-danger mt-3">Squad name is taken</div>}
       {!isNewCounter && <div className="alert alert-danger">This counter already exists</div>}
-    </FormSquadDetails>
+      {
+        sourceSquad && <EditMenu className="align-self-end">
+          <Button color="link" size="sm" className="mb-0" onClick={handleReset}>reset</Button>
+        </EditMenu>
+      }
+    </FormDetails>
   );
 }

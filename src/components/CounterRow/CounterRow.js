@@ -2,8 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { Collapse } from 'reactstrap';
 
-import ModalAddCounter from 'src/components/ModalAddCounter/ModalAddCounter';
+import OpponentCard from 'src/components/DescriptionCards/OpponentCard';
+import ModalAddCounter from 'src/components/Modals/ModalAddCounter';
 import ModalPortal from 'src/components/ModalPortal/ModalPortal';
 import ToonImg from 'src/components/shared/ToonImg';
 
@@ -149,13 +151,15 @@ const CounterRow = React.memo(({
     <CounterRowWrapper>
       <div className="d-flex flex-row">
 
-        {/* Left Side Team Div */}
+        {/* Left Side Squad Div */}
         <LeftDiv className="col-3">
           <div>
             <ToonImg
+              alt={leftSquadStub.name}
+              id={leftSquadStub.id}
+              onClick={toggle}
               src={getImage(leftSquadStub.toon1Id)}
               title={leftSquadStub.name}
-              alt={leftSquadStub.name}
             />
             <SquadTitle>{leftSquadStub.name}</SquadTitle>
           </div>
@@ -171,11 +175,11 @@ const CounterRow = React.memo(({
               ? <>
                   <CounterCard key={`addCounterButton_${counterStubId}`}>
                     <ToonImg
+                      alt="Add a new counter"
                       id={`addCounterButton_${counterStubId}`}
                       onClick={() => setIsOpen(true)}
                       src={require('../../assets/Plus.png')}
                       title="Add a new counter"
-                      alt="Add a new counter"
                     />
                   </CounterCard>
                   {isOpen && (
@@ -195,6 +199,19 @@ const CounterRow = React.memo(({
               : ''}
           </RightDivWrapper>
         </RightDiv>
+      </div>
+
+      {/* Collapsable Opponent Card */}
+      <div>
+        <Collapse isOpen={leftSquadStub.id === collapse}>
+          <OpponentCard
+            authenticated={authenticated}
+            leftSquadStub={leftSquadStub}
+            reload={reload}
+            size={size}
+            user={user}
+          />
+        </Collapse>
       </div>
 
       {/* Collapsable Description Card */}

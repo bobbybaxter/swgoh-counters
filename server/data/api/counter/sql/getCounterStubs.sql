@@ -16,3 +16,4 @@ JOIN squad s ON ?? = s.id
 JOIN squadVersion sv ON s.latestVersionId  = sv.id
 WHERE ?? = ?
 AND cv.battleType = ?
+ORDER BY cv.createdOn DESC;

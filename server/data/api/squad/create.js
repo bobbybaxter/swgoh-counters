@@ -95,7 +95,6 @@ module.exports = async ({ database }, {
     const res = await response;
     return { res, squadId };
   } catch (err) {
-    console.log('err :>> ', err);
     return new Error(err);
   }
 };

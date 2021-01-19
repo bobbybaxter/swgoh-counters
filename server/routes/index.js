@@ -13,6 +13,7 @@ module.exports = (app) => {
     .use('/api/counter', require('./counter')(app))
     .use('/api/squad', require('./squad')(app))
     .use('/api/user', require('./user')(app))
+    .use('/api/videoLink', require('./videoLink')(app))
     .use('/api/firebase', require('./firebase')(app))
     .use('/api/patreon', require('./patreon')(app));
 

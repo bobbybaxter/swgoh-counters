@@ -12,22 +12,46 @@ const ReactstrapModalAdapter = ({ className, centered, ...props }) => (
   />
 );
 
-export const FormLeftSide = styled.div`
+export const FormCheckboxes = styled.div`
   display: flex;
-  flex-direction: column;
-  overflow: initial;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: .7rem;
+  font-weight: 300;
 
   @media only screen and (min-width:768px) {
-    overflow: hidden;
-    flex: 0 0 50%;
-    max-width: 50%;
+    font-size: .9rem;
+    min-height: 50px;
+  }
+
+  @media only screen and (min-width:992px) {
+    font-size: 1rem;
   }
 `;
 
-export const FormRightSide = styled.div`
+export const FormDetails = styled(FormGroup)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: ${props => (props.$hasMarginBottom ? '1rem 0' : '1rem 0 0 0')};
+
+  @media only screen and (min-width:768px) {
+    margin: ${props => (props.$hasMarginBottom ? '0 0 1rem 0' : '0')};
+  }
+`;
+
+export const FormCentered = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+`;
+
+export const FormLeftSide = styled.div`
   display: flex;
   flex-direction: column;
   overflow: initial;
@@ -42,6 +66,23 @@ export const FormRightSide = styled.div`
   }
 `;
 
+export const FormRightSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow: initial;
+  width: 100%;
+  padding-top: 1rem;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  @media only screen and (min-width:768px) {
+    padding-top: 0;
+    overflow: scroll;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+`;
+
 export const FormStrategy = styled(FormGroup)`
   display: flex;
   flex-direction: column;
@@ -49,7 +90,23 @@ export const FormStrategy = styled(FormGroup)`
   padding-top: 1rem;
 `;
 
-export const ModalAddCounterWrapper = styled(ReactstrapModalAdapter).attrs({
+export const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
+  padding-right: 0;
+`;
+
+export const MiddleWrapper = styled(FormGroup)`
+  border-bottom: ${props => (props.$hasBorderBottom ? '1px solid #343a40' : 'none')};
+  border-top: 1px solid #343a40;
+  margin-bottom: ${props => (props.$hasMarginBottom ? '1rem' : '0 !important')};
+  padding: ${props => (props.$hasPaddingBottom ? '1rem 0' : '1rem 0 0 0')};
+`;
+
+export const ModalWrapper = styled(ReactstrapModalAdapter).attrs({
   contentClassName: 'ModalContent',
 })`
   .ModalContent {
@@ -61,6 +118,8 @@ export const ModalAddCounterWrapper = styled(ReactstrapModalAdapter).attrs({
 `;
 
 export const OpponentBox = styled.div`
+  display: flex;
+  flex-direction: column;
   padding-bottom: 1rem;
   width: 100%;
   border-bottom: 1px solid #343a40;
@@ -76,6 +135,7 @@ export const StyledForm = styled(Form)`
 
   @media only screen and (min-width:768px) {
     flex-direction: row;
+    overflow: hidden;
   }
 `;
 
@@ -100,7 +160,7 @@ export const ToonName = styled.h6`
   font-size: .7rem;
   font-weight: 300;
   width: fit-content;
-  margin: ${props => (props.isRow ? '0' : '0 0 0 0.5rem')};
+  margin: 0;
 
   @media only screen and (min-width:768px) {
     font-size: .8rem;

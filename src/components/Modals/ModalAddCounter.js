@@ -2,20 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { Button, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { isWebUri } from 'valid-url';
 
 import SquadHeader from 'src/components/shared/SquadHeader';
 import { useInputValue } from 'src/helpers/';
-import { addCounter, addSquad } from 'src/helpers/data';
+import { addCounter, addSquad, addVideoLink } from 'src/helpers/data';
 
+import { colors } from 'src/styles/colors';
 import CharacterPool from './CharacterPool';
 import NewSquadDisplay from './NewSquadDisplay';
-import SquadDetailForm from './SquadDetailForm';
+import CounterDetailForm from './CounterDetailForm';
 import ZetaForm from './ZetaForm';
+import VideoForm from './VideoForm';
 import {
   FormLeftSide,
   FormRightSide,
   FormStrategy,
-  ModalAddCounterWrapper,
+  ModalWrapper,
   OpponentBox,
   StyledForm,
   StyledModalBody,
@@ -39,7 +42,7 @@ const defaultToon = {
   id: 'BLANK',
   name: 'Blank',
   isReq: false,
-  zetas: ['zeta 1', 'zeta 2'], // TODO: change to empty array before deployment
+  zetas: [],
 };
 
 const buildDefaultSquad = () => {
@@ -74,17 +77,20 @@ export default function ModalAddCounter({
   const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
   const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
 
+  const [areVideoLinksValid, setAreVideoLinksValid] = useState(true);
+  const [areVideoTitlesTooLong, setAreVideoTitlesTooLong] = useState(false);
   const [characters] = useState(storedCharacters);
   const [isHardCounter, setIsHardCounter] = useState(false);
   const [isNewCounter, setIsNewCounter] = useState(true);
   const [isNewSquad, setIsNewSquad] = useState(true);
-  const [isPoolViewRow] = useState(true);
   const [leftSquad, setLeftSquad] = useState();
   const strategy = useInputValue('');
   const [squads] = useState(storedSquads);
   const [squadMatch, setSquadMatch] = useState('');
+  const [squadNameMatch, setSquadNameMatch] = useState('');
   const [tempSquad, setTempSquad] = useState(buildDefaultSquad());
   const [tempSquadInfo, setTempSquadInfo] = useState(defaultTempSquadInfo);
+  const [videoLinks, setVideoLinks] = useState([]);
 
   useEffect(() => {
     async function getLeftSquad() {
@@ -95,39 +101,44 @@ export default function ModalAddCounter({
     getLeftSquad();
   }, [leftSquadStub.id, squads]);
 
-  const checkExistingCounter = (squadId) => {
-    const counterExists = !!counterStubs.rightSquadStubs.find(x => x.id === squadId);
-    setIsNewCounter(!counterExists);
+  const checkIfVideoLinksAreValid = (updatedLinks) => {
+    const isInvalid = updatedLinks.some(videoLink => !isWebUri(videoLink.link));
+    setAreVideoLinksValid(!isInvalid);
   };
 
-  const checkExistingSquad = (squadToCheck) => {
+  const checkExistingSquad = async (squadToCheck) => {
     const squadLeader = squadToCheck.shift();
     const squadMembers = squadToCheck.slice(0);
-    const matchedSquad = squads.find(squad => squad.toon1Name === squadLeader
+    const matchedSquad = await squads.find(squad => squad.toon1Name === squadLeader
       && _.isEqual(
         squadMembers.sort(),
         [squad.toon2Name, squad.toon3Name, squad.toon4Name, squad.toon5Name].sort(),
       ));
 
     if (!matchedSquad) {
-      setIsNewSquad(true);
-      setIsNewCounter(true);
-      setTempSquadInfo({
-        id: '',
-        name: tempSquadInfo.name,
-        description: '',
-        counterStrategy: '',
-        toon1Id: (characters.find(x => x.name === squadLeader)).id || 'BLANK',
-        toon2Id: (characters.find(x => x.name === squadMembers[0])).id || 'BLANK',
-        toon3Id: (characters.find(x => x.name === squadMembers[1])).id || 'BLANK',
-        toon4Id: (characters.find(x => x.name === squadMembers[2])).id || 'BLANK',
-        toon5Id: (characters.find(x => x.name === squadMembers[3])).id || 'BLANK',
-      });
+      return {
+        squadMatch: '',
+        isNewCounter: true,
+        isNewSquad: true,
+        tempSquadInfo: {
+          id: '',
+          name: tempSquadInfo.name,
+          description: '',
+          counterStrategy: '',
+          toon1Id: (characters.find(x => x.name === squadLeader)).id || 'BLANK',
+          toon2Id: (characters.find(x => x.name === squadMembers[0])).id || 'BLANK',
+          toon3Id: (characters.find(x => x.name === squadMembers[1])).id || 'BLANK',
+          toon4Id: (characters.find(x => x.name === squadMembers[2])).id || 'BLANK',
+          toon5Id: (characters.find(x => x.name === squadMembers[3])).id || 'BLANK',
+        },
+      };
     }
 
-    if (matchedSquad) {
-      setIsNewSquad(false);
-      setTempSquadInfo({
+    return {
+      squadMatch: matchedSquad.name,
+      isNewCounter: !counterStubs.rightSquadStubs.find(x => x.id === matchedSquad.id),
+      isNewSquad: false,
+      tempSquadInfo: {
         id: matchedSquad.id,
         name: matchedSquad.name,
         description: matchedSquad.description,
@@ -137,9 +148,8 @@ export default function ModalAddCounter({
         toon3Id: matchedSquad.toon3Id,
         toon4Id: matchedSquad.toon4Id,
         toon5Id: matchedSquad.toon5Id,
-      });
-      checkExistingCounter(matchedSquad.id);
-    }
+      },
+    };
   };
 
   const addCharacter = async (e) => {
@@ -157,15 +167,21 @@ export default function ModalAddCounter({
     if (!tempSquadIds.includes(addedToon.id)) {
       const indexToFill = await tempSquadCopy.findIndex(x => x.id === 'BLANK');
       addedToon.isReq = indexToFill === 0;
-      tempSquadCopy[indexToFill] = addedToon;
+      if (indexToFill < size.charAt(0)) {
+        tempSquadCopy[indexToFill] = addedToon;
+      }
       setTempSquad(tempSquadCopy);
 
       const currentSquadNames = await tempSquadCopy.map(x => x.name);
-      checkExistingSquad(currentSquadNames);
+      const squadCheck = await checkExistingSquad(currentSquadNames);
+      setSquadMatch(squadCheck.squadMatch);
+      setIsNewCounter(squadCheck.isNewCounter);
+      setIsNewSquad(squadCheck.isNewSquad);
+      setTempSquadInfo(squadCheck.tempSquadInfo);
     }
   };
 
-  const removeCharacter = (e) => {
+  const removeCharacter = async (e) => {
     e.preventDefault();
     const { id, title } = e.target;
     const buttonIndex = id[id.length - 1];
@@ -176,10 +192,13 @@ export default function ModalAddCounter({
     const currentSquadNames = tempSquad.map(x => x.name);
     const index = currentSquadNames.indexOf(title);
     index !== -1 ? currentSquadNames[index] = 'Blank' : ''; // eslint-disable-line no-unused-expressions
-    checkExistingSquad(currentSquadNames);
+    const squadCheck = await checkExistingSquad(currentSquadNames);
+    setSquadMatch(squadCheck.squadMatch);
+    setIsNewCounter(squadCheck.isNewCounter);
+    setIsNewSquad(squadCheck.isNewSquad);
+    setTempSquadInfo(squadCheck.tempSquadInfo);
   };
 
-  // TODO: consider changing scroll bar color on modal
   const handleSubmitButton = async (e) => {
     e.preventDefault();
     // blocks submission if this counter already exists, if the squad name is in use,
@@ -191,71 +210,86 @@ export default function ModalAddCounter({
       console.error('please add or correct squad name or members');
     } else {
       if (!tempSquadInfo.id) {
-        // if this is a new squad, create a new squad then add counter
-        const addSquadResponse = await addSquad({
-          name: tempSquadInfo.name,
-          description: '',
-          counterStrategy: '',
-          toon1Id: tempSquad[0].id,
-          toon2Id: tempSquad[1].id,
-          toon3Id: tempSquad[2].id,
-          toon4Id: tempSquad[3].id,
-          toon5Id: tempSquad[4].id,
-          userId: user.id,
-          username: user.username,
-        });
+        try {
+          // if this is a new squad, create a new squad then add counter
+          const addSquadResponse = await addSquad({
+            name: tempSquadInfo.name,
+            description: '',
+            counterStrategy: '',
+            toon1Id: tempSquad[0].id,
+            toon2Id: tempSquad[1].id,
+            toon3Id: tempSquad[2].id,
+            toon4Id: tempSquad[3].id,
+            toon5Id: tempSquad[4].id,
+            userId: user.id,
+            username: user.username,
+          });
 
-        if (addSquadResponse.status === 'ok') {
+          if (addSquadResponse.status === 'ok') {
+            const counterResponse = await addCounter({
+              opponentSquadId: leftSquadStub.id,
+              counterSquadId: addSquadResponse.squadId,
+              isHardCounter: isHardCounter ? 1 : 0,
+              battleType: size,
+              description: strategy.value,
+              isToon2Req: tempSquad[1].isReq ? 1 : 0,
+              isToon3Req: tempSquad[2].isReq ? 1 : 0,
+              isToon4Req: tempSquad[3].isReq ? 1 : 0,
+              isToon5Req: tempSquad[4].isReq ? 1 : 0,
+              toon1Zetas: tempSquad[0].zetas.toString(),
+              toon2Zetas: tempSquad[1].zetas.toString(),
+              toon3Zetas: tempSquad[2].zetas.toString(),
+              toon4Zetas: tempSquad[3].zetas.toString(),
+              toon5Zetas: tempSquad[4].zetas.toString(),
+              userId: user.id,
+              username: user.username,
+            });
+
+            if (counterResponse.status === 'ok') {
+              videoLinks.forEach((videoLink) => {
+                if (!videoLink.deleteVideo && videoLink.link !== '') {
+                  addVideoLink({
+                    subjectId: counterResponse.counterId,
+                    description: videoLink.description,
+                    link: videoLink.link,
+                    userId: user.id,
+                    username: user.username,
+                  });
+                }
+              });
+
+              toggle();
+              reload();
+            }
+          }
+        } catch (err) {
+          throw new Error(err);
+        }
+      }
+
+      if (tempSquadInfo.id) {
+        try {
+        // if this is an existing squad, just add the counter
           await addCounter({
             opponentSquadId: leftSquadStub.id,
-            counterSquadId: addSquadResponse.squadId,
-            isHardCounter: 0,
+            counterSquadId: tempSquadInfo.id,
+            isHardCounter: isHardCounter ? 1 : 0,
             battleType: size,
             description: strategy.value,
-            isToon2Req: tempSquad[1].isReq,
-            isToon3Req: tempSquad[2].isReq,
-            isToon4Req: tempSquad[3].isReq,
-            isToon5Req: tempSquad[4].isReq,
+            isToon2Req: tempSquad[1].isReq ? 1 : 0,
+            isToon3Req: tempSquad[2].isReq ? 1 : 0,
+            isToon4Req: tempSquad[3].isReq ? 1 : 0,
+            isToon5Req: tempSquad[4].isReq ? 1 : 0,
             toon1Zetas: tempSquad[0].zetas.toString(),
             toon2Zetas: tempSquad[1].zetas.toString(),
             toon3Zetas: tempSquad[2].zetas.toString(),
             toon4Zetas: tempSquad[3].zetas.toString(),
             toon5Zetas: tempSquad[4].zetas.toString(),
-            userId: user.id,
-            username: user.username,
           });
-
           toggle();
           reload();
-        } else {
-          console.error('error adding squad', addSquadResponse);
-        }
-      }
-
-      if (tempSquadInfo.id) {
-        // if this is an existing squad, just add the counter
-        const addCounterResponse = await addCounter({
-          opponentSquadId: leftSquadStub.id,
-          counterSquadId: tempSquadInfo.id,
-          isHardCounter: 0,
-          battleType: size,
-          description: strategy.value,
-          isToon2Req: tempSquad[1].isReq,
-          isToon3Req: tempSquad[2].isReq,
-          isToon4Req: tempSquad[3].isReq,
-          isToon5Req: tempSquad[4].isReq,
-          toon1Zetas: tempSquad[0].zetas.toString(),
-          toon2Zetas: tempSquad[1].zetas.toString(),
-          toon3Zetas: tempSquad[2].zetas.toString(),
-          toon4Zetas: tempSquad[3].zetas.toString(),
-          toon5Zetas: tempSquad[4].zetas.toString(),
-        });
-
-        if (addCounterResponse === 'ok') {
-          toggle();
-          reload();
-        } else {
-          console.error('error adding counter', addCounterResponse);
+        } catch (err) {
+          throw new Error(err);
         }
       }
     }
@@ -264,7 +298,7 @@ export default function ModalAddCounter({
   const closeBtn = <button className="close text-white" onClick={toggle}>&times;</button>;
 
   return (
-    <ModalAddCounterWrapper isOpen={isOpen} toggle={toggle}>
+    <ModalWrapper isOpen={isOpen} toggle={toggle}>
       <StyledModalHeader close={closeBtn}>Add Counter</StyledModalHeader>
 
       <StyledModalBody>
@@ -276,22 +310,23 @@ export default function ModalAddCounter({
               {leftSquad && <SquadHeader size={size} squad={leftSquad} />}
               <h6 className="text-secondary mb-1">vs</h6>
               <NewSquadDisplay
-                isHardCounter={isHardCounter}
+                color={isHardCounter ? colors.hardCounter : colors.softCounter}
                 removeCharacter={removeCharacter}
                 setTempSquad={setTempSquad}
+                size={size}
                 tempSquad={tempSquad}
               />
             </OpponentBox>
             <CharacterPool
               addCharacter={addCharacter}
               characters={characters}
-              isRow={isPoolViewRow}
             />
           </FormLeftSide>
 
           <FormRightSide>
               {/* Squad details */}
-            <SquadDetailForm
+            <h6 className="text-secondary pb-3">Counter Squad Name</h6>
+            <CounterDetailForm
               buildDefaultSquad={buildDefaultSquad}
               checkExistingSquad={checkExistingSquad}
               defaultTempSquadInfo={defaultTempSquadInfo}
@@ -299,13 +334,14 @@ export default function ModalAddCounter({
               isNewCounter={isNewCounter}
               isNewSquad={isNewSquad}
               setIsHardCounter={setIsHardCounter}
+              setIsNewCounter={setIsNewCounter}
               setIsNewSquad={setIsNewSquad}
               setSquadMatch={setSquadMatch}
-              setIsNewCounter={setIsNewCounter}
-              setTempSquadInfo={setTempSquadInfo}
+              setSquadNameMatch={setSquadNameMatch}
               setTempSquad={setTempSquad}
+              setTempSquadInfo={setTempSquadInfo}
               tempSquadInfo={tempSquadInfo}
-              squadMatch={squadMatch}
+              squadNameMatch={squadNameMatch}
               squads={squads}
             />
 
@@ -319,15 +355,22 @@ export default function ModalAddCounter({
 
               {/* Counter Strategy Box */}
               {isNewCounter && <FormStrategy>
-                <Label for="squadDescription" className="text-secondary pb-3">Counter Strategy</Label>
+                <Label for="counterStrategyInput" className="text-secondary pb-3">Counter Strategy</Label>
                 <Input
-                  name="squadDescriptionInput"
+                  name="counterStrategyInput"
                   placeholder={leftSquad && `Please explain how to beat ${leftSquad.name} with this counter.`}
-                  rows="3"
+                  rows="10"
                   type="textarea"
                   {...strategy}
                 />
               </FormStrategy>}
+
+              {isNewCounter && <VideoForm
+                checkIfVideoLinksAreValid={checkIfVideoLinksAreValid}
+                setAreVideoTitlesTooLong={setAreVideoTitlesTooLong}
+                setVideoLinks={setVideoLinks}
+                videoLinks={videoLinks}
+              />}
             </div>
           </FormRightSide>
         </StyledForm>
@@ -335,12 +378,14 @@ export default function ModalAddCounter({
 
       <StyledModalFooter>
         <Button color="primary" onClick={handleSubmitButton}
-          disabled={ !isNewCounter
-            || !!squadMatch
+          disabled={ areVideoTitlesTooLong
+            || !areVideoLinksValid
+            || !isNewCounter
+            || !!squadNameMatch
             || tempSquadInfo.name === ''
             || tempSquad[0].id === 'BLANK' }>Submit</Button>
         <Button color="secondary" onClick={toggle}>Cancel</Button>
       </StyledModalFooter>
-    </ModalAddCounterWrapper>
+    </ModalWrapper>
   );
 }

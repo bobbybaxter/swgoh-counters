@@ -4,7 +4,7 @@ module.exports = app => async (req, res) => {
   const squadToUpdate = await app.data.squad.getById(app, req.params.id);
 
   if (!squadToUpdate) {
-    res.status('400').send('Squad does not exist.');
+    return res.status('400').send('Squad does not exist.');
   }
 
   const updateNeeded = !_.isEqual(
@@ -19,16 +19,16 @@ module.exports = app => async (req, res) => {
       'createdById',
       'createdByName',
     ]),
-    _.omit(req.body, ['userId']),
+    _.omit(req.body, ['userId', 'username']),
   );
 
   if (updateNeeded) {
     const updatedSquad = await app.data.squad.update(app, squadToUpdate, req.body);
 
     if (updatedSquad !== 'ok') {
-      res.status('400').send('Squad was not updated.');
+      return res.status('400').send('Squad was not updated.');
     }
   }
 
-  res.send('ok');
+  return res.send('ok');
 };

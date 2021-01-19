@@ -9,24 +9,24 @@ const StyledCharBtn = styled(Button)`
   border-color: transparent;
   margin: 0 .25rem .25rem .25rem;
   padding: 0;
-  width: ${props => (props.$isRow ? '55px' : '65px')};
-  flex-flow: ${props => (props.$isRow ? 'column wrap' : 'row nowrap')};
-  text-align: ${props => (props.$isRow ? 'center' : 'left')};
-  align-items: ${props => (props.$isRow ? 'auto' : 'center')};
+  width: 55px;
+  flex-flow: column wrap;
+  text-align: center;
+  align-items: auto;
 
   @media only screen and (min-width:768px) {
-    width: ${props => (props.$isRow ? '55px' : 'auto')};
+    width: 55px;
   }
 
   @media only screen and (min-width:992px) {
-    width: ${props => (props.$isRow ? '65px' : 'auto')};
+    width: 65px;
   }
 
   @media only screen and (min-width:1200px) {
-    width: ${props => (props.$isRow ? '75px' : 'auto')};
+    width: 75px;
   }
 `;
 
-export default function CharacterPoolBtn({ isRow, ...props }) {
-  return <StyledCharBtn $isRow={isRow} {...props}>{props.children}</StyledCharBtn>;
+export default function CharacterPoolBtn({ isCompact, ...props }) {
+  return <StyledCharBtn $isCompact={isCompact} {...props}>{props.children}</StyledCharBtn>;
 }
