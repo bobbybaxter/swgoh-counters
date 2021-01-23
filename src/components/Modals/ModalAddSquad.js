@@ -85,9 +85,9 @@ export default function ModalAddSquad({
   const [isNewSquad, setIsNewSquad] = useState(true);
   const [leftSquadNameMatch, setLeftSquadNameMatch] = useState('');
   const [description, setDescription] = useState('');
-  const [counterStrategy, setCounterStrategy] = useState('');
+  const [generalStrategy, setGeneralStrategy] = useState('');
   const [sourceDescription, setSourceDescription] = useState('');
-  const [sourceCounterStrategy, setSourceCounterStrategy] = useState('');
+  const [sourceGeneralStrategy, setSourceGeneralStrategy] = useState('');
   const strategy = useInputValue('');
   const [squads] = useState(storedSquads);
   const [squadMatch, setSquadMatch] = useState('');
@@ -137,7 +137,7 @@ export default function ModalAddSquad({
           id: '',
           name: tempSquadInfo.name,
           description: '',
-          counterStrategy: '',
+          generalStrategy: '',
           toon1Id: (characters.find(x => x.name === squadLeader)).id || 'BLANK',
           toon2Id: (characters.find(x => x.name === squadMembers[0])).id || 'BLANK',
           toon3Id: (characters.find(x => x.name === squadMembers[1])).id || 'BLANK',
@@ -156,7 +156,7 @@ export default function ModalAddSquad({
         id: matchedSquad.id,
         name: matchedSquad.name,
         description: matchedSquad.description,
-        counterStrategy: matchedSquad.counterStrategy,
+        generalStrategy: matchedSquad.generalStrategy,
         toon1Id: matchedSquad.toon1Id,
         toon2Id: matchedSquad.toon2Id,
         toon3Id: matchedSquad.toon3Id,
@@ -180,8 +180,8 @@ export default function ModalAddSquad({
         squadMatch: '',
         isNewCounter: true,
         isNewSquad: true,
-        counterStrategy: '',
-        sourceCounterStrategy: '',
+        generalStrategy: '',
+        sourceGeneralStrategy: '',
         description: '',
         sourceDescription: '',
         tempSquadInfo: {
@@ -202,8 +202,8 @@ export default function ModalAddSquad({
       squadMatch: matchedSquad.name,
       isNewCounter: isNewCounterCheck,
       isNewSquad: false,
-      counterStrategy: matchedSquad.counterStrategy,
-      sourceCounterStrategy: matchedSquad.counterStrategy,
+      generalStrategy: matchedSquad.generalStrategy,
+      sourceGeneralStrategy: matchedSquad.generalStrategy,
       description: matchedSquad.description,
       sourceDescription: matchedSquad.description,
       tempSquadInfo: {
@@ -269,11 +269,11 @@ export default function ModalAddSquad({
 
       const currentSquadNames = await tempLeftSquadCopy.map(x => x.name);
       const squadCheck = await checkExistingLeftSquad(currentSquadNames);
-      setCounterStrategy(squadCheck.counterStrategy);
+      setGeneralStrategy(squadCheck.generalStrategy);
       setDescription(squadCheck.description);
       setIsNewCounter(squadCheck.isNewCounter);
       setIsNewLeftSquad(squadCheck.isNewSquad);
-      setSourceCounterStrategy(squadCheck.sourceCounterStrategy);
+      setSourceGeneralStrategy(squadCheck.sourceGeneralStrategy);
       setSourceDescription(squadCheck.sourceDescription);
       setSquadMatch(squadCheck.squadMatch);
       setTempLeftSquadInfo(squadCheck.tempSquadInfo);
@@ -314,21 +314,21 @@ export default function ModalAddSquad({
     const squadCheck = await checkExistingLeftSquad(currentSquadNames);
     setIsNewCounter(squadCheck.isNewCounter);
     setIsNewLeftSquad(squadCheck.isNewSquad);
-    setCounterStrategy(squadCheck.counterStrategy);
+    setGeneralStrategy(squadCheck.generalStrategy);
     setDescription(squadCheck.description);
-    setSourceCounterStrategy(squadCheck.sourceCounterStrategy);
+    setSourceGeneralStrategy(squadCheck.sourceGeneralStrategy);
     setSourceDescription(squadCheck.sourceDescription);
     setTempLeftSquadInfo(squadCheck.tempSquadInfo);
   };
 
-  const handleCounterStrategyInput = (e) => {
+  const handleGeneralStrategyInput = (e) => {
     e.preventDefault();
-    setCounterStrategy(e.target.value || e.target.innerText);
+    setGeneralStrategy(e.target.value || e.target.innerText);
   };
 
-  const handleCounterStrategyReset = (e) => {
+  const handleGeneralStrategyReset = (e) => {
     e.preventDefault();
-    setCounterStrategy(sourceCounterStrategy);
+    setGeneralStrategy(sourceGeneralStrategy);
   };
 
   const handleDescriptionInput = (e) => {
@@ -362,7 +362,7 @@ export default function ModalAddSquad({
             name: tempLeftSquadInfo.name,
             id: tempLeftSquadInfo.id,
             description,
-            counterStrategy,
+            generalStrategy,
             toon1Id: tempLeftSquad[0].id,
             toon2Id: tempLeftSquad[1].id,
             toon3Id: tempLeftSquad[2].id,
@@ -377,7 +377,7 @@ export default function ModalAddSquad({
           const newSquad = await addSquad({
             name: tempLeftSquadInfo.name,
             description,
-            counterStrategy,
+            generalStrategy,
             toon1Id: tempLeftSquad[0].id,
             toon2Id: tempLeftSquad[1].id,
             toon3Id: tempLeftSquad[2].id,
@@ -395,7 +395,7 @@ export default function ModalAddSquad({
             name: tempSquadInfo.name,
             id: tempSquadInfo.id,
             description: tempSquadInfo.description,
-            counterStrategy: tempSquadInfo.counterStrategy,
+            generalStrategy: tempSquadInfo.generalStrategy,
             toon1Id: tempSquad[0].id,
             toon2Id: tempSquad[1].id,
             toon3Id: tempSquad[2].id,
@@ -410,7 +410,7 @@ export default function ModalAddSquad({
           const newSquad = await addSquad({
             name: tempSquadInfo.name,
             description: '',
-            counterStrategy: '',
+            generalStrategy: '',
             toon1Id: tempSquad[0].id,
             toon2Id: tempSquad[1].id,
             toon3Id: tempSquad[2].id,
@@ -471,11 +471,11 @@ export default function ModalAddSquad({
                 checkExistingSquad={checkExistingLeftSquad}
                 defaultTempSquadInfo={defaultTempSquadInfo}
                 isNewSquad={isNewLeftSquad}
-                setCounterStrategy={setCounterStrategy}
+                setGeneralStrategy={setGeneralStrategy}
                 setDescription={setDescription}
                 setIsNewCounter={setIsNewCounter}
                 setIsNewSquad={setIsNewLeftSquad}
-                setSourceCounterStrategy={setSourceCounterStrategy}
+                setSourceGeneralStrategy={setSourceGeneralStrategy}
                 setSourceDescription={setSourceDescription}
                 setSquadNameMatch={setLeftSquadNameMatch}
                 setTempSquadInfo={setTempLeftSquadInfo}
@@ -523,20 +523,20 @@ export default function ModalAddSquad({
                 </MiddleWrapper>
 
                 {/* Opponent Squad General Strategy Box */}
-                <MiddleWrapper $hasBorderBottom={!sourceCounterStrategy} $hasPaddingBottom={!sourceCounterStrategy}> {/* eslint-disable-line max-len */}
+                <MiddleWrapper $hasBorderBottom={!sourceGeneralStrategy} $hasPaddingBottom={!sourceGeneralStrategy}> {/* eslint-disable-line max-len */}
                   <Label for="generalStrategyInput" className="text-secondary pb-3">Opponent Squad General Strategy</Label>
                   <Input
                     name="generalStrategyInput"
                     placeholder={'Please provide any general strategies, mechanics, or techniques needed to beat the Opponent Squad.  This should not include any specific counter squads!'}
                     rows="10"
                     type="textarea"
-                    value={counterStrategy}
-                    onChange={handleCounterStrategyInput}
+                    value={generalStrategy}
+                    onChange={handleGeneralStrategyInput}
                   />
 
                   {
-                    sourceCounterStrategy && <EditMenu className="align-self-end">
-                      <Button color="link" size="sm" className="mb-0" onClick={handleCounterStrategyReset}>reset</Button>
+                    sourceGeneralStrategy && <EditMenu className="align-self-end">
+                      <Button color="link" size="sm" className="mb-0" onClick={handleGeneralStrategyReset}>reset</Button>
                     </EditMenu>
                   }
                 </MiddleWrapper>
@@ -593,9 +593,9 @@ export default function ModalAddSquad({
 
                 {/* Counter Squad Counter Strategy Box */}
                 {<FormStrategy>
-                  <Label for="counterStrategyInput" className="text-secondary pb-3">Counter Strategy</Label>
+                  <Label for="generalStrategyInput" className="text-secondary pb-3">Counter Strategy</Label>
                   <Input
-                    name="counterStrategyInput"
+                    name="generalStrategyInput"
                     placeholder={'Please explain how to beat the Opponent Squad with this Counter Squad'}
                     rows="10"
                     type="textarea"

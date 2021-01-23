@@ -30,21 +30,21 @@ const defaultSquad = {
   toon5Id: '',
   toon5Name: '',
   description: '',
-  counterStrategy: '',
+  generalStrategy: '',
   latestVersionId: '',
   createdOn: '',
   createdById: '',
   createdByName: '',
 };
 
-export default function OpponentCard({
+const OpponentCard = React.memo(({
   authenticated,
   leftSquadStub,
   reload,
   size,
   toggleCollapse,
   user,
-}) {
+}) => {
   OpponentCard.propTypes = {
     authenticated: PropTypes.bool,
     leftSquadStub: PropTypes.object,
@@ -57,7 +57,7 @@ export default function OpponentCard({
   const [squad, setSquad] = useState(defaultSquad);
   const [isOpen, setIsOpen] = useToggle(false);
 
-  const { counterStrategy, description } = squad;
+  const { generalStrategy, description } = squad;
 
   useEffect(() => {
     async function getSquad() {
@@ -76,7 +76,7 @@ export default function OpponentCard({
           <h6 className="text-secondary mb-1">Opponent Squad</h6>
           { squad && <SquadHeader size={size} squad={squad} /> }
           <DescriptionText className="text-left"><strong className="text-secondary">Details: </strong>{description}</DescriptionText>
-          <DescriptionText className="text-left"><strong className="text-secondary">General Strategy: </strong>{counterStrategy}</DescriptionText>
+          <DescriptionText className="text-left"><strong className="text-secondary">General Strategy: </strong>{generalStrategy}</DescriptionText>
         </DetailsDivCenter>
       </TopWrapper>
 
@@ -105,4 +105,6 @@ export default function OpponentCard({
       )}
     </>
   );
-}
+});
+
+export default OpponentCard;

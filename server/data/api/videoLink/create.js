@@ -4,7 +4,7 @@ const { nanoid } = require('nanoid');
 
 module.exports = async ({ database }, {
   subjectId,
-  description,
+  title,
   link,
   userId,
   username,
@@ -17,7 +17,7 @@ module.exports = async ({ database }, {
   const versionVariables = [
     versionId,
     videoLinkId,
-    description,
+    title,
     link,
     new Date().toISOString(),
     userId,
@@ -43,19 +43,19 @@ module.exports = async ({ database }, {
           rej(transactionError);
         }
 
-        connection.query(versionSql, versionVariables, (versionError, versionResults) => {
-          if (versionError) {
+        connection.query(sql, variables, (sqlError, sqlResults) => {
+          if (sqlError) {
             return connection.rollback(() => {
               connection.release();
-              rej(versionError);
+              rej(sqlError);
             });
           }
 
-          connection.query(sql, variables, (sqlError, sqlResults) => {
-            if (sqlError) {
+          connection.query(versionSql, versionVariables, (versionError, versionResults) => {
+            if (versionError) {
               return connection.rollback(() => {
                 connection.release();
-                rej(sqlError);
+                rej(versionError);
               });
             }
 
@@ -67,13 +67,13 @@ module.exports = async ({ database }, {
                 });
               }
 
-              return console.info(`Video link for ${videoLinkId} successfully updated.`);
+              return console.info(`VideoLinkVersion for ${videoLinkId} successfully updated.`);
             });
 
             return '';
           });
 
-          console.info(`Video link version for ${videoLinkId} successfully created.`);
+          console.info(`VideoLink for ${videoLinkId} successfully created.`);
           connection.release();
           return res('ok');
         });

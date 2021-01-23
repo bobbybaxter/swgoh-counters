@@ -12,6 +12,7 @@ module.exports = app => async (req, res) => {
       description,
       isHardCounter,
       opponentTeam,
+      video,
     } = counter;
 
     // maps new nanoids based on team names
@@ -20,13 +21,12 @@ module.exports = app => async (req, res) => {
     const matchedOpponentTeam = oldSquads.find(x => x.id === opponentTeam);
     const newOpponentTeam = newSquads.find(x => x.name === matchedOpponentTeam.name);
 
-
     const counterToCreate = {
       opponentSquadId: newOpponentTeam.id,
       counterSquadId: newCounterTeam.id,
       isHardCounter: isHardCounter === true ? 1 : 0,
       battleType,
-      description,
+      counterStrategy: description,
       isToon2Req: 0,
       isToon3Req: 0,
       isToon4Req: 0,
@@ -40,7 +40,23 @@ module.exports = app => async (req, res) => {
       username,
     };
 
-    await app.data.counter.create(app, counterToCreate);
+    const counterResponse = await app.data.counter.create(app, counterToCreate);
+
+    if (video) {
+      const videoToCreate = {
+        subjectId: counterResponse.counterId,
+        title: 'title',
+        link: video,
+        userId,
+        username,
+      };
+
+      try {
+        await app.data.videoLink.create(app, videoToCreate);
+      } catch (err) {
+        throw new Error(err);
+      }
+    }
   });
 
   console.info('counter import complete');

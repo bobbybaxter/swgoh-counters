@@ -5,7 +5,7 @@ const { nanoid } = require('nanoid');
 module.exports = async ({ database }, { id }, {
   name,
   description,
-  counterStrategy,
+  generalStrategy,
   toon1Id,
   toon2Id,
   toon3Id,
@@ -23,7 +23,7 @@ module.exports = async ({ database }, { id }, {
     id,
     name,
     description,
-    counterStrategy,
+    generalStrategy,
     toon1Id,
     toon2Id,
     toon3Id,

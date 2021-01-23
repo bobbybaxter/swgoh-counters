@@ -31,7 +31,7 @@ const defaultTempSquadInfo = {
   id: '',
   name: '',
   description: '',
-  counterStrategy: '',
+  generalStrategy: '',
   toon1Id: '',
   toon2Id: '',
   toon3Id: '',
@@ -92,7 +92,7 @@ export default function ModalEditCounter({
   const [isNewCounter, setIsNewCounter] = useState(true);
   const [leftSquad] = useState(leftSquadParam);
   const [sourceSquad, setSourceSquad] = useState();
-  const [strategy, setStrategy] = useState(counter.description);
+  const [strategy, setStrategy] = useState(counter.counterStrategy);
   const [squads] = useState(storedSquads);
   const [squadMatch] = useState('');
   const [squadNameMatch, setSquadNameMatch] = useState('');
@@ -103,7 +103,7 @@ export default function ModalEditCounter({
   useEffect(() => {
     const squadToEdit = view === 'normal' ? { ...rightSquad } : { ...leftSquadParam };
     const {
-      counterStrategy,
+      generalStrategy,
       description,
       id,
       name,
@@ -168,7 +168,7 @@ export default function ModalEditCounter({
         id,
         name,
         description,
-        counterStrategy,
+        generalStrategy,
         toon1Id,
         toon2Id,
         toon3Id,
@@ -213,7 +213,7 @@ export default function ModalEditCounter({
           id: counter.counterSquadId,
           name: view === 'normal' ? rightSquad.name : leftSquad.name,
           description: view === 'normal' ? rightSquad.description : leftSquad.description,
-          counterStrategy: view === 'normal' ? rightSquad.counterStrategy : leftSquad.counterStrategy,
+          generalStrategy: view === 'normal' ? rightSquad.generalStrategy : leftSquad.generalStrategy,
           toon1Id: (characters.find(x => x.name === squadLeader)).id || 'BLANK',
           toon2Id: (characters.find(x => x.name === squadMembers[0])).id || 'BLANK',
           toon3Id: (characters.find(x => x.name === squadMembers[1])).id || 'BLANK',
@@ -230,7 +230,7 @@ export default function ModalEditCounter({
         id: matchedSquad.id,
         name: matchedSquad.name,
         description: matchedSquad.description,
-        counterStrategy: matchedSquad.counterStrategy,
+        generalStrategy: matchedSquad.generalStrategy,
         toon1Id: matchedSquad.toon1Id,
         toon2Id: matchedSquad.toon2Id,
         toon3Id: matchedSquad.toon3Id,
@@ -262,7 +262,7 @@ export default function ModalEditCounter({
 
   const handleStrategyReset = (e) => {
     e.preventDefault();
-    setStrategy(counter.description);
+    setStrategy(counter.counterStrategy);
   };
 
   const handleSubmitButton = async (e) => {
@@ -278,7 +278,7 @@ export default function ModalEditCounter({
           name: tempSquadInfo.name || rightSquad.name,
           id: tempSquadInfo.id,
           description: tempSquadInfo.description,
-          counterStrategy: tempSquadInfo.counterStrategy,
+          generalStrategy: tempSquadInfo.generalStrategy,
           toon1Id: tempSquad[0].id,
           toon2Id: tempSquad[1].id,
           toon3Id: tempSquad[2].id,
@@ -321,7 +321,7 @@ export default function ModalEditCounter({
               } else {
                 updateVideoLink({
                   id: videoLink.id,
-                  description: videoLink.description,
+                  title: videoLink.title,
                   link: videoLink.link,
                   userId: user.id,
                   username: user.username,
@@ -330,7 +330,7 @@ export default function ModalEditCounter({
             } else if (!videoLink.deleteVideo && videoLink.link !== '') {
               addVideoLink({
                 subjectId: counter.id,
-                description: videoLink.description,
+                title: videoLink.title,
                 link: videoLink.link,
                 userId: user.id,
                 username: user.username,
@@ -407,9 +407,9 @@ export default function ModalEditCounter({
 
               {/* Counter Strategy Box */}
               <MiddleWrapper $hasBorderBottom>
-                <Label for="counterStrategyInput" className="text-secondary pb-3">Counter Strategy</Label>
+                <Label for="generalStrategyInput" className="text-secondary pb-3">Counter Strategy</Label>
                 <Input
-                  name="counterStrategyInput"
+                  name="generalStrategyInput"
                   placeholder={leftSquad && `Please explain how to beat ${leftSquad.name} with this counter.`}
                   rows="10"
                   type="textarea"

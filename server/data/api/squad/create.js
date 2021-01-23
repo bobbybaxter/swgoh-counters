@@ -5,7 +5,7 @@ const { nanoid } = require('nanoid');
 module.exports = async ({ database }, {
   name,
   description,
-  counterStrategy,
+  generalStrategy,
   toon1Id,
   toon2Id,
   toon3Id,
@@ -24,7 +24,7 @@ module.exports = async ({ database }, {
     squadId,
     name,
     description,
-    counterStrategy,
+    generalStrategy,
     toon1Id,
     toon2Id,
     toon3Id,
@@ -53,19 +53,19 @@ module.exports = async ({ database }, {
           rej(transactionError);
         }
 
-        connection.query(versionSql, versionVariables, (versionError, versionResults) => {
-          if (versionError) {
+        connection.query(sql, variables, (sqlError, sqlResults) => {
+          if (sqlError) {
             return connection.rollback(() => {
               connection.release();
-              rej(versionError);
+              rej(sqlError);
             });
           }
 
-          connection.query(sql, variables, (sqlError, sqlResults) => {
-            if (sqlError) {
+          connection.query(versionSql, versionVariables, (versionError, versionResults) => {
+            if (versionError) {
               return connection.rollback(() => {
                 connection.release();
-                rej(sqlError);
+                rej(versionError);
               });
             }
 
@@ -77,13 +77,13 @@ module.exports = async ({ database }, {
                 });
               }
 
-              return console.info(`Squad for ${squadId} successfully updated.`);
+              return console.info(`SquadVersion for ${squadId} successfully updated.`);
             });
 
             return '';
           });
 
-          console.info(`Squad Version for ${squadId} successfully created.`);
+          console.info(`Squad for ${squadId} successfully created.`);
           connection.release();
           return res('ok');
         });

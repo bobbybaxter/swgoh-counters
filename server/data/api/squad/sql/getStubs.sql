@@ -11,4 +11,4 @@ JOIN (SELECT ??, MAX(cv.createdOn) AS 'latestCounterVersion'
 	WHERE battleType = ?
 	GROUP BY ??) c2 ON ?? = s.id
 ORDER BY sv.name
-LIMIT 2
+-- LIMIT 2

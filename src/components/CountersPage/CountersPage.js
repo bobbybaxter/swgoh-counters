@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-import AdsenseAd from 'src/components/AdsenseAd/AdsenseAd';
+// import AdsenseAd from 'src/components/AdsenseAd/AdsenseAd';
 import BlankCounterRow from 'src/components/CounterRow/BlankCounterRow';
 import CounterRow from 'src/components/CounterRow/CounterRow';
 import MetaTags from 'src/components/shared/MetaTags';
@@ -14,7 +14,7 @@ import { getSquadStubs } from 'src/helpers/data';
 import ColorIndicator from './ColorIndicator';
 import { CountersPageWrapper } from './style';
 
-const isSnap = navigator.userAgent === 'ReactSnap';
+// const isSnap = navigator.userAgent === 'ReactSnap';
 
 // TODO: Add tests
 // TODO: turn ads back on before deployment
@@ -54,7 +54,7 @@ export default function CountersPage({
   const { patreonId } = user;
   const selectedStubs = view === 'normal' ? stubsNormal : stubsReverse;
   const toggleCollapse = input => (setCollapse(collapse === input ? null : input));
-  const toggleAd = adSlot => (!isSnap && <AdsenseAd adSlot={adSlot}/>);
+  // const toggleAd = adSlot => (!isSnap && <AdsenseAd adSlot={adSlot}/>);
 
   const buildCounterRows = selectedStubs
     && selectedStubs.length

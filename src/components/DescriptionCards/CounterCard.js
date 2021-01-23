@@ -37,14 +37,14 @@ const defaultSquad = {
   toon5Id: '',
   toon5Name: '',
   description: '',
-  counterStrategy: '',
+  generalStrategy: '',
   latestVersionId: '',
   createdOn: '',
   createdById: '',
   createdByName: '',
 };
 
-export default function CounterCard({
+const CounterCard = React.memo(({
   authenticated,
   counter,
   counterStubs,
@@ -52,7 +52,7 @@ export default function CounterCard({
   size,
   user,
   view,
-}) {
+}) => {
   CounterCard.propTypes = {
     authenticated: PropTypes.bool,
     counter: PropTypes.object,
@@ -107,12 +107,12 @@ export default function CounterCard({
 
   const buildOpponentDetails = (squad) => {
     if (squad) {
-      const { description, counterStrategy } = squad;
+      const { description, generalStrategy } = squad;
       return (
         <>
           <DescriptionButtonsWrapper>
             {description && <DescriptionButton id={`opponentDetails_${id}`} size="sm">Opponent Details</DescriptionButton>}
-            {counterStrategy && <DescriptionButton id={`generalCounterStrategy_${id}`} size="sm">General Counter Strategy</DescriptionButton>}
+            {generalStrategy && <DescriptionButton id={`generalStrategy_${id}`} size="sm">General Counter Strategy</DescriptionButton>}
           </DescriptionButtonsWrapper>
           {
             description && <UncontrolledCollapse toggler={`#opponentDetails_${id}`}>
@@ -120,8 +120,8 @@ export default function CounterCard({
             </UncontrolledCollapse>
           }
           {
-            counterStrategy && <UncontrolledCollapse toggler={`#generalCounterStrategy_${id}`}>
-              <DescriptionText className="text-left"><strong className="text-secondary">General Strategy: </strong>{counterStrategy}</DescriptionText>
+            generalStrategy && <UncontrolledCollapse toggler={`#generalStrategy_${id}`}>
+              <DescriptionText className="text-left"><strong className="text-secondary">General Strategy: </strong>{generalStrategy}</DescriptionText>
             </UncontrolledCollapse>
           }
         </>
@@ -157,7 +157,7 @@ export default function CounterCard({
                 return (
                 <VideoListItemWrapper key={videoLink.id}>
                   <DescriptionButton size="sm" color="warning" onClick={handleButton}>
-                    {videoLink.description}
+                    {videoLink.title}
                   </DescriptionButton>
                   <EditMenu>
                     <p><small>updated on: {format(new Date(videoLink.createdOn), 'MMM d, yyyy')}</small></p>
@@ -182,7 +182,8 @@ export default function CounterCard({
           ? leftSquad && <SquadHeader size={size} squad={leftSquad} />
           : leftSquad && <SquadHeader counter={counter} showLocks={true} size={size} squad={leftSquad} />
         }
-        { view === 'normal' ? buildOpponentDetails(leftSquad) : buildCounterDetails() }
+        { view === 'reverse' && buildCounterDetails() }
+        {/* { view === 'normal' ? buildOpponentDetails(leftSquad) : buildCounterDetails() } */}
       </DetailsDivLeft>
 
       <DetailsDivRight>
@@ -200,8 +201,8 @@ export default function CounterCard({
     </TopWrapper>
     <BottomWrapper>
       {
-        (counter.description
-          ? (<DescriptionText className="text-left"><strong className="text-secondary ">Counter Strategy: </strong>{counter.description}</DescriptionText>)
+        (counter.counterStrategy
+          ? (<DescriptionText className="text-left"><strong className="text-secondary ">Counter Strategy: </strong>{counter.counterStrategy}</DescriptionText>)
           : (<DescriptionText className="text-left"><strong className="text-secondary ">Counter Strategy: </strong></DescriptionText>))
       }
       <EditMenu>
@@ -231,4 +232,6 @@ export default function CounterCard({
     )}
     </>
   );
-}
+});
+
+export default CounterCard;

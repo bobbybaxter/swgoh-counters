@@ -3,7 +3,7 @@ const path = require('path');
 const { nanoid } = require('nanoid');
 
 module.exports = async ({ database }, { id }, {
-  description,
+  title,
   link,
   userId,
   username,
@@ -15,7 +15,7 @@ module.exports = async ({ database }, { id }, {
   const versionVariables = [
     versionId,
     id,
-    description,
+    title,
     link,
     new Date().toISOString(),
     userId,

@@ -7,7 +7,7 @@ module.exports = async ({ database }, {
   counterSquadId,
   isHardCounter,
   battleType,
-  description,
+  counterStrategy,
   isToon2Req,
   isToon3Req,
   isToon4Req,
@@ -30,7 +30,7 @@ module.exports = async ({ database }, {
     counterId,
     isHardCounter,
     battleType,
-    description,
+    counterStrategy,
     isToon2Req,
     isToon3Req,
     isToon4Req,
@@ -65,19 +65,19 @@ module.exports = async ({ database }, {
           rej(transactionError);
         }
 
-        connection.query(versionSql, versionVariables, (versionError, versionResults) => {
-          if (versionError) {
+        connection.query(sql, variables, (sqlError, sqlResults) => {
+          if (sqlError) {
             return connection.rollback(() => {
               connection.release();
-              rej(versionError);
+              rej(sqlError);
             });
           }
 
-          connection.query(sql, variables, (sqlError, sqlResults) => {
-            if (sqlError) {
+          connection.query(versionSql, versionVariables, (versionError, versionResults) => {
+            if (versionError) {
               return connection.rollback(() => {
                 connection.release();
-                rej(sqlError);
+                rej(versionError);
               });
             }
 
@@ -89,13 +89,13 @@ module.exports = async ({ database }, {
                 });
               }
 
-              return console.info(`Counter for ${counterId} successfully updated.`);
+              return console.info(`CounterVersion for ${counterId} successfully updated.`);
             });
 
             return '';
           });
 
-          console.info(`Counter Version for ${counterId} successfully created.`);
+          console.info(`Counter for ${counterId} successfully created.`);
           connection.release();
           return res('ok');
         });

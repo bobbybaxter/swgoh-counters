@@ -38,6 +38,7 @@ export const FormDetails = styled(FormGroup)`
   margin: ${props => (props.$hasMarginBottom ? '1rem 0' : '1rem 0 0 0')};
 
   @media only screen and (min-width:768px) {
+    display: initial;
     margin: ${props => (props.$hasMarginBottom ? '0 0 1rem 0' : '0')};
   }
 `;
@@ -126,7 +127,7 @@ export const OpponentBox = styled.div`
 `;
 
 export const StyledForm = styled(Form)`
-  display: flex;
+  display: block;
   flex-direction: column;
   max-height: calc(100vh - 300px);
   min-height: 400px;
@@ -134,6 +135,7 @@ export const StyledForm = styled(Form)`
   overflow: scroll;
 
   @media only screen and (min-width:768px) {
+    display: flex;
     flex-direction: row;
     overflow: hidden;
   }

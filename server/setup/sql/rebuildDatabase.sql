@@ -13,8 +13,7 @@ DROP TABLE eventTierVersion;
 DROP TABLE eventTierSquad;
 DROP TABLE eventTierSquadVersion;
 DROP TABLE watchlist;
-DROP TABLE userWatchlist;
-DROP TABLE userWatchlistItem;
+DROP TABLE watchlistItem;
 DROP TABLE zeta;
 SET FOREIGN_KEY_CHECKS = 1;
 
@@ -26,9 +25,9 @@ CREATE TABLE `squad` (
 CREATE TABLE `squadVersion` (
   `id` VARCHAR(50) PRIMARY KEY NOT NULL,
   `name` VARCHAR(50) NOT NULL,
-  `squadId` VARCHAR(50),
+  `squadId` VARCHAR(50) NOT NULL,
   `description` VARCHAR(2000),
-  `counterStrategy` VARCHAR(2000),
+  `generalStrategy` VARCHAR(2000),
   `toon1Id` VARCHAR(50),
   `toon2Id` VARCHAR(50),
   `toon3Id` VARCHAR(50),
@@ -56,7 +55,7 @@ CREATE TABLE `counterVersion` (
   `counterId` VARCHAR(50) NOT NULL,
   `isHardCounter` boolean NOT NULL,
   `battleType` VARCHAR(50) NOT NULL,
-  `description` VARCHAR(2000),
+  `counterStrategy` VARCHAR(2000),
   `isToon2Req` boolean,
   `isToon3Req` boolean,
   `isToon4Req` boolean,
@@ -80,9 +79,8 @@ CREATE TABLE `videoLink` (
 CREATE TABLE `videoLinkVersion` (
   `id` VARCHAR(50) PRIMARY KEY NOT NULL,
   `videoLinkId` VARCHAR(50) NOT NULL,
-  `subjectType` VARCHAR(50) NOT NULL,
   `link` VARCHAR(255) NOT NULL,
-  `description` VARCHAR(50) NOT NULL,
+  `title` VARCHAR(50) NOT NULL,
   `createdOn` datetime NOT NULL,
   `createdById` VARCHAR(50) NOT NULL,
   `createdByName` VARCHAR(50) NOT NULL
@@ -138,18 +136,13 @@ CREATE TABLE `eventTierSquadVersion` (
 );
 
 CREATE TABLE `watchlist` (
-  `id` VARCHAR(50) PRIMARY KEY NOT NULL
+  `id` VARCHAR(50) PRIMARY KEY NOT NULL,
+  `userId` VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE `userWatchlist` (
+CREATE TABLE `watchlistItem` (
   `id` VARCHAR(50) PRIMARY KEY NOT NULL,
-  `userId` VARCHAR(50) NOT NULL,
-  `watchlistId` VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE `userWatchlistItem` (
-  `id` VARCHAR(50) PRIMARY KEY NOT NULL,
-  `userWatchlistId` VARCHAR(50) NOT NULL,
+  `watchlistId` VARCHAR(50) NOT NULL,
   `itemId` VARCHAR(50) NOT NULL
 );
 
@@ -158,8 +151,6 @@ CREATE TABLE `zeta` (
   `name` VARCHAR(50) NOT NULL,
   `characterId` VARCHAR(50) NOT NULL
 );
-
-ALTER TABLE `squad` ADD FOREIGN KEY (`latestVersionId`) REFERENCES `squadVersion` (`id`);
 
 ALTER TABLE `squadVersion` ADD FOREIGN KEY (`toon1Id`) REFERENCES `character` (`id`);
 
@@ -171,32 +162,26 @@ ALTER TABLE `squadVersion` ADD FOREIGN KEY (`toon4Id`) REFERENCES `character` (`
 
 ALTER TABLE `squadVersion` ADD FOREIGN KEY (`toon5Id`) REFERENCES `character` (`id`);
 
-ALTER TABLE `counter` ADD FOREIGN KEY (`opponentSquadId`) REFERENCES `squad` (`id`);
+ALTER TABLE `squadVersion` ADD FOREIGN KEY (`squadId`) REFERENCES `squad` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `counter` ADD FOREIGN KEY (`counterSquadId`) REFERENCES `squad` (`id`);
+ALTER TABLE `counter` ADD FOREIGN KEY (`opponentSquadId`) REFERENCES `squad` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `counter` ADD FOREIGN KEY (`latestVersionId`) REFERENCES `counterVersion` (`id`);
+ALTER TABLE `counter` ADD FOREIGN KEY (`counterSquadId`) REFERENCES `squad` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `videoLink` ADD FOREIGN KEY (`latestVersionId`) REFERENCES `videoLinkVersion` (`id`);
+ALTER TABLE `counterVersion` ADD FOREIGN KEY (`counterId`) REFERENCES `counter` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `event` ADD FOREIGN KEY (`latestVersionId`) REFERENCES `eventVersion` (`id`);
+ALTER TABLE `videoLinkVersion` ADD FOREIGN KEY (`videoLinkId`) REFERENCES `videoLink` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `eventVersion` ADD FOREIGN KEY (`eventId`) REFERENCES `event` (`id`);
+ALTER TABLE `eventVersion` ADD FOREIGN KEY (`eventId`) REFERENCES `event` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `eventTier` ADD FOREIGN KEY (`eventId`) REFERENCES `event` (`id`);
+ALTER TABLE `eventTier` ADD FOREIGN KEY (`eventId`) REFERENCES `event` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `eventTier` ADD FOREIGN KEY (`latestVersionId`) REFERENCES `eventTierVersion` (`id`);
+ALTER TABLE `eventTierVersion` ADD FOREIGN KEY (`eventTierId`) REFERENCES `eventTier` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `eventTierVersion` ADD FOREIGN KEY (`eventTierId`) REFERENCES `eventTier` (`id`);
+ALTER TABLE `eventTierSquad` ADD FOREIGN KEY (`eventTierId`) REFERENCES `eventTier` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `eventTierSquad` ADD FOREIGN KEY (`eventTierId`) REFERENCES `eventTier` (`id`);
+ALTER TABLE `eventTierSquad` ADD FOREIGN KEY (`squadId`) REFERENCES `squad` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `eventTierSquad` ADD FOREIGN KEY (`squadId`) REFERENCES `squad` (`id`);
+ALTER TABLE `eventTierSquadVersion` ADD FOREIGN KEY (`eventTierSquadId`) REFERENCES `eventTierSquad` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `eventTierSquad` ADD FOREIGN KEY (`latestVersionId`) REFERENCES `eventTierSquadVersion` (`id`);
-
-ALTER TABLE `eventTierSquadVersion` ADD FOREIGN KEY (`eventTierSquadId`) REFERENCES `eventTierSquad` (`id`);
-
-ALTER TABLE `userWatchlist` ADD FOREIGN KEY (`watchlistId`) REFERENCES `watchlist` (`id`);
-
-ALTER TABLE `userWatchlistItem` ADD FOREIGN KEY (`userWatchlistId`) REFERENCES `userWatchlist` (`id`);
+ALTER TABLE `watchlistItem` ADD FOREIGN KEY (`watchlistId`) REFERENCES `watchlist` (`id`) ON DELETE CASCADE;

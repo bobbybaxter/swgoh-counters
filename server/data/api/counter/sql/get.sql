@@ -5,7 +5,7 @@ SELECT
 	c.latestVersionId,
 	cv.isHardCounter,
 	cv.battleType,
-	cv.description,
+	cv.counterStrategy,
   cv.isToon2Req,
   cv.isToon3Req,
   cv.isToon4Req,

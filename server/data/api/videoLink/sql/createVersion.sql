@@ -1,7 +1,7 @@
 INSERT INTO videoLinkVersion
 SET id = ?,
   videoLinkId = ?,
-  description = ?,
+  title = ?,
   link = ?,
   createdOn = ?,
   createdById = ?,

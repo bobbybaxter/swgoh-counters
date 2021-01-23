@@ -74,7 +74,7 @@ export default function ModalEditSquad({
   const [squad] = useState(squadParam);
   const [sourceSquad, setSourceSquad] = useState();
   const [description, setDescription] = useState(squad.description);
-  const [counterStrategy, setCounterStrategy] = useState(squad.counterStrategy);
+  const [generalStrategy, setGeneralStrategy] = useState(squad.generalStrategy);
   const [squads] = useState(storedSquads);
   // const [squadMatch, setSquadMatch] = useState('');
   const [squadNameMatch, setSquadNameMatch] = useState('');
@@ -237,14 +237,14 @@ export default function ModalEditSquad({
   //   }
   // };
 
-  const handleCounterStrategyInput = (e) => {
+  const handleGeneralStrategyInput = (e) => {
     e.preventDefault();
-    setCounterStrategy(e.target.value || e.target.innerText);
+    setGeneralStrategy(e.target.value || e.target.innerText);
   };
 
-  const handleCounterStrategyReset = (e) => {
+  const handleGeneralStrategyReset = (e) => {
     e.preventDefault();
-    setCounterStrategy(squad.counterStrategy);
+    setGeneralStrategy(squad.generalStrategy);
   };
 
   const handleDescriptionInput = (e) => {
@@ -268,7 +268,7 @@ export default function ModalEditSquad({
         name: tempSquadInfo.name || squad.name,
         id: tempSquadInfo.id,
         description,
-        counterStrategy,
+        generalStrategy,
         toon1Id: tempSquad[0].id,
         toon2Id: tempSquad[1].id,
         toon3Id: tempSquad[2].id,
@@ -362,13 +362,13 @@ export default function ModalEditSquad({
                   placeholder={squad && `Please provide any general strategies, mechanics, or techniques needed to beat ${squad.name}.  This should not include any specific counter squads!`}
                   rows="10"
                   type="textarea"
-                  value={counterStrategy}
-                  onChange={handleCounterStrategyInput}
+                  value={generalStrategy}
+                  onChange={handleGeneralStrategyInput}
                 />
 
                 {
                   sourceSquad && <EditMenu className="align-self-end">
-                    <Button color="link" size="sm" className="mb-0" onClick={handleCounterStrategyReset}>reset</Button>
+                    <Button color="link" size="sm" className="mb-0" onClick={handleGeneralStrategyReset}>reset</Button>
                   </EditMenu>
                 }
               </FormStrategy>

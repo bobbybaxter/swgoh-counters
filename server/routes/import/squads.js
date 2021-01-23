@@ -23,7 +23,7 @@ module.exports = app => async (req, res) => {
     const squadToCreate = {
       name,
       description,
-      counterStrategy,
+      generalStrategy: counterStrategy,
       toon1Id: toon1.id,
       toon2Id: toon2.id,
       toon3Id: toon3.id,
@@ -33,7 +33,13 @@ module.exports = app => async (req, res) => {
       username,
     };
 
-    await app.data.squad.create(app, squadToCreate);
+    console.log('squadToCreate :>> ', squadToCreate);
+
+    try {
+      await app.data.squad.create(app, squadToCreate);
+    } catch (err) {
+      throw new Error(err);
+    }
   });
 
   console.info('squad import complete');

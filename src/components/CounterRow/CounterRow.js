@@ -34,10 +34,10 @@ const CounterRow = React.memo(({
   ...props
 }) => {
   CounterRow.propTypes = {
-    authenticated: PropTypes.bool,
+    authenticated: PropTypes.bool.isRequired,
     collapse: PropTypes.string,
     leftSquadStub: PropTypes.object.isRequired,
-    reload: PropTypes.func,
+    reload: PropTypes.func.isRequired,
     size: PropTypes.string.isRequired,
     toggleCollapse: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,

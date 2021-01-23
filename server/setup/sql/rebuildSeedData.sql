@@ -1,6 +1,5 @@
 SET FOREIGN_KEY_CHECKS = 0;
-TRUNCATE TABLE userWatchlistItem;
-TRUNCATE TABLE userWatchlist;
+TRUNCATE TABLE watchlistItem;
 TRUNCATE TABLE watchlist;
 TRUNCATE TABLE eventTierSquadVersion;
 TRUNCATE TABLE eventTierSquad;
@@ -69,56 +68,19 @@ VALUES
 	('eventTierSquad6Version1', 'eventTierSquad6', '90000', 'Event Tier Squad 6 on how to beat Event 1 - Event Tier 3', CURRENT_TIMESTAMP, 'user1', 'User 1');
 
 INSERT INTO watchlist 
-	(id)
+	(id, userId)
 VALUES
-	('watchlist1');
+	('watchlist1', 'user1');
 
-INSERT INTO userWatchlist 
-	(id, userId, watchlistId)
+INSERT INTO watchlistItem 
+	(id, watchlistId, itemId)
 VALUES
-	('userWatchlist1', 'user1', 'watchlist1');
-
-INSERT INTO userWatchlistItem 
-	(id, userWatchlistId, itemId)
-VALUES
-	('userWatchlistItem1', 'userWatchlist1', '501ST'),
-	('userWatchlistItem2', 'userWatchlist1', 'SQUADSUB1'),
-	('userWatchlistItem3', 'userWatchlist1', 'counter1'),
-	('userWatchlistItem4', 'userWatchlist1', 'event1eventTier1'),
-	('userWatchlistItem5', 'userWatchlist1', 'event2eventTier1'),
-	('userWatchlistItem6', 'userWatchlist1', 'eventTierSquad1'),
-	('userWatchlistItem7', 'userWatchlist1', 'eventTierSquad4');
-
-INSERT INTO videoLink 
-	(id, subjectId, latestVersionId)
-VALUES
-	('videoLink1', 'counter1', 'videoLink1Version1'),
-	('videoLink2', 'event1', 'videoLink2Version1');
-
-INSERT INTO videoLinkVersion
-	(id,
-	videoLinkId,
-	subjectType,
-	link,
-	description,
-	createdOn,
-	createdById, 
-	createdByName)
-VALUES
-	('videoLink1Version1',
-	'videoLink1', 
-	'counter',
-	'https://www.youtube.com',
-	'Video Link 1 Version 1 Video',
-	CURRENT_TIMESTAMP,
-	'user1', 'User 1'),
-	
-	('videoLink2Version1',
-	'videoLink1', 
-	'event',
-	'https://www.google.com',
-	'Video Link 2 Version 1 Video',
-	CURRENT_TIMESTAMP,
-	'user1', 'User 1');
+	('watchlistItem1', 'watchlist1', '501ST'),
+	('watchlistItem2', 'watchlist1', 'SQUADSUB1'),
+	('watchlistItem3', 'watchlist1', 'counter1'),
+	('watchlistItem4', 'watchlist1', 'event1eventTier1'),
+	('watchlistItem5', 'watchlist1', 'event2eventTier1'),
+	('watchlistItem6', 'watchlist1', 'eventTierSquad1'),
+	('watchlistItem7', 'watchlist1', 'eventTierSquad4');
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -1,6 +1,6 @@
 {
   "name": "swgoh-counters",
-  "homepage": "https://swgohcounters.com",
+  "homepage": "https://saiastrange.com/",
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
@@ -37,7 +37,8 @@
     "react-table": "^7.2.1",
     "reactstrap": "^8.4.1",
     "styled-components": "^5.2.1",
-    "valid-url": "^1.0.9"
+    "valid-url": "^1.0.9",
+    "yarn": "^1.22.10"
   },
   "scripts": {
     "start": "react-scripts start --ignore server",
@@ -49,7 +50,7 @@
     "deploy": "yarn run build && gh-pages -d build",
     "server": "LOG_LEVEL=debug nodemon server/index.js | pino-pretty",
     "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn start\"",
-    "client:deploy": "yarn run build && aws s3 sync build/ s3://swgohcounters.com",
+    "client:deploy": "yarn run build && aws s3 sync build/ s3://saiastrange.com",
     "storybook": "start-storybook -p 6006 -s public --no-dll",
     "build-storybook": "build-storybook -s public --no-dll"
   },

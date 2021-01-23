@@ -37,7 +37,7 @@ export default function VideoForm({
     const defaultVideoLink = {
       id: Math.random().toString(36).substring(7),
       link: '',
-      description: '',
+      title: '',
     };
     const tempVideoLinks = [...videoLinks];
     tempVideoLinks.push(defaultVideoLink);
@@ -58,12 +58,12 @@ export default function VideoForm({
   };
 
   const handleChange = (e) => {
-    if (['description', 'link'].includes(e.target.dataset.property)) {
+    if (['title', 'link'].includes(e.target.dataset.property)) {
       const tempVideoLinks = [...videoLinks];
       tempVideoLinks[e.target.dataset.idx][e.target.dataset.property] = e.target.value;
       setVideoLinks(tempVideoLinks);
       checkIfVideoLinksAreValid(tempVideoLinks);
-      if (tempVideoLinks.some(videoLink => videoLink.description.length > 50)) {
+      if (tempVideoLinks.some(videoLink => videoLink.title.length > 50)) {
         setAreVideoTitlesTooLong(true);
       } else {
         setAreVideoTitlesTooLong(false);
@@ -86,11 +86,11 @@ export default function VideoForm({
                   <Label for={`title_${i}`} />
                   <Input
                     data-idx={i}
-                    data-property="description"
+                    data-property="title"
                     className="col-5 mr-1"
                     name={`videoTitle_${i}`}
                     type="text"
-                    value={videoLinks[i].description}
+                    value={videoLinks[i].title}
                     onChange={handleChange}
                   />
                   <Label for={`link_${i}`} />
@@ -106,7 +106,7 @@ export default function VideoForm({
                   <Button data-idx={i} className="col-1" onClick={removeVideo}>-</Button>
                 </div>
                 <div>
-                  {videoLinks[i].description.length > 50 && <div className="alert alert-danger">Title is too long</div>}
+                  {videoLinks[i].title.length > 50 && <div className="alert alert-danger">Title is too long</div>}
                 </div>
               </div>;
           })

@@ -11,11 +11,11 @@ export default function SquadDetails({
   checkExistingSquad,
   defaultTempSquadInfo,
   isNewSquad,
-  setCounterStrategy,
+  setGeneralStrategy,
   setDescription,
   setIsNewCounter,
   setIsNewSquad,
-  setSourceCounterStrategy,
+  setSourceGeneralStrategy,
   setSourceDescription,
   setSquadNameMatch,
   setTempSquadInfo,
@@ -31,11 +31,11 @@ export default function SquadDetails({
     checkExistingSquad: PropTypes.func.isRequired,
     defaultTempSquadInfo: PropTypes.object.isRequired,
     isNewSquad: PropTypes.bool,
-    setCounterStrategy: PropTypes.func,
+    setGeneralStrategy: PropTypes.func,
     setDescription: PropTypes.func,
     setIsNewCounter: PropTypes.func,
     setIsNewSquad: PropTypes.func,
-    setSourceCounterStrategy: PropTypes.func,
+    setSourceGeneralStrategy: PropTypes.func,
     setSourceDescription: PropTypes.func,
     setSquadNameMatch: PropTypes.func.isRequired,
     setTempSquadInfo: PropTypes.func.isRequired,
@@ -58,9 +58,9 @@ export default function SquadDetails({
     setTempSquadInfo(defaultTempSquadInfo);
     setTempSquad(buildDefaultSquad());
     setDescription('');
-    setCounterStrategy('');
+    setGeneralStrategy('');
     setSourceDescription('');
-    setSourceCounterStrategy('');
+    setSourceGeneralStrategy('');
   };
 
   const handleSquadNameInput = async (e) => {
@@ -69,8 +69,8 @@ export default function SquadDetails({
     if (!sourceSquad) {
       if (!isNewSquad) {
         const selectedSquad = squads.find(x => x.name === newSquadName) || '';
-        setCounterStrategy(selectedSquad.counterStrategy);
-        setSourceCounterStrategy(selectedSquad.counterStrategy);
+        setGeneralStrategy(selectedSquad.generalStrategy);
+        setSourceGeneralStrategy(selectedSquad.generalStrategy);
         setDescription(selectedSquad.description);
         setSourceDescription(selectedSquad.description);
         setTempSquadInfo({
@@ -132,8 +132,8 @@ export default function SquadDetails({
         if (squad && squad.name === newSquadName) {
           setSquadNameMatch('');
         }
-        setCounterStrategy('');
-        setSourceCounterStrategy('');
+        setGeneralStrategy('');
+        setSourceGeneralStrategy('');
         setDescription('');
         setSourceDescription('');
         setTempSquadInfo({

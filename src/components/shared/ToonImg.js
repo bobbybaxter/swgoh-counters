@@ -26,20 +26,6 @@ const StyledToonImg = styled.img`
   }
 `;
 
-// @media only screen and (min-width:768px) {
-//   width: ${props => (props.$isCompact ? '35px' : '45px')};
-//   height: ${props => (props.$isCompact ? '35px' : '45px')};
-// }
-
-// @media only screen and (min-width:992px) {
-//   width: ${props => (props.$isCompact ? '35px' : '55px')};
-//   height: ${props => (props.$isCompact ? '35px' : '55px')};
-// }
-
-// @media only screen and (min-width:1200px) {
-//   width: ${props => (props.$isCompact ? '35px' : '65px')};
-//   height: ${props => (props.$isCompact ? '35px' : '65px')};
-
 export default function ToonImg({ isCompact, ...props }) {
   ToonImg.propTypes = {
     isCompact: PropTypes.bool,

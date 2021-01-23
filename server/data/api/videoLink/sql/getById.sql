@@ -2,7 +2,7 @@ SELECT
 	vl.id,
 	vl.subjectId,
 	vlv.link,
-	vlv.description,
+	vlv.title,
 	vlv.createdOn,
 	vlv.createdById,
 	vlv.createdByName

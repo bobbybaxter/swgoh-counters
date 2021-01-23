@@ -12,7 +12,7 @@ SELECT
 	sv.toon5Id,
 	char5.name as 'toon5Name',
 	sv.description,
-	sv.counterStrategy,
+	sv.generalStrategy,
 	s.latestVersionId,
 	sv.createdOn,
 	sv.createdById,

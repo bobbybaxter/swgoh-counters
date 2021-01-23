@@ -40,17 +40,12 @@ const defaultUser = {
 const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
 const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 
-// TODO: write a script that deletes all associated counters if a squad is deleted
-// TODO: add a dropdown for each opponent, so they can be edited
 // TODO: in spreadsheet - replace all <br> tags in counters with \n
-// TODO: create a FAQ in github
-// TODO: BEFORE LAUNCH - change squadVersion['counterStrategy'] to 'generalStrategy' in db
-// TODO: BEFORE LAUNCH - change counterVersion['description'] to 'counterStrategy' in db
-// TODO: BEFORE LAUNCH - change videoLink['description'] to 'title' in db
-// TODO: BEFORE LAUNCH - remove videoLink['subjectType']
-// TODO: start to set up the videos section -
-//  - need to create a script to import current videos
-//  - add videos section to ModalAddCounter
+// TODO: create an FAQ in github and link in header
+// TODO: change submit issue for just bugs
+// TODO: Accounts page
+//  - remove character list
+//  - make buttons only accessible to my id
 class App extends React.Component {
   state = {
     user: defaultUser,

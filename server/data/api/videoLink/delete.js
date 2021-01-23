@@ -2,65 +2,15 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = async ({ database }, id) => {
-  const versionSql = fs.readFileSync(path.join(__dirname, './sql/deleteVersions.sql')).toString();
   const sql = fs.readFileSync(path.join(__dirname, './sql/delete.sql')).toString();
 
   const response = new Promise((res, rej) => {
-    database.getConnection((databaseConnectionError, connection) => {
-      if (databaseConnectionError) {
-        connection.release();
-        rej(databaseConnectionError);
+    database.query(sql, id, (error, results) => {
+      if (error) { rej(error); }
+      if (results.affectedRows === 0) {
+        rej(new Error('VideoLink does not exist.'));
       }
-
-      connection.beginTransaction((transactionError) => {
-        if (transactionError) {
-          connection.release();
-          rej(transactionError);
-        }
-
-        connection.query(sql, id, (sqlError, sqlResults) => {
-          if (sqlError) {
-            return connection.rollback(() => {
-              connection.release();
-              rej(sqlError);
-            });
-          }
-
-          if (sqlResults.affectedRows === 0) {
-            rej(new Error('No rows affected'));
-          }
-
-          connection.query(versionSql, id, (versionError, versionResults) => {
-            if (versionError) {
-              return connection.rollback(() => {
-                connection.release();
-                rej(versionError);
-              });
-            }
-
-            if (versionResults.affectedRows === 0) {
-              rej(new Error('No rows affected'));
-            }
-
-            connection.commit((commitError) => {
-              if (commitError) {
-                return connection.rollback(() => {
-                  connection.release();
-                  rej(commitError);
-                });
-              }
-
-              return console.info(`Video link versions for ${id} successfully deleted.`);
-            });
-
-            return '';
-          });
-
-          console.info(`Video link for ${id} successfully deleted.`);
-          connection.release();
-          return res('ok');
-        });
-      });
+      return res('ok');
     });
   });
 
