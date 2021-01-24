@@ -7,10 +7,7 @@
   "proxy": "http://127.0.0.1:5000",
   "scarfSettings.enabled": false,
   "dependencies": {
-    "@loadable/component": "^5.13.2",
-    "@storybook/addon-controls": "^6.0.28",
-    "@storybook/addon-knobs": "^6.0.28",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
     "concurrently": "^5.2.0",
     "date-fns": "^2.16.1",
@@ -23,7 +20,7 @@
     "idb": "^5.0.7",
     "jquery": "^3.5.1",
     "lodash": "^4.17.20",
-    "node-sass": "^4.14.1",
+    "node-sass": "^4.0.0",
     "nodemon": "^2.0.4",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
@@ -31,10 +28,10 @@
     "react-dom": "^16.13.1",
     "react-ga": "^2.7.0",
     "react-icons": "^3.11.0",
+    "react-lazyload": "^3.1.0",
     "react-meta-tags": "^0.7.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
-    "react-table": "^7.2.1",
     "reactstrap": "^8.4.1",
     "styled-components": "^5.2.1",
     "valid-url": "^1.0.9",
@@ -50,9 +47,7 @@
     "deploy": "yarn run build && gh-pages -d build",
     "server": "LOG_LEVEL=debug nodemon server/index.js | pino-pretty",
     "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn start\"",
-    "client:deploy": "yarn run build && aws s3 sync build/ s3://saiastrange.com",
-    "storybook": "start-storybook -p 6006 -s public --no-dll",
-    "build-storybook": "build-storybook -s public --no-dll"
+    "client:deploy": "yarn run build && aws s3 sync build/ s3://saiastrange.com"
   },
   "skipThirdPartyRequests": true,
   "reactSnap": {
@@ -124,12 +119,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
-    "@storybook/addon-actions": "^6.0.28",
-    "@storybook/addon-essentials": "^6.0.28",
-    "@storybook/addon-links": "^6.0.28",
-    "@storybook/node-logger": "^6.0.28",
-    "@storybook/preset-create-react-app": "^3.1.4",
-    "@storybook/react": "^6.0.28",
     "pino-pretty": "^4.0.0",
     "react-is": "^17.0.1",
     "react-snap": "^1.23.0"

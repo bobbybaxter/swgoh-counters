@@ -33,8 +33,6 @@ module.exports = app => async (req, res) => {
       username,
     };
 
-    console.log('squadToCreate :>> ', squadToCreate);
-
     try {
       await app.data.squad.create(app, squadToCreate);
     } catch (err) {

@@ -11,10 +11,10 @@ const allowedOrigins = [
   'https://swgohcounters.com',
   'http://www.swgohcounters.com',
   'https://www.swgohcounters.com',
-  'http://saiastrange.com', // TODO: remove in prod
-  'https://saiastrange.com', // TODO: remove in prod
-  'http://www.saiastrange.com', // TODO: remove in prod
-  'https://www.saiastrange.com', // TODO: remove in prod
+  'http://saiastrange.com',
+  'https://saiastrange.com',
+  'http://www.saiastrange.com',
+  'https://www.saiastrange.com',
 ];
 
 module.exports = (app) => {

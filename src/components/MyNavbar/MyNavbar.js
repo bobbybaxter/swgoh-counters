@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   Collapse,
   Navbar,
@@ -15,6 +16,11 @@ import 'firebase/auth';
 import './MyNavbar.scss';
 
 export default function MyNavbar(props) {
+  MyNavbar.propTypes = {
+    authenticated: PropTypes.bool.isRequired,
+    handleLogout: PropTypes.func.isRequired,
+  };
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -49,8 +55,6 @@ export default function MyNavbar(props) {
       </NavItem>
     );
 
-  // TODO: Add proptypes
-  // TODO: Add tests
   return (
       <div className="MyNavbar">
         <Navbar dark expand="md">

@@ -54,7 +54,6 @@ const buildDefaultSquad = () => {
   return defaultSquad;
 };
 
-// TODO: Add tests
 export default function ModalEditCounter({
   counter,
   counterStubs,
@@ -295,7 +294,7 @@ export default function ModalEditCounter({
             counterSquadId: view === 'normal' ? rightSquad.id : leftSquad.id,
             isHardCounter: isHardCounter ? 1 : 0,
             battleType: size,
-            description: strategy,
+            counterStrategy: strategy,
             isToon2Req: tempSquad[1].isReq ? 1 : 0,
             isToon3Req: tempSquad[2].isReq ? 1 : 0,
             isToon4Req: tempSquad[3].isReq ? 1 : 0,

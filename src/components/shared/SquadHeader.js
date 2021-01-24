@@ -75,7 +75,6 @@ export const ZetaCounter = styled.span`
   }
 `;
 
-// // TODO: add tests
 export default function SquadHeader({
   counter, showLocks, size, squad, ...props
 }) {

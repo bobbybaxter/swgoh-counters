@@ -46,6 +46,7 @@ export const DetailsDivCenter = styled.div`
 
 export const DetailsDivLeft = styled.div`
   padding: .5rem;
+  background-color: ${props => `${props.color}20`};
 
   @media only screen and (min-width:768px) {
     border-right: 1px solid #343a40;
@@ -58,6 +59,7 @@ export const DetailsDivLeft = styled.div`
 export const DetailsDivRight = styled.div`
   padding: .5rem;
   border-top: 1px solid #343a40;
+  background-color: ${props => `${props.color}20`};
 
   @media only screen and (min-width:768px) {
     border-top: none;

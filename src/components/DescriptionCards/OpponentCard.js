@@ -37,7 +37,7 @@ const defaultSquad = {
   createdByName: '',
 };
 
-const OpponentCard = React.memo(({
+const OpponentCard = ({
   authenticated,
   leftSquadStub,
   reload,
@@ -105,6 +105,6 @@ const OpponentCard = React.memo(({
       )}
     </>
   );
-});
+};
 
-export default OpponentCard;
+export default React.memo(OpponentCard);

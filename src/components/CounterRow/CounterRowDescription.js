@@ -9,7 +9,6 @@ import { IDBService } from 'src/setup/IndexedDB';
 import { getCounterById } from 'src/helpers/data';
 import { CounterCardWrapper } from 'src/styles/style';
 
-// TODO: Add tests
 export default function CounterRowDescription({
   authenticated,
   collapse,
@@ -50,14 +49,14 @@ export default function CounterRowDescription({
           setCounter(result);
           IDBService.put('counters', result);
         } catch (e) {
-          abortController.abort();
           if (!abortController.signal.aborted) {
-            console.error('abortControler signal aborted :>> ', e);
+            abortController.abort();
+            console.error('abortController signal aborted :>> ', e);
           }
         }
       };
 
-      if (storedCounter) {
+      if (storedCounter && !abortController.signal.aborted) {
         if (storedCounter.createdOn !== rightSquadStub.counterCreatedOn) {
           await requestCounter();
         } else {

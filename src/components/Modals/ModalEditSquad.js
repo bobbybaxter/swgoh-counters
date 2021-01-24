@@ -7,17 +7,12 @@ import SquadHeader from 'src/components/shared/SquadHeader';
 import { updateSquad } from 'src/helpers/data';
 import { EditMenu } from 'src/styles/style';
 
-// import CharacterPool from './CharacterPool';
-// import NewSquadDisplay from './NewSquadDisplay';
 import SquadDetailForm from './SquadDetailForm';
 import {
   FormCentered,
-  // FormLeftSide,
-  // FormRightSide,
   FormStrategy,
   MiddleWrapper,
   ModalWrapper,
-  // OpponentBox,
   StyledForm,
   StyledModalBody,
   StyledModalFooter,
@@ -47,7 +42,6 @@ const buildDefaultSquad = () => {
   return defaultSquad;
 };
 
-// TODO: Add tests
 export default function ModalEditSquad({
   isOpen,
   squad: squadParam,
@@ -70,13 +64,11 @@ export default function ModalEditSquad({
   const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
 
   const [characters] = useState(storedCharacters);
-  // const [doesTempMatchSource, setDoesTempMatchSource] = useState(false);
   const [squad] = useState(squadParam);
   const [sourceSquad, setSourceSquad] = useState();
   const [description, setDescription] = useState(squad.description);
   const [generalStrategy, setGeneralStrategy] = useState(squad.generalStrategy);
   const [squads] = useState(storedSquads);
-  // const [squadMatch, setSquadMatch] = useState('');
   const [squadNameMatch, setSquadNameMatch] = useState('');
   const [tempSquad, setTempSquad] = useState(buildDefaultSquad());
   const [tempSquadInfo, setTempSquadInfo] = useState(defaultTempSquadInfo);
@@ -175,68 +167,6 @@ export default function ModalEditSquad({
     };
   };
 
-  // useEffect(() => {
-  //   async function checkForSourceSquad() {
-  //     if (sourceSquad) {
-  //       const tempIds = tempSquad.map(x => x.id).toString();
-  //       const sourceIds = sourceSquad.map(x => x.id).toString();
-  //       tempIds === sourceIds
-  //         ? await setDoesTempMatchSource(true)
-  //         : await setDoesTempMatchSource(false);
-  //     }
-  //   }
-
-  //   checkForSourceSquad();
-  // }, [sourceSquad, tempSquad]);
-
-  // const addCharacter = async (e) => {
-  //   e.preventDefault();
-  //   const addedToon = {
-  //     id: e.currentTarget.id,
-  //     name: e.currentTarget.title,
-  //   };
-
-  //   const tempSquadCopy = [...tempSquad];
-  //   const tempSquadIds = tempSquadCopy.map(x => x.id);
-
-  //   if (!tempSquadIds.includes(addedToon.id)) {
-  //     const indexToFill = await tempSquadCopy.findIndex(x => x.id === 'BLANK');
-  //     tempSquadCopy[indexToFill] = addedToon;
-  //     setTempSquad(tempSquadCopy);
-
-  //     const currentSquadNames = await tempSquadCopy.map(x => x.name);
-  //     const squadCheck = await checkExistingSquad(currentSquadNames);
-  //     if (!squadCheck.squadMatch) {
-  //       setSquadMatch(squadCheck.squadMatch);
-  //       setTempSquadInfo(squadCheck.tempSquadInfo);
-  //     } else {
-  //       setSquadMatch(squadCheck.squadMatch);
-  //       setTempSquadInfo(squadCheck.tempSquadInfo);
-  //     }
-  //   }
-  // };
-
-  // const removeCharacter = async (e) => {
-  //   e.preventDefault();
-  //   const { id, title } = e.target;
-  //   const buttonIndex = id[id.length - 1];
-  //   const tempSquadCopy = [...tempSquad];
-  //   tempSquadCopy[buttonIndex] = defaultToon;
-  //   setTempSquad(tempSquadCopy);
-
-  //   const currentSquadNames = tempSquad.map(x => x.name);
-  //   const index = currentSquadNames.indexOf(title);
-  //   index !== -1 ? currentSquadNames[index] = 'Blank' : ''; // eslint-disable-line no-unused-expressions
-  //   const squadCheck = await checkExistingSquad(currentSquadNames);
-  //   if (!squadCheck.squadMatch) {
-  //     setSquadMatch(squadCheck.squadMatch);
-  //     setTempSquadInfo(squadCheck.tempSquadInfo);
-  //   } else {
-  //     setSquadMatch(squadCheck.squadMatch);
-  //     setTempSquadInfo(squadCheck.tempSquadInfo);
-  //   }
-  // };
-
   const handleGeneralStrategyInput = (e) => {
     e.preventDefault();
     setGeneralStrategy(e.target.value || e.target.innerText);
@@ -259,10 +189,6 @@ export default function ModalEditSquad({
 
   const handleSubmitButton = async (e) => {
     e.preventDefault();
-    // if (!!squadMatch
-    //   || tempSquad[0].id === 'BLANK') {
-    //   console.error('please add or correct squad members');
-    // } else {
     try {
       await updateSquad({
         name: tempSquadInfo.name || squad.name,
@@ -283,7 +209,6 @@ export default function ModalEditSquad({
     } catch (err) {
       throw new Error(err);
     }
-    // }
   };
 
   const closeBtn = <button className="close text-white" onClick={toggle}>&times;</button>;
@@ -297,27 +222,8 @@ export default function ModalEditSquad({
         {/* Left-side squad top header */}
           {/* New squad form */}
           <FormCentered>
-          {/* <FormLeftSide> */}
             <SquadHeader size={size} squad={squad} />
-            {/* <OpponentBox>
-              <NewSquadDisplay
-                doesTempMatchSource={doesTempMatchSource}
-                hideLocks
-                removeCharacter={removeCharacter}
-                setTempSquad={setTempSquad}
-                size={size}
-                sourceSquad={sourceSquad}
-                squadMatch={squadMatch}
-                tempSquad={tempSquad}
-              />
-            </OpponentBox>
-            <CharacterPool
-              addCharacter={addCharacter}
-              characters={characters}
-            /> */}
-          {/* </FormLeftSide> */}
 
-          {/* <FormRightSide> */}
             {/* Squad details */}
             <h6 className="text-secondary pt-3">Squad Name</h6>
             <SquadDetailForm
@@ -373,14 +279,12 @@ export default function ModalEditSquad({
                 }
               </FormStrategy>
             </div>
-          {/* </FormRightSide> */}
           </FormCentered>
         </StyledForm>
       </StyledModalBody>
 
       <StyledModalFooter>
         <Button color="primary" onClick={handleSubmitButton}
-          // disabled={ !!squadMatch
           disabled={!!squadNameMatch
             || tempSquad[0].id === 'BLANK' }>Submit</Button>
         <Button color="secondary" onClick={toggle}>Cancel</Button>

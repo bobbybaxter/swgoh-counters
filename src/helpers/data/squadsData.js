@@ -41,9 +41,9 @@ export async function updateSquad(squad) {
 }
 
 
-export async function getSquadStubs(size) {
+export async function getSquadStubs(size, opts) {
   try {
-    const response = await fetch(`${baseUrl}/stubs/${size}`);
+    const response = await fetch(`${baseUrl}/stubs/${size}`, opts);
     return await response.json();
   } catch (err) {
     throw new Error(err);

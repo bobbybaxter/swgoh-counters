@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import ReactGA from 'react-ga';
@@ -6,18 +6,18 @@ import _ from 'lodash';
 import {
   BrowserRouter, Redirect, Route, Switch,
 } from 'react-router-dom';
-
-import Account from 'src/components/Account/Account';
-import CountersPage from 'src/components/CountersPage/CountersPage';
 import MyNavbar from 'src/components/MyNavbar/MyNavbar';
-import NotFound from 'src/components/NotFound/NotFound';
-import SubmissionForm from 'src/components/SubmissionForm/SubmissionForm';
 
 import {
   firebaseConnection, firebaseData, getSquadData, getAllCharacters,
 } from 'src/helpers/data';
 
 import './App.scss';
+
+const Account = lazy(() => import('src/components/Account/Account'));
+const CountersPage = lazy(() => import('src/components/CountersPage/CountersPage'));
+const NotFound = lazy(() => import('src/components/NotFound/NotFound'));
+const SubmissionForm = lazy(() => import('src/components/SubmissionForm/SubmissionForm'));
 
 firebaseConnection();
 
@@ -43,9 +43,6 @@ const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 // TODO: in spreadsheet - replace all <br> tags in counters with \n
 // TODO: create an FAQ in github and link in header
 // TODO: change submit issue for just bugs
-// TODO: Accounts page
-//  - remove character list
-//  - make buttons only accessible to my id
 class App extends React.Component {
   state = {
     user: defaultUser,
@@ -177,45 +174,47 @@ class App extends React.Component {
               />
               <div id="modal"></div>
               <div>
-                  <Switch>
-                    <Route exact path="/" render={props => <CountersPage
-                        {...props}
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <Switch>
+                      <Route exact path="/" render={props => <CountersPage
+                          {...props}
+                          authenticated={authenticated}
+                          handleViewBtn={this.handleViewBtn}
+                          reload={this.reload}
+                          size={'5v5'}
+                          user={user}
+                          view={view}
+                        />}
+                      />
+
+                      <Route exact path="/3v3" render={props => <CountersPage
+                          {...props}
+                          authenticated={authenticated}
+                          handleViewBtn={this.handleViewBtn}
+                          reload={this.reload}
+                          size={'3v3'}
+                          user={user}
+                          view={view}
+                        />}
+                      />
+
+                      <Route exact path="/submit" component={ SubmissionForm } />
+
+
+                      <PrivateRoute
+                        exact path="/account"
                         authenticated={authenticated}
-                        handleViewBtn={this.handleViewBtn}
-                        reload={this.reload}
-                        size={'5v5'}
+                        component={Account}
+                        handleClearAllyCode={this.handleClearAllyCode}
+                        handleAllyCode={this.handleAllyCode}
+                        unlinkPatreonAccount={this.unlinkPatreonAccount}
                         user={user}
-                        view={view}
-                      />}
-                    />
+                      />
 
-                    <Route exact path="/3v3" render={props => <CountersPage
-                        {...props}
-                        authenticated={authenticated}
-                        handleViewBtn={this.handleViewBtn}
-                        reload={this.reload}
-                        size={'3v3'}
-                        user={user}
-                        view={view}
-                      />}
-                    />
-
-                    <Route exact path="/submit" component={ SubmissionForm } />
-
-
-                    <PrivateRoute
-                      exact path="/account"
-                      authenticated={authenticated}
-                      component={Account}
-                      handleClearAllyCode={this.handleClearAllyCode}
-                      handleAllyCode={this.handleAllyCode}
-                      unlinkPatreonAccount={this.unlinkPatreonAccount}
-                      user={user}
-                    />
-
-                    <Route component={NotFound} />
-                    <Redirect from="*" to="/" />
-                  </Switch>
+                      <Route component={NotFound} />
+                      <Redirect from="*" to="/" />
+                    </Switch>
+                  </Suspense>
               </div>
             </React.Fragment>
         </BrowserRouter>

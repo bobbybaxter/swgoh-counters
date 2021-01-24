@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { Button, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { isWebUri } from 'valid-url';
 
 import { LockBtn } from 'src/components/shared/Locks';
 import { useInputValue } from 'src/helpers/';
-import { addCounter, addSquad, updateSquad } from 'src/helpers/data';
+import {
+  addCounter, addSquad, addVideoLink, updateSquad,
+} from 'src/helpers/data';
 import { EditMenu } from 'src/styles/style';
 
 import { colors } from 'src/styles/colors';
@@ -14,6 +17,7 @@ import NewSquadDisplay from './NewSquadDisplay';
 import CounterDetailForm from './CounterDetailForm';
 import SquadDetailForm from './SquadDetailForm';
 import ZetaForm from './ZetaForm';
+import VideoForm from './VideoForm';
 import {
   FormLeftSide,
   FormRightSide,
@@ -53,8 +57,6 @@ const buildDefaultSquad = () => {
   return defaultSquad;
 };
 
-// TODO: Add tests
-// TODO: add video section
 // TODO: optimize this code so that i'm not repeating the same code for a leftSquad and a rightSquad
 //  there is a bunch of code that can be shared between the Modals
 export default function ModalAddSquad({
@@ -78,6 +80,8 @@ export default function ModalAddSquad({
   const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
   const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
 
+  const [areVideoLinksValid, setAreVideoLinksValid] = useState(true);
+  const [areVideoTitlesTooLong, setAreVideoTitlesTooLong] = useState(false);
   const [characters] = useState(storedCharacters);
   const [isHardCounter, setIsHardCounter] = useState(false);
   const [isNewCounter, setIsNewCounter] = useState(true);
@@ -96,6 +100,12 @@ export default function ModalAddSquad({
   const [tempLeftSquadInfo, setTempLeftSquadInfo] = useState(defaultTempSquadInfo);
   const [tempSquad, setTempSquad] = useState(buildDefaultSquad());
   const [tempSquadInfo, setTempSquadInfo] = useState(defaultTempSquadInfo);
+  const [videoLinks, setVideoLinks] = useState([]);
+
+  const checkIfVideoLinksAreValid = (updatedLinks) => {
+    const isInvalid = updatedLinks.some(videoLink => !isWebUri(videoLink.link));
+    setAreVideoLinksValid(!isInvalid);
+  };
 
   const checkExistingCounter = async (leftSquadId, rightSquadId) => {
     if (leftSquadId && rightSquadId) {
@@ -109,8 +119,8 @@ export default function ModalAddSquad({
           ? !counterStubs.rightSquadStubs.find(x => x.id === rightSquadId)
           : true;
       } catch (e) {
-        abortController.abort();
         if (!abortController.signal.aborted) {
+          abortController.abort();
           return console.error('abortCountroller signal aborted :>> ', e);
         }
       }
@@ -424,12 +434,12 @@ export default function ModalAddSquad({
         }
 
         if (leftSquadStatus === 'ok' && rightSquadStatus === 'ok') {
-          await addCounter({
+          const counterResponse = await addCounter({
             opponentSquadId: leftSquadId,
             counterSquadId: rightSquadId,
             isHardCounter: isHardCounter ? 1 : 0,
             battleType: size,
-            description: strategy.value,
+            counterStrategy: strategy.value,
             isToon2Req: tempSquad[1].isReq ? 1 : 0,
             isToon3Req: tempSquad[2].isReq ? 1 : 0,
             isToon4Req: tempSquad[3].isReq ? 1 : 0,
@@ -443,8 +453,22 @@ export default function ModalAddSquad({
             username: user.username,
           });
 
-          toggle();
-          reload();
+          if (counterResponse.status === 'ok') {
+            videoLinks.forEach((videoLink) => {
+              if (!videoLink.deleteVideo && videoLink.link !== '') {
+                addVideoLink({
+                  subjectId: counterResponse.counterId,
+                  title: videoLink.title,
+                  link: videoLink.link,
+                  userId: user.id,
+                  username: user.username,
+                });
+              }
+            });
+
+            toggle();
+            reload();
+          }
         }
       } catch (err) {
         throw new Error(err);
@@ -602,6 +626,13 @@ export default function ModalAddSquad({
                     {...strategy}
                   />
                 </FormStrategy>}
+
+                {<VideoForm
+                checkIfVideoLinksAreValid={checkIfVideoLinksAreValid}
+                setAreVideoTitlesTooLong={setAreVideoTitlesTooLong}
+                setVideoLinks={setVideoLinks}
+                videoLinks={videoLinks}
+              />}
               </div>
             </div>
           </FormRightSide>
@@ -617,7 +648,9 @@ export default function ModalAddSquad({
             && <div className="alert alert-danger">Both new squads can't have the same name</div>
         }
         <Button color="primary" onClick={handleSubmitButton}
-          disabled={ !isNewCounter
+          disabled={ areVideoTitlesTooLong
+            || !areVideoLinksValid
+            || !isNewCounter
             || !!squadMatch
             || !!squadNameMatch
             || tempSquadInfo.name === ''

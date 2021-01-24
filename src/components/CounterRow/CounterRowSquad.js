@@ -6,7 +6,6 @@ import { getImage } from 'src/helpers';
 import { colors } from 'src/styles/colors';
 import { CounterCard } from 'src/styles/style';
 
-// TODO: Add tests
 export default function CounterRowSquad({
   squad, toggle, type, ...props
 }) {

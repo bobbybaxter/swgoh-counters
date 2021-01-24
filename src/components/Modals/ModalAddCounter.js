@@ -53,7 +53,6 @@ const buildDefaultSquad = () => {
   return defaultSquad;
 };
 
-// TODO: Add tests
 export default function ModalAddCounter({
   counterStubs,
   isOpen,
@@ -231,7 +230,7 @@ export default function ModalAddCounter({
               counterSquadId: addSquadResponse.squadId,
               isHardCounter: isHardCounter ? 1 : 0,
               battleType: size,
-              description: strategy.value,
+              counterStrategy: strategy.value,
               isToon2Req: tempSquad[1].isReq ? 1 : 0,
               isToon3Req: tempSquad[2].isReq ? 1 : 0,
               isToon4Req: tempSquad[3].isReq ? 1 : 0,
@@ -275,7 +274,7 @@ export default function ModalAddCounter({
             counterSquadId: tempSquadInfo.id,
             isHardCounter: isHardCounter ? 1 : 0,
             battleType: size,
-            description: strategy.value,
+            counterStrategy: strategy.value,
             isToon2Req: tempSquad[1].isReq ? 1 : 0,
             isToon3Req: tempSquad[2].isReq ? 1 : 0,
             isToon4Req: tempSquad[3].isReq ? 1 : 0,
@@ -324,7 +323,7 @@ export default function ModalAddCounter({
           </FormLeftSide>
 
           <FormRightSide>
-              {/* Squad details */}
+            {/* Squad details */}
             <h6 className="text-secondary pb-3">Counter Squad Name</h6>
             <CounterDetailForm
               buildDefaultSquad={buildDefaultSquad}

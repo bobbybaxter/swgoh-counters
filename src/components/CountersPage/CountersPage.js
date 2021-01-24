@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'reactstrap';
+import LazyLoad from 'react-lazyload';
 import PropTypes from 'prop-types';
 
 // import AdsenseAd from 'src/components/AdsenseAd/AdsenseAd';
@@ -16,11 +17,10 @@ import { CountersPageWrapper } from './style';
 
 // const isSnap = navigator.userAgent === 'ReactSnap';
 
-// TODO: Add tests
 // TODO: turn ads back on before deployment
-export default function CountersPage({
+const CountersPage = ({
   authenticated, handleViewBtn, reload, size, user, view, ...props
-}) {
+}) => {
   CountersPage.propTypes = {
     authenticated: PropTypes.bool,
     handleViewBtn: PropTypes.func,
@@ -42,13 +42,26 @@ export default function CountersPage({
   const [stubsReverse, setStubsReverse] = useState();
 
   useEffect(() => {
+    const abortController = new AbortController();
+    const opts = { signal: abortController.signal };
+
     async function getStubs() {
-      const { normal, reverse } = await getSquadStubs(size);
-      await setStubsNormal(normal);
-      await setStubsReverse(reverse);
+      try {
+        const { normal, reverse } = await getSquadStubs(size, opts);
+        await setStubsNormal(normal);
+        await setStubsReverse(reverse);
+      } catch (e) {
+        if (!abortController.signal.aborted) {
+          abortController.abort();
+          console.error('abortController signal aborted :>> ', e);
+        }
+      }
     }
 
     getStubs();
+    return () => {
+      abortController.abort();
+    };
   }, [size]);
 
   const { patreonId } = user;
@@ -58,17 +71,18 @@ export default function CountersPage({
 
   const buildCounterRows = selectedStubs
     && selectedStubs.length
-    && selectedStubs.map(stub => <CounterRow
-        authenticated={authenticated}
-        collapse={collapse}
-        key={`${view}_${size}_${stub.id}`}
-        leftSquadStub={stub}
-        size={size}
-        reload={reload}
-        toggleCollapse={toggleCollapse}
-        view={view}
-        user={user}
-      />);
+    && selectedStubs.map(stub => <LazyLoad once key={`CounterRow_${view}_${size}_${stub.id}`} placeholder={null}>
+        <CounterRow
+          authenticated={authenticated}
+          collapse={collapse}
+          leftSquadStub={stub}
+          size={size}
+          reload={reload}
+          toggleCollapse={toggleCollapse}
+          view={view}
+          user={user}
+        />
+      </LazyLoad>);
 
   return (
     <ContainerColumn>
@@ -99,13 +113,13 @@ export default function CountersPage({
         </div>
 
         <div>
-          {buildCounterRows || ''}
-          {view === 'normal' && <BlankCounterRow
+          {authenticated && view === 'normal' && <BlankCounterRow
             reload={reload}
             size={size}
             user={user}
             view={view}
           />}
+          {buildCounterRows || ''}
         </div>
 
         <footer>
@@ -117,4 +131,6 @@ export default function CountersPage({
       </CountersPageWrapper>
     </ContainerColumn>
   );
-}
+};
+
+export default React.memo(CountersPage);

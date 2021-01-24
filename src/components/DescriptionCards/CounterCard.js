@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { Button, UncontrolledCollapse } from 'reactstrap';
 import _ from 'lodash';
+import { colors } from 'src/styles/colors';
 
 import ModalEditCounter from 'src/components/Modals/ModalEditCounter';
 import ModalPortal from 'src/components/ModalPortal/ModalPortal';
@@ -22,7 +23,6 @@ import {
   VideoListItemWrapper,
 } from './style';
 
-// TODO: add video section
 const defaultSquad = {
   id: '',
   name: '',
@@ -44,7 +44,7 @@ const defaultSquad = {
   createdByName: '',
 };
 
-const CounterCard = React.memo(({
+const CounterCard = ({
   authenticated,
   counter,
   counterStubs,
@@ -173,20 +173,21 @@ const CounterCard = React.memo(({
     );
   };
 
+  const divColor = counter.isHardCounter === 1 ? colors.hardCounter : colors.softCounter;
+
   return (
     <>
     <TopWrapper>
-      <DetailsDivLeft>
+      <DetailsDivLeft color={view === 'normal' ? '' : divColor}>
         <h6 className="text-secondary mb-1">{view === 'normal' ? 'Opponent Squad' : 'Counter Squad'}</h6>
         {view === 'normal'
           ? leftSquad && <SquadHeader size={size} squad={leftSquad} />
           : leftSquad && <SquadHeader counter={counter} showLocks={true} size={size} squad={leftSquad} />
         }
         { view === 'reverse' && buildCounterDetails() }
-        {/* { view === 'normal' ? buildOpponentDetails(leftSquad) : buildCounterDetails() } */}
       </DetailsDivLeft>
 
-      <DetailsDivRight>
+      <DetailsDivRight color={view === 'normal' ? divColor : ''}>
         <h6 className="text-secondary mb-1">{view === 'normal' ? 'Counter Squad' : 'Opponent Squad'}</h6>
         {
           view === 'normal'
@@ -232,6 +233,6 @@ const CounterCard = React.memo(({
     )}
     </>
   );
-});
+};
 
-export default CounterCard;
+export default React.memo(CounterCard);
