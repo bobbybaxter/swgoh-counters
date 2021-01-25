@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // NOTE why are we getting these from counters
-module.exports = async ({ database }, type, size) => {
+module.exports = ({ database, log }, type, size) => {
   const sql = fs.readFileSync(path.join(__dirname, './sql/getStubs.sql')).toString();
   const selector = type === 'normal' ? 'opponentSquadId' : 'counterSquadId';
   const variables = [
@@ -12,22 +12,19 @@ module.exports = async ({ database }, type, size) => {
     selector,
   ];
 
-  const response = new Promise((res, rej) => {
+  return new Promise((res, rej) => {
     database.query(sql, variables, (error, results) => {
       if (error) { rej(error); }
 
       const parsedResults = JSON.parse(JSON.stringify(results));
       if (!parsedResults.length) {
-        return rej(new Error('No counter versions exist'));
+        rej(new Error('No squad stubs exist'));
       }
 
-      return res(parsedResults);
+      res(parsedResults);
     });
+  }).catch((e) => {
+    log.error(e.message);
+    throw e;
   });
-
-  try {
-    return await response;
-  } catch (err) {
-    return new Error(err);
-  }
 };

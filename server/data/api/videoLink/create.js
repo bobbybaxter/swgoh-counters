@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { nanoid } = require('nanoid');
 
-module.exports = async ({ database }, {
+module.exports = async ({ database, log }, {
   subjectId,
   title,
   link,
@@ -67,13 +67,13 @@ module.exports = async ({ database }, {
                 });
               }
 
-              return console.info(`VideoLinkVersion for ${videoLinkId} successfully updated.`);
+              return log.info(`VideoLinkVersion for ${videoLinkId} successfully updated.`);
             });
 
             return '';
           });
 
-          console.info(`VideoLink for ${videoLinkId} successfully created.`);
+          log.info(`VideoLink for ${videoLinkId} successfully created.`);
           connection.release();
           return res('ok');
         });
@@ -84,6 +84,6 @@ module.exports = async ({ database }, {
   try {
     return await response;
   } catch (err) {
-    return new Error(err);
+    throw new Error(err);
   }
 };

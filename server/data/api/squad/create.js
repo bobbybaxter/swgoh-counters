@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { nanoid } = require('nanoid');
 
-module.exports = async ({ database }, {
+module.exports = async ({ database, log }, {
   name,
   description,
   generalStrategy,
@@ -40,7 +40,7 @@ module.exports = async ({ database }, {
     versionId,
   ];
 
-  const response = new Promise((res, rej) => {
+  return new Promise((res, rej) => {
     database.getConnection((databaseConnectionError, connection) => {
       if (databaseConnectionError) {
         connection.release();
@@ -77,24 +77,20 @@ module.exports = async ({ database }, {
                 });
               }
 
-              return console.info(`SquadVersion for ${squadId} successfully updated.`);
+              return log.info(`SquadVersion for ${squadId} successfully updated.`);
             });
 
             return '';
           });
 
-          console.info(`Squad for ${squadId} successfully created.`);
+          log.info(`Squad for ${squadId} successfully created.`);
           connection.release();
-          return res('ok');
+          return res(squadId);
         });
       });
     });
+  }).catch((e) => {
+    log.error(e.message);
+    throw e;
   });
-
-  try {
-    const res = await response;
-    return { res, squadId };
-  } catch (err) {
-    return new Error(err);
-  }
 };

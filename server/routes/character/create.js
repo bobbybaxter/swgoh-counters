@@ -1,9 +1,8 @@
 module.exports = app => async (req, res) => {
-  const createdCharacter = await app.data.character.create(app, req.body);
-
-  if (createdCharacter !== 'ok') {
-    res.status('400').send('Character was not created.');
+  try {
+    const createdCharacter = await app.data.character.create(app, req.body);
+    res.send(createdCharacter);
+  } catch (err) {
+    res.status(400).send('Character was not created.');
   }
-
-  res.send(createdCharacter);
 };

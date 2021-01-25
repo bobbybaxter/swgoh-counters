@@ -1,28 +1,30 @@
 const baseUrl = process.env.REACT_APP_SQUAD_API_URL;
 
 export async function getSquadData() {
-  try {
-    const response = await fetch(`${baseUrl}`);
-    return await response.json();
-  } catch (err) {
-    throw new Error(err);
+  const response = await fetch(`${baseUrl}`);
+  const body = await response.json();
+
+  if (!response.ok) {
+    throw Error(body);
   }
+  return body;
 }
 
 export async function addSquad(squad) {
-  try {
-    const response = await fetch(`${baseUrl}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': ['application/json'],
-      },
-      body: JSON.stringify(squad),
-    });
-    const body = await response.text();
-    return { status: 'ok', squadId: body };
-  } catch (err) {
-    throw new Error(err);
+  const response = await fetch(`${baseUrl}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': ['application/json'],
+    },
+    body: JSON.stringify(squad),
+  });
+  const body = await response.json();
+
+  console.log('body :>> ', body);
+  if (!response.ok) {
+    throw Error(body);
   }
+  return { status: 'ok', squadId: body };
 }
 
 export async function updateSquad(squad) {
@@ -42,12 +44,14 @@ export async function updateSquad(squad) {
 
 
 export async function getSquadStubs(size, opts) {
-  try {
-    const response = await fetch(`${baseUrl}/stubs/${size}`, opts);
-    return await response.json();
-  } catch (err) {
-    throw new Error(err);
+  const response = await fetch(`${baseUrl}/stubs/${size}`, opts);
+  const body = await response.json();
+
+  if (!response.ok) {
+    throw Error(body);
   }
+
+  return body;
 }
 
 export async function getSquadVersionDate() {

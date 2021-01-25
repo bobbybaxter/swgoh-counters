@@ -18,6 +18,6 @@ module.exports = async ({ database }, characterId, name) => {
   try {
     return await response;
   } catch (err) {
-    return new Error(err);
+    throw new Error(err);
   }
 };

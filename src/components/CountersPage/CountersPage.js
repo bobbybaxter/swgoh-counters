@@ -50,10 +50,10 @@ const CountersPage = ({
         const { normal, reverse } = await getSquadStubs(size, opts);
         await setStubsNormal(normal);
         await setStubsReverse(reverse);
-      } catch (e) {
+      } catch (err) {
         if (!abortController.signal.aborted) {
           abortController.abort();
-          console.error('abortController signal aborted :>> ', e);
+          console.error(err);
         }
       }
     }

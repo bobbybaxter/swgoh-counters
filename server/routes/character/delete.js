@@ -1,9 +1,8 @@
 module.exports = app => async (req, res) => {
-  const deletedCharacter = await app.data.character.delete(app, req.params.id);
-
-  if (deletedCharacter !== 'ok') {
-    res.status('400').send(deletedCharacter.toString());
+  try {
+    const deletedCharacter = await app.data.character.delete(app, req.params.id);
+    res.send(deletedCharacter);
+  } catch (err) {
+    res.status(400).send('Character was not deleted.');
   }
-
-  res.send(deletedCharacter);
 };

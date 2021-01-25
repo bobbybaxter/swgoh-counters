@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { nanoid } = require('nanoid');
 
-module.exports = async ({ database }, {
+module.exports = async ({ database, log }, {
   opponentSquadId,
   counterSquadId,
   isHardCounter,
@@ -52,7 +52,7 @@ module.exports = async ({ database }, {
     versionId,
   ];
 
-  const response = new Promise((res, rej) => {
+  return new Promise((res, rej) => {
     database.getConnection((databaseConnectionError, connection) => {
       if (databaseConnectionError) {
         connection.release();
@@ -89,24 +89,20 @@ module.exports = async ({ database }, {
                 });
               }
 
-              return console.info(`CounterVersion for ${counterId} successfully updated.`);
+              return log.info(`CounterVersion for ${counterId} successfully updated.`);
             });
 
             return '';
           });
 
-          console.info(`Counter for ${counterId} successfully created.`);
+          log.info(`Counter for ${counterId} successfully created.`);
           connection.release();
           return res('ok');
         });
       });
     });
+  }).catch((e) => {
+    log.error(e.message);
+    throw e;
   });
-
-  try {
-    const res = await response;
-    return { res, counterId };
-  } catch (err) {
-    return new Error(err);
-  }
 };

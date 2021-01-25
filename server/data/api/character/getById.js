@@ -1,25 +1,22 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = async ({ database }, id) => {
+module.exports = ({ database, log }, id) => {
   const sql = fs.readFileSync(path.join(__dirname, './sql/getById.sql')).toString();
 
-  const response = new Promise((res, rej) => {
+  return new Promise((res, rej) => {
     database.query(sql, id, (error, results) => {
       if (error) { rej(error); }
 
-      const parsedResults = JSON.parse(JSON.stringify(results));
+      const parsedResults = JSON.parse(JSON.stringify(results)) || {};
       if (!parsedResults.length) {
-        return rej(new Error("Characters doesn't exist"));
+        rej(new Error("Character doesn't exist"));
       }
 
-      return res(parsedResults);
+      res(parsedResults[0]);
     });
+  }).catch((err) => {
+    log.error(err.message);
+    throw err;
   });
-
-  try {
-    return await response;
-  } catch (err) {
-    return new Error(err);
-  }
 };

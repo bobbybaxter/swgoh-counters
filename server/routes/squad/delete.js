@@ -1,9 +1,8 @@
 module.exports = app => async (req, res) => {
-  const deletedSquad = await app.data.squad.delete(app, req.params.id);
-
-  if (deletedSquad !== 'ok') {
-    res.status('400').send(deletedSquad.toString());
+  try {
+    const deletedSquad = await app.data.squad.delete(app, req.params.id);
+    res.send(deletedSquad);
+  } catch (err) {
+    res.status(404).send([err.message]);
   }
-
-  res.send(deletedSquad);
 };

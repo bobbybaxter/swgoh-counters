@@ -1,13 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = async ({ database }) => {
+module.exports = async ({ database, log }) => {
   const sql = fs.readFileSync(path.join(__dirname, './sql/deleteAll.sql')).toString();
 
   const response = new Promise((res, rej) => {
     database.query(sql, (error, results) => {
       if (error) { rej(error); }
-      console.info('zeta table truncated');
+      log.info('zeta table truncated');
       return res('ok');
     });
   });
@@ -15,6 +15,6 @@ module.exports = async ({ database }) => {
   try {
     return await response;
   } catch (err) {
-    return new Error(err);
+    throw new Error(err);
   }
 };

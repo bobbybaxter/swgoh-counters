@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = async ({ database }) => {
+module.exports = async ({ database, log }) => {
   const sql = fs.readFileSync(path.join(__dirname, './sql/getVersionDate.sql')).toString();
 
-  const response = new Promise((res, rej) => {
+  return new Promise((res, rej) => {
     database.query(sql, (error, results) => {
       if (error) { rej(error); }
 
@@ -15,11 +15,8 @@ module.exports = async ({ database }) => {
 
       return res(parsedResults[0]);
     });
+  }).catch((e) => {
+    log.error(e.message);
+    throw e;
   });
-
-  try {
-    return await response;
-  } catch (err) {
-    return new Error(err);
-  }
 };

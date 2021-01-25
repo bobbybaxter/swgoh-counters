@@ -71,8 +71,8 @@ class App extends React.Component {
   }
 
   getSquads = async () => {
-    const results = await getSquadData();
-    if (!_.isEqual(results, this.state.squads)) {
+    const results = await getSquadData().catch(e => console.error(e));
+    if (results && !_.isEqual(results, this.state.squads)) {
       this.setState({ squads: results });
       sessionStorage.setItem('squads', JSON.stringify(results));
     }

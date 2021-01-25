@@ -15,6 +15,6 @@ module.exports = async ({ database }, id) => {
   try {
     return await response;
   } catch (err) {
-    return new Error(err);
+    throw new Error(err);
   }
 };

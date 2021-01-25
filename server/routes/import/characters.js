@@ -20,6 +20,6 @@ module.exports = app => async (req, res) => {
   // imports all characters - no need to drop tables as characters have fixed ids
   characters.forEach(character => app.data.character.create(app, character));
 
-  console.info('character import complete');
+  app.log.info('character import complete');
   res.send('ok');
 };

@@ -1,9 +1,8 @@
 module.exports = app => async (req, res) => {
-  const character = await app.data.character.getById(app, req.params.id);
-
-  if (character instanceof Error) {
-    res.status('400').send("Character doesn't exist.");
+  try {
+    const character = await app.data.character.getById(app, req.params.id);
+    res.send(character);
+  } catch (err) {
+    res.status(404).send([err.message]);
   }
-
-  res.send(character);
 };

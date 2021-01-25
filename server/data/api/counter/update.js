@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { nanoid } = require('nanoid');
 
-module.exports = async ({ database }, { id }, {
+module.exports = async ({ database, log }, { id }, {
   isHardCounter,
   battleType,
   counterStrategy,
@@ -84,13 +84,13 @@ module.exports = async ({ database }, { id }, {
                 });
               }
 
-              return console.info(`Counter for ${id} successfully updated.`);
+              return log.info(`Counter for ${id} successfully updated.`);
             });
 
             return '';
           });
 
-          console.info(`Counter Version for ${id} successfully added.`);
+          log.info(`Counter Version for ${id} successfully added.`);
           connection.release();
           return res('ok');
         });
@@ -101,6 +101,6 @@ module.exports = async ({ database }, { id }, {
   try {
     return await response;
   } catch (err) {
-    return new Error(err);
+    throw new Error(err);
   }
 };

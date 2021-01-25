@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = async ({ database }, id) => {
+module.exports = async ({ database, log }, id) => {
   const sql = fs.readFileSync(path.join(__dirname, './sql/delete.sql')).toString();
 
-  const response = new Promise((res, rej) => {
+  return new Promise((res, rej) => {
     database.query(sql, id, (error, results) => {
       if (error) { return rej(error); }
       if (results.affectedRows === 0) {
@@ -12,11 +12,8 @@ module.exports = async ({ database }, id) => {
       }
       return res('ok');
     });
+  }).catch((err) => {
+    log.error(err.message);
+    throw err;
   });
-
-  try {
-    return await response;
-  } catch (err) {
-    return new Error(err);
-  }
 };

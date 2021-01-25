@@ -35,7 +35,7 @@ module.exports = app => async function handleRedirect(req, res) {
       res.redirect(process.env.BASE_URL);
     })
     .catch((err) => {
-      console.error('error with Patreon verification', err);
+      app.log.error('error with Patreon verification', err);
       res.redirect(process.env.BASE_URL);
     });
 };

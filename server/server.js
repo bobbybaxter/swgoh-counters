@@ -39,8 +39,7 @@ module.exports = (app) => {
 
   server.use(require('./routes')(app));
 
-  log.info(`Listening on port ${PORT}`);
-  server.listen(PORT, () => console.info(`Listening on port ${PORT}`));
+  server.listen(PORT, () => app.log.info(`Listening on port ${PORT}`));
 
   return server;
 };

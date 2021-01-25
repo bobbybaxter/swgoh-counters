@@ -3,6 +3,6 @@ module.exports = app => async function getUserByFirebaseUid(req, res) {
     const user = await app.data.user.getByFirebaseUid(req.params.id, app.firebaseDb);
     res.send(user);
   } catch (e) {
-    console.error('getUserByFirebaseUid Error :>> ', e);
+    app.log.error('getUserByFirebaseUid Error :>> ', e);
   }
 };

@@ -15,8 +15,8 @@ export async function getAllCharacters() {
   const response = await fetch(baseUrl);
   const body = await response.json();
 
-  if (response.status !== 200) {
-    throw Error(body.message);
+  if (!response.ok) {
+    throw Error(body);
   }
   return body;
 }
