@@ -42,7 +42,7 @@ export default function ZetaForm({
       };
 
       return zetaList.length > 0
-        ? <FormZetaReq key={`${i}_zetaReq`}>
+        && <FormZetaReq key={`${i}_zetaReq`}>
             <Label for={`${i}_zetaReq`} size="sm" className="text-secondary col-6">{toon.name}</Label>
             <Input
               className="col-6"
@@ -56,8 +56,7 @@ export default function ZetaForm({
             >
               {zetaList.map(zeta => <option key={zeta}>{zeta}</option>)}
             </Input>
-          </FormZetaReq>
-        : '';
+          </FormZetaReq>;
     });
 
   return (

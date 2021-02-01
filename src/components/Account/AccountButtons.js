@@ -5,14 +5,21 @@ import { Button } from 'reactstrap';
 import { importCharacterData, importCounterData, importSquadData } from 'src/helpers/data';
 import { AccountButtonsWrapper, RefreshElements } from './style';
 
-export default function AccountButtons(props) {
+export default function AccountButtons({
+  user,
+  clearAllyCode,
+}) {
   AccountButtons.propTypes = {
     user: PropTypes.object,
     clearAllyCode: PropTypes.func,
   };
 
   const importCharacters = async () => {
-    await importCharacterData();
+    try {
+      await importCharacterData();
+    } catch (err) {
+      console.error('importCharacters error :>>', err);
+    }
   };
 
   const importSquads = async () => {
@@ -35,28 +42,28 @@ export default function AccountButtons(props) {
     <AccountButtonsWrapper>
       <RefreshElements>
         {
-          props.user.allyCode
+          user.username
             && <Button
                 className="btn-sm"
-                onClick={props.clearAllyCode}
+                onClick={clearAllyCode}
             >Clear Ally Code</Button>
         }
         {
-          props.user.id === process.env.REACT_APP_ADMIN_ID
+          user.id === process.env.REACT_APP_ADMIN_ID
             && <Button
               className="btn-sm ml-1"
               onClick={importCharacters}
             >Import Characters</Button>
         }
         {
-          props.user.id === process.env.REACT_APP_ADMIN_ID
+          user.id === process.env.REACT_APP_ADMIN_ID
             && <Button
               className="btn-sm mx-1"
               onClick={importSquads}
             >Import Squads</Button>
         }
         {
-          props.user.id === process.env.REACT_APP_ADMIN_ID
+          user.id === process.env.REACT_APP_ADMIN_ID
             && <Button
               className="btn-sm"
               onClick={importCounters}

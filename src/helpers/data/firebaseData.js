@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const createUser = user => new Promise((resolve, reject) => {
-  axios.post(`${process.env.REACT_APP_API_URL}/api/user`,
+  axios.post(`${process.env.REACT_APP_API_URL}/api/firebase`,
     user,
     { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
     .then((res) => {
@@ -20,7 +20,7 @@ const getUserByFirebaseAuthUid = firebaseAuthUid => new Promise((resolve, reject
 });
 
 const updateUserInfo = user => new Promise((resolve, reject) => {
-  axios.patch(`${process.env.REACT_APP_API_URL}/api/user/${user.id}`,
+  axios.patch(`${process.env.REACT_APP_API_URL}/api/firebase/${user.id}`,
     {
       allyCode: user.allyCode,
       email: user.email,
@@ -36,7 +36,7 @@ const updateUserInfo = user => new Promise((resolve, reject) => {
 });
 
 const unlinkPatreonAccount = user => new Promise((resolve, reject) => {
-  axios.patch(`${process.env.REACT_APP_API_URL}/api/user/${user.id}`,
+  axios.patch(`${process.env.REACT_APP_API_URL}/api/firebase/${user.id}`,
     {
       allyCode: user.allyCode,
       email: user.email,

@@ -7,7 +7,7 @@ module.exports = async ({ database }, id) => {
   const response = new Promise((res, rej) => {
     database.query(sql, id, (error, results) => {
       if (error) { rej(error); }
-      if (!results && !results.length) { return rej(new Error("Video links don't exist")); }
+      if (!results || (results && !results.length)) { return rej(new Error("Video links don't exist")); }
       return res(JSON.parse(JSON.stringify(results)));
     });
   });

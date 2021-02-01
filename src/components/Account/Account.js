@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable camelcase */
+import React, { useEffect } from 'react';
 import {
   Button, Form, FormGroup, Input,
 } from 'reactstrap';
 import MetaTags from 'react-meta-tags';
 import PropTypes from 'prop-types';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import { getPlayerData, firebaseData } from 'src/helpers/data';
 import { ContainerColumn } from 'src/styles/style';
@@ -17,46 +20,45 @@ import {
   AccountWrapper,
 } from './style';
 
-const userDataInStorage = JSON.parse(localStorage.getItem('userData'));
-
 const patreonLink = `https://patreon.com/oauth2/authorize?response_type=code&client_id=${process.env.REACT_APP_PATREON_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_PATREON_REDIRECT}&scope=identity${encodeURI('[email]')}%20identity`;
 
-export default function Account(props) {
+export default function Account({
+  handleClearAllyCode,
+  handleAllyCode,
+  setUserInfo,
+  unlinkPatreonAccount,
+  user,
+}) {
   Account.propTypes = {
-    authenticated: PropTypes.bool,
     handleClearAllyCode: PropTypes.func,
     handleAllyCode: PropTypes.func,
+    setUserInfo: PropTypes.func,
     unlinkPatreonAccount: PropTypes.func,
     user: PropTypes.object,
   };
 
-  const [userData, setUserData] = useState(userDataInStorage || '');
-
-  const setPlayerData = () => {
-    getPlayerData(props.user.allyCode)
-      .then((res) => {
-        localStorage.setItem('userData', JSON.stringify(res.data));
-        return setUserData(res.data);
-      });
-  };
-
-  useEffect(() => {
-    if (!userData && props.user.allyCode) {
-      setPlayerData();
+  const setPlayerData = async () => {
+    try {
+      const res = await getPlayerData(user.allyCode);
+      const { ally_code, name } = res.data;
+      setUserInfo({ allyCode: ally_code.toString(), username: name });
+      return res.data;
+    } catch (err) {
+      return console.error('setPlayerData error', err);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
 
   useEffect(() => {
     // adds usernames to old accounts that don't currently have them
     async function updateUser() {
-      if (userData && props.user.allyCode && !props.user.username) {
+      if (user.allyCode && !user.username) {
+        const userData = await setPlayerData();
         const userToUpdate = {
-          id: props.user.id,
-          allyCode: props.user.allyCode,
-          email: props.user.email,
-          patreonId: props.user.patreonId,
-          patronStatus: props.user.patronStatus,
+          id: user.id,
+          allyCode: user.allyCode,
+          email: user.email,
+          patreonId: user.patreonId,
+          patronStatus: user.patronStatus,
           username: userData.name,
         };
         await firebaseData.updateUserInfo(userToUpdate);
@@ -64,46 +66,43 @@ export default function Account(props) {
     }
 
     updateUser();
-  }, [props.user.allyCode,
-    props.user.email,
-    props.user.id,
-    props.user.patreonId,
-    props.user.patronStatus,
-    props.user.username,
-    userData]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const clearAllyCode = () => {
-    localStorage.removeItem('userData');
-    setUserData('');
-    props.handleClearAllyCode();
+    handleClearAllyCode();
   };
 
-  const submitAllyCode = (e) => {
+  const submitAllyCode = async (e) => {
     e.preventDefault();
-    firebaseData.updateUserInfo(props.user);
+    try {
+      const idToken = await firebase.auth().currentUser.getIdToken(/* forceRefresh */ true);
+      sessionStorage.setItem('token', idToken);
+      await firebaseData.updateUserInfo(user);
+    } catch (err) {
+      console.error('Error submitting AllyCode: ', err);
+    }
     setPlayerData();
-    setTimeout();
   };
 
-  const allyCodeForm = <Form inline>
+  const allyCodeForm = <Form inline className="justify-content-center">
     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
       <Input
         type="text"
         name="allyCode"
         id="allyCode"
         placeholder="Ally Code"
-        onChange={props.handleAllyCode}
+        onChange={handleAllyCode}
       />
     </FormGroup>
     <Button type="submit" onClick={submitAllyCode}>Submit</Button>
   </Form>;
 
   const handleUnlinkPatreonAccount = () => {
-    firebaseData.unlinkPatreonAccount(props.user);
-    props.unlinkPatreonAccount();
+    firebaseData.unlinkPatreonAccount(user);
+    unlinkPatreonAccount();
   };
 
-  const togglePatreonButton = !props.user.patreonId
+  const togglePatreonButton = !user.patreonId
     ? <Button className="btn-sm" href={patreonLink}>
           Link Patreon
         </Button>
@@ -123,14 +122,14 @@ export default function Account(props) {
         <AccountHeader>
           <AccountHeaderLeft className="col-4"></AccountHeaderLeft>
           <AccountHeaderCenter className="col-4">
-            {userData && userData.name ? <h1>{userData.name}</h1> : allyCodeForm}
+            {user && user.username ? <h1>{user.username}</h1> : allyCodeForm}
           </AccountHeaderCenter>
           <AccountHeaderRight className="col-4">
             <table>
               <tbody>
                 <tr>
                   <td>Ally Code: </td>
-                  <td>{userData ? userData.ally_code : ''}</td>
+                  <td>{user && user.allyCode && user.username ? user.allyCode : ''}</td>
                 </tr>
                 <tr>
                   <td>Patreon: </td>
@@ -139,7 +138,7 @@ export default function Account(props) {
               </tbody>
             </table>
             <AccountButtons
-              user={props.user}
+              user={user}
               key="accountButtons"
               clearAllyCode={clearAllyCode}
             />

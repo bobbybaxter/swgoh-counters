@@ -67,7 +67,7 @@ const OpponentCard = ({
     }
 
     getSquad();
-  }, [leftSquadStub.id]);
+  }, [leftSquadStub.id, leftSquadStub.name]);
 
   return (
     <>

@@ -87,7 +87,7 @@ export default function ModalEditCounter({
   const [areVideoTitlesTooLong, setAreVideoTitlesTooLong] = useState(false);
   const [characters] = useState(storedCharacters);
   const [doesTempMatchSource, setDoesTempMatchSource] = useState(false);
-  const [isHardCounter, setIsHardCounter] = useState(counter.isHardCounter === 1);
+  const [isHardCounter, setIsHardCounter] = useState(counter.isHardCounter);
   const [isNewCounter, setIsNewCounter] = useState(true);
   const [leftSquad] = useState(leftSquadParam);
   const [sourceSquad, setSourceSquad] = useState();
@@ -140,25 +140,25 @@ export default function ModalEditCounter({
       const toon2 = {
         id: toon2Id,
         name: toon2Name,
-        isReq: isToon2Req === 1,
+        isReq: isToon2Req,
         zetas: toon2Zetas,
       };
       const toon3 = {
         id: toon3Id,
         name: toon3Name,
-        isReq: isToon3Req === 1,
+        isReq: isToon3Req,
         zetas: toon3Zetas,
       };
       const toon4 = {
         id: toon4Id,
         name: toon4Name,
-        isReq: isToon4Req === 1,
+        isReq: isToon4Req,
         zetas: toon4Zetas,
       };
       const toon5 = {
         id: toon5Id,
         name: toon5Name,
-        isReq: isToon5Req === 1,
+        isReq: isToon5Req,
         zetas: toon5Zetas,
       };
 

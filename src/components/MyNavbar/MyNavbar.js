@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components/macro';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
@@ -13,9 +14,19 @@ import {
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-import './MyNavbar.scss';
+export const NavbarWrapper = styled.div`
+  display: block;
+  background-color: #9B47E433;
+  box-shadow: inset 4px 4px 15px rgba(255, 255, 255, 0.1), inset -4px -4px 15px rgba(255, 255, 255, 0.1);
+`;
 
-export default function MyNavbar(props) {
+export const NavDivider = styled.span`
+  border-left: 1px solid #6c757d;
+  margin-left: 1em;
+  margin-right: 1em;
+`;
+
+const MyNavbar = ({ authenticated, handleLogout }) => {
   MyNavbar.propTypes = {
     authenticated: PropTypes.bool.isRequired,
     handleLogout: PropTypes.func.isRequired,
@@ -25,7 +36,7 @@ export default function MyNavbar(props) {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const handleLogin = (e) => {
+  const handleNavLogin = (e) => {
     e.preventDefault();
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({
@@ -34,29 +45,29 @@ export default function MyNavbar(props) {
     firebase.auth().signInWithRedirect(provider);
   };
 
-  const handleLogout = (e) => {
+  const handleNavLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem('userData');
     localStorage.removeItem('userUnits');
     sessionStorage.setItem('token', '');
     firebase.auth().signOut();
-    props.handleLogout();
+    handleLogout();
   };
 
-  const selectLoginOrLogout = props.authenticated
+  const selectLoginOrLogout = authenticated
     ? (
       <NavItem>
-        <NavLink href="#" onClick={handleLogout}>Logout</NavLink>
+        <NavLink href="#" onClick={handleNavLogout}>Logout</NavLink>
       </NavItem>
     )
     : (
       <NavItem>
-        <NavLink href="#" onClick={handleLogin}>Login</NavLink>
+        <NavLink href="#" onClick={handleNavLogin}>Login</NavLink>
       </NavItem>
     );
 
   return (
-      <div className="MyNavbar">
+      <NavbarWrapper>
         <Navbar dark expand="md">
           <NavbarBrand>SWGOH Counters</NavbarBrand>
           <NavbarToggler onClick={toggle} />
@@ -68,7 +79,9 @@ export default function MyNavbar(props) {
               <NavItem>
                 <NavLink tag={RRNavLink} to="/3v3">3v3</NavLink>
               </NavItem>
-              <span className="navDivider border-left border-secondary"></span>
+
+              <NavDivider />
+
               <NavItem>
                 <NavLink tag={RRNavLink} to="/submit">Submit Issue</NavLink>
               </NavItem>
@@ -81,8 +94,10 @@ export default function MyNavbar(props) {
               <NavItem>
                 <NavLink href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</NavLink>
               </NavItem>
-              <span className="navDivider border-left border-secondary"></span>
-              { !props.authenticated ? '' : (
+
+              <NavDivider />
+
+              { !authenticated ? '' : (
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/account">Account</NavLink>
                 </NavItem>
@@ -91,6 +106,8 @@ export default function MyNavbar(props) {
             </Nav>
           </Collapse>
         </Navbar>
-      </div>
+      </NavbarWrapper>
   );
-}
+};
+
+export default React.memo(MyNavbar);

@@ -91,7 +91,7 @@ export default function SquadHeader({
     }
 
     if (counter) {
-      return counter.isHardCounter === 1 ? colors.hardCounter : colors.softCounter;
+      return counter.isHardCounter ? colors.hardCounter : colors.softCounter;
     }
     return 'gray';
   };
@@ -111,28 +111,28 @@ export default function SquadHeader({
       const toon2 = {
         id: squad.toon2Id,
         name: squad.toon2Name,
-        isReq: counterCopy.isToon2Req === 1,
+        isReq: counterCopy.isToon2Req,
         zetas: counterCopy.toon2Zetas,
         image: squad.toon2Id ? getImage(squad.toon2Id) : null,
       };
       const toon3 = {
         id: squad.toon3Id,
         name: squad.toon3Name,
-        isReq: counterCopy.isToon3Req === 1,
+        isReq: counterCopy.isToon3Req,
         zetas: counterCopy.toon3Zetas,
         image: squad.toon3Id ? getImage(squad.toon3Id) : null,
       };
       const toon4 = {
         id: squad.toon4Id,
         name: squad.toon4Name,
-        isReq: counterCopy.isToon4Req === 1,
+        isReq: counterCopy.isToon4Req,
         zetas: counterCopy.toon4Zetas,
         image: squad.toon4Id ? getImage(squad.toon4Id) : null,
       };
       const toon5 = {
         id: squad.toon5Id,
         name: squad.toon5Name,
-        isReq: counterCopy.isToon5Req === 1,
+        isReq: counterCopy.isToon5Req,
         zetas: counterCopy.toon5Zetas,
         image: squad.toon5Id ? getImage(squad.toon5Id) : null,
       };

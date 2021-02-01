@@ -203,7 +203,7 @@ export default function ModalAddCounter({
     // blocks submission if this counter already exists, if the squad name is in use,
     // the squad name is blank, or the squad leader is blank
     if (!isNewCounter
-      || !!squadMatch
+      || !!squadNameMatch
       || tempSquadInfo.name === ''
       || tempSquad[0].id === 'BLANK') {
       console.error('please add or correct squad name or members');
@@ -269,7 +269,7 @@ export default function ModalAddCounter({
       if (tempSquadInfo.id) {
         try {
         // if this is an existing squad, just add the counter
-          await addCounter({
+          const counterResponse = await addCounter({
             opponentSquadId: leftSquadStub.id,
             counterSquadId: tempSquadInfo.id,
             isHardCounter: isHardCounter ? 1 : 0,
@@ -284,9 +284,26 @@ export default function ModalAddCounter({
             toon3Zetas: tempSquad[2].zetas.toString(),
             toon4Zetas: tempSquad[3].zetas.toString(),
             toon5Zetas: tempSquad[4].zetas.toString(),
+            userId: user.id,
+            username: user.username,
           });
-          toggle();
-          reload();
+
+          if (counterResponse.status === 'ok') {
+            videoLinks.forEach((videoLink) => {
+              if (!videoLink.deleteVideo && videoLink.link !== '') {
+                addVideoLink({
+                  subjectId: counterResponse.counterId,
+                  title: videoLink.title,
+                  link: videoLink.link,
+                  userId: user.id,
+                  username: user.username,
+                });
+              }
+            });
+
+            toggle();
+            reload();
+          }
         } catch (err) {
           throw new Error(err);
         }

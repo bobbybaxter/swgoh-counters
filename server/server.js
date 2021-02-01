@@ -1,27 +1,29 @@
-const express = require('express');
-const cors = require('cors');
 require('dotenv').config({ path: 'server/.env' });
+const fp = require('fastify-plugin');
 
-const server = express();
-
-const allowedOrigins = [
-  'http://localhost:3000',
-  'https://localhost:3000',
-  'http://swgohcounters.com',
-  'https://swgohcounters.com',
-  'http://www.swgohcounters.com',
-  'https://www.swgohcounters.com',
-  'http://saiastrange.com',
-  'https://saiastrange.com',
-  'http://www.saiastrange.com',
-  'https://www.saiastrange.com',
-];
-
-module.exports = (app) => {
+module.exports = async function createServer(app) {
   const { log } = app;
+  const server = require('fastify')({
+    logger: log,
+    ignoreTrailingSlash: true,
+    disableRequestLogging: true,
+  });
   const PORT = process.env.PORT || 5000;
 
-  server.use(cors({
+  const allowedOrigins = [
+    'http://localhost:3000',
+    'https://localhost:3000',
+    'http://swgohcounters.com',
+    'https://swgohcounters.com',
+    'http://www.swgohcounters.com',
+    'https://www.swgohcounters.com',
+    'http://saiastrange.com',
+    'https://saiastrange.com',
+    'http://www.saiastrange.com',
+    'https://www.saiastrange.com',
+  ];
+
+  server.register(require('fastify-cors'), {
     origin: function originCheck(origin, callback) {
       // allow requests with no origin like mobile apps or curl requests
       if (!origin) {
@@ -34,12 +36,18 @@ module.exports = (app) => {
       }
       return callback(null, true);
     },
-  }));
-  server.options('*', cors()); // Enable CORS-Pre-Flight
+    preFlightContinue: true,
+  });
+  server.decorate('test', fp(require('./auth')));
+  server.register(require('fastify-auth'));
+  server.register(require('./routes')(app), { prefix: '/api' });
 
-  server.use(require('./routes')(app));
-
-  server.listen(PORT, () => app.log.info(`Listening on port ${PORT}`));
+  await server.listen(PORT, (err, address) => {
+    if (err) {
+      server.log.error(err);
+      process.exit(1);
+    }
+  });
 
   return server;
 };

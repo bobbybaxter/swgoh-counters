@@ -12,6 +12,7 @@ import PatreonButton from 'src/components/shared/PatreonButton';
 import { ContainerColumn } from 'src/styles/style';
 import { getSquadStubs } from 'src/helpers/data';
 
+import { usePrevious } from 'src/helpers';
 import ColorIndicator from './ColorIndicator';
 import { CountersPageWrapper } from './style';
 
@@ -48,8 +49,8 @@ const CountersPage = ({
     async function getStubs() {
       try {
         const { normal, reverse } = await getSquadStubs(size, opts);
-        await setStubsNormal(normal);
-        await setStubsReverse(reverse);
+        setStubsNormal(normal);
+        setStubsReverse(reverse);
       } catch (err) {
         if (!abortController.signal.aborted) {
           abortController.abort();
@@ -69,9 +70,12 @@ const CountersPage = ({
   const toggleCollapse = input => (setCollapse(collapse === input ? null : input));
   // const toggleAd = adSlot => (!isSnap && <AdsenseAd adSlot={adSlot}/>);
 
-  const buildCounterRows = selectedStubs
+  const prevSize = usePrevious(size);
+
+  const buildCounterRows = prevSize === size
+    && selectedStubs
     && selectedStubs.length
-    && selectedStubs.map(stub => <LazyLoad once key={`CounterRow_${view}_${size}_${stub.id}`} placeholder={null}>
+    && selectedStubs.map(stub => (<LazyLoad once key={`CounterRow_${view}_${size}_${stub.id}`} placeholder={null}>
         <CounterRow
           authenticated={authenticated}
           collapse={collapse}
@@ -82,7 +86,7 @@ const CountersPage = ({
           view={view}
           user={user}
         />
-      </LazyLoad>);
+      </LazyLoad>));
 
   return (
     <ContainerColumn>
@@ -113,7 +117,11 @@ const CountersPage = ({
         </div>
 
         <div>
-          {authenticated && view === 'normal' && <BlankCounterRow
+          {authenticated
+          && user.patronStatus === 'active_patron'
+          && user.username
+          && view === 'normal'
+          && <BlankCounterRow
             reload={reload}
             size={size}
             user={user}

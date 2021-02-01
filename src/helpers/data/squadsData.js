@@ -20,7 +20,6 @@ export async function addSquad(squad) {
   });
   const body = await response.json();
 
-  console.log('body :>> ', body);
   if (!response.ok) {
     throw Error(body);
   }

@@ -173,7 +173,7 @@ const CounterCard = ({
     );
   };
 
-  const divColor = counter.isHardCounter === 1 ? colors.hardCounter : colors.softCounter;
+  const divColor = counter.isHardCounter ? colors.hardCounter : colors.softCounter;
 
   return (
     <>

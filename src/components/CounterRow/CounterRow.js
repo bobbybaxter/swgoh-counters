@@ -57,9 +57,9 @@ const CounterRow = ({
     const opts = { signal: abortController.signal };
 
     async function getCounterStubs() {
-      const storedStubs = await IDBService.get('counterStubs', counterStubId);
+      const storedStubs = await IDBService.get('counterStubs', counterStubId) || {};
 
-      const removeStaleStubs = async (counterStub) => {
+      async function removeStaleStubs(counterStub) {
         const { id, counterVersion, rightSquadStubs } = counterStub;
         const staleStubs = rightSquadStubs.filter(x => x.counterCreatedOn > counterVersion);
 
@@ -75,32 +75,29 @@ const CounterRow = ({
         }
 
         return counterStub;
-      };
+      }
 
-      const requestCounterStubs = async () => {
+      async function requestCounterStubs() {
         try {
           const stubs = await getCounterStubsBySquadId(leftSquadStub.id, view, size, opts);
           setCounterStubs(stubs);
-          const objectToStore = {
-            id: counterStubId,
-            counterVersion: stubs.counterVersion,
-            rightSquadStubs: stubs.rightSquadStubs,
-          };
-          // FIXME: find out how to stop adding counters from the previous page
-          // example: on 5v5, when i go to 3v3 this hook will pull in the 5v5
-          // leftSideSquads pre-render and query the database for any 3v3 versions
-          // then when the correct 3v3 squads are rendered, it'll query the database
-          // for their counterStubs
-          IDBService.put('counterStubs', objectToStore);
+          if (!_.isEmpty(stubs)) {
+            const objectToStore = {
+              id: counterStubId,
+              counterVersion: stubs.counterVersion,
+              rightSquadStubs: stubs.rightSquadStubs,
+            };
+            IDBService.put('counterStubs', objectToStore);
+          }
         } catch (e) {
           if (!abortController.signal.aborted) {
             abortController.abort();
             console.error('abortController signal aborted :>> ', e);
           }
         }
-      };
+      }
 
-      if (storedStubs && !abortController.signal.aborted) {
+      if (!abortController.signal.aborted && !_.isEmpty(storedStubs) && storedStubs.counterVersion) {
         if (storedStubs.counterVersion !== leftSquadStub.latestCounterVersion) {
           await requestCounterStubs();
         } else {
@@ -109,7 +106,7 @@ const CounterRow = ({
         }
       }
 
-      if (!storedStubs) {
+      if (_.isEmpty(storedStubs)) {
         await requestCounterStubs();
       }
     }
@@ -121,8 +118,9 @@ const CounterRow = ({
   }, [counterStubId, leftSquadStub, leftSquadStub.id, leftSquadStub.latestCounterVersion, size, view]);
 
   const toggle = (e) => { toggleCollapse(e.target.id); };
-  const hardCounters = !_.isEmpty(counterStubs) ? counterStubs.rightSquadStubs.filter(x => x.isHardCounter === 1) : [];
-  const softCounters = !_.isEmpty(counterStubs) ? counterStubs.rightSquadStubs.filter(x => x.isHardCounter === 0) : [];
+  const hardCounters = !_.isEmpty(counterStubs) ? counterStubs.rightSquadStubs.filter(x => x.isHardCounter) : [];
+  const softCounters = !_.isEmpty(counterStubs) ? counterStubs.rightSquadStubs.filter(x => !x.isHardCounter) : [];
+
   const divider = hardCounters.length > 0 && softCounters.length > 0 && <Divider/>;
 
   const buildCounters = (squads, type) => squads
@@ -177,7 +175,7 @@ const CounterRow = ({
             {hardCounters ? buildCounters(hardCounters, 'hard') : []}
             {divider}
             {softCounters ? buildCounters(softCounters, 'soft') : []}
-            {authenticated && user.patronStatus === 'active_patron' && user.username && view === 'normal'
+            {authenticated && user.patronStatus === 'active_patron' && user.allyCode && view === 'normal'
               ? <>
                   <CounterCard key={`addCounterButton_${counterStubId}`}>
                     {/* <Suspense fallback={null}> */}

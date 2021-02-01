@@ -1,17 +1,8 @@
-const { Router } = require('express');
+const routeFactory = require('./routes');
 
-const router = new Router();
-
-module.exports = (app) => {
-  const { middleware } = app;
-
-  return router
-    .use(middleware.context)
-    .get('/', require('./get')(app))
-    .get('/:id', require('./getById')(app))
-    .get('/getStubsBySquadId/:id', require('./getStubsBySquadId')(app))
-    .get('/old', require('./getOld')(app))
-    .post('/', require('./create')(app))
-    .patch('/:id', require('./update')(app))
-    .delete('/:id', require('./delete')(app));
+module.exports = app => async (server) => {
+  const data = require('./data')(app);
+  data.videoLink = require('../videoLink/data')(app);
+  const routes = routeFactory({ ...app, data });
+  return routes.forEach(route => server.route(route));
 };

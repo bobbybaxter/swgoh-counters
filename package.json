@@ -45,8 +45,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "yarn run build && gh-pages -d build",
-    "server": "LOG_LEVEL=debug nodemon server/index.js | pino-pretty",
-    "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn start\"",
+    "server": "LOG_LEVEL=debug nodemon server/index.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn start\"",
     "client:deploy": "yarn run build && aws s3 sync build/ s3://saiastrange.com"
   },
   "skipThirdPartyRequests": true,

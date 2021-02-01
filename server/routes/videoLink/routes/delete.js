@@ -1,0 +1,46 @@
+module.exports = ({ data, log }) => ({
+  method: 'DELETE',
+  path: '/videoLink/:id',
+  handler: async (request, reply) => {
+    const counterToUpdate = await data.counter.getById(request.body.subjectId);
+    const newCounter = {
+      userId: request.body.userId,
+      username: request.body.username,
+      ...counterToUpdate,
+    };
+
+    try {
+      const deletedVideoLink = await data.delete(request.params.id);
+      await data.counter.update(counterToUpdate, newCounter);
+      reply.send(deletedVideoLink);
+    } catch (e) {
+      log.error(e);
+      throw new Error(e);
+    }
+  },
+  schema: {
+    params: {
+      id: { type: 'string' },
+    },
+    body: {
+      type: 'object',
+      properties: {
+        id: { type: 'string' },
+        subjectId: { type: 'string' },
+        userId: { type: 'string' },
+        username: { type: 'string' },
+      },
+      required: [
+        'id',
+        'subjectId',
+        'userId',
+        'username',
+      ],
+    },
+    response: {
+      '2xx': {
+        type: 'string',
+      },
+    },
+  },
+});

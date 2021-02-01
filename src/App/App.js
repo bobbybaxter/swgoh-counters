@@ -46,7 +46,6 @@ const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 class App extends React.Component {
   state = {
     user: defaultUser,
-    data: null,
     authenticated: false,
     characters: storedCharacters,
     squads: storedSquads,
@@ -86,7 +85,7 @@ class App extends React.Component {
     sessionStorage.setItem('characters', JSON.stringify(results));
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged(this.authenticateUser);
     ReactGA.pageview(window.location.pathname);
     this.getCharacters();
@@ -101,15 +100,15 @@ class App extends React.Component {
 
   handleClearAllyCode = () => {
     const {
-      id, allyCode, email, patreonId, patronStatus, username,
-    } = this.state;
+      id, email, patreonId, patronStatus,
+    } = this.state.user;
     const user = {
       id,
-      allyCode,
+      allyCode: '',
       email,
       patreonId,
       patronStatus,
-      username,
+      username: '',
     };
     this.setState({ user });
     firebaseData.updateUserInfo(user);
@@ -126,13 +125,13 @@ class App extends React.Component {
   setUserInfo = (res) => {
     this.setState(prevState => ({
       user: {
-        ...prevState.user,
-        email: res.email,
-        allyCode: res.allyCode,
-        id: res.id,
-        patreonId: res.patreonId,
-        patronStatus: res.patronStatus,
-        username: res.username,
+        // ...prevState.user,
+        email: res.email || prevState.user.email,
+        allyCode: res.allyCode || prevState.user.allyCode,
+        id: res.id || prevState.user.id,
+        patreonId: res.patreonId || prevState.user.patreonId,
+        patronStatus: res.patronStatus || prevState.user.patronStatus,
+        username: res.username || prevState.user.username,
       },
     }));
   };
@@ -208,6 +207,7 @@ class App extends React.Component {
                         handleClearAllyCode={this.handleClearAllyCode}
                         handleAllyCode={this.handleAllyCode}
                         unlinkPatreonAccount={this.unlinkPatreonAccount}
+                        setUserInfo={this.setUserInfo}
                         user={user}
                       />
 
