@@ -1,6 +1,7 @@
-module.exports = ({ data, log }) => ({
+module.exports = ({ data, log, server }) => ({
   method: 'DELETE',
   path: '/videoLink/:id',
+  preValidation: server.auth([server.firebaseAuth]),
   handler: async (request, reply) => {
     const counterToUpdate = await data.counter.getById(request.body.subjectId);
     const newCounter = {

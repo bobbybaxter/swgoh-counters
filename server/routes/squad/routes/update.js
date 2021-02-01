@@ -1,8 +1,9 @@
 const _ = require('lodash');
 
-module.exports = ({ data, log }) => ({
+module.exports = ({ data, log, server }) => ({
   method: 'PATCH',
   path: '/squad/:id',
+  preValidation: server.auth([server.firebaseAuth]),
   handler: async (request, reply) => {
     const squadToUpdate = await data.getById(request.params.id);
 

@@ -50,8 +50,7 @@ export default function CounterRowDescription({
           IDBService.put('counters', result);
         } catch (e) {
           if (!abortController.signal.aborted) {
-            abortController.abort();
-            console.error('abortController signal aborted :>> ', e);
+            console.error('getCounter aborted :>> ', e);
           }
         }
       };

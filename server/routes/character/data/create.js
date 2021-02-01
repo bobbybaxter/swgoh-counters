@@ -9,11 +9,12 @@ module.exports = ({ log, database }) => ({ id, name }) => {
   return new Promise((res, rej) => {
     database.query(sql, variables, (error, results) => {
       if (error) { rej(error); }
-      log.info(`${name} successfully created with id: ${id}`);
+      if (results && results.affectedRows === 1) {
+        log.info(`${name} successfully created with id: ${id}`);
+      }
       res('ok');
     });
   }).catch((err) => {
     log.error(err.message);
-    throw err;
   });
 };

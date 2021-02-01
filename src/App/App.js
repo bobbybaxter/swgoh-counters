@@ -43,6 +43,8 @@ const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 // TODO: in spreadsheet - replace all <br> tags in counters with \n
 // TODO: create an FAQ in github and link in header
 // TODO: change submit issue for just bugs
+// TODO: upload to saiastrange and check out react-snap handles the lazy loading
+// TODO: update modals to show an alert when the links aren't valid
 class App extends React.Component {
   state = {
     user: defaultUser,
@@ -70,7 +72,7 @@ class App extends React.Component {
   }
 
   getSquads = async () => {
-    const results = await getSquadData().catch(e => console.error(e));
+    const results = await getSquadData().catch(e => console.error('getAllSquads', e));
     if (results && !_.isEqual(results, this.state.squads)) {
       this.setState({ squads: results });
       sessionStorage.setItem('squads', JSON.stringify(results));
@@ -80,9 +82,17 @@ class App extends React.Component {
   reload = () => window.location.reload();
 
   getCharacters = async () => {
-    const results = await getAllCharacters();
-    this.setState({ characters: results });
-    sessionStorage.setItem('characters', JSON.stringify(results));
+    const results = await getAllCharacters().catch(e => console.error('getAllCharacters', e));
+    if (results && !_.isEqual(results, this.state.characters)) {
+      this.setState({ characters: results });
+      sessionStorage.setItem('characters', JSON.stringify(results));
+    }
+    if (!results && this.state.characters) {
+      // if get all characters fails, this route will update the state
+      // so the rest of the app may not fail if the user still has data
+      // in session storage
+      this.setState({ characters: this.state.characters });
+    }
   }
 
   componentDidMount() {
@@ -125,7 +135,6 @@ class App extends React.Component {
   setUserInfo = (res) => {
     this.setState(prevState => ({
       user: {
-        // ...prevState.user,
         email: res.email || prevState.user.email,
         allyCode: res.allyCode || prevState.user.allyCode,
         id: res.id || prevState.user.id,

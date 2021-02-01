@@ -10,6 +10,7 @@ module.exports = ({ database, log }) => (id) => {
       if (results.affectedRows === 0) {
         rej(new Error('VideoLink does not exist.'));
       }
+      log.info(`VideoLink and VideoLinkVersion for ${id} successfully deleted.`);
       return res('ok');
     });
   }).catch((err) => {

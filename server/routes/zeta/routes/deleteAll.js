@@ -1,8 +1,9 @@
-module.exports = app => ({
+module.exports = ({ data, server }) => ({
   method: 'DELETE',
   path: '/zeta',
+  preValidation: server.auth([server.firebaseAuth]),
   handler: async (request, reply) => {
-    const response = await app.data.deleteAll();
+    const response = await data.deleteAll();
     reply.send(response);
   },
   schema: {

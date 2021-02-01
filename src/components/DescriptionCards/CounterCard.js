@@ -82,8 +82,8 @@ const CounterCard = ({
   useEffect(() => {
     async function getSquad() {
       const squads = JSON.parse(sessionStorage.getItem('squads')) || [];
-      const matchedLeftSquad = squads.find(x => x.id === (view === 'normal' ? opponentSquadId : counterSquadId));
-      const matchedRightSquad = squads.find(x => x.id === (view === 'normal' ? counterSquadId : opponentSquadId));
+      const matchedLeftSquad = squads.find(x => x.id === (view === 'normal' ? opponentSquadId : counterSquadId)) || defaultSquad;
+      const matchedRightSquad = squads.find(x => x.id === (view === 'normal' ? counterSquadId : opponentSquadId)) || defaultSquad;
       await setLeftSquad(matchedLeftSquad);
       await setRightSquad(matchedRightSquad);
     }

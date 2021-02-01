@@ -1,6 +1,7 @@
-module.exports = ({ data }) => ({
+module.exports = ({ data, server }) => ({
   method: 'POST',
   path: '/counter',
+  preValidation: server.auth([server.firebaseAuth]),
   handler: async (request, reply) => {
     const createdCounterId = await data.create(request.body);
     reply.send(createdCounterId);

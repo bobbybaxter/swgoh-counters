@@ -1,8 +1,8 @@
-module.exports = app => ({
+module.exports = ({ data }) => ({
   method: 'GET',
   path: '/zeta',
   handler: async (request, reply) => {
-    const allZetas = await app.data.get();
+    const allZetas = await data.get();
     reply.send(allZetas);
   },
   schema: {

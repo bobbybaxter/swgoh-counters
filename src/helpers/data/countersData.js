@@ -1,3 +1,6 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
 const baseUrl = process.env.REACT_APP_COUNTER_API_URL;
 
 export async function getCounterData() {
@@ -19,11 +22,13 @@ export async function getCounterById(id, opts) {
 }
 
 export async function addCounter(counter) {
+  const token = await firebase.auth().currentUser.getIdToken(true);
   try {
     const response = await fetch(`${baseUrl}`, {
       method: 'POST',
       headers: {
-        'Content-Type': ['application/json'],
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(counter),
     });
@@ -35,17 +40,19 @@ export async function addCounter(counter) {
 }
 
 export async function updateCounter(counter) {
+  const token = await firebase.auth().currentUser.getIdToken(true);
   try {
     await fetch(`${baseUrl}/${counter.id}`, {
       method: 'PATCH',
       headers: {
-        'Content-Type': ['application/json'],
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(counter),
     });
     return 'ok';
   } catch (err) {
-    throw new Error(err);
+    throw new Error('Error updating counter', err);
   }
 }
 

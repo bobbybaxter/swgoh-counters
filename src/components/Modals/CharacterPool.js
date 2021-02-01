@@ -11,7 +11,7 @@ import { ToonName } from './style';
 export const StyledCharacterPool = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  background: #0f0f0f;
+  background: #9B47E433;
   padding: 1rem;
   justify-content: space-between;
   overflow-y: hidden;

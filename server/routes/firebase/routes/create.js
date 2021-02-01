@@ -1,7 +1,7 @@
-module.exports = ({ data, log, server }) => ({
+module.exports = ({ data, server }) => ({
   method: 'POST',
   path: '/firebase',
-  preValidation: server.auth([server.test]),
+  preValidation: server.auth([server.firebaseAuth]),
   handler: async (request, reply) => {
     const user = await data.create(request.body);
     reply.send(user);

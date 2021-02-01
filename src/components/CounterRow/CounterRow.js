@@ -91,8 +91,7 @@ const CounterRow = ({
           }
         } catch (e) {
           if (!abortController.signal.aborted) {
-            abortController.abort();
-            console.error('abortController signal aborted :>> ', e);
+            console.error('requestCounterStubs aborted :>> ', e);
           }
         }
       }

@@ -69,7 +69,7 @@ const MyNavbar = ({ authenticated, handleLogout }) => {
   return (
       <NavbarWrapper>
         <Navbar dark expand="md">
-          <NavbarBrand>SWGOH Counters</NavbarBrand>
+          <NavbarBrand>SWGOH Counters Testing Site</NavbarBrand> {/* TODO: change for production */}
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto text-center" navbar>

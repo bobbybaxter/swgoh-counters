@@ -1,4 +1,4 @@
-module.exports = ({ data, log, server }) => ({
+module.exports = ({ data, log }) => ({
   method: 'GET',
   path: '/firebase/:id',
   handler: async (request, reply) => {

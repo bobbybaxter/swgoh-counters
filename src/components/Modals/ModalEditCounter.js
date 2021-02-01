@@ -288,17 +288,17 @@ export default function ModalEditCounter({
         });
 
         if (updateSquadResponse === 'ok') {
-          await updateCounter({
+          const updateCounterResponse = await updateCounter({
             id: counter.id,
             opponentSquadId: view === 'normal' ? leftSquad.id : rightSquad.id,
             counterSquadId: view === 'normal' ? rightSquad.id : leftSquad.id,
-            isHardCounter: isHardCounter ? 1 : 0,
+            isHardCounter,
             battleType: size,
             counterStrategy: strategy,
-            isToon2Req: tempSquad[1].isReq ? 1 : 0,
-            isToon3Req: tempSquad[2].isReq ? 1 : 0,
-            isToon4Req: tempSquad[3].isReq ? 1 : 0,
-            isToon5Req: tempSquad[4].isReq ? 1 : 0,
+            isToon2Req: tempSquad[1].isReq,
+            isToon3Req: tempSquad[2].isReq,
+            isToon4Req: tempSquad[3].isReq,
+            isToon5Req: tempSquad[4].isReq,
             toon1Zetas: tempSquad[0].zetas.toString(),
             toon2Zetas: tempSquad[1].zetas.toString(),
             toon3Zetas: tempSquad[2].zetas.toString(),
@@ -308,37 +308,40 @@ export default function ModalEditCounter({
             username: user.username,
           });
 
-          videoLinks.forEach((videoLink) => {
-            if (videoLink.id.length === 21 && videoLink.link !== '') {
-              if (videoLink.deleteVideo) {
-                deleteVideoLink({
-                  id: videoLink.id,
-                  subjectId: videoLink.subjectId,
-                  userId: user.id,
-                  username: user.username,
-                });
-              } else {
-                updateVideoLink({
-                  id: videoLink.id,
+
+          if (updateCounterResponse === 'ok') {
+            await Promise.all(videoLinks.map(async (videoLink) => {
+              if (videoLink.id.length === 21 && videoLink.link !== '') {
+                if (videoLink.deleteVideo) {
+                  await deleteVideoLink({
+                    id: videoLink.id,
+                    subjectId: videoLink.subjectId,
+                    userId: user.id,
+                    username: user.username,
+                  });
+                } else {
+                  await updateVideoLink({
+                    id: videoLink.id,
+                    title: videoLink.title,
+                    link: videoLink.link,
+                    userId: user.id,
+                    username: user.username,
+                  });
+                }
+              } else if (!videoLink.deleteVideo && videoLink.link !== '') {
+                await addVideoLink({
+                  subjectId: counter.id,
                   title: videoLink.title,
                   link: videoLink.link,
                   userId: user.id,
                   username: user.username,
                 });
               }
-            } else if (!videoLink.deleteVideo && videoLink.link !== '') {
-              addVideoLink({
-                subjectId: counter.id,
-                title: videoLink.title,
-                link: videoLink.link,
-                userId: user.id,
-                username: user.username,
-              });
-            }
-          });
+            }));
 
-          toggle();
-          reload();
+            toggle();
+            reload();
+          }
         }
       } catch (err) {
         throw new Error(err);

@@ -34,11 +34,12 @@ module.exports = async function createServer(app) {
         const msg = `The CORS policy for this site does not allow access from the specified Origin of ${origin}.`;
         return callback(new Error(msg), false);
       }
+
       return callback(null, true);
     },
     preFlightContinue: true,
   });
-  server.decorate('test', fp(require('./auth')));
+  server.decorate('firebaseAuth', fp(require('./auth')));
   server.register(require('fastify-auth'));
   server.register(require('./routes')(app), { prefix: '/api' });
 

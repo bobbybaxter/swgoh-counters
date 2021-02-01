@@ -62,7 +62,7 @@ const OpponentCard = ({
   useEffect(() => {
     async function getSquad() {
       const squads = JSON.parse(sessionStorage.getItem('squads')) || [];
-      const matchedSquad = squads.find(x => x.id === (leftSquadStub.id));
+      const matchedSquad = squads.find(x => x.id === (leftSquadStub.id)) || defaultSquad;
       await setSquad(matchedSquad);
     }
 

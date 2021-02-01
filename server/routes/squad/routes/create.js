@@ -1,6 +1,7 @@
-module.exports = ({ data }) => ({
+module.exports = ({ data, server }) => ({
   method: 'POST',
   path: '/squad',
+  preValidation: server.auth([server.firebaseAuth]),
   handler: async (request, reply) => {
     const createdSquadId = await data.create(request.body);
     reply.send(createdSquadId);

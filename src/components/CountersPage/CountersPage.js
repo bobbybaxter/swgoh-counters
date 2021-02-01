@@ -53,8 +53,7 @@ const CountersPage = ({
         setStubsReverse(reverse);
       } catch (err) {
         if (!abortController.signal.aborted) {
-          abortController.abort();
-          console.error(err);
+          console.error('getStubs aborted', err);
         }
       }
     }
@@ -100,7 +99,17 @@ const CountersPage = ({
         {/* {!patreonId && toggleAd('2779553573')} */}
 
         <div className="columnTitles">
-          <h1 className="col-3 mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
+          <div className="col-3">
+            <h1 className="mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
+            <small className="m-0 p-0 text-secondary">
+                {
+                  view === 'normal'
+                    ? 'Click on an opponent squad to see more info.'
+                    : ''
+                }
+              </small>
+
+          </div>
           <div className="col-7">
             <h1 className="mb-0">{view === 'normal' ? `${size} Counters` : `${size} Opponents`}</h1>
             <small className="m-0 p-0 text-secondary">

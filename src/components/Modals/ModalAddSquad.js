@@ -120,8 +120,7 @@ export default function ModalAddSquad({
           : true;
       } catch (e) {
         if (!abortController.signal.aborted) {
-          abortController.abort();
-          return console.error('abortCountroller signal aborted :>> ', e);
+          console.error('checkExistingCounter aborted :>> ', e);
         }
       }
     }
@@ -437,13 +436,13 @@ export default function ModalAddSquad({
           const counterResponse = await addCounter({
             opponentSquadId: leftSquadId,
             counterSquadId: rightSquadId,
-            isHardCounter: isHardCounter ? 1 : 0,
+            isHardCounter,
             battleType: size,
             counterStrategy: strategy.value,
-            isToon2Req: tempSquad[1].isReq ? 1 : 0,
-            isToon3Req: tempSquad[2].isReq ? 1 : 0,
-            isToon4Req: tempSquad[3].isReq ? 1 : 0,
-            isToon5Req: tempSquad[4].isReq ? 1 : 0,
+            isToon2Req: tempSquad[1].isReq,
+            isToon3Req: tempSquad[2].isReq,
+            isToon4Req: tempSquad[3].isReq,
+            isToon5Req: tempSquad[4].isReq,
             toon1Zetas: tempSquad[0].zetas.toString(),
             toon2Zetas: tempSquad[1].zetas.toString(),
             toon3Zetas: tempSquad[2].zetas.toString(),
@@ -454,9 +453,9 @@ export default function ModalAddSquad({
           });
 
           if (counterResponse.status === 'ok') {
-            videoLinks.forEach((videoLink) => {
+            await Promise.all(videoLinks.map(async (videoLink) => {
               if (!videoLink.deleteVideo && videoLink.link !== '') {
-                addVideoLink({
+                await addVideoLink({
                   subjectId: counterResponse.counterId,
                   title: videoLink.title,
                   link: videoLink.link,
@@ -464,7 +463,7 @@ export default function ModalAddSquad({
                   username: user.username,
                 });
               }
-            });
+            }));
 
             toggle();
             reload();

@@ -1,6 +1,7 @@
-module.exports = ({ data, log }) => ({
+module.exports = ({ data, log, server }) => ({
   method: 'POST',
   path: '/videoLink',
+  preValidation: server.auth([server.firebaseAuth]),
   handler: async (request, reply) => {
     const counterToUpdate = await data.counter.getById(request.body.subjectId);
     const newCounter = {

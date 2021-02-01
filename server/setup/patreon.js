@@ -1,11 +1,11 @@
 const patreon = require('patreon');
-const config = require('../.config.json');
+// const config = require('../.config.json');
 
 module.exports = (app) => {
   const patreonOAuth = patreon.oauth;
   const patreonOAuthClient = patreonOAuth(
-    config.patreonClientId,
-    config.patreonClientSecret,
+    process.env.PATREON_CLIENT_ID,
+    process.env.PATREON_CLIENT_SECRET,
   );
 
   return patreonOAuthClient;

@@ -49,7 +49,6 @@ export default function SquadDetails({
 
   const [sourceSquadName] = useState(tempSquadInfo.name || 'Squad Name');
 
-  // console.log('squads.sort((a, b) => ((a.name > b.name) ? 1 : -1)) :>> ', squads.sort((a, b) => ((a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1)));
   const buildSquadDropdown = squads.map(x => <option id={x.id} key={`squadDropDown_${x.id}`}>{x.name}</option>);
 
   const handleIsNewSquadCheckbox = () => {

@@ -1,7 +1,7 @@
-module.exports = ({ data, log, server }) => ({
+module.exports = ({ data, server }) => ({
   method: 'PATCH',
   path: '/firebase/:id',
-  preValidation: server.auth([server.test]),
+  preValidation: server.auth([server.firebaseAuth]),
   handler: async (request, reply) => {
     const { id } = request.params;
     const {
