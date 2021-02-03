@@ -1,39 +1,40 @@
 const axios = require('axios');
 
-const buildSquad = require('../../../util/buildSquad');
-const buildOpponentTeam = require('../../../util/buildOpponentTeam');
-const characters = require('../../../util/characters.json');
+// const buildSquad = require('../../../util/buildSquad');
+// const buildOpponentTeam = require('../../../util/buildOpponentTeam');
+// const characters = require('../../../util/characters.json');
 
 const parseGoogleSheet = require('../../../helpers/parseGoogleSheet');
 
 const { sheetId, apiKey } = require('../../../.config.json');
 
-const buildSquadObjects = (res, squads, squad, size, view) => {
-  // get the correct counter info
-  const counterInfo = res
-    .filter(x => x.battleType === `${size}v${size}`)
-    .filter(x => (view === 'normal'
-      ? x.opponentTeam === squad.id
-      : x.counterTeam === squad.id
-    ));
+// const buildSquadObjects = (res, squads, squad, size, view) => {
+//   // get the correct counter info
+//   const counterInfo = res
+//     .filter(x => x.battleType === `${size}v${size}`)
+//     .filter(x => (view === 'normal'
+//       ? x.opponentTeam === squad.id
+//       : x.counterTeam === squad.id
+//     ));
 
-  // get the left side squad
-  const leftSideSquad = buildSquad(squad, size, characters.data);
+//   // get the left side squad
+//   const leftSideSquad = buildSquad(squad, size, characters.data);
 
-  // get the right side squads
-  const rightSideSquads = counterInfo
-    .map(matchup => buildOpponentTeam(
-      matchup, size, squads, characters.data, view,
-    ));
+//   // get the right side squads
+//   const rightSideSquads = counterInfo
+//     .map(matchup => buildOpponentTeam(
+//       matchup, size, squads, characters.data, view,
+//     ));
 
-  // put them into an object and push into state
-  const squadObject = rightSideSquads.length ? { leftSideSquad, rightSideSquads } : '';
-  return squadObject;
-};
+//   // put them into an object and push into state
+//   const squadObject = rightSideSquads.length ? { leftSideSquad, rightSideSquads } : '';
+//   return squadObject;
+// };
 
-module.exports = ({ database }) => () => {
-  const unparsedSquads = axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Teams?key=${apiKey}`);
+module.exports = ({ database }) => async () => {
+  const unparsedSquads = await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Teams?key=${apiKey}`);
   // const unparsedCounters = await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Counters?key=${apiKey}`);
+
   const parsedSquads = parseGoogleSheet(unparsedSquads.data.values);
   // const parsedCounters = parseGoogleSheet(unparsedCounters.data.values);
 

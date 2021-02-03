@@ -99,32 +99,25 @@ const CountersPage = ({
         {/* {!patreonId && toggleAd('2779553573')} */}
 
         <div className="columnTitles">
-          <div className="col-3">
+          <div className="col-3 d-flex justify-content-center align-items-center">
             <h1 className="mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
-            <small className="m-0 p-0 text-secondary">
-                {
-                  view === 'normal'
-                    ? 'Click on an opponent squad to see more info.'
-                    : ''
-                }
-              </small>
-
           </div>
-          <div className="col-7">
+          <div className="col-7 d-flex justify-content-center align-items-center">
             <h1 className="mb-0">{view === 'normal' ? `${size} Counters` : `${size} Opponents`}</h1>
-            <small className="m-0 p-0 text-secondary">
-              {
-                view === 'normal'
-                  ? 'Click on a counter squad to see more info.'
-                  : 'Click on an opponent squad to see more info.'
-              }
-            </small>
           </div>
           <Button className="btn-sm col-2 reverseCounterButton" color="warning" onClick={handleViewBtn}>
             {view === 'normal' ? 'Normal View' : 'Reverse View'}
           </Button>
         </div>
-
+        <div>
+        <small className="m-0 p-0 text-secondary">
+              {
+                view === 'normal'
+                  ? 'Click on an opponent or counter squad below to see more info.'
+                  : 'Click on an opponent squad to see more info.'
+              }
+            </small>
+        </div>
         <div>
           {authenticated
           && user.patronStatus === 'active_patron'

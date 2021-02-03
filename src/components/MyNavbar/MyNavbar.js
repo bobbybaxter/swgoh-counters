@@ -82,9 +82,9 @@ const MyNavbar = ({ authenticated, handleLogout }) => {
 
               <NavDivider />
 
-              <NavItem>
+              {/* <NavItem>
                 <NavLink tag={RRNavLink} to="/submit">Submit Issue</NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <NavLink href="https://patreon.com/saiastrange">Patreon</NavLink>
               </NavItem>

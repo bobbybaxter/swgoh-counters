@@ -1,8 +1,22 @@
 {
-  "counterSheet": "",
-  "squadSheet": "",
-  "firebaseDbURL": "",
+  "counterSheet": "google sheets link",
+  "squadSheet": "google sheets link",
+  "sheetId": "google sheets sheetId",
+  "apiKey": "google developer API key",
+  "firebaseDbURL": "https://{FIREBASE_DATABASE}.firebaseio.com",
   "baseUrl": "http://localhost:5000",
-  "patreonClientId": "",
-  "patreonClientSecret": ""
+  "patreonClientId": "{COMES_FROM_PATREON_DEVELOPER_SITE}",
+  "patreonClientSecret": "{COMES_FROM_PATREON_DEVELOPER_SITE}",
+  "userId": "{FIREBASE_ADMIN_ID}",
+  "username": "{FIREBASE_ADMIN_USERNAME}",
+  "logging": {
+    "development": {
+      "level": "info",
+      "prettyPrint": true
+    },
+    "production": {
+      "level": "info",
+      "prettyPrint": false
+    }
+  }
 }
