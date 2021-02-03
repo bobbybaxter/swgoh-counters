@@ -5,7 +5,7 @@ module.exports = ({ data, log }) => ({
   path: '/import/squads',
   handler: async (request, reply) => {
     const squads = await data.squad.getOld();
-    squads.forEach(async (squad) => {
+    await Promise.all(squads.map(async (squad, i) => {
       const {
         name,
         description,
@@ -41,7 +41,7 @@ module.exports = ({ data, log }) => ({
       } catch (err) {
         throw new Error(err);
       }
-    });
+    }));
 
     log.info('squad import complete');
     reply.send('ok');

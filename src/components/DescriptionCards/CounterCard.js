@@ -9,6 +9,7 @@ import { colors } from 'src/styles/colors';
 import ModalEditCounter from 'src/components/Modals/ModalEditCounter';
 import ModalPortal from 'src/components/ModalPortal/ModalPortal';
 import { useToggle } from 'src/helpers';
+import { deleteCounter } from 'src/helpers/data';
 import { ContainerColumn, EditMenu } from 'src/styles/style';
 import SquadHeader from 'src/components/shared/SquadHeader';
 
@@ -173,6 +174,11 @@ const CounterCard = ({
     );
   };
 
+  async function handleDeleteCounter() {
+    await deleteCounter(id);
+    console.info(`counter for ${id} deleted`);
+  }
+
   const divColor = counter.isHardCounter ? colors.hardCounter : colors.softCounter;
 
   return (
@@ -213,6 +219,7 @@ const CounterCard = ({
         <p><small>updated on: {format(new Date(counter.createdOn), 'MMM d, yyyy')}</small></p>
         {/* TODO: make the username a link that goes to a page for the user */}
         <p><small>by: {counter.createdByName}</small></p>
+        {authenticated && user.id === process.env.REACT_APP_ADMIN_ID && <p><Button className="p-0 m-0" size="sm" color="link" onClick={handleDeleteCounter}><small>delete counter</small></Button></p>}
       </EditMenu>
     </BottomWrapper>
     {isOpen && (

@@ -21,7 +21,6 @@ module.exports = ({ data, patreon }) => ({
 
       const patronRelationship = rawJson.included.find(inc => inc.type === 'member' && inc.relationships.campaign.data.id === myCampaignId);
       const patronStatus = patronRelationship.attributes.patron_status;
-      // console.log('patronStatus :>> ', patronStatus);
       const user = await data.firebase.getByEmail(patreonEmail);
 
       if (patronStatus === 'active_patron') {

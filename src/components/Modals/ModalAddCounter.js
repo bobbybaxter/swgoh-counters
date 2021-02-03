@@ -101,8 +101,9 @@ export default function ModalAddCounter({
   }, [leftSquadStub.id, squads]);
 
   const checkIfVideoLinksAreValid = (updatedLinks) => {
-    const isInvalid = updatedLinks.some(videoLink => !isWebUri(videoLink.link));
-    setAreVideoLinksValid(!isInvalid);
+    const hasInvalidLinks = updatedLinks.some(videoLink => !isWebUri(videoLink.link));
+    const hasBlankTitles = updatedLinks.some(videoLink => videoLink.title === '');
+    setAreVideoLinksValid(!hasInvalidLinks && !hasBlankTitles);
   };
 
   const checkExistingSquad = async (squadToCheck) => {

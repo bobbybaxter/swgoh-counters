@@ -49,7 +49,5 @@ module.exports = async ({ database }) => {
   //   reverse3.push(buildSquadObjects(parsedCounters, parsedSquads, squad, 3, 'reverse'));
   // });
 
-  // console.log('parsedSquads :>> ', parsedSquads);
-
   return parsedSquads;
 };

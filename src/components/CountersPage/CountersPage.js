@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import LazyLoad from 'react-lazyload';
 import PropTypes from 'prop-types';
 
-// import AdsenseAd from 'src/components/AdsenseAd/AdsenseAd';
+import AdsenseAd from 'src/components/AdsenseAd/AdsenseAd';
 import BlankCounterRow from 'src/components/CounterRow/BlankCounterRow';
 import CounterRow from 'src/components/CounterRow/CounterRow';
 import MetaTags from 'src/components/shared/MetaTags';
@@ -16,9 +16,8 @@ import { usePrevious } from 'src/helpers';
 import ColorIndicator from './ColorIndicator';
 import { CountersPageWrapper } from './style';
 
-// const isSnap = navigator.userAgent === 'ReactSnap';
+const isSnap = navigator.userAgent === 'ReactSnap';
 
-// TODO: turn ads back on before deployment
 const CountersPage = ({
   authenticated, handleViewBtn, reload, size, user, view, ...props
 }) => {
@@ -67,7 +66,7 @@ const CountersPage = ({
   const { patreonId } = user;
   const selectedStubs = view === 'normal' ? stubsNormal : stubsReverse;
   const toggleCollapse = input => (setCollapse(collapse === input ? null : input));
-  // const toggleAd = adSlot => (!isSnap && <AdsenseAd adSlot={adSlot}/>);
+  const toggleAd = adSlot => (!isSnap && <AdsenseAd adSlot={adSlot}/>);
 
   const prevSize = usePrevious(size);
 
@@ -96,35 +95,28 @@ const CountersPage = ({
 
       <CountersPageWrapper>
         {!patreonId && <PatreonButton/>}
-        {/* {!patreonId && toggleAd('2779553573')} */}
+        {!patreonId && toggleAd('2779553573')}
 
         <div className="columnTitles">
-          <div className="col-3">
+          <div className="col-3 d-flex justify-content-center align-items-center">
             <h1 className="mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
-            <small className="m-0 p-0 text-secondary">
-                {
-                  view === 'normal'
-                    ? 'Click on an opponent squad to see more info.'
-                    : ''
-                }
-              </small>
-
           </div>
-          <div className="col-7">
+          <div className="col-7 d-flex justify-content-center align-items-center">
             <h1 className="mb-0">{view === 'normal' ? `${size} Counters` : `${size} Opponents`}</h1>
-            <small className="m-0 p-0 text-secondary">
-              {
-                view === 'normal'
-                  ? 'Click on a counter squad to see more info.'
-                  : 'Click on an opponent squad to see more info.'
-              }
-            </small>
           </div>
           <Button className="btn-sm col-2 reverseCounterButton" color="warning" onClick={handleViewBtn}>
             {view === 'normal' ? 'Normal View' : 'Reverse View'}
           </Button>
         </div>
-
+        <div>
+        <small className="m-0 p-0 text-secondary">
+              {
+                view === 'normal'
+                  ? 'Click on an opponent or counter squad below to see more info.'
+                  : 'Click on an opponent squad to see more info.'
+              }
+            </small>
+        </div>
         <div>
           {authenticated
           && user.patronStatus === 'active_patron'
@@ -140,10 +132,9 @@ const CountersPage = ({
         </div>
 
         <footer>
-          {!patreonId && <PatreonButton/>}
-          {/* {!patreonId && toggleAd('7648736876')} */}
           <ColorIndicator />
-          {/* <div className="offset-2 col-8 border-dark border-top"></div> */}
+          {!patreonId && <PatreonButton/>}
+          {!patreonId && toggleAd('7648736876')}
         </footer>
       </CountersPageWrapper>
     </ContainerColumn>

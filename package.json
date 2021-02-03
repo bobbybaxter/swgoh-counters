@@ -1,6 +1,6 @@
 {
   "name": "swgoh-counters",
-  "homepage": "https://saiastrange.com/",
+  "homepage": "https://swgohcounters.com/",
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
@@ -47,7 +47,7 @@
     "deploy": "yarn run build && gh-pages -d build",
     "server": "LOG_LEVEL=debug nodemon server/index.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn start\"",
-    "client:deploy": "yarn run build && aws s3 sync build/ s3://saiastrange.com"
+    "client:deploy": "yarn run build && aws s3 sync build/ s3://swgohcounters.com"
   },
   "skipThirdPartyRequests": true,
   "reactSnap": {

@@ -144,6 +144,11 @@ export default function Account({
             />
           </AccountHeaderRight>
         </AccountHeader>
+        <div className="alert alert-secondary">
+          Want to add or update counters?
+          <br/>
+          Add your Ally Code above and link your Patreon account!
+        </div>
       </AccountWrapper>
     </ContainerColumn>
   );

@@ -13,7 +13,7 @@ module.exports = ({ database, log }) => (id) => {
         return res({});
       }
 
-      res(JSON.parse(JSON.stringify(results[0])));
+      return res(JSON.parse(JSON.stringify(results[0])));
     });
   }).catch((err) => {
     log.error(err.message);

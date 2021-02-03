@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {
   Button, FormGroup, Input, Label,
 } from 'reactstrap';
+import { isWebUri } from 'valid-url';
 
 export const FormVideo = styled(FormGroup)`
   display: flex;
@@ -51,6 +52,7 @@ export default function VideoForm({
     tempVideoLinks.splice(e.target.dataset.idx, 1, {
       ...tempVideoLinks[e.target.dataset.idx],
       link: 'https://w', // sets a "deleted" link to a valid link to enable submit button
+      title: 'deleted', // adds title for submit button validation
       deleteVideo: true,
     });
     setVideoLinks(tempVideoLinks);
@@ -107,6 +109,8 @@ export default function VideoForm({
                 </div>
                 <div>
                   {videoLinks[i].title.length > 50 && <div className="alert alert-danger">Title is too long</div>}
+                  {videoLinks[i].title.length === 0 && <div className="alert alert-danger">No title entered</div>}
+                  {!isWebUri(videoLinks[i].link) && <div className="alert alert-danger">Not a valid link <br/><small>("http://" or "https://" required)</small></div>}
                 </div>
               </div>;
           })

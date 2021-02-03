@@ -8,7 +8,7 @@ module.exports = ({ data, log }) => ({
     const counters = await data.counter.getOld();
     const newSquads = await data.squad.get();
 
-    counters.forEach(async (counter) => {
+    await Promise.all(counters.map(async (counter) => {
       const {
         battleType,
         counterTeam,
@@ -43,11 +43,11 @@ module.exports = ({ data, log }) => ({
         username,
       };
 
-      const counterResponse = await data.counter.create(counterToCreate);
+      const counterId = await data.counter.create(counterToCreate);
 
       if (video) {
         const videoToCreate = {
-          subjectId: counterResponse.counterId,
+          subjectId: counterId,
           title: 'title',
           link: video,
           userId,
@@ -60,7 +60,7 @@ module.exports = ({ data, log }) => ({
           throw new Error(err);
         }
       }
-    });
+    }));
 
     log.info('counter import complete');
     reply.send('ok');

@@ -5,6 +5,7 @@ export {
 } from './characterData';
 
 export {
+  deleteCounter,
   getCounterData,
   getCounterById,
   addCounter,

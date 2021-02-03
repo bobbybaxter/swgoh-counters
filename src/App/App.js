@@ -42,9 +42,7 @@ const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 
 // TODO: in spreadsheet - replace all <br> tags in counters with \n
 // TODO: create an FAQ in github and link in header
-// TODO: change submit issue for just bugs
-// TODO: upload to saiastrange and check out react-snap handles the lazy loading
-// TODO: update modals to show an alert when the links aren't valid
+// TODO: delete Routes2 after pushed to Github, so i have an easy reference
 class App extends React.Component {
   state = {
     user: defaultUser,

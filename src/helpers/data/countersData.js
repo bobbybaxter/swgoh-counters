@@ -3,6 +3,22 @@ import 'firebase/auth';
 
 const baseUrl = process.env.REACT_APP_COUNTER_API_URL;
 
+export async function deleteCounter(id) {
+  const token = await firebase.auth().currentUser.getIdToken(true);
+  try {
+    await fetch(`${baseUrl}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+      },
+    });
+    return 'ok';
+  } catch (err) {
+    throw new Error('Error deleting counter', err);
+  }
+}
+
 export async function getCounterData() {
   try {
     const response = await fetch(`${baseUrl}/old`);
@@ -32,7 +48,7 @@ export async function addCounter(counter) {
       },
       body: JSON.stringify(counter),
     });
-    const body = await response.text();
+    const body = await response.json();
     return { status: 'ok', counterId: body };
   } catch (err) {
     throw new Error(err);

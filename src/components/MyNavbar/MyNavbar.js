@@ -69,7 +69,7 @@ const MyNavbar = ({ authenticated, handleLogout }) => {
   return (
       <NavbarWrapper>
         <Navbar dark expand="md">
-          <NavbarBrand>SWGOH Counters Testing Site</NavbarBrand> {/* TODO: change for production */}
+          <NavbarBrand>SWGOH Counters</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto text-center" navbar>
@@ -82,9 +82,9 @@ const MyNavbar = ({ authenticated, handleLogout }) => {
 
               <NavDivider />
 
-              <NavItem>
+              {/* <NavItem>
                 <NavLink tag={RRNavLink} to="/submit">Submit Issue</NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <NavLink href="https://patreon.com/saiastrange">Patreon</NavLink>
               </NavItem>
