@@ -14,7 +14,7 @@ module.exports = async (request, reply) => {
   try {
     const userInfo = await admin.auth().verifyIdToken(authToken);
     request.authId = userInfo.uid;
-  } catch (e) {
-    throw new Error('Authorization denied.', request);
+  } catch (err) {
+    throw err;
   }
 };

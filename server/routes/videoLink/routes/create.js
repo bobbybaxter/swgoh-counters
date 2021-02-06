@@ -13,10 +13,11 @@ module.exports = ({ data, log, server }) => ({
     try {
       const createdVideoLink = await data.create(request.body);
       await data.counter.update(counterToUpdate, newCounter);
-      reply.send(createdVideoLink);
-    } catch (e) {
-      log.error(e);
-      throw new Error(e);
+      reply
+        .type('text/html')
+        .send(createdVideoLink);
+    } catch (err) {
+      throw err;
     }
   },
   schema: {

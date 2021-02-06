@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'reactstrap';
 import LazyLoad from 'react-lazyload';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 import AdsenseAd from 'src/components/AdsenseAd/AdsenseAd';
 import BlankCounterRow from 'src/components/CounterRow/BlankCounterRow';
@@ -47,9 +48,12 @@ const CountersPage = ({
 
     async function getStubs() {
       try {
-        const { normal, reverse } = await getSquadStubs(size, opts);
-        setStubsNormal(normal);
-        setStubsReverse(reverse);
+        const response = await getSquadStubs(size, opts);
+        if (!_.isEmpty(response)) {
+          const { normal, reverse } = response;
+          setStubsNormal(normal);
+          setStubsReverse(reverse);
+        }
       } catch (err) {
         if (!abortController.signal.aborted) {
           console.error('getStubs aborted', err);

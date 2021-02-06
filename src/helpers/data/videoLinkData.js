@@ -6,7 +6,7 @@ const baseUrl = process.env.REACT_APP_VIDEOLINK_API_URL;
 export async function addVideoLink(videoLink) {
   const token = await firebase.auth().currentUser.getIdToken(true);
   try {
-    await fetch(`${baseUrl}`, {
+    const response = await fetch(`${baseUrl}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -14,17 +14,16 @@ export async function addVideoLink(videoLink) {
       },
       body: JSON.stringify(videoLink),
     });
-
-    return 'ok';
+    return await response.text();
   } catch (err) {
-    throw new Error(err);
+    throw err;
   }
 }
 
 export async function updateVideoLink(videoLink) {
   const token = await firebase.auth().currentUser.getIdToken(true);
   try {
-    await fetch(`${baseUrl}/${videoLink.id}`, {
+    const response = await fetch(`${baseUrl}/${videoLink.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -32,17 +31,16 @@ export async function updateVideoLink(videoLink) {
       },
       body: JSON.stringify(videoLink),
     });
-
-    return 'ok';
+    return await response.text();
   } catch (err) {
-    throw new Error(err);
+    throw err;
   }
 }
 
 export async function deleteVideoLink(videoLink) {
   const token = await firebase.auth().currentUser.getIdToken(true);
   try {
-    await fetch(`${baseUrl}/${videoLink.id}`, {
+    const response = await fetch(`${baseUrl}/${videoLink.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -50,9 +48,8 @@ export async function deleteVideoLink(videoLink) {
       },
       body: JSON.stringify(videoLink),
     });
-
-    return 'ok';
+    return await response.text();
   } catch (err) {
-    throw new Error(err);
+    throw err;
   }
 }

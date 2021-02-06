@@ -13,10 +13,11 @@ module.exports = ({ data, log, server }) => ({
     try {
       const deletedVideoLink = await data.delete(request.params.id);
       await data.counter.update(counterToUpdate, newCounter);
-      reply.send(deletedVideoLink);
-    } catch (e) {
-      log.error(e);
-      throw new Error(e);
+      reply
+        .type('text/html')
+        .send(deletedVideoLink);
+    } catch (err) {
+      throw err;
     }
   },
   schema: {

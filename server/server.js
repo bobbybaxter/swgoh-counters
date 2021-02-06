@@ -41,6 +41,8 @@ module.exports = async function createServer(app) {
   });
   server.decorate('firebaseAuth', fp(require('./auth')));
   server.register(require('fastify-auth'));
+  server.register(require('./context'));
+  server.register(require('./access-log'));
   server.register(require('./routes')(app), { prefix: '/api' });
 
   await server.listen(PORT, (err, address) => {

@@ -26,17 +26,21 @@ module.exports = ({ data, log, server }) => ({
       };
 
       try {
-        await data.update(videoLinkToUpdate, request.body);
+        const response = await data.update(videoLinkToUpdate, request.body);
         await data.counter.update(counterToUpdate, newCounter);
-      } catch (e) {
-        log.error(e);
-        throw new Error(e);
+        return reply
+          .type('text/html')
+          .send(response);
+      } catch (err) {
+        throw err;
       }
     } else {
       log.warn('VideoLink update not needed.');
     }
 
-    return reply.send('ok');
+    return reply
+      .type('text/html')
+      .send('ok');
   },
   schema: {
     params: {

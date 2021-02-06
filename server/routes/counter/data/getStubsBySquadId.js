@@ -30,10 +30,9 @@ module.exports = ({ database, log }) => (id, type, size) => {
         return res([]);
       }
 
-      res(JSON.parse(JSON.stringify(results)));
+      return res(JSON.parse(JSON.stringify(results)));
     });
   }).catch((err) => {
-    log.error(err.message);
     throw err;
   });
 };

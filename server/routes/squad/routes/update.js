@@ -28,7 +28,9 @@ module.exports = ({ data, log, server }) => ({
       log.warn('Squad update not needed.');
     }
 
-    return reply.send('ok');
+    return reply
+      .type('text/html')
+      .send('ok');
   },
   schema: {
     params: {

@@ -3,7 +3,9 @@ module.exports = ({ data }) => ({
   path: '/squad/:id',
   handler: async (request, reply) => {
     const squad = await data.getById(request.params.id);
-    reply.send(squad);
+    reply
+      .type('application/json')
+      .send(squad);
   },
   schema: {
     params: {

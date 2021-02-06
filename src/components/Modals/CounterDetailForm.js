@@ -20,10 +20,11 @@ export default function CounterDetails({
   setSquadNameMatch,
   setTempSquad,
   setTempSquadInfo,
-  tempSquadInfo,
+  size,
   sourceSquad,
   squadNameMatch,
   squads,
+  tempSquadInfo,
 }) {
   CounterDetails.propTypes = {
     buildDefaultSquad: PropTypes.func.isRequired,
@@ -39,16 +40,19 @@ export default function CounterDetails({
     setSquadNameMatch: PropTypes.func.isRequired,
     setTempSquad: PropTypes.func.isRequired,
     setTempSquadInfo: PropTypes.func.isRequired,
+    size: PropTypes.string.isRequired,
     squadMatch: PropTypes.string,
-    tempSquadInfo: PropTypes.object.isRequired,
     sourceSquad: PropTypes.array,
     squadNameMatch: PropTypes.string.isRequired,
     squads: PropTypes.array.isRequired,
+    tempSquadInfo: PropTypes.object.isRequired,
   };
 
   const [sourceSquadName] = useState(tempSquadInfo.name || 'Counter Squad Name');
 
-  const buildSquadDropdown = squads.map(squad => <option id={squad.id} key={`dd_${squad.id}`}>{squad.name}</option>);
+  const buildSquadDropdown = squads
+    .filter(x => (size === '5v5' ? x : (x.toon4Id === 'BLANK' && x.toon5Id === 'BLANK')))
+    .map(squad => <option id={squad.id} key={`dd_${squad.id}`}>{squad.name}</option>);
 
   const handleIsHardCounterCheckbox = () => setIsHardCounter(!isHardCounter);
 

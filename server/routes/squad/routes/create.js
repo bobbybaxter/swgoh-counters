@@ -4,7 +4,9 @@ module.exports = ({ data, server }) => ({
   preValidation: server.auth([server.firebaseAuth]),
   handler: async (request, reply) => {
     const createdSquadId = await data.create(request.body);
-    reply.send(createdSquadId);
+    reply
+      .type('text/html')
+      .send(createdSquadId);
   },
   schema: {
     body: {

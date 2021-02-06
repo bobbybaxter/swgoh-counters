@@ -85,7 +85,7 @@ export default function ModalAddCounter({
   const [leftSquad, setLeftSquad] = useState();
   const strategy = useInputValue('');
   const [squads] = useState(storedSquads);
-  const [squadMatch, setSquadMatch] = useState('');
+  const [squadMatch, setSquadMatch] = useState(''); // TODO: test this, it may have been replaced by squadNameMatch
   const [squadNameMatch, setSquadNameMatch] = useState('');
   const [tempSquad, setTempSquad] = useState(buildDefaultSquad());
   const [tempSquadInfo, setTempSquadInfo] = useState(defaultTempSquadInfo);
@@ -257,13 +257,10 @@ export default function ModalAddCounter({
                   });
                 }
               }));
-
-              toggle();
-              reload();
             }
           }
         } catch (err) {
-          throw new Error(err);
+          throw err;
         }
       }
 
@@ -301,14 +298,14 @@ export default function ModalAddCounter({
                 });
               }
             }));
-
-            toggle();
-            reload();
           }
         } catch (err) {
-          throw new Error(err);
+          throw err;
         }
       }
+
+      toggle();
+      reload();
     }
   };
 
@@ -357,9 +354,10 @@ export default function ModalAddCounter({
               setSquadNameMatch={setSquadNameMatch}
               setTempSquad={setTempSquad}
               setTempSquadInfo={setTempSquadInfo}
-              tempSquadInfo={tempSquadInfo}
+              size={size}
               squadNameMatch={squadNameMatch}
               squads={squads}
+              tempSquadInfo={tempSquadInfo}
             />
 
             <div>

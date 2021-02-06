@@ -4,7 +4,9 @@ module.exports = ({ data, server }) => ({
   preValidation: server.auth([server.firebaseAuth]),
   handler: async (request, reply) => {
     const response = await data.delete(request.params.id);
-    reply.send(response);
+    reply
+      .type('text/html')
+      .send(response);
   },
   schemas: {
     params: {

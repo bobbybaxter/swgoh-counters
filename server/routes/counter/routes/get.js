@@ -3,7 +3,9 @@ module.exports = ({ data }) => ({
   path: '/counter',
   handler: async (request, reply) => {
     const counters = await data.get();
-    reply.send(counters);
+    reply
+      .type('application/json')
+      .send(counters);
   },
   schema: {
     response: {

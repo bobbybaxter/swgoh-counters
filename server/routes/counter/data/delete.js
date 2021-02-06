@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = ({ database, log }) => (id) => {
+module.exports = ({ database }) => (id) => {
   const sql = fs.readFileSync(path.join(__dirname, './sql/delete.sql')).toString();
 
   return new Promise((res, rej) => {
@@ -13,7 +13,6 @@ module.exports = ({ database, log }) => (id) => {
       return res('ok');
     });
   }).catch((err) => {
-    log.error(err.message);
     throw err;
   });
 };

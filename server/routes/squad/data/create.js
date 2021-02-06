@@ -69,7 +69,7 @@ module.exports = ({ database, log }) => ({
               });
             }
 
-            connection.commit((commitError) => {
+            return connection.commit((commitError) => {
               if (commitError) {
                 return connection.rollback(() => {
                   connection.release();
@@ -79,8 +79,6 @@ module.exports = ({ database, log }) => ({
 
               return log.info(`SquadVersion for ${squadId} successfully updated.`);
             });
-
-            return '';
           });
 
           log.info(`Squad for ${squadId} successfully created.`);
@@ -89,8 +87,7 @@ module.exports = ({ database, log }) => ({
         });
       });
     });
-  }).catch((e) => {
-    log.error(e.message);
-    throw e;
+  }).catch((err) => {
+    throw err;
   });
 };

@@ -18,6 +18,6 @@ module.exports = ({ database, log }) => ({ id }, { name }) => {
     });
   }).catch((err) => {
     log.error(err.message);
-    throw err;
+    throw new Error(err);
   });
 };

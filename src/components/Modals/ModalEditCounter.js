@@ -338,14 +338,14 @@ export default function ModalEditCounter({
                 });
               }
             }));
-
-            toggle();
-            reload();
           }
         }
       } catch (err) {
-        throw new Error(err);
+        throw err;
       }
+
+      toggle();
+      reload();
     }
   };
 
@@ -390,11 +390,12 @@ export default function ModalEditCounter({
               setIsNewCounter={setIsNewCounter}
               setTempSquadInfo={setTempSquadInfo}
               setTempSquad={setTempSquad}
-              tempSquadInfo={tempSquadInfo}
+              size={size}
               sourceSquad={sourceSquad}
               squadMatch={squadMatch}
               squadNameMatch={squadNameMatch}
               squads={squads}
+              tempSquadInfo={tempSquadInfo}
             />
 
             <div>

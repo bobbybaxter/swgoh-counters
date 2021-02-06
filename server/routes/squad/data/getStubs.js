@@ -20,10 +20,9 @@ module.exports = ({ database, log }) => (type, size) => {
         return res({});
       }
 
-      res(JSON.parse(JSON.stringify(results)));
+      return res(JSON.parse(JSON.stringify(results)));
     });
-  }).catch((e) => {
-    log.error(e.message);
-    throw e;
+  }).catch((err) => {
+    throw err;
   });
 };

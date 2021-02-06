@@ -118,9 +118,10 @@ export default function ModalAddSquad({
         return !_.isEmpty(counterStubs)
           ? !counterStubs.rightSquadStubs.find(x => x.id === rightSquadId)
           : true;
-      } catch (e) {
+      } catch (err) {
         if (!abortController.signal.aborted) {
-          console.error('checkExistingCounter aborted :>> ', e);
+          console.error('checkExistingCounter aborted :>> ', err);
+          throw err;
         }
       }
     }
@@ -355,7 +356,7 @@ export default function ModalAddSquad({
     // blocks submission if this counter already exists, if the squad name is in use,
     // the squad name is blank, or the squad leader is blank
     if (!isNewCounter
-      || !!squadMatch
+      || !!squadNameMatch
       || tempSquadInfo.name === ''
       || tempSquad[0].id === 'BLANK') {
       console.error('please add or correct squad name or members');
@@ -464,14 +465,14 @@ export default function ModalAddSquad({
                 });
               }
             }));
-
-            toggle();
-            reload();
           }
         }
       } catch (err) {
-        throw new Error(err);
+        throw err;
       }
+
+      toggle();
+      reload();
     }
   };
 
@@ -503,6 +504,7 @@ export default function ModalAddSquad({
                 setSquadNameMatch={setLeftSquadNameMatch}
                 setTempSquadInfo={setTempLeftSquadInfo}
                 setTempSquad={setTempLeftSquad}
+                size={size}
                 squadNameMatch={leftSquadNameMatch}
                 squads={squads}
                 tempSquadInfo={tempLeftSquadInfo}
@@ -585,9 +587,10 @@ export default function ModalAddSquad({
                 setSquadNameMatch={setSquadNameMatch}
                 setTempSquad={setTempSquad}
                 setTempSquadInfo={setTempSquadInfo}
-                tempSquadInfo={tempSquadInfo}
+                size={size}
                 squadNameMatch={squadNameMatch}
                 squads={squads}
+                tempSquadInfo={tempSquadInfo}
               />}
               <OpponentBox>
                 <h6 className="text-secondary pt-3">Counter Squad</h6>
@@ -647,15 +650,16 @@ export default function ModalAddSquad({
             && <div className="alert alert-danger">Both new squads can't have the same name</div>
         }
         <Button color="primary" onClick={handleSubmitButton}
-          disabled={ areVideoTitlesTooLong
+          disabled={
+            areVideoTitlesTooLong
             || !areVideoLinksValid
             || !isNewCounter
-            || !!squadMatch
             || !!squadNameMatch
             || tempSquadInfo.name === ''
             || tempLeftSquadInfo.name === ''
             || (isNewLeftSquad && tempSquadInfo.name === tempLeftSquadInfo.name)
-            || tempSquad[0].id === 'BLANK' }>Submit</Button>
+            || tempSquad[0].id === 'BLANK'
+            }>Submit</Button>
         <Button color="secondary" onClick={toggle}>Cancel</Button>
       </StyledModalFooter>
     </ModalWrapper>

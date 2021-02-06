@@ -3,7 +3,9 @@ module.exports = ({ data }) => ({
   path: '/videoLink/:id',
   handler: async (request, reply) => {
     const videoLink = await data.getById(request.params.id);
-    reply.send(videoLink);
+    reply
+      .type('application/json')
+      .send(videoLink);
   },
   schema: {
     params: {

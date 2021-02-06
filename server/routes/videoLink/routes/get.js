@@ -4,7 +4,9 @@ module.exports = ({ data }) => ({
   handler: async (request, reply) => {
     const videoLinks = await data.get();
     videoLinks.sort((a, b) => ((a.createdOn > b.createdOn) ? 1 : -1));
-    reply.send(videoLinks);
+    reply
+      .type('application/json')
+      .send(videoLinks);
   },
   schema: {
     response: {

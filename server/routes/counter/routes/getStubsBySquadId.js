@@ -17,6 +17,8 @@ module.exports = ({ data }) => ({
       return newX;
     }));
 
+    reply.type('application/json');
+
     if (!_.isEmpty(rightSquadStubs)) {
       // REVIEW: we may want to change this to sorting by name
       //  but for now we're sorting by date created/updated so the freshest
@@ -42,7 +44,7 @@ module.exports = ({ data }) => ({
       return reply.send({ counterVersion, rightSquadStubs });
     }
 
-    return reply.send(rightSquadStubs);
+    return reply.send({ rightSquadStubs });
   },
   schema: {
     params: {

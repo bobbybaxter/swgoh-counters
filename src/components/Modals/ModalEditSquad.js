@@ -203,12 +203,12 @@ export default function ModalEditSquad({
         userId: user.id,
         username: user.username,
       });
-
-      toggle();
-      reload();
     } catch (err) {
-      throw new Error(err);
+      throw err;
     }
+
+    toggle();
+    reload();
   };
 
   const closeBtn = <button className="close text-white" onClick={toggle}>&times;</button>;
@@ -233,6 +233,7 @@ export default function ModalEditSquad({
               setSquadNameMatch={setSquadNameMatch}
               setTempSquadInfo={setTempSquadInfo}
               setTempSquad={setTempSquad}
+              size={size}
               sourceSquad={sourceSquad}
               squad={squad}
               squadNameMatch={squadNameMatch}

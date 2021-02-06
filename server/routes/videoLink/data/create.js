@@ -59,7 +59,7 @@ module.exports = ({ database, log }) => ({
               });
             }
 
-            connection.commit((commitError) => {
+            return connection.commit((commitError) => {
               if (commitError) {
                 return connection.rollback(() => {
                   connection.release();
@@ -69,8 +69,6 @@ module.exports = ({ database, log }) => ({
 
               return log.info(`VideoLinkVersion for ${videoLinkId} successfully updated.`);
             });
-
-            return '';
           });
 
           log.info(`VideoLink for ${videoLinkId} successfully created.`);
@@ -80,7 +78,6 @@ module.exports = ({ database, log }) => ({
       });
     });
   }).catch((err) => {
-    log.error(err.message);
     throw err;
   });
 };

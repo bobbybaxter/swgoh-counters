@@ -1,12 +1,10 @@
 export {
-  getAllCharactersOld,
   getAllCharacters,
   importCharacterData,
 } from './characterData';
 
 export {
   deleteCounter,
-  getCounterData,
   getCounterById,
   addCounter,
   updateCounter,
@@ -25,8 +23,6 @@ export {
   addSquad,
   updateSquad,
   getSquadStubs,
-  getSquadVersionDate,
-  getOldSquadData,
   importSquadData,
 } from './squadsData';
 

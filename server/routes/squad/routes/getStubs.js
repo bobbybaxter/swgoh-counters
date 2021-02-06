@@ -10,7 +10,9 @@ module.exports = ({ data }) => ({
       reverse,
     };
 
-    reply.send(squadStubs);
+    reply
+      .type('application/json')
+      .send(squadStubs);
   },
   schema: {
     params: {

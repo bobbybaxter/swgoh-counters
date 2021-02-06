@@ -21,6 +21,7 @@ export default function SquadDetails({
   setTempSquadInfo,
   setTempSquad,
   tempSquadInfo,
+  size,
   sourceSquad,
   squad,
   squadNameMatch,
@@ -40,6 +41,7 @@ export default function SquadDetails({
     setSquadNameMatch: PropTypes.func.isRequired,
     setTempSquadInfo: PropTypes.func.isRequired,
     setTempSquad: PropTypes.func.isRequired,
+    size: PropTypes.string.isRequired,
     tempSquadInfo: PropTypes.object.isRequired,
     sourceSquad: PropTypes.array,
     squad: PropTypes.object,
@@ -49,7 +51,9 @@ export default function SquadDetails({
 
   const [sourceSquadName] = useState(tempSquadInfo.name || 'Squad Name');
 
-  const buildSquadDropdown = squads.map(x => <option id={x.id} key={`squadDropDown_${x.id}`}>{x.name}</option>);
+  const buildSquadDropdown = squads
+    .filter(x => (size === '5v5' ? x : (x.toon4Id === 'BLANK' && x.toon5Id === 'BLANK')))
+    .map(x => <option id={x.id} key={`squadDropDown_${x.id}`}>{x.name}</option>);
 
   const handleIsNewSquadCheckbox = () => {
     setIsNewSquad && setIsNewSquad(!isNewSquad);

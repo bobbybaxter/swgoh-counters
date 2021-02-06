@@ -21,7 +21,9 @@ module.exports = ({ data }) => ({
       };
     }
 
-    reply.send(formattedCounter);
+    reply
+      .type('application/json')
+      .send(formattedCounter);
   },
   schema: {
     params: {

@@ -16,7 +16,9 @@ module.exports = ({ data }) => ({
       });
     });
 
-    reply.send(characters);
+    reply
+      .type('application/json')
+      .send(characters);
   },
   schema: {
     response: {

@@ -43,6 +43,9 @@ const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 // TODO: in spreadsheet - replace all <br> tags in counters with \n
 // TODO: create an FAQ in github and link in header
 // TODO: delete Routes2 after pushed to Github, so i have an easy reference
+// TODO: move the firebase refreshToken method to the beginning of the handleSubmitButton functions and pass the token to the requests
+// TODO: do an addCounter and addSquad check on the server-side, to eliminate duplicates
+// TODO: fix the bug on ModalAddSquad that errors and doesn't close the modal but adds the squads and doesn't add/update the counter
 class App extends React.Component {
   state = {
     user: defaultUser,

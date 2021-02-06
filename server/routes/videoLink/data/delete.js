@@ -14,7 +14,6 @@ module.exports = ({ database, log }) => (id) => {
       return res('ok');
     });
   }).catch((err) => {
-    log.error(err.message);
     throw err;
   });
 };

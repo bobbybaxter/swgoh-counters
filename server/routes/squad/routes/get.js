@@ -4,7 +4,9 @@ module.exports = ({ data }) => ({
   handler: async (request, reply) => {
     const squads = await data.get();
     squads.sort((a, b) => ((a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1));
-    reply.send(squads);
+    reply
+      .type('application/json')
+      .send(squads);
   },
   schema: {
     response: {
