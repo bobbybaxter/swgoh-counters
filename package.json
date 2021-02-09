@@ -1,43 +1,53 @@
 {
   "name": "swgoh-counters",
-  "homepage": "https://swgohcounters.com",
+  "homepage": "https://swgohcounters.com/",
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
   "proxy": "http://127.0.0.1:5000",
   "scarfSettings.enabled": false,
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
     "concurrently": "^5.2.0",
+    "date-fns": "^2.16.1",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^13.2.0",
-    "firebase": "^7.15.2",
+    "eslint-plugin-import": "^2.22.1",
+    "firebase": "^7.22.0",
     "history": "^4.10.1",
+    "idb": "^5.0.7",
     "jquery": "^3.5.1",
-    "node-sass": "^4.14.1",
+    "lodash": "^4.17.20",
+    "node-sass": "^4.0.0",
     "nodemon": "^2.0.4",
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-ga": "^2.7.0",
+    "react-icons": "^3.11.0",
+    "react-lazyload": "^3.1.0",
     "react-meta-tags": "^0.7.4",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
-    "react-table": "^7.2.1",
-    "reactstrap": "^8.4.1"
+    "react-scripts": "^3.4.3",
+    "reactstrap": "^8.4.1",
+    "styled-components": "^5.2.1",
+    "valid-url": "^1.0.9",
+    "yarn": "^1.22.10"
   },
   "scripts": {
     "start": "react-scripts start --ignore server",
+    "lint": "eslint . --fix",
     "build": "react-scripts build",
     "postbuild": "react-snap --disable-web-security",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && gh-pages -d build",
-    "server": "LOG_LEVEL=debug nodemon server/index.js | pino-pretty",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm start\"",
-    "client:deploy": "npm run build && aws s3 sync build/ s3://swgohcounters.com"
+    "deploy": "yarn run build && gh-pages -d build",
+    "server": "LOG_LEVEL=debug nodemon server/index.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn start\"",
+    "client:deploy": "yarn run build && aws s3 sync build/ s3://swgohcounters.com"
   },
   "skipThirdPartyRequests": true,
   "reactSnap": {
@@ -45,8 +55,55 @@
       "--disable-web-security"
     ]
   },
+  "eslintIgnore": [
+    "**/*.sql"
+  ],
   "eslintConfig": {
-    "extends": "react-app"
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "extends": [
+      "airbnb-base",
+      "react-app"
+    ],
+    "globals": {
+      "document": true,
+      "window": true,
+      "allowTemplateLiterals": true
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "paths": [
+            "./",
+            "./src",
+            "./server"
+          ]
+        }
+      }
+    },
+    "reportUnusedDisableDirectives": true,
+    "root": true,
+    "rules": {
+      "no-console": [
+        1,
+        {
+          "allow": [
+            "error",
+            "info",
+            "log"
+          ]
+        }
+      ],
+      "no-debugger": 1,
+      "class-methods-use-this": 0,
+      "linebreak-style": 0,
+      "global-require": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -61,7 +118,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.12.3",
     "pino-pretty": "^4.0.0",
+    "react-is": "^17.0.1",
     "react-snap": "^1.23.0"
   }
 }

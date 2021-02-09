@@ -21,7 +21,7 @@ module.exports = async function checkIfAuthenticated(req, res, next) {
       req.authId = userInfo.uid;
       return next();
     } catch (e) {
-      console.log('error :>> ', e);
+      console.error('authentication error :>> ', e);
       return res
         .status(401)
         .send({ Error: 'You are not authorized to make this request' });

@@ -1,31 +1,23 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable max-len */
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import {
-  BrowserRouter,
-  Redirect,
-  Route,
-  Switch,
-} from 'react-router-dom';
 import ReactGA from 'react-ga';
+import _ from 'lodash';
+import {
+  BrowserRouter, Redirect, Route, Switch,
+} from 'react-router-dom';
+import MyNavbar from 'src/components/MyNavbar/MyNavbar';
+
+import {
+  firebaseConnection, firebaseData, getSquadData, getAllCharacters,
+} from 'src/helpers/data';
 
 import './App.scss';
 
-import Counters3v3 from '../components/Counters3v3/Counters3v3';
-import Counters5v5 from '../components/Counters5v5/Counters5v5';
-import MyNavbar from '../components/MyNavbar/MyNavbar';
-import NotFound from '../components/NotFound/NotFound';
-import Account from '../components/Account/Account';
-import SubmissionForm from '../components/SubmissionForm/SubmissionForm';
-
-import characterData from '../helpers/data/characters.json';
-import firebaseConnection from '../helpers/data/firebaseConnection';
-import firebaseData from '../helpers/data/firebaseData';
-import getCounterData from '../helpers/data/countersData';
-
-import addImageRefs from '../helpers/addImageRefs';
+const Account = lazy(() => import('src/components/Account/Account'));
+const CountersPage = lazy(() => import('src/components/CountersPage/CountersPage'));
+const NotFound = lazy(() => import('src/components/NotFound/NotFound'));
+const SubmissionForm = lazy(() => import('src/components/SubmissionForm/SubmissionForm'));
 
 firebaseConnection();
 
@@ -42,19 +34,25 @@ const defaultUser = {
   email: '',
   patreonId: '',
   patronStatus: '',
+  username: '',
 };
 
+const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
+const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
+
+// TODO: in spreadsheet - replace all <br> tags in counters with \n
+// TODO: create an FAQ in github and link in header
+// TODO: delete Routes2 after pushed to Github, so i have an easy reference
+// TODO: move the firebase refreshToken method to the beginning of the handleSubmitButton functions and pass the token to the requests
+// TODO: do an addCounter and addSquad check on the server-side, to eliminate duplicates
+// TODO: fix the bug on ModalAddSquad that errors and doesn't close the modal but adds the squads and doesn't add/update the counter
 class App extends React.Component {
   state = {
     user: defaultUser,
-    data: null,
     authenticated: false,
-    characters: characterData.data,
-    squads: JSON.parse(sessionStorage.getItem('squads')) || [],
-    countersNormal5v5: JSON.parse(sessionStorage.getItem('countersNormal5v5')) || [],
-    countersReverse5v5: JSON.parse(sessionStorage.getItem('countersReverse5v5')) || [],
-    countersNormal3v3: JSON.parse(sessionStorage.getItem('countersNormal3v3')) || [],
-    countersReverse3v3: JSON.parse(sessionStorage.getItem('countersReverse3v3')) || [],
+    characters: storedCharacters,
+    squads: storedSquads,
+    view: 'normal',
   }
 
   authenticateUser = (authUser) => {
@@ -74,34 +72,35 @@ class App extends React.Component {
     }
   }
 
-  getCounters = async () => {
-    const counters = await getCounterData();
-    if (counters) {
-      const countersNormal5v5 = addImageRefs(counters.countersNormal5v5, this.state.characters);
-      const countersReverse5v5 = addImageRefs(counters.countersReverse5v5, this.state.characters);
-      const countersNormal3v3 = addImageRefs(counters.countersNormal3v3, this.state.characters);
-      const countersReverse3v3 = addImageRefs(counters.countersReverse3v3, this.state.characters);
-      this.setState({
-        squads: counters.squads,
-        countersNormal5v5,
-        countersReverse5v5,
-        countersNormal3v3,
-        countersReverse3v3,
-      });
-      sessionStorage.setItem('squads', JSON.stringify(this.state.squads));
-      sessionStorage.setItem('countersNormal5v5', JSON.stringify(this.state.countersNormal5v5));
-      sessionStorage.setItem('countersReverse5v5', JSON.stringify(this.state.countersReverse5v5));
-      sessionStorage.setItem('countersNormal3v3', JSON.stringify(this.state.countersNormal3v3));
-      sessionStorage.setItem('countersReverse3v3', JSON.stringify(this.state.countersReverse3v3));
+  getSquads = async () => {
+    const results = await getSquadData().catch(e => console.error('getAllSquads', e));
+    if (results && !_.isEqual(results, this.state.squads)) {
+      this.setState({ squads: results });
+      sessionStorage.setItem('squads', JSON.stringify(results));
     }
-  };
+  }
+
+  reload = () => window.location.reload();
+
+  getCharacters = async () => {
+    const results = await getAllCharacters().catch(e => console.error('getAllCharacters', e));
+    if (results && !_.isEqual(results, this.state.characters)) {
+      this.setState({ characters: results });
+      sessionStorage.setItem('characters', JSON.stringify(results));
+    }
+    if (!results && this.state.characters) {
+      // if get all characters fails, this route will update the state
+      // so the rest of the app may not fail if the user still has data
+      // in session storage
+      this.setState({ characters: this.state.characters });
+    }
+  }
 
   componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged(this.authenticateUser);
     ReactGA.pageview(window.location.pathname);
-    if (!sessionStorage.getItem('squads')) {
-      this.getCounters();
-    }
+    this.getCharacters();
+    this.getSquads();
   }
 
   handleAllyCode = (e) => {
@@ -112,14 +111,15 @@ class App extends React.Component {
 
   handleClearAllyCode = () => {
     const {
-      id, allyCode, email, patreonId, patronStatus,
-    } = this.state;
+      id, email, patreonId, patronStatus,
+    } = this.state.user;
     const user = {
       id,
-      allyCode,
+      allyCode: '',
       email,
       patreonId,
       patronStatus,
+      username: '',
     };
     this.setState({ user });
     firebaseData.updateUserInfo(user);
@@ -129,15 +129,19 @@ class App extends React.Component {
     this.setState({ user: defaultUser });
   }
 
+  handleViewBtn = () => {
+    this.setState({ view: this.state.view === 'normal' ? 'reverse' : 'normal' });
+  }
+
   setUserInfo = (res) => {
     this.setState(prevState => ({
       user: {
-        ...prevState.user,
-        email: res.email,
-        allyCode: res.allyCode,
-        id: res.id,
-        patreonId: res.patreonId,
-        patronStatus: res.patronStatus,
+        email: res.email || prevState.user.email,
+        allyCode: res.allyCode || prevState.user.allyCode,
+        id: res.id || prevState.user.id,
+        patreonId: res.patreonId || prevState.user.patreonId,
+        patronStatus: res.patronStatus || prevState.user.patronStatus,
+        username: res.username || prevState.user.username,
       },
     }));
   };
@@ -157,58 +161,70 @@ class App extends React.Component {
       .then((res) => {
         if (res !== '') {
           this.setUserInfo(res);
-          return console.log(`Firebase user ${res.email} validated`);
+          return console.info(`Firebase user ${res.email} validated`);
         }
-        console.log('No Firebase user found in DB');
+        console.info('No Firebase user found in DB');
         firebaseData.createUser(user)
           .then(response => this.setUserInfo(response));
-        return console.log('User created in Firebase');
+        return console.info('User created in Firebase');
       })
       .catch(err => console.error(err));
   };
 
   render() {
-    const { authenticated, user } = this.state;
+    const { authenticated, user, view } = this.state;
     return (
-      <div className="App">
+      <div id="App" className="App">
         <BrowserRouter basename="/" hashType="slash">
             <React.Fragment>
               <MyNavbar
                 authenticated={authenticated}
                 handleLogout={this.handleLogout}
               />
+              <div id="modal"></div>
               <div>
-                  <Switch>
-                    <Route exact path="/" render={props => <Counters5v5
-                        {...props}
-                        user={user}
-                        countersNormal={this.state.countersNormal5v5}
-                        countersReverse={this.state.countersReverse5v5}
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <Switch>
+                      <Route exact path="/" render={props => <CountersPage
+                          {...props}
+                          authenticated={authenticated}
+                          handleViewBtn={this.handleViewBtn}
+                          reload={this.reload}
+                          size={'5v5'}
+                          user={user}
+                          view={view}
+                        />}
                       />
-                    } />
-                    <Route exact path="/3v3" render={props => <Counters3v3
-                        {...props}
-                        user={user}
-                        countersNormal={this.state.countersNormal3v3}
-                        countersReverse={this.state.countersReverse3v3}
+
+                      <Route exact path="/3v3" render={props => <CountersPage
+                          {...props}
+                          authenticated={authenticated}
+                          handleViewBtn={this.handleViewBtn}
+                          reload={this.reload}
+                          size={'3v3'}
+                          user={user}
+                          view={view}
+                        />}
                       />
-                    } />
-                    <Route exact path="/submit" component={ SubmissionForm } />
+
+                      <Route exact path="/submit" component={ SubmissionForm } />
 
 
-                    <PrivateRoute
-                      exact path="/account"
-                      authenticated={authenticated}
-                      component={Account}
-                      handleClearAllyCode={this.handleClearAllyCode}
-                      handleAllyCode={this.handleAllyCode}
-                      unlinkPatreonAccount={this.unlinkPatreonAccount}
-                      user={user}
-                    />
+                      <PrivateRoute
+                        exact path="/account"
+                        authenticated={authenticated}
+                        component={Account}
+                        handleClearAllyCode={this.handleClearAllyCode}
+                        handleAllyCode={this.handleAllyCode}
+                        unlinkPatreonAccount={this.unlinkPatreonAccount}
+                        setUserInfo={this.setUserInfo}
+                        user={user}
+                      />
 
-                    <Route component={NotFound} />
-                    <Redirect from="*" to="/" />
-                  </Switch>
+                      <Route component={NotFound} />
+                      <Redirect from="*" to="/" />
+                    </Switch>
+                  </Suspense>
               </div>
             </React.Fragment>
         </BrowserRouter>

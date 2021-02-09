@@ -1,23 +1,16 @@
-const pino = require('pino');
-// const expressPino = require('express-pino-logger');
-const patreonFactory = require('./patreon');
-const middlewareFactory = require('./middleware');
+const config = require('./.config.json');
+
+const logFactory = require('./setup/log')(config.logging[process.env.NODE_ENV]);
+const patreonFactory = require('./setup/patreon');
+const firebaseFactory = require('./setup/firebaseAdmin');
 const serverFactory = require('./server');
-const dataFactory = require('./data');
-const firebaseFactory = require('./firebaseAdmin');
+const databaseFactory = require('./setup/db');
 
-const log = pino({
-  level: process.env.LOG_LEVEL || 'info',
-  prettyPrint: true,
-});
-// const logger = expressPino({ log });
-
-const app = { log };
+const app = { log: logFactory };
 
 app.patreon = patreonFactory(app);
 app.firebaseDb = firebaseFactory(app);
-app.middleware = middlewareFactory(app);
-app.data = dataFactory(app);
 app.server = serverFactory(app);
+app.database = databaseFactory(app);
 
 module.exports = app;

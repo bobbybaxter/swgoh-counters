@@ -1,4 +1,3 @@
-/* eslint-disable import/no-dynamic-require */
 const buildSquad = require('./buildSquad');
 
 module.exports = function buildOpponentTeam(

@@ -1,11 +1,8 @@
-const { Router } = require('express');
+const routeFactory = require('./routes');
 
-const router = new Router();
-
-module.exports = (app) => {
-  const { middleware } = app;
-
-  return router
-    .use(middleware.context)
-    .get('/redirect', require('./handleRedirect')(app));
+module.exports = app => async (server) => {
+  const data = require('./data')(app);
+  data.firebase = require('../firebase/data')(app);
+  const routes = routeFactory({ ...app, data });
+  return routes.forEach(route => server.route(route));
 };
