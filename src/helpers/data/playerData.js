@@ -1,8 +1,8 @@
-const baseUrl = 'https://cors-anywhere.herokuapp.com/https://swgoh.gg/api/player/';
 
 export default async function getPlayerData(allyCode) {
+  const url = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://swgoh.gg/api/player/${allyCode}`)}`;
   try {
-    const response = await fetch(`${baseUrl}${allyCode}`);
+    const response = await fetch(`${url}`);
 
     if (response.status === 404) {
       throw new Error('User does not exist.');
