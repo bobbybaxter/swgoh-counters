@@ -39,7 +39,8 @@ export default function Account({
 
   const setPlayerData = async () => {
     try {
-      const res = await getPlayerData(user.allyCode);
+      const response = await getPlayerData(user.allyCode);
+      const res = JSON.parse(response.contents);
       const { ally_code, name } = res.data;
       setUserInfo({ allyCode: ally_code.toString(), username: name });
       return res.data;
@@ -53,6 +54,7 @@ export default function Account({
     async function updateUser() {
       if (user.allyCode && !user.username) {
         const userData = await setPlayerData();
+        console.log('userData :>> ', userData);
         const userToUpdate = {
           id: user.id,
           allyCode: user.allyCode,
