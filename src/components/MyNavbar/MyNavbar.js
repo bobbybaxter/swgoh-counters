@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components/macro';
 import { NavLink as RRNavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import {
   Collapse,
   Navbar,
@@ -13,6 +12,7 @@ import {
 } from 'reactstrap';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { AuthContext } from 'src/userContext';
 
 export const NavbarWrapper = styled.div`
   display: block;
@@ -26,13 +26,9 @@ export const NavDivider = styled.span`
   margin-right: 1em;
 `;
 
-const MyNavbar = ({ authenticated, handleLogout }) => {
-  MyNavbar.propTypes = {
-    authenticated: PropTypes.bool.isRequired,
-    handleLogout: PropTypes.func.isRequired,
-  };
-
+const MyNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { authenticated, handleLogout } = useContext(AuthContext);
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -82,9 +78,6 @@ const MyNavbar = ({ authenticated, handleLogout }) => {
 
               <NavDivider />
 
-              {/* <NavItem>
-                <NavLink tag={RRNavLink} to="/submit">Submit Issue</NavLink>
-              </NavItem> */}
               <NavItem>
                 <NavLink href="https://patreon.com/saiastrange">Patreon</NavLink>
               </NavItem>

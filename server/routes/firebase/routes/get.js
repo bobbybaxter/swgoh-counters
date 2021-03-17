@@ -4,9 +4,26 @@ module.exports = ({ data, log }) => ({
   handler: async (request, reply) => {
     try {
       const user = await data.getByFirebaseUid(request.params.id);
-      reply.send(user);
+      reply
+        .type('application/json')
+        .send(user);
     } catch (err) {
       log.error(err);
     }
+  },
+  schema: {
+    response: {
+      '2xx': {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          email: { type: 'string' },
+          allyCode: { type: 'string' },
+          username: { type: 'string' },
+          patreonId: { type: 'string' },
+          patronStatus: { type: 'string' },
+        },
+      },
+    },
   },
 });

@@ -7,6 +7,7 @@
   "proxy": "http://127.0.0.1:5000",
   "scarfSettings.enabled": false,
   "dependencies": {
+    "@welldone-software/why-did-you-render": "^6.1.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
     "concurrently": "^5.2.0",

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { Button } from 'reactstrap';
@@ -7,6 +7,7 @@ import ModalEditSquad from 'src/components/Modals/ModalEditSquad';
 import ModalPortal from 'src/components/ModalPortal/ModalPortal';
 import SquadHeader from 'src/components/shared/SquadHeader';
 import { useToggle } from 'src/helpers';
+import { AuthContext } from 'src/userContext';
 import { EditMenu } from 'src/styles/style';
 
 import {
@@ -38,24 +39,21 @@ const defaultSquad = {
 };
 
 const OpponentCard = ({
-  authenticated,
   leftSquadStub,
   reload,
   size,
   toggleCollapse,
-  user,
 }) => {
   OpponentCard.propTypes = {
-    authenticated: PropTypes.bool,
     leftSquadStub: PropTypes.object,
     reload: PropTypes.func,
     size: PropTypes.string,
     toggleCollapse: PropTypes.func,
-    user: PropTypes.object,
   };
 
   const [squad, setSquad] = useState(defaultSquad);
   const [isOpen, setIsOpen] = useToggle(false);
+  const { authenticated, user } = useContext(AuthContext);
 
   const { generalStrategy, description } = squad;
 
@@ -82,7 +80,8 @@ const OpponentCard = ({
 
       <BottomWrapper>
         <EditMenu>
-          {/* only users that have signed in, are active patrons, and have a allyCode can update counters */}
+          {/* only users that have signed in, are active patrons,
+          and have a allyCode can update counters */}
           {authenticated && user.patronStatus === 'active_patron' && user.username && <p><Button className="p-0 m-0" size="sm" color="link" onClick={() => setIsOpen(true)}><small>edit squad</small></Button></p>}
           {/* TODO: make the date a link that goes to a History page for the counter */}
           {squad.createdOn && <p><small>updated on: {format(new Date(squad.createdOn), 'MMM d, yyyy')}</small></p>}
@@ -99,7 +98,6 @@ const OpponentCard = ({
             reload={reload}
             size={size}
             toggle={setIsOpen}
-            user={user}
           />
         </ModalPortal>
       )}

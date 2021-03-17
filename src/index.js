@@ -1,22 +1,31 @@
+import './setup/wdyr';
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import { hydrate, render } from 'react-dom';
 import 'normalize.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.scss';
 import ReactGA from 'react-ga';
+import { AuthProvider } from './userContext';
 import App from './App/App';
 import * as serviceWorker from './serviceWorker';
 
-
 ReactGA.initialize('UA-170978501-1');
 
-// ReactDOM.render(<App />, document.getElementById('root'));
 const rootElement = document.getElementById('root');
 if (rootElement.hasChildNodes()) {
-  hydrate(<App />, rootElement);
+  hydrate(
+      <AuthProvider>
+        <App />
+      </AuthProvider>,
+      rootElement,
+  );
 } else {
-  render(<App />, rootElement);
+  render(
+      <AuthProvider>
+        <App />
+      </AuthProvider>,
+      rootElement,
+  );
 }
 
 // If you want your app to work offline and load faster, you can change

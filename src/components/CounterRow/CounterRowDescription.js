@@ -10,24 +10,20 @@ import { getCounterById } from 'src/helpers/data';
 import { CounterCardWrapper } from 'src/styles/style';
 
 export default function CounterRowDescription({
-  authenticated,
   collapse,
   counterStubs,
   reload,
   rightSquadStub,
   size,
   view,
-  user,
   ...props
 }) {
   CounterRowDescription.propTypes = {
-    authenticated: PropTypes.bool,
     collapse: PropTypes.string,
     counterStubs: PropTypes.object.isRequired,
     reload: PropTypes.func,
     rightSquadStub: PropTypes.object.isRequired,
     size: PropTypes.string.isRequired,
-    user: PropTypes.object,
     view: PropTypes.string.isRequired,
   };
 
@@ -78,12 +74,10 @@ export default function CounterRowDescription({
     <CounterCardWrapper key={counterId}>
       <Collapse isOpen={counterId === collapse}>
           {counter && <CounterCard
-            authenticated={authenticated}
             counter={counter}
             counterStubs={counterStubs}
             reload={reload}
             size={size}
-            user={user}
             view={view}
           />}
       </Collapse>

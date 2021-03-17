@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -6,6 +6,7 @@ import { isWebUri } from 'valid-url';
 
 import { LockBtn } from 'src/components/shared/Locks';
 import { useInputValue } from 'src/helpers/';
+import { AuthContext } from 'src/userContext';
 import {
   addCounter, addSquad, addVideoLink, updateSquad,
 } from 'src/helpers/data';
@@ -64,7 +65,7 @@ export default function ModalAddSquad({
   reload,
   size,
   toggle,
-  user,
+  // user,
   view,
   ...props
 }) {
@@ -73,7 +74,6 @@ export default function ModalAddSquad({
     reload: PropTypes.func,
     size: PropTypes.string,
     toggle: PropTypes.func.isRequired,
-    user: PropTypes.object,
     view: PropTypes.string,
   };
 
@@ -94,13 +94,14 @@ export default function ModalAddSquad({
   const [sourceGeneralStrategy, setSourceGeneralStrategy] = useState('');
   const strategy = useInputValue('');
   const [squads] = useState(storedSquads);
-  const [squadMatch, setSquadMatch] = useState('');
+  const [squadMatch, setSquadMatch] = useState(''); // eslint-disable-line no-unused-vars
   const [squadNameMatch, setSquadNameMatch] = useState('');
   const [tempLeftSquad, setTempLeftSquad] = useState(buildDefaultSquad());
   const [tempLeftSquadInfo, setTempLeftSquadInfo] = useState(defaultTempSquadInfo);
   const [tempSquad, setTempSquad] = useState(buildDefaultSquad());
   const [tempSquadInfo, setTempSquadInfo] = useState(defaultTempSquadInfo);
   const [videoLinks, setVideoLinks] = useState([]);
+  const { user } = useContext(AuthContext);
 
   const checkIfVideoLinksAreValid = (updatedLinks) => {
     const isInvalid = updatedLinks.some(videoLink => !isWebUri(videoLink.link));

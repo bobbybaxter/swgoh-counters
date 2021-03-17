@@ -14,7 +14,12 @@ export {
 
 export { default as firebaseConnection } from './firebaseConnection';
 
-export { default as firebaseData } from './firebaseData';
+export {
+  createUser,
+  getUserByFirebaseAuthUid,
+  updateUserInfo,
+  unlinkPatreonAccount,
+} from './firebaseData';
 
 export { default as getPlayerData } from './playerData';
 
