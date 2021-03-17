@@ -1,16 +1,14 @@
 /* eslint-disable camelcase */
-import React, { useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import {
   Button, Form, FormGroup, Input,
 } from 'reactstrap';
 import MetaTags from 'react-meta-tags';
-import PropTypes from 'prop-types';
-import firebase from 'firebase/app';
-import 'firebase/auth';
 
-import { getPlayerData, firebaseData } from 'src/helpers/data';
+import { getPlayerData, unlinkPatreonAccount, updateUserInfo } from 'src/helpers/data';
 import { ContainerColumn } from 'src/styles/style';
 
+import { AuthContext } from 'src/userContext';
 import AccountButtons from './AccountButtons';
 import {
   AccountHeader,
@@ -22,22 +20,16 @@ import {
 
 const patreonLink = `https://patreon.com/oauth2/authorize?response_type=code&client_id=${process.env.REACT_APP_PATREON_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_PATREON_REDIRECT}&scope=identity${encodeURI('[email]')}%20identity`;
 
-export default function Account({
-  handleClearAllyCode,
-  handleAllyCode,
-  setUserInfo,
-  unlinkPatreonAccount,
-  user,
-}) {
-  Account.propTypes = {
-    handleClearAllyCode: PropTypes.func,
-    handleAllyCode: PropTypes.func,
-    setUserInfo: PropTypes.func,
-    unlinkPatreonAccount: PropTypes.func,
-    user: PropTypes.object,
-  };
+export default function Account() {
+  const {
+    handleClearAllyCode,
+    handleAllyCode,
+    setUserInfo,
+    unlinkPatreonAccountFromUser,
+    user,
+  } = useContext(AuthContext);
 
-  const setPlayerData = async () => {
+  const setPlayerData = useCallback(async () => {
     try {
       const response = await getPlayerData(user.allyCode);
       const res = JSON.parse(response.contents);
@@ -47,27 +39,30 @@ export default function Account({
     } catch (err) {
       return console.error('setPlayerData error', err);
     }
-  };
+  }, [setUserInfo, user.allyCode]);
+
+  const updateUser = useCallback(async () => {
+    const userData = await setPlayerData();
+    const userToUpdate = {
+      id: user.id,
+      allyCode: user.allyCode,
+      email: user.email,
+      patreonId: user.patreonId,
+      patronStatus: user.patronStatus,
+      username: userData.name,
+    };
+    await updateUserInfo(userToUpdate);
+  }, [setPlayerData, user.allyCode, user.email, user.id, user.patreonId, user.patronStatus]);
 
   useEffect(() => {
     // adds usernames to old accounts that don't currently have them
-    async function updateUser() {
+    async function updateUserOnLoad() {
       if (user.allyCode && !user.username) {
-        const userData = await setPlayerData();
-        console.log('userData :>> ', userData);
-        const userToUpdate = {
-          id: user.id,
-          allyCode: user.allyCode,
-          email: user.email,
-          patreonId: user.patreonId,
-          patronStatus: user.patronStatus,
-          username: userData.name,
-        };
-        await firebaseData.updateUserInfo(userToUpdate);
+        updateUser();
       }
     }
 
-    updateUser();
+    updateUserOnLoad();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const clearAllyCode = () => {
@@ -77,13 +72,10 @@ export default function Account({
   const submitAllyCode = async (e) => {
     e.preventDefault();
     try {
-      const idToken = await firebase.auth().currentUser.getIdToken(/* forceRefresh */ true);
-      sessionStorage.setItem('token', idToken);
-      await firebaseData.updateUserInfo(user);
+      updateUser();
     } catch (err) {
       console.error('Error submitting AllyCode: ', err);
     }
-    setPlayerData();
   };
 
   const allyCodeForm = <Form inline className="justify-content-center">
@@ -100,8 +92,8 @@ export default function Account({
   </Form>;
 
   const handleUnlinkPatreonAccount = () => {
-    firebaseData.unlinkPatreonAccount(user);
-    unlinkPatreonAccount();
+    unlinkPatreonAccount(user);
+    unlinkPatreonAccountFromUser();
   };
 
   const togglePatreonButton = !user.patreonId
@@ -140,7 +132,6 @@ export default function Account({
               </tbody>
             </table>
             <AccountButtons
-              user={user}
               key="accountButtons"
               clearAllyCode={clearAllyCode}
             />

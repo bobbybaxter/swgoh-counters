@@ -1,56 +1,81 @@
-import axios from 'axios';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
-const createUser = user => new Promise((resolve, reject) => {
-  axios.post(`${process.env.REACT_APP_API_URL}/api/firebase`,
-    user,
-    { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
-    .then((res) => {
-      resolve(res.data);
-    })
-    .catch(err => reject(err));
-});
+export async function createUser(user) {
+  const token = await firebase.auth().currentUser.getIdToken(true);
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/firebase`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(user),
+    });
+    return await response.json();
+  } catch (err) {
+    throw err;
+  }
+}
 
-const getUserByFirebaseAuthUid = firebaseAuthUid => new Promise((resolve, reject) => {
-  axios.get(`${process.env.REACT_APP_API_URL}/api/firebase/${firebaseAuthUid}`,
-    { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
-    .then((res) => {
-      resolve(res.data);
-    })
-    .catch(err => reject(err));
-});
+export async function getUserByFirebaseAuthUid(firebaseAuthUid) {
+  const token = await firebase.auth().currentUser.getIdToken(true);
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/firebase/${firebaseAuthUid}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+      },
+    });
+    return await response.json();
+  } catch (err) {
+    throw err;
+  }
+}
 
-const updateUserInfo = user => new Promise((resolve, reject) => {
-  axios.patch(`${process.env.REACT_APP_API_URL}/api/firebase/${user.id}`,
-    {
-      allyCode: user.allyCode,
-      email: user.email,
-      patreonId: user.patreonId,
-      patronStatus: user.patronStatus,
-      username: user.username,
-    },
-    { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
-    .then((res) => {
-      resolve(res.data);
-    })
-    .catch(err => reject(err));
-});
+export async function updateUserInfo(user) {
+  const token = await firebase.auth().currentUser.getIdToken(true);
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/firebase/${user.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        allyCode: user.allyCode,
+        email: user.email,
+        patreonId: user.patreonId,
+        patronStatus: user.patronStatus,
+        username: user.username,
+      }),
+    });
+    return await response.text();
+  } catch (err) {
+    throw err;
+  }
+}
 
-const unlinkPatreonAccount = user => new Promise((resolve, reject) => {
-  axios.patch(`${process.env.REACT_APP_API_URL}/api/firebase/${user.id}`,
-    {
-      allyCode: user.allyCode,
-      email: user.email,
-      patreonId: '',
-      patronStatus: '',
-      username: user.username,
-    },
-    { headers: { authorization: `Bearer ${sessionStorage.getItem('token')}` } })
-    .then((res) => {
-      resolve(res.data);
-    })
-    .catch(err => reject(err));
-});
-
-export default {
-  createUser, getUserByFirebaseAuthUid, updateUserInfo, unlinkPatreonAccount,
-};
+export async function unlinkPatreonAccount(user) {
+  const token = await firebase.auth().currentUser.getIdToken(true);
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/firebase/${user.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        allyCode: user.allyCode,
+        email: user.email,
+        patreonId: '',
+        patronStatus: '',
+        username: user.username,
+      }),
+    });
+    return await response.text();
+  } catch (err) {
+    throw err;
+  }
+}

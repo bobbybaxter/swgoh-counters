@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useCallback, useContext, useEffect, useState,
+} from 'react';
 import { Button } from 'reactstrap';
 import LazyLoad from 'react-lazyload';
 import PropTypes from 'prop-types';
@@ -14,33 +16,30 @@ import { ContainerColumn } from 'src/styles/style';
 import { getSquadStubs } from 'src/helpers/data';
 
 import { usePrevious } from 'src/helpers';
+import { AuthContext } from 'src/userContext';
 import ColorIndicator from './ColorIndicator';
 import { CountersPageWrapper } from './style';
 
 const isSnap = navigator.userAgent === 'ReactSnap';
 
 const CountersPage = ({
-  authenticated, handleViewBtn, reload, size, user, view, ...props
+  handleViewBtn,
+  reload,
+  size,
+  view,
+  ...props
 }) => {
   CountersPage.propTypes = {
-    authenticated: PropTypes.bool,
     handleViewBtn: PropTypes.func,
     reload: PropTypes.func,
     size: PropTypes.string,
-    user: PropTypes.shape({
-      allyCode: PropTypes.string,
-      email: PropTypes.string,
-      id: PropTypes.string,
-      patreonId: PropTypes.string,
-      patronStatus: PropTypes.string,
-      username: PropTypes.string,
-    }).isRequired,
     view: PropTypes.string,
   };
 
   const [collapse, setCollapse] = useState(null);
   const [stubsNormal, setStubsNormal] = useState();
   const [stubsReverse, setStubsReverse] = useState();
+  const { authenticated, user } = useContext(AuthContext);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -69,7 +68,10 @@ const CountersPage = ({
 
   const { patreonId } = user;
   const selectedStubs = view === 'normal' ? stubsNormal : stubsReverse;
-  const toggleCollapse = input => (setCollapse(collapse === input ? null : input));
+  const toggleCollapse = useCallback(
+    input => setCollapse(collapse === input ? null : input),
+    [collapse],
+  );
   const toggleAd = adSlot => (!isSnap && <AdsenseAd adSlot={adSlot}/>);
 
   const prevSize = usePrevious(size);
@@ -79,14 +81,12 @@ const CountersPage = ({
     && selectedStubs.length
     && selectedStubs.map(stub => (<LazyLoad once key={`CounterRow_${view}_${size}_${stub.id}`} placeholder={null}>
         <CounterRow
-          authenticated={authenticated}
           collapse={collapse}
           leftSquadStub={stub}
           size={size}
           reload={reload}
           toggleCollapse={toggleCollapse}
           view={view}
-          user={user}
         />
       </LazyLoad>));
 
@@ -129,7 +129,6 @@ const CountersPage = ({
           && <BlankCounterRow
             reload={reload}
             size={size}
-            user={user}
             view={view}
           />}
           {buildCounterRows || ''}

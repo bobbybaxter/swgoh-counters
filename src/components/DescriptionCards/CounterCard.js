@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { Button, UncontrolledCollapse } from 'reactstrap';
@@ -9,6 +9,7 @@ import { colors } from 'src/styles/colors';
 import ModalEditCounter from 'src/components/Modals/ModalEditCounter';
 import ModalPortal from 'src/components/ModalPortal/ModalPortal';
 import { useToggle } from 'src/helpers';
+import { AuthContext } from 'src/userContext';
 import { deleteCounter } from 'src/helpers/data';
 import { ContainerColumn, EditMenu } from 'src/styles/style';
 import SquadHeader from 'src/components/shared/SquadHeader';
@@ -46,21 +47,17 @@ const defaultSquad = {
 };
 
 const CounterCard = ({
-  authenticated,
   counter,
   counterStubs,
   reload,
   size,
-  user,
   view,
 }) => {
   CounterCard.propTypes = {
-    authenticated: PropTypes.bool,
     counter: PropTypes.object,
     counterStubs: PropTypes.object.isRequired,
     reload: PropTypes.func,
     size: PropTypes.string,
-    user: PropTypes.object,
     view: PropTypes.string,
   };
 
@@ -68,6 +65,7 @@ const CounterCard = ({
   const [rightSquad, setRightSquad] = useState(defaultSquad);
   const [zetaData, setZetaData] = useState();
   const [isOpen, setIsOpen] = useToggle(false);
+  const { authenticated, user } = useContext(AuthContext);
 
   const {
     counterSquadId,
@@ -233,7 +231,6 @@ const CounterCard = ({
           rightSquad={rightSquad}
           size={size}
           toggle={setIsOpen}
-          user={user}
           view={view}
         />
       </ModalPortal>

@@ -20,4 +20,24 @@ module.exports = ({ data, server }) => ({
     const user = await data.update(payload);
     reply.send(user);
   },
+  schema: {
+    params: {
+      id: { type: 'string' },
+    },
+    body: {
+      type: 'object',
+      properties: {
+        allyCode: { type: 'string' },
+        email: { type: 'string' },
+        patreonId: { type: 'string' },
+        patronStatus: { type: 'string' },
+        username: { type: 'string' },
+      },
+    },
+    response: {
+      '2xx': {
+        type: 'string',
+      },
+    },
+  },
 });

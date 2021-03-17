@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -8,6 +8,7 @@ import SquadHeader from 'src/components/shared/SquadHeader';
 import {
   addVideoLink, deleteVideoLink, updateCounter, updateSquad, updateVideoLink,
 } from 'src/helpers/data';
+import { AuthContext } from 'src/userContext';
 import { colors } from 'src/styles/colors';
 import { EditMenu } from 'src/styles/style';
 
@@ -63,7 +64,6 @@ export default function ModalEditCounter({
   rightSquad,
   size,
   toggle,
-  user,
   view,
   ...props
 }) {
@@ -76,7 +76,6 @@ export default function ModalEditCounter({
     rightSquad: PropTypes.object,
     size: PropTypes.string,
     toggle: PropTypes.func.isRequired,
-    user: PropTypes.object,
     view: PropTypes.string,
   };
 
@@ -98,6 +97,7 @@ export default function ModalEditCounter({
   const [tempSquad, setTempSquad] = useState(buildDefaultSquad());
   const [tempSquadInfo, setTempSquadInfo] = useState(defaultTempSquadInfo);
   const [videoLinks, setVideoLinks] = useState(counter.videoLinks);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const squadToEdit = view === 'normal' ? { ...rightSquad } : { ...leftSquadParam };

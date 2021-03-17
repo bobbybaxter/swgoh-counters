@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, {
-  lazy, Suspense, useEffect, useState,
+  lazy, Suspense, useContext, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -14,6 +14,7 @@ import { CounterCard } from 'src/styles/style';
 
 import ToonImg from 'src/components/shared/ToonImg';
 
+import { AuthContext } from 'src/userContext';
 import CounterRowDescription from './CounterRowDescription';
 import {
   CounterRowWrapper, Divider, LeftDiv, RightDiv, RightDivWrapper, SquadTitle,
@@ -25,29 +26,26 @@ const ModalAddCounter = lazy(() => import('src/components/Modals/ModalAddCounter
 const ModalPortal = lazy(() => import('src/components/ModalPortal/ModalPortal'));
 
 const CounterRow = ({
-  authenticated,
   collapse,
   leftSquadStub,
   reload,
   size,
   toggleCollapse,
-  user,
   view,
   ...props
 }) => {
   CounterRow.propTypes = {
-    authenticated: PropTypes.bool.isRequired,
     collapse: PropTypes.string,
     leftSquadStub: PropTypes.object.isRequired,
     reload: PropTypes.func.isRequired,
     size: PropTypes.string.isRequired,
     toggleCollapse: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
     view: PropTypes.string.isRequired,
   };
 
   const [counterStubs, setCounterStubs] = useState();
   const [isOpen, setIsOpen] = useToggle(false);
+  const { authenticated, user } = useContext(AuthContext);
 
   const counterStubId = `${size}_${view}_${leftSquadStub.id}`;
 
@@ -136,13 +134,11 @@ const CounterRow = ({
     && counterStubs.rightSquadStubs.map(rightSquadStub => (
       <LazyLoad once key={`CounterRowDescription_${view}_${size}_${rightSquadStub.counterId}`}>
         <CounterRowDescription
-          authenticated={authenticated}
           collapse={collapse}
           counterStubs={counterStubs}
           reload={reload}
           rightSquadStub={rightSquadStub}
           size={size}
-          user={user}
           view={view}
         />
       </LazyLoad>
@@ -197,7 +193,6 @@ const CounterRow = ({
                           reload={reload}
                           size={size}
                           toggle={setIsOpen}
-                          user={user}
                         />
                       </ModalPortal>
                     </Suspense>
@@ -214,11 +209,9 @@ const CounterRow = ({
           <Collapse isOpen={leftSquadStub.id === collapse}>
             <Suspense fallback={<div>Loading...</div>}>
               <OpponentCard
-                authenticated={authenticated}
                 leftSquadStub={leftSquadStub}
                 reload={reload}
                 size={size}
-                user={user}
               />
             </Suspense>
           </Collapse>

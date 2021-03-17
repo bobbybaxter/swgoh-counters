@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -6,6 +6,7 @@ import { isWebUri } from 'valid-url';
 
 import SquadHeader from 'src/components/shared/SquadHeader';
 import { useInputValue } from 'src/helpers/';
+import { AuthContext } from 'src/userContext';
 import { addCounter, addSquad, addVideoLink } from 'src/helpers/data';
 
 import { colors } from 'src/styles/colors';
@@ -60,7 +61,6 @@ export default function ModalAddCounter({
   reload,
   size,
   toggle,
-  user,
   ...props
 }) {
   ModalAddCounter.propTypes = {
@@ -70,7 +70,6 @@ export default function ModalAddCounter({
     reload: PropTypes.func,
     size: PropTypes.string,
     toggle: PropTypes.func.isRequired,
-    user: PropTypes.object,
   };
 
   const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
@@ -90,6 +89,7 @@ export default function ModalAddCounter({
   const [tempSquad, setTempSquad] = useState(buildDefaultSquad());
   const [tempSquadInfo, setTempSquadInfo] = useState(defaultTempSquadInfo);
   const [videoLinks, setVideoLinks] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     async function getLeftSquad() {

@@ -10,17 +10,16 @@ import {
   CounterRowWrapper, LeftDiv, RightDiv, RightDivWrapper, SquadTitle,
 } from './style';
 
+
 export default function BlankCounterRow({
   reload,
   size,
-  user,
   view,
   ...props
 }) {
   BlankCounterRow.propTypes = {
     reload: PropTypes.func,
     size: PropTypes.string,
-    user: PropTypes.object.isRequired,
   };
 
   const [isOpen, setIsOpen] = useToggle(false);
@@ -48,7 +47,6 @@ export default function BlankCounterRow({
                 reload={reload}
                 size={size}
                 toggle={setIsOpen}
-                user={user}
                 view={view}
               />
             </ModalPortal>

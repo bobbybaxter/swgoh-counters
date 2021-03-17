@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 import SquadHeader from 'src/components/shared/SquadHeader';
 import { updateSquad } from 'src/helpers/data';
+import { AuthContext } from 'src/userContext';
 import { EditMenu } from 'src/styles/style';
 
 import SquadDetailForm from './SquadDetailForm';
@@ -48,7 +49,6 @@ export default function ModalEditSquad({
   reload,
   size,
   toggle,
-  user,
   ...props
 }) {
   ModalEditSquad.propTypes = {
@@ -57,7 +57,6 @@ export default function ModalEditSquad({
     reload: PropTypes.func,
     size: PropTypes.string,
     toggle: PropTypes.func.isRequired,
-    user: PropTypes.object,
   };
 
   const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
@@ -72,6 +71,7 @@ export default function ModalEditSquad({
   const [squadNameMatch, setSquadNameMatch] = useState('');
   const [tempSquad, setTempSquad] = useState(buildDefaultSquad());
   const [tempSquadInfo, setTempSquadInfo] = useState(defaultTempSquadInfo);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const squadToEdit = { ...squadParam };

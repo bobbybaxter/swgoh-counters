@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 
 import { importCharacterData, importCounterData, importSquadData } from 'src/helpers/data';
+import { AuthContext } from 'src/userContext';
 import { AccountButtonsWrapper, RefreshElements } from './style';
 
-export default function AccountButtons({
-  user,
-  clearAllyCode,
-}) {
+export default function AccountButtons({ clearAllyCode }) {
   AccountButtons.propTypes = {
-    user: PropTypes.object,
     clearAllyCode: PropTypes.func,
   };
+
+  const { user } = useContext(AuthContext);
 
   const importCharacters = async () => {
     try {
