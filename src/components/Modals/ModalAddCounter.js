@@ -6,7 +6,7 @@ import { isWebUri } from 'valid-url';
 
 import SquadHeader from 'src/components/shared/SquadHeader';
 import { useInputValue } from 'src/helpers/';
-import { AuthContext } from 'src/userContext';
+import { AuthContext } from 'src/contexts/userContext';
 import { addCounter, addSquad, addVideoLink } from 'src/helpers/data';
 
 import { colors } from 'src/styles/colors';

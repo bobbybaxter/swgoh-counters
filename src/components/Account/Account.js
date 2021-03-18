@@ -8,7 +8,7 @@ import MetaTags from 'react-meta-tags';
 import { getPlayerData, unlinkPatreonAccount, updateUserInfo } from 'src/helpers/data';
 import { ContainerColumn } from 'src/styles/style';
 
-import { AuthContext } from 'src/userContext';
+import { AuthContext } from 'src/contexts/userContext';
 import AccountButtons from './AccountButtons';
 import {
   AccountHeader,

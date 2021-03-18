@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import SquadHeader from 'src/components/shared/SquadHeader';
 import { updateSquad } from 'src/helpers/data';
-import { AuthContext } from 'src/userContext';
+import { AuthContext } from 'src/contexts/userContext';
 import { EditMenu } from 'src/styles/style';
 
 import SquadDetailForm from './SquadDetailForm';

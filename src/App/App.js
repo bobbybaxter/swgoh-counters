@@ -19,7 +19,7 @@ import {
   getSquadData,
   getAllCharacters,
 } from 'src/helpers/data';
-import { AuthContext } from 'src/userContext';
+import { AuthContext } from 'src/contexts/userContext';
 
 import './App.scss';
 
@@ -43,7 +43,6 @@ const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 
 // TODO: create an FAQ in github and link in header
 // TODO: do an addCounter and addSquad check on the server-side, to eliminate duplicates
-// TODO: add new random adsense code to countersPage
 function App() {
   const [characters, setCharacters] = useState([]); // eslint-disable-line no-unused-vars
   const [squads, setSquads] = useState([]); // eslint-disable-line no-unused-vars

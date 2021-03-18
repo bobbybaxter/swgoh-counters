@@ -8,7 +8,7 @@ import SquadHeader from 'src/components/shared/SquadHeader';
 import {
   addVideoLink, deleteVideoLink, updateCounter, updateSquad, updateVideoLink,
 } from 'src/helpers/data';
-import { AuthContext } from 'src/userContext';
+import { AuthContext } from 'src/contexts/userContext';
 import { colors } from 'src/styles/colors';
 import { EditMenu } from 'src/styles/style';
 

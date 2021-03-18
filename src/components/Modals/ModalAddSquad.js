@@ -6,7 +6,7 @@ import { isWebUri } from 'valid-url';
 
 import { LockBtn } from 'src/components/shared/Locks';
 import { useInputValue } from 'src/helpers/';
-import { AuthContext } from 'src/userContext';
+import { AuthContext } from 'src/contexts/userContext';
 import {
   addCounter, addSquad, addVideoLink, updateSquad,
 } from 'src/helpers/data';

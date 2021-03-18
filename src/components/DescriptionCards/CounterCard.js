@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+  memo, useContext, useEffect, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { Button, UncontrolledCollapse } from 'reactstrap';
@@ -9,7 +11,7 @@ import { colors } from 'src/styles/colors';
 import ModalEditCounter from 'src/components/Modals/ModalEditCounter';
 import ModalPortal from 'src/components/ModalPortal/ModalPortal';
 import { useToggle } from 'src/helpers';
-import { AuthContext } from 'src/userContext';
+import { AuthContext } from 'src/contexts/userContext';
 import { deleteCounter } from 'src/helpers/data';
 import { ContainerColumn, EditMenu } from 'src/styles/style';
 import SquadHeader from 'src/components/shared/SquadHeader';
@@ -239,4 +241,4 @@ const CounterCard = ({
   );
 };
 
-export default React.memo(CounterCard);
+export default memo(CounterCard);

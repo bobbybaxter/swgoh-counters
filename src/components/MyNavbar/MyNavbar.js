@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { memo, useContext, useState } from 'react';
 import styled from 'styled-components/macro';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import {
@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { AuthContext } from 'src/userContext';
+import { AuthContext } from 'src/contexts/userContext';
 
 export const NavbarWrapper = styled.div`
   display: block;
@@ -103,4 +103,4 @@ const MyNavbar = () => {
   );
 };
 
-export default React.memo(MyNavbar);
+export default memo(MyNavbar);

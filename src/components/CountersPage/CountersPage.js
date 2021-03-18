@@ -1,5 +1,5 @@
 import React, {
-  useCallback, useContext, useEffect, useState,
+  memo, useContext, useEffect, useState,
 } from 'react';
 import { Button } from 'reactstrap';
 import LazyLoad from 'react-lazyload';
@@ -16,7 +16,7 @@ import { ContainerColumn } from 'src/styles/style';
 import { getSquadStubs } from 'src/helpers/data';
 
 import { usePrevious } from 'src/helpers';
-import { AuthContext } from 'src/userContext';
+import { AuthContext } from 'src/contexts/userContext';
 import ColorIndicator from './ColorIndicator';
 import { CountersPageWrapper } from './style';
 
@@ -36,7 +36,6 @@ const CountersPage = ({
     view: PropTypes.string,
   };
 
-  const [collapse, setCollapse] = useState(null);
   const [stubsNormal, setStubsNormal] = useState();
   const [stubsReverse, setStubsReverse] = useState();
   const { authenticated, user } = useContext(AuthContext);
@@ -68,27 +67,29 @@ const CountersPage = ({
 
   const { patreonId } = user;
   const selectedStubs = view === 'normal' ? stubsNormal : stubsReverse;
-  const toggleCollapse = useCallback(
-    input => setCollapse(collapse === input ? null : input),
-    [collapse],
-  );
   const toggleAd = adSlot => (!isSnap && <AdsenseAd adSlot={adSlot}/>);
 
+  const inFeedAdSlots = ['8612137902', '2722706345', '7380422067'];
+  const amountOfAds = selectedStubs && Math.round(selectedStubs.length / 50);
+  const randomAdRows = selectedStubs && _.sampleSize(_.range(1, selectedStubs.length), amountOfAds);
   const prevSize = usePrevious(size);
-
   const buildCounterRows = prevSize === size
     && selectedStubs
     && selectedStubs.length
-    && selectedStubs.map(stub => (<LazyLoad once key={`CounterRow_${view}_${size}_${stub.id}`} placeholder={null}>
-        <CounterRow
-          collapse={collapse}
-          leftSquadStub={stub}
-          size={size}
-          reload={reload}
-          toggleCollapse={toggleCollapse}
-          view={view}
-        />
-      </LazyLoad>));
+    && selectedStubs.map((stub, index) => {
+      const isAdRow = randomAdRows.includes(index);
+      return (
+        <LazyLoad once key={`CounterRow_${view}_${size}_${stub.id}`} placeholder={null}>
+          {!patreonId && isAdRow && toggleAd(_.sample(inFeedAdSlots))}
+          <CounterRow
+            leftSquadStub={stub}
+            size={size}
+            reload={reload}
+            view={view}
+          />
+        </LazyLoad>
+      );
+    });
 
   return (
     <ContainerColumn>
@@ -137,11 +138,10 @@ const CountersPage = ({
         <footer>
           <ColorIndicator />
           {!patreonId && <PatreonButton/>}
-          {!patreonId && toggleAd('7648736876')}
         </footer>
       </CountersPageWrapper>
     </ContainerColumn>
   );
 };
 
-export default React.memo(CountersPage);
+export default memo(CountersPage);
