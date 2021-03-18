@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 
 import { importCharacterData, importCounterData, importSquadData } from 'src/helpers/data';
-import { AuthContext } from 'src/userContext';
+import { AuthContext } from 'src/contexts/userContext';
 import { AccountButtonsWrapper, RefreshElements } from './style';
 
 export default function AccountButtons({ clearAllyCode }) {

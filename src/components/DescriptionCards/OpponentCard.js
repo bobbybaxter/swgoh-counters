@@ -1,13 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+  memo, useContext, useEffect, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
-import { Button } from 'reactstrap';
+import { Button, Collapse } from 'reactstrap';
 
 import ModalEditSquad from 'src/components/Modals/ModalEditSquad';
 import ModalPortal from 'src/components/ModalPortal/ModalPortal';
 import SquadHeader from 'src/components/shared/SquadHeader';
 import { useToggle } from 'src/helpers';
-import { AuthContext } from 'src/userContext';
+import { AuthContext } from 'src/contexts/userContext';
+import { AccordionContext } from 'src/contexts/accordionContext';
 import { EditMenu } from 'src/styles/style';
 
 import {
@@ -42,18 +45,17 @@ const OpponentCard = ({
   leftSquadStub,
   reload,
   size,
-  toggleCollapse,
 }) => {
   OpponentCard.propTypes = {
     leftSquadStub: PropTypes.object,
     reload: PropTypes.func,
     size: PropTypes.string,
-    toggleCollapse: PropTypes.func,
   };
 
   const [squad, setSquad] = useState(defaultSquad);
   const [isOpen, setIsOpen] = useToggle(false);
   const { authenticated, user } = useContext(AuthContext);
+  const { collapse } = useContext(AccordionContext);
 
   const { generalStrategy, description } = squad;
 
@@ -68,7 +70,7 @@ const OpponentCard = ({
   }, [leftSquadStub.id, leftSquadStub.name]);
 
   return (
-    <>
+    <Collapse isOpen={leftSquadStub.id === collapse}>
       <TopWrapper>
         <DetailsDivCenter>
           <h6 className="text-secondary mb-1">Opponent Squad</h6>
@@ -101,8 +103,8 @@ const OpponentCard = ({
           />
         </ModalPortal>
       )}
-    </>
+    </Collapse>
   );
 };
 
-export default React.memo(OpponentCard);
+export default memo(OpponentCard);

@@ -5,7 +5,8 @@ import 'normalize.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.scss';
 import ReactGA from 'react-ga';
-import { AuthProvider } from './userContext';
+import { AuthProvider } from 'src/contexts/userContext';
+import { AccordionProvider } from 'src/contexts/accordionContext';
 import App from './App/App';
 import * as serviceWorker from './serviceWorker';
 
@@ -14,17 +15,21 @@ ReactGA.initialize('UA-170978501-1');
 const rootElement = document.getElementById('root');
 if (rootElement.hasChildNodes()) {
   hydrate(
-      <AuthProvider>
+    <AuthProvider>
+      <AccordionProvider>
         <App />
-      </AuthProvider>,
-      rootElement,
+      </AccordionProvider>
+    </AuthProvider>,
+    rootElement,
   );
 } else {
   render(
-      <AuthProvider>
+    <AuthProvider>
+      <AccordionProvider>
         <App />
-      </AuthProvider>,
-      rootElement,
+      </AccordionProvider>
+    </AuthProvider>,
+    rootElement,
   );
 }
 

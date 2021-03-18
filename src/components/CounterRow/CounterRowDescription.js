@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Collapse } from 'reactstrap';
 
@@ -8,9 +8,9 @@ import { IDBService } from 'src/setup/IndexedDB';
 
 import { getCounterById } from 'src/helpers/data';
 import { CounterCardWrapper } from 'src/styles/style';
+import { AccordionContext } from 'src/contexts/accordionContext';
 
 export default function CounterRowDescription({
-  collapse,
   counterStubs,
   reload,
   rightSquadStub,
@@ -19,7 +19,6 @@ export default function CounterRowDescription({
   ...props
 }) {
   CounterRowDescription.propTypes = {
-    collapse: PropTypes.string,
     counterStubs: PropTypes.object.isRequired,
     reload: PropTypes.func,
     rightSquadStub: PropTypes.object.isRequired,
@@ -28,6 +27,7 @@ export default function CounterRowDescription({
   };
 
   const [counter, setCounter] = useState();
+  const { collapse } = useContext(AccordionContext);
 
   const { counterId } = rightSquadStub;
 

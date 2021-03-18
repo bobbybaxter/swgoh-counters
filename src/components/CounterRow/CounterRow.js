@@ -1,10 +1,9 @@
 /* eslint-disable max-len */
 import React, {
-  lazy, Suspense, useContext, useEffect, useState,
+  lazy, memo, Suspense, useContext, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Collapse } from 'reactstrap';
 import LazyLoad from 'react-lazyload';
 
 import { getImage, useToggle } from 'src/helpers';
@@ -14,7 +13,8 @@ import { CounterCard } from 'src/styles/style';
 
 import ToonImg from 'src/components/shared/ToonImg';
 
-import { AuthContext } from 'src/userContext';
+import { AuthContext } from 'src/contexts/userContext';
+import { AccordionContext } from 'src/contexts/accordionContext';
 import CounterRowDescription from './CounterRowDescription';
 import {
   CounterRowWrapper, Divider, LeftDiv, RightDiv, RightDivWrapper, SquadTitle,
@@ -26,26 +26,23 @@ const ModalAddCounter = lazy(() => import('src/components/Modals/ModalAddCounter
 const ModalPortal = lazy(() => import('src/components/ModalPortal/ModalPortal'));
 
 const CounterRow = ({
-  collapse,
   leftSquadStub,
   reload,
   size,
-  toggleCollapse,
   view,
   ...props
 }) => {
   CounterRow.propTypes = {
-    collapse: PropTypes.string,
     leftSquadStub: PropTypes.object.isRequired,
     reload: PropTypes.func.isRequired,
     size: PropTypes.string.isRequired,
-    toggleCollapse: PropTypes.func.isRequired,
     view: PropTypes.string.isRequired,
   };
 
   const [counterStubs, setCounterStubs] = useState();
   const [isOpen, setIsOpen] = useToggle(false);
   const { authenticated, user } = useContext(AuthContext);
+  const { toggleCollapse } = useContext(AccordionContext);
 
   const counterStubId = `${size}_${view}_${leftSquadStub.id}`;
 
@@ -134,7 +131,6 @@ const CounterRow = ({
     && counterStubs.rightSquadStubs.map(rightSquadStub => (
       <LazyLoad once key={`CounterRowDescription_${view}_${size}_${rightSquadStub.counterId}`}>
         <CounterRowDescription
-          collapse={collapse}
           counterStubs={counterStubs}
           reload={reload}
           rightSquadStub={rightSquadStub}
@@ -151,15 +147,13 @@ const CounterRow = ({
         {/* Left Side Squad Div */}
         <LeftDiv className="col-3">
           <div>
-            {/* <Suspense fallback={null}> */}
-              <ToonImg
-                alt={leftSquadStub.name}
-                id={leftSquadStub.id}
-                onClick={toggle}
-                src={getImage(leftSquadStub.toon1Id)}
-                title={leftSquadStub.name}
-              />
-            {/* </Suspense> */}
+            <ToonImg
+              alt={leftSquadStub.name}
+              id={leftSquadStub.id}
+              onClick={toggle}
+              src={getImage(leftSquadStub.toon1Id)}
+              title={leftSquadStub.name}
+            />
             <SquadTitle>{leftSquadStub.name}</SquadTitle>
           </div>
         </LeftDiv>
@@ -206,15 +200,13 @@ const CounterRow = ({
       {/* Collapsable Opponent Card */}
       {
         view === 'normal' && <div>
-          <Collapse isOpen={leftSquadStub.id === collapse}>
-            <Suspense fallback={<div>Loading...</div>}>
-              <OpponentCard
-                leftSquadStub={leftSquadStub}
-                reload={reload}
-                size={size}
-              />
-            </Suspense>
-          </Collapse>
+          <Suspense fallback={<div>Loading...</div>}>
+            <OpponentCard
+              leftSquadStub={leftSquadStub}
+              reload={reload}
+              size={size}
+            />
+          </Suspense>
         </div>
       }
 
@@ -226,4 +218,4 @@ const CounterRow = ({
   );
 };
 
-export default React.memo(CounterRow);
+export default memo(CounterRow);
