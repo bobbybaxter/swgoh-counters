@@ -2,6 +2,10 @@ SELECT
 	s.id,
 	sv.name,
   sv.toon1Id,
+  sv.toon2Id,
+  sv.toon3Id,
+  sv.toon4Id,
+  sv.toon5Id,
 	c2.latestCounterVersion
 FROM squad s
 JOIN squadVersion sv ON s.latestVersionId = sv.id

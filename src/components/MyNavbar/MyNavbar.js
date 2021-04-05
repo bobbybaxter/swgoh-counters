@@ -32,14 +32,28 @@ const MyNavbar = () => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const handleNavLogin = (e) => {
-    e.preventDefault();
-    const provider = new firebase.auth.GoogleAuthProvider();
-    provider.setCustomParameters({
-      prompt: 'select_account',
-    });
-    firebase.auth().signInWithRedirect(provider);
-  };
+  // const handleNavLogin = (e) => {
+  // e.preventDefault();
+
+  // const uiConfig = {
+  //   signInFlow: 'redirect',
+  //   // signInSuccessUrl: '/account',
+  //   signInOptions: [
+  //     firebase.auth.EmailAuthProvider.PROVIDER_ID,
+  //     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+  //   ],
+  //   callbacks: {
+  //     signInSuccessWithAuthResult: () => false,
+  //   },
+  // };
+
+  // return <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />;
+  // // const provider = new firebase.auth.GoogleAuthProvider();
+  // // provider.setCustomParameters({
+  // //   prompt: 'select_account',
+  // // });
+  // // firebase.auth().signInWithRedirect(provider);
+  // };
 
   const handleNavLogout = (e) => {
     e.preventDefault();
@@ -58,7 +72,8 @@ const MyNavbar = () => {
     )
     : (
       <NavItem>
-        <NavLink href="#" onClick={handleNavLogin}>Login</NavLink>
+        <NavLink tag={RRNavLink} exact to="/login">Login</NavLink>
+        {/* <NavLink href="#" onClick={handleNavLogin}>Login</NavLink> */}
       </NavItem>
     );
 

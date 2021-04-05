@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import { colors } from 'src/styles/colors';
 import { getImage } from 'src/helpers';
+import { NewSquadChar } from 'src/styles/style';
 import ToonImg from './ToonImg';
 import { LockImg } from './Locks';
 
@@ -10,14 +11,6 @@ export const CharCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-export const NewSquadChar = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: center;
-  word-break: break-word;
 `;
 
 export const Wrapper = styled.div`

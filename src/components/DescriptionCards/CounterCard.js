@@ -67,7 +67,7 @@ const CounterCard = ({
   const [rightSquad, setRightSquad] = useState(defaultSquad);
   const [zetaData, setZetaData] = useState();
   const [isOpen, setIsOpen] = useToggle(false);
-  const { authenticated, user } = useContext(AuthContext);
+  const { authenticated, isRestricted, user } = useContext(AuthContext);
 
   const {
     counterSquadId,
@@ -214,7 +214,7 @@ const CounterCard = ({
       }
       <EditMenu>
         {/* only users that have signed in, are active patrons, and have a allyCode can update counters */}
-        {authenticated && user.patronStatus === 'active_patron' && user.username && <p><Button className="p-0 m-0" size="sm" color="link" onClick={() => setIsOpen(true)}><small>edit counter</small></Button></p>}
+        {!isRestricted && user.username && <p><Button className="p-0 m-0" size="sm" color="link" onClick={() => setIsOpen(true)}><small>edit counter</small></Button></p>}
         {/* TODO: make the date a link that goes to a History page for the counter */}
         <p><small>updated on: {format(new Date(counter.createdOn), 'MMM d, yyyy')}</small></p>
         {/* TODO: make the username a link that goes to a page for the user */}

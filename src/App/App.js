@@ -24,6 +24,7 @@ import { AuthContext } from 'src/contexts/userContext';
 import './App.scss';
 
 const Account = lazy(() => import('src/components/Account/Account'));
+const Login = lazy(() => import('src/components/Account/Login'));
 const CountersPage = lazy(() => import('src/components/CountersPage/CountersPage'));
 const NotFound = lazy(() => import('src/components/NotFound/NotFound'));
 const SubmissionForm = lazy(() => import('src/components/SubmissionForm/SubmissionForm'));
@@ -43,8 +44,12 @@ const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 
 // TODO: create an FAQ in github and link in header
 // TODO: do an addCounter and addSquad check on the server-side, to eliminate duplicates
+// TODO: remove any useEffects that request the squadmembers of leftSquadStub since
+//  it's now that info is coming in the squadStub call
+// TODO: add a way to lock any videos that i put on the site from being delete by other users
+// TODO: possible make my videos a different color, make the the first video shown
 function App() {
-  const [characters, setCharacters] = useState([]); // eslint-disable-line no-unused-vars
+  const [characters, setCharacters] = useState([]);
   const [squads, setSquads] = useState([]); // eslint-disable-line no-unused-vars
   const [view, setView] = useState('normal');
   const { loading } = useContext(AuthContext);
@@ -64,14 +69,15 @@ function App() {
       const results = await getAllCharacters().catch(e => console.error('getAllCharacters', e));
       if (results && !_.isEqual(results, storedCharacters)) {
         setCharacters(results);
-        sessionStorage.setItem('characters', JSON.stringify(results));
+        return sessionStorage.setItem('characters', JSON.stringify(results));
       }
       if (!results && storedCharacters) {
         // if get all characters fails, this route will update the state
         // so the rest of the app may not fail if the user still has data
         // in session storage
-        setCharacters(storedCharacters);
+        return setCharacters(storedCharacters);
       }
+      return setCharacters(results);
     }
 
     ReactGA.pageview(window.location.pathname);
@@ -101,6 +107,7 @@ function App() {
                   <Route exact path="/" render={props => (
                     <CountersPage
                       {...props}
+                      characters={characters}
                       handleViewBtn={handleViewBtn}
                       reload={reload}
                       size={'5v5'}
@@ -111,6 +118,7 @@ function App() {
                   <Route exact path="/3v3" render={props => (
                     <CountersPage
                       {...props}
+                      characters={characters}
                       handleViewBtn={handleViewBtn}
                       reload={reload}
                       size={'3v3'}
@@ -119,6 +127,8 @@ function App() {
                   )}/>
 
                   <Route exact path="/submit" component={ SubmissionForm } />
+
+                  <Route exact path="/login" component={ Login } />
 
                   <PrivateRoute
                     exact path="/account"

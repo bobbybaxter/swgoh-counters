@@ -65,7 +65,6 @@ export default function ModalAddSquad({
   reload,
   size,
   toggle,
-  // user,
   view,
   ...props
 }) {

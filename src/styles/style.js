@@ -118,3 +118,39 @@ export const EditMenu = styled.div`
     margin: 0 !important;
   }
 `;
+
+export const LeftDivSquad = styled(CounterRow)`
+  justify-content: center;
+  padding: .5rem;
+  border-right: 1px solid #343a40;
+  border-bottom: 1px solid #343a40;
+`;
+
+export const NewSquadChar = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  word-break: break-word;
+`;
+
+export const SquadTitle = styled.h6`
+  font-size: .8rem;
+  font-weight: 400;
+  margin: 0;
+
+  @media only screen and (min-width:768px) {
+    font-size: .9rem;
+    font-weight: 400;
+  }
+
+  @media only screen and (min-width:992px) {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  @media only screen and (min-width:1200px) {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+`;
