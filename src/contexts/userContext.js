@@ -21,6 +21,7 @@ export const AuthContext = React.createContext();
 
 export function AuthProvider({ children }) {
   const [authenticated, setAuthenticated] = useState(false);
+  const [isRestricted, setIsRestricted] = useState(true);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(defaultUser);
 
@@ -43,6 +44,9 @@ export function AuthProvider({ children }) {
         const res = await getUserByFirebaseAuthUid(userToValidate.id);
         if (!_.isEmpty(res)) {
           setUserInfo(res);
+          if (res.patronStatus === 'active_patron') {
+            setIsRestricted(false);
+          }
           return console.info(`Firebase user ${res.email} validated`);
         }
         console.info('No Firebase user found in DB');
@@ -66,6 +70,7 @@ export function AuthProvider({ children }) {
         setAuthenticated(true);
         setLoading(false);
       } else {
+        setIsRestricted(true);
         setAuthenticated(false);
         setLoading(false);
       }
@@ -116,6 +121,7 @@ export function AuthProvider({ children }) {
   return (
     <AuthContext.Provider value={{
       authenticated,
+      isRestricted,
       loading,
       user,
       handleAllyCode,

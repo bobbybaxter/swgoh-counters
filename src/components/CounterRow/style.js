@@ -26,23 +26,23 @@ export const Divider = styled.div`
   }
 `;
 
-export const LeftDiv = styled(CounterRow)`
-justify-content: center;
-border-bottom: 1px solid #343a40;
+export const LeftDiv = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  // box-shadow: inset 4px 4px 15px rgba(255, 255, 255, 0.1), inset -4px -4px 15px rgba(255, 255, 255, 0.1);
+  justify-content: center;
+  border-bottom: 1px solid #343a40;
 `;
 
 export const RightDiv = styled(CounterRow)`
-border-left: 1px solid #343a40;
-border-bottom: 1px solid #343a40;
+  border-left: 1px solid #343a40;
+  border-bottom: 1px solid #343a40;
 `;
 
 export const RightDivWrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
-`;
-
-export const SquadTitle = styled.h6`
-  font-size: .8rem;
-  font-weight: 400;
-  margin: 0;
 `;

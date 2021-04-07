@@ -6,18 +6,18 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import LazyLoad from 'react-lazyload';
 
-import { getImage, useToggle } from 'src/helpers';
+import { useToggle } from 'src/helpers';
 import { getCounterStubsBySquadId } from 'src/helpers/data';
 import { IDBService } from 'src/setup/IndexedDB';
 import { CounterCard } from 'src/styles/style';
 
-import ToonImg from 'src/components/shared/ToonImg';
+import { MiniSquadView, PatreonRowButton, ToonImg } from 'src/components/shared';
 
 import { AuthContext } from 'src/contexts/userContext';
 import { AccordionContext } from 'src/contexts/accordionContext';
 import CounterRowDescription from './CounterRowDescription';
 import {
-  CounterRowWrapper, Divider, LeftDiv, RightDiv, RightDivWrapper, SquadTitle,
+  CounterRowWrapper, Divider, RightDiv, RightDivWrapper,
 } from './style';
 
 const CounterRowSquad = lazy(() => import('./CounterRowSquad'));
@@ -41,7 +41,7 @@ const CounterRow = ({
 
   const [counterStubs, setCounterStubs] = useState();
   const [isOpen, setIsOpen] = useToggle(false);
-  const { authenticated, user } = useContext(AuthContext);
+  const { isRestricted } = useContext(AuthContext);
   const { toggleCollapse } = useContext(AccordionContext);
 
   const counterStubId = `${size}_${view}_${leftSquadStub.id}`;
@@ -111,11 +111,16 @@ const CounterRow = ({
     };
   }, [counterStubId, leftSquadStub, leftSquadStub.id, leftSquadStub.latestCounterVersion, size, view]);
 
-  const toggle = (e) => { toggleCollapse(e.target.id); };
+  const toggle = e => toggleCollapse(e.currentTarget.id);
   const hardCounters = !_.isEmpty(counterStubs) ? counterStubs.rightSquadStubs.filter(x => x.isHardCounter) : [];
+  const hardCountersToDisplay = !isRestricted
+    ? hardCounters
+    : hardCounters && _.uniqBy(hardCounters, 'toon1Id');
   const softCounters = !_.isEmpty(counterStubs) ? counterStubs.rightSquadStubs.filter(x => !x.isHardCounter) : [];
+  const softCountersToDisplay = !isRestricted ? softCounters : [];
+  const restrictedCountersCount = (softCounters.length - softCountersToDisplay.length) + (hardCounters.length - hardCountersToDisplay.length);
 
-  const divider = hardCounters.length > 0 && softCounters.length > 0 && <Divider/>;
+  const divider = hardCounters.length > 0 && softCountersToDisplay.length > 0 && <Divider/>;
 
   const buildCounters = (squads, type) => squads
     .map(squad => <Suspense key={`${view}_${size}_${squad.counterId}_row`} fallback={null}>
@@ -142,40 +147,29 @@ const CounterRow = ({
 
   return (
     <CounterRowWrapper>
-      <div className="d-flex flex-row">
-
-        {/* Left Side Squad Div */}
-        <LeftDiv className="col-3">
-          <div>
-            <ToonImg
-              alt={leftSquadStub.name}
-              id={leftSquadStub.id}
-              onClick={toggle}
-              src={getImage(leftSquadStub.toon1Id)}
-              title={leftSquadStub.name}
-            />
-            <SquadTitle>{leftSquadStub.name}</SquadTitle>
-          </div>
-        </LeftDiv>
-
-        {/* Right Side Counter Div */}
-        <RightDiv className="col-9">
+      <div className="d-flex flex-column">
+        <RightDiv className="pt-0">
+          <MiniSquadView
+            leftSquadStub={leftSquadStub}
+            size={size}
+            toggle={toggle}
+          />
           <RightDivWrapper>
-            {hardCounters ? buildCounters(hardCounters, 'hard') : []}
+            {hardCountersToDisplay ? buildCounters(hardCountersToDisplay, 'hard') : []}
             {divider}
-            {softCounters ? buildCounters(softCounters, 'soft') : []}
-            {authenticated && user.patronStatus === 'active_patron' && user.allyCode && view === 'normal'
+            {softCountersToDisplay ? buildCounters(softCountersToDisplay, 'soft') : []}
+            {isRestricted && restrictedCountersCount > 0 && <PatreonRowButton amount={restrictedCountersCount}/>}
+            {!isRestricted
+              && view === 'normal'
               ? <>
                   <CounterCard key={`addCounterButton_${counterStubId}`}>
-                    {/* <Suspense fallback={null}> */}
-                      <ToonImg
-                        alt="Add a new counter"
-                        id={`addCounterButton_${counterStubId}`}
-                        onClick={() => setIsOpen(true)}
-                        src={require('../../assets/Plus.png')}
-                        title="Add a new counter"
-                      />
-                    {/* </Suspense> */}
+                    <ToonImg
+                      alt="Add a new counter"
+                      id={`addCounterButton_${counterStubId}`}
+                      onClick={() => setIsOpen(true)}
+                      src={require('../../assets/Plus.png')}
+                      title="Add a new counter"
+                    />
                   </CounterCard>
                   {isOpen && (
                     <Suspense fallback={null}>
@@ -198,8 +192,8 @@ const CounterRow = ({
       </div>
 
       {/* Collapsable Opponent Card */}
-      {
-        view === 'normal' && <div>
+      {view === 'normal' && (
+        <div>
           <Suspense fallback={<div>Loading...</div>}>
             <OpponentCard
               leftSquadStub={leftSquadStub}
@@ -208,7 +202,7 @@ const CounterRow = ({
             />
           </Suspense>
         </div>
-      }
+      )}
 
       {/* Collapsable Description Card */}
       <div>

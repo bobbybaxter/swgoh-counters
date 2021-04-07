@@ -1,7 +1,7 @@
 import React, {
   memo, useContext, useEffect, useState,
 } from 'react';
-import { Button } from 'reactstrap';
+import { Button, UncontrolledAlert } from 'reactstrap';
 import LazyLoad from 'react-lazyload';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -9,13 +9,14 @@ import _ from 'lodash';
 import AdsenseAd from 'src/components/AdsenseAd/AdsenseAd';
 import BlankCounterRow from 'src/components/CounterRow/BlankCounterRow';
 import CounterRow from 'src/components/CounterRow/CounterRow';
-import MetaTags from 'src/components/shared/MetaTags';
-import PatreonButton from 'src/components/shared/PatreonButton';
+import {
+  MetaTags, PatreonButton, PatreonReverseButton, ToonImg,
+} from 'src/components/shared';
 
-import { ContainerColumn } from 'src/styles/style';
+import { ContainerColumn, LeftDivSquad, SquadTitle } from 'src/styles/style';
 import { getSquadStubs } from 'src/helpers/data';
 
-import { usePrevious } from 'src/helpers';
+import { getImage, usePrevious } from 'src/helpers';
 import { AuthContext } from 'src/contexts/userContext';
 import ColorIndicator from './ColorIndicator';
 import { CountersPageWrapper } from './style';
@@ -23,6 +24,7 @@ import { CountersPageWrapper } from './style';
 const isSnap = navigator.userAgent === 'ReactSnap';
 
 const CountersPage = ({
+  characters,
   handleViewBtn,
   reload,
   size,
@@ -30,6 +32,7 @@ const CountersPage = ({
   ...props
 }) => {
   CountersPage.propTypes = {
+    characters: PropTypes.array,
     handleViewBtn: PropTypes.func,
     reload: PropTypes.func,
     size: PropTypes.string,
@@ -38,7 +41,7 @@ const CountersPage = ({
 
   const [stubsNormal, setStubsNormal] = useState();
   const [stubsReverse, setStubsReverse] = useState();
-  const { authenticated, user } = useContext(AuthContext);
+  const { isRestricted, user } = useContext(AuthContext);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -69,27 +72,54 @@ const CountersPage = ({
   const selectedStubs = view === 'normal' ? stubsNormal : stubsReverse;
   const toggleAd = adSlot => (!isSnap && <AdsenseAd adSlot={adSlot}/>);
 
+  const leaders = selectedStubs && _.uniq(selectedStubs.map(x => x.toon1Id));
+
   const inFeedAdSlots = ['8612137902', '2722706345', '7380422067'];
-  const amountOfAds = selectedStubs && Math.round(selectedStubs.length / 50);
-  const randomAdRows = selectedStubs && _.sampleSize(_.range(1, selectedStubs.length), amountOfAds);
+  const amountOfAds = leaders && Math.round(leaders.length / 15);
+  const randomAdRows = leaders && _.sampleSize(_.range(1, leaders.length), amountOfAds);
   const prevSize = usePrevious(size);
   const buildCounterRows = prevSize === size
     && selectedStubs
     && selectedStubs.length
-    && selectedStubs.map((stub, index) => {
-      const isAdRow = randomAdRows.includes(index);
-      return (
+    && selectedStubs && leaders.map((id, index) => {
+    const isAdRow = randomAdRows.includes(index);
+    const leader = characters.find(x => x.id === id);
+    const buildRows = selectedStubs
+      .filter(x => x.toon1Id === id)
+      .map(stub => (
         <LazyLoad once key={`CounterRow_${view}_${size}_${stub.id}`} placeholder={null}>
-          {!patreonId && isAdRow && toggleAd(_.sample(inFeedAdSlots))}
           <CounterRow
             leftSquadStub={stub}
+            key={`CounterRow_${view}_${size}_${stub.id}`}
             size={size}
             reload={reload}
             view={view}
           />
         </LazyLoad>
-      );
-    });
+      ));
+    return (
+      leader
+      && <div key={`leaderRow_${id}`}>
+        <div className="d-flex flex-row">
+            <LeftDivSquad id={`leaderRow_${id}`} className="col-3">
+          <div className="d-flex flex-column align-items-center">
+              <ToonImg
+                alt={leader.name}
+                id={id}
+                src={getImage(id)}
+                title={leader.name}
+              />
+              <SquadTitle>{leader.name}</SquadTitle>
+          </div>
+            </LeftDivSquad>
+          <div className="p-0 col-9">
+            {buildRows}
+          </div>
+        </div>
+        {!patreonId && isAdRow && toggleAd(_.sample(inFeedAdSlots))}
+      </div>
+    );
+  });
 
   return (
     <ContainerColumn>
@@ -99,6 +129,21 @@ const CountersPage = ({
       />
 
       <CountersPageWrapper>
+        {!patreonId && (
+          <UncontrolledAlert color="warning" className="text-left">
+            <small>
+              Since our February update, SWGOH Counters has grown from around 400 counters to over 2000,
+              and receives over 75k users a month!  Although this growth is wonderful, it has brought hefty data
+              costs that will soon double the current income received through Adsense and Patreon.<br/><br/>
+
+              To keep the site alive, some content restrictions have been enabled for users that aren't active Patrons.
+              Specific details will be provided on Discord (link in the bar above).<br/><br/>
+
+              Please consider supporting us on Patreon!  At the moment, for $1 per month you'll gain full access to the site.
+              With enough of your support, we'll be able to keep the bones of this resource still useful for free members.
+            </small>
+          </UncontrolledAlert>
+        )}
         {!patreonId && <PatreonButton/>}
         {!patreonId && toggleAd('2779553573')}
 
@@ -109,9 +154,14 @@ const CountersPage = ({
           <div className="col-7 d-flex justify-content-center align-items-center">
             <h1 className="mb-0">{view === 'normal' ? `${size} Counters` : `${size} Opponents`}</h1>
           </div>
-          <Button className="btn-sm col-2 reverseCounterButton" color="warning" onClick={handleViewBtn}>
-            {view === 'normal' ? 'Normal View' : 'Reverse View'}
-          </Button>
+          {!isRestricted
+            ? <Button className="btn-sm col-2 reverseCounterButton" color="warning" onClick={handleViewBtn}>
+                {view === 'normal' ? 'Normal View' : 'Reverse View'}
+              </Button>
+            : <PatreonReverseButton href="https://patreon.com/saiastrange">
+                Reverse View for Patrons
+              </PatreonReverseButton>
+          }
         </div>
         <div>
         <small className="m-0 p-0 text-secondary">
@@ -123,9 +173,8 @@ const CountersPage = ({
             </small>
         </div>
         <div>
-          {authenticated
-          && user.patronStatus === 'active_patron'
-          && user.username
+          {!isRestricted
+          && user.allyCode
           && view === 'normal'
           && <BlankCounterRow
             reload={reload}

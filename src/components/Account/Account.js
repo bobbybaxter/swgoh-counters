@@ -97,12 +97,15 @@ export default function Account() {
   };
 
   const togglePatreonButton = !user.patreonId
-    ? <Button className="btn-sm" href={patreonLink}>
+    ? <div className="d-flex flex-column">
+        <Button className="btn-sm" href={patreonLink}>
           Link Patreon
         </Button>
+        <small>Patreon email must match login email</small>
+      </div>
     : <Button className="btn-sm" onClick={handleUnlinkPatreonAccount}>
-          Unlink Patreon
-        </Button>;
+        Unlink Patreon
+      </Button>;
 
   return (
     <ContainerColumn className="Account">

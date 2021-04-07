@@ -6,8 +6,9 @@ import ModalPortal from 'src/components/ModalPortal/ModalPortal';
 import ToonImg from 'src/components/shared/ToonImg';
 import { useToggle } from 'src/helpers';
 
+import { LeftDivSquad, SquadTitle } from 'src/styles/style';
 import {
-  CounterRowWrapper, LeftDiv, RightDiv, RightDivWrapper, SquadTitle,
+  CounterRowWrapper, RightDiv, RightDivWrapper,
 } from './style';
 
 
@@ -29,7 +30,7 @@ export default function BlankCounterRow({
       <div className="d-flex flex-row">
 
         {/* Left Side Squad Div */}
-        <LeftDiv className="col-3">
+        <LeftDivSquad className="col-3">
           <div>
             <ToonImg
               alt="Add a new opponent"
@@ -51,7 +52,7 @@ export default function BlankCounterRow({
               />
             </ModalPortal>
           )}
-        </LeftDiv>
+        </LeftDivSquad>
 
         {/* Right Side Counter Div */}
         <RightDiv className="col-9">

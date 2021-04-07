@@ -19,12 +19,13 @@ export default function CounterRowSquad({
 
   return <CounterCard key={squad.counterId}>
       <ToonImg
-        id={squad.counterId}
+        alt={squad.name}
         color={color}
+        id={squad.counterId}
+        isClickable
         onClick={toggle}
         src={ getImage(squad.toon1Id) }
         title={squad.name}
-        alt={squad.name}
       />
     </CounterCard>;
 }
