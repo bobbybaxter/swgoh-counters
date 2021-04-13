@@ -1,18 +1,32 @@
 module.exports = ({ firebaseDb }) => async ({
   id,
+  accessToken,
   allyCode,
   email,
+  expiresIn,
+  guildId,
+  guildName,
   patreonId,
   patronStatus,
+  refreshToken,
+  tier,
   username,
 }) => {
-  firebaseDb.ref(`users/${id}`).update({
-    allyCode,
-    email,
-    patreonId,
-    patronStatus,
-    username,
-  });
+  if (id) {
+    firebaseDb.ref(`users/${id}`).update({
+      accessToken,
+      allyCode,
+      email,
+      expiresIn,
+      guildId,
+      guildName,
+      patreonId,
+      patronStatus,
+      refreshToken,
+      tier,
+      username,
+    });
+  }
 
   return 'ok';
 };

@@ -1,10 +1,18 @@
 module.exports = ({ firebaseDb }) => async (user) => {
-  firebaseDb.ref(`users/${user.id}`).set({
-    email: user.email,
-    allyCode: '',
-    patreonId: '',
-    patronStatus: '',
-    username: '',
-  });
+  if (user.id) {
+    firebaseDb.ref(`users/${user.id}`).set({
+      allyCode: '',
+      accessToken: '',
+      email: user.email,
+      expiresIn: '',
+      guildId: '',
+      guildName: '',
+      patreonId: '',
+      patronStatus: '',
+      refreshToken: '',
+      tier: '',
+      username: '',
+    });
+  }
   return user;
 };

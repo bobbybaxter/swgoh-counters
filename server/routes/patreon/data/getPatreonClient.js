@@ -32,12 +32,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 module.exports = app => async (accessToken) => {
   let store = new _jsonapiDatastore.JsonApiDataStore();
 
-  const makeRequest = (requestSpec) => {
+  const makeRequest = ({ method, path }) => {
     // const normalizedRequest = (0, _utils.normalizeRequest)(requestSpec);
     // EDIT: fixed the url issue
+    const encodedPath = encodeURI(path);
     const normalizedRequest = {
-      url: `https://www.patreon.com/api/oauth2${requestSpec}`,
-      method: 'GET',
+      url: `https://www.patreon.com/api/oauth2${encodedPath}`,
+      method,
     };
     const { url } = normalizedRequest;
     const options = _extends({}, normalizedRequest, {
@@ -55,12 +56,8 @@ module.exports = app => async (accessToken) => {
         return (0, _utils.checkStatus)(response);
       })
       .then(_utils.getJson)
-      .then((rawJson) => {
-        store.sync(rawJson);
-        return { store, rawJson, response: _response };
-      })
+      .then(rawJson => ({ store, rawJson, response: _response }))
       .catch(error => console.error(error.status, error.statusText, error.url));
-    // .catch(error => console.error({ error, response: _response }));
   };
 
   makeRequest.getStore = () => store;

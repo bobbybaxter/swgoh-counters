@@ -1,6 +1,23 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+export async function createGuild(guild) {
+  const token = await firebase.auth().currentUser.getIdToken(true);
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/guild`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(guild),
+    });
+    return await response.json();
+  } catch (err) {
+    throw err;
+  }
+}
+
 export async function createUser(user) {
   const token = await firebase.auth().currentUser.getIdToken(true);
   try {
@@ -11,6 +28,37 @@ export async function createUser(user) {
         authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(user),
+    });
+    return await response.json();
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function deleteGuild(guildId) {
+  const token = await firebase.auth().currentUser.getIdToken(true);
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/guild/${guildId}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    return await response.text();
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function getGuildById(id) {
+  const token = await firebase.auth().currentUser.getIdToken(true);
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/guild/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+      },
     });
     return await response.json();
   } catch (err) {
@@ -34,8 +82,42 @@ export async function getUserByFirebaseAuthUid(firebaseAuthUid) {
   }
 }
 
+export async function updateGuild(guild) {
+  const token = await firebase.auth().currentUser.getIdToken(true);
+  const formattedGuild = {
+    ...guild,
+    guildTierUsers: guild.guildTierUsers.toString(),
+  };
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/guild`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(formattedGuild),
+    });
+    return await response.text();
+  } catch (err) {
+    throw err;
+  }
+}
+
 export async function updateUserInfo(user) {
   const token = await firebase.auth().currentUser.getIdToken(true);
+  const {
+    accessToken,
+    allyCode,
+    email,
+    expiresIn,
+    guildId,
+    guildName,
+    patreonId,
+    patronStatus,
+    refreshToken,
+    tier,
+    username,
+  } = user;
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/firebase/${user.id}`, {
       method: 'PATCH',
@@ -44,11 +126,17 @@ export async function updateUserInfo(user) {
         authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        allyCode: user.allyCode,
-        email: user.email,
-        patreonId: user.patreonId,
-        patronStatus: user.patronStatus,
-        username: user.username,
+        accessToken,
+        allyCode,
+        email,
+        expiresIn,
+        guildId,
+        guildName,
+        patreonId,
+        patronStatus,
+        refreshToken,
+        tier,
+        username,
       }),
     });
     return await response.text();
@@ -59,6 +147,13 @@ export async function updateUserInfo(user) {
 
 export async function unlinkPatreonAccount(user) {
   const token = await firebase.auth().currentUser.getIdToken(true);
+  const {
+    allyCode,
+    email,
+    guildId,
+    guildName,
+    username,
+  } = user;
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/firebase/${user.id}`, {
       method: 'PATCH',
@@ -67,11 +162,17 @@ export async function unlinkPatreonAccount(user) {
         authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        allyCode: user.allyCode,
-        email: user.email,
+        accessToken: '',
+        allyCode,
+        email,
+        expiresIn: '',
+        guildId,
+        guildName,
         patreonId: '',
         patronStatus: '',
-        username: user.username,
+        refreshToken: '',
+        tier: '',
+        username,
       }),
     });
     return await response.text();

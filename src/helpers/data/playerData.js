@@ -10,6 +10,6 @@ export default async function getPlayerData(allyCode) {
 
     return await response.json();
   } catch (err) {
-    throw new Error(err);
+    throw err;
   }
 }

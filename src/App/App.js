@@ -24,6 +24,7 @@ import { AuthContext } from 'src/contexts/userContext';
 import './App.scss';
 
 const Account = lazy(() => import('src/components/Account/Account'));
+const PatreonLink = lazy(() => import('src/components/PatreonLink/PatreonLink'));
 const Login = lazy(() => import('src/components/Account/Login'));
 const CountersPage = lazy(() => import('src/components/CountersPage/CountersPage'));
 const NotFound = lazy(() => import('src/components/NotFound/NotFound'));
@@ -42,12 +43,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
 const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 
-// TODO: create an FAQ in github and link in header
 // TODO: do an addCounter and addSquad check on the server-side, to eliminate duplicates
 // TODO: remove any useEffects that request the squadmembers of leftSquadStub since
 //  it's now that info is coming in the squadStub call
 // TODO: add a way to lock any videos that i put on the site from being delete by other users
-// TODO: possible make my videos a different color, make the the first video shown
+// TODO: possibly make my videos a different color, make the the first video shown
+// TODO: fix the opponent page dropdown bug
 function App() {
   const [characters, setCharacters] = useState([]);
   const [squads, setSquads] = useState([]); // eslint-disable-line no-unused-vars
@@ -129,6 +130,8 @@ function App() {
                   <Route exact path="/submit" component={ SubmissionForm } />
 
                   <Route exact path="/login" component={ Login } />
+
+                  <Route exact path="/patreonLink" component={ PatreonLink } />
 
                   <PrivateRoute
                     exact path="/account"

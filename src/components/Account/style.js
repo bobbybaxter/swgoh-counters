@@ -12,10 +12,12 @@ export const AccountButtonsWrapper = styled.div`
 export const AccountHeaderCenter = styled.div`
   justify-content: center;
   align-items: center;
-  text-align: center;
+  text-align: left;
+  // text-align: center;
   }
 `;
 export const AccountHeaderLeft = styled.div`
+  text-align: left;
   padding: 0;
   td {
     padding: 0 1rem 0 0;

@@ -41,7 +41,7 @@ const CounterRow = ({
 
   const [counterStubs, setCounterStubs] = useState();
   const [isOpen, setIsOpen] = useToggle(false);
-  const { isRestricted } = useContext(AuthContext);
+  const { isActivePatron, isRestricted } = useContext(AuthContext);
   const { toggleCollapse } = useContext(AccordionContext);
 
   const counterStubId = `${size}_${view}_${leftSquadStub.id}`;
@@ -159,7 +159,7 @@ const CounterRow = ({
             {divider}
             {softCountersToDisplay ? buildCounters(softCountersToDisplay, 'soft') : []}
             {isRestricted && restrictedCountersCount > 0 && <PatreonRowButton amount={restrictedCountersCount}/>}
-            {!isRestricted
+            {isActivePatron
               && view === 'normal'
               ? <>
                   <CounterCard key={`addCounterButton_${counterStubId}`}>

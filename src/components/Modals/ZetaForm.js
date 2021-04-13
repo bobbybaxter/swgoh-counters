@@ -10,7 +10,6 @@ export const FormZetaReq = styled(FormGroup)`
 `;
 
 export const Wrapper = styled.div`
-  // border-bottom: 1px solid #343a40;
   border-top: 1px solid #343a40;
   padding-top: 1rem;
 `;
