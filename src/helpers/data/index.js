@@ -15,8 +15,12 @@ export {
 export { default as firebaseConnection } from './firebaseConnection';
 
 export {
+  createGuild,
   createUser,
+  deleteGuild,
+  getGuildById,
   getUserByFirebaseAuthUid,
+  updateGuild,
   updateUserInfo,
   unlinkPatreonAccount,
 } from './firebaseData';
@@ -36,3 +40,7 @@ export {
   deleteVideoLink,
   updateVideoLink,
 } from './videoLinkData';
+
+export {
+  getPatreonStatus,
+} from './patreonData';

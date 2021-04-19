@@ -32,29 +32,6 @@ const MyNavbar = () => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  // const handleNavLogin = (e) => {
-  // e.preventDefault();
-
-  // const uiConfig = {
-  //   signInFlow: 'redirect',
-  //   // signInSuccessUrl: '/account',
-  //   signInOptions: [
-  //     firebase.auth.EmailAuthProvider.PROVIDER_ID,
-  //     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-  //   ],
-  //   callbacks: {
-  //     signInSuccessWithAuthResult: () => false,
-  //   },
-  // };
-
-  // return <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />;
-  // // const provider = new firebase.auth.GoogleAuthProvider();
-  // // provider.setCustomParameters({
-  // //   prompt: 'select_account',
-  // // });
-  // // firebase.auth().signInWithRedirect(provider);
-  // };
-
   const handleNavLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem('userData');
@@ -73,7 +50,6 @@ const MyNavbar = () => {
     : (
       <NavItem>
         <NavLink tag={RRNavLink} exact to="/login">Login</NavLink>
-        {/* <NavLink href="#" onClick={handleNavLogin}>Login</NavLink> */}
       </NavItem>
     );
 
@@ -101,6 +77,9 @@ const MyNavbar = () => {
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/bobbybaxter/swgoh-counters/wiki">Wiki</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://github.com/bobbybaxter/swgoh-counters/wiki/Frequently-Asked-Questions-(FAQ)">FAQ</NavLink>
               </NavItem>
 
               <NavDivider />

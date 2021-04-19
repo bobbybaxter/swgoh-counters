@@ -7,8 +7,8 @@ module.exports = ({ database, log }) => (id) => {
   return new Promise((res, rej) => {
     database.query(sql, id, (error, results) => {
       if (error) { rej(error); }
-      if (!results || (results && !results.length)) { res([]); }
-      res(JSON.parse(JSON.stringify(results)));
+      if (!results || (results && !results.length)) { return res([]); }
+      return res(JSON.parse(JSON.stringify(results)));
     });
   }).catch((err) => {
     throw err;

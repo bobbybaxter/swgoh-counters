@@ -1,3 +1,4 @@
+// TODO: remove id from path, it can come in the payload
 module.exports = ({ data, server }) => ({
   method: 'PATCH',
   path: '/firebase/:id',
@@ -5,15 +6,31 @@ module.exports = ({ data, server }) => ({
   handler: async (request, reply) => {
     const { id } = request.params;
     const {
-      allyCode, email, patreonId, patronStatus, username,
+      accessToken,
+      allyCode,
+      email,
+      expiresIn,
+      guildId,
+      guildName,
+      patreonId,
+      patronStatus,
+      refreshToken,
+      tier,
+      username,
     } = request.body;
 
     const payload = {
       id,
+      accessToken,
       allyCode,
       email,
+      expiresIn,
+      guildId,
+      guildName,
       patreonId,
       patronStatus,
+      refreshToken,
+      tier,
       username,
     };
 
@@ -27,10 +44,16 @@ module.exports = ({ data, server }) => ({
     body: {
       type: 'object',
       properties: {
+        accessToken: { type: 'string' },
         allyCode: { type: 'string' },
         email: { type: 'string' },
+        expiresIn: { type: 'string' },
+        guildId: { type: 'string' },
+        guildName: { type: 'string' },
         patreonId: { type: 'string' },
         patronStatus: { type: 'string' },
+        refreshToken: { type: 'string' },
+        tier: { type: 'string' },
         username: { type: 'string' },
       },
     },

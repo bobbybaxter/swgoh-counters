@@ -6,11 +6,45 @@
   "private": true,
   "proxy": "http://127.0.0.1:5000",
   "scarfSettings.enabled": false,
+  "scripts": {
+    "start": "react-scripts start --ignore server",
+    "lint": "eslint . --fix",
+    "build": "react-scripts build",
+    "postbuild": "react-snap --disable-web-security",
+    "test": "NODE_ENV=test jest --verbose --coverage",
+    "test:watch": "nodemon --exec \"NODE_ENV=test jest --verbose\"",
+    "eject": "react-app-rewired eject",
+    "deploy": "yarn run build && gh-pages -d build",
+    "server": "LOG_LEVEL=debug nodemon server/index.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn start\"",
+    "dev:deploy": "yarn run build && aws s3 sync build/ s3://saiastrange.com",
+    "client:deploy": "yarn run build && aws s3 sync build/ s3://swgohcounters.com"
+  },
+  "skipThirdPartyRequests": true,
+  "reactSnap": {
+    "puppeteerArgs": [
+      "--disable-web-security"
+    ]
+  },
+  "eslintIgnore": [
+    "**/*.sql"
+  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "dependencies": {
     "@welldone-software/why-did-you-render": "^6.1.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
-    "concurrently": "^5.2.0",
     "date-fns": "^2.16.1",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
@@ -22,10 +56,10 @@
     "jquery": "^3.5.1",
     "lodash": "^4.17.20",
     "node-sass": "^4.0.0",
-    "nodemon": "^2.0.4",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-app-rewired": "^2.1.8",
     "react-dom": "^16.13.1",
     "react-firebaseui": "^4.1.0",
     "react-ga": "^2.7.0",
@@ -39,88 +73,14 @@
     "valid-url": "^1.0.9",
     "yarn": "^1.22.10"
   },
-  "scripts": {
-    "start": "react-scripts start --ignore server",
-    "lint": "eslint . --fix",
-    "build": "react-scripts build",
-    "postbuild": "react-snap --disable-web-security",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "yarn run build && gh-pages -d build",
-    "server": "LOG_LEVEL=debug nodemon server/index.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn start\"",
-    "client:deploy": "yarn run build && aws s3 sync build/ s3://swgohcounters.com"
-  },
-  "skipThirdPartyRequests": true,
-  "reactSnap": {
-    "puppeteerArgs": [
-      "--disable-web-security"
-    ]
-  },
-  "eslintIgnore": [
-    "**/*.sql"
-  ],
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": 12,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "extends": [
-      "airbnb-base",
-      "react-app"
-    ],
-    "globals": {
-      "document": true,
-      "window": true,
-      "allowTemplateLiterals": true
-    },
-    "settings": {
-      "import/resolver": {
-        "node": {
-          "paths": [
-            "./",
-            "./src",
-            "./server"
-          ]
-        }
-      }
-    },
-    "reportUnusedDisableDirectives": true,
-    "root": true,
-    "rules": {
-      "no-console": [
-        1,
-        {
-          "allow": [
-            "error",
-            "info",
-            "log"
-          ]
-        }
-      ],
-      "no-debugger": 1,
-      "class-methods-use-this": 0,
-      "linebreak-style": 0,
-      "global-require": "off"
-    }
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-react-jsx": "^7.13.12",
+    "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "concurrently": "^6.0.1",
+    "nodemon": "^2.0.7",
     "pino-pretty": "^4.0.0",
     "react-is": "^17.0.1",
     "react-snap": "^1.23.0"

@@ -19,7 +19,6 @@ const LeaderLockBtn = styled(Button)`
     box-shadow: none;
     cursor: initial !important;
     padding-top: 0;
-    // padding-bottom: 0;
 `;
 
 

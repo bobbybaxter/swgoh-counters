@@ -5,6 +5,7 @@ import { Button, UncontrolledAlert } from 'reactstrap';
 import LazyLoad from 'react-lazyload';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { useHistory } from 'react-router-dom';
 
 import AdsenseAd from 'src/components/AdsenseAd/AdsenseAd';
 import BlankCounterRow from 'src/components/CounterRow/BlankCounterRow';
@@ -41,7 +42,21 @@ const CountersPage = ({
 
   const [stubsNormal, setStubsNormal] = useState();
   const [stubsReverse, setStubsReverse] = useState();
-  const { isRestricted, user } = useContext(AuthContext);
+  const {
+    isActivePatron, isRestricted, user,
+  } = useContext(AuthContext);
+  const history = useHistory();
+
+  useEffect(() => {
+    function checkForRedirect() {
+      if (user && user.patreonId && !user.accessToken) {
+        history.push('/patreonLink');
+      }
+      return '';
+    }
+
+    checkForRedirect();
+  }, [history, user, user.accessToken, user.patreonId]);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -68,7 +83,6 @@ const CountersPage = ({
     };
   }, [size]);
 
-  const { patreonId } = user;
   const selectedStubs = view === 'normal' ? stubsNormal : stubsReverse;
   const toggleAd = adSlot => (!isSnap && <AdsenseAd adSlot={adSlot}/>);
 
@@ -116,7 +130,7 @@ const CountersPage = ({
             {buildRows}
           </div>
         </div>
-        {!patreonId && isAdRow && toggleAd(_.sample(inFeedAdSlots))}
+        {isRestricted && isAdRow && toggleAd(_.sample(inFeedAdSlots))}
       </div>
     );
   });
@@ -129,7 +143,12 @@ const CountersPage = ({
       />
 
       <CountersPageWrapper>
-        {!patreonId && (
+        {
+          <UncontrolledAlert color="info">
+            Want your entire guild to have access to Patron-level content?  Support us on Patreon at the Aurodium tier and you'll get it!
+          </UncontrolledAlert>
+        }
+        {/* {!isActivePatron && (
           <UncontrolledAlert color="warning" className="text-left">
             <small>
               Since our February update, SWGOH Counters has grown from around 400 counters to over 2000,
@@ -143,9 +162,9 @@ const CountersPage = ({
               With enough of your support, we'll be able to keep the bones of this resource still useful for free members.
             </small>
           </UncontrolledAlert>
-        )}
-        {!patreonId && <PatreonButton/>}
-        {!patreonId && toggleAd('2779553573')}
+        )} */}
+        {!isActivePatron && <PatreonButton />}
+        {isRestricted && toggleAd('2779553573')}
 
         <div className="columnTitles">
           <div className="col-3 d-flex justify-content-center align-items-center">
@@ -173,7 +192,7 @@ const CountersPage = ({
             </small>
         </div>
         <div>
-          {!isRestricted
+          {isActivePatron
           && user.allyCode
           && view === 'normal'
           && <BlankCounterRow
@@ -186,7 +205,7 @@ const CountersPage = ({
 
         <footer>
           <ColorIndicator />
-          {!patreonId && <PatreonButton/>}
+          {!isActivePatron && <PatreonButton />}
         </footer>
       </CountersPageWrapper>
     </ContainerColumn>

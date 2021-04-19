@@ -40,13 +40,13 @@ export default function AccountButtons({ clearAllyCode }) {
   return (
     <AccountButtonsWrapper>
       <RefreshElements>
-        {
+        {/* {
           user.username
             && <Button
                 className="btn-sm"
                 onClick={clearAllyCode}
             >Clear Ally Code</Button>
-        }
+        } */}
         {
           user.id === process.env.REACT_APP_ADMIN_ID
             && <Button

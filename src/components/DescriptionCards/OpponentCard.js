@@ -54,7 +54,7 @@ const OpponentCard = ({
 
   const [squad, setSquad] = useState(defaultSquad);
   const [isOpen, setIsOpen] = useToggle(false);
-  const { isRestricted, user } = useContext(AuthContext);
+  const { isActivePatron, user } = useContext(AuthContext);
   const { collapse } = useContext(AccordionContext);
 
   const { generalStrategy, description } = squad;
@@ -84,7 +84,7 @@ const OpponentCard = ({
         <EditMenu>
           {/* only users that have signed in, are active patrons,
           and have a allyCode can update counters */}
-          {!isRestricted && user.username && <p><Button className="p-0 m-0" size="sm" color="link" onClick={() => setIsOpen(true)}><small>edit squad</small></Button></p>}
+          {isActivePatron && user.username && <p><Button className="p-0 m-0" size="sm" color="link" onClick={() => setIsOpen(true)}><small>edit squad</small></Button></p>}
           {/* TODO: make the date a link that goes to a History page for the counter */}
           {squad.createdOn && <p><small>updated on: {format(new Date(squad.createdOn), 'MMM d, yyyy')}</small></p>}
           {/* TODO: make the username a link that goes to a page for the user */}

@@ -2,6 +2,7 @@ module.exports = app => async (server) => {
   server.register(require('./character')(app));
   server.register(require('./counter')(app));
   server.register(require('./firebase')(app));
+  server.register(require('./guild')(app));
   server.register(require('./import')(app));
   server.register(require('./patreon')(app));
   server.register(require('./squad')(app));
