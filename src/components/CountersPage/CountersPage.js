@@ -100,6 +100,7 @@ const CountersPage = ({
     const leader = characters.find(x => x.id === id);
     const buildRows = selectedStubs
       .filter(x => x.toon1Id === id)
+      .sort((a, b) => ((a.name > b.name) ? 1 : -1))
       .map(stub => (
         <LazyLoad once key={`CounterRow_${view}_${size}_${stub.id}`} placeholder={null}>
           <CounterRow
