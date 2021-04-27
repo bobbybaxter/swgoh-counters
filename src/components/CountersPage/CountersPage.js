@@ -146,24 +146,10 @@ const CountersPage = ({
       <CountersPageWrapper>
         {
           <UncontrolledAlert color="info">
-            Want your entire guild to have access to Patron-level content?  Support us on Patreon at the Aurodium tier and you'll get it!
+            Want your entire guild to have access to Patron-level content?
+            Support us on Patreon at the Aurodium tier and you'll get it!
           </UncontrolledAlert>
         }
-        {/* {!isActivePatron && (
-          <UncontrolledAlert color="warning" className="text-left">
-            <small>
-              Since our February update, SWGOH Counters has grown from around 400 counters to over 2000,
-              and receives over 75k users a month!  Although this growth is wonderful, it has brought hefty data
-              costs that will soon double the current income received through Adsense and Patreon.<br/><br/>
-
-              To keep the site alive, some content restrictions have been enabled for users that aren't active Patrons.
-              Specific details will be provided on Discord (link in the bar above).<br/><br/>
-
-              Please consider supporting us on Patreon!  At the moment, for $1 per month you'll gain full access to the site.
-              With enough of your support, we'll be able to keep the bones of this resource still useful for free members.
-            </small>
-          </UncontrolledAlert>
-        )} */}
         {!isActivePatron && <PatreonButton />}
         {isRestricted && toggleAd('2779553573')}
 

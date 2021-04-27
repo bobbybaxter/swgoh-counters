@@ -10,12 +10,12 @@ A companion app for the mobile game Star Wars: Galaxy of Heroes, which provides 
 **Patreon:** [https://patreon.com/saiastrange](https://patreon.com/saiastrange)
 
 ## Screenshots
-![image of star wars counters site](https://raw.githubusercontent.com/bobbybaxter/swgoh-counters/master/src/assets/screenshot2.png)
+![image of star wars counters site](https://raw.githubusercontent.com/bobbybaxter/swgoh-counters/master/src/assets/swgohcountersScreenshot.png)
 
 ## Installation Instructions
 - Clone down this repo
 - At the root of the project, run `npm install`
-- To create your own Google Sheets backend, visit [Sheety](https://sheety.co/) for instructions on prepping the spreadsheets and getting the URLs, then replace the URLs within the data files within `src/helpers/data/`
+- [DEPRECATED] To create your own Google Sheets backend, visit [Sheety](https://sheety.co/) for instructions on prepping the spreadsheets and getting the URLs, then replace the URLs within the data files within `src/helpers/data/`
   - note: visit my Google Sheet [here](https://docs.google.com/spreadsheets/d/1RVo7ej1PE06FKkwS1q5_slB9YLLQX3EF-dN98MkFmOM/edit#gid=1364839479) if you need help on the format
 
 ## How to Run
@@ -24,7 +24,7 @@ A companion app for the mobile game Star Wars: Galaxy of Heroes, which provides 
 ***Note**: if you want to make a production build of this project, type `npm run build`.  This will create a folder called build with all the minified code you need.*
 
 ## How to deploy
-Github Pages (I've currently moved away from this, but the functionality still works in this build):
+[DEPRECATED] Github Pages (I've currently moved away from this, but the functionality still works in this build):
 - In your terminal, type `npm run deploy`
   - this will build what is currently on your branch and post it to your `origin gh-pages` ref, then delete the build folder
 
@@ -39,6 +39,6 @@ Client:
   - if you don't have Versioning enabled on your S3 bucket, you may need to go into your AWS CloudFront Distribution and create an Invalidation to `/*` so you don't have to wait ~24 hours for CloudFront's CDNs to distribute the changes to your bucket.
 
 Server:
-- In your terminal, type `eb deploy`
+- In your terminal, while in your server folder, type `eb deploy`
   - this assumes you have installed the Elastic Beanstalk CLI and initialized it (`eb init`) and created an Elastic Beanstalk instance for the server to run on (use `eb help` for help).
   - this will deploy the latest commit
