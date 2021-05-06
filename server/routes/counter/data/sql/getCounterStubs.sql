@@ -14,6 +14,7 @@ FROM counter c
 JOIN counterVersion cv ON c.latestVersionId = cv.id
 JOIN squad s ON ?? = s.id
 JOIN squadVersion sv ON s.latestVersionId  = sv.id
+JOIN `character` ch on sv.toon1Id = ch.id
 WHERE ?? = ?
 AND cv.battleType = ?
-ORDER BY cv.createdOn DESC;
+ORDER BY ch.name, sv.name;
