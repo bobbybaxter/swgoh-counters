@@ -20,10 +20,6 @@ module.exports = ({ data }) => ({
     reply.type('application/json');
 
     if (!_.isEmpty(rightSquadStubs)) {
-      // REVIEW: we may want to change this back to date created/updated
-      //  we were previously sorting by date created/updated so the freshest
-      //  counters were at the front of the line
-      rightSquadStubs.sort((a, b) => ((a.toon1Id > b.toon1Id) ? 1 : -1));
       let counterVersion;
 
       if (rightSquadStubs.length > 1) {
