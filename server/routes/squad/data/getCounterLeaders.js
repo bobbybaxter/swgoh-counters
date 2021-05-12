@@ -2,12 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = ({ database, log }) => (type, size) => {
-  const sql = fs.readFileSync(path.join(__dirname, './sql/getStubs.sql')).toString();
-  const leftSideSquad = type === 'normal' ? 'opponentSquadId' : 'counterSquadId';
-  const rightSideSquad = type === 'normal' ? 'counterSquadId' : 'opponentSquadId';
+  const sql = fs.readFileSync(path.join(__dirname, './sql/getCounterLeaders.sql')).toString();
+  const squadSelector = type === 'normal' ? 'counterSquadId' : 'opponentSquadId';
   const variables = [
-    leftSideSquad,
-    rightSideSquad,
+    squadSelector,
     size,
   ];
 

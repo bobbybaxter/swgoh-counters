@@ -51,19 +51,21 @@ const defaultSquad = {
 const CounterCard = ({
   counter,
   counterStubs,
+  leftSquad,
   reload,
   size,
   view,
 }) => {
   CounterCard.propTypes = {
     counter: PropTypes.object,
-    counterStubs: PropTypes.object.isRequired,
+    counterStubs: PropTypes.array.isRequired,
+    leftSquad: PropTypes.object.isRequired,
     reload: PropTypes.func,
     size: PropTypes.string,
     view: PropTypes.string,
   };
 
-  const [leftSquad, setLeftSquad] = useState(defaultSquad);
+  // const [leftSquad, setLeftSquad] = useState(defaultSquad);
   const [rightSquad, setRightSquad] = useState(defaultSquad);
   const [zetaData, setZetaData] = useState();
   const [isOpen, setIsOpen] = useToggle(false);
@@ -85,9 +87,7 @@ const CounterCard = ({
   useEffect(() => {
     async function getSquad() {
       const squads = JSON.parse(sessionStorage.getItem('squads')) || [];
-      const matchedLeftSquad = squads.find(x => x.id === (view === 'normal' ? opponentSquadId : counterSquadId)) || defaultSquad;
       const matchedRightSquad = squads.find(x => x.id === (view === 'normal' ? counterSquadId : opponentSquadId)) || defaultSquad;
-      await setLeftSquad(matchedLeftSquad);
       await setRightSquad(matchedRightSquad);
     }
 
@@ -218,9 +218,9 @@ const CounterCard = ({
         {/* only users that have signed in, are active patrons, and have a allyCode can update counters */}
         {isActivePatron && user.username && <p><Button className="p-0 m-0" size="sm" color="link" onClick={() => setIsOpen(true)}><small>edit counter</small></Button></p>}
         {/* TODO: make the date a link that goes to a History page for the counter */}
-        <p><small>updated on: {format(new Date(counter.createdOn), 'MMM d, yyyy')}</small></p>
+        <p><small>updated on: {format(new Date(counter.counterCreatedOn), 'MMM d, yyyy')}</small></p>
         {/* TODO: make the username a link that goes to a page for the user */}
-        <p><small>by: {counter.createdByName}</small></p>
+        <p><small>by: {counter.counterCreatedByName}</small></p>
         {authenticated && user.id === process.env.REACT_APP_ADMIN_ID && <p><Button className="p-0 m-0" size="sm" color="link" onClick={handleDeleteCounter}><small>delete counter</small></Button></p>}
       </EditMenu>
     </BottomWrapper>
@@ -243,4 +243,4 @@ const CounterCard = ({
   );
 };
 
-export default memo(CounterCard);
+export default CounterCard;

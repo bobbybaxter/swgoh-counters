@@ -4,10 +4,14 @@ module.exports = ({ data }) => ({
   handler: async (request, reply) => {
     const normal = await data.getStubs('normal', request.params.size);
     const reverse = await data.getStubs('reverse', request.params.size);
+    const leadersNormal = await data.getCounterLeaders('normal', request.params.size);
+    const leadersReverse = await data.getCounterLeaders('reverse', request.params.size);
 
     const squadStubs = {
       normal,
       reverse,
+      leadersNormal,
+      leadersReverse,
     };
 
     reply
@@ -49,6 +53,24 @@ module.exports = ({ data }) => ({
                 toon4Id: { type: 'string' },
                 toon5Id: { type: 'string' },
                 latestCounterVersion: { type: 'string' },
+              },
+            },
+          },
+          leadersNormal: {
+            type: 'array',
+            items: {
+              properties: {
+                id: { type: 'string' },
+                name: { type: 'string' },
+              },
+            },
+          },
+          leadersReverse: {
+            type: 'array',
+            items: {
+              properties: {
+                id: { type: 'string' },
+                name: { type: 'string' },
               },
             },
           },
