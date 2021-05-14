@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   Button, Form, FormGroup, Input,
 } from 'reactstrap';

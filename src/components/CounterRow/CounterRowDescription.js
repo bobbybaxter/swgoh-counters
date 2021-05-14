@@ -1,86 +1,48 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { memo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Collapse } from 'reactstrap';
 
 import CounterCard from 'src/components/DescriptionCards/CounterCard';
 
-import { IDBService } from 'src/setup/IndexedDB';
-
-import { getCounterById } from 'src/helpers/data';
 import { CounterCardWrapper } from 'src/styles/style';
 import { AccordionContext } from 'src/contexts/accordionContext';
 
-export default function CounterRowDescription({
+const CounterRowDescription = ({
   counterStubs,
+  leftSquad,
   reload,
   rightSquadStub,
   size,
   view,
   ...props
-}) {
+}) => {
   CounterRowDescription.propTypes = {
-    counterStubs: PropTypes.object.isRequired,
+    counterStubs: PropTypes.array.isRequired,
+    leftSquad: PropTypes.object.isRequired,
     reload: PropTypes.func,
     rightSquadStub: PropTypes.object.isRequired,
     size: PropTypes.string.isRequired,
     view: PropTypes.string.isRequired,
   };
 
-  const [counter, setCounter] = useState();
   const { collapse } = useContext(AccordionContext);
 
-  const { counterId } = rightSquadStub;
-
-  useEffect(() => {
-    // abortController cleans up cancelled requests
-    const abortController = new AbortController();
-    const opts = { signal: abortController.signal };
-
-    async function getCounter() {
-      const storedCounter = await IDBService.get('counters', counterId);
-
-      const requestCounter = async () => {
-        try {
-          const result = await getCounterById(counterId, opts);
-          setCounter(result);
-          IDBService.put('counters', result);
-        } catch (e) {
-          if (!abortController.signal.aborted) {
-            console.error('getCounter aborted :>> ', e);
-          }
-        }
-      };
-
-      if (storedCounter && !abortController.signal.aborted) {
-        if (storedCounter.createdOn !== rightSquadStub.counterCreatedOn) {
-          await requestCounter();
-        } else {
-          setCounter(storedCounter);
-        }
-      }
-
-      if (!storedCounter) {
-        await requestCounter();
-      }
-    }
-
-    getCounter();
-    return () => {
-      abortController.abort();
-    };
-  }, [counterId, rightSquadStub.counterCreatedOn]);
+  const { id } = rightSquadStub;
 
   return (
-    <CounterCardWrapper key={counterId}>
-      <Collapse isOpen={counterId === collapse}>
-          {counter && <CounterCard
-            counter={counter}
-            counterStubs={counterStubs}
-            reload={reload}
-            size={size}
-            view={view}
-          />}
+    <CounterCardWrapper key={id}>
+      <Collapse isOpen={id === collapse}>
+        <CounterCard
+          counter={rightSquadStub}
+          counterStubs={counterStubs}
+          leftSquad={leftSquad}
+          reload={reload}
+          size={size}
+          view={view}
+        />
       </Collapse>
     </CounterCardWrapper>
   );
-}
+};
+
+export default CounterRowDescription;

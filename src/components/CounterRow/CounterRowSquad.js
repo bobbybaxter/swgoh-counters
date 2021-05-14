@@ -17,11 +17,11 @@ export default function CounterRowSquad({
 
   const color = type === 'hard' ? colors.hardCounter : colors.softCounter;
 
-  return <CounterCard key={squad.counterId}>
+  return <CounterCard key={squad.id}>
       <ToonImg
         alt={squad.name}
         color={color}
-        id={squad.counterId}
+        id={squad.id}
         isClickable
         onClick={toggle}
         src={ getImage(squad.toon1Id) }

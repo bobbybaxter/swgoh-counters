@@ -64,7 +64,7 @@ export default function ModalAddCounter({
   ...props
 }) {
   ModalAddCounter.propTypes = {
-    counterStubs: PropTypes.object.isRequired,
+    counterStubs: PropTypes.array.isRequired,
     isOpen: PropTypes.bool.isRequired,
     leftSquadStub: PropTypes.object,
     reload: PropTypes.func,
@@ -136,7 +136,7 @@ export default function ModalAddCounter({
 
     return {
       squadMatch: matchedSquad.name,
-      isNewCounter: !counterStubs.rightSquadStubs.find(x => x.id === matchedSquad.id),
+      isNewCounter: !counterStubs.find(x => x.counterSquadId === matchedSquad.id),
       isNewSquad: false,
       tempSquadInfo: {
         id: matchedSquad.id,

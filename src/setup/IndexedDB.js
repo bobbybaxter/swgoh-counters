@@ -4,7 +4,7 @@
 import { openDB } from 'idb';
 
 const DATABASE_NAME = 'swgoh_counters';
-const DATABASE_VERSION = 2;
+const DATABASE_VERSION = 3;
 
 /**
  * Initialize the IndexedDB.
@@ -23,9 +23,9 @@ const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
       case 1:
         await db.createObjectStore('counterStubs', { keyPath: 'id' }, { unique: true });
         await db.createObjectStore('counters', { keyPath: 'id' }, { unique: true });
-        // transaction.objectStore('counterStubs');
-        // store.createIndex('counterVersion', 'counterVersion');
-        // store.createIndex('rightSquadStubs', ['rightSquadStubs']);
+      case 2:
+        await transaction.objectStore('counterStubs').clear();
+        await transaction.objectStore('counters').clear();
     }
   },
 });

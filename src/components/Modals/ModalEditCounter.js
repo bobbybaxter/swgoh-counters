@@ -59,7 +59,7 @@ export default function ModalEditCounter({
   counter,
   counterStubs,
   isOpen,
-  leftSquad: leftSquadParam,
+  leftSquad,
   reload,
   rightSquad,
   size,
@@ -69,7 +69,7 @@ export default function ModalEditCounter({
 }) {
   ModalEditCounter.propTypes = {
     counter: PropTypes.object.isRequired,
-    counterStubs: PropTypes.object.isRequired,
+    counterStubs: PropTypes.array.isRequired,
     isOpen: PropTypes.bool.isRequired,
     leftSquad: PropTypes.object,
     reload: PropTypes.func,
@@ -88,7 +88,6 @@ export default function ModalEditCounter({
   const [doesTempMatchSource, setDoesTempMatchSource] = useState(false);
   const [isHardCounter, setIsHardCounter] = useState(counter.isHardCounter);
   const [isNewCounter, setIsNewCounter] = useState(true);
-  const [leftSquad] = useState(leftSquadParam);
   const [sourceSquad, setSourceSquad] = useState();
   const [strategy, setStrategy] = useState(counter.counterStrategy);
   const [squads] = useState(storedSquads);
@@ -100,7 +99,7 @@ export default function ModalEditCounter({
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    const squadToEdit = view === 'normal' ? { ...rightSquad } : { ...leftSquadParam };
+    const squadToEdit = view === 'normal' ? { ...rightSquad } : { ...leftSquad };
     const {
       generalStrategy,
       description,
@@ -179,7 +178,7 @@ export default function ModalEditCounter({
     }
 
     buildTempSquad();
-  }, [counter, leftSquadParam, rightSquad, view]);
+  }, [counter, leftSquad, rightSquad, view]);
 
   const checkIfVideoLinksAreValid = (updatedLinks) => {
     const isInvalid = updatedLinks.some(videoLink => !isWebUri(videoLink.link));
@@ -188,7 +187,7 @@ export default function ModalEditCounter({
 
   const checkExistingCounter = (squadId) => {
     let counterExists;
-    counterExists = !!counterStubs.rightSquadStubs.find(x => x.id === squadId);
+    counterExists = !!counterStubs.find(x => x.counterSquadId === squadId);
     if (squadId === rightSquad.id) {
       counterExists = false;
     }

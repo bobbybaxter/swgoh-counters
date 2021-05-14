@@ -1,14 +1,12 @@
 /* eslint-disable max-len */
 import React, {
-  lazy, memo, Suspense, useContext, useEffect, useState,
+  lazy, memo, Suspense, useContext,
 } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import LazyLoad from 'react-lazyload';
 
 import { useToggle } from 'src/helpers';
-import { getCounterStubsBySquadId } from 'src/helpers/data';
-import { IDBService } from 'src/setup/IndexedDB';
 import { CounterCard } from 'src/styles/style';
 
 import { MiniSquadView, PatreonRowButton, ToonImg } from 'src/components/shared';
@@ -26,131 +24,69 @@ const ModalAddCounter = lazy(() => import('src/components/Modals/ModalAddCounter
 const ModalPortal = lazy(() => import('src/components/ModalPortal/ModalPortal'));
 
 const CounterRow = ({
-  leftSquadStub,
+  anyExcludedLeaders,
+  counters,
+  leftSquad,
   reload,
   size,
   view,
   ...props
 }) => {
   CounterRow.propTypes = {
-    leftSquadStub: PropTypes.object.isRequired,
+    anyExcludedLeaders: PropTypes.bool.isRequired,
+    counters: PropTypes.array.isRequired,
+    leftSquad: PropTypes.object.isRequired,
     reload: PropTypes.func.isRequired,
     size: PropTypes.string.isRequired,
     view: PropTypes.string.isRequired,
   };
 
-  const [counterStubs, setCounterStubs] = useState();
   const [isOpen, setIsOpen] = useToggle(false);
   const { isActivePatron, isRestricted } = useContext(AuthContext);
   const { toggleCollapse } = useContext(AccordionContext);
 
-  const counterStubId = `${size}_${view}_${leftSquadStub.id}`;
-
-  useEffect(() => {
-    // abortController cleans up cancelled requests
-    const abortController = new AbortController();
-    const opts = { signal: abortController.signal };
-
-    async function getCounterStubs() {
-      const storedStubs = await IDBService.get('counterStubs', counterStubId) || {};
-
-      async function removeStaleStubs(counterStub) {
-        const { id, counterVersion, rightSquadStubs } = counterStub;
-        const staleStubs = rightSquadStubs.filter(x => x.counterCreatedOn > counterVersion);
-
-        if (staleStubs && staleStubs.length > 0) {
-          const freshStubs = rightSquadStubs.filter(x => x.counterCreatedOn <= counterVersion);
-          const counterStubToStore = {
-            id,
-            counterVersion,
-            rightSquadStubs: freshStubs,
-          };
-          IDBService.put('counterStubs', counterStubToStore);
-          return counterStubToStore;
-        }
-
-        return counterStub;
-      }
-
-      async function requestCounterStubs() {
-        try {
-          const stubs = await getCounterStubsBySquadId(leftSquadStub.id, view, size, opts);
-          setCounterStubs(stubs);
-          if (!_.isEmpty(stubs)) {
-            const objectToStore = {
-              id: counterStubId,
-              counterVersion: stubs.counterVersion,
-              rightSquadStubs: stubs.rightSquadStubs,
-            };
-            IDBService.put('counterStubs', objectToStore);
-          }
-        } catch (e) {
-          if (!abortController.signal.aborted) {
-            console.error('requestCounterStubs aborted :>> ', e);
-          }
-        }
-      }
-
-      if (!abortController.signal.aborted && !_.isEmpty(storedStubs) && storedStubs.counterVersion) {
-        if (storedStubs.counterVersion !== leftSquadStub.latestCounterVersion) {
-          await requestCounterStubs();
-        } else {
-          const freshStubs = await removeStaleStubs(storedStubs);
-          setCounterStubs(freshStubs);
-        }
-      }
-
-      if (_.isEmpty(storedStubs)) {
-        await requestCounterStubs();
-      }
-    }
-
-    getCounterStubs();
-    return () => {
-      abortController.abort();
-    };
-  }, [counterStubId, leftSquadStub, leftSquadStub.id, leftSquadStub.latestCounterVersion, size, view]);
+  const counterStubId = `${size}_${view}_${leftSquad.id}`;
 
   const toggle = e => toggleCollapse(e.currentTarget.id);
-  const hardCounters = !_.isEmpty(counterStubs) ? counterStubs.rightSquadStubs.filter(x => x.isHardCounter) : [];
+  const hardCounters = !_.isEmpty(counters) ? counters.filter(x => x.isHardCounter) : [];
   const hardCountersToDisplay = !isRestricted
     ? hardCounters
     : hardCounters && _.uniqBy(hardCounters, 'toon1Id');
-  const softCounters = !_.isEmpty(counterStubs) ? counterStubs.rightSquadStubs.filter(x => !x.isHardCounter) : [];
+  const softCounters = !_.isEmpty(counters) ? counters.filter(x => !x.isHardCounter) : [];
   const softCountersToDisplay = !isRestricted ? softCounters : [];
   const restrictedCountersCount = (softCounters.length - softCountersToDisplay.length) + (hardCounters.length - hardCountersToDisplay.length);
 
   const divider = hardCounters.length > 0 && softCountersToDisplay.length > 0 && <Divider/>;
 
   const buildCounters = (squads, type) => squads
-    .map(squad => <Suspense key={`${view}_${size}_${squad.counterId}_row`} fallback={null}>
-        <CounterRowSquad
-          squad={squad}
-          toggle={toggle}
-          type={type}
-          view={view}
-        />
-      </Suspense>);
+    .map(squad => <Suspense key={`${view}_${size}_${squad.id}_row`} fallback={null}>
+      <CounterRowSquad
+        squad={squad}
+        toggle={toggle}
+        type={type}
+        view={view}
+      />
+    </Suspense>);
 
-  const buildCounterDescriptions = !_.isEmpty(counterStubs)
-    && counterStubs.rightSquadStubs.map(rightSquadStub => (
-      <LazyLoad once key={`CounterRowDescription_${view}_${size}_${rightSquadStub.counterId}`}>
-        <CounterRowDescription
-          counterStubs={counterStubs}
-          reload={reload}
-          rightSquadStub={rightSquadStub}
-          size={size}
-          view={view}
-        />
-      </LazyLoad>
-    ));
+  const buildCounterDescriptions = counters.map(rightSquadStub => (
+    <LazyLoad once key={`CounterRowDescription_${view}_${size}_${rightSquadStub.id}`}>
+      <CounterRowDescription
+        counterStubs={counters}
+        leftSquad={leftSquad}
+        reload={reload}
+        rightSquadStub={rightSquadStub}
+        size={size}
+        view={view}
+      />
+    </LazyLoad>
+  ));
 
   return (
     <CounterRowWrapper>
       <div className="d-flex flex-column">
         <RightDiv className="pt-0">
           <MiniSquadView
-            leftSquadStub={leftSquadStub}
+            leftSquadStub={leftSquad}
             size={size}
             toggle={toggle}
           />
@@ -161,6 +97,7 @@ const CounterRow = ({
             {isRestricted && restrictedCountersCount > 0 && <PatreonRowButton amount={restrictedCountersCount}/>}
             {isActivePatron
               && view === 'normal'
+              && !anyExcludedLeaders
               ? <>
                   <CounterCard key={`addCounterButton_${counterStubId}`}>
                     <ToonImg
@@ -175,9 +112,9 @@ const CounterRow = ({
                     <Suspense fallback={null}>
                       <ModalPortal>
                         <ModalAddCounter
-                          counterStubs={counterStubs}
+                          counterStubs={counters}
                           isOpen={isOpen}
-                          leftSquadStub={leftSquadStub}
+                          leftSquadStub={leftSquad}
                           reload={reload}
                           size={size}
                           toggle={setIsOpen}
@@ -191,25 +128,25 @@ const CounterRow = ({
         </RightDiv>
       </div>
 
-      {/* Collapsable Opponent Card */}
-      {view === 'normal' && (
-        <div>
-          <Suspense fallback={<div>Loading...</div>}>
-            <OpponentCard
-              leftSquadStub={leftSquadStub}
-              reload={reload}
-              size={size}
-            />
-          </Suspense>
-        </div>
-      )}
-
-      {/* Collapsable Description Card */}
+    {/* Collapsable Opponent Card */}
+    {view === 'normal' && (
       <div>
-        {buildCounterDescriptions}
+        <Suspense fallback={<div>Loading...</div>}>
+          <OpponentCard
+            leftSquadStub={leftSquad}
+            reload={reload}
+            size={size}
+          />
+        </Suspense>
       </div>
-    </CounterRowWrapper>
+    )}
+
+    {/* Collapsable Description Card */}
+    <div>
+      {buildCounterDescriptions}
+    </div>
+  </CounterRowWrapper>
   );
 };
 
-export default memo(CounterRow);
+export default CounterRow;
