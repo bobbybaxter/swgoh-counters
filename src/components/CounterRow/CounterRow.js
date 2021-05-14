@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, {
-  lazy, memo, Suspense, useContext,
+  lazy, Suspense, useContext,
 } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -42,7 +42,7 @@ const CounterRow = ({
   };
 
   const [isOpen, setIsOpen] = useToggle(false);
-  const { isActivePatron, isRestricted } = useContext(AuthContext);
+  const { isActivePatron, isRestricted, user } = useContext(AuthContext);
   const { toggleCollapse } = useContext(AccordionContext);
 
   const counterStubId = `${size}_${view}_${leftSquad.id}`;
@@ -97,6 +97,7 @@ const CounterRow = ({
             {isRestricted && restrictedCountersCount > 0 && <PatreonRowButton amount={restrictedCountersCount}/>}
             {isActivePatron
               && view === 'normal'
+              && user.allyCode
               && !anyExcludedLeaders
               ? <>
                   <CounterCard key={`addCounterButton_${counterStubId}`}>

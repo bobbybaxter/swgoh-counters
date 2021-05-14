@@ -44,13 +44,9 @@ const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
 const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 
 // TODO: do an addCounter and addSquad check on the server-side, to eliminate duplicates
-// REVIEW: (might be deprecated with this PR)
-//  remove any useEffects that request the squadmembers of leftSquadStub since
-//  it's now that info is coming in the squadStub call
 // TODO: add a way to lock any videos that i put on the site from being delete by other users
 // TODO: possibly make my videos a different color, make the the first video shown
 // TODO: figure out why the guild endpoint is getting called twice
-// FIXME: remove access for adding/editing counters if allyCode is not submitted
 function App() {
   const [characters, setCharacters] = useState([]);
   const [squads, setSquads] = useState([]); // eslint-disable-line no-unused-vars
