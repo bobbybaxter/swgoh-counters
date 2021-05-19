@@ -1,4 +1,3 @@
-require('dotenv').config({ path: 'server/.env' });
 const fp = require('fastify-plugin');
 
 module.exports = async function createServer(app) {

@@ -1,14 +1,9 @@
 const pino = require('pino');
 
 module.exports = config => pino({
-  level: process.env.LOG_LEVEL || 'info',
-  // prettyPrint: process.env.NODE_ENV === 'development'
-  //   ? {
-  //     colorize: true,
-  //   }
-  //   : false,
+  level: config.logging.level || 'info',
   prettyPrint: {
-    colorize: process.env.NODE_ENV !== 'production',
+    colorize: config.logging.prettyPrint,
     ignore: 'pid,hostname,reqId',
   },
   timestamp: pino.stdTimeFunctions.isoTime,

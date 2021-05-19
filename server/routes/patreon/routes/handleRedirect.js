@@ -18,6 +18,7 @@ module.exports = ({ data, patreon }) => ({
     refreshToken = patreonToken.refresh_token;
 
     const apiClient = await data.getPatreonClient(accessToken);
+
     let patronInfo;
     try {
       patronInfo = await apiClient({
@@ -25,9 +26,9 @@ module.exports = ({ data, patreon }) => ({
         path: '/v2/identity?include=memberships.campaign&fields[member]=patron_status,email&fields[campaign]=vanity&fields[user]=email,full_name',
       });
     } catch (err) {
-      console.error(err);
       throw err;
     }
+
     if (patronInfo.rawJson) {
       const { rawJson } = patronInfo;
       // if the patron is a member of your campaign,
