@@ -102,7 +102,6 @@ export default function Account() {
     };
 
     const selectGuildName = () => {
-      console.log('userData :>> ', userData);
       if (userData && userData.guild_name) { return userData.guild_name; }
       return guildName || '';
     };

@@ -8,7 +8,7 @@ module.exports = (app) => {
   const database = process.env.NODE_ENV === 'production' ? process.env.DB_DATABASE : process.env.DB_DATABASE_TEST;
 
   const pool = mysql.createPool({
-    connectionLimit: 21,
+    connectionLimit: 40,
     waitForConnections: true,
     host,
     user,
