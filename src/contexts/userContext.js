@@ -4,11 +4,9 @@ import firebase from 'firebase/app';
 import _ from 'lodash';
 
 import {
-  createGuild,
   createUser,
   deleteGuild,
   getGuildById,
-  getPatreonStatus,
   getPlayerData,
   getUserByFirebaseAuthUid,
   updateGuild,
@@ -52,8 +50,6 @@ export function AuthProvider({ children }) {
     refreshToken,
     tier,
   } = user;
-  const memberTiers = ['', 'Carbonite', 'Bronzium', 'Chromium'];
-  const guildTiers = ['Aurodium'];
 
   const setUserInfo = useCallback((res) => {
     const currentUser = { ...user };
@@ -97,29 +93,6 @@ export function AuthProvider({ children }) {
     }
   }, [setUserInfo]);
 
-  const handleAddGuild = ({
-    firebaseUserId,
-    guild,
-    guildIdFromSWGOHGG,
-    guildNameFromSWGOHGG,
-  }) => {
-    // add new guild to guild list
-    if (_.isEmpty(guild)) {
-      const guildToCreate = {
-        id: guildIdFromSWGOHGG,
-        name: guildNameFromSWGOHGG,
-        guildTierUsers: firebaseUserId,
-      };
-      createGuild(guildToCreate);
-    }
-
-    // add user to guild list
-    if (!_.isEmpty(guild) && !guild.guildTierUsers.includes(firebaseUserId)) {
-      guild.guildTierUsers.push(firebaseUserId);
-      updateGuild(guild);
-    }
-  };
-
   const handleRemoveGuild = ({
     firebaseUserId,
     guild,
@@ -140,114 +113,24 @@ export function AuthProvider({ children }) {
   };
 
   const validateAccount = useCallback(async (userToValidate) => {
-    let patronStatusFromPatreon = '';
-    let tierFromPatreon = '';
-    let guildIdFromSWGOHGG = '';
-    let guildNameFromSWGOHGG = '';
     try {
-      const firebaseUser = await getUserByFirebaseAuthUid(userToValidate.id);
-      if (!_.isEmpty(firebaseUser)) {
-        if (firebaseUser.allyCode) {
-          const swgohInfo = await setPlayerData(firebaseUser.allyCode);
-          guildIdFromSWGOHGG = swgohInfo && swgohInfo.guild_id ? swgohInfo.guild_id.toString() : '';
-          guildNameFromSWGOHGG = swgohInfo && swgohInfo.guild_name ? swgohInfo.guild_name : '';
-        }
-
-        // check Patreon status
-        if (firebaseUser.accessToken) {
-          const patreonInfo = await getPatreonStatus(firebaseUser.accessToken);
-          patronStatusFromPatreon = patreonInfo.patronStatus;
-          tierFromPatreon = patreonInfo.tier;
-        }
-
-        const oldGuild = firebaseUser.guildId ? await getGuildById(firebaseUser.guildId) : {};
-        const guild = guildIdFromSWGOHGG ? await getGuildById(guildIdFromSWGOHGG) : {};
-
-        const isNowGuildTier = guildTiers.includes(tierFromPatreon);
-        const isNowMemberTier = memberTiers.includes(tierFromPatreon);
-        const wasGuildTier = guildTiers.includes(firebaseUser.tier);
-        const wasMemberTier = memberTiers.includes(firebaseUser.tier);
-        const guildHasChanged = firebaseUser.guildId !== guildIdFromSWGOHGG;
-        const patreonTierHasChanged = firebaseUser.tier !== tierFromPatreon;
-
-        if ((wasGuildTier || isNowGuildTier) && guildHasChanged) {
-          // if oldGuild, remove id from old guild
-          if (!_.isEmpty(oldGuild)) {
-            await handleRemoveGuild({
-              guild: oldGuild,
-              firebaseUserId: firebaseUser.id,
-            });
-          }
-
-          // if newGuild, add id to newGuild
-          if (!_.isEmpty(guild)) {
-            await handleAddGuild({
-              guild,
-              firebaseUserId: firebaseUser.id,
-              guildIdFromSWGOHGG,
-              guildNameFromSWGOHGG,
-            });
-          }
-        }
-
-        // if Patreon tier changes
-        if (patreonTierHasChanged) {
-          const needToAddGuildLevel = wasMemberTier && isNowGuildTier;
-          const needToRemoveGuildLevel = wasGuildTier && isNowMemberTier;
-
-          const guildInfo = {
-            guild,
-            firebaseUserId: firebaseUser.id,
-            guildIdFromSWGOHGG,
-            guildNameFromSWGOHGG,
-          };
-
-          if (needToAddGuildLevel) {
-            await handleAddGuild(guildInfo);
-          }
-
-          if (needToRemoveGuildLevel && !_.isEmpty(guild)) {
-            await handleRemoveGuild(guildInfo);
-          }
-        }
-
-        if (isNowGuildTier && guildIdFromSWGOHGG && _.isEmpty(guild)) {
-          await handleAddGuild({
-            guild,
-            firebaseUserId: firebaseUser.id,
-            guildIdFromSWGOHGG,
-            guildNameFromSWGOHGG,
-          });
-        }
-
-        const userToUpdate = {
-          id: firebaseUser.id,
-          accessToken: firebaseUser.accessToken || '',
-          allyCode: firebaseUser.allyCode || '',
-          email: firebaseUser.email || '',
-          expiresIn: firebaseUser.expiresIn || '',
-          guildId: guildIdFromSWGOHGG || '',
-          guildName: guildNameFromSWGOHGG || '',
-          patreonId: firebaseUser.patreonId || '',
-          patronStatus: patronStatusFromPatreon || '',
-          refreshToken: firebaseUser.refreshToken || '',
-          tier: tierFromPatreon || '',
-          username: firebaseUser.username || '',
-        };
-        await updateUserInfo(userToUpdate);
+      const response = await getUserByFirebaseAuthUid(userToValidate.id);
+      if (response && !_.isEmpty(response.firebaseUser)) {
+        const { guildData, firebaseUser } = response;
+        const { isCurrentGuildInFirebase, isNowGuildTier } = guildData;
 
         // gives access if this is an active_patron
-        if (patronStatusFromPatreon === 'active_patron' || patronStatusFromPatreon === 'Active Patron') {
+        if (firebaseUser.patronStatus === 'active_patron' || firebaseUser.patronStatus === 'Active Patron') {
           setIsActivePatron(true);
           setIsRestricted(false);
         }
 
-        if (!_.isEmpty(guild) || isNowGuildTier) {
+        if (isCurrentGuildInFirebase || isNowGuildTier) {
           setIsGuildTierMember(true);
           setIsRestricted(false);
         }
 
-        setUserInfo(userToUpdate);
+        setUserInfo(firebaseUser);
         return console.info(`Firebase user ${firebaseUser.email} validated`);
       }
       console.info('No Firebase user found in DB');
@@ -257,7 +140,7 @@ export function AuthProvider({ children }) {
     } catch (err) {
       throw err;
     }
-  }, [guildTiers, memberTiers, setPlayerData, setUserInfo]);
+  }, [setUserInfo]);
 
   const authenticateUser = useCallback(async (authUser) => {
     if (authUser) {

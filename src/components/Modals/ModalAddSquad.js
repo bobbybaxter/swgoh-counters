@@ -362,10 +362,7 @@ export default function ModalAddSquad({
       console.error('please add or correct squad name or members');
     } else {
       try {
-        let leftSquadId;
-        let leftSquadStatus;
-        let rightSquadId;
-        let rightSquadStatus;
+        let leftSquadId, leftSquadStatus, rightSquadId, rightSquadStatus;
 
         if (tempLeftSquadInfo.id) {
           const updatedSquadStatus = await updateSquad({

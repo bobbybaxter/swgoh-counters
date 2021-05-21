@@ -4,6 +4,7 @@ module.exports = ({ data, log }) => ({
   method: 'GET',
   path: '/guild/:id',
   handler: async (request, reply) => {
+    let formattedGuild = {};
     try {
       const guild = await data.getByGuildId(request.params.id);
 
@@ -15,7 +16,7 @@ module.exports = ({ data, log }) => ({
 
       const guildTierUsers = guild.guildTierUsers.split(',');
 
-      const formattedGuild = {
+      formattedGuild = {
         ...guild,
         guildTierUsers,
       };
@@ -25,6 +26,7 @@ module.exports = ({ data, log }) => ({
         .send(formattedGuild);
     } catch (err) {
       log.error(err);
+      return formattedGuild;
     }
   },
   schema: {

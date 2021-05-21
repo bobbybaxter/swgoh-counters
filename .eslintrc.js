@@ -42,6 +42,8 @@ module.exports = {
     "no-debugger": 1,
     "class-methods-use-this": 0,
     "linebreak-style": 0,
-    "global-require": "off"
+    "global-require": "off",
+    "one-var": "off",
+    "one-var-declaration-per-line": "off"
   }
 }
