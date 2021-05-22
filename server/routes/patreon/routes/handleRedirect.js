@@ -5,21 +5,19 @@ module.exports = ({ data, patreon }) => ({
   method: 'GET',
   path: '/patreon/redirect',
   handler: async (request, reply) => {
-    let accessToken;
-    let refreshToken;
+    let accessToken, patron, patreonId, patreonEmail, patronInfo, refreshToken;
     const { code } = request.query;
     const redirect = process.env.REDIRECT_URL;
     const myCampaignId = '3137849';
     const now = new Date();
     const expiresIn = new Date(now.setDate(now.getDate() + 30));
 
-    const patreonToken = await patreon.getTokens(code, redirect);
+    const patreonToken = await patreon.getTokens(code, redirect); // patron's token
     accessToken = patreonToken.access_token;
     refreshToken = patreonToken.refresh_token;
 
     const apiClient = await data.getPatreonClient(accessToken);
 
-    let patronInfo;
     try {
       patronInfo = await apiClient({
         method: 'GET',
@@ -33,16 +31,20 @@ module.exports = ({ data, patreon }) => ({
       const { rawJson } = patronInfo;
       // if the patron is a member of your campaign,
       // an object with the id and status will be returned
-      const patreonId = rawJson.data.id;
-      const patreonEmail = rawJson.data.attributes.email;
+      patreonId = rawJson.data.id;
+      patreonEmail = rawJson.data.attributes.email;
       const membership = rawJson.included && rawJson.included.find(x => x.type === 'member');
+      const user = await data.firebase.getByEmail(patreonEmail.toLowerCase());
 
       if (membership) {
         const creatorToken = await data.firebase.getCreatorToken();
         const memberTier = await data.getMemberTier({ creatorToken, membership });
+        if (memberTier === 'Not a Patron') {
+          return reply.redirect(process.env.BASE_URL);
+        }
+
         const patronRelationship = rawJson.included && rawJson.included.find(inc => inc.type === 'member' && inc.relationships.campaign.data.id === myCampaignId);
         const patronStatus = patronRelationship.attributes.patron_status;
-        const user = await data.firebase.getByEmail(patreonEmail.toLowerCase());
 
         if (expiresIn < now.toISOString()) {
           const refreshedPatronToken = await data.getRefreshedToken(accessToken, refreshToken);
@@ -51,20 +53,31 @@ module.exports = ({ data, patreon }) => ({
         }
 
         if (patronStatus) {
-          const patron = {
+          patron = {
             ...user,
             accessToken,
             refreshToken,
             expiresIn,
             patreonId,
             patronStatus: renamePatronStatus(patronStatus),
-            tier: renameTier(memberTier.id),
+            tier: memberTier ? renameTier(memberTier.id) : '',
           };
-          await data.firebase.addPatronInfoToFirebase(patron);
         }
+      } else {
+        patron = {
+          ...user,
+          accessToken,
+          refreshToken,
+          expiresIn,
+          patreonId,
+          patronStatus: 'Not a Patron',
+          tier: '',
+        };
       }
     }
 
-    reply.redirect(process.env.BASE_URL);
+    await data.firebase.addPatronInfoToFirebase(patron);
+
+    return reply.redirect(process.env.BASE_URL);
   },
 });

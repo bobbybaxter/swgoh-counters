@@ -3,8 +3,7 @@ const path = require('path');
 
 module.exports = ({ database, log }) => (id, type, size) => {
   const sql = fs.readFileSync(path.join(__dirname, './sql/getCounterStubs.sql')).toString();
-  let leftSquad;
-  let rightSquad;
+  let leftSquad, rightSquad;
 
   if (type === 'normal') {
     rightSquad = 'counterSquadId';

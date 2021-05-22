@@ -23,7 +23,7 @@ const AccountDetails = styled.div`
   font-size: .85rem;
 `;
 
-const AccountRowEven = styled.div`
+const AccountRowEven = styled(Form)`
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
@@ -32,7 +32,7 @@ const AccountRowEven = styled.div`
   background-color: #181818;
 `;
 
-const AccountRowOdd = styled.div`
+const AccountRowOdd = styled(Form)`
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
@@ -60,12 +60,11 @@ const AccountButton = styled(Button)`
   }
 `;
 
-const AllyCodeForm = styled(Form)`
+const AllyCodeForm = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  // margin: 1rem;
   width: 100%;
 `;
 
@@ -161,7 +160,7 @@ export default function Account() {
     unlinkPatreonAccountFromUser();
   };
 
-  const togglePatreonButton = !patreonId
+  const togglePatreonButton = !patreonId || !patronStatus
     ? <AccountButton className="btn-sm w-100" href={patreonLink}>
           Link Patreon
         </AccountButton>
@@ -209,7 +208,7 @@ export default function Account() {
           </AccountRowOdd>
           <AccountRowEven className="text-left">
             <AccountCell className="col-3">Patreon: </AccountCell>
-            <AccountCell className="col-6">{patreonId ? patronStatus : 'Not Linked'}</AccountCell>
+            <AccountCell className="col-6">{patreonId && patronStatus ? patronStatus : 'Not Linked'}</AccountCell>
             <AccountCell className="col-3">{togglePatreonButton}</AccountCell>
           </AccountRowEven>
           {user.accessToken ? '' : <small className="alert alert-warning p-1 m-0">Patreon email must match {email || 'login email'}.  You may need to sign out of Patreon before trying to link, to ensure you are using the correct email address.</small>}

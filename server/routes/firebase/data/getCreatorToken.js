@@ -11,7 +11,7 @@ module.exports = app => async () => {
     .then(snapshot => (snapshot.val()) || {});
 
   if (creatorToken.expiresIn < now.toISOString()) {
-    creatorToken = await getRefreshedToken()(creatorToken.accessToken, creatorToken.refreshToken);
+    creatorToken = await getRefreshedToken(app)(creatorToken.accessToken, creatorToken.refreshToken);
     await updateCreatorToken(app)({
       ...creatorToken,
       id: patreonCreatorId,
