@@ -148,7 +148,7 @@ export default function Account() {
         name="allyCode"
         id="allyCode"
         bsSize="sm"
-        placeholder="Ally Code"
+        placeholder="Ally Code (NO DASHES)"
         className="w-100"
         onChange={handleAllyCode}
       />

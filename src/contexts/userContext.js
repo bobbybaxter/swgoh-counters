@@ -166,7 +166,7 @@ export function AuthProvider({ children }) {
 
   function handleAllyCode(e) {
     const userToSet = Object.assign({}, user);
-    userToSet.allyCode = e.target.value;
+    userToSet.allyCode = e.target.value.split('-').join('');
     setUser(userToSet);
   }
 
