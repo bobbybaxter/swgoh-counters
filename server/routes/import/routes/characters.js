@@ -22,7 +22,7 @@ module.exports = ({ data, log }) => ({
       ));
 
       // imports all characters - no need to drop tables as characters have fixed ids
-      characters.forEach(character => data.character.create(character));
+      await Promise.all(characters.map(character => data.character.create(character)));
 
       log.info('character import complete');
       reply.send('ok');
