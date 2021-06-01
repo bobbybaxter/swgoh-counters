@@ -9,19 +9,21 @@ const getCreatorToken = require('../../firebase/data/getCreatorToken');
 module.exports = app => async (accessToken) => {
   let patronStatus = '';
   let tier = '';
-  let membership;
+  let membership, patreonEmail;
 
   const apiClient = await getPatreonClient(app)(accessToken);
   const memberInfo = await apiClient({
     method: 'GET',
-    path: '/v2/identity?include=memberships&fields[member]=patron_status',
+    path: '/v2/identity?include=memberships.campaign&fields[member]=patron_status,email&fields[campaign]=vanity&fields[user]=email,full_name',
   });
+
 
   if (memberInfo && memberInfo.rawJson && memberInfo.rawJson.included) {
     membership = memberInfo.rawJson.included.find(x => x.type === 'member');
+    patreonEmail = memberInfo.rawJson.data.attributes.email;
   } else {
     return {
-      patronStatus: 'Not a Patron',
+      patronStatus: 'Patreon info not found',
       tier: '',
     };
   }
@@ -29,11 +31,12 @@ module.exports = app => async (accessToken) => {
   if (membership) {
     const creatorToken = await getCreatorToken(app)();
 
-    const memberTier = await getMemberTier(app)({ creatorToken, membership });
+    const memberTier = await getMemberTier(app)({ creatorToken, membership, patreonEmail });
 
-    patronStatus = renamePatronStatus(membership.attributes.patron_status);
-    tier = renameTier(memberTier.id);
-    return { patronStatus, tier };
+    if (memberTier) {
+      patronStatus = renamePatronStatus(membership.attributes.patron_status);
+      tier = renameTier(memberTier.id);
+    }
   }
 
   return { patronStatus, tier };

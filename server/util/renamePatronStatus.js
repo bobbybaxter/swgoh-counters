@@ -5,5 +5,5 @@ module.exports = (status) => {
     former_patron: 'Former Patron',
     null: 'Not a Patron',
   };
-  return statuses[status] || statuses.null;
+  return statuses[status] || status || statuses.null;
 };
