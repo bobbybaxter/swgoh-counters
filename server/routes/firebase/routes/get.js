@@ -51,6 +51,15 @@ module.exports = ({ data, log }) => ({
   method: 'GET',
   path: '/firebase/:id',
   handler: async (request, reply) => {
+    let accessToken,
+      allyCode,
+      expiresIn,
+      guildIdFromSWGOHGG,
+      guildNameFromSWGOHGG,
+      patreonUser,
+      refreshToken,
+      swgohUser;
+
     try {
       reply.type('application/json');
       const user = await data.getByFirebaseUid(request.params.id);
@@ -59,18 +68,29 @@ module.exports = ({ data, log }) => ({
         return reply.send(user); // returns a null user so a new one can be created
       }
 
-      let guildIdFromSWGOHGG, guildNameFromSWGOHGG, swgohUser, patreonUser;
       const {
-        accessToken, allyCode, guildId, id, tier,
+        guildId, id, tier,
       } = user;
+      ({
+        accessToken, allyCode, expiresIn, refreshToken,
+      } = user);
 
       // patreon check
       if (accessToken) {
         try {
-          patreonUser = await data.patreon.getStatus(accessToken);
-          // patreonUser = await data.patreon.getStatus(null);
+          const now = new Date();
+          if (expiresIn && expiresIn < now.toISOString()) {
+            console.log('expiresIn < now.toISOString() :>> ', expiresIn < now.toISOString());
+            const refreshedPatronToken = await data.patreon.getRefreshedToken(accessToken, refreshToken);
+            accessToken = refreshedPatronToken.accessToken; // eslint-disable-line prefer-destructuring
+            refreshToken = refreshedPatronToken.refreshToken; // eslint-disable-line prefer-destructuring
+            expiresIn = refreshedPatronToken.expiresIn; // eslint-disable-line prefer-destructuring
+          }
 
-          if (id === process.env.ADMIN_ID) {
+          patreonUser = await data.patreon.getStatus(accessToken);
+
+          console.log("process.env.VIP_IDS.split(',') :>> ", process.env.VIP_IDS.split(','));
+          if (id === process.env.ADMIN_ID || process.env.VIP_IDS.split(',').includes(id)) {
             patreonUser = {
               patronStatus: 'Active Patron',
               tier: 'Aurodium',
@@ -87,6 +107,10 @@ module.exports = ({ data, log }) => ({
 
       // guild check
       if (allyCode) {
+        if (allyCode.includes('-')) {
+          allyCode = allyCode.split('-').join('');
+          user.allyCode = allyCode;
+        }
         try {
           swgohUser = await data.getSwgohInfo(allyCode);
           guildIdFromSWGOHGG = swgohUser && swgohUser.guild_id ? swgohUser.guild_id.toString() : '';
@@ -146,6 +170,9 @@ module.exports = ({ data, log }) => ({
 
       const updatedUser = {
         ...user,
+        accessToken,
+        expiresIn,
+        refreshToken,
         guildId: guildIdFromSWGOHGG || '',
         guildName: guildNameFromSWGOHGG || '',
         patronStatus: patreonUser ? patreonUser.patronStatus : '',

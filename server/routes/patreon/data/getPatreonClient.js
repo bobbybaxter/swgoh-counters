@@ -57,7 +57,7 @@ module.exports = app => async (accessToken) => {
       })
       .then(_utils.getJson)
       .then(rawJson => ({ store, rawJson, response: _response }))
-      .catch(error => console.error(error.status, error.statusText, error.url));
+      .catch(error => app.log.error(error.status, error.statusText, error.url));
   };
 
   makeRequest.getStore = () => store;

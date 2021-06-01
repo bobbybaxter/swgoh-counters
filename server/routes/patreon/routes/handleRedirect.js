@@ -38,7 +38,7 @@ module.exports = ({ data, patreon }) => ({
 
       if (membership) {
         const creatorToken = await data.firebase.getCreatorToken();
-        const memberTier = await data.getMemberTier({ creatorToken, membership });
+        const memberTier = await data.getMemberTier({ creatorToken, membership, patreonEmail });
         if (memberTier === 'Not a Patron') {
           return reply.redirect(process.env.BASE_URL);
         }
@@ -46,7 +46,7 @@ module.exports = ({ data, patreon }) => ({
         const patronRelationship = rawJson.included && rawJson.included.find(inc => inc.type === 'member' && inc.relationships.campaign.data.id === myCampaignId);
         const patronStatus = patronRelationship.attributes.patron_status;
 
-        if (expiresIn < now.toISOString()) {
+        if (user.expiresIn && user.expiresIn < now.toISOString()) {
           const refreshedPatronToken = await data.getRefreshedToken(accessToken, refreshToken);
           ({ accessToken } = refreshedPatronToken.accessToken);
           ({ refreshToken } = refreshedPatronToken.refreshToken);
@@ -70,7 +70,7 @@ module.exports = ({ data, patreon }) => ({
           refreshToken,
           expiresIn,
           patreonId,
-          patronStatus: 'Not a Patron',
+          patronStatus: `Patreon info not found for ${patreonEmail}`,
           tier: '',
         };
       }
