@@ -166,7 +166,7 @@ const CountersPage = ({
 
       <CountersPageWrapper>
         {
-          <UncontrolledAlert color="info">
+          <UncontrolledAlert color="warning">
             {_.sample(tips)}
           </UncontrolledAlert>
         }

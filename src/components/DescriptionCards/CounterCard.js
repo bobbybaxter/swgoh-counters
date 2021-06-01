@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, {
-  memo, useContext, useEffect, useState,
+  useContext, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';

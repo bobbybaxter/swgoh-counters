@@ -15,7 +15,9 @@ module.exports = ({ log, database }) => ({ id, name }) => {
       res('ok');
     });
   }).catch((err) => {
-    log.error(err.message);
+    if (err.code === 'ER_DUP_ENTRY') {
+      return ('ok');
+    }
     throw err;
   });
 };
