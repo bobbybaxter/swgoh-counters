@@ -80,7 +80,6 @@ module.exports = ({ data, log }) => ({
         try {
           const now = new Date();
           if (expiresIn && expiresIn < now.toISOString()) {
-            console.log('expiresIn < now.toISOString() :>> ', expiresIn < now.toISOString());
             const refreshedPatronToken = await data.patreon.getRefreshedToken(accessToken, refreshToken);
             accessToken = refreshedPatronToken.accessToken; // eslint-disable-line prefer-destructuring
             refreshToken = refreshedPatronToken.refreshToken; // eslint-disable-line prefer-destructuring
@@ -89,7 +88,6 @@ module.exports = ({ data, log }) => ({
 
           patreonUser = await data.patreon.getStatus(accessToken);
 
-          console.log("process.env.VIP_IDS.split(',') :>> ", process.env.VIP_IDS.split(','));
           if (id === process.env.ADMIN_ID || process.env.VIP_IDS.split(',').includes(id)) {
             patreonUser = {
               patronStatus: 'Active Patron',
