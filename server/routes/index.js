@@ -6,6 +6,7 @@ module.exports = app => async (server) => {
   server.register(require('./import')(app));
   server.register(require('./patreon')(app));
   server.register(require('./squad')(app));
+  server.register(require('./swgoh')(app));
   server.register(require('./videoLink')(app));
   server.register(require('./zeta')(app));
 };

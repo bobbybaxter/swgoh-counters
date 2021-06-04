@@ -44,3 +44,7 @@ export {
 export {
   getPatreonStatus,
 } from './patreonData';
+
+export {
+  getLeadersBySeason,
+} from './swgohData';

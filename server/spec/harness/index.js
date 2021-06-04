@@ -1,9 +1,9 @@
 let server;
 
-const serverFactory = require('../../server');
+const serverFactory = require('server');
 
 beforeAll(async () => {
-  const app = require('../../index');
+  const app = require('index');
   const srv = await serverFactory(app);
   await srv.initialize();
   server = srv;

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ASAJVENTRESS",
+    "name": "Asajj Ventress",
+    "5v5": [
+      {
+        "squad": ["ASAJVENTRESS", "DAKA", "MOTHERTALZIN", "NIGHTSISTERSPIRIT", "NIGHTSISTERZOMBIE"],
+        "reqToons": ["ASAJVENTRESS", "DAKA", "MOTHERTALZIN", "NIGHTSISTERZOMBIE"]
+      }
+    ],
+    "3v3": [
+      {
+        "squad": ["ASAJVENTRESS", "NIGHTSISTERACOLYTE", "NIGHTSISTERZOMBIE"],
+        "reqToons": ["ASAJVENTRESS", "NIGHTSISTERZOMBIE"]
+      },
+      {
+        "squad": ["ASAJVENTRESS", "DAKA", "NIGHTSISTERZOMBIE"],
+        "reqToons": ["ASAJVENTRESS", "DAKA"]
+      }
+    ]
+  },
+  {
+    "id": "BASTILASHAN",
+    "name": "Bastila Shan",
+    "5v5": [
+      {
+        "squad": ["BASTILASHAN", "GRANDMASTERLUKE", "HERMITYODA", "JEDIKNIGHTLUKE", "WATTAMBOR"],
+        "reqToons": ["BASTILASHAN", "GRANDMASTERLUKE", "JEDIKNIGHTLUKE", "WATTAMBOR"]
+      }
+    ],
+    "3v3": [
+      {
+        "squad": ["BASTILASHAN", "GRANDMASTERLUKE", "WATTAMBOR"],
+        "reqToons": ["BASTILASHAN", "GRANDMASTERLUKE"]
+      }
+    ]
+  },
+  {
+    "id": "BOSSK",
+    "name": "Bossk",
+    "5v5": [
+      {
+        "squad": ["BOSSK", "BOBAFETT", "GREEFKARGA", "JANGOFETT", "THEMANDALORIAN"],
+        "reqToons": ["BOSSK", "BOBAFETT", "GREEFKARGA", "THEMANDALORIAN"]
+      },
+      {
+        "squad": ["BOSSK", "BOBAFETT", "CADBANE", "DENGAR", "GREEDO"],
+        "reqToons": ["BOSSK", "BOBAFETT", "DENGAR", "GREEDO"]
+      }
+    ],
+    "3v3": [
+      {
+        "squad": ["BOSSK", "BOBAFETT", "DENGAR"],
+        "reqToons": ["BOSSK", "BOBAFETT"]
+      },
+      {
+        "squad": ["BOSSK", "GREEFKARGA", "THEMANDALORIAN"],
+        "reqToons": ["BOSSK", "GREEFKARGA"]
+      }
+    ]
+  }
+]

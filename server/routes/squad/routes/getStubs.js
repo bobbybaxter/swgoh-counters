@@ -1,11 +1,19 @@
+// const leaders = require('setup/squadsToShow.json');
+
 module.exports = ({ data }) => ({
   method: 'GET',
   path: '/squad/stubs/:size',
   handler: async (request, reply) => {
+    // const leadersNormal = leaders.map(leader => ({
+    //   id: leader.id,
+    //   name: leader.name,
+    // }));
+    const leadersNormal = await data.getCounterLeaders('normal', request.params.size); // TODO: get from JSON
+    const leadersReverse = await data.getCounterLeaders('reverse', request.params.size); // TODO: make query based on manually selected leaders
     const normal = await data.getStubs('normal', request.params.size);
+    // console.log('normal :>> ', normal);
     const reverse = await data.getStubs('reverse', request.params.size);
-    const leadersNormal = await data.getCounterLeaders('normal', request.params.size);
-    const leadersReverse = await data.getCounterLeaders('reverse', request.params.size);
+    // const reverse = [];
 
     const squadStubs = {
       normal,

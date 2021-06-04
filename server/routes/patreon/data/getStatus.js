@@ -1,10 +1,9 @@
+const renamePatronStatus = require('util/renamePatronStatus');
+const renameTier = require('util/renameTier');
+const getCreatorToken = require('routes/firebase/data/getCreatorToken');
 const getPatreonClient = require('./getPatreonClient');
 const getMemberTier = require('./getMemberTier');
 
-const renamePatronStatus = require('../../../util/renamePatronStatus');
-const renameTier = require('../../../util/renameTier');
-
-const getCreatorToken = require('../../firebase/data/getCreatorToken');
 
 module.exports = app => async (accessToken) => {
   let patronStatus = '';

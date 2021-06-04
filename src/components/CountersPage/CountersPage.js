@@ -121,7 +121,7 @@ const CountersPage = ({
         leaderStubs && <LazyLoad once key={`leaderRow_${id}`}>
           <div>
             <div className="d-flex flex-row">
-              <LeftDivSquad id={`leaderRow_${id}`} className="col-3">
+              <LeftDivSquad id={`leaderRow_${id}`} className="col-2">
                 <div className="d-flex flex-column align-items-center">
                   <ToonImg
                     alt={leader.name}
@@ -132,7 +132,7 @@ const CountersPage = ({
                   <SquadTitle>{leader.name}</SquadTitle>
                 </div>
               </LeftDivSquad>
-              <div className="p-0 col-9">
+              <div className="p-0 col-10">
                 <CountersPageRow
                   anyExcludedLeaders={anyExcludedLeaders}
                   excludedCounters={excludedCounters}
@@ -191,10 +191,10 @@ const CountersPage = ({
         </div>
 
         <div className="columnTitles">
-          <div className="col-3 d-flex justify-content-center align-items-center">
+          <div className="col-2 d-flex justify-content-center align-items-center">
             <h1 className="mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
           </div>
-          <div className="col-7 d-flex justify-content-center align-items-center">
+          <div className="col-8 d-flex justify-content-center align-items-center">
             <h1 className="mb-0">{view === 'normal' ? `${size} Counters` : `${size} Opponents`}</h1>
           </div>
           {!isRestricted

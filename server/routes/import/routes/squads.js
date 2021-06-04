@@ -1,4 +1,4 @@
-const { userId, username } = require('../../../.config.json');
+const { userId, username } = require('.config.json');
 
 module.exports = ({ data, log }) => ({
   method: 'GET',

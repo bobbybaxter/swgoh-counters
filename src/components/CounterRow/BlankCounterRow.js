@@ -30,7 +30,7 @@ export default function BlankCounterRow({
       <div className="d-flex flex-row">
 
         {/* Left Side Squad Div */}
-        <LeftDivSquad className="col-3">
+        <LeftDivSquad className="col-2">
           <div>
             <ToonImg
               alt="Add a new opponent"
@@ -55,7 +55,7 @@ export default function BlankCounterRow({
         </LeftDivSquad>
 
         {/* Right Side Counter Div */}
-        <RightDiv className="col-9">
+        <RightDiv className="col-10">
           <RightDivWrapper></RightDivWrapper>
         </RightDiv>
         </div>

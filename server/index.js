@@ -1,4 +1,5 @@
 const _ = require('lodash');
+require('app-module-path').addPath(`${__dirname}`);
 require('dotenv-flow').config({
   node_env: process.env.NODE_ENV || 'development',
   path: 'server/',
