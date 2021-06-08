@@ -39,7 +39,7 @@ module.exports = ({ data, log }) => ({
       try {
         await data.squad.create(squadToCreate);
       } catch (err) {
-        throw new Error(err);
+        throw err;
       }
     }));
 

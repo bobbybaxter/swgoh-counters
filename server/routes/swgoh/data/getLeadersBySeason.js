@@ -4,10 +4,10 @@ const jsdom = require('jsdom');
 
 const { JSDOM } = jsdom;
 
-module.exports = app => async (season) => {
+module.exports = app => async season => {
   const baseURL = 'https://swgoh.gg/gac/counters';
 
-  const scrapedData = [];
+  const swgohData = [];
 
   async function makeRequest({ seasonNum, page = 1 }) {
     const response = await axios({
@@ -28,7 +28,7 @@ module.exports = app => async (season) => {
     let lastPage;
     if (paginationDiv) {
       const page = document.querySelector('.pagination').children;
-      Array.from(page).forEach((item) => {
+      Array.from(page).forEach(item => {
         const trimmedItem = item.textContent.replace(/\s+/g, ' ').trim().split(' ');
         if (trimmedItem.includes('Page')) {
           lastPage = trimmedItem[3]; // eslint-disable-line prefer-destructuring
@@ -48,11 +48,11 @@ module.exports = app => async (season) => {
       divElement
         .item(2)
         .querySelectorAll('a')
-        .forEach(x => scrapedData.push(x.href.split('/')[3]));
+        .forEach(x => swgohData.push(x.href.split('/')[3]));
     });
   }
 
-  async function scrapeData(seasonNum) {
+  async function getData(seasonNum) {
     const firstResponse = await makeRequest({ seasonNum });
     const lastPage = await checkPagination(firstResponse);
 
@@ -65,8 +65,8 @@ module.exports = app => async (season) => {
 
   async function start() {
     try {
-      await scrapeData(season);
-      return scrapedData.sort();
+      await getData(season);
+      return swgohData.sort();
     } catch (err) {
       console.error(err);
       throw err;

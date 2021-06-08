@@ -102,7 +102,7 @@ export default function ModalAddSquad({
   const [videoLinks, setVideoLinks] = useState([]);
   const { user } = useContext(AuthContext);
 
-  const checkIfVideoLinksAreValid = (updatedLinks) => {
+  const checkIfVideoLinksAreValid = updatedLinks => {
     const isInvalid = updatedLinks.some(videoLink => !isWebUri(videoLink.link));
     setAreVideoLinksValid(!isInvalid);
   };
@@ -129,7 +129,7 @@ export default function ModalAddSquad({
     return true;
   };
 
-  const checkExistingSquad = async (squadToCheck) => {
+  const checkExistingSquad = async squadToCheck => {
     const squadLeader = squadToCheck.shift();
     const squadMembers = squadToCheck.slice(0);
     const matchedSquad = squads.find(squad => squad.toon1Name === squadLeader
@@ -176,7 +176,7 @@ export default function ModalAddSquad({
     };
   };
 
-  const checkExistingLeftSquad = async (squadToCheck) => {
+  const checkExistingLeftSquad = async squadToCheck => {
     const squadLeader = squadToCheck.shift();
     const squadMembers = squadToCheck.slice(0);
     const matchedSquad = squads.find(squad => squad.toon1Name === squadLeader
@@ -228,7 +228,7 @@ export default function ModalAddSquad({
     };
   };
 
-  const addCharacter = async (e) => {
+  const addCharacter = async e => {
     e.preventDefault();
     const addedToon = {
       id: e.currentTarget.id,
@@ -257,7 +257,7 @@ export default function ModalAddSquad({
     }
   };
 
-  const addLeftCharacter = async (e) => {
+  const addLeftCharacter = async e => {
     e.preventDefault();
     const addedToon = {
       id: e.currentTarget.id,
@@ -290,7 +290,7 @@ export default function ModalAddSquad({
     }
   };
 
-  const removeCharacter = async (e) => {
+  const removeCharacter = async e => {
     e.preventDefault();
     const { id, title } = e.target;
     const buttonIndex = id[id.length - 1];
@@ -309,7 +309,7 @@ export default function ModalAddSquad({
     setTempSquadInfo(squadCheck.tempSquadInfo);
   };
 
-  const removeLeftCharacter = async (e) => {
+  const removeLeftCharacter = async e => {
     e.preventDefault();
     const { id, title } = e.target;
     const buttonIndex = id[id.length - 1];
@@ -331,27 +331,27 @@ export default function ModalAddSquad({
     setTempLeftSquadInfo(squadCheck.tempSquadInfo);
   };
 
-  const handleGeneralStrategyInput = (e) => {
+  const handleGeneralStrategyInput = e => {
     e.preventDefault();
     setGeneralStrategy(e.target.value || e.target.innerText);
   };
 
-  const handleGeneralStrategyReset = (e) => {
+  const handleGeneralStrategyReset = e => {
     e.preventDefault();
     setGeneralStrategy(sourceGeneralStrategy);
   };
 
-  const handleDescriptionInput = (e) => {
+  const handleDescriptionInput = e => {
     e.preventDefault();
     setDescription(e.target.value || e.target.innerText);
   };
 
-  const handleDescriptionReset = (e) => {
+  const handleDescriptionReset = e => {
     e.preventDefault();
     setDescription(sourceDescription);
   };
 
-  const handleSubmitButton = async (e) => {
+  const handleSubmitButton = async e => {
     e.preventDefault();
     // blocks submission if this counter already exists, if the squad name is in use,
     // the squad name is blank, or the squad leader is blank
@@ -451,7 +451,7 @@ export default function ModalAddSquad({
           });
 
           if (counterResponse.status === 'ok') {
-            await Promise.all(videoLinks.map(async (videoLink) => {
+            await Promise.all(videoLinks.map(async videoLink => {
               if (!videoLink.deleteVideo && videoLink.link !== '') {
                 await addVideoLink({
                   subjectId: counterResponse.counterId,

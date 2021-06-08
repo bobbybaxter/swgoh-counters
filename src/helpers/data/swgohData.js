@@ -8,3 +8,21 @@ export async function getLeadersBySeason(season) {
     throw err;
   }
 }
+
+export async function getSquadsBySeason(season) {
+  try {
+    const response = await fetch(`${baseUrl}/squads/${season}`);
+    return await response.text();
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function getCountersBySeason(season) {
+  try {
+    const response = await fetch(`${baseUrl}/counters/${season}`);
+    return await response.text();
+  } catch (err) {
+    throw err;
+  }
+}

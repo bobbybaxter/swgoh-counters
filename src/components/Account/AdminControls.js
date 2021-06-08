@@ -4,52 +4,92 @@ import {
 } from 'reactstrap';
 
 import {
-  importCharacterData, importCounterData, importSquadData, getLeadersBySeason,
+  importCharacterData,
+  importCounterData,
+  importSquadData,
+  getCountersBySeason,
+  getLeadersBySeason,
+  getSquadsBySeason,
 } from 'src/helpers/data';
+
 import { AdminControlsWrapper, ControlsDiv } from './style';
 
 export default function AccountButtons() {
-  const [season, setSeason] = useState();
+  const [leaderSeason, setLeaderSeason] = useState();
+  const [squadSeason, setSquadSeason] = useState();
+  const [counterSeason, setCounterSeason] = useState();
 
-  const importCharacters = async () => {
+  async function importCharacters() {
     try {
       await importCharacterData();
     } catch (err) {
       console.error('importCharacters error :>>', err);
     }
-  };
+  }
 
-  const importSquads = async () => {
+  async function importSquads() {
     try {
       await importSquadData();
     } catch (err) {
       console.error('importSquads error :>> ', err);
     }
-  };
+  }
 
-  const importCounters = async () => {
+  async function importCounters() {
     try {
       await importCounterData();
     } catch (err) {
       console.error('importCounters error :>> ', err);
     }
-  };
+  }
 
-  const handleSeasonInput = (e) => {
-    setSeason(e.target.value);
-  };
+  function handleLeaderSeasonInput(e) {
+    setLeaderSeason(e.target.value);
+  }
 
-  const handleGetLeadersBySeason = async () => {
+  function handleSquadSeasonInput(e) {
+    setSquadSeason(e.target.value);
+  }
+
+  function handleCounterSeasonInput(e) {
+    setCounterSeason(e.target.value);
+  }
+
+  async function handleGetLeadersBySeason() {
     try {
-      console.info(`Getting leaders for Season ${season}`);
-      const response = await getLeadersBySeason(season);
+      console.info(`Getting leaders for Season ${leaderSeason}`);
+      const response = await getLeadersBySeason(leaderSeason);
       if (response === 'ok') {
-        console.info(`Leaders for Season ${season} uploaded to Firebase `);
+        console.info(`Leaders for Season ${leaderSeason} uploaded to Firebase `);
       }
     } catch (err) {
       console.error('getLeadersBySeason error :>>', err);
     }
-  };
+  }
+
+  async function handleGetSquadsBySeason() {
+    try {
+      console.info(`Getting squads for Season ${squadSeason}`);
+      const response = await getSquadsBySeason(squadSeason);
+      if (response === 'ok') {
+        console.info(`Squads for Season ${squadSeason} uploaded to database `);
+      }
+    } catch (err) {
+      console.error('getSquadsBySeason error :>>', err);
+    }
+  }
+
+  async function handleGetCountersBySeason() {
+    try {
+      console.info(`Getting counters for Season ${counterSeason}`);
+      const response = await getCountersBySeason(counterSeason);
+      if (response === 'ok') {
+        console.info(`Counters for Season ${counterSeason} uploaded to database `);
+      }
+    } catch (err) {
+      console.error('getCountersBySeason error :>>', err);
+    }
+  }
 
   return (
     <AdminControlsWrapper>
@@ -69,10 +109,21 @@ export default function AccountButtons() {
             <Form>
               <Col>
                 <FormGroup>
-                  <Label for="seasonNum" className="w-100 text-left m-1">Season #</Label>
+                  <Label for="leaderSeasonNum" className="w-100 text-left m-1">Season #</Label>
                   <Row className="m-0">
-                    <Input className="m-1 w-25" type="text" bsSize="sm" name="seasonNum" id="seasonNum" onChange={handleSeasonInput} />
+                    <Input className="m-1 w-25" type="text" bsSize="sm" name="leaderSeasonNum" id="leaderSeasonNum" onChange={handleLeaderSeasonInput} />
                     <Button className="btn-sm m-1" onClick={handleGetLeadersBySeason}>Get Leaders By Season</Button>
+                  </Row>
+                </FormGroup>
+              </Col>
+            </Form>
+            <Form>
+              <Col>
+                <FormGroup>
+                  <Label for="squadSeasonNum" className="w-100 text-left m-1">Season #</Label>
+                  <Row className="m-0">
+                    <Input className="m-1 w-25" type="text" bsSize="sm" name="squadSeasonNum" id="squadSeasonNum" onChange={handleSquadSeasonInput} />
+                    <Button className="btn-sm m-1" onClick={handleGetSquadsBySeason}>Get Squads By Season</Button>
                   </Row>
                 </FormGroup>
               </Col>
