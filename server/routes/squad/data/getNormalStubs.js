@@ -1,9 +1,13 @@
-function buildLeaderStatement(leaderIds) {
-  let statement = `(sv.toon1Id = '${leaderIds[0]}'`;
+function buildLeaderStatement(leaderIds, type) {
+  const squad = type === 'normal' ? 'sv' : 'sv2';
+  let statement = `(${squad}.toon1Id = '${leaderIds[0]}'`;
   for (let i = 1; i < leaderIds.length; i += 1) {
-    statement += ` OR sv.toon1Id ='${leaderIds[i]}'`;
+    statement += ` OR ${squad}.toon1Id ='${leaderIds[i]}'`;
   }
   statement += ')';
+  console.log('type :>> ', type);
+  console.log('squad :>> ', squad);
+  console.log('statement :>> ', statement);
   return statement;
 }
 
@@ -25,7 +29,7 @@ module.exports = ({ database, log }) => (type, leaders, size) => {
     JOIN squadVersion sv2 ON s2.latestVersionId = sv2.id
     JOIN \`character\` ch ON sv.toon1Id = ch.id
     WHERE cv.battleType = '${size}'
-    AND ${buildLeaderStatement(leaderIds)}
+    AND ${buildLeaderStatement(leaderIds, type)}
     GROUP BY sv.toon1Id
     ORDER BY ch.name, sv.name
     LIMIT 2

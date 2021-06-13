@@ -54,7 +54,7 @@ module.exports = ({ database, log }) => ({ id }, {
         rej(databaseConnectionError);
       }
 
-      connection.beginTransaction((transactionError) => {
+      connection.beginTransaction(transactionError => {
         if (transactionError) {
           connection.release();
           rej(transactionError);
@@ -76,7 +76,7 @@ module.exports = ({ database, log }) => ({ id }, {
               });
             }
 
-            return connection.commit((commitError) => {
+            return connection.commit(commitError => {
               if (commitError) {
                 return connection.rollback(() => {
                   connection.release();
@@ -94,7 +94,7 @@ module.exports = ({ database, log }) => ({ id }, {
         });
       });
     });
-  }).catch((err) => {
+  }).catch(err => {
     throw err;
   });
 };

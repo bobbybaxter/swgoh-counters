@@ -24,6 +24,7 @@ import { AuthContext } from 'src/contexts/userContext';
 import './App.scss';
 
 const Account = lazy(() => import('src/components/Account/Account'));
+const Admin = lazy(() => import('src/components/Account/Admin'));
 const PatreonLink = lazy(() => import('src/components/PatreonLink/PatreonLink'));
 const Login = lazy(() => import('src/components/Account/Login'));
 const CountersPage = lazy(() => import('src/components/CountersPage/CountersPage'));
@@ -35,6 +36,14 @@ firebaseConnection();
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { authenticated } = useContext(AuthContext);
   const routeChecker = props => (authenticated === true
+    ? (<Component {...props} {...rest} />)
+    : (<Redirect to={{ pathname: '/', state: { from: props.location } }} />));
+  return <Route {...rest} render={props => routeChecker(props)} />;
+};
+
+const AdminRoute = ({ component: Component, ...rest }) => {
+  const { admin } = useContext(AuthContext);
+  const routeChecker = props => (admin === true
     ? (<Component {...props} {...rest} />)
     : (<Redirect to={{ pathname: '/', state: { from: props.location } }} />));
   return <Route {...rest} render={props => routeChecker(props)} />;
@@ -134,6 +143,11 @@ function App() {
                   <PrivateRoute
                     exact path="/account"
                     component={Account}
+                  />
+
+                  <AdminRoute
+                    exact path="/admin"
+                    component={Admin}
                   />
 
                   <Route component={NotFound} />

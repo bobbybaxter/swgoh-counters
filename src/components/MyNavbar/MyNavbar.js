@@ -28,11 +28,11 @@ export const NavDivider = styled.span`
 
 const MyNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { authenticated, handleLogout } = useContext(AuthContext);
+  const { admin, authenticated, handleLogout } = useContext(AuthContext);
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const handleNavLogout = (e) => {
+  const handleNavLogout = e => {
     e.preventDefault();
     localStorage.removeItem('userData');
     localStorage.removeItem('userUnits');
@@ -89,6 +89,13 @@ const MyNavbar = () => {
                   <NavLink tag={RRNavLink} to="/account">Account</NavLink>
                 </NavItem>
               ) }
+
+              { !admin ? '' : (
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/admin">Admin</NavLink>
+                </NavItem>
+              )}
+
               {selectLoginOrLogout}
             </Nav>
           </Collapse>

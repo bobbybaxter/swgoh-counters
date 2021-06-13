@@ -1,47 +1,26 @@
 import React, { useState } from 'react';
 import {
-  Button, Col, Form, FormGroup, Input, Label, Row,
+  Button,
+  Col,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+  Row,
+  TabContent,
+  TabPane,
 } from 'reactstrap';
 
 import {
-  importCharacterData,
-  importCounterData,
-  importSquadData,
   getCountersBySeason,
   getLeadersBySeason,
   getSquadsBySeason,
 } from 'src/helpers/data';
 
-import { AdminControlsWrapper, ControlsDiv } from './style';
-
-export default function AdminControls() {
+export default function SWGOHTab({ activeTab }) {
   const [leaderSeason, setLeaderSeason] = useState();
   const [squadSeason, setSquadSeason] = useState();
   const [counterSeason, setCounterSeason] = useState();
-
-  async function importCharacters() {
-    try {
-      await importCharacterData();
-    } catch (err) {
-      console.error('importCharacters error :>>', err);
-    }
-  }
-
-  async function importSquads() {
-    try {
-      await importSquadData();
-    } catch (err) {
-      console.error('importSquads error :>> ', err);
-    }
-  }
-
-  async function importCounters() {
-    try {
-      await importCounterData();
-    } catch (err) {
-      console.error('importCounters error :>> ', err);
-    }
-  }
 
   function handleLeaderSeasonInput(e) {
     setLeaderSeason(e.target.value);
@@ -92,19 +71,9 @@ export default function AdminControls() {
   }
 
   return (
-    <AdminControlsWrapper>
-      <h4>Admin Controls</h4>
-      <div className="d-flex flex-row">
-        <ControlsDiv>
-          <h5>Import Controls</h5>
-          <div className="d-flex flex-row">
-            <Button className="btn-sm ml-1" onClick={importCharacters}>Import Characters</Button>
-            <Button className="btn-sm mx-1" onClick={importSquads} >Import Squads</Button>
-            <Button className="btn-sm" onClick={importCounters} >Import Counters</Button>
-          </div>
-        </ControlsDiv>
-        <ControlsDiv>
-          <h5>SWGOH Controls</h5>
+    <TabContent activeTab={activeTab}>
+      <TabPane tabId="2">
+        <div className="d-flex flex-row m-3 p-3">
           <div className="w-100">
             <Form>
               <Col>
@@ -140,8 +109,8 @@ export default function AdminControls() {
               </Col>
             </Form>
           </div>
-        </ControlsDiv>
-      </div>
-    </AdminControlsWrapper>
+        </div>
+      </TabPane>
+    </TabContent>
   );
 }

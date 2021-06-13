@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 
-module.exports = (app) => {
+module.exports = app => {
   const host = process.env.DB_HOST || 'localhost';
   const user = process.env.DB_USER || 'root';
   const password = process.env.DB_PASS || '';
