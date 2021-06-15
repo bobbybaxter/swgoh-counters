@@ -24,7 +24,6 @@ function parseGoogleSheet(data) {
   return valueRows.map(valueRow => renameKeys(headers, valueRow));
 }
 
-// TODO: add these to AWS load balancer
 const sheetId = process.env.GOOGLE_SHEET_ID;
 const apiKey = process.env.GOOGLE_API_KEY;
 
@@ -34,22 +33,42 @@ module.exports = ({ data }) => ({
   handler: async (request, reply) => {
     const { size } = request.params;
     const res = await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${size}Export?key=${apiKey}`);
-    const leaderSquads = parseGoogleSheet(res.data.values);
-    const leadersNormal = _.uniqBy(leaderSquads.map(leader => ({
+    const allLeaderSquads = parseGoogleSheet(res.data.values);
+    const leadersNormal = _.uniqBy(allLeaderSquads.map(leader => ({
       id: leader.toon1Id,
       name: leader.toon1Name,
     })), 'id');
 
-    const normal = await data.getStubs('normal', leadersNormal, size);
+    const normalStubs = await data.getStubs('normal', leadersNormal, size);
+    const normal = await Promise.all(normalStubs.map(async x => {
+      const leaderSquadIds = allLeaderSquads
+        .filter(y => y.toon1Id === x.toon1Id)
+        .map(y => y.id);
+
+      return ({
+        ...x,
+        squads: await data.getMultipleSquadsByIds(leaderSquadIds),
+      });
+    }));
 
     const resReverse = await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${size}RExport?key=${apiKey}`);
-    const leadersReverseSquads = parseGoogleSheet(resReverse.data.values);
-    const leadersReverse = _.uniqBy(leadersReverseSquads.map(leader => ({
+    const allLeaderSquadsReverse = parseGoogleSheet(resReverse.data.values);
+    const leadersReverse = _.uniqBy(allLeaderSquadsReverse.map(leader => ({
       id: leader.toon1Id,
       name: leader.toon1Name,
     })), 'id');
 
-    const reverse = await data.getStubs('reverse', leadersReverse, size);
+    const reverseStubs = await data.getStubs('reverse', leadersReverse, size);
+    const reverse = await Promise.all(reverseStubs.map(async x => {
+      const leaderSquadIds = allLeaderSquadsReverse
+        .filter(y => y.toon1Id === x.toon1Id)
+        .map(y => y.id);
+
+      return ({
+        ...x,
+        squads: await data.getMultipleSquadsByIds(leaderSquadIds),
+      });
+    }));
 
     const squadStubs = {
       normal,
@@ -73,9 +92,11 @@ module.exports = ({ data }) => ({
           normal: {
             type: 'array',
             items: {
+              type: 'object',
               properties: {
                 toon1Id: { type: 'string' },
                 toon1Name: { type: 'string' },
+                squads: { type: 'array' },
                 latestCounterVersion: { type: 'string' },
               },
             },
@@ -83,9 +104,11 @@ module.exports = ({ data }) => ({
           reverse: {
             type: 'array',
             items: {
+              type: 'object',
               properties: {
                 toon1Id: { type: 'string' },
                 toon1Name: { type: 'string' },
+                squads: { type: 'array' },
                 latestCounterVersion: { type: 'string' },
               },
             },

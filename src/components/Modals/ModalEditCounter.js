@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import { isWebUri } from 'valid-url';
 
 import SquadHeader from 'src/components/shared/SquadHeader';
@@ -13,7 +12,6 @@ import { colors } from 'src/styles/colors';
 import { EditMenu } from 'src/styles/style';
 
 import NewSquadDisplay from './NewSquadDisplay';
-import CounterDetailForm from './CounterDetailForm';
 import ZetaForm from './ZetaForm';
 import VideoForm from './VideoForm';
 import {
@@ -57,7 +55,6 @@ const buildDefaultSquad = () => {
 
 export default function ModalEditCounter({
   counter,
-  counterStubs,
   isOpen,
   leftSquad,
   reload,
@@ -69,7 +66,6 @@ export default function ModalEditCounter({
 }) {
   ModalEditCounter.propTypes = {
     counter: PropTypes.object.isRequired,
-    counterStubs: PropTypes.array.isRequired,
     isOpen: PropTypes.bool.isRequired,
     leftSquad: PropTypes.object,
     reload: PropTypes.func,
@@ -79,20 +75,14 @@ export default function ModalEditCounter({
     view: PropTypes.string,
   };
 
-  const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
-  const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
+  const characters = JSON.parse(sessionStorage.getItem('characters')) || [];
+  const { isHardCounter } = counter;
 
   const [areVideoLinksValid, setAreVideoLinksValid] = useState(true);
   const [areVideoTitlesTooLong, setAreVideoTitlesTooLong] = useState(false);
-  const [characters] = useState(storedCharacters);
   const [doesTempMatchSource, setDoesTempMatchSource] = useState(false);
-  const [isHardCounter, setIsHardCounter] = useState(counter.isHardCounter);
-  const [isNewCounter, setIsNewCounter] = useState(true);
   const [sourceSquad, setSourceSquad] = useState();
   const [strategy, setStrategy] = useState(counter.counterStrategy);
-  const [squads] = useState(storedSquads);
-  const [squadMatch] = useState('');
-  const [squadNameMatch, setSquadNameMatch] = useState('');
   const [tempSquad, setTempSquad] = useState(buildDefaultSquad());
   const [tempSquadInfo, setTempSquadInfo] = useState(defaultTempSquadInfo);
   const [videoLinks, setVideoLinks] = useState(counter.videoLinks);
@@ -180,62 +170,9 @@ export default function ModalEditCounter({
     buildTempSquad();
   }, [counter, leftSquad, rightSquad, view]);
 
-  const checkIfVideoLinksAreValid = (updatedLinks) => {
+  const checkIfVideoLinksAreValid = updatedLinks => {
     const isInvalid = updatedLinks.some(videoLink => !isWebUri(videoLink.link));
     setAreVideoLinksValid(!isInvalid);
-  };
-
-  const checkExistingCounter = (squadId) => {
-    let counterExists;
-    counterExists = !!counterStubs.find(x => x.counterSquadId === squadId);
-    if (squadId === rightSquad.id) {
-      counterExists = false;
-    }
-    return !counterExists;
-  };
-
-  const checkExistingSquad = async (squadToCheck) => {
-    const squadLeader = squadToCheck.shift();
-    const squadMembers = squadToCheck.slice(0);
-    const matchedSquad = await squads.find(squad => squad.toon1Name === squadLeader
-      && _.isEqual(
-        squadMembers.sort(),
-        [squad.toon2Name, squad.toon3Name, squad.toon4Name, squad.toon5Name].sort(),
-      ));
-
-    if (!matchedSquad) {
-      return {
-        squadMatch: '',
-        isNewCounter: true,
-        tempSquadInfo: {
-          id: counter.counterSquadId,
-          name: view === 'normal' ? rightSquad.name : leftSquad.name,
-          description: view === 'normal' ? rightSquad.description : leftSquad.description,
-          generalStrategy: view === 'normal' ? rightSquad.generalStrategy : leftSquad.generalStrategy,
-          toon1Id: (characters.find(x => x.name === squadLeader)).id || 'BLANK',
-          toon2Id: (characters.find(x => x.name === squadMembers[0])).id || 'BLANK',
-          toon3Id: (characters.find(x => x.name === squadMembers[1])).id || 'BLANK',
-          toon4Id: (characters.find(x => x.name === squadMembers[2])).id || 'BLANK',
-          toon5Id: (characters.find(x => x.name === squadMembers[3])).id || 'BLANK',
-        },
-      };
-    }
-
-    return {
-      squadMatch: matchedSquad.name === rightSquad.name ? '' : matchedSquad.name,
-      isNewCounter: checkExistingCounter(matchedSquad.id),
-      tempSquadInfo: {
-        id: matchedSquad.id,
-        name: matchedSquad.name,
-        description: matchedSquad.description,
-        generalStrategy: matchedSquad.generalStrategy,
-        toon1Id: matchedSquad.toon1Id,
-        toon2Id: matchedSquad.toon2Id,
-        toon3Id: matchedSquad.toon3Id,
-        toon4Id: matchedSquad.toon4Id,
-        toon5Id: matchedSquad.toon5Id,
-      },
-    };
   };
 
   useEffect(() => {
@@ -253,21 +190,19 @@ export default function ModalEditCounter({
     checkForSourceSquad();
   }, [sourceSquad, tempSquad]);
 
-  const handleStrategyInput = (e) => {
+  const handleStrategyInput = e => {
     e.preventDefault();
     setStrategy(e.target.value || e.target.innerText);
   };
 
-  const handleStrategyReset = (e) => {
+  const handleStrategyReset = e => {
     e.preventDefault();
     setStrategy(counter.counterStrategy);
   };
 
-  const handleSubmitButton = async (e) => {
+  const handleSubmitButton = async e => {
     e.preventDefault();
-    if (!isNewCounter
-      || !!squadMatch
-      || tempSquadInfo.name === ''
+    if (tempSquadInfo.name === ''
       || tempSquad[0].id === 'BLANK') {
       console.error('please add or correct squad name or members');
     } else {
@@ -309,7 +244,7 @@ export default function ModalEditCounter({
 
 
           if (updateCounterResponse === 'ok') {
-            await Promise.all(videoLinks.map(async (videoLink) => {
+            await Promise.all(videoLinks.map(async videoLink => {
               if (videoLink.id.length === 21 && videoLink.link !== '') {
                 if (videoLink.deleteVideo) {
                   await deleteVideoLink({
@@ -375,28 +310,6 @@ export default function ModalEditCounter({
           </FormLeftSide>
 
           <FormRightSide>
-            {/* Squad details */}
-            <h6 className="text-secondary pb-3">Counter Squad Name</h6>
-            <CounterDetailForm
-              buildDefaultSquad={buildDefaultSquad}
-              checkExistingSquad={checkExistingSquad}
-              defaultTempSquadInfo={defaultTempSquadInfo}
-              isHardCounter={isHardCounter}
-              isNewCounter={isNewCounter}
-              rightSquad={rightSquad}
-              setIsHardCounter={setIsHardCounter}
-              setSquadNameMatch={setSquadNameMatch}
-              setIsNewCounter={setIsNewCounter}
-              setTempSquadInfo={setTempSquadInfo}
-              setTempSquad={setTempSquad}
-              size={size}
-              sourceSquad={sourceSquad}
-              squadMatch={squadMatch}
-              squadNameMatch={squadNameMatch}
-              squads={squads}
-              tempSquadInfo={tempSquadInfo}
-            />
-
             <div>
               {/* Zetas */}
               <ZetaForm
@@ -408,7 +321,7 @@ export default function ModalEditCounter({
               />
 
               {/* Counter Strategy Box */}
-              <MiddleWrapper $hasBorderBottom>
+              <MiddleWrapper $hasBorderBottom $hasBorderTop>
                 <Label for="generalStrategyInput" className="text-secondary pb-3">Counter Strategy</Label>
                 <Input
                   name="generalStrategyInput"
@@ -441,9 +354,6 @@ export default function ModalEditCounter({
         <Button color="primary" onClick={handleSubmitButton}
           disabled={ areVideoTitlesTooLong
             || !areVideoLinksValid
-            || !isNewCounter
-            || !!squadMatch
-            || !!squadNameMatch
             || tempSquadInfo.name === ''
             || tempSquad[0].id === 'BLANK' }>Submit</Button>
         <Button color="secondary" onClick={toggle}>Cancel</Button>

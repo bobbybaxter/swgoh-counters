@@ -5,7 +5,6 @@ const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 module.exports = app => async ({ leaderIds, season }) => {
-  // TODO: add env variable to AWS
   const baseURL = process.env.SWGOH_BASE_URL;
 
   const swgohData = [];

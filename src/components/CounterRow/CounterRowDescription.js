@@ -8,7 +8,6 @@ import { CounterCardWrapper } from 'src/styles/style';
 import { AccordionContext } from 'src/contexts/accordionContext';
 
 const CounterRowDescription = ({
-  counterStubs,
   leftSquad,
   reload,
   rightSquadStub,
@@ -17,7 +16,6 @@ const CounterRowDescription = ({
   ...props
 }) => {
   CounterRowDescription.propTypes = {
-    counterStubs: PropTypes.array.isRequired,
     leftSquad: PropTypes.object.isRequired,
     reload: PropTypes.func,
     rightSquadStub: PropTypes.object.isRequired,
@@ -34,7 +32,6 @@ const CounterRowDescription = ({
       <Collapse isOpen={id === collapse}>
         <CounterCard
           counter={rightSquadStub}
-          counterStubs={counterStubs}
           leftSquad={leftSquad}
           reload={reload}
           size={size}

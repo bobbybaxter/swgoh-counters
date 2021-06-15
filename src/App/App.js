@@ -16,7 +16,6 @@ import MyNavbar from 'src/components/MyNavbar/MyNavbar';
 
 import {
   firebaseConnection,
-  getSquadData,
   getAllCharacters,
 } from 'src/helpers/data';
 import { AuthContext } from 'src/contexts/userContext';
@@ -29,7 +28,6 @@ const PatreonLink = lazy(() => import('src/components/PatreonLink/PatreonLink'))
 const Login = lazy(() => import('src/components/Account/Login'));
 const CountersPage = lazy(() => import('src/components/CountersPage/CountersPage'));
 const NotFound = lazy(() => import('src/components/NotFound/NotFound'));
-const SubmissionForm = lazy(() => import('src/components/SubmissionForm/SubmissionForm'));
 
 firebaseConnection();
 
@@ -49,30 +47,19 @@ const AdminRoute = ({ component: Component, ...rest }) => {
   return <Route {...rest} render={props => routeChecker(props)} />;
 };
 
-const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
 const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
 
-// TODO: do an addCounter and addSquad check on the server-side, to eliminate duplicates
-// TODO: add a way to lock any videos that i put on the site from being delete by other users
+// TODO: add a way to lock any videos that i put on the site from being deleted by other users
 // TODO: possibly make my videos a different color, make the the first video shown
-// TODO: figure out why the guild endpoint is getting called twice
+// TODO: go through endpoints to find unused endpoints
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [squads, setSquads] = useState([]); // eslint-disable-line no-unused-vars
   const [view, setView] = useState('normal');
   const { loading } = useContext(AuthContext);
 
   const reload = useCallback(() => window.location.reload(), []);
 
   useEffect(() => {
-    async function getSquads() {
-      const results = await getSquadData().catch(e => console.error('getAllSquads', e));
-      if (results && !_.isEqual(results, storedSquads)) {
-        setSquads(results);
-        sessionStorage.setItem('squads', JSON.stringify(results));
-      }
-    }
-
     async function getCharacters() {
       const results = await getAllCharacters().catch(e => console.error('getAllCharacters', e));
       if (results && !_.isEqual(results, storedCharacters)) {
@@ -91,7 +78,6 @@ function App() {
     ReactGA.pageview(window.location.pathname);
     try {
       getCharacters();
-      getSquads();
     } catch (err) {
       throw err;
     }
@@ -133,8 +119,6 @@ function App() {
                       view={view}
                     />
                   )}/>
-
-                  <Route exact path="/submit" component={ SubmissionForm } />
 
                   <Route exact path="/login" component={ Login } />
 

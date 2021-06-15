@@ -65,7 +65,7 @@ module.exports = app => ({
         log.debug(`Counter updated not needed for ${existingCounter.id}`);
       }
 
-      app.log.debug(`Counter exists for (counter, opponent): ${counterSquadId}, ${opponentSquadId}`);
+      log.info(`Counter exists for (counter, opponent): ${counterSquadId}, ${opponentSquadId}`);
       return existingCounter.id;
     }
 
@@ -95,7 +95,7 @@ module.exports = app => ({
         log.debug(`CounterStats update not needed for ${counterId}`);
       }
 
-      app.log.debug(`CounterStats exists for: ${counterId}`);
+      log.info(`CounterStats exist for: ${counterId}`);
       return existingCounterStats.id;
     }
 

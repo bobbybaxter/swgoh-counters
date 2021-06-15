@@ -28,7 +28,7 @@ module.exports = ({ database, log }) => (type, leaders, size) => {
     AND ${buildLeaderStatement(leaderIds)}
     GROUP BY sv.toon1Id
     ORDER BY ch.name, sv.name
-    LIMIT 2
+    -- LIMIT 2
   `;
 
   return new Promise((res, rej) => {

@@ -10,7 +10,6 @@ export const FormZetaReq = styled(FormGroup)`
 `;
 
 export const Wrapper = styled.div`
-  border-top: 1px solid #343a40;
   padding-top: 1rem;
 `;
 
@@ -33,7 +32,7 @@ export default function ZetaForm({
   const buildZetaSelectors = () => tempSquad
     .map((toon, i) => {
       const zetaList = (characters.find(x => x.id === toon.id) || {}).zetas;
-      const handleZetaSelector = (e) => {
+      const handleZetaSelector = e => {
         e.preventDefault();
         const tempSquadCopy = [...tempSquad];
         tempSquadCopy[i].zetas = Array.from(e.target.selectedOptions, option => option.value);

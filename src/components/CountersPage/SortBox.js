@@ -29,23 +29,23 @@ const LeaderCheckboxWrapper = styled.div`
   }
 `;
 
-// TODO: hide the Opponent Squad if there is no match
+// TODO: look into reducing the size of the counter list instead of showing all in the list
 const SortBox = ({
+  characters,
   excludedCounters,
   excludedOpponents,
   leaderIds,
   leaders,
-  selectedLeaders,
   setExcludedCounters,
   setExcludedOpponents,
   view,
 }) => {
   SortBox.propTypes = {
+    characters: PropTypes.array.isRequired,
     excludedCounters: PropTypes.array,
     excludedOpponents: PropTypes.array,
     leaderIds: PropTypes.array.isRequired,
     leaders: PropTypes.array.isRequired,
-    selectedLeaders: PropTypes.array.isRequired,
     setExcludedCounters: PropTypes.func.isRequired,
     setExcludedOpponents: PropTypes.func.isRequired,
     view: PropTypes.string.isRequired,
@@ -60,7 +60,7 @@ const SortBox = ({
   }
 
   function handleClearAllCounters() {
-    setExcludedCounters(selectedLeaders.map(x => x.id));
+    setExcludedCounters(characters.map(x => x.id));
   }
 
   function handleClearAllOpponents() {
@@ -91,7 +91,7 @@ const SortBox = ({
     }
   }
 
-  const buildOpponentFilter = leaders.map((leader) => {
+  const buildOpponentFilter = leaders.map(leader => {
     const isChecked = !excludedOpponents.includes(leader.id);
     return (
       <FormGroup check key={`${leader.id}_opponentCheckBox`}>
@@ -108,7 +108,7 @@ const SortBox = ({
     );
   });
 
-  const buildCounterFilter = selectedLeaders.map((counterLeader) => {
+  const buildCounterFilter = characters.map(counterLeader => {
     const isChecked = !excludedCounters.includes(counterLeader.id);
     return (
       <FormGroup check key={`${counterLeader.id}_counterCheckBox`}>

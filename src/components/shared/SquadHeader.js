@@ -135,13 +135,8 @@ export default function SquadHeader({
     setSquad();
   }, [counter, squad.toon1Id, squad.toon1Name, squad.toon2Id, squad.toon2Name, squad.toon3Id, squad.toon3Name, squad.toon4Id, squad.toon4Name, squad.toon5Id, squad.toon5Name]); // eslint-disable-line max-len
 
-  const {
-    name,
-  } = squad || {};
-
   return (
     <>
-      <h5>{name}</h5>
       <Wrapper className="mb-1">
       {
         displaySquad && displaySquad.map((toon, i) => (i < size.charAt(0)

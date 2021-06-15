@@ -9,7 +9,7 @@ export {
   addCounter,
   updateCounter,
   importCounterData,
-  getCounterStubsBySquadId,
+  getCounterStubsBySquadIds,
 } from './countersData';
 
 export { default as firebaseConnection } from './firebaseConnection';

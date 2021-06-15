@@ -5,9 +5,6 @@ function buildLeaderStatement(leaderIds, type) {
     statement += ` OR ${squad}.toon1Id ='${leaderIds[i]}'`;
   }
   statement += ')';
-  console.log('type :>> ', type);
-  console.log('squad :>> ', squad);
-  console.log('statement :>> ', statement);
   return statement;
 }
 
@@ -32,7 +29,7 @@ module.exports = ({ database, log }) => (type, leaders, size) => {
     AND ${buildLeaderStatement(leaderIds, type)}
     GROUP BY sv.toon1Id
     ORDER BY ch.name, sv.name
-    LIMIT 2
+    -- LIMIT 2
   `;
 
   return new Promise((res, rej) => {

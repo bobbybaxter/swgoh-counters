@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
 import { getImage } from 'src/helpers';
-import { NewSquadChar, SquadTitle } from 'src/styles/style';
+import { NewSquadChar } from 'src/styles/style';
 import PropTypes from 'prop-types';
 import ToonImg from './ToonImg';
 
@@ -30,38 +30,35 @@ export default function MiniSquadView({
   MiniSquadView.propTypes = {
     leftSquadStub: PropTypes.object.isRequired,
     size: PropTypes.string.isRequired,
+    toggle: PropTypes.func.isRequired,
   };
 
-  const [squad, setSquad] = useState();
+  const {
+    toon1Id,
+    toon1Name,
+    toon2Id,
+    toon2Name,
+    toon3Id,
+    toon3Name,
+    toon4Id,
+    toon4Name,
+    toon5Id,
+    toon5Name,
+  } = leftSquadStub;
 
-  useEffect(() => {
-    const {
-      toon1Id,
-      toon2Id,
-      toon3Id,
-      toon4Id,
-      toon5Id,
-    } = leftSquadStub;
-    const characters = JSON.parse(sessionStorage.getItem('characters')) || [];
-    const toon1 = characters.find(x => x.id === toon1Id);
-    const toon2 = characters.find(x => x.id === toon2Id);
-    const toon3 = characters.find(x => x.id === toon3Id);
-    const toon4 = characters.find(x => x.id === toon4Id);
-    const toon5 = characters.find(x => x.id === toon5Id);
-    setSquad([
-      toon1,
-      toon2,
-      toon3,
-      toon4,
-      toon5,
-    ]);
-  }, [leftSquadStub]);
+  const squad = [
+    { id: toon1Id, name: toon1Name },
+    { id: toon2Id, name: toon2Name },
+    { id: toon3Id, name: toon3Name },
+    { id: toon4Id, name: toon4Name },
+    { id: toon5Id, name: toon5Name },
+  ];
 
   return (
     <MiniSquad onClick={toggle} id={leftSquadStub.id}>
       <SquadImages>
         {
-          squad && squad.map((toon, i) => i < size.charAt(0)
+          squad.map((toon, i) => i < size.charAt(0)
             && <NewSquadChar key={`MiniSquad_${leftSquadStub.id}_${toon.name}_${i}`}>
               <ToonImg
                 alt={toon.name}
@@ -75,7 +72,6 @@ export default function MiniSquadView({
             </NewSquadChar>)
         }
       </SquadImages>
-      <SquadTitle className="text-secondary">{leftSquadStub.name}</SquadTitle>
     </MiniSquad>
   );
 }

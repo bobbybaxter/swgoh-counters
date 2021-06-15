@@ -1,5 +1,5 @@
 import React, {
-  memo, useContext, useEffect, useState,
+  memo, useContext,
 } from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
@@ -20,61 +20,35 @@ import {
   TopWrapper,
 } from './style';
 
-const defaultSquad = {
-  id: '',
-  name: '',
-  toon1Id: '',
-  toon1Name: '',
-  toon2Id: '',
-  toon2Name: '',
-  toon3Id: '',
-  toon3Name: '',
-  toon4Id: '',
-  toon4Name: '',
-  toon5Id: '',
-  toon5Name: '',
-  description: '',
-  generalStrategy: '',
-  latestVersionId: '',
-  createdOn: '',
-  createdById: '',
-  createdByName: '',
-};
-
 const OpponentCard = ({
   leftSquadStub,
   reload,
   size,
 }) => {
   OpponentCard.propTypes = {
-    leftSquadStub: PropTypes.object,
-    reload: PropTypes.func,
-    size: PropTypes.string,
+    leftSquadStub: PropTypes.object.isRequired,
+    reload: PropTypes.func.isRequired,
+    size: PropTypes.string.isRequired,
   };
 
-  const [squad, setSquad] = useState(defaultSquad);
   const [isOpen, setIsOpen] = useToggle(false);
   const { isActivePatron, user } = useContext(AuthContext);
   const { collapse } = useContext(AccordionContext);
 
-  const { generalStrategy, description } = squad;
-
-  useEffect(() => {
-    async function getSquad() {
-      const squads = JSON.parse(sessionStorage.getItem('squads')) || [];
-      const matchedSquad = squads.find(x => x.id === (leftSquadStub.id)) || defaultSquad;
-      await setSquad(matchedSquad);
-    }
-
-    getSquad();
-  }, [leftSquadStub.id, leftSquadStub.name]);
+  const {
+    id,
+    createdByName,
+    createdOn,
+    description,
+    generalStrategy,
+  } = leftSquadStub;
 
   return (
-    <Collapse isOpen={leftSquadStub.id === collapse}>
+    <Collapse isOpen={id === collapse}>
       <TopWrapper>
         <DetailsDivCenter>
           <h6 className="text-secondary mb-1">Opponent Squad</h6>
-          { squad && <SquadHeader size={size} squad={squad} /> }
+          <SquadHeader size={size} squad={leftSquadStub} />
           <DescriptionText className="text-left"><strong className="text-secondary">Details: </strong>{description}</DescriptionText>
           <DescriptionText className="text-left"><strong className="text-secondary">General Strategy: </strong>{generalStrategy}</DescriptionText>
         </DetailsDivCenter>
@@ -85,10 +59,8 @@ const OpponentCard = ({
           {/* only users that have signed in, are active patrons,
           and have a allyCode can update counters */}
           {isActivePatron && user.username && <p><Button className="p-0 m-0" size="sm" color="link" onClick={() => setIsOpen(true)}><small>edit squad</small></Button></p>}
-          {/* TODO: make the date a link that goes to a History page for the counter */}
-          {squad.createdOn && <p><small>updated on: {format(new Date(squad.createdOn), 'MMM d, yyyy')}</small></p>}
-          {/* TODO: make the username a link that goes to a page for the user */}
-          <p><small>by: {squad.createdByName}</small></p>
+          {createdOn && <p><small>updated on: {format(new Date(createdOn), 'MMM d, yyyy')}</small></p>}
+          <p><small>by: {createdByName}</small></p>
         </EditMenu>
       </BottomWrapper>
 
@@ -96,7 +68,7 @@ const OpponentCard = ({
         <ModalPortal>
           <ModalEditSquad
             isOpen={isOpen}
-            squad={squad}
+            squad={leftSquadStub}
             reload={reload}
             size={size}
             toggle={setIsOpen}

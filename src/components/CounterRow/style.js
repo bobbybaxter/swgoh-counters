@@ -32,7 +32,6 @@ export const LeftDiv = styled.div`
   align-items: center;
   padding-top: 5px;
   padding-bottom: 5px;
-  // box-shadow: inset 4px 4px 15px rgba(255, 255, 255, 0.1), inset -4px -4px 15px rgba(255, 255, 255, 0.1);
   justify-content: center;
   border-bottom: 1px solid #343a40;
 `;

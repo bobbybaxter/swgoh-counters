@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, {
-  useContext, useEffect, useState,
+  useContext,
 } from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
@@ -27,30 +27,8 @@ import {
   VideoListItemWrapper,
 } from './style';
 
-const defaultSquad = {
-  id: '',
-  name: '',
-  toon1Id: '',
-  toon1Name: '',
-  toon2Id: '',
-  toon2Name: '',
-  toon3Id: '',
-  toon3Name: '',
-  toon4Id: '',
-  toon4Name: '',
-  toon5Id: '',
-  toon5Name: '',
-  description: '',
-  generalStrategy: '',
-  latestVersionId: '',
-  createdOn: '',
-  createdById: '',
-  createdByName: '',
-};
-
 const CounterCard = ({
   counter,
-  counterStubs,
   leftSquad,
   reload,
   size,
@@ -58,57 +36,42 @@ const CounterCard = ({
 }) => {
   CounterCard.propTypes = {
     counter: PropTypes.object,
-    counterStubs: PropTypes.array.isRequired,
     leftSquad: PropTypes.object.isRequired,
     reload: PropTypes.func,
     size: PropTypes.string,
     view: PropTypes.string,
   };
 
-  // const [leftSquad, setLeftSquad] = useState(defaultSquad);
-  const [rightSquad, setRightSquad] = useState(defaultSquad);
-  const [zetaData, setZetaData] = useState();
+  const {
+    id, toon1Zetas, toon2Zetas, toon3Zetas, toon4Zetas, toon5Zetas,
+  } = counter;
+
+  const rightSquad = {
+    id: counter.squadId,
+    name: counter.name,
+    description: counter.description,
+    generalStrategy: counter.generalStrategy,
+    toon1Id: counter.toon1Id,
+    toon1Name: counter.toon1Name,
+    toon2Id: counter.toon2Id,
+    toon2Name: counter.toon2Name,
+    toon3Id: counter.toon3Id,
+    toon3Name: counter.toon3Name,
+    toon4Id: counter.toon4Id,
+    toon4Name: counter.toon4Name,
+    toon5Id: counter.toon5Id,
+    toon5Name: counter.toon5Name,
+  };
+
   const [isOpen, setIsOpen] = useToggle(false);
+
   const {
     authenticated, isActivePatron, user,
   } = useContext(AuthContext);
 
-  const {
-    counterSquadId,
-    id,
-    opponentSquadId,
-    toon1Zetas,
-    toon2Zetas,
-    toon3Zetas,
-    toon4Zetas,
-    toon5Zetas,
-  } = counter;
+  const zetaData = [toon1Zetas, toon2Zetas, toon3Zetas, toon4Zetas, toon5Zetas];
 
-  useEffect(() => {
-    async function getSquad() {
-      const squads = JSON.parse(sessionStorage.getItem('squads')) || [];
-      const matchedRightSquad = squads.find(x => x.id === (view === 'normal' ? counterSquadId : opponentSquadId)) || defaultSquad;
-      await setRightSquad(matchedRightSquad);
-    }
-
-    getSquad();
-    setZetaData([
-      toon1Zetas,
-      toon2Zetas,
-      toon3Zetas,
-      toon4Zetas,
-      toon5Zetas,
-    ]);
-  }, [counterSquadId,
-    opponentSquadId,
-    toon1Zetas,
-    toon2Zetas,
-    toon3Zetas,
-    toon4Zetas,
-    toon5Zetas,
-    view]);
-
-  const buildOpponentDetails = (squad) => {
+  const buildOpponentDetails = squad => {
     if (squad) {
       const { description, generalStrategy } = squad;
       return (
@@ -147,7 +110,7 @@ const CounterCard = ({
           shouldPrintZeta && <UncontrolledCollapse toggler={`#zetaReqs_${id}`} className="p-1">
             {zetaData.map((zeta, i) => (zeta.length > 0
               ? (
-                <DescriptionText key={`${zeta}${i}`} className="text-left m-0 p-0"><strong className="text-secondary">{view === 'normal' ? rightSquad[`toon${i + 1}Name`] : leftSquad[`toon${i + 1}Name`]}: </strong> {zeta.join(', ')}</DescriptionText>
+                <DescriptionText key={`${zeta}${i}`} className="text-left m-0 p-0"><strong className="text-secondary">{view === 'normal' ? counter[`toon${i + 1}Name`] : leftSquad[`toon${i + 1}Name`]}: </strong> {zeta.join(', ')}</DescriptionText>
               )
               : ''))}
           </UncontrolledCollapse>
@@ -155,7 +118,7 @@ const CounterCard = ({
         {
           shouldPrintVideoLinks && <UncontrolledCollapse toggler={`#videoLinks_${id}`} className="p`">
             <ContainerColumn>
-              {counter.videoLinks.map((videoLink) => {
+              {counter.videoLinks.map(videoLink => {
                 const handleButton = () => window.open(videoLink.link);
                 return (
                 <VideoListItemWrapper key={videoLink.id}>
@@ -199,12 +162,10 @@ const CounterCard = ({
         <h6 className="text-secondary mb-1">{view === 'normal' ? 'Counter Squad' : 'Opponent Squad'}</h6>
         {
           view === 'normal'
-            ? rightSquad && rightSquad.id
-            && <SquadHeader counter={counter} showLocks={true} size={size} squad={rightSquad} />
-            : rightSquad && rightSquad.id
-            && <SquadHeader size={size} squad={rightSquad} />
+            ? <SquadHeader counter={counter} showLocks={true} size={size} squad={counter} />
+            : <SquadHeader size={size} squad={counter} />
         }
-        { view === 'normal' ? buildCounterDetails() : buildOpponentDetails(rightSquad) }
+        { view === 'normal' ? buildCounterDetails() : buildOpponentDetails(counter) }
       </DetailsDivRight>
 
     </TopWrapper>
@@ -217,9 +178,7 @@ const CounterCard = ({
       <EditMenu>
         {/* only users that have signed in, are active patrons, and have a allyCode can update counters */}
         {isActivePatron && user.username && <p><Button className="p-0 m-0" size="sm" color="link" onClick={() => setIsOpen(true)}><small>edit counter</small></Button></p>}
-        {/* TODO: make the date a link that goes to a History page for the counter */}
         <p><small>updated on: {format(new Date(counter.counterCreatedOn), 'MMM d, yyyy')}</small></p>
-        {/* TODO: make the username a link that goes to a page for the user */}
         <p><small>by: {counter.counterCreatedByName}</small></p>
         {authenticated && user.id === process.env.REACT_APP_ADMIN_ID && <p><Button className="p-0 m-0" size="sm" color="link" onClick={handleDeleteCounter}><small>delete counter</small></Button></p>}
       </EditMenu>
@@ -228,7 +187,6 @@ const CounterCard = ({
       <ModalPortal>
         <ModalEditCounter
           counter={counter}
-          counterStubs={counterStubs}
           isOpen={isOpen}
           leftSquad={leftSquad}
           reload={reload}

@@ -4,7 +4,7 @@ module.exports = app => ({
   method: 'GET',
   path: '/swgoh/squads/:season',
   handler: async (request, reply) => {
-    const { config, data } = app;
+    const { config, data, log } = app;
     const { season } = request.params;
     const leaderIds = await data.firebase.getSeasonRoster(season);
 
@@ -47,7 +47,7 @@ module.exports = app => ({
           }
         }
 
-        return app.log.info(`Squad exists with squadmembers: ${squad}`);
+        return log.info(`Squad exists with squadmembers: ${squad}`);
       }));
     }
 

@@ -2,16 +2,18 @@ const _ = require('lodash');
 
 module.exports = ({ data }) => ({
   method: 'GET',
-  path: '/counter/getStubsBySquadId/:id',
+  path: '/counter/getStubsBySquadIds/:id',
   handler: async (request, reply) => {
     const leaderId = request.params.id;
-    const { view, type } = request.query;
+    const { view, size, squadIds } = request.query;
 
-    const stubs = await data.getStubsBySquadId(leaderId, view, type);
-    const latestDate = await data.getLatestCounterVersion(leaderId, view, type);
+    const allStubs = await data.getByMultipleSquadIds(squadIds.split(','), view, size);
+    const stubs = _.uniqBy(allStubs, 'toon1Id');
+
+    const latestDate = await data.getLatestCounterVersion(leaderId, view, size);
 
     // adds video links to find latest date of update
-    const rightSquadStubs = await Promise.all(stubs.map(async (x) => {
+    const rightSquadStubs = await Promise.all(stubs.map(async x => {
       const newX = { ...x };
       const videoLinks = await data.videoLink.getBySubjectId(newX.id);
       newX.videoLinks = videoLinks;
@@ -38,7 +40,7 @@ module.exports = ({ data }) => ({
     },
     queryStrings: {
       view: { type: 'string' },
-      type: { type: 'string' },
+      size: { type: 'string' },
     },
     response: {
       '2xx': {
@@ -50,6 +52,7 @@ module.exports = ({ data }) => ({
             items: {
               properties: {
                 id: { type: 'string' },
+                totalSeen: { type: 'integer' },
                 opponentSquadId: { type: 'string' },
                 counterSquadId: { type: 'string' },
                 latestVersionId: { type: 'string' },
@@ -68,8 +71,20 @@ module.exports = ({ data }) => ({
                 counterCreatedOn: { type: 'string' },
                 counterCreatedById: { type: 'string' },
                 counterCreatedByName: { type: 'string' },
+                squadId: { type: 'string' },
                 name: { type: 'string' },
                 toon1Id: { type: 'string' },
+                toon1Name: { type: 'string' },
+                toon2Id: { type: 'string' },
+                toon2Name: { type: 'string' },
+                toon3Id: { type: 'string' },
+                toon3Name: { type: 'string' },
+                toon4Id: { type: 'string' },
+                toon4Name: { type: 'string' },
+                toon5Id: { type: 'string' },
+                toon5Name: { type: 'string' },
+                description: { type: 'string' },
+                generalStrategy: { type: 'string' },
                 squadCreatedOn: { type: 'string' },
                 squadCreatedById: { type: 'string' },
                 squadCreatedByName: { type: 'string' },

@@ -1,14 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 
 import SquadHeader from 'src/components/shared/SquadHeader';
 import { updateSquad } from 'src/helpers/data';
 import { AuthContext } from 'src/contexts/userContext';
 import { EditMenu } from 'src/styles/style';
 
-import SquadDetailForm from './SquadDetailForm';
 import {
   FormCentered,
   FormStrategy,
@@ -45,7 +43,7 @@ const buildDefaultSquad = () => {
 
 export default function ModalEditSquad({
   isOpen,
-  squad: squadParam,
+  squad,
   reload,
   size,
   toggle,
@@ -59,22 +57,15 @@ export default function ModalEditSquad({
     toggle: PropTypes.func.isRequired,
   };
 
-  const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
-  const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
-
-  const [characters] = useState(storedCharacters);
-  const [squad] = useState(squadParam);
   const [sourceSquad, setSourceSquad] = useState();
   const [description, setDescription] = useState(squad.description);
   const [generalStrategy, setGeneralStrategy] = useState(squad.generalStrategy);
-  const [squads] = useState(storedSquads);
-  const [squadNameMatch, setSquadNameMatch] = useState('');
   const [tempSquad, setTempSquad] = useState(buildDefaultSquad());
   const [tempSquadInfo, setTempSquadInfo] = useState(defaultTempSquadInfo);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    const squadToEdit = { ...squadParam };
+    const squadToEdit = { ...squad };
     const {
       id,
       name,
@@ -127,67 +118,29 @@ export default function ModalEditSquad({
     }
 
     buildTempSquad();
-  }, [squadParam]);
+  }, [squad]);
 
-  const checkExistingSquad = async (squadToCheck) => {
-    const squadLeader = squadToCheck.shift();
-    const squadMembers = squadToCheck.slice(0);
-    const matchedSquad = await squads.find(x => x.toon1Name === squadLeader
-      && _.isEqual(
-        squadMembers.sort(),
-        [x.toon2Name, x.toon3Name, x.toon4Name, x.toon5Name].sort(),
-      ));
-
-    if (!matchedSquad) {
-      return {
-        squadMatch: '',
-        tempSquadInfo: {
-          id: squad.id,
-          name: tempSquadInfo.name,
-          toon1Id: (characters.find(x => x.name === squadLeader)).id || 'BLANK',
-          toon2Id: (characters.find(x => x.name === squadMembers[0])).id || 'BLANK',
-          toon3Id: (characters.find(x => x.name === squadMembers[1])).id || 'BLANK',
-          toon4Id: (characters.find(x => x.name === squadMembers[2])).id || 'BLANK',
-          toon5Id: (characters.find(x => x.name === squadMembers[3])).id || 'BLANK',
-        },
-      };
-    }
-
-    return {
-      squadMatch: matchedSquad.name === squad.name ? '' : matchedSquad.name,
-      tempSquadInfo: {
-        id: matchedSquad.id,
-        name: tempSquadInfo.name,
-        toon1Id: matchedSquad.toon1Id,
-        toon2Id: matchedSquad.toon2Id,
-        toon3Id: matchedSquad.toon3Id,
-        toon4Id: matchedSquad.toon4Id,
-        toon5Id: matchedSquad.toon5Id,
-      },
-    };
-  };
-
-  const handleGeneralStrategyInput = (e) => {
+  const handleGeneralStrategyInput = e => {
     e.preventDefault();
     setGeneralStrategy(e.target.value || e.target.innerText);
   };
 
-  const handleGeneralStrategyReset = (e) => {
+  const handleGeneralStrategyReset = e => {
     e.preventDefault();
     setGeneralStrategy(squad.generalStrategy);
   };
 
-  const handleDescriptionInput = (e) => {
+  const handleDescriptionInput = e => {
     e.preventDefault();
     setDescription(e.target.value || e.target.innerText);
   };
 
-  const handleDescriptionReset = (e) => {
+  const handleDescriptionReset = e => {
     e.preventDefault();
     setDescription(squad.description);
   };
 
-  const handleSubmitButton = async (e) => {
+  const handleSubmitButton = async e => {
     e.preventDefault();
     try {
       await updateSquad({
@@ -223,24 +176,6 @@ export default function ModalEditSquad({
           {/* New squad form */}
           <FormCentered>
             <SquadHeader size={size} squad={squad} />
-
-            {/* Squad details */}
-            <h6 className="text-secondary pt-3">Squad Name</h6>
-            <SquadDetailForm
-              buildDefaultSquad={buildDefaultSquad}
-              checkExistingSquad={checkExistingSquad}
-              defaultTempSquadInfo={defaultTempSquadInfo}
-              setSquadNameMatch={setSquadNameMatch}
-              setTempSquadInfo={setTempSquadInfo}
-              setTempSquad={setTempSquad}
-              size={size}
-              sourceSquad={sourceSquad}
-              squad={squad}
-              squadNameMatch={squadNameMatch}
-              squads={squads}
-              tempSquadInfo={tempSquadInfo}
-            />
-
             <div>
               {/* Description Box */}
               <MiddleWrapper $hasBorderBottom>
@@ -286,8 +221,7 @@ export default function ModalEditSquad({
 
       <StyledModalFooter>
         <Button color="primary" onClick={handleSubmitButton}
-          disabled={!!squadNameMatch
-            || tempSquad[0].id === 'BLANK' }>Submit</Button>
+          disabled={tempSquad[0].id === 'BLANK' }>Submit</Button>
         <Button color="secondary" onClick={toggle}>Cancel</Button>
       </StyledModalFooter>
     </ModalWrapper>
