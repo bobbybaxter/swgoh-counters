@@ -9,6 +9,7 @@ import _ from 'lodash';
 import { colors } from 'src/styles/colors';
 
 import ModalEditCounter from 'src/components/Modals/ModalEditCounter';
+import ModalVariations from 'src/components/Modals/ModalVariations';
 import ModalPortal from 'src/components/ModalPortal/ModalPortal';
 import { useToggle } from 'src/helpers';
 import { AuthContext } from 'src/contexts/userContext';
@@ -52,18 +53,19 @@ const CounterCard = ({
     description: counter.description,
     generalStrategy: counter.generalStrategy,
     toon1Id: counter.toon1Id,
-    toon1Name: counter.toon1Name,
     toon2Id: counter.toon2Id,
-    toon2Name: counter.toon2Name,
     toon3Id: counter.toon3Id,
-    toon3Name: counter.toon3Name,
     toon4Id: counter.toon4Id,
-    toon4Name: counter.toon4Name,
     toon5Id: counter.toon5Id,
+    toon1Name: counter.toon1Name,
+    toon2Name: counter.toon2Name,
+    toon3Name: counter.toon3Name,
+    toon4Name: counter.toon4Name,
     toon5Name: counter.toon5Name,
   };
 
   const [isOpen, setIsOpen] = useToggle(false);
+  const [isVariationsModalOpen, setIsVariationsModalOpen] = useToggle(false);
 
   const {
     authenticated, isActivePatron, user,
@@ -169,6 +171,22 @@ const CounterCard = ({
       </DetailsDivRight>
 
     </TopWrapper>
+    <div className="w-100">
+      <Button outline className="w-100" size="sm" onClick={() => setIsVariationsModalOpen(true)}>Variations</Button>
+    </div>
+    {isVariationsModalOpen && (
+      <ModalPortal>
+        <ModalVariations
+          counter={counter}
+          isOpen={isVariationsModalOpen}
+          leftSquad={leftSquad}
+          rightSquad={rightSquad}
+          size={size}
+          toggle={setIsVariationsModalOpen}
+          view={view}
+        />
+      </ModalPortal>
+    )}
     <BottomWrapper>
       {
         (counter.counterStrategy

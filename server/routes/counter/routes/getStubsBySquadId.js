@@ -7,7 +7,8 @@ module.exports = ({ data }) => ({
     const leaderId = request.params.id;
     const { view, size, squadIds } = request.query;
 
-    const allStubs = await data.getByMultipleSquadIds(squadIds.split(','), view, size);
+    const res = await data.getByMultipleSquadIds(squadIds.split(','), view, size);
+    const allStubs = res.filter(x => x.avgWin > 0.75);
     const stubs = _.uniqBy(allStubs, 'toon1Id');
 
     const latestDate = await data.getLatestCounterVersion(leaderId, view, size);

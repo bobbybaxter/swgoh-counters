@@ -23,6 +23,7 @@ module.exports = ({ database, log }) => (squadIds, view, size) => {
   const sql = `
     SELECT
       SUM(cs.seen) AS totalSeen,
+      ROUND( AVG(cs.winPerc), 2) as avgWin,
       c.id,
       c.opponentSquadId,
       c.counterSquadId,

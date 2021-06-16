@@ -67,7 +67,7 @@ export default function NewSquadDisplay({
   };
 
   const buildCounterDisplay = tempSquad.map((toon, i) => {
-    const handleNewSquadLock = (e) => {
+    const handleNewSquadLock = e => {
       e.preventDefault();
       const tempSquadCopy = [...tempSquad];
 

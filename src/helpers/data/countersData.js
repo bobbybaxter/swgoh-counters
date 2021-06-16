@@ -85,3 +85,17 @@ export async function getCounterStubsBySquadIds(leaderId, squadIds, view, size, 
     throw err;
   }
 }
+
+export async function getCounterVariations(opponentLeaderId, counterLeaderId, size, opts) {
+  try {
+    const url = new URL(`${baseUrl}/variations`);
+    url.searchParams.set('opponentLeaderId', opponentLeaderId);
+    url.searchParams.set('counterLeaderId', counterLeaderId);
+    url.searchParams.set('size', size);
+    const response = await fetch(url, opts);
+
+    return await response.json();
+  } catch (err) {
+    throw err;
+  }
+}

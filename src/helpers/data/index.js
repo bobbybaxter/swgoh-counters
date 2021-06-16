@@ -6,6 +6,7 @@ export {
 export {
   deleteCounter,
   getCounterById,
+  getCounterVariations,
   addCounter,
   updateCounter,
   importCounterData,

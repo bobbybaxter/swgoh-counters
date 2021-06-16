@@ -10,7 +10,7 @@ function buildLeaderStatement(leaderIds) {
 module.exports = ({ database, log }) => (type, leaders, size) => {
   const leftSideSquad = type === 'normal' ? 'opponentSquadId' : 'counterSquadId';
   const rightSideSquad = type === 'normal' ? 'counterSquadId' : 'opponentSquadId';
-  const leaderIds = leaders.map(leader => leader.id);
+  const leaderIds = leaders.map(leader => leader.toon1Id);
 
   const newSqlQuery = `
     SELECT
