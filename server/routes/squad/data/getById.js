@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = ({ database, log }) => (id) => {
+module.exports = ({ database, log }) => id => {
   const sql = fs.readFileSync(path.join(__dirname, './sql/getById.sql')).toString();
 
   return new Promise((res, rej) => {
@@ -15,7 +15,7 @@ module.exports = ({ database, log }) => (id) => {
 
       return res(JSON.parse(JSON.stringify(results[0])));
     });
-  }).catch((e) => {
+  }).catch(e => {
     throw e;
   });
 };

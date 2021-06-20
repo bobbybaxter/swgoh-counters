@@ -1,21 +1,21 @@
 module.exports = {
-  "parserOptions": {
+  parserOptions: {
     "ecmaVersion": 12,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     }
   },
-  "extends": [
+  extends: [
     "airbnb-base",
     "react-app"
   ],
-  "globals": {
+  globals: {
     "document": true,
     "window": true,
     "allowTemplateLiterals": true
   },
-  "settings": {
+  settings: {
     "import/resolver": {
       "node": {
         "paths": [
@@ -26,9 +26,9 @@ module.exports = {
       }
     }
   },
-  "reportUnusedDisableDirectives": true,
-  "root": true,
-  "rules": {
+  reportUnusedDisableDirectives: true,
+  root: true,
+  rules: {
     "no-console": [
       1,
       {
@@ -42,8 +42,14 @@ module.exports = {
     "no-debugger": 1,
     "class-methods-use-this": 0,
     "linebreak-style": 0,
-    "global-require": "off",
-    "one-var": "off",
-    "one-var-declaration-per-line": "off"
+    "global-require": 0,
+    "one-var": 0,
+    "one-var-declaration-per-line": 0,
+    'arrow-parens': [1, 'as-needed'],
+    'object-curly-spacing': [1, 'always'],
+    'array-bracket-spacing': [1, 'always'],
+    'space-in-parens': [1, 'always', { exceptions: ["()"] }],
+    'template-curly-spacing': [1, 'always'],
+    'computed-property-spacing': [1, 'always']
   }
 }

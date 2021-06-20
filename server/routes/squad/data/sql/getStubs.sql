@@ -15,6 +15,7 @@ JOIN squad s2 ON ?? = s2.id
 JOIN squadVersion sv2 ON s2.latestVersionId = sv2.id
 JOIN `character` ch ON sv.toon1Id = ch.id
 WHERE battleType = ?
+-- AND ?
 GROUP BY sv.toon1Id
 ORDER BY ch.name, sv.name
--- LIMIT 2
+LIMIT 2

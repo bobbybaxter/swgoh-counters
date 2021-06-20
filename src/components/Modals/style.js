@@ -102,7 +102,7 @@ export const InputWrapper = styled.div`
 
 export const MiddleWrapper = styled(FormGroup)`
   border-bottom: ${props => (props.$hasBorderBottom ? '1px solid #343a40' : 'none')};
-  border-top: 1px solid #343a40;
+  border-top: ${props => (props.$hasBorderTop ? '1px solid #343a40' : 'none')};
   margin-bottom: ${props => (props.$hasMarginBottom ? '1rem' : '0 !important')};
   padding: ${props => (props.$hasPaddingBottom ? '1rem 0' : '1rem 0 0 0')};
 `;

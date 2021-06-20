@@ -16,81 +16,75 @@ import MyNavbar from 'src/components/MyNavbar/MyNavbar';
 
 import {
   firebaseConnection,
-  getSquadData,
   getAllCharacters,
 } from 'src/helpers/data';
 import { AuthContext } from 'src/contexts/userContext';
-
 import './App.scss';
 
-const Account = lazy(() => import('src/components/Account/Account'));
-const PatreonLink = lazy(() => import('src/components/PatreonLink/PatreonLink'));
-const Login = lazy(() => import('src/components/Account/Login'));
-const CountersPage = lazy(() => import('src/components/CountersPage/CountersPage'));
-const NotFound = lazy(() => import('src/components/NotFound/NotFound'));
-const SubmissionForm = lazy(() => import('src/components/SubmissionForm/SubmissionForm'));
+const Account = lazy(() => import( 'src/components/Account/Account' ));
+const Admin = lazy(() => import( 'src/components/Account/Admin' ));
+const CountersPage = lazy(() => import( 'src/components/CountersPage/CountersPage' ));
+const Login = lazy(() => import( 'src/components/Account/Login' ));
+// const Maintenance = lazy(() => import( 'src/components/Maintenance/Maintenance' ));
+const NotFound = lazy(() => import( 'src/components/NotFound/NotFound' ));
+const PatreonLink = lazy(() => import( 'src/components/PatreonLink/PatreonLink' ));
 
 firebaseConnection();
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  const { authenticated } = useContext(AuthContext);
-  const routeChecker = props => (authenticated === true
-    ? (<Component {...props} {...rest} />)
-    : (<Redirect to={{ pathname: '/', state: { from: props.location } }} />));
-  return <Route {...rest} render={props => routeChecker(props)} />;
+const PrivateRoute = ( { component: Component, ...rest } ) => {
+  const { authenticated } = useContext( AuthContext );
+  const routeChecker = props => ( authenticated === true
+    ? ( <Component {...props} {...rest} /> )
+    : ( <Redirect to={{ pathname: '/', state: { from: props.location } }} /> ));
+  return <Route {...rest} render={props => routeChecker( props )} />;
 };
 
-const storedSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
-const storedCharacters = JSON.parse(sessionStorage.getItem('characters')) || [];
+const AdminRoute = ( { component: Component, ...rest } ) => {
+  const { admin } = useContext( AuthContext );
+  const routeChecker = props => ( admin === true
+    ? ( <Component {...props} {...rest} /> )
+    : ( <Redirect to={{ pathname: '/', state: { from: props.location } }} /> ));
+    // : ( <Redirect to={{ pathname: '/maintenance', state: { from: props.location } }} /> ));
+  return <Route {...rest} render={props => routeChecker( props )} />;
+};
 
-// TODO: do an addCounter and addSquad check on the server-side, to eliminate duplicates
-// TODO: add a way to lock any videos that i put on the site from being delete by other users
+const storedCharacters = JSON.parse( sessionStorage.getItem( 'characters' )) || [];
+
+// TODO: add a way to lock any videos that i put on the site from being deleted by other users
 // TODO: possibly make my videos a different color, make the the first video shown
-// TODO: figure out why the guild endpoint is getting called twice
+// TODO: go through endpoints to find unused endpoints
 function App() {
-  const [characters, setCharacters] = useState([]);
-  const [squads, setSquads] = useState([]); // eslint-disable-line no-unused-vars
-  const [view, setView] = useState('normal');
-  const { loading } = useContext(AuthContext);
+  const [ characters, setCharacters ] = useState( [] );
+  const [ view, setView ] = useState( 'normal' );
+  const { loading } = useContext( AuthContext );
 
-  const reload = useCallback(() => window.location.reload(), []);
+  const reload = useCallback(() => window.location.reload(), [] );
 
   useEffect(() => {
-    async function getSquads() {
-      const results = await getSquadData().catch(e => console.error('getAllSquads', e));
-      if (results && !_.isEqual(results, storedSquads)) {
-        setSquads(results);
-        sessionStorage.setItem('squads', JSON.stringify(results));
-      }
-    }
+    sessionStorage.removeItem( 'squads' );
 
     async function getCharacters() {
-      const results = await getAllCharacters().catch(e => console.error('getAllCharacters', e));
-      if (results && !_.isEqual(results, storedCharacters)) {
-        setCharacters(results);
-        return sessionStorage.setItem('characters', JSON.stringify(results));
+      const results = await getAllCharacters().catch( e => console.error( 'getAllCharacters', e ));
+      if ( results && !_.isEqual( results, storedCharacters )) {
+        setCharacters( results );
+        return sessionStorage.setItem( 'characters', JSON.stringify( results ));
       }
-      if (!results && storedCharacters) {
+      if ( !results && storedCharacters ) {
         // if get all characters fails, this route will update the state
         // so the rest of the app may not fail if the user still has data
         // in session storage
-        return setCharacters(storedCharacters);
+        return setCharacters( storedCharacters );
       }
-      return setCharacters(results);
+      return setCharacters( results );
     }
 
-    ReactGA.pageview(window.location.pathname);
-    try {
-      getCharacters();
-      getSquads();
-    } catch (err) {
-      throw err;
-    }
-  }, []);
+    ReactGA.pageview( window.location.pathname );
+    getCharacters();
+  }, [] );
 
-  function handleViewBtn(e) {
+  function handleViewBtn( e ) {
     const viewToSet = view === 'normal' ? 'reverse' : 'normal';
-    setView(viewToSet);
+    setView( viewToSet );
   }
 
   return (
@@ -113,6 +107,14 @@ function App() {
                       view={view}
                     />
                   )}/>
+                  {/* <AdminRoute exact path="/"
+                      component={CountersPage}
+                      characters={characters}
+                      handleViewBtn={handleViewBtn}
+                      reload={reload}
+                      size={'5v5'}
+                      view={view}
+                  /> */}
 
                   <Route exact path="/3v3" render={props => (
                     <CountersPage
@@ -124,8 +126,14 @@ function App() {
                       view={view}
                     />
                   )}/>
-
-                  <Route exact path="/submit" component={ SubmissionForm } />
+                  {/* <AdminRoute exact path="/3v3"
+                    component={CountersPage}
+                    characters={characters}
+                    handleViewBtn={handleViewBtn}
+                    reload={reload}
+                    size={'3v3'}
+                    view={view}
+                  /> */}
 
                   <Route exact path="/login" component={ Login } />
 
@@ -133,11 +141,19 @@ function App() {
 
                   <PrivateRoute
                     exact path="/account"
-                    component={Account}
+                    component={ Account }
                   />
 
-                  <Route component={NotFound} />
+                  <AdminRoute
+                    exact path="/admin"
+                    component={ Admin }
+                  />
+
+                  {/* <Route exact path="/maintenance" component={ Maintenance } /> */}
+
+                  <Route component={ NotFound } />
                   <Redirect from="*" to="/" />
+                  {/* <Redirect from="*" to="/maintenance" /> */}
                 </Switch>
               </Suspense>
             </div>

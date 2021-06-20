@@ -1,5 +1,5 @@
+const updateCreatorToken = require('routes/firebase/data/updateCreatorToken');
 const getRefreshedToken = require('./getRefreshedToken');
-const updateCreatorToken = require('../../firebase/data/updateCreatorToken');
 
 module.exports = app => async ({ creatorToken, membership, patreonEmail }) => {
   const { log } = app;

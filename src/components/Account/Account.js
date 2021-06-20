@@ -9,7 +9,6 @@ import { unlinkPatreonAccount, updateUserInfo } from 'src/helpers/data';
 import { ContainerColumn } from 'src/styles/style';
 import { AuthContext } from 'src/contexts/userContext';
 
-import AccountButtons from './AccountButtons';
 import {
   AccountWrapper,
 } from './style';
@@ -132,7 +131,7 @@ export default function Account() {
     handleClearAllyCode();
   };
 
-  const submitAllyCode = async (e) => {
+  const submitAllyCode = async e => {
     e.preventDefault();
     try {
       updateUser();
@@ -213,17 +212,6 @@ export default function Account() {
           </AccountRowEven>
           {user.accessToken ? '' : <small className="alert alert-warning p-1 m-0">Patreon email must match {email || 'login email'}.  You may need to sign out of Patreon before trying to link, to ensure you are using the correct email address.</small>}
         </AccountDetails>
-
-        <AccountButtons
-          key="accountButtons"
-          clearAllyCode={clearAllyCode}
-        />
-
-        <div className="alert alert-secondary">
-          Want to add or update counters?
-          <br/>
-          Add your Ally Code above and link your Patreon account!
-        </div>
       </AccountWrapper>
     </ContainerColumn>
   );

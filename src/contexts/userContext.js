@@ -31,6 +31,7 @@ const defaultUser = {
 export const AuthContext = React.createContext();
 
 export function AuthProvider({ children }) {
+  const [admin, setAdmin] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [isActivePatron, setIsActivePatron] = useState(false);
   const [isGuildTierMember, setIsGuildTierMember] = useState(false);
@@ -51,7 +52,7 @@ export function AuthProvider({ children }) {
     tier,
   } = user;
 
-  const setUserInfo = useCallback((res) => {
+  const setUserInfo = useCallback(res => {
     const currentUser = { ...user };
     const userToSet = {
       id: res.id || currentUser.id,
@@ -70,7 +71,7 @@ export function AuthProvider({ children }) {
     setUser(userToSet);
   }, [user]);
 
-  const setPlayerData = useCallback(async (playerAllyCode) => {
+  const setPlayerData = useCallback(async playerAllyCode => {
     try {
       const response = await getPlayerData(playerAllyCode);
       const res = JSON.parse(response.contents);
@@ -112,7 +113,7 @@ export function AuthProvider({ children }) {
     return guildToUpdate;
   };
 
-  const validateAccount = useCallback(async (userToValidate) => {
+  const validateAccount = useCallback(async userToValidate => {
     try {
       const response = await getUserByFirebaseAuthUid(userToValidate.id);
       if (response && !_.isEmpty(response.firebaseUser)) {
@@ -142,14 +143,16 @@ export function AuthProvider({ children }) {
     }
   }, [setUserInfo]);
 
-  const authenticateUser = useCallback(async (authUser) => {
+  const authenticateUser = useCallback(async authUser => {
     if (authUser) {
       const fbUser = { id: authUser.uid, email: authUser.email };
       await validateAccount(fbUser);
 
+      setAdmin(fbUser.id === process.env.REACT_APP_ADMIN_ID);
       setAuthenticated(true);
       setLoading(false);
     } else {
+      setAdmin(false);
       setIsRestricted(true);
       setAuthenticated(false);
       setLoading(false);
@@ -238,6 +241,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{
+      admin,
       authenticated,
       isActivePatron,
       isGuildTierMember,

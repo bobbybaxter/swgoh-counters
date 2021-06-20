@@ -1,4 +1,3 @@
-export { default as CharacterPoolBtn } from './CharacterPoolBtn';
 export { LockBtn, LockImg } from './Locks';
 export { default as MetaTags } from './MetaTags';
 export { default as MiniSquadView } from './MiniSquadView';

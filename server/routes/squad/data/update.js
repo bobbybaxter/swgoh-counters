@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const { nanoid } = require('nanoid');
 
-module.exports = ({ database, log }) => ({ id }, {
+module.exports = ({ database, log }) => ({
+  id,
   name,
   description,
   generalStrategy,
@@ -48,7 +49,7 @@ module.exports = ({ database, log }) => ({ id }, {
       }
 
       // begins a transaction
-      connection.beginTransaction((transactionError) => {
+      connection.beginTransaction(transactionError => {
         if (transactionError) {
           connection.release();
           rej(transactionError);
@@ -72,7 +73,7 @@ module.exports = ({ database, log }) => ({ id }, {
               });
             }
 
-            return connection.commit((commitError) => {
+            return connection.commit(commitError => {
               if (commitError) {
                 return connection.rollback(() => {
                   connection.release();
@@ -90,7 +91,7 @@ module.exports = ({ database, log }) => ({ id }, {
         });
       });
     });
-  }).catch((err) => {
+  }).catch(err => {
     throw err;
   });
 };

@@ -6,10 +6,11 @@ export {
 export {
   deleteCounter,
   getCounterById,
+  getCounterVariations,
   addCounter,
   updateCounter,
   importCounterData,
-  getCounterStubsBySquadId,
+  getCounterStubsBySquadIds,
 } from './countersData';
 
 export { default as firebaseConnection } from './firebaseConnection';
@@ -44,3 +45,10 @@ export {
 export {
   getPatreonStatus,
 } from './patreonData';
+
+export {
+  getCountersBySeason,
+  getLeadersBySeason,
+  getSeasonData,
+  getSquadsBySeason,
+} from './swgohData';

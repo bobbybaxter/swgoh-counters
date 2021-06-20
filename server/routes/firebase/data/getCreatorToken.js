@@ -1,4 +1,4 @@
-const getRefreshedToken = require('../../patreon/data/getRefreshedToken');
+const getRefreshedToken = require('routes/patreon/data/getRefreshedToken');
 const updateCreatorToken = require('./updateCreatorToken');
 
 module.exports = app => async () => {

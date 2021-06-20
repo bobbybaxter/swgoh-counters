@@ -105,39 +105,14 @@ export async function updateGuild(guild) {
 
 export async function updateUserInfo(user) {
   const token = await firebase.auth().currentUser.getIdToken(true);
-  const {
-    accessToken,
-    allyCode,
-    email,
-    expiresIn,
-    guildId,
-    guildName,
-    patreonId,
-    patronStatus,
-    refreshToken,
-    tier,
-    username,
-  } = user;
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/firebase/${user.id}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/firebase`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        accessToken,
-        allyCode,
-        email,
-        expiresIn,
-        guildId,
-        guildName,
-        patreonId,
-        patronStatus,
-        refreshToken,
-        tier,
-        username,
-      }),
+      body: JSON.stringify(user),
     });
     return await response.text();
   } catch (err) {

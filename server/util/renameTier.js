@@ -1,4 +1,4 @@
-module.exports = (tierId) => {
+module.exports = tierId => {
   const tiers = {
     4023873: 'Carbonite',
     4023966: 'Bronzium',

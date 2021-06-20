@@ -1,4 +1,4 @@
-const { userId, username } = require('../../../.config.json');
+const { userId, username } = require('.config.json');
 
 module.exports = ({ data, log }) => ({
   method: 'GET',
@@ -39,7 +39,7 @@ module.exports = ({ data, log }) => ({
       try {
         await data.squad.create(squadToCreate);
       } catch (err) {
-        throw new Error(err);
+        throw err;
       }
     }));
 

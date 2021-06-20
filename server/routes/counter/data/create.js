@@ -1,8 +1,8 @@
-const fs = require('fs');
-const path = require('path');
-const { nanoid } = require('nanoid');
+const fs = require( 'fs' );
+const path = require( 'path' );
+const { nanoid } = require( 'nanoid' );
 
-module.exports = ({ database, log }) => ({
+module.exports = ( { database, log } ) => ( {
   opponentSquadId,
   counterSquadId,
   isHardCounter,
@@ -19,9 +19,9 @@ module.exports = ({ database, log }) => ({
   toon5Zetas,
   userId,
   username,
-}) => {
-  const versionSql = fs.readFileSync(path.join(__dirname, './sql/createVersion.sql')).toString();
-  const sql = fs.readFileSync(path.join(__dirname, './sql/create.sql')).toString();
+} ) => {
+  const versionSql = fs.readFileSync( path.join( __dirname, './sql/createVersion.sql' )).toString();
+  const sql = fs.readFileSync( path.join( __dirname, './sql/create.sql' )).toString();
   const versionId = nanoid();
   const counterId = nanoid();
 
@@ -52,54 +52,54 @@ module.exports = ({ database, log }) => ({
     versionId,
   ];
 
-  return new Promise((res, rej) => {
-    database.getConnection((databaseConnectionError, connection) => {
-      if (databaseConnectionError) {
+  return new Promise(( res, rej ) => {
+    database.getConnection(( databaseConnectionError, connection ) => {
+      if ( databaseConnectionError ) {
         connection.release();
-        rej(databaseConnectionError);
+        rej( databaseConnectionError );
       }
 
-      connection.beginTransaction((transactionError) => {
-        if (transactionError) {
+      connection.beginTransaction( transactionError => {
+        if ( transactionError ) {
           connection.release();
-          rej(transactionError);
+          rej( transactionError );
         }
 
-        connection.query(sql, variables, (sqlError, sqlResults) => {
-          if (sqlError) {
+        connection.query( sql, variables, ( sqlError, sqlResults ) => {
+          if ( sqlError ) {
             return connection.rollback(() => {
               connection.release();
-              rej(sqlError);
-            });
+              rej( sqlError );
+            } );
           }
 
-          connection.query(versionSql, versionVariables, (versionError, versionResults) => {
-            if (versionError) {
+          connection.query( versionSql, versionVariables, ( versionError, versionResults ) => {
+            if ( versionError ) {
               return connection.rollback(() => {
                 connection.release();
-                rej(versionError);
-              });
+                rej( versionError );
+              } );
             }
 
-            return connection.commit((commitError) => {
-              if (commitError) {
+            return connection.commit( commitError => {
+              if ( commitError ) {
                 return connection.rollback(() => {
                   connection.release();
-                  rej(commitError);
-                });
+                  rej( commitError );
+                } );
               }
 
-              return log.info(`CounterVersion for ${counterId} successfully updated.`);
-            });
-          });
+              return log.info( `CounterVersion for ${ counterId } successfully updated.` );
+            } );
+          } );
 
-          log.info(`Counter for ${counterId} successfully created.`);
+          log.info( `Counter for ${ counterId } successfully created.` );
           connection.release();
-          return res(counterId);
-        });
-      });
-    });
-  }).catch((err) => {
+          return res( counterId );
+        } );
+      } );
+    } );
+  } ).catch( err => {
     throw err;
-  });
+  } );
 };

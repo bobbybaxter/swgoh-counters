@@ -1,5 +1,5 @@
-const renamePatronStatus = require('../../../util/renamePatronStatus');
-const renameTier = require('../../../util/renameTier');
+const renamePatronStatus = require('util/renamePatronStatus');
+const renameTier = require('util/renameTier');
 
 module.exports = ({ data, patreon }) => ({
   method: 'GET',

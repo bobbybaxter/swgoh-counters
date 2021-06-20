@@ -6,6 +6,7 @@ import { EditMenu } from 'src/styles/style';
 
 import { FormCheckboxes, FormDetails, InputWrapper } from './style';
 
+// TODO: may be able to remove this component
 export default function SquadDetails({
   buildDefaultSquad,
   checkExistingSquad,
@@ -67,7 +68,7 @@ export default function SquadDetails({
     setSourceGeneralStrategy('');
   };
 
-  const handleSquadNameInput = async (e) => {
+  const handleSquadNameInput = async e => {
     const newSquadName = e.target.value;
 
     if (!sourceSquad) {

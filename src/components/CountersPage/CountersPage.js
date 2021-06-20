@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
 
 import AdsenseAd from 'src/components/AdsenseAd/AdsenseAd';
-import BlankCounterRow from 'src/components/CounterRow/BlankCounterRow';
 import {
   MetaTags, PatreonButton, PatreonReverseButton, PatreonSortButton, ToonImg,
 } from 'src/components/shared';
@@ -26,14 +25,14 @@ import tips from './tips';
 
 const isSnap = navigator.userAgent === 'ReactSnap';
 
-const CountersPage = ({
+const CountersPage = ( {
   characters,
   handleViewBtn,
   reload,
   size,
   view,
   ...props
-}) => {
+} ) => {
   CountersPage.propTypes = {
     characters: PropTypes.array,
     handleViewBtn: PropTypes.func,
@@ -42,28 +41,26 @@ const CountersPage = ({
     view: PropTypes.string,
   };
 
-  const [excludedCounters, setExcludedCounters] = useState([]);
-  const [excludedOpponents, setExcludedOpponents] = useState([]);
-  const [stubsNormal, setStubsNormal] = useState();
-  const [stubsReverse, setStubsReverse] = useState();
-  const [counterLeadersNormal, setCounterLeadersNormal] = useState();
-  const [counterLeadersReverse, setCounterLeadersReverse] = useState();
+  const [ excludedCounters, setExcludedCounters ] = useState( [] );
+  const [ excludedOpponents, setExcludedOpponents ] = useState( [] );
+  const [ stubsNormal, setStubsNormal ] = useState();
+  const [ stubsReverse, setStubsReverse ] = useState();
   const {
     isActivePatron, isRestricted, user,
-  } = useContext(AuthContext);
+  } = useContext( AuthContext );
   const history = useHistory();
-  const anyExcludedLeaders = !_.isEmpty(excludedCounters) || !_.isEmpty(excludedOpponents);
+  const anyExcludedLeaders = !_.isEmpty( excludedCounters ) || !_.isEmpty( excludedOpponents );
 
   useEffect(() => {
     function checkForRedirect() {
-      if (user && user.patreonId && !user.accessToken) {
-        history.push('/patreonLink');
+      if ( user && user.patreonId && !user.accessToken ) {
+        history.push( '/patreonLink' );
       }
       return '';
     }
 
     checkForRedirect();
-  }, [history, user, user.accessToken, user.patreonId]);
+  }, [ history, user, user.accessToken, user.patreonId ] );
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -71,19 +68,17 @@ const CountersPage = ({
 
     async function getStubs() {
       try {
-        const response = await getSquadStubs(size, opts);
-        if (!_.isEmpty(response)) {
+        const response = await getSquadStubs( size, opts );
+        if ( !_.isEmpty( response )) {
           const {
-            normal, reverse, leadersNormal, leadersReverse,
+            normal, reverse,
           } = response;
-          setStubsNormal(normal);
-          setStubsReverse(reverse);
-          setCounterLeadersNormal(leadersNormal);
-          setCounterLeadersReverse(leadersReverse);
+          setStubsNormal( normal );
+          setStubsReverse( reverse );
         }
-      } catch (err) {
-        if (!abortController.signal.aborted) {
-          console.error('getStubs aborted', err);
+      } catch ( err ) {
+        if ( !abortController.signal.aborted ) {
+          console.error( 'getStubs aborted', err );
         }
       }
     }
@@ -92,95 +87,90 @@ const CountersPage = ({
     return () => {
       abortController.abort();
     };
-  }, [size]);
+  }, [ size ] );
 
-  const allSquads = JSON.parse(sessionStorage.getItem('squads')) || [];
   const selectedStubs = view === 'normal' ? stubsNormal : stubsReverse;
-  const selectedLeaders = view === 'normal' ? counterLeadersNormal : counterLeadersReverse;
 
-  const toggleAd = adSlot => (!isSnap && <AdsenseAd adSlot={adSlot}/>);
-  const leaderIds = selectedStubs && _.uniq(selectedStubs.map(x => x.toon1Id));
-  const leaders = leaderIds && leaderIds.map(leaderId => characters.find(x => x.id === leaderId));
-  const inFeedAdSlots = ['8612137902', '2722706345', '7380422067'];
-  const amountOfAds = leaderIds && Math.round(leaderIds.length / 15);
-  const randomAdRows = leaderIds && _.sampleSize(_.range(1, leaderIds.length), amountOfAds);
-  const prevSize = usePrevious(size);
+  const toggleAd = adSlot => ( !isSnap && <AdsenseAd adSlot={adSlot}/> );
+  const leaderIds = selectedStubs && _.uniq( selectedStubs.map( x => x.toon1Id ));
+  const allShownLeaders = leaderIds
+    && leaderIds.map( leaderId => characters.find( x => x.id === leaderId ));
+  const inFeedAdSlots = [ '8612137902', '2722706345', '7380422067' ];
+  const amountOfAds = leaderIds && Math.round( leaderIds.length / 15 );
+  const randomAdRows = leaderIds && _.sampleSize( _.range( 1, leaderIds.length ), amountOfAds );
+  const prevSize = usePrevious( size );
   const shouldBuildRows = prevSize === size
     && selectedStubs
     && selectedStubs.length;
 
   const buildCountersPageRows = shouldBuildRows && leaderIds
-    .filter(x => !excludedOpponents.includes(x))
-    .map((id, index) => {
-      const isAdRow = randomAdRows.includes(index);
-      const leader = characters.find(x => x.id === id);
-      const leaderStubs = selectedStubs.filter(x => x.toon1Id === id);
-      const leaderSquads = allSquads.filter(x => x.toon1Id === id);
+    .filter( x => !excludedOpponents.includes( x ))
+    .map(( id, index ) => {
+      const isAdRow = randomAdRows.includes( index );
+      const leaderStubs = selectedStubs.find( x => x.toon1Id === id );
 
       return (
-        leaderStubs && <LazyLoad once key={`leaderRow_${id}`}>
+        leaderStubs && <LazyLoad once key={`leaderRow_${ id }`}>
           <div>
             <div className="d-flex flex-row">
-              <LeftDivSquad id={`leaderRow_${id}`} className="col-3">
+              <LeftDivSquad id={`leaderRow_${ id }`} className="col-2">
                 <div className="d-flex flex-column align-items-center">
                   <ToonImg
-                    alt={leader.name}
+                    alt={leaderStubs.toon1Name}
                     id={id}
-                    src={getImage(id)}
-                    title={leader.name}
+                    src={getImage( id )}
+                    title={leaderStubs.toon1Name}
                   />
-                  <SquadTitle>{leader.name}</SquadTitle>
+                  <SquadTitle>{leaderStubs.toon1Name}</SquadTitle>
                 </div>
               </LeftDivSquad>
-              <div className="p-0 col-9">
                 <CountersPageRow
                   anyExcludedLeaders={anyExcludedLeaders}
                   excludedCounters={excludedCounters}
-                  leaderId={leader.id}
-                  leaderSquads={leaderSquads}
+                  leaderId={leaderStubs.toon1Id}
                   reload={reload}
                   size={size}
                   stubs={leaderStubs}
                   view={view}
                 />
-              </div>
             </div>
-            {isRestricted && isAdRow && toggleAd(_.sample(inFeedAdSlots))}
+            {isRestricted && isAdRow && toggleAd( _.sample( inFeedAdSlots ))}
           </div>
         </LazyLoad>
       );
-    });
+    } );
 
   function handleViewBtnSideAction() {
-    setExcludedCounters([]);
-    setExcludedOpponents([]);
+    setExcludedCounters( [] );
+    setExcludedOpponents( [] );
     handleViewBtn();
   }
 
   return (
     selectedStubs && <ContainerColumn>
       <MetaTags
-        title={`${size} Counters`}
-        content={`${size} Counters for the mobile game Star Wars: Galaxy of Heroes`}
+        title={`${ size } Counters`}
+        content={`${ size } Counters for the mobile game Star Wars: Galaxy of Heroes`}
       />
 
       <CountersPageWrapper>
         {
           <UncontrolledAlert color="warning">
-            {_.sample(tips)}
+            {_.sample( tips )}
           </UncontrolledAlert>
         }
         {!isActivePatron && <PatreonButton />}
-        {isRestricted && toggleAd('2779553573')}
+        {isRestricted && toggleAd( '2779553573' )}
 
+        <ColorIndicator />
         <div>
           {!isRestricted
-            ? leaders && selectedLeaders && <SortBox
+            ? allShownLeaders && <SortBox
+              characters={characters}
               excludedCounters={excludedCounters}
               excludedOpponents={excludedOpponents}
               leaderIds={leaderIds}
-              leaders={leaders}
-              selectedLeaders={selectedLeaders}
+              leaders={allShownLeaders}
               setExcludedCounters={setExcludedCounters}
               setExcludedOpponents={setExcludedOpponents}
               view={view}
@@ -191,11 +181,11 @@ const CountersPage = ({
         </div>
 
         <div className="columnTitles">
-          <div className="col-3 d-flex justify-content-center align-items-center">
+          <div className="col-2 d-flex justify-content-center align-items-center">
             <h1 className="mb-0">{view === 'normal' ? 'Opponent' : 'Counter'}</h1>
           </div>
-          <div className="col-7 d-flex justify-content-center align-items-center">
-            <h1 className="mb-0">{view === 'normal' ? `${size} Counters` : `${size} Opponents`}</h1>
+          <div className="col-8 d-flex justify-content-center align-items-center">
+            <h1 className="mb-0">{view === 'normal' ? `${ size } Counters` : `${ size } Opponents`}</h1>
           </div>
           {!isRestricted
             ? <Button className="btn-sm col-2 reverseCounterButton" color="warning" onClick={handleViewBtnSideAction}>
@@ -205,30 +195,19 @@ const CountersPage = ({
           }
         </div>
         <div>
-        <small className="m-0 p-0 text-secondary">
-              {
-                view === 'normal'
-                  ? 'Click on an opponent or counter squad below to see more info.'
-                  : 'Click on an opponent squad to see more info.'
-              }
-            </small>
+          <small className="m-0 p-0 text-secondary">
+            {
+              view === 'normal'
+                ? 'Click on an opponent or counter squad below to see more info.'
+                : 'Click on an opponent squad to see more info.'
+            }
+          </small>
         </div>
         <div>
-          {isActivePatron
-          && user.allyCode
-          && view === 'normal'
-          && _.isEmpty(excludedCounters)
-          && _.isEmpty(excludedOpponents)
-          && <BlankCounterRow
-            reload={reload}
-            size={size}
-            view={view}
-          />}
           {buildCountersPageRows || ''}
         </div>
 
-        <footer>
-          <ColorIndicator />
+        <footer className="mb-3">
           {!isActivePatron && <PatreonButton />}
         </footer>
       </CountersPageWrapper>
@@ -236,4 +215,4 @@ const CountersPage = ({
   );
 };
 
-export default memo(CountersPage);
+export default memo( CountersPage );

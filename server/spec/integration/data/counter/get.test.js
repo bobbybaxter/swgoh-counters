@@ -1,7 +1,7 @@
-// const { server } = require("../../../harness");
+// const { server } = require("spec/harness");
 const mockAxios = require('axios');
 
-const getCounters = require('../../../../data/api/counter/get');
+const getCounters = require('routes/counter/data/get');
 
 describe('GET /api/counter', () => {
   it('successfully gets data from counter sheet', async () => {

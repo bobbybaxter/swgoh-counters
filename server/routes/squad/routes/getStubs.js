@@ -1,22 +1,63 @@
+/* eslint-disable no-prototype-builtins */
+const axios = require('axios');
+
+function parseGoogleSheet(data) {
+  function renameKeys(keysMap, objToMap) {
+    const obj = { ...objToMap };
+    const keys = Object.keys(obj).reduce(
+      (acc, key) => ({
+        ...acc,
+        ...{ [keysMap[key] || key]: obj[key] },
+      }),
+      {},
+    );
+
+    if (keys.hasOwnProperty('squad')) { keys.squad = keys.squad.split(','); }
+    if (keys.hasOwnProperty('reqToons')) { keys.reqToons = keys.reqToons.split(','); }
+
+    return keys;
+  }
+
+  const headers = data.shift();
+  const valueRows = data.slice();
+  return valueRows.map(valueRow => renameKeys(headers, valueRow));
+}
+
+const sheetId = process.env.GOOGLE_SHEET_ID;
+const apiKey = process.env.GOOGLE_API_KEY;
+
 module.exports = ({ data }) => ({
   method: 'GET',
   path: '/squad/stubs/:size',
   handler: async (request, reply) => {
-    const normal = await data.getStubs('normal', request.params.size);
-    const reverse = await data.getStubs('reverse', request.params.size);
-    const leadersNormal = await data.getCounterLeaders('normal', request.params.size);
-    const leadersReverse = await data.getCounterLeaders('reverse', request.params.size);
+    const { size } = request.params;
 
-    const squadStubs = {
-      normal,
-      reverse,
-      leadersNormal,
-      leadersReverse,
-    };
+    async function buildStubs(stub, leaderSquads) {
+      const leaderSquadIds = leaderSquads
+        .filter(x => x.toon1Id === stub.toon1Id)
+        .map(x => x.id);
+      const squads = await data.getMultipleSquadsByIds(leaderSquadIds);
+
+      return ({ ...stub, squads });
+    }
+
+    const res = await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${size}Export?key=${apiKey}`);
+    const allLeaderSquads = parseGoogleSheet(res.data.values);
+    const normalStubs = await data.getStubs('normal', allLeaderSquads, size);
+    const normal = await Promise.all(
+      normalStubs.map(async stub => buildStubs(stub, allLeaderSquads)),
+    );
+
+    const resReverse = await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${size}RExport?key=${apiKey}`);
+    const allLeaderSquadsReverse = parseGoogleSheet(resReverse.data.values);
+    const reverseStubs = await data.getStubs('reverse', allLeaderSquadsReverse, size);
+    const reverse = await Promise.all(
+      reverseStubs.map(async stub => buildStubs(stub, allLeaderSquadsReverse)),
+    );
 
     reply
       .type('application/json')
-      .send(squadStubs);
+      .send({ normal, reverse });
   },
   schema: {
     params: {
@@ -29,14 +70,11 @@ module.exports = ({ data }) => ({
           normal: {
             type: 'array',
             items: {
+              type: 'object',
               properties: {
-                id: { type: 'string' },
-                name: { type: 'string' },
                 toon1Id: { type: 'string' },
-                toon2Id: { type: 'string' },
-                toon3Id: { type: 'string' },
-                toon4Id: { type: 'string' },
-                toon5Id: { type: 'string' },
+                toon1Name: { type: 'string' },
+                squads: { type: 'array' },
                 latestCounterVersion: { type: 'string' },
               },
             },
@@ -44,33 +82,12 @@ module.exports = ({ data }) => ({
           reverse: {
             type: 'array',
             items: {
+              type: 'object',
               properties: {
-                id: { type: 'string' },
-                name: { type: 'string' },
                 toon1Id: { type: 'string' },
-                toon2Id: { type: 'string' },
-                toon3Id: { type: 'string' },
-                toon4Id: { type: 'string' },
-                toon5Id: { type: 'string' },
+                toon1Name: { type: 'string' },
+                squads: { type: 'array' },
                 latestCounterVersion: { type: 'string' },
-              },
-            },
-          },
-          leadersNormal: {
-            type: 'array',
-            items: {
-              properties: {
-                id: { type: 'string' },
-                name: { type: 'string' },
-              },
-            },
-          },
-          leadersReverse: {
-            type: 'array',
-            items: {
-              properties: {
-                id: { type: 'string' },
-                name: { type: 'string' },
               },
             },
           },

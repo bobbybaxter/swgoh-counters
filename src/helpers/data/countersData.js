@@ -72,11 +72,26 @@ export async function importCounterData() {
   }
 }
 
-export async function getCounterStubsBySquadId(squadId, view, type, opts) {
+export async function getCounterStubsBySquadIds(leaderId, squadIds, view, size, opts) {
   try {
-    const url = new URL(`${baseUrl}/getStubsBySquadId/${squadId}`);
+    const url = new URL(`${baseUrl}/getStubsBySquadIds/${leaderId}`);
     url.searchParams.set('view', view);
-    url.searchParams.set('type', type);
+    url.searchParams.set('size', size);
+    url.searchParams.set('squadIds', squadIds);
+    const response = await fetch(url, opts);
+
+    return await response.json();
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function getCounterVariations(opponentLeaderId, counterLeaderId, size, opts) {
+  try {
+    const url = new URL(`${baseUrl}/variations`);
+    url.searchParams.set('opponentLeaderId', opponentLeaderId);
+    url.searchParams.set('counterLeaderId', counterLeaderId);
+    url.searchParams.set('size', size);
     const response = await fetch(url, opts);
 
     return await response.json();

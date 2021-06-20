@@ -1,8 +1,11 @@
 import styled from 'styled-components/macro';
-import { CounterRow } from 'src/styles/style';
+import { StyledCounterRow } from 'src/styles/style';
 
 export const CounterRowWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  padding: 0;
 `;
 
 export const Divider = styled.div`
@@ -32,12 +35,12 @@ export const LeftDiv = styled.div`
   align-items: center;
   padding-top: 5px;
   padding-bottom: 5px;
-  // box-shadow: inset 4px 4px 15px rgba(255, 255, 255, 0.1), inset -4px -4px 15px rgba(255, 255, 255, 0.1);
   justify-content: center;
   border-bottom: 1px solid #343a40;
 `;
 
-export const RightDiv = styled(CounterRow)`
+export const RightDiv = styled(StyledCounterRow)`
+  flex: 2;
   border-left: 1px solid #343a40;
   border-bottom: 1px solid #343a40;
 `;

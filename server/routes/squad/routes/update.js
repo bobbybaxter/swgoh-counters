@@ -5,7 +5,8 @@ module.exports = ({ data, log, server }) => ({
   path: '/squad/:id',
   preValidation: server.auth([server.firebaseAuth]),
   handler: async (request, reply) => {
-    const squadToUpdate = await data.getById(request.params.id);
+    const { id } = request.params;
+    const squadToUpdate = await data.getById(id);
 
     const updateNeeded = !_.isEqual(
       _.omit(squadToUpdate, [
@@ -23,7 +24,7 @@ module.exports = ({ data, log, server }) => ({
     );
 
     if (updateNeeded) {
-      await data.update(squadToUpdate, request.body);
+      await data.update({ id, ...request.body });
     } else {
       log.warn('Squad update not needed.');
     }

@@ -1,10 +1,10 @@
 import styled from 'styled-components/macro';
 
-export const AccountButtonsWrapper = styled.div`
+export const AdminControlsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  justify-content: flex-end;
+  width: 95%;
+  justify-content: center;
   font-size: .8rem;
   margin-bottom: 1rem;
 `;
@@ -13,9 +13,9 @@ export const AccountHeaderCenter = styled.div`
   justify-content: center;
   align-items: center;
   text-align: left;
-  // text-align: center;
   }
 `;
+
 export const AccountHeaderLeft = styled.div`
   text-align: left;
   padding: 0;
@@ -23,6 +23,7 @@ export const AccountHeaderLeft = styled.div`
     padding: 0 1rem 0 0;
   }
 `;
+
 export const AccountHeaderRight = styled.div`
   display: flex;
   flex-direction: column;
@@ -53,9 +54,13 @@ export const AccountHeader = styled.div`
   margin-top: 10px;
 `;
 
-export const RefreshElements = styled.div`
+export const ControlsDiv = styled.div`
   display: flex;
-  width: 100%;
-  justify-content: flex-end;
-  margin-top: .25rem;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  padding: 1rem;
+  background: #181818;
+  width: 50%;
 `;

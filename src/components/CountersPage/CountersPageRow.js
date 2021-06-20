@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import { IDBService } from 'src/setup/IndexedDB';
 
-import { getCounterStubsBySquadId } from 'src/helpers/data';
+import { getCounterStubsBySquadIds } from 'src/helpers/data';
 
 import CounterRow from 'src/components/CounterRow/CounterRow';
 
@@ -12,11 +12,11 @@ import {
   RightDiv, RightDivWrapper,
 } from '../CounterRow/style';
 
+
 export default function CountersPageRow({
   anyExcludedLeaders,
   excludedCounters,
   leaderId,
-  leaderSquads,
   reload,
   size,
   stubs,
@@ -25,25 +25,17 @@ export default function CountersPageRow({
 }) {
   CountersPageRow.propTypes = {
     anyExcludedLeaders: PropTypes.bool.isRequired,
-    excludedCounters: PropTypes.array,
-    leaderId: PropTypes.string,
-    leaderSquads: PropTypes.array.isRequired,
-    reload: PropTypes.func,
-    size: PropTypes.string,
-    stubs: PropTypes.array,
+    excludedCounters: PropTypes.array.isRequired,
+    leaderId: PropTypes.string.isRequired,
+    reload: PropTypes.func.isRequired,
+    size: PropTypes.string.isRequired,
+    stubs: PropTypes.object.isRequired,
     view: PropTypes.string.isRequired,
   };
 
   const [counters, setCounters] = useState([]);
 
-  const counterStubId = `${size}_${view}_${stubs[0].toon1Id}`;
-  let stubsLatestCounter = '';
-
-  if (stubs.length > 1) {
-    stubsLatestCounter = stubs.reduce((a, b) => (a.latestCounterVersion > b.latestCounterVersion ? a.latestCounterVersion : b.latestCounterVersion));
-  } else {
-    stubsLatestCounter = stubs[0].latestCounterVersion;
-  }
+  const counterStubId = !_.isEmpty(stubs.squads) && `${size}_${view}_${stubs.squads[0].toon1Id}`;
 
   useEffect(() => {
     // abortController cleans up cancelled requests
@@ -73,7 +65,8 @@ export default function CountersPageRow({
 
       async function requestCounters() {
         try {
-          const response = await getCounterStubsBySquadId(leaderId, view, size, opts);
+          const squadIds = stubs.squads.map(x => x.id);
+          const response = await getCounterStubsBySquadIds(leaderId, squadIds, view, size, opts);
           setCounters(response);
           if (!_.isEmpty(response)) {
             const objectToStore = {
@@ -92,7 +85,7 @@ export default function CountersPageRow({
 
       // eslint-disable-next-line max-len
       if (!abortController.signal.aborted && !_.isEmpty(storedStubs) && storedStubs.counterVersion) {
-        if (storedStubs.counterVersion !== stubsLatestCounter) {
+        if (storedStubs.counterVersion !== stubs.latestCounterVersion) {
           await requestCounters();
         } else {
           const freshStubs = await removeStaleStubs(storedStubs);
@@ -109,7 +102,7 @@ export default function CountersPageRow({
     return () => {
       abortController.abort();
     };
-  }, [counterStubId, leaderId, size, stubsLatestCounter, view]);
+  }, [counterStubId, leaderId, size, stubs.latestCounterVersion, stubs.squads, view]);
 
   const separatedLeaderSquadIds = !_.isEmpty(counters) && _.uniq(
     counters.rightSquadStubs.map(x => (view === 'normal' ? x.opponentSquadId : x.counterSquadId)),
@@ -117,14 +110,15 @@ export default function CountersPageRow({
 
   const sortedLeaderSquads = separatedLeaderSquadIds
     && separatedLeaderSquadIds
-      .map(id => leaderSquads.find(leaderSquad => leaderSquad.id === id))
-      .sort((a, b) => (a.name > b.name ? 1 : -1));
+      .map(id => stubs.squads.find(leaderSquad => leaderSquad.id === id))
+      .sort((a, b) => (a.toon1Name > b.toon1Name ? 1 : -1));
 
   const buildCounterRows = sortedLeaderSquads
-    ? sortedLeaderSquads.map((squad) => {
+    ? sortedLeaderSquads.map(squad => {
       const rightSquads = squad && !_.isEmpty(counters) && counters.rightSquadStubs
         .filter(x => !excludedCounters.includes(x.toon1Id))
-        .filter(x => (view === 'normal' ? x.opponentSquadId : x.counterSquadId) === squad.id);
+        .filter(x => (view === 'normal' ? x.opponentSquadId : x.counterSquadId) === squad.id)
+        .sort((a, b) => (a.totalSeen < b.totalSeen ? 1 : -1));
 
       return (
         squad && !_.isEmpty(rightSquads)
@@ -146,8 +140,10 @@ export default function CountersPageRow({
   return (
     <>
       {!_.isEmpty(buildCounterRows.filter(x => x !== ''))
-        ? buildCounterRows
-        : <RightDiv className="h-100">
+        ? <div className="d-flex flex-column p-0 col-10">
+            {buildCounterRows}
+          </div>
+        : <RightDiv>
             <RightDivWrapper></RightDivWrapper>
           </RightDiv>
       }

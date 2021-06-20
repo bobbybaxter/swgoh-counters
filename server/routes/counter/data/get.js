@@ -1,21 +1,21 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require( 'fs' );
+const path = require( 'path' );
 
-module.exports = ({ database, log }) => () => {
-  const sql = fs.readFileSync(path.join(__dirname, './sql/get.sql')).toString();
+module.exports = ( { database, log } ) => () => {
+  const sql = fs.readFileSync( path.join( __dirname, './sql/get.sql' )).toString();
 
-  return new Promise((res, rej) => {
-    database.query(sql, (error, results) => {
-      if (error) { rej(error); }
+  return new Promise(( res, rej ) => {
+    database.query( sql, ( error, results ) => {
+      if ( error ) { rej( error ); }
 
-      if (!results || (results && !results.length)) {
-        log.warn('Counter database is empty');
-        return res({});
+      if ( !results || ( results && !results.length )) {
+        log.warn( 'Counter database is empty' );
+        return res( {} );
       }
 
-      return res(JSON.parse(JSON.stringify(results)));
-    });
-  }).catch((err) => {
+      return res( JSON.parse( JSON.stringify( results )));
+    } );
+  } ).catch( err => {
     throw err;
-  });
+  } );
 };
