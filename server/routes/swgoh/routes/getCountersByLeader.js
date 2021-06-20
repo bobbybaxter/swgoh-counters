@@ -6,10 +6,9 @@ module.exports = app => ({
   handler: async (request, reply) => {
     const { config, data, log } = app;
     const { season } = request.params;
-    const leaderIds = await data.firebase.getSeasonRoster(season);
 
     const seasons5v5 = [10, 11, 13, 15, 17];
-    const seasons3v3 = [9, 12, 14, 16];
+    const seasons3v3 = [9, 12, 14, 16, 18];
 
     function selectBattleTypeBySeason(seasonNum) {
       if (seasons3v3.includes(seasonNum)) { return '3v3'; }
@@ -20,11 +19,17 @@ module.exports = app => ({
     async function determineCounterStrength({ counterId, winPerc }) {
       let percToTest;
       const res = await data.counterStats.getAvgWinPerc(counterId);
-      if (res.season <= season) {
+
+      if (_.isEmpty(res)) {
+        return null;
+      }
+
+      if (res.season < season) {
         percToTest = (res.sumWinPerc + winPerc) / (res.counterNum + 1);
       } else {
         percToTest = res.avgWinPerc;
       }
+
       return percToTest >= 0.90 ? 1 : 0;
     }
 
@@ -49,7 +54,7 @@ module.exports = app => ({
         isHardCounter: await determineCounterStrength({
           counterId: existingCounter.id,
           winPerc: parsedWinPerc,
-        }),
+        }) || incomingCounter.isHardCounter,
         userId: incomingCounter.userId,
         username: incomingCounter.username,
       };
@@ -60,7 +65,8 @@ module.exports = app => ({
       );
 
       if (updateNeeded) {
-        await data.counter.update(existingCounter, newCounter);
+        // console.log('updateNeeded - newCounter :>> ', newCounter);
+        await data.counter.update(newCounter);
       } else {
         log.debug(`Counter updated not needed for ${existingCounter.id}`);
       }
@@ -80,10 +86,6 @@ module.exports = app => ({
         return createdCounterStatsId;
       }
 
-      if (incomingCounterStats.season !== existingCounterStats.season) {
-        console.log(season, existingCounterStats.season);
-      }
-
       const updateNeeded = !_.isEqual(
         _.omit(existingCounterStats, ['id']),
         incomingCounterStats,
@@ -99,8 +101,8 @@ module.exports = app => ({
       return existingCounterStats.id;
     }
 
-    async function buildCounters() {
-      Promise.all(scrapedInfo.map(async counter => {
+    async function buildCounters(swgohInfo) {
+      Promise.all(swgohInfo.map(async counter => {
         const {
           counterSquad, opponentSquad, seen, winPerc, avgBanners,
         } = counter;
@@ -124,7 +126,7 @@ module.exports = app => ({
         const incomingCounter = {
           opponentSquadId: existingOpponentSquadId,
           counterSquadId: existingCounterSquadId,
-          isHardCounter: parsedWinPerc >= 0.90,
+          isHardCounter: parsedWinPerc >= 0.90 ? 1 : 0,
           battleType: selectBattleTypeBySeason(season),
           counterStrategy: '',
           isToon2Req: false,
@@ -163,9 +165,11 @@ module.exports = app => ({
       }));
     }
 
-    const scrapedInfo = await data.getSeasonData({ leaderIds, season });
+    const swgohInfo = await data.getSeasonDataFromAws(season);
 
-    await buildCounters();
+    if (swgohInfo) {
+      await buildCounters(JSON.parse(swgohInfo));
+    }
 
     reply.send('ok');
   },

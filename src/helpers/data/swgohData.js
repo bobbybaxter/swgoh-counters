@@ -26,3 +26,12 @@ export async function getCountersBySeason(season) {
     throw err;
   }
 }
+
+export async function getSeasonData(season) {
+  try {
+    const response = await fetch(`${baseUrl}/counters/SeasonData/${season}`);
+    return await response.text();
+  } catch (err) {
+    throw err;
+  }
+}

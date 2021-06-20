@@ -1,14 +1,10 @@
-// const tips = [
-//   "Want your entire guild to have access to Patron-level content? Support us on Patreon at the Aurodium tier and you'll get it!",
-//   "Can't find a variation of the squad?  Try clicking on an existing counter and read the Counter Strategy to see if there is more info",
-//   'Click on the mini view of an Opponent Squad to see more info about them.',
-//   "New filtering options available to Patrons!  Filter by squad leaders to easily find the counter you're looking for.",
-//   'Many Counter Strategies now detail which opponent variations the counter works against.',
-//   'If you have issues loading the page, trying clearing your cache.',
-// ];
-
+/* eslint-disable max-len */
 const tips = [
-  'ATTENTION GUILD LEADERS: Want a month of free Patron-level benefits for your entire guild?  Check out my latest post on Patreon to find out how!',
+  "We're accepting screen recordings of battles for free Patron-level access for your entire guild!  Contact us via Patreon, Discord, or swgohcounters@gmail.com for more details.",
+  // "Want your entire guild to have access to Patron-level content? Support us on Patreon at the Aurodium tier and you'll get it!",
+  // 'Click on the mini view of an Opponent Squad to see more info about them.',
+  // 'Become a patron to view Counter Variations, Reverse Counters, and Filtering Options!',
+  // 'If you have issues loading the page, trying clearing your cache.',
 ];
 
 export default tips;

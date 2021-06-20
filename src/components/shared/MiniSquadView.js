@@ -17,9 +17,9 @@ const MiniSquad = styled.div`
 const SquadImages = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  background-color: black;
+  // background-color: black;
   margin: 0 2.5px 0 2.5px;
-  border: 1px #3D182560 solid;
+  // border: 1px #3D182560 solid;
 `;
 
 export default function MiniSquadView({

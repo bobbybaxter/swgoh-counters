@@ -45,7 +45,7 @@ module.exports = ({ database, log }) => squadIds => {
       if (error) { rej(error); }
 
       if (!results || (results && !results.length)) {
-        log.warn(`Squad doesn't exist for id: ${squadIds}`);
+        log.warn(`Get Multiple Squads By Id: Squad doesn't exist for id: ${squadIds}`);
         return res([]);
       }
 

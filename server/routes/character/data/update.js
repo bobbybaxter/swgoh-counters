@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = ({ database, log }) => ({ id }, { name }) => {
+module.exports = ({ database, log }) => ({ id, name }) => {
   const sql = fs.readFileSync(path.join(__dirname, './sql/update.sql')).toString();
 
   const variables = [name, id];
@@ -16,7 +16,7 @@ module.exports = ({ database, log }) => ({ id }, { name }) => {
 
       return res('ok');
     });
-  }).catch((err) => {
+  }).catch(err => {
     log.error(err.message);
     throw new Error(err);
   });

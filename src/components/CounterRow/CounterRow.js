@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, {
   lazy, Suspense, useContext,
 } from 'react';
@@ -6,9 +5,8 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import LazyLoad from 'react-lazyload';
 
-import { MiniSquadView, PatreonRowButton } from 'src/components/shared';
+import { MiniSquadView } from 'src/components/shared';
 
-import { AuthContext } from 'src/contexts/userContext';
 import { AccordionContext } from 'src/contexts/accordionContext';
 import CounterRowDescription from './CounterRowDescription';
 
@@ -16,10 +14,10 @@ import {
   CounterRowWrapper, Divider, RightDiv, RightDivWrapper,
 } from './style';
 
-const CounterRowSquad = lazy(() => import('./CounterRowSquad'));
-const OpponentCard = lazy(() => import('src/components/DescriptionCards/OpponentCard'));
+const CounterRowSquad = lazy(() => import( './CounterRowSquad' ));
+const OpponentCard = lazy(() => import( 'src/components/DescriptionCards/OpponentCard' ));
 
-const CounterRow = ({
+const CounterRow = ( {
   anyExcludedLeaders,
   counters,
   leftSquad,
@@ -27,7 +25,7 @@ const CounterRow = ({
   size,
   view,
   ...props
-}) => {
+} ) => {
   CounterRow.propTypes = {
     anyExcludedLeaders: PropTypes.bool.isRequired,
     counters: PropTypes.array.isRequired,
@@ -37,32 +35,26 @@ const CounterRow = ({
     view: PropTypes.string.isRequired,
   };
 
-  const { isRestricted } = useContext(AuthContext);
-  const { toggleCollapse } = useContext(AccordionContext);
+  const { toggleCollapse } = useContext( AccordionContext );
 
-  const toggle = e => toggleCollapse(e.currentTarget.id);
-  const hardCounters = !_.isEmpty(counters) ? counters.filter(x => x.isHardCounter) : [];
-  const hardCountersToDisplay = !isRestricted
-    ? hardCounters
-    : hardCounters && _.uniqBy(hardCounters, 'toon1Id');
-  const softCounters = !_.isEmpty(counters) ? counters.filter(x => !x.isHardCounter) : [];
-  const softCountersToDisplay = !isRestricted ? softCounters : [];
-  const restrictedCountersCount = (softCounters.length - softCountersToDisplay.length) + (hardCounters.length - hardCountersToDisplay.length);
+  const toggle = e => toggleCollapse( e.currentTarget.id );
+  const hardCounters = !_.isEmpty( counters ) ? counters.filter( x => x.isHardCounter ) : [];
+  const softCounters = !_.isEmpty( counters ) ? counters.filter( x => !x.isHardCounter ) : [];
 
-  const divider = hardCounters.length > 0 && softCountersToDisplay.length > 0 && <Divider/>;
+  const divider = hardCounters.length > 0 && softCounters.length > 0 && <Divider/>;
 
-  const buildCounters = (squads, type) => squads
-    .map(squad => <Suspense key={`${view}_${size}_${squad.id}_row`} fallback={null}>
+  const buildCounters = ( squads, type ) => squads
+    .map( squad => <Suspense key={`${ view }_${ size }_${ squad.id }_row`} fallback={null}>
       <CounterRowSquad
         squad={squad}
         toggle={toggle}
         type={type}
         view={view}
       />
-    </Suspense>);
+    </Suspense> );
 
-  const buildCounterDescriptions = counters.map(rightSquadStub => (
-    <LazyLoad once key={`CounterRowDescription_${view}_${size}_${rightSquadStub.id}`}>
+  const buildCounterDescriptions = counters.map( rightSquadStub => (
+    <LazyLoad once key={`CounterRowDescription_${ view }_${ size }_${ rightSquadStub.id }`}>
       <CounterRowDescription
         leftSquad={leftSquad}
         reload={reload}
@@ -75,7 +67,7 @@ const CounterRow = ({
 
   return (
     <CounterRowWrapper>
-      <div className="d-flex flex-column">
+      <div className="h-100">
         <RightDiv className="pt-0">
           <MiniSquadView
             leftSquadStub={leftSquad}
@@ -83,10 +75,9 @@ const CounterRow = ({
             toggle={toggle}
           />
           <RightDivWrapper>
-            {hardCountersToDisplay ? buildCounters(hardCountersToDisplay, 'hard') : []}
+            {hardCounters ? buildCounters( hardCounters, 'hard' ) : []}
             {divider}
-            {softCountersToDisplay ? buildCounters(softCountersToDisplay, 'soft') : []}
-            {isRestricted && restrictedCountersCount > 0 && <PatreonRowButton amount={restrictedCountersCount}/>}
+            {softCounters ? buildCounters( softCounters, 'soft' ) : []}
           </RightDivWrapper>
         </RightDiv>
       </div>

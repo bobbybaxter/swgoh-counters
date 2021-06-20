@@ -12,6 +12,8 @@ const SortBoxWrapper = styled.div`
   max-height: 30vh;
   overflow: hidden;
   border: 1px grey solid;
+  padding: 0;
+  align-items: normal;
 `;
 
 const FilterWrapper = styled.div`
@@ -30,7 +32,7 @@ const LeaderCheckboxWrapper = styled.div`
 `;
 
 // TODO: look into reducing the size of the counter list instead of showing all in the list
-const SortBox = ({
+const SortBox = ( {
   characters,
   excludedCounters,
   excludedOpponents,
@@ -39,7 +41,7 @@ const SortBox = ({
   setExcludedCounters,
   setExcludedOpponents,
   view,
-}) => {
+} ) => {
   SortBox.propTypes = {
     characters: PropTypes.array.isRequired,
     excludedCounters: PropTypes.array,
@@ -52,53 +54,53 @@ const SortBox = ({
   };
 
   function handleAddAllCounters() {
-    setExcludedCounters([]);
+    setExcludedCounters( [] );
   }
 
   function handleAddAllOpponents() {
-    setExcludedOpponents([]);
+    setExcludedOpponents( [] );
   }
 
   function handleClearAllCounters() {
-    setExcludedCounters(characters.map(x => x.id));
+    setExcludedCounters( characters.map( x => x.id ));
   }
 
   function handleClearAllOpponents() {
-    setExcludedOpponents(leaderIds);
+    setExcludedOpponents( leaderIds );
   }
 
-  function handleOpponentLeaderCheckbox(e) {
-    const newStubs = [...excludedOpponents];
+  function handleOpponentLeaderCheckbox( e ) {
+    const newStubs = [ ...excludedOpponents ];
     const isChecked = e.target.checked;
-    const leaderId = e.target.id.split('-')[0];
-    if (isChecked) {
-      setExcludedOpponents(newStubs.filter(x => x !== leaderId));
+    const leaderId = e.target.id.split( '-' )[ 0 ];
+    if ( isChecked ) {
+      setExcludedOpponents( newStubs.filter( x => x !== leaderId ));
     } else {
-      newStubs.push(leaderId);
-      setExcludedOpponents(newStubs);
+      newStubs.push( leaderId );
+      setExcludedOpponents( newStubs );
     }
   }
 
-  function handleCounterLeaderCheckbox(e) {
-    const newStubs = [...excludedCounters];
+  function handleCounterLeaderCheckbox( e ) {
+    const newStubs = [ ...excludedCounters ];
     const isChecked = e.target.checked;
-    const leaderId = e.target.id.split('-')[0];
-    if (isChecked) {
-      setExcludedCounters(newStubs.filter(x => x !== leaderId));
+    const leaderId = e.target.id.split( '-' )[ 0 ];
+    if ( isChecked ) {
+      setExcludedCounters( newStubs.filter( x => x !== leaderId ));
     } else {
-      newStubs.push(leaderId);
-      setExcludedCounters(newStubs);
+      newStubs.push( leaderId );
+      setExcludedCounters( newStubs );
     }
   }
 
-  const buildOpponentFilter = leaders.map(leader => {
-    const isChecked = !excludedOpponents.includes(leader.id);
+  const buildOpponentFilter = leaders.map( leader => {
+    const isChecked = !excludedOpponents.includes( leader.id );
     return (
-      <FormGroup check key={`${leader.id}_opponentCheckBox`}>
+      <FormGroup check key={`${ leader.id }_opponentCheckBox`}>
         <Label check className="text-left">
           <Input
             checked={isChecked}
-            id={`${leader.id}-opponentCheckBox`}
+            id={`${ leader.id }-opponentCheckBox`}
             onChange={handleOpponentLeaderCheckbox}
             type="checkbox"
           />
@@ -106,16 +108,16 @@ const SortBox = ({
         </Label>
       </FormGroup>
     );
-  });
+  } );
 
-  const buildCounterFilter = characters.map(counterLeader => {
-    const isChecked = !excludedCounters.includes(counterLeader.id);
+  const buildCounterFilter = characters.map( counterLeader => {
+    const isChecked = !excludedCounters.includes( counterLeader.id );
     return (
-      <FormGroup check key={`${counterLeader.id}_counterCheckBox`}>
+      <FormGroup check key={`${ counterLeader.id }_counterCheckBox`}>
       <Label check className="text-left">
         <Input
           checked={isChecked}
-          id={`${counterLeader.id}-counterCheckBox`}
+          id={`${ counterLeader.id }-counterCheckBox`}
           onChange={handleCounterLeaderCheckbox}
           type="checkbox"
         />
@@ -123,7 +125,7 @@ const SortBox = ({
       </Label>
     </FormGroup>
     );
-  });
+  } );
 
   return (
     <SortBoxWrapper>

@@ -6,6 +6,7 @@ module.exports = app => async server => {
   data.squad = require('routes/squad/data')(app);
   data.counter = require('routes/counter/data')(app);
   data.counterStats = require('routes/counterStats/data')(app);
+  data.character = require('routes/character/data')(app);
   const routes = routeFactory({ ...app, data, server });
   return routes.forEach(route => server.route(route));
 };

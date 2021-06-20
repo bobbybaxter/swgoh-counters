@@ -152,6 +152,7 @@ export function AuthProvider({ children }) {
       setAuthenticated(true);
       setLoading(false);
     } else {
+      setAdmin(false);
       setIsRestricted(true);
       setAuthenticated(false);
       setLoading(false);

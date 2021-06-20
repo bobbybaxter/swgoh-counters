@@ -33,9 +33,9 @@ const StyledLinkButton = styled.a`
   }
 `;
 
-export default function PatreonRowButton({
+export default function PatreonRowButton( {
   amount,
-}) {
+} ) {
   PatreonRowButton.propTypes = {
     amount: PropTypes.number.isRequired,
   };

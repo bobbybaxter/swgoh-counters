@@ -26,8 +26,8 @@ module.exports = ({ data, log, server }) => ({
       };
 
       try {
-        const response = await data.update(videoLinkToUpdate, request.body);
-        await data.counter.update(counterToUpdate, newCounter);
+        const response = await data.update(request.body);
+        await data.counter.update(newCounter);
         return reply
           .type('text/html')
           .send(response);

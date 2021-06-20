@@ -25,7 +25,6 @@ export default function PatreonButton() {
       <StyledLinkButton href="https://patreon.com/saiastrange" className="btn">
         SUPPORT US ON PATREON<br/>
         <small>REMOVES ADS</small><br/>
-        <small>ADD/UPDATE COUNTERS</small>
       </StyledLinkButton>
     </Wrapper>
   );

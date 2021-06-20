@@ -4,7 +4,7 @@ import './AdsenseAd.scss';
 import PropTypes from 'prop-types';
 
 const initAd = () => {
-  (window.adsbygoogle = window.adsbygoogle || []).push({});
+  ( window.adsbygoogle = window.adsbygoogle || [] ).push( {} );
 };
 
 class AdsenseAd extends React.Component {
@@ -16,7 +16,7 @@ class AdsenseAd extends React.Component {
     this.state.isProduction && initAd();
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate( nextProps ) {
     const { props: { path } } = this;
     return nextProps.path !== path;
   }
@@ -54,7 +54,7 @@ class AdsenseAd extends React.Component {
           title={this.props.adSlot}
           style={{
             display: 'inline-block',
-            minWidth: '400px',
+            minWidth: '100px',
             maxWidth: '970px',
             width: '100%',
             height: '280px',

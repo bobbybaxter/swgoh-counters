@@ -1,5 +1,5 @@
 SELECT 
-	ROUND( AVG(cs.winPerc), 2) AS avgWinPerc,
+	ROUND( AVG(cs.winPerc), 3) AS avgWinPerc,
 	SUM(cs.winPerc) AS sumWinPerc,
 	COUNT(counterId) AS counterNum,
 	season

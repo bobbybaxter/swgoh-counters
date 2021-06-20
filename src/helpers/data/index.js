@@ -49,5 +49,6 @@ export {
 export {
   getCountersBySeason,
   getLeadersBySeason,
+  getSeasonData,
   getSquadsBySeason,
 } from './swgohData';

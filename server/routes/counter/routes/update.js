@@ -5,7 +5,8 @@ module.exports = ({ data, log, server }) => ({
   path: '/counter/:id',
   preValidation: server.auth([server.firebaseAuth]),
   handler: async (request, reply) => {
-    const counterToUpdate = await data.getById(request.params.id);
+    const { id } = request.params;
+    const counterToUpdate = await data.getById(id);
     counterToUpdate.isHardCounter = counterToUpdate.isHardCounter === 1;
     counterToUpdate.isToon2Req = counterToUpdate.isToon2Req === 1;
     counterToUpdate.isToon3Req = counterToUpdate.isToon3Req === 1;
@@ -23,7 +24,7 @@ module.exports = ({ data, log, server }) => ({
     );
 
     if (updateNeeded) {
-      await data.update(counterToUpdate, request.body);
+      await data.update({ id, ...request.body });
     } else {
       log.warn('Counter update not needed.');
     }

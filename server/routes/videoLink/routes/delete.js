@@ -12,7 +12,7 @@ module.exports = ({ data, log, server }) => ({
 
     try {
       const deletedVideoLink = await data.delete(request.params.id);
-      await data.counter.update(counterToUpdate, newCounter);
+      await data.counter.update(newCounter);
       reply
         .type('text/html')
         .send(deletedVideoLink);

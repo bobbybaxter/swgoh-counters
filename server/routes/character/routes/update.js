@@ -13,7 +13,7 @@ module.exports = ({ data, log, server }) => ({
     );
 
     if (updateNeeded) {
-      await data.update(characterToUpdate, request.body);
+      await data.update(characterToUpdate);
     } else {
       log.warn('Character update not needed.');
     }

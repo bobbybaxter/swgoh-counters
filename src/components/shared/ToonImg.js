@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 const StyledToonImg = styled.img`
   cursor: ${props => (props.$isClickable ? 'pointer' : 'auto')};
-  width: ${props => (props.$isCompact ? '27px' : '35px')};
-  height: ${props => (props.$isCompact ? '27px' : '35px')};
+  width: ${props => ((props.$isCompact || props.$isVariation) ? '27px' : '35px')};
+  height: ${props => ((props.$isCompact || props.$isVariation) ? '27px' : '35px')};
   border-radius: 50%;
   margin: ${props => (props['no-margin'] ? '0' : '0 2.5px')};
-  border: ${props => (props.$isCompact ? '1px' : '2px')} solid;
+  border: ${props => ((props.$isCompact || props.$isVariation) ? '1px' : '2px')} solid;
   border-color: ${props => (props.color ? props.color : 'gray')};
   }};
 
@@ -28,18 +28,27 @@ const StyledToonImg = styled.img`
   }
 `;
 
-export default function ToonImg({ isClickable, isCompact, ...props }) {
+export default function ToonImg({
+  isClickable, isCompact, isVariation, ...props
+}) {
   ToonImg.propTypes = {
     isClickable: PropTypes.bool,
     isCompact: PropTypes.bool,
+    isVariation: PropTypes.bool,
   };
 
   ToonImg.defaultProps = {
     isClickable: false,
     isCompact: false,
+    isVariation: false,
   };
 
   return (
-    <StyledToonImg $isClickable={isClickable} $isCompact={isCompact} {...props} />
+    <StyledToonImg
+      {...props}
+      $isClickable={isClickable}
+      $isCompact={isCompact}
+      $isVariation={isVariation}
+    />
   );
 }

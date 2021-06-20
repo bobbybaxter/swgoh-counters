@@ -1,15 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = ({ database, log }) => id => {
-  const sql = fs.readFileSync(path.join(__dirname, './sql/getById.sql')).toString();
+module.exports = ({ database, log }) => squadMembers => {
+  const sql = fs.readFileSync(path.join(__dirname, './sql/getBySquadMembers.sql')).toString();
 
   return new Promise((res, rej) => {
-    database.query(sql, id, (error, results) => {
+    database.query(sql, squadMembers, (error, results) => {
       if (error) { rej(error); }
 
       if (!results || (results && !results.length)) {
-        log.warn(`Squad doesn't exist for id: ${id}`);
+        log.warn(`Squad doesn't exist with squadmembers: ${squadMembers}`);
         return res({});
       }
 

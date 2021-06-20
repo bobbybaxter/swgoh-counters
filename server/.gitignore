@@ -1,6 +1,9 @@
 /node_modules
 /coverage
 
+# AWS API
+s3-config.js
+
 # Google API
 google-sheets-service-account.json
 

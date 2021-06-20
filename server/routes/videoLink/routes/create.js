@@ -12,7 +12,7 @@ module.exports = ({ data, log, server }) => ({
 
     try {
       const createdVideoLink = await data.create(request.body);
-      await data.counter.update(counterToUpdate, newCounter);
+      await data.counter.update(newCounter);
       reply
         .type('text/html')
         .send(createdVideoLink);

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = ({ database, log }) => (name) => {
+module.exports = ({ database, log }) => name => {
   const sql = fs.readFileSync(path.join(__dirname, './sql/getByName.sql')).toString();
 
   return new Promise((res, rej) => {

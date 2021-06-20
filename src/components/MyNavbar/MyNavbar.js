@@ -34,9 +34,6 @@ const MyNavbar = () => {
 
   const handleNavLogout = e => {
     e.preventDefault();
-    localStorage.removeItem('userData');
-    localStorage.removeItem('userUnits');
-    sessionStorage.setItem('token', '');
     firebase.auth().signOut();
     handleLogout();
   };

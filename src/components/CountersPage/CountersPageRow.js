@@ -12,6 +12,7 @@ import {
   RightDiv, RightDivWrapper,
 } from '../CounterRow/style';
 
+
 export default function CountersPageRow({
   anyExcludedLeaders,
   excludedCounters,
@@ -24,17 +25,17 @@ export default function CountersPageRow({
 }) {
   CountersPageRow.propTypes = {
     anyExcludedLeaders: PropTypes.bool.isRequired,
-    excludedCounters: PropTypes.array,
-    leaderId: PropTypes.string,
-    reload: PropTypes.func,
-    size: PropTypes.string,
+    excludedCounters: PropTypes.array.isRequired,
+    leaderId: PropTypes.string.isRequired,
+    reload: PropTypes.func.isRequired,
+    size: PropTypes.string.isRequired,
     stubs: PropTypes.object.isRequired,
     view: PropTypes.string.isRequired,
   };
 
   const [counters, setCounters] = useState([]);
 
-  const counterStubId = `${size}_${view}_${stubs.squads[0].toon1Id}`;
+  const counterStubId = !_.isEmpty(stubs.squads) && `${size}_${view}_${stubs.squads[0].toon1Id}`;
 
   useEffect(() => {
     // abortController cleans up cancelled requests
@@ -139,8 +140,10 @@ export default function CountersPageRow({
   return (
     <>
       {!_.isEmpty(buildCounterRows.filter(x => x !== ''))
-        ? buildCounterRows
-        : <RightDiv className="h-100">
+        ? <div className="d-flex flex-column p-0 col-10">
+            {buildCounterRows}
+          </div>
+        : <RightDiv>
             <RightDivWrapper></RightDivWrapper>
           </RightDiv>
       }

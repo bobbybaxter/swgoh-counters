@@ -45,6 +45,11 @@ module.exports = {
     "global-require": 0,
     "one-var": 0,
     "one-var-declaration-per-line": 0,
-    'arrow-parens': [1, 'as-needed']
+    'arrow-parens': [1, 'as-needed'],
+    'object-curly-spacing': [1, 'always'],
+    'array-bracket-spacing': [1, 'always'],
+    'space-in-parens': [1, 'always', { exceptions: ["()"] }],
+    'template-curly-spacing': [1, 'always'],
+    'computed-property-spacing': [1, 'always']
   }
 }

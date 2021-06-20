@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const { nanoid } = require('nanoid');
 
-module.exports = ({ database, log }) => ({ id }, {
+module.exports = ({ database, log }) => ({
+  id,
   isHardCounter,
   battleType,
   counterStrategy,

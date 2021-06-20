@@ -75,7 +75,7 @@ export const ContainerRow = styled.div`
   text-align: center;
 `;
 
-export const CounterRow = styled.div`
+export const StyledCounterRow = styled.div`
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -84,7 +84,7 @@ export const CounterRow = styled.div`
   box-shadow: inset 4px 4px 15px rgba(255, 255, 255, 0.1), inset -4px -4px 15px rgba(255, 255, 255, 0.1);
 `;
 
-export const CounterCard = styled(CounterRow)`
+export const CounterCard = styled(StyledCounterRow)`
   box-shadow: none;
 `;
 
@@ -119,7 +119,7 @@ export const EditMenu = styled.div`
   }
 `;
 
-export const LeftDivSquad = styled(CounterRow)`
+export const LeftDivSquad = styled(StyledCounterRow)`
   justify-content: center;
   padding: .5rem;
   border-right: 1px solid #343a40;

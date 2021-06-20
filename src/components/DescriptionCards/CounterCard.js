@@ -105,8 +105,8 @@ const CounterCard = ({
     return (
       <>
         <DescriptionButtonsWrapper>
-          {shouldPrintZeta && <DescriptionButton id={`zetaReqs_${id}`} size="sm">Required Zetas</DescriptionButton>}
-          {shouldPrintVideoLinks && <DescriptionButton id={`videoLinks_${id}`} size="sm">Videos</DescriptionButton>}
+          {shouldPrintZeta && <DescriptionButton outline id={`zetaReqs_${id}`} size="sm">Required Zetas</DescriptionButton>}
+          {shouldPrintVideoLinks && <DescriptionButton outline id={`videoLinks_${id}`} size="sm">Videos</DescriptionButton>}
         </DescriptionButtonsWrapper>
         {
           shouldPrintZeta && <UncontrolledCollapse toggler={`#zetaReqs_${id}`} className="p-1">
@@ -172,7 +172,7 @@ const CounterCard = ({
 
     </TopWrapper>
     <div className="w-100">
-      <Button outline className="w-100" size="sm" onClick={() => setIsVariationsModalOpen(true)}>Variations</Button>
+      <Button outline className="w-100" size="sm" onClick={() => setIsVariationsModalOpen(true)}>See Variations</Button>
     </div>
     {isVariationsModalOpen && (
       <ModalPortal>

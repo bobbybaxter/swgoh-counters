@@ -49,7 +49,6 @@ export default function NewSquadDisplay({
   setTempSquad,
   size,
   sourceSquad,
-  squadMatch,
   tempSquad,
   ...props
 }) {
@@ -62,7 +61,6 @@ export default function NewSquadDisplay({
     setTempSquad: PropTypes.func.isRequired,
     size: PropTypes.string,
     sourceSquad: PropTypes.array,
-    squadMatch: PropTypes.string,
     tempSquad: PropTypes.array.isRequired,
   };
 
@@ -108,7 +106,6 @@ export default function NewSquadDisplay({
       <Wrapper>
         {buildCounterDisplay}
       </Wrapper>
-      {squadMatch && <div className="alert alert-danger mt-3">Squad exists as {squadMatch}</div>}
     </>
   );
 }

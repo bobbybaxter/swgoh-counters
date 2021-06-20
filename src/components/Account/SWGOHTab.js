@@ -14,13 +14,19 @@ import {
 import {
   getCountersBySeason,
   getLeadersBySeason,
+  getSeasonData,
   getSquadsBySeason,
 } from 'src/helpers/data';
 
 export default function SWGOHTab({ activeTab }) {
+  const [seasonDataSeason, setSeasonDataSeason] = useState();
   const [leaderSeason, setLeaderSeason] = useState();
   const [squadSeason, setSquadSeason] = useState();
   const [counterSeason, setCounterSeason] = useState();
+
+  function handleSeasonDataSeasonInput(e) {
+    setSeasonDataSeason(e.target.value);
+  }
 
   function handleLeaderSeasonInput(e) {
     setLeaderSeason(e.target.value);
@@ -32,6 +38,31 @@ export default function SWGOHTab({ activeTab }) {
 
   function handleCounterSeasonInput(e) {
     setCounterSeason(e.target.value);
+  }
+
+  async function handleGetSeasonData() {
+    try {
+      console.info(`Getting Season Data for Season ${seasonDataSeason}`);
+      const jsonToWrite = await getSeasonData(seasonDataSeason);
+
+      const blob = new Blob([JSON.parse(jsonToWrite)], { type: 'text/json' });
+      const link = document.createElement('a');
+
+      link.download = 'swgoh.json';
+      link.href = window.URL.createObjectURL(blob);
+      link.dataset.downloadurl = ['text/json', link.download, link.href].join(':');
+
+      const evt = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      });
+
+      link.dispatchEvent(evt);
+      link.remove();
+    } catch (err) {
+      console.error('getSeasonData error :>>', err);
+    }
   }
 
   async function handleGetLeadersBySeason() {
@@ -75,6 +106,17 @@ export default function SWGOHTab({ activeTab }) {
       <TabPane tabId="2">
         <div className="d-flex flex-row m-3 p-3">
           <div className="w-100">
+            <Form>
+              <Col>
+                <FormGroup>
+                  <Label for="getSeasonData" className="w-100 text-left m-1">Season #</Label>
+                  <Row className="m-0">
+                    <Input className="m-1 w-25" type="text" bsSize="sm" name="getSeasonData" id="leaderSeasonNum" onChange={handleSeasonDataSeasonInput} />
+                    <Button className="btn-sm m-1" onClick={handleGetSeasonData}>Get Season Data for AWS</Button>
+                  </Row>
+                </FormGroup>
+              </Col>
+            </Form>
             <Form>
               <Col>
                 <FormGroup>
