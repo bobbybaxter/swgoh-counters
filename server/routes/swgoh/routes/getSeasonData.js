@@ -1,15 +1,15 @@
-module.exports = app => ({
+module.exports = app => ( {
   method: 'GET',
   path: '/swgoh/counters/SeasonData/:season',
-  handler: async (request, reply) => {
+  handler: async ( request, reply ) => {
     const { data } = app;
     const { season } = request.params;
 
-    const leaderIds = await data.firebase.getSeasonRoster(season);
+    const leaderIds = await data.firebase.getSeasonRoster( season );
 
-    const swgohInfo = await data.getSeasonData({ leaderIds, season });
+    const swgohInfo = await data.getSeasonData( { leaderIds, season } );
 
-    return JSON.stringify(swgohInfo);
+    return JSON.stringify( swgohInfo );
   },
   schema: {
     params: {
@@ -19,4 +19,4 @@ module.exports = app => ({
       '2xx': { type: 'string' },
     },
   },
-});
+} );

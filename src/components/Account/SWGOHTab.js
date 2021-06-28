@@ -18,86 +18,86 @@ import {
   getSquadsBySeason,
 } from 'src/helpers/data';
 
-export default function SWGOHTab({ activeTab }) {
-  const [seasonDataSeason, setSeasonDataSeason] = useState();
-  const [leaderSeason, setLeaderSeason] = useState();
-  const [squadSeason, setSquadSeason] = useState();
-  const [counterSeason, setCounterSeason] = useState();
+export default function SWGOHTab( { activeTab } ) {
+  const [ seasonDataSeason, setSeasonDataSeason ] = useState();
+  const [ leaderSeason, setLeaderSeason ] = useState();
+  const [ squadSeason, setSquadSeason ] = useState();
+  const [ counterSeason, setCounterSeason ] = useState();
 
-  function handleSeasonDataSeasonInput(e) {
-    setSeasonDataSeason(e.target.value);
+  function handleSeasonDataSeasonInput( e ) {
+    setSeasonDataSeason( e.target.value );
   }
 
-  function handleLeaderSeasonInput(e) {
-    setLeaderSeason(e.target.value);
+  function handleLeaderSeasonInput( e ) {
+    setLeaderSeason( e.target.value );
   }
 
-  function handleSquadSeasonInput(e) {
-    setSquadSeason(e.target.value);
+  function handleSquadSeasonInput( e ) {
+    setSquadSeason( e.target.value );
   }
 
-  function handleCounterSeasonInput(e) {
-    setCounterSeason(e.target.value);
+  function handleCounterSeasonInput( e ) {
+    setCounterSeason( e.target.value );
   }
 
   async function handleGetSeasonData() {
     try {
-      console.info(`Getting Season Data for Season ${seasonDataSeason}`);
-      const jsonToWrite = await getSeasonData(seasonDataSeason);
+      console.info( `Getting Season Data for Season ${ seasonDataSeason }` );
+      const jsonToWrite = await getSeasonData( seasonDataSeason );
 
-      const blob = new Blob([JSON.parse(jsonToWrite)], { type: 'text/json' });
-      const link = document.createElement('a');
+      const blob = new Blob( [ jsonToWrite ], { type: 'text/json' } );
+      const link = document.createElement( 'a' );
 
       link.download = 'swgoh.json';
-      link.href = window.URL.createObjectURL(blob);
-      link.dataset.downloadurl = ['text/json', link.download, link.href].join(':');
+      link.href = window.URL.createObjectURL( blob );
+      link.dataset.downloadurl = [ 'text/json', link.download, link.href ].join( ':' );
 
-      const evt = new MouseEvent('click', {
+      const evt = new MouseEvent( 'click', {
         view: window,
         bubbles: true,
         cancelable: true,
-      });
+      } );
 
-      link.dispatchEvent(evt);
+      link.dispatchEvent( evt );
       link.remove();
-    } catch (err) {
-      console.error('getSeasonData error :>>', err);
+    } catch ( err ) {
+      console.error( 'getSeasonData error :>>', err );
     }
   }
 
   async function handleGetLeadersBySeason() {
     try {
-      console.info(`Getting leaders for Season ${leaderSeason}`);
-      const response = await getLeadersBySeason(leaderSeason);
-      if (response === 'ok') {
-        console.info(`Leaders for Season ${leaderSeason} uploaded to Firebase `);
+      console.info( `Getting leaders for Season ${ leaderSeason }` );
+      const response = await getLeadersBySeason( leaderSeason );
+      if ( response === 'ok' ) {
+        console.info( `Leaders for Season ${ leaderSeason } uploaded to Firebase ` );
       }
-    } catch (err) {
-      console.error('getLeadersBySeason error :>>', err);
+    } catch ( err ) {
+      console.error( 'getLeadersBySeason error :>>', err );
     }
   }
 
   async function handleGetSquadsBySeason() {
     try {
-      console.info(`Getting squads for Season ${squadSeason}`);
-      const response = await getSquadsBySeason(squadSeason);
-      if (response === 'ok') {
-        console.info(`Squads for Season ${squadSeason} uploaded to database `);
+      console.info( `Getting squads for Season ${ squadSeason }` );
+      const response = await getSquadsBySeason( squadSeason );
+      if ( response === 'ok' ) {
+        console.info( `Squads for Season ${ squadSeason } uploaded to database ` );
       }
-    } catch (err) {
-      console.error('getSquadsBySeason error :>>', err);
+    } catch ( err ) {
+      console.error( 'getSquadsBySeason error :>>', err );
     }
   }
 
   async function handleGetCountersBySeason() {
     try {
-      console.info(`Getting counters for Season ${counterSeason}`);
-      const response = await getCountersBySeason(counterSeason);
-      if (response === 'ok') {
-        console.info(`Counters for Season ${counterSeason} uploaded to database `);
+      console.info( `Getting counters for Season ${ counterSeason }` );
+      const response = await getCountersBySeason( counterSeason );
+      if ( response === 'ok' ) {
+        console.info( `Counters for Season ${ counterSeason } uploaded to database ` );
       }
-    } catch (err) {
-      console.error('getCountersBySeason error :>>', err);
+    } catch ( err ) {
+      console.error( 'getCountersBySeason error :>>', err );
     }
   }
 
