@@ -1,39 +1,39 @@
-const _ = require('lodash');
+const _ = require( 'lodash' );
 
-module.exports = ({ data }) => ({
+module.exports = ( { data } ) => ( {
   method: 'GET',
   path: '/counter/getStubsBySquadIds/:id',
-  handler: async (request, reply) => {
+  handler: async ( request, reply ) => {
     const leaderId = request.params.id;
     const { view, size, squadIds } = request.query;
 
-    const res = await data.getByMultipleSquadIds(squadIds.split(','), view, size);
-    const allStubs = res.filter(x => x.avgWin > 0.75);
-    const stubs = _.uniqBy(allStubs, 'toon1Id');
+    const res = await data.getByMultipleSquadIds( squadIds.split( ',' ), view, size );
+    const allStubs = res.filter( x => x.avgWin >= 0.75 );
+    const stubs = _.uniqBy( allStubs, 'toon1Id' );
 
-    const latestDate = await data.getLatestCounterVersion(leaderId, view, size);
+    const latestDate = await data.getLatestCounterVersion( leaderId, view, size );
 
     // adds video links to find latest date of update
-    const rightSquadStubs = await Promise.all(stubs.map(async x => {
+    const rightSquadStubs = await Promise.all( stubs.map( async x => {
       const newX = { ...x };
-      const videoLinks = await data.videoLink.getBySubjectId(newX.id);
+      const videoLinks = await data.videoLink.getBySubjectId( newX.id );
       newX.videoLinks = videoLinks;
-      newX.toon1Zetas = newX.toon1Zetas ? newX.toon1Zetas.split(',') : [];
-      newX.toon2Zetas = newX.toon2Zetas ? newX.toon2Zetas.split(',') : [];
-      newX.toon3Zetas = newX.toon3Zetas ? newX.toon3Zetas.split(',') : [];
-      newX.toon4Zetas = newX.toon4Zetas ? newX.toon4Zetas.split(',') : [];
-      newX.toon5Zetas = newX.toon5Zetas ? newX.toon5Zetas.split(',') : [];
+      newX.toon1Zetas = newX.toon1Zetas ? newX.toon1Zetas.split( ',' ) : [];
+      newX.toon2Zetas = newX.toon2Zetas ? newX.toon2Zetas.split( ',' ) : [];
+      newX.toon3Zetas = newX.toon3Zetas ? newX.toon3Zetas.split( ',' ) : [];
+      newX.toon4Zetas = newX.toon4Zetas ? newX.toon4Zetas.split( ',' ) : [];
+      newX.toon5Zetas = newX.toon5Zetas ? newX.toon5Zetas.split( ',' ) : [];
 
       return newX;
-    }));
+    } ));
 
-    reply.type('application/json');
+    reply.type( 'application/json' );
 
-    if (!_.isEmpty(rightSquadStubs)) {
-      return reply.send({ counterVersion: latestDate.counterVersion, rightSquadStubs });
+    if ( !_.isEmpty( rightSquadStubs )) {
+      return reply.send( { counterVersion: latestDate.counterVersion, rightSquadStubs } );
     }
 
-    return reply.send({ rightSquadStubs });
+    return reply.send( { rightSquadStubs } );
   },
   schema: {
     params: {
@@ -97,4 +97,4 @@ module.exports = ({ data }) => ({
       },
     },
   },
-});
+} );
