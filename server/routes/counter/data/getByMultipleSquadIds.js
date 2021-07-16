@@ -73,7 +73,7 @@ module.exports = ( { database, log } ) => ( squadIds, view, size ) => {
     JOIN \`character\` char4 ON char4.id = sv.toon4Id
     JOIN \`character\` char5 ON char5.id = sv.toon5Id
     WHERE cv.battleType = '${ size }'
-    AND cs.seen > 10
+    AND cs.seen >= 5
     AND ${ buildStatement( squadIds ) }
     GROUP BY c.id
     ORDER BY char1.name, totalSeen DESC;
