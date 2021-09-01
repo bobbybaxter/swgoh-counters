@@ -1,27 +1,32 @@
-module.exports = ({ data }) => ({
+module.exports = ( { data } ) => ( {
   method: 'GET',
   path: '/counter/variations',
-  handler: async (request, reply) => {
+  handler: async ( request, reply ) => {
     const { opponentLeaderId, counterLeaderId, size } = request.query;
-    const response = await data.getVariations([
+    const response = await data.getVariations( [
       size,
       opponentLeaderId,
       counterLeaderId,
-    ]);
+    ] );
 
-    function sanitizeName(x) {
-      return x.replace(/"/g, "'");
+    function sanitizeName( x ) {
+      return x.replace( /-/g, ' ' ) // for Ki-Adi-Mundi
+        .replace( /"/g, "'" ); // for Clones and Zeb
     }
 
-    const variations = response.map(x => ({
-      ...x,
-      opponentSquad: JSON.parse(x.opponentSquad.replace(/"Cody"|"Echo"|"Fives"|"Rex"|"Zeb"/g, name => sanitizeName(name))),
-      counterSquad: JSON.parse(x.counterSquad.replace(/"Cody"|"Echo"|"Fives"|"Rex"|"Zeb"/g, name => sanitizeName(name))),
-    }));
+    const variations = response.map( x => {
+      const opponentSquad = JSON.parse( x.opponentSquad.replace( /CC-2224 "Cody"|CT-21-0408 "Echo"|CT-5555 "Fives"|CT-7567 "Rex"|"Zeb"|Ki-Adi-Mundi/g, name => sanitizeName( name )));
+      const counterSquad = JSON.parse( x.counterSquad.replace( /CC-2224 "Cody"|CT-21-0408 "Echo"|CT-5555 "Fives"|CT-7567 "Rex"|"Zeb"|Ki-Adi-Mundi/g, name => sanitizeName( name )));
+      return ( {
+        ...x,
+        opponentSquad,
+        counterSquad,
+      } );
+    } );
 
     reply
-      .type('application/json')
-      .send(variations);
+      .type( 'application/json' )
+      .send( variations );
   },
   schema: {
     query: {
@@ -44,4 +49,4 @@ module.exports = ({ data }) => ({
       },
     },
   },
-});
+} );
