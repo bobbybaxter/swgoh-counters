@@ -4,12 +4,30 @@ module.exports = ( { data } ) => ( {
   method: 'GET',
   path: '/counter/getStubsBySquadIds/:id',
   handler: async ( request, reply ) => {
+    let stubs;
     const leaderId = request.params.id;
     const { view, size, squadIds } = request.query;
 
-    const res = await data.getByMultipleSquadIds( squadIds.split( ',' ), view, size );
+    const squadIdsArray = squadIds.split( ',' );
+    const res = await data.getByMultipleSquadIds( squadIdsArray, view, size );
     const allStubs = res.filter( x => x.avgWin >= 0.75 );
-    const stubs = _.uniqBy( allStubs, 'toon1Id' );
+
+    function pickFirstStubForEachOpponentSquad( stubsToFilter ) {
+      const separatedStubs = [];
+      const squadToMatch = view === 'normal' ? 'opponentSquadId' : 'counterSquadId';
+      for ( let i = 0; i < squadIdsArray.length; i += 1 ) {
+        const newSquadArray = stubsToFilter.filter( stub => stub[ squadToMatch ] === squadIdsArray[ i ] );
+        const uniqueSquads = _.uniqBy( newSquadArray, 'toon1Id' );
+        uniqueSquads.forEach( squad => separatedStubs.push( squad ));
+      }
+      return separatedStubs;
+    }
+
+    if ( squadIdsArray.length > 1 ) {
+      stubs = pickFirstStubForEachOpponentSquad( allStubs );
+    } else {
+      stubs = _.uniqBy( allStubs, 'toon1Id' );
+    }
 
     const latestDate = await data.getLatestCounterVersion( leaderId, view, size );
 

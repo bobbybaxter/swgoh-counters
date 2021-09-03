@@ -52,3 +52,9 @@ export {
   getSeasonData,
   getSquadsBySeason,
 } from './swgohData';
+
+export {
+  addLeader,
+  deleteLeader,
+  getLeaders,
+} from './leaderData';
