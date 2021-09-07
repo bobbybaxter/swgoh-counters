@@ -1,15 +1,15 @@
 const fs = require( 'fs' );
 const path = require( 'path' );
 
-module.exports = ( { database, log } ) => ( size, view ) => {
-  const sql = fs.readFileSync( path.join( __dirname, './sql/getBySizeAndBattleType.sql' )).toString();
+module.exports = ( { database, log } ) => variables => {
+  const sql = fs.readFileSync( path.join( __dirname, './sql/getMultipleLeaders.sql' )).toString();
 
   return new Promise(( res, rej ) => {
-    database.query( sql, [ size, view ], ( error, results ) => {
+    database.query( sql, variables, ( error, results ) => {
       if ( error ) { rej( error ); }
 
       if ( !results || ( results && !results.length )) {
-        log.warn( 'No leader squads to show' );
+        log.warn( 'No leader squads' );
         return res( {} );
       }
 

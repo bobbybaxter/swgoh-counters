@@ -47,13 +47,14 @@ const defaultToon = {
 
 const buildDefaultSquad = () => {
   const defaultSquad = [];
-  for (let i = 0; i < 5; i += 1) {
-    defaultSquad.push(defaultToon);
+  for ( let i = 0; i < 5; i += 1 ) {
+    defaultSquad.push( defaultToon );
   }
   return defaultSquad;
 };
 
-export default function ModalEditCounter({
+// REVIEW: find out why i can't edit Jedi Master Kenobi's counters
+export default function ModalEditCounter( {
   counter,
   isOpen,
   leftSquad,
@@ -63,7 +64,7 @@ export default function ModalEditCounter({
   toggle,
   view,
   ...props
-}) {
+} ) {
   ModalEditCounter.propTypes = {
     counter: PropTypes.object.isRequired,
     isOpen: PropTypes.bool.isRequired,
@@ -75,18 +76,18 @@ export default function ModalEditCounter({
     view: PropTypes.string,
   };
 
-  const characters = JSON.parse(sessionStorage.getItem('characters')) || [];
+  const characters = JSON.parse( sessionStorage.getItem( 'characters' )) || [];
   const { isHardCounter } = counter;
 
-  const [areVideoLinksValid, setAreVideoLinksValid] = useState(true);
-  const [areVideoTitlesTooLong, setAreVideoTitlesTooLong] = useState(false);
-  const [doesTempMatchSource, setDoesTempMatchSource] = useState(false);
-  const [sourceSquad, setSourceSquad] = useState();
-  const [strategy, setStrategy] = useState(counter.counterStrategy);
-  const [tempSquad, setTempSquad] = useState(buildDefaultSquad());
-  const [tempSquadInfo, setTempSquadInfo] = useState(defaultTempSquadInfo);
-  const [videoLinks, setVideoLinks] = useState(counter.videoLinks);
-  const { user } = useContext(AuthContext);
+  const [ areVideoLinksValid, setAreVideoLinksValid ] = useState( true );
+  const [ areVideoTitlesTooLong, setAreVideoTitlesTooLong ] = useState( false );
+  const [ doesTempMatchSource, setDoesTempMatchSource ] = useState( false );
+  const [ sourceSquad, setSourceSquad ] = useState();
+  const [ strategy, setStrategy ] = useState( counter.counterStrategy );
+  const [ tempSquad, setTempSquad ] = useState( buildDefaultSquad());
+  const [ tempSquadInfo, setTempSquadInfo ] = useState( defaultTempSquadInfo );
+  const [ videoLinks, setVideoLinks ] = useState( counter.videoLinks );
+  const { user } = useContext( AuthContext );
 
   useEffect(() => {
     const squadToEdit = view === 'normal' ? { ...rightSquad } : { ...leftSquad };
@@ -151,8 +152,8 @@ export default function ModalEditCounter({
         zetas: toon5Zetas,
       };
 
-      const sourceSquadToSet = [toon1, toon2, toon3, toon4, toon5];
-      await setTempSquadInfo({
+      const sourceSquadToSet = [ toon1, toon2, toon3, toon4, toon5 ];
+      await setTempSquadInfo( {
         id,
         name,
         description,
@@ -162,119 +163,118 @@ export default function ModalEditCounter({
         toon3Id,
         toon4Id,
         toon5Id,
-      });
-      await setSourceSquad(sourceSquadToSet);
-      await setTempSquad(sourceSquadToSet);
+      } );
+      await setSourceSquad( sourceSquadToSet );
+      await setTempSquad( sourceSquadToSet );
     }
 
     buildTempSquad();
-  }, [counter, leftSquad, rightSquad, view]);
+  }, [ counter, leftSquad, rightSquad, view ] );
 
   const checkIfVideoLinksAreValid = updatedLinks => {
-    const isInvalid = updatedLinks.some(videoLink => !isWebUri(videoLink.link));
-    setAreVideoLinksValid(!isInvalid);
+    const isInvalid = updatedLinks.some( videoLink => !isWebUri( videoLink.link ));
+    setAreVideoLinksValid( !isInvalid );
   };
 
   useEffect(() => {
     async function checkForSourceSquad() {
       // used to pre-populate fields when updating/editing squads and counters
-      if (sourceSquad) {
-        const tempIds = tempSquad.map(x => x.id).toString();
-        const sourceIds = sourceSquad.map(x => x.id).toString();
+      if ( sourceSquad ) {
+        const tempIds = tempSquad.map( x => x.id ).toString();
+        const sourceIds = sourceSquad.map( x => x.id ).toString();
         tempIds === sourceIds
-          ? await setDoesTempMatchSource(true)
-          : await setDoesTempMatchSource(false);
+          ? await setDoesTempMatchSource( true )
+          : await setDoesTempMatchSource( false );
       }
     }
 
     checkForSourceSquad();
-  }, [sourceSquad, tempSquad]);
+  }, [ sourceSquad, tempSquad ] );
 
   const handleStrategyInput = e => {
     e.preventDefault();
-    setStrategy(e.target.value || e.target.innerText);
+    setStrategy( e.target.value || e.target.innerText );
   };
 
   const handleStrategyReset = e => {
     e.preventDefault();
-    setStrategy(counter.counterStrategy);
+    setStrategy( counter.counterStrategy );
   };
 
   const handleSubmitButton = async e => {
     e.preventDefault();
-    if (tempSquadInfo.name === ''
-      || tempSquad[0].id === 'BLANK') {
-      console.error('please add or correct squad name or members');
+    if ( tempSquadInfo.name === ''
+      || tempSquad[ 0 ].id === 'BLANK' ) {
+      console.error( 'please add or correct squad name or members' );
     } else {
       try {
-        const updateSquadResponse = await updateSquad({
+        const updateSquadResponse = await updateSquad( {
           name: tempSquadInfo.name || rightSquad.name,
           id: tempSquadInfo.id,
           description: tempSquadInfo.description,
           generalStrategy: tempSquadInfo.generalStrategy,
-          toon1Id: tempSquad[0].id,
-          toon2Id: tempSquad[1].id,
-          toon3Id: tempSquad[2].id,
-          toon4Id: tempSquad[3].id,
-          toon5Id: tempSquad[4].id,
+          toon1Id: tempSquad[ 0 ].id,
+          toon2Id: tempSquad[ 1 ].id,
+          toon3Id: tempSquad[ 2 ].id,
+          toon4Id: tempSquad[ 3 ].id,
+          toon5Id: tempSquad[ 4 ].id,
           userId: user.id,
           username: user.username,
-        });
+        } );
 
-        if (updateSquadResponse === 'ok') {
-          const updateCounterResponse = await updateCounter({
+        if ( updateSquadResponse === 'ok' ) {
+          const updateCounterResponse = await updateCounter( {
             id: counter.id,
             opponentSquadId: view === 'normal' ? leftSquad.id : rightSquad.id,
             counterSquadId: view === 'normal' ? rightSquad.id : leftSquad.id,
             isHardCounter,
             battleType: size,
             counterStrategy: strategy,
-            isToon2Req: tempSquad[1].isReq,
-            isToon3Req: tempSquad[2].isReq,
-            isToon4Req: tempSquad[3].isReq,
-            isToon5Req: tempSquad[4].isReq,
-            toon1Zetas: tempSquad[0].zetas.toString(),
-            toon2Zetas: tempSquad[1].zetas.toString(),
-            toon3Zetas: tempSquad[2].zetas.toString(),
-            toon4Zetas: tempSquad[3].zetas.toString(),
-            toon5Zetas: tempSquad[4].zetas.toString(),
+            isToon2Req: tempSquad[ 1 ].isReq,
+            isToon3Req: tempSquad[ 2 ].isReq,
+            isToon4Req: tempSquad[ 3 ].isReq,
+            isToon5Req: tempSquad[ 4 ].isReq,
+            toon1Zetas: tempSquad[ 0 ].zetas.toString(),
+            toon2Zetas: tempSquad[ 1 ].zetas.toString(),
+            toon3Zetas: tempSquad[ 2 ].zetas.toString(),
+            toon4Zetas: tempSquad[ 3 ].zetas.toString(),
+            toon5Zetas: tempSquad[ 4 ].zetas.toString(),
             userId: user.id,
             username: user.username,
-          });
+          } );
 
-
-          if (updateCounterResponse === 'ok') {
-            await Promise.all(videoLinks.map(async videoLink => {
-              if (videoLink.id.length === 21 && videoLink.link !== '') {
-                if (videoLink.deleteVideo) {
-                  await deleteVideoLink({
+          if ( updateCounterResponse === 'ok' ) {
+            await Promise.all( videoLinks.map( async videoLink => {
+              if ( videoLink.id.length === 21 && videoLink.link !== '' ) {
+                if ( videoLink.deleteVideo ) {
+                  await deleteVideoLink( {
                     id: videoLink.id,
                     subjectId: videoLink.subjectId,
                     userId: user.id,
                     username: user.username,
-                  });
+                  } );
                 } else {
-                  await updateVideoLink({
+                  await updateVideoLink( {
                     id: videoLink.id,
                     title: videoLink.title,
                     link: videoLink.link,
                     userId: user.id,
                     username: user.username,
-                  });
+                  } );
                 }
-              } else if (!videoLink.deleteVideo && videoLink.link !== '') {
-                await addVideoLink({
+              } else if ( !videoLink.deleteVideo && videoLink.link !== '' ) {
+                await addVideoLink( {
                   subjectId: counter.id,
                   title: videoLink.title,
                   link: videoLink.link,
                   userId: user.id,
                   username: user.username,
-                });
+                } );
               }
-            }));
+            } ));
           }
         }
-      } catch (err) {
+      } catch ( err ) {
         throw err;
       }
 
@@ -325,7 +325,7 @@ export default function ModalEditCounter({
                 <Label for="generalStrategyInput" className="text-secondary pb-3">Counter Strategy</Label>
                 <Input
                   name="generalStrategyInput"
-                  placeholder={leftSquad && `Please explain how to beat ${leftSquad.name} with this counter.`}
+                  placeholder={leftSquad && `Please explain how to beat ${ leftSquad.name } with this counter.`}
                   rows="10"
                   type="textarea"
                   value={strategy}
@@ -355,7 +355,7 @@ export default function ModalEditCounter({
           disabled={ areVideoTitlesTooLong
             || !areVideoLinksValid
             || tempSquadInfo.name === ''
-            || tempSquad[0].id === 'BLANK' }>Submit</Button>
+            || tempSquad[ 0 ].id === 'BLANK' }>Submit</Button>
         <Button color="secondary" onClick={toggle}>Cancel</Button>
       </StyledModalFooter>
     </ModalWrapper>

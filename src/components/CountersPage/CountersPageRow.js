@@ -44,24 +44,6 @@ export default function CountersPageRow( {
     async function getCountersForLeader() {
       const storedStubs = await IDBService.get( 'counterStubs', counterStubId ) || {};
 
-      async function removeStaleStubs( counterStub ) {
-        const { id, counterVersion, rightSquadStubs } = counterStub;
-        const staleStubs = rightSquadStubs.filter( x => x.counterCreatedOn > counterVersion );
-
-        if ( staleStubs && staleStubs.length > 0 ) {
-          const freshStubs = rightSquadStubs.filter( x => x.counterCreatedOn <= counterVersion );
-          const counterStubToStore = {
-            id,
-            counterVersion,
-            rightSquadStubs: freshStubs,
-          };
-          IDBService.put( 'counterStubs', counterStubToStore );
-          return counterStubToStore;
-        }
-
-        return counterStub;
-      }
-
       async function requestCounters() {
         try {
           const squadIds = stubs.squads.map( x => x.id );
@@ -84,11 +66,10 @@ export default function CountersPageRow( {
 
       // eslint-disable-next-line max-len
       if ( !abortController.signal.aborted && !_.isEmpty( storedStubs ) && storedStubs.counterVersion ) {
-        if ( storedStubs.counterVersion !== stubs.latestCounterVersion ) {
+        if ( !_.isEqual( storedStubs.counterVersion, stubs.counterVersion )) {
           await requestCounters();
         } else {
-          const freshStubs = await removeStaleStubs( storedStubs );
-          setCounters( freshStubs );
+          setCounters( storedStubs );
         }
       }
 
@@ -101,7 +82,7 @@ export default function CountersPageRow( {
     return () => {
       abortController.abort();
     };
-  }, [ counterStubId, leaderId, size, stubs.latestCounterVersion, stubs.squads, view ] );
+  }, [ counterStubId, leaderId, size, stubs.latestCounterVersion, stubs.counterVersion, stubs.squads, view ] );
 
   const separatedLeaderSquadIds = !_.isEmpty( counters ) && _.uniq(
     counters.rightSquadStubs.map( x => ( view === 'normal' ? x.opponentSquadId : x.counterSquadId )),

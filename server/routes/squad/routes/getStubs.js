@@ -1,30 +1,31 @@
-// TODO: remove GOOGLE_SHEET_ID and GOOGLE_API_KEY from AWS
+const _ = require( 'lodash' );
 
 module.exports = ( { data } ) => ( {
   method: 'GET',
   path: '/squad/stubs/:size',
   handler: async ( request, reply ) => {
-    const { size } = request.params;
+    const { size: battleType } = request.params;
 
-    async function addSquadsToStub( stub, leaderSquads ) {
-      const leaderSquadIds = leaderSquads
-        .filter( x => x.toon1Id === stub.toon1Id )
-        .map( x => x.id );
+    async function addSquadsToStub( leader, stubs ) {
+      const leaderSquads = stubs.filter( x => x.toon1Id === leader.toon1Id );
+      const leaderSquadIds = leaderSquads.map( x => x.id );
+      const counterVersion = leaderSquads.map( x => x.counterVersion ).sort();
+
       const squads = await data.getMultipleSquadsByIds( leaderSquadIds );
 
-      return ( { ...stub, squads } );
+      return ( { ...leader, counterVersion, squads } );
     }
 
-    const allLeaderSquads = await data.leader.getBySizeAndBattleType( size, 'normal' );
-    const normalStubs = await data.getStubs( 'normal', allLeaderSquads, size );
+    const normalStubs = await data.leader.getByBattleTypeAndView( battleType, 'normal' );
+    const allNormalLeaders = _( normalStubs ).uniqBy( 'toon1Name' ).sortBy( 'toon1Name' );
     const normal = await Promise.all(
-      normalStubs.map( async stub => addSquadsToStub( stub, allLeaderSquads )),
+      allNormalLeaders.map( async leader => addSquadsToStub( leader, normalStubs )),
     );
 
-    const allLeaderSquadsReverse = await data.leader.getBySizeAndBattleType( size, 'reverse' );
-    const reverseStubs = await data.getStubs( 'reverse', allLeaderSquadsReverse, size );
+    const reverseStubs = await data.leader.getByBattleTypeAndView( battleType, 'reverse' );
+    const allReverseLeaders = _( reverseStubs ).uniqBy( 'toon1Name' ).sortBy( 'toon1Name' );
     const reverse = await Promise.all(
-      reverseStubs.map( async stub => addSquadsToStub( stub, allLeaderSquadsReverse )),
+      allReverseLeaders.map( async leader => addSquadsToStub( leader, reverseStubs )),
     );
 
     reply
@@ -47,7 +48,7 @@ module.exports = ( { data } ) => ( {
                 toon1Id: { type: 'string' },
                 toon1Name: { type: 'string' },
                 squads: { type: 'array' },
-                latestCounterVersion: { type: 'string' },
+                counterVersion: { type: 'array' },
               },
             },
           },
@@ -59,7 +60,7 @@ module.exports = ( { data } ) => ( {
                 toon1Id: { type: 'string' },
                 toon1Name: { type: 'string' },
                 squads: { type: 'array' },
-                latestCounterVersion: { type: 'string' },
+                counterVersion: { type: 'array' },
               },
             },
           },

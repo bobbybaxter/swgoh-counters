@@ -1,12 +1,12 @@
-const _ = require('lodash');
+const _ = require( 'lodash' );
 
-module.exports = ({ data, log, server }) => ({
+module.exports = ( { data, log, server } ) => ( {
   method: 'PATCH',
   path: '/counter/:id',
-  preValidation: server.auth([server.firebaseAuth]),
-  handler: async (request, reply) => {
+  preValidation: server.auth( [ server.firebaseAuth ] ),
+  handler: async ( request, reply ) => {
     const { id } = request.params;
-    const counterToUpdate = await data.getById(id);
+    const counterToUpdate = await data.getById( id );
     counterToUpdate.isHardCounter = counterToUpdate.isHardCounter === 1;
     counterToUpdate.isToon2Req = counterToUpdate.isToon2Req === 1;
     counterToUpdate.isToon3Req = counterToUpdate.isToon3Req === 1;
@@ -14,24 +14,32 @@ module.exports = ({ data, log, server }) => ({
     counterToUpdate.isToon5Req = counterToUpdate.isToon5Req === 1;
 
     const updateNeeded = !_.isEqual(
-      _.omit(counterToUpdate, [
+      _.omit( counterToUpdate, [
         'latestVersionId',
         'createdOn',
         'createdById',
         'createdByName',
-      ]),
-      _.omit(request.body, ['userId', 'username']),
+      ] ),
+      _.omit( request.body, [ 'userId', 'username' ] ),
     );
 
-    if (updateNeeded) {
-      await data.update({ id, ...request.body });
+    if ( updateNeeded ) {
+      const updateResponse = await data.update( { id, ...request.body } );
+
+      if ( updateResponse === 'ok' ) {
+        const { opponentSquadId, counterSquadId, battleType } = counterToUpdate;
+        const opponentLeader = await data.leader.getSingleLeader( [ opponentSquadId, battleType, 'normal' ] );
+        !_.isEmpty( opponentLeader ) && data.leader.updateVersion( opponentLeader.id );
+        const counterLeader = await data.leader.getSingleLeader( [ counterSquadId, battleType, 'reverse' ] );
+        !_.isEmpty( counterLeader ) && data.leader.updateVersion( counterLeader.id );
+      }
     } else {
-      log.warn('Counter update not needed.');
+      log.warn( 'Counter update not needed.' );
     }
 
     return reply
-      .type('text/html')
-      .send('ok');
+      .type( 'text/html' )
+      .send( 'ok' );
   },
   schema: {
     params: {
@@ -84,4 +92,4 @@ module.exports = ({ data, log, server }) => ({
       },
     },
   },
-});
+} );

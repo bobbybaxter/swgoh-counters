@@ -1,12 +1,13 @@
-module.exports = ({ data, server }) => ({
+module.exports = ( { data, server } ) => ( {
   method: 'POST',
   path: '/squad',
-  preValidation: server.auth([server.firebaseAuth]),
-  handler: async (request, reply) => {
-    const createdSquadId = await data.create(request.body);
+  preValidation: server.auth( [ server.firebaseAuth ] ),
+  handler: async ( request, reply ) => {
+    const createdSquadId = await data.create( request.body );
+
     reply
-      .type('text/html')
-      .send(createdSquadId);
+      .type( 'text/html' )
+      .send( createdSquadId );
   },
   schema: {
     body: {
@@ -42,4 +43,4 @@ module.exports = ({ data, server }) => ({
       },
     },
   },
-});
+} );

@@ -29,9 +29,13 @@ module.exports = ( { data } ) => ( {
       stubs = _.uniqBy( allStubs, 'toon1Id' );
     }
 
-    const latestDate = await data.getLatestCounterVersion( leaderId, view, size );
+    const leaderSquads = await Promise.all( squadIdsArray.map( async squadId => {
+      const response = await data.leader.getSingleLeader( [ squadId, size, view ] );
+      return response;
+    } ));
+    const leaderVersion = leaderSquads.map( x => x.leaderVersion ).sort();
 
-    // adds video links to find latest date of update
+    // adds video links and splits zetas
     const rightSquadStubs = await Promise.all( stubs.map( async x => {
       const newX = { ...x };
       const videoLinks = await data.videoLink.getBySubjectId( newX.id );
@@ -48,7 +52,7 @@ module.exports = ( { data } ) => ( {
     reply.type( 'application/json' );
 
     if ( !_.isEmpty( rightSquadStubs )) {
-      return reply.send( { counterVersion: latestDate.counterVersion, rightSquadStubs } );
+      return reply.send( { counterVersion: leaderVersion, rightSquadStubs } );
     }
 
     return reply.send( { rightSquadStubs } );
@@ -65,7 +69,7 @@ module.exports = ( { data } ) => ( {
       '2xx': {
         type: 'object',
         properties: {
-          counterVersion: { type: 'string' },
+          counterVersion: { type: 'array' },
           rightSquadStubs: {
             type: 'array',
             items: {

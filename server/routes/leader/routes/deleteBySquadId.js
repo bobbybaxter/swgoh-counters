@@ -3,7 +3,7 @@ module.exports = ( { data, server } ) => ( {
   path: '/leader/:squadId/:view/:battleType',
   handler: async ( request, reply ) => {
     const { squadId, view, battleType } = request.params;
-    const response = await data.delete( [ squadId, view, battleType ] );
+    const response = await data.deleteBySquadId( [ squadId, view, battleType ] );
     reply
       .type( 'text/html' )
       .send( response );
