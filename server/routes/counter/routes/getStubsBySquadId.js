@@ -4,16 +4,38 @@ module.exports = ( { data } ) => ( {
   method: 'GET',
   path: '/counter/getStubsBySquadIds/:id',
   handler: async ( request, reply ) => {
+    let stubs;
     const leaderId = request.params.id;
     const { view, size, squadIds } = request.query;
 
-    const res = await data.getByMultipleSquadIds( squadIds.split( ',' ), view, size );
+    const squadIdsArray = squadIds.split( ',' );
+    const res = await data.getByMultipleSquadIds( squadIdsArray, view, size );
     const allStubs = res.filter( x => x.avgWin >= 0.75 );
-    const stubs = _.uniqBy( allStubs, 'toon1Id' );
 
-    const latestDate = await data.getLatestCounterVersion( leaderId, view, size );
+    function pickFirstStubForEachOpponentSquad( stubsToFilter ) {
+      const separatedStubs = [];
+      const squadToMatch = view === 'normal' ? 'opponentSquadId' : 'counterSquadId';
+      for ( let i = 0; i < squadIdsArray.length; i += 1 ) {
+        const newSquadArray = stubsToFilter.filter( stub => stub[ squadToMatch ] === squadIdsArray[ i ] );
+        const uniqueSquads = _.uniqBy( newSquadArray, 'toon1Id' );
+        uniqueSquads.forEach( squad => separatedStubs.push( squad ));
+      }
+      return separatedStubs;
+    }
 
-    // adds video links to find latest date of update
+    if ( squadIdsArray.length > 1 ) {
+      stubs = pickFirstStubForEachOpponentSquad( allStubs );
+    } else {
+      stubs = _.uniqBy( allStubs, 'toon1Id' );
+    }
+
+    const leaderSquads = await Promise.all( squadIdsArray.map( async squadId => {
+      const response = await data.leader.getSingleLeader( [ squadId, size, view ] );
+      return response;
+    } ));
+    const leaderVersion = leaderSquads.map( x => x.leaderVersion ).sort();
+
+    // adds video links and splits zetas
     const rightSquadStubs = await Promise.all( stubs.map( async x => {
       const newX = { ...x };
       const videoLinks = await data.videoLink.getBySubjectId( newX.id );
@@ -30,7 +52,7 @@ module.exports = ( { data } ) => ( {
     reply.type( 'application/json' );
 
     if ( !_.isEmpty( rightSquadStubs )) {
-      return reply.send( { counterVersion: latestDate.counterVersion, rightSquadStubs } );
+      return reply.send( { counterVersion: leaderVersion, rightSquadStubs } );
     }
 
     return reply.send( { rightSquadStubs } );
@@ -47,7 +69,7 @@ module.exports = ( { data } ) => ( {
       '2xx': {
         type: 'object',
         properties: {
-          counterVersion: { type: 'string' },
+          counterVersion: { type: 'array' },
           rightSquadStubs: {
             type: 'array',
             items: {

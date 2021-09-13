@@ -1,15 +1,15 @@
 const fs = require( 'fs' );
 const path = require( 'path' );
 
-module.exports = ( { database, log } ) => id => {
-  const sql = fs.readFileSync( path.join( __dirname, './sql/getById.sql' )).toString();
+module.exports = ( { database, log } ) => variables => {
+  const sql = fs.readFileSync( path.join( __dirname, './sql/getSingleLeader.sql' )).toString();
 
   return new Promise(( res, rej ) => {
-    database.query( sql, id, ( error, results ) => {
+    database.query( sql, variables, ( error, results ) => {
       if ( error ) { rej( error ); }
 
       if ( !results || ( results && !results.length )) {
-        log.warn( `Squad doesn't exist for id: ${ id }` );
+        log.warn( 'No leader squad' );
         return res( {} );
       }
 

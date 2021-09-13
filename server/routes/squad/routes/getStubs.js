@@ -1,63 +1,36 @@
-/* eslint-disable no-prototype-builtins */
-const axios = require('axios');
+const _ = require( 'lodash' );
 
-function parseGoogleSheet(data) {
-  function renameKeys(keysMap, objToMap) {
-    const obj = { ...objToMap };
-    const keys = Object.keys(obj).reduce(
-      (acc, key) => ({
-        ...acc,
-        ...{ [keysMap[key] || key]: obj[key] },
-      }),
-      {},
-    );
-
-    if (keys.hasOwnProperty('squad')) { keys.squad = keys.squad.split(','); }
-    if (keys.hasOwnProperty('reqToons')) { keys.reqToons = keys.reqToons.split(','); }
-
-    return keys;
-  }
-
-  const headers = data.shift();
-  const valueRows = data.slice();
-  return valueRows.map(valueRow => renameKeys(headers, valueRow));
-}
-
-const sheetId = process.env.GOOGLE_SHEET_ID;
-const apiKey = process.env.GOOGLE_API_KEY;
-
-module.exports = ({ data }) => ({
+module.exports = ( { data } ) => ( {
   method: 'GET',
   path: '/squad/stubs/:size',
-  handler: async (request, reply) => {
-    const { size } = request.params;
+  handler: async ( request, reply ) => {
+    const { size: battleType } = request.params;
 
-    async function buildStubs(stub, leaderSquads) {
-      const leaderSquadIds = leaderSquads
-        .filter(x => x.toon1Id === stub.toon1Id)
-        .map(x => x.id);
-      const squads = await data.getMultipleSquadsByIds(leaderSquadIds);
+    async function addSquadsToStub( leader, stubs ) {
+      const leaderSquads = stubs.filter( x => x.toon1Id === leader.toon1Id );
+      const leaderSquadIds = leaderSquads.map( x => x.id );
+      const counterVersion = leaderSquads.map( x => x.counterVersion ).sort();
 
-      return ({ ...stub, squads });
+      const squads = await data.getMultipleSquadsByIds( leaderSquadIds );
+
+      return ( { ...leader, counterVersion, squads } );
     }
 
-    const res = await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${size}Export?key=${apiKey}`);
-    const allLeaderSquads = parseGoogleSheet(res.data.values);
-    const normalStubs = await data.getStubs('normal', allLeaderSquads, size);
+    const normalStubs = await data.leader.getByBattleTypeAndView( battleType, 'normal' );
+    const allNormalLeaders = _( normalStubs ).uniqBy( 'toon1Name' ).sortBy( 'toon1Name' );
     const normal = await Promise.all(
-      normalStubs.map(async stub => buildStubs(stub, allLeaderSquads)),
+      allNormalLeaders.map( async leader => addSquadsToStub( leader, normalStubs )),
     );
 
-    const resReverse = await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${size}RExport?key=${apiKey}`);
-    const allLeaderSquadsReverse = parseGoogleSheet(resReverse.data.values);
-    const reverseStubs = await data.getStubs('reverse', allLeaderSquadsReverse, size);
+    const reverseStubs = await data.leader.getByBattleTypeAndView( battleType, 'reverse' );
+    const allReverseLeaders = _( reverseStubs ).uniqBy( 'toon1Name' ).sortBy( 'toon1Name' );
     const reverse = await Promise.all(
-      reverseStubs.map(async stub => buildStubs(stub, allLeaderSquadsReverse)),
+      allReverseLeaders.map( async leader => addSquadsToStub( leader, reverseStubs )),
     );
 
     reply
-      .type('application/json')
-      .send({ normal, reverse });
+      .type( 'application/json' )
+      .send( { normal, reverse } );
   },
   schema: {
     params: {
@@ -75,7 +48,7 @@ module.exports = ({ data }) => ({
                 toon1Id: { type: 'string' },
                 toon1Name: { type: 'string' },
                 squads: { type: 'array' },
-                latestCounterVersion: { type: 'string' },
+                counterVersion: { type: 'array' },
               },
             },
           },
@@ -87,7 +60,7 @@ module.exports = ({ data }) => ({
                 toon1Id: { type: 'string' },
                 toon1Name: { type: 'string' },
                 squads: { type: 'array' },
-                latestCounterVersion: { type: 'string' },
+                counterVersion: { type: 'array' },
               },
             },
           },
@@ -95,4 +68,4 @@ module.exports = ({ data }) => ({
       },
     },
   },
-});
+} );

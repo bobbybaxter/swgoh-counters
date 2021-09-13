@@ -1,14 +1,14 @@
-const { userId, username } = require('.config.json');
+const { userId, username } = require( '.config.json' );
 
-module.exports = ({ data, log }) => ({
+module.exports = ( { data, log } ) => ( {
   method: 'GET',
   path: '/import/counters',
-  handler: async (request, reply) => {
+  handler: async ( request, reply ) => {
     const oldSquads = await data.squad.getOld();
     const counters = await data.counter.getOld();
     const newSquads = await data.squad.get();
 
-    await Promise.all(counters.map(async (counter) => {
+    await Promise.all( counters.map( async counter => {
       const {
         battleType,
         counterTeam,
@@ -19,10 +19,10 @@ module.exports = ({ data, log }) => ({
       } = counter;
 
       // maps new nanoids based on team names
-      const matchedCounterTeam = oldSquads.find(x => x.id === counterTeam);
-      const newCounterTeam = newSquads.find(x => x.name === matchedCounterTeam.name);
-      const matchedOpponentTeam = oldSquads.find(x => x.id === opponentTeam);
-      const newOpponentTeam = newSquads.find(x => x.name === matchedOpponentTeam.name);
+      const matchedCounterTeam = oldSquads.find( x => x.id === counterTeam );
+      const newCounterTeam = newSquads.find( x => x.name === matchedCounterTeam.name );
+      const matchedOpponentTeam = oldSquads.find( x => x.id === opponentTeam );
+      const newOpponentTeam = newSquads.find( x => x.name === matchedOpponentTeam.name );
 
       const counterToCreate = {
         opponentSquadId: newOpponentTeam.id,
@@ -43,9 +43,9 @@ module.exports = ({ data, log }) => ({
         username,
       };
 
-      const counterId = await data.counter.create(counterToCreate);
+      const counterId = await data.counter.create( counterToCreate );
 
-      if (video) {
+      if ( video ) {
         const videoToCreate = {
           subjectId: counterId,
           title: 'title',
@@ -55,14 +55,14 @@ module.exports = ({ data, log }) => ({
         };
 
         try {
-          await data.videoLink.create(videoToCreate);
-        } catch (err) {
-          throw new Error(err);
+          await data.videoLink.create( videoToCreate );
+        } catch ( err ) {
+          throw new Error( err );
         }
       }
-    }));
+    } ));
 
-    log.info('counter import complete');
-    reply.send('ok');
+    log.info( 'counter import complete' );
+    reply.send( 'ok' );
   },
-});
+} );

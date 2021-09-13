@@ -1,15 +1,15 @@
-const _ = require('lodash');
+const _ = require( 'lodash' );
 
-module.exports = ({ data, log, server }) => ({
+module.exports = ( { data, log, server } ) => ( {
   method: 'PATCH',
   path: '/squad/:id',
-  preValidation: server.auth([server.firebaseAuth]),
-  handler: async (request, reply) => {
+  preValidation: server.auth( [ server.firebaseAuth ] ),
+  handler: async ( request, reply ) => {
     const { id } = request.params;
-    const squadToUpdate = await data.getById(id);
+    const squadToUpdate = await data.getById( id );
 
     const updateNeeded = !_.isEqual(
-      _.omit(squadToUpdate, [
+      _.omit( squadToUpdate, [
         'toon1Name',
         'toon2Name',
         'toon3Name',
@@ -19,19 +19,51 @@ module.exports = ({ data, log, server }) => ({
         'createdOn',
         'createdById',
         'createdByName',
-      ]),
-      _.omit(request.body, ['userId', 'username']),
+      ] ),
+      _.omit( request.body, [ 'userId', 'username' ] ),
     );
 
-    if (updateNeeded) {
-      await data.update({ id, ...request.body });
+    if ( updateNeeded ) {
+      const updateResponse = await data.update( { id, ...request.body } );
+
+      if ( updateResponse === 'ok' ) {
+        // updates all leaders that have counters with this squad
+        const allCounters = await data.counter.getAllBySquadId( id );
+        const normalLeaderIds = await Promise.all( allCounters
+          .filter( x => x.opponentSquadId !== id )
+          .map( async y => {
+            const leader = await data.leader.getSingleLeader( [ y.opponentSquadId, y.battleType, 'normal' ] );
+            return leader.id;
+          } ));
+        const filteredNormalLeaderIds = normalLeaderIds.filter( x => x !== undefined );
+
+        filteredNormalLeaderIds && !_.isEmpty( filteredNormalLeaderIds[ 0 ] ) && await Promise.all(
+          filteredNormalLeaderIds.map( leaderId => (
+            data.leader.updateVersion( leaderId )
+          )),
+        );
+
+        const reverseLeaderIds = await Promise.all( allCounters
+          .filter( x => x.opponentSquadId === id )
+          .map( async y => {
+            const leader = await data.leader.getSingleLeader( [ y.counterSquadId, y.battleType, 'reverse' ] );
+            return leader.id || {};
+          } ));
+        const filteredReverseLeaderIds = reverseLeaderIds.filter( x => x !== undefined );
+
+        filteredReverseLeaderIds && !_.isEmpty( filteredReverseLeaderIds[ 0 ] ) && await Promise.all(
+          filteredReverseLeaderIds.map( leaderId => (
+            data.leader.updateVersion( leaderId )
+          )),
+        );
+      }
     } else {
-      log.warn('Squad update not needed.');
+      log.warn( 'Squad update not needed.' );
     }
 
     return reply
-      .type('text/html')
-      .send('ok');
+      .type( 'text/html' )
+      .send( 'ok' );
   },
   schema: {
     params: {
@@ -72,4 +104,4 @@ module.exports = ({ data, log, server }) => ({
       },
     },
   },
-});
+} );

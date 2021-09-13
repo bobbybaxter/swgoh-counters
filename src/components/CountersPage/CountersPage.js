@@ -62,6 +62,7 @@ const CountersPage = ( {
     checkForRedirect();
   }, [ history, user, user.accessToken, user.patreonId ] );
 
+  // TODO: add an effect to remove stale stubs - ones that have been removed from the leaderList
   useEffect(() => {
     const abortController = new AbortController();
     const opts = { signal: abortController.signal };

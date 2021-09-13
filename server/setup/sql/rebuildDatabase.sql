@@ -1,6 +1,7 @@
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE squad;
 DROP TABLE squadVersion;
+DROP TABLE leader;
 DROP TABLE `character`;
 DROP TABLE counter;
 DROP TABLE counterVersion;
@@ -36,6 +37,13 @@ CREATE TABLE `squadVersion` (
   `createdOn` datetime NOT NULL,
   `createdById` VARCHAR(50) NOT NULL,
   `createdByName` VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE `leader` (
+  `id` VARCHAR(50) PRIMARY KEY NOT NULL,
+  `squadId` VARCHAR(50) NOT NULL,
+  `battleType` VARCHAR(50) NOT NULL,
+  `view` VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE `character` (
