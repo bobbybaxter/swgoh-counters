@@ -109,10 +109,10 @@ export default function SWGOHTab( { activeTab } ) {
             <Form>
               <Col>
                 <FormGroup>
-                  <Label for="getSeasonData" className="w-100 text-left m-1">Season #</Label>
+                  <Label for="leaderSeasonNum" className="w-100 text-left m-1">Season #</Label>
                   <Row className="m-0">
-                    <Input className="m-1 w-25" type="text" bsSize="sm" name="getSeasonData" id="leaderSeasonNum" onChange={handleSeasonDataSeasonInput} />
-                    <Button className="btn-sm m-1" onClick={handleGetSeasonData}>Get Season Data for AWS</Button>
+                    <Input className="m-1 w-25" type="text" bsSize="sm" name="leaderSeasonNum" id="leaderSeasonNum" onChange={handleLeaderSeasonInput} />
+                    <Button className="btn-sm m-1" onClick={handleGetLeadersBySeason}>Get Leaders By Season</Button>
                   </Row>
                 </FormGroup>
               </Col>
@@ -120,10 +120,10 @@ export default function SWGOHTab( { activeTab } ) {
             <Form>
               <Col>
                 <FormGroup>
-                  <Label for="leaderSeasonNum" className="w-100 text-left m-1">Season #</Label>
+                  <Label for="getSeasonData" className="w-100 text-left m-1">Season #</Label>
                   <Row className="m-0">
-                    <Input className="m-1 w-25" type="text" bsSize="sm" name="leaderSeasonNum" id="leaderSeasonNum" onChange={handleLeaderSeasonInput} />
-                    <Button className="btn-sm m-1" onClick={handleGetLeadersBySeason}>Get Leaders By Season</Button>
+                    <Input className="m-1 w-25" type="text" bsSize="sm" name="getSeasonData" id="leaderSeasonNum" onChange={handleSeasonDataSeasonInput} />
+                    <Button className="btn-sm m-1" onClick={handleGetSeasonData}>Get Season Data for AWS</Button>
                   </Row>
                 </FormGroup>
               </Col>

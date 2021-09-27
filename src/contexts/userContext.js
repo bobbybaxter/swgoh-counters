@@ -30,14 +30,14 @@ const defaultUser = {
 
 export const AuthContext = React.createContext();
 
-export function AuthProvider({ children }) {
-  const [admin, setAdmin] = useState(false);
-  const [authenticated, setAuthenticated] = useState(false);
-  const [isActivePatron, setIsActivePatron] = useState(false);
-  const [isGuildTierMember, setIsGuildTierMember] = useState(false);
-  const [isRestricted, setIsRestricted] = useState(true);
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(defaultUser);
+export function AuthProvider( { children } ) {
+  const [ admin, setAdmin ] = useState( false );
+  const [ authenticated, setAuthenticated ] = useState( false );
+  const [ isActivePatron, setIsActivePatron ] = useState( false );
+  const [ isGuildTierMember, setIsGuildTierMember ] = useState( false );
+  const [ isRestricted, setIsRestricted ] = useState( true );
+  const [ loading, setLoading ] = useState( true );
+  const [ user, setUser ] = useState( defaultUser );
 
   const {
     id,
@@ -52,7 +52,7 @@ export function AuthProvider({ children }) {
     tier,
   } = user;
 
-  const setUserInfo = useCallback(res => {
+  const setUserInfo = useCallback( res => {
     const currentUser = { ...user };
     const userToSet = {
       id: res.id || currentUser.id,
@@ -68,40 +68,40 @@ export function AuthProvider({ children }) {
       tier: res.tier || currentUser.tier,
       username: res.username || currentUser.username,
     };
-    setUser(userToSet);
-  }, [user]);
+    setUser( userToSet );
+  }, [ user ] );
 
-  const setPlayerData = useCallback(async playerAllyCode => {
+  const setPlayerData = useCallback( async playerAllyCode => {
     try {
-      const response = await getPlayerData(playerAllyCode);
-      const res = JSON.parse(response.contents);
-      if (res.data) {
+      const response = await getPlayerData( playerAllyCode );
+      const res = JSON.parse( response.contents );
+      if ( res.data ) {
         const {
           ally_code, guild_id, guild_name, name,
         } = res.data;
 
-        setUserInfo({
+        setUserInfo( {
           allyCode: ally_code.toString(),
           guildId: guild_id.toString() || '',
           guildName: guild_name || '',
           username: name,
-        });
+        } );
         return res.data;
       }
       return '';
-    } catch (err) {
-      return console.error('setPlayerData error', err);
+    } catch ( err ) {
+      return console.error( 'setPlayerData error', err );
     }
-  }, [setUserInfo]);
+  }, [ setUserInfo ] );
 
-  const handleRemoveGuild = ({
+  const handleRemoveGuild = ( {
     firebaseUserId,
     guild,
-  }) => {
-    const updatedGuildTierUsers = guild.guildTierUsers.filter(x => x !== firebaseUserId);
+  } ) => {
+    const updatedGuildTierUsers = guild.guildTierUsers.filter( x => x !== firebaseUserId );
     // if there are no guildTierUsers after removal, delete guild record
-    if (_.isEmpty(updatedGuildTierUsers)) {
-      deleteGuild(guild.id);
+    if ( _.isEmpty( updatedGuildTierUsers )) {
+      deleteGuild( guild.id );
       return {};
     }
     // if there are guildTierUsers after removal, just update record
@@ -109,80 +109,78 @@ export function AuthProvider({ children }) {
       ...guild,
       guildTierUsers: updatedGuildTierUsers,
     };
-    updateGuild(guildToUpdate);
+    updateGuild( guildToUpdate );
     return guildToUpdate;
   };
 
-  const validateAccount = useCallback(async userToValidate => {
-    try {
-      const response = await getUserByFirebaseAuthUid(userToValidate.id);
-      if (response && !_.isEmpty(response.firebaseUser)) {
-        const { guildData, firebaseUser } = response;
-        const { isCurrentGuildInFirebase, isNowGuildTier } = guildData;
+  const validateAccount = useCallback( async userToValidate => {
+    const response = await getUserByFirebaseAuthUid( userToValidate.id );
+    if ( response && !_.isEmpty( response.firebaseUser )) {
+      const { guildData, firebaseUser } = response;
+      const { isCurrentGuildInFirebase, isNowGuildTier } = guildData;
 
-        // gives access if this is an active_patron
-        if (firebaseUser.patronStatus === 'active_patron' || firebaseUser.patronStatus === 'Active Patron') {
-          setIsActivePatron(true);
-          setIsRestricted(false);
-        }
-
-        if (isCurrentGuildInFirebase || isNowGuildTier) {
-          setIsGuildTierMember(true);
-          setIsRestricted(false);
-        }
-
-        setUserInfo(firebaseUser);
-        return console.info(`Firebase user ${firebaseUser.email} validated`);
+      // gives access if this is an active_patron
+      if ( firebaseUser.patronStatus === 'active_patron' || firebaseUser.patronStatus === 'Active Patron' ) {
+        setIsActivePatron( true );
+        setIsRestricted( false );
       }
-      console.info('No Firebase user found in DB');
-      const newUser = await createUser(userToValidate);
-      setUserInfo(newUser);
-      return console.info('User created in Firebase');
-    } catch (err) {
-      throw err;
-    }
-  }, [setUserInfo]);
 
-  const authenticateUser = useCallback(async authUser => {
-    if (authUser) {
+      if ( isCurrentGuildInFirebase || isNowGuildTier ) {
+        setIsGuildTierMember( true );
+        setIsRestricted( false );
+      }
+
+      setUserInfo( firebaseUser );
+      return console.info( `Firebase user ${ firebaseUser.email } validated` );
+    }
+    console.info( 'No Firebase user found in DB' );
+    const newUser = await createUser( userToValidate );
+    setUserInfo( newUser );
+    return console.info( 'User created in Firebase' );
+  }, [ setUserInfo ] );
+
+  const authenticateUser = useCallback( async authUser => {
+    if ( authUser ) {
       const fbUser = { id: authUser.uid, email: authUser.email };
-      await validateAccount(fbUser);
+      await validateAccount( fbUser );
 
-      setAdmin(fbUser.id === process.env.REACT_APP_ADMIN_ID);
-      setAuthenticated(true);
-      setLoading(false);
+      setAdmin( fbUser.id === process.env.REACT_APP_ADMIN_ID );
+      setAuthenticated( true );
+      setLoading( false );
     } else {
-      setAdmin(false);
-      setIsRestricted(true);
-      setAuthenticated(false);
-      setLoading(false);
+      setAdmin( false );
+      setIsRestricted( true );
+      setAuthenticated( false );
+      setLoading( false );
     }
-  }, [validateAccount]);
+  }, [ validateAccount ] );
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged(authUser => authenticateUser(authUser));
+    const unsubscribe = firebase
+      .auth()
+      .onAuthStateChanged( authUser => authenticateUser( authUser ));
 
     return () => {
       unsubscribe();
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [] ); // eslint-disable-line react-hooks/exhaustive-deps
 
-  function handleAllyCode(e) {
-    const userToSet = Object.assign({}, user);
-    userToSet.allyCode = e.target.value.split('-').join('');
-    setUser(userToSet);
+  function handleAllyCode( e ) {
+    const userToSet = { ...user };
+    userToSet.allyCode = e.target.value.split( '-' ).join( '' );
+    setUser( userToSet );
   }
 
   async function handleClearAllyCode() {
-    if (guildId) {
-      const guild = await getGuildById(guildId) || {};
-      if (!_.isEmpty(guild)) {
-        await handleRemoveGuild({
+    if ( guildId ) {
+      const guild = await getGuildById( guildId ) || {};
+      if ( !_.isEmpty( guild )) {
+        await handleRemoveGuild( {
           guild,
           firebaseUserId: id,
           guildId,
           guildName,
-        });
+        } );
       }
     }
 
@@ -200,28 +198,28 @@ export function AuthProvider({ children }) {
       tier,
       username: '',
     };
-    setUser(userToSet);
-    setIsGuildTierMember(false);
-    await updateUserInfo(userToSet);
+    setUser( userToSet );
+    setIsGuildTierMember( false );
+    await updateUserInfo( userToSet );
   }
 
   function handleLogout() {
-    setUser(defaultUser);
+    setUser( defaultUser );
   }
 
   async function unlinkPatreonAccountFromUser() {
-    if (guildId) {
-      const guild = await getGuildById(guildId) || {};
-      if (!_.isEmpty(guild)) {
-        const remainingGuild = await handleRemoveGuild({
+    if ( guildId ) {
+      const guild = await getGuildById( guildId ) || {};
+      if ( !_.isEmpty( guild )) {
+        const remainingGuild = await handleRemoveGuild( {
           guild,
           firebaseUserId: id,
           guildId,
           guildName,
-        });
+        } );
 
-        if (_.isEmpty(remainingGuild)) {
-          setIsGuildTierMember(false);
+        if ( _.isEmpty( remainingGuild )) {
+          setIsGuildTierMember( false );
         }
       }
     }
@@ -235,8 +233,8 @@ export function AuthProvider({ children }) {
       patronStatus: '',
       tier: '',
     };
-    setUser(userToSet);
-    setIsActivePatron(false);
+    setUser( userToSet );
+    setIsActivePatron( false );
   }
 
   return (

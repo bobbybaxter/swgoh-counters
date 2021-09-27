@@ -7,8 +7,8 @@ module.exports = app => ( {
     const { config, data, log } = app;
     const { season } = request.params;
 
-    const seasons5v5 = [ 10, 11, 13, 15, 17 ];
-    const seasons3v3 = [ 9, 12, 14, 16, 18 ];
+    const seasons5v5 = [ 10, 11, 13, 15, 17, 19 ];
+    const seasons3v3 = [ 9, 12, 14, 16, 18, 20 ];
 
     function selectBattleTypeBySeason( seasonNum ) {
       if ( seasons3v3.includes( seasonNum )) { return '3v3'; }
