@@ -63,6 +63,7 @@ function App() {
   useEffect(() => {
     sessionStorage.removeItem( 'squads' );
 
+    // TODO: cache this call with redis
     async function getCharacters() {
       const results = await getAllCharacters().catch( e => console.error( 'getAllCharacters', e ));
       if ( results && !_.isEqual( results, storedCharacters )) {
