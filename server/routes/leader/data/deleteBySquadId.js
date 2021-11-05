@@ -2,7 +2,7 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 
 module.exports = ( { database } ) => variables => {
-  const sql = fs.readFileSync( path.join( __dirname, './sql/delete.sql' )).toString();
+  const sql = fs.readFileSync( path.join( __dirname, './sql/deleteBySquadId.sql' )).toString();
 
   return new Promise(( res, rej ) => {
     database.query( sql, variables, ( error, results ) => {

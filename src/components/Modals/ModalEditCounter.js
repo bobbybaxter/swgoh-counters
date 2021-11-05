@@ -53,7 +53,6 @@ const buildDefaultSquad = () => {
   return defaultSquad;
 };
 
-// REVIEW: find out why i can't edit Jedi Master Kenobi's counters
 export default function ModalEditCounter( {
   counter,
   isOpen,
@@ -203,8 +202,7 @@ export default function ModalEditCounter( {
 
   const handleSubmitButton = async e => {
     e.preventDefault();
-    if ( tempSquadInfo.name === ''
-      || tempSquad[ 0 ].id === 'BLANK' ) {
+    if ( tempSquad[ 0 ].id === 'BLANK' ) {
       console.error( 'please add or correct squad name or members' );
     } else {
       try {
@@ -354,7 +352,6 @@ export default function ModalEditCounter( {
         <Button color="primary" onClick={handleSubmitButton}
           disabled={ areVideoTitlesTooLong
             || !areVideoLinksValid
-            || tempSquadInfo.name === ''
             || tempSquad[ 0 ].id === 'BLANK' }>Submit</Button>
         <Button color="secondary" onClick={toggle}>Cancel</Button>
       </StyledModalFooter>
