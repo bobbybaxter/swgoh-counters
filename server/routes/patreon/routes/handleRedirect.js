@@ -24,7 +24,7 @@ module.exports = ( { data, patreon } ) => ( {
       path: '/v2/identity?include=memberships.campaign&fields[member]=patron_status,email&fields[campaign]=vanity&fields[user]=email,full_name',
     } );
 
-    if ( patronInfo.rawJson ) {
+    if ( patronInfo && patronInfo.rawJson && patronInfo.rawJson.included ) {
       const { rawJson } = patronInfo;
       // if the patron is a member of your campaign,
       // an object with the id and status will be returned
@@ -71,6 +71,8 @@ module.exports = ( { data, patreon } ) => ( {
           tier: '',
         };
       }
+    } else {
+      console.error( 'Error with Patron Info: ', patronInfo );
     }
 
     await data.firebase.addPatronInfoToFirebase( patron );

@@ -71,8 +71,7 @@
     "react-scripts": "^3.4.3",
     "reactstrap": "^8.4.1",
     "styled-components": "^5.2.1",
-    "valid-url": "^1.0.9",
-    "yarn": "^1.22.10"
+    "valid-url": "^1.0.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
