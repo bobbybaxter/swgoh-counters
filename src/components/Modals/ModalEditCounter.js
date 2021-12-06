@@ -205,6 +205,7 @@ export default function ModalEditCounter( {
     if ( tempSquad[ 0 ].id === 'BLANK' ) {
       console.error( 'please add or correct squad name or members' );
     } else {
+      // eslint-disable-next-line no-useless-catch
       try {
         const updateSquadResponse = await updateSquad( {
           name: tempSquadInfo.name || rightSquad.name,

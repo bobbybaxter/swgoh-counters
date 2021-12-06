@@ -8,6 +8,7 @@ import {
 import ImportTab from './ImportTab';
 import SWGOHTab from './SWGOHTab';
 import LeadersTab from './LeadersTab';
+import PlayerDataTab from './PlayerDataTab';
 
 export default function Admin() {
   const [ activeTab, setActiveTab ] = useState( '1' );
@@ -36,6 +37,11 @@ export default function Admin() {
             SWGOH
           </NavLink>
         </NavItem>
+        <NavItem>
+          <NavLink className={`cursor-pointer ${ activeTab === '4' ? 'active' : '' }`} onClick={() => { toggle( '4' ); }}>
+            Player Data
+          </NavLink>
+        </NavItem>
       </Nav>
 
       <ImportTab activeTab={activeTab} />
@@ -43,6 +49,8 @@ export default function Admin() {
       <SWGOHTab activeTab={activeTab} />
 
       <LeadersTab activeTab={activeTab} />
+
+      <PlayerDataTab activeTab={activeTab} />
 
     </div>
   );

@@ -19,7 +19,7 @@ export const BottomWrapper = styled.div`
   }
 `;
 
-export const DescriptionButton = styled(Button)`
+export const DescriptionButton = styled( Button )`
   margin: .25rem;
 `;
 
@@ -46,7 +46,7 @@ export const DetailsDivCenter = styled.div`
 
 export const DetailsDivLeft = styled.div`
   padding: .5rem;
-  background-color: ${props => `${props.color}20`};
+  background-color: ${ props => `${ props.color }20` };
 
   @media only screen and (min-width:768px) {
     border-right: 1px solid #343a40;
@@ -59,7 +59,7 @@ export const DetailsDivLeft = styled.div`
 export const DetailsDivRight = styled.div`
   padding: .5rem;
   border-top: 1px solid #343a40;
-  background-color: ${props => `${props.color}20`};
+  background-color: ${ props => `${ props.color }20` };
 
   @media only screen and (min-width:768px) {
     border-top: none;
@@ -73,4 +73,5 @@ export const VideoListItemWrapper = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  background-color: ${ props => ( props.shouldHighlightVideo ? '#FFC10750' : '' ) }
 `;

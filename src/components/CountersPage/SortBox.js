@@ -110,9 +110,11 @@ const SortBox = ( {
     );
   } );
 
-  const buildCounterFilter = characters.map( counterLeader => {
-    const isChecked = !excludedCounters.includes( counterLeader.id );
-    return (
+  const buildCounterFilter = characters
+    .sort(( a, b ) => (( a.name > b.name ) ? 1 : -1 ))
+    .map( counterLeader => {
+      const isChecked = !excludedCounters.includes( counterLeader.id );
+      return (
       <FormGroup check key={`${ counterLeader.id }_counterCheckBox`}>
       <Label check className="text-left">
         <Input
@@ -124,8 +126,8 @@ const SortBox = ( {
         <div className="p-0 m-0">{counterLeader.name}</div>
       </Label>
     </FormGroup>
-    );
-  } );
+      );
+    } );
 
   return (
     <SortBoxWrapper>

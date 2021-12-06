@@ -29,9 +29,9 @@ module.exports = ( { data, log, server } ) => ( {
       if ( updateResponse === 'ok' ) {
         const { opponentSquadId, counterSquadId, battleType } = counterToUpdate;
         const opponentLeader = await data.leader.getSingleLeader( [ opponentSquadId, battleType, 'normal' ] );
-        !_.isEmpty( opponentLeader ) && data.leader.updateVersion( opponentLeader.id );
+        !_.isEmpty( opponentLeader ) && await data.leader.updateVersion( opponentLeader.id );
         const counterLeader = await data.leader.getSingleLeader( [ counterSquadId, battleType, 'reverse' ] );
-        !_.isEmpty( counterLeader ) && data.leader.updateVersion( counterLeader.id );
+        !_.isEmpty( counterLeader ) && await data.leader.updateVersion( counterLeader.id );
       }
     } else {
       log.warn( 'Counter update not needed.' );

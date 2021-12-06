@@ -13,9 +13,9 @@ module.exports = ( { data, server } ) => ( {
     if ( response === 'ok' ) { // updates leaderVersion for the squads in this counter
       const { opponentSquadId, counterSquadId, battleType } = counter;
       const opponentLeader = await data.leader.getSingleLeader( [ opponentSquadId, battleType, 'normal' ] );
-      !_.isEmpty( opponentLeader ) && data.leader.updateVersion( opponentLeader.id );
+      !_.isEmpty( opponentLeader ) && await data.leader.updateVersion( opponentLeader.id );
       const counterLeader = await data.leader.getSingleLeader( [ counterSquadId, battleType, 'reverse' ] );
-      !_.isEmpty( counterLeader ) && data.leader.updateVersion( counterLeader.id );
+      !_.isEmpty( counterLeader ) && await data.leader.updateVersion( counterLeader.id );
     }
 
     reply
