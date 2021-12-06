@@ -28,13 +28,13 @@ import {
   VideoListItemWrapper,
 } from './style';
 
-const CounterCard = ({
+const CounterCard = ( {
   counter,
   leftSquad,
   reload,
   size,
   view,
-}) => {
+} ) => {
   CounterCard.propTypes = {
     counter: PropTypes.object,
     leftSquad: PropTypes.object.isRequired,
@@ -64,31 +64,31 @@ const CounterCard = ({
     toon5Name: counter.toon5Name,
   };
 
-  const [isOpen, setIsOpen] = useToggle(false);
-  const [isVariationsModalOpen, setIsVariationsModalOpen] = useToggle(false);
+  const [ isOpen, setIsOpen ] = useToggle( false );
+  const [ isVariationsModalOpen, setIsVariationsModalOpen ] = useToggle( false );
 
   const {
     authenticated, isActivePatron, user,
-  } = useContext(AuthContext);
+  } = useContext( AuthContext );
 
-  const zetaData = [toon1Zetas, toon2Zetas, toon3Zetas, toon4Zetas, toon5Zetas];
+  const zetaData = [ toon1Zetas, toon2Zetas, toon3Zetas, toon4Zetas, toon5Zetas ];
 
   const buildOpponentDetails = squad => {
-    if (squad) {
+    if ( squad ) {
       const { description, generalStrategy } = squad;
       return (
         <>
           <DescriptionButtonsWrapper>
-            {description && <DescriptionButton id={`opponentDetails_${id}`} size="sm">Opponent Details</DescriptionButton>}
-            {generalStrategy && <DescriptionButton id={`generalStrategy_${id}`} size="sm">General Counter Strategy</DescriptionButton>}
+            {description && <DescriptionButton id={`opponentDetails_${ id }`} size="sm">Opponent Details</DescriptionButton>}
+            {generalStrategy && <DescriptionButton id={`generalStrategy_${ id }`} size="sm">General Counter Strategy</DescriptionButton>}
           </DescriptionButtonsWrapper>
           {
-            description && <UncontrolledCollapse toggler={`#opponentDetails_${id}`}>
+            description && <UncontrolledCollapse toggler={`#opponentDetails_${ id }`}>
               <DescriptionText className="text-left"><strong className="text-secondary">Details: </strong>{description}</DescriptionText>
             </UncontrolledCollapse>
           }
           {
-            generalStrategy && <UncontrolledCollapse toggler={`#generalStrategy_${id}`}>
+            generalStrategy && <UncontrolledCollapse toggler={`#generalStrategy_${ id }`}>
               <DescriptionText className="text-left"><strong className="text-secondary">General Strategy: </strong>{generalStrategy}</DescriptionText>
             </UncontrolledCollapse>
           }
@@ -99,41 +99,45 @@ const CounterCard = ({
   };
 
   const buildCounterDetails = () => {
-    const shouldPrintZeta = zetaData && zetaData.some(x => x.length > 0);
-    const shouldPrintVideoLinks = !_.isEmpty(counter.videoLinks);
+    const shouldPrintZeta = zetaData && zetaData.some( x => x.length > 0 );
+    const shouldPrintVideoLinks = !_.isEmpty( counter.videoLinks );
 
     return (
       <>
         <DescriptionButtonsWrapper>
-          {shouldPrintZeta && <DescriptionButton outline id={`zetaReqs_${id}`} size="sm">Required Zetas</DescriptionButton>}
-          {shouldPrintVideoLinks && <DescriptionButton outline id={`videoLinks_${id}`} size="sm">Videos</DescriptionButton>}
+          {shouldPrintZeta && <DescriptionButton outline id={`zetaReqs_${ id }`} size="sm">Required Zetas</DescriptionButton>}
+          {shouldPrintVideoLinks && <DescriptionButton outline id={`videoLinks_${ id }`} size="sm">Videos</DescriptionButton>}
         </DescriptionButtonsWrapper>
         {
-          shouldPrintZeta && <UncontrolledCollapse toggler={`#zetaReqs_${id}`} className="p-1">
-            {zetaData.map((zeta, i) => (zeta.length > 0
+          shouldPrintZeta && <UncontrolledCollapse toggler={`#zetaReqs_${ id }`} className="p-1">
+            {zetaData.map(( zeta, i ) => ( zeta.length > 0
               ? (
-                <DescriptionText key={`${zeta}${i}`} className="text-left m-0 p-0"><strong className="text-secondary">{view === 'normal' ? counter[`toon${i + 1}Name`] : leftSquad[`toon${i + 1}Name`]}: </strong> {zeta.join(', ')}</DescriptionText>
+                <DescriptionText key={`${ zeta }${ i }`} className="text-left m-0 p-0"><strong className="text-secondary">{view === 'normal' ? counter[ `toon${ i + 1 }Name` ] : leftSquad[ `toon${ i + 1 }Name` ]}: </strong> {zeta.join( ', ' )}</DescriptionText>
               )
-              : ''))}
+              : '' ))}
           </UncontrolledCollapse>
         }
         {
-          shouldPrintVideoLinks && <UncontrolledCollapse toggler={`#videoLinks_${id}`} className="p`">
+          shouldPrintVideoLinks && <UncontrolledCollapse toggler={`#videoLinks_${ id }`} className="p`">
             <ContainerColumn>
-              {counter.videoLinks.map(videoLink => {
-                const handleButton = () => window.open(videoLink.link);
+              {counter.videoLinks.map( videoLink => {
+                const {
+                  createdById, createdByName, createdOn, link, title,
+                } = videoLink;
+                const handleButton = () => window.open( link );
+                const shouldHighlightVideo = !!( createdById === process.env.REACT_APP_ADMIN_ID && title === 'swgohcounters' );
                 return (
-                <VideoListItemWrapper key={videoLink.id}>
+                <VideoListItemWrapper key={videoLink.id} shouldHighlightVideo={shouldHighlightVideo}>
                   <DescriptionButton size="sm" color="warning" onClick={handleButton}>
-                    {videoLink.title}
+                    {title}
                   </DescriptionButton>
                   <EditMenu>
-                    <p><small>updated on: {format(new Date(videoLink.createdOn), 'MMM d, yyyy')}</small></p>
-                    <p><small>by: {videoLink.createdByName}</small></p>
+                    <p><small>updated on: {format( new Date( createdOn ), 'MMM d, yyyy' )}</small></p>
+                    <p><small>by: {createdByName}</small></p>
                   </EditMenu>
                 </VideoListItemWrapper>
                 );
-              })}
+              } )}
             </ContainerColumn>
           </UncontrolledCollapse>
         }
@@ -142,8 +146,8 @@ const CounterCard = ({
   };
 
   async function handleDeleteCounter() {
-    await deleteCounter(id);
-    console.info(`counter for ${id} deleted`);
+    await deleteCounter( id );
+    console.info( `counter for ${ id } deleted` );
   }
 
   const divColor = counter.isHardCounter ? colors.hardCounter : colors.softCounter;
@@ -167,12 +171,12 @@ const CounterCard = ({
             ? <SquadHeader counter={counter} showLocks={true} size={size} squad={counter} />
             : <SquadHeader size={size} squad={counter} />
         }
-        { view === 'normal' ? buildCounterDetails() : buildOpponentDetails(counter) }
+        { view === 'normal' ? buildCounterDetails() : buildOpponentDetails( counter ) }
       </DetailsDivRight>
 
     </TopWrapper>
     <div className="w-100">
-      <Button outline className="w-100" size="sm" onClick={() => setIsVariationsModalOpen(true)}>See Variations</Button>
+      <Button outline className="w-100" size="sm" onClick={() => setIsVariationsModalOpen( true )}>See Variations</Button>
     </div>
     {isVariationsModalOpen && (
       <ModalPortal>
@@ -189,14 +193,14 @@ const CounterCard = ({
     )}
     <BottomWrapper>
       {
-        (counter.counterStrategy
-          ? (<DescriptionText className="text-left"><strong className="text-secondary ">Counter Strategy: </strong>{counter.counterStrategy}</DescriptionText>)
-          : (<DescriptionText className="text-left"><strong className="text-secondary ">Counter Strategy: </strong></DescriptionText>))
+        ( counter.counterStrategy
+          ? ( <DescriptionText className="text-left"><strong className="text-secondary ">Counter Strategy: </strong>{counter.counterStrategy}</DescriptionText> )
+          : ( <DescriptionText className="text-left"><strong className="text-secondary ">Counter Strategy: </strong></DescriptionText> ))
       }
       <EditMenu>
         {/* only users that have signed in, are active patrons, and have a allyCode can update counters */}
-        {isActivePatron && user.username && <p><Button className="p-0 m-0" size="sm" color="link" onClick={() => setIsOpen(true)}><small>edit counter</small></Button></p>}
-        <p><small>updated on: {format(new Date(counter.counterCreatedOn), 'MMM d, yyyy')}</small></p>
+        {isActivePatron && user.username && <p><Button className="p-0 m-0" size="sm" color="link" onClick={() => setIsOpen( true )}><small>edit counter</small></Button></p>}
+        <p><small>updated on: {format( new Date( counter.counterCreatedOn ), 'MMM d, yyyy' )}</small></p>
         <p><small>by: {counter.counterCreatedByName}</small></p>
         {authenticated && user.id === process.env.REACT_APP_ADMIN_ID && <p><Button className="p-0 m-0" size="sm" color="link" onClick={handleDeleteCounter}><small>delete counter</small></Button></p>}
       </EditMenu>

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const _ = require( 'lodash' );
 
 module.exports = ( { data } ) => ( {
@@ -5,7 +6,7 @@ module.exports = ( { data } ) => ( {
   path: '/counter/getStubsBySquadIds/:id',
   handler: async ( request, reply ) => {
     let stubs;
-    const leaderId = request.params.id;
+    // const leaderId = request.params.id;
     const { view, size, squadIds } = request.query;
 
     const squadIdsArray = squadIds.split( ',' );

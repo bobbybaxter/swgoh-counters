@@ -122,3 +122,22 @@ p {
 .cursor-pointer{
   cursor: pointer;
 }
+
+// Character Table
+.cellFinished {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.cellUnfinished {
+  color: black;
+  background-color: rgba(255, 0, 0, 0.644);
+}
+
+.nameColumn {
+  width: 40%
+}
+
+.dataColumn {
+  width: 12%
+}

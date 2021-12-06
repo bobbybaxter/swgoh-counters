@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -64,7 +65,6 @@ export default function CountersPageRow( {
         }
       }
 
-      // eslint-disable-next-line max-len
       if ( !abortController.signal.aborted && !_.isEmpty( storedStubs ) && storedStubs.counterVersion ) {
         if ( !_.isEqual( storedStubs.counterVersion, stubs.counterVersion )) {
           await requestCounters();

@@ -50,12 +50,10 @@ const AdminRoute = ( { component: Component, ...rest } ) => {
 
 const storedCharacters = JSON.parse( sessionStorage.getItem( 'characters' )) || [];
 
-// TODO: add a way to lock any videos that i put on the site from being deleted by other users
-// TODO: possibly make my videos a different color, make the the first video shown
 // TODO: go through endpoints to find unused endpoints
 // TODO: disconnect the calculation of counterStats from SQL queries (elasticache?)
-// TODO: find a way to update counterRows when a new season migration is updated
 // TODO: update algorithm to account for nerfs due to GLs
+// TODO: load up site with saved Patreon stuff, then lazy load Patron status
 function App() {
   const [ characters, setCharacters ] = useState( [] );
   const [ view, setView ] = useState( 'normal' );
