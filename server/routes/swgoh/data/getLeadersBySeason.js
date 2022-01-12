@@ -5,16 +5,13 @@ const jsdom = require( 'jsdom' );
 const { JSDOM } = jsdom;
 
 module.exports = app => async season => {
-  const baseURL = 'https://swgoh.gg/gac/counters';
-
   const swgohData = [];
 
   async function makeRequest( { seasonNum, page = 1 } ) {
     const response = await axios( {
       method: 'GET',
-      baseURL,
+      baseURL: `https://swgoh.gg/gac/counters/season/${ seasonNum }`,
       params: {
-        season: seasonNum,
         page,
       },
     } );
