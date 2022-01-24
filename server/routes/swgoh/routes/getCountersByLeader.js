@@ -7,7 +7,7 @@ module.exports = app => ( {
     const { config, data, log } = app;
     const { season } = request.params;
 
-    const seasons5v5 = [ 10, 11, 13, 15, 17, 19, 21 ];
+    const seasons5v5 = [ 10, 11, 13, 15, 17, 19, 21, 23 ];
     const seasons3v3 = [ 9, 12, 14, 16, 18, 20, 22 ];
 
     function selectBattleTypeBySeason( seasonNum ) {
@@ -117,7 +117,7 @@ module.exports = app => ( {
 
     async function buildCounters( swgohInfo ) {
       Promise.all( swgohInfo
-        .filter( x => x.opponentSquad[ 0 ] === 'ASAJVENTRESS' ) // REVIEW: testing purposes
+        // .filter( x => x.opponentSquad[ 0 ] === 'ASAJVENTRESS' ) // REVIEW: testing purposes
         .map( async counter => {
           const {
             counterSquad, opponentSquad, seen, winPerc, avgBanners,
