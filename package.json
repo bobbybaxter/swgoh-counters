@@ -81,7 +81,7 @@
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-react": "^7.13.13",
     "concurrently": "^6.0.1",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.15",
     "pino-pretty": "^4.0.0",
     "react-is": "^17.0.1",
     "react-snap": "^1.23.0"

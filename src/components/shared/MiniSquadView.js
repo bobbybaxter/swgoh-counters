@@ -17,16 +17,14 @@ const MiniSquad = styled.div`
 const SquadImages = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  // background-color: black;
   margin: 0 2.5px 0 2.5px;
-  // border: 1px #3D182560 solid;
 `;
 
-export default function MiniSquadView({
+export default function MiniSquadView( {
   leftSquadStub,
   size,
   toggle,
-}) {
+} ) {
   MiniSquadView.propTypes = {
     leftSquadStub: PropTypes.object.isRequired,
     size: PropTypes.string.isRequired,
@@ -58,18 +56,18 @@ export default function MiniSquadView({
     <MiniSquad onClick={toggle} id={leftSquadStub.id}>
       <SquadImages>
         {
-          squad.map((toon, i) => i < size.charAt(0)
-            && <NewSquadChar key={`MiniSquad_${leftSquadStub.id}_${toon.name}_${i}`}>
+          squad.map(( toon, i ) => i < size.charAt( 0 )
+            && <NewSquadChar key={`MiniSquad_${ leftSquadStub.id }_${ toon.name }_${ i }`}>
               <ToonImg
                 alt={toon.name}
                 color={'black'}
                 isClickable
                 isCompact
                 no-margin
-                src={ getImage(toon.id) }
+                src={ getImage( toon.id ) }
                 title={ toon.name }
               />
-            </NewSquadChar>)
+            </NewSquadChar> )
         }
       </SquadImages>
     </MiniSquad>

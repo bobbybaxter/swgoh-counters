@@ -28,8 +28,6 @@ const PlayerDataTab = ( { activeTab } ) => {
   const [ characters, setCharacters ] = useState( [] );
   const [ filteredCharacters, setFilteredCharacters ] = useState( [] );
 
-  // let searchInput = '';
-
   useEffect(() => {
     const abortController = new AbortController();
     const opts = { signal: abortController.signal };
@@ -102,32 +100,6 @@ const PlayerDataTab = ( { activeTab } ) => {
     },
     useSortBy,
   );
-
-  // const handleSearch = e => {
-  //   searchInput = e.target.value;
-  //   const filteredResults = defaultCharacters.filter(
-  //     char => char.name.toLowerCase().includes( searchInput.toLowerCase()),
-  //   );
-  //   if ( filteredResults === [] ) {
-  //     setFilteredCharacters( defaultCharacters );
-  //   } else {
-  //     setFilteredCharacters( filteredResults );
-  //   }
-  // };
-
-  // const searchBar = (
-  //   <Form className="align-self-end w-25">
-  //     <FormGroup>
-  //       <Input
-  //         type="text"
-  //         name="search"
-  //         id="characterSearchBar"
-  //         placeholder="search"
-  //         onChange={handleSearch}
-  //       />
-  //     </FormGroup>
-  //   </Form>
-  // );
 
   const selectDynamicCellClassName = cell => {
     switch ( cell.column.Header ) {
