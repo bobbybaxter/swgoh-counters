@@ -84,7 +84,7 @@ export const StyledCounterRow = styled.div`
   box-shadow: inset 4px 4px 15px rgba(255, 255, 255, 0.1), inset -4px -4px 15px rgba(255, 255, 255, 0.1);
 `;
 
-export const CounterCard = styled(StyledCounterRow)`
+export const CounterCard = styled( StyledCounterRow )`
   box-shadow: none;
 `;
 
@@ -119,7 +119,25 @@ export const EditMenu = styled.div`
   }
 `;
 
-export const LeftDivSquad = styled(StyledCounterRow)`
+export const FormCheckboxes = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: .7rem;
+  font-weight: 300;
+
+  @media only screen and (min-width:768px) {
+    font-size: .9rem;
+    min-height: 50px;
+  }
+
+  @media only screen and (min-width:992px) {
+    font-size: 1rem;
+  }
+`;
+
+export const LeftDivSquad = styled( StyledCounterRow )`
   justify-content: center;
   padding: .5rem;
   border-right: 1px solid #343a40;
@@ -152,5 +170,24 @@ export const SquadTitle = styled.h6`
   @media only screen and (min-width:1200px) {
     font-size: 1.2rem;
     font-weight: 500;
+  }
+`;
+
+export const ToonName = styled.h6`
+  font-size: .7rem;
+  font-weight: 300;
+  width: fit-content;
+  margin: 0;
+
+  @media only screen and (min-width:768px) {
+    font-size: .8rem;
+  }
+
+  @media only screen and (min-width:992px) {
+    font-size: .9rem;
+  }
+
+  @media only screen and (min-width:1200px) {
+    font-size: .9rem;
   }
 `;

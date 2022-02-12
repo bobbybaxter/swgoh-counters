@@ -58,3 +58,9 @@ export {
   deleteLeader,
   getLeaders,
 } from './leaderData';
+
+export {
+  searchCharacter,
+  searchCounter,
+  searchSquad,
+} from './searchData';

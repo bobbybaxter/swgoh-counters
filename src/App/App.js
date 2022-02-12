@@ -28,6 +28,7 @@ const Login = lazy(() => import( 'src/components/Account/Login' ));
 // const Maintenance = lazy(() => import( 'src/components/Maintenance/Maintenance' ));
 const NotFound = lazy(() => import( 'src/components/NotFound/NotFound' ));
 const PatreonLink = lazy(() => import( 'src/components/PatreonLink/PatreonLink' ));
+const Search = lazy(() => import( 'src/components/Search/Search' ));
 
 firebaseConnection();
 
@@ -136,6 +137,14 @@ function App() {
                     size={'3v3'}
                     view={view}
                   /> */}
+
+                  <Route exact path="/search" render={props => (
+                    <Search
+                      {...props}
+                      characters={characters}
+                      reload={reload}
+                    />
+                  )}/>
 
                   <Route exact path="/login" component={ Login } />
 

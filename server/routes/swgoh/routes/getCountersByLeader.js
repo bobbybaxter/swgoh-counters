@@ -117,7 +117,6 @@ module.exports = app => ( {
 
     async function buildCounters( swgohInfo ) {
       Promise.all( swgohInfo
-        // .filter( x => x.opponentSquad[ 0 ] === 'ASAJVENTRESS' ) // REVIEW: testing purposes
         .map( async counter => {
           const {
             counterSquad, opponentSquad, seen, winPerc, avgBanners,

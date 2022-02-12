@@ -27,10 +27,10 @@ export const NavDivider = styled.span`
 `;
 
 const MyNavbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { admin, authenticated, handleLogout } = useContext(AuthContext);
+  const [ isOpen, setIsOpen ] = useState( false );
+  const { admin, authenticated, handleLogout } = useContext( AuthContext );
 
-  const toggle = () => setIsOpen(!isOpen);
+  const toggle = () => setIsOpen( !isOpen );
 
   const handleNavLogout = e => {
     e.preventDefault();
@@ -62,6 +62,9 @@ const MyNavbar = () => {
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/3v3">3v3</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/search">Search</NavLink>
               </NavItem>
 
               <NavDivider />
@@ -101,4 +104,4 @@ const MyNavbar = () => {
   );
 };
 
-export default memo(MyNavbar);
+export default memo( MyNavbar );
