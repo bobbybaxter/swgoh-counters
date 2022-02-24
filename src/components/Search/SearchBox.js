@@ -9,7 +9,7 @@ import NewSquadDisplay from 'src/components/shared/NewSquadDisplay';
 import { searchCharacter, searchCounter, searchSquad } from 'src/helpers/data';
 import CharacterPool from './CharacterPool';
 
-const SeasonNums5v5 = [ 'All', 11, 13, 15, 17, 19, 21, 23 ];
+const SeasonNums5v5 = [ 'All', 11, 13, 15, 17, 19, 21, 23, 24 ];
 const SeasonNums3v3 = [ 'All', 12, 14, 16, 18, 20, 22 ];
 
 const defaultToon = {

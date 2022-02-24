@@ -1,7 +1,8 @@
 /* eslint-disable no-return-await */
-module.exports = ( { data } ) => ( {
+module.exports = ( { data, server } ) => ( {
   method: 'POST',
   path: '/search/squad',
+  preValidation: server.auth( [ server.firebaseAuth ] ),
   handler: async ( request, reply ) => {
     const { body } = request;
     return await data.squad( body );
