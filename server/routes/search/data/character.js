@@ -29,9 +29,9 @@ module.exports = ( { database, log } ) => async ( {
     FROM counter c
     JOIN counterVersion cv ON cv.id = c.latestVersionId 
     JOIN squad s ON s.id = c.opponentSquadId
-    JOIN squadVersion sv ON sv.squadId = s.id
+    JOIN squadVersion sv ON sv.id = s.latestVersionId 
     JOIN squad s2 ON s2.id = c.counterSquadId 
-    JOIN squadVersion sv2 ON sv2.squadId = s2.id
+    JOIN squadVersion sv2 ON sv2.id = s2.latestVersionId
     JOIN \`character\` char1 ON char1.id = sv.toon1Id
     JOIN \`character\` char2 ON char2.id = sv.toon2Id
     JOIN \`character\` char3 ON char3.id = sv.toon3Id
