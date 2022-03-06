@@ -131,6 +131,7 @@ const SearchResults = ( { searchResults, size } ) => {
         Header: 'Avg Win %',
         accessor: 'avgWin',
         Cell: props => <div>{`${ Math.round( props.row.original.avgWin * 100 ) }%`}</div>,
+        sortType: 'basic',
       },
       { Header: 'Avg 🚩', accessor: 'avgBanners' },
       {
