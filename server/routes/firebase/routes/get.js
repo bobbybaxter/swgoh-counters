@@ -206,6 +206,7 @@ module.exports = ( { data, log } ) => ( {
               id: { type: 'string' },
               accessToken: { type: 'string' },
               allyCode: { type: 'string' },
+              discordId: { type: 'string' },
               email: { type: 'string' },
               expiresIn: { type: 'string' },
               guildId: { type: 'string' },

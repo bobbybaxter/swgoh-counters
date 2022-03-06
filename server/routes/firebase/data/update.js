@@ -1,7 +1,8 @@
-module.exports = ({ firebaseDb }) => async ({
+module.exports = ( { firebaseDb } ) => async ( {
   id,
   accessToken,
   allyCode,
+  discordId,
   email,
   expiresIn,
   guildId,
@@ -11,11 +12,12 @@ module.exports = ({ firebaseDb }) => async ({
   refreshToken,
   tier,
   username,
-}) => {
-  if (id) {
-    firebaseDb.ref(`users/${id}`).update({
+} ) => {
+  if ( id ) {
+    firebaseDb.ref( `users/${ id }` ).update( {
       accessToken,
       allyCode,
+      discordId,
       email,
       expiresIn,
       guildId,
@@ -25,7 +27,7 @@ module.exports = ({ firebaseDb }) => async ({
       refreshToken,
       tier,
       username,
-    });
+    } );
   }
 
   return 'ok';

@@ -7,7 +7,7 @@ import {
   createUser,
   deleteGuild,
   getGuildById,
-  getPlayerData,
+  getPlayerDataFromSwgoh,
   getUserByFirebaseAuthUid,
   updateGuild,
   updateUserInfo,
@@ -17,6 +17,7 @@ const defaultUser = {
   id: '',
   accessToken: '',
   allyCode: '',
+  discordId: '',
   email: '',
   expiresIn: '',
   guildId: '',
@@ -42,6 +43,7 @@ export function AuthProvider( { children } ) {
   const {
     id,
     accessToken,
+    discordId,
     email,
     expiresIn,
     guildId,
@@ -58,6 +60,7 @@ export function AuthProvider( { children } ) {
       id: res.id || currentUser.id,
       accessToken: res.accessToken || currentUser.accessToken,
       allyCode: res.allyCode || currentUser.allyCode,
+      discordId: res.discordId || currentUser.discordId,
       email: res.email || currentUser.email,
       expiresIn: res.expiresIn || currentUser.expiresIn,
       guildId: res.guildId,
@@ -73,7 +76,7 @@ export function AuthProvider( { children } ) {
 
   const setPlayerData = useCallback( async playerAllyCode => {
     try {
-      const response = await getPlayerData( playerAllyCode );
+      const response = await getPlayerDataFromSwgoh( playerAllyCode );
       const res = JSON.parse( response.contents );
       if ( res.data ) {
         const {
@@ -188,6 +191,7 @@ export function AuthProvider( { children } ) {
       id,
       accessToken,
       allyCode: '',
+      discordId,
       email,
       expiresIn,
       guildId: '',
@@ -201,6 +205,15 @@ export function AuthProvider( { children } ) {
     setUser( userToSet );
     setIsGuildTierMember( false );
     await updateUserInfo( userToSet );
+  }
+
+  async function handleClearDiscordId() {
+    const userToSet = {
+      ...user,
+      discordId: '',
+    };
+    await updateUserInfo( userToSet );
+    setUser( userToSet );
   }
 
   function handleLogout() {
@@ -249,6 +262,7 @@ export function AuthProvider( { children } ) {
       authenticateUser,
       handleAllyCode,
       handleClearAllyCode,
+      handleClearDiscordId,
       handleLogout,
       setPlayerData,
       setUserInfo,
