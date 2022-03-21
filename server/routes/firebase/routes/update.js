@@ -1,10 +1,10 @@
-module.exports = ({ data, server }) => ({
+module.exports = ( { data, server } ) => ( {
   method: 'PATCH',
   path: '/firebase',
-  preValidation: server.auth([server.firebaseAuth]),
-  handler: async (request, reply) => {
-    const user = await data.update(request.body);
-    reply.send(user);
+  preValidation: server.auth( [ server.firebaseAuth ] ),
+  handler: async ( request, reply ) => {
+    const user = await data.update( request.body );
+    reply.send( user );
   },
   schema: {
     params: {
@@ -15,6 +15,7 @@ module.exports = ({ data, server }) => ({
       properties: {
         accessToken: { type: 'string' },
         allyCode: { type: 'string' },
+        discordId: { type: 'string' },
         email: { type: 'string' },
         expiresIn: { type: 'string' },
         guildId: { type: 'string' },
@@ -32,4 +33,4 @@ module.exports = ({ data, server }) => ({
       },
     },
   },
-});
+} );

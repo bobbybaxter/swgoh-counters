@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import {
   Button, Form, FormGroup, Input,
 } from 'reactstrap';
@@ -13,7 +13,7 @@ import {
   AccountWrapper,
 } from './style';
 
-const patreonLink = `https://patreon.com/oauth2/authorize?response_type=code&client_id=${process.env.REACT_APP_PATREON_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_PATREON_REDIRECT}&scope=identity${encodeURI('[email]')}%20identity`;
+const patreonLink = `https://patreon.com/oauth2/authorize?response_type=code&client_id=${ process.env.REACT_APP_PATREON_CLIENT_ID }&redirect_uri=${ process.env.REACT_APP_PATREON_REDIRECT }&scope=identity${ encodeURI( '[email]' ) }%20identity`;
 
 const AccountDetails = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ const AccountDetails = styled.div`
   font-size: .85rem;
 `;
 
-const AccountRowEven = styled(Form)`
+const AccountRowEven = styled( Form )`
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
@@ -31,7 +31,7 @@ const AccountRowEven = styled(Form)`
   background-color: #181818;
 `;
 
-const AccountRowOdd = styled(Form)`
+const AccountRowOdd = styled( Form )`
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
@@ -43,7 +43,7 @@ const AccountCell = styled.div`
   padding: .5rem 0;
 `;
 
-const AccountButton = styled(Button)`
+const AccountButton = styled( Button )`
   font-size: .7rem;
   height: 50%;
   font-size: .7rem;
@@ -59,7 +59,7 @@ const AccountButton = styled(Button)`
   }
 `;
 
-const AllyCodeForm = styled.div`
+const InputForm = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -70,17 +70,19 @@ const AllyCodeForm = styled.div`
 export default function Account() {
   const {
     handleClearAllyCode,
+    handleClearDiscordId,
     handleAllyCode,
     isGuildTierMember,
     setPlayerData,
     unlinkPatreonAccountFromUser,
     user,
-  } = useContext(AuthContext);
+  } = useContext( AuthContext );
 
   const {
     id,
     accessToken,
     allyCode,
+    discordId,
     email,
     expiresIn,
     guildId,
@@ -92,20 +94,22 @@ export default function Account() {
     username,
   } = user;
 
-  const updateUser = useCallback(async () => {
-    const userData = await setPlayerData(allyCode);
+  const [ tempDiscordId, setTempDiscordId ] = useState( discordId );
+
+  const updateUser = useCallback( async () => {
+    const userData = await setPlayerData( allyCode );
     const selectGuildId = () => {
-      if (userData && userData.guild_Id) { return userData.guild_id; }
+      if ( userData && userData.guild_Id ) { return userData.guild_id; }
       return guildId || '';
     };
 
     const selectGuildName = () => {
-      if (userData && userData.guild_name) { return userData.guild_name; }
+      if ( userData && userData.guild_name ) { return userData.guild_name; }
       return guildName || '';
     };
 
     const selectUsername = () => {
-      if (userData && userData.name) { return userData.name; }
+      if ( userData && userData.name ) { return userData.name; }
       return username || '';
     };
 
@@ -113,6 +117,7 @@ export default function Account() {
       id,
       accessToken,
       allyCode,
+      discordId,
       email,
       expiresIn,
       guildId: selectGuildId(),
@@ -123,24 +128,47 @@ export default function Account() {
       tier,
       username: selectUsername(),
     };
-    await updateUserInfo(userToUpdate);
+    await updateUserInfo( userToUpdate );
     window.location.reload();
-  }, [accessToken, allyCode, email, expiresIn, guildId, guildName, id, patreonId, patronStatus, refreshToken, setPlayerData, tier, username]); // eslint-disable-line max-len
+  }, [ accessToken, allyCode, discordId, email, expiresIn, guildId, guildName, id, patreonId, patronStatus, refreshToken, setPlayerData, tier, username ] ); // eslint-disable-line max-len
 
-  const clearAllyCode = () => {
+  function clearAllyCode() {
     handleClearAllyCode();
-  };
+  }
 
-  const submitAllyCode = async e => {
+  function clearDiscordId() {
+    handleClearDiscordId();
+  }
+
+  function handleDiscordId( e ) {
+    e.preventDefault();
+    setTempDiscordId( e.target.value );
+  }
+
+  async function submitAllyCode( e ) {
     e.preventDefault();
     try {
       updateUser();
-    } catch (err) {
-      console.error('Error submitting AllyCode: ', err);
+    } catch ( err ) {
+      console.error( 'Error submitting AllyCode: ', err );
     }
-  };
+  }
 
-  const allyCodeForm = <AllyCodeForm inline>
+  async function submitDiscordId( e ) {
+    e.preventDefault();
+    try {
+      const userToUpdate = {
+        ...user,
+        discordId: tempDiscordId,
+      };
+      await updateUserInfo( userToUpdate );
+      window.location.reload();
+    } catch ( err ) {
+      console.error( 'Error submitting DiscordId: ', err );
+    }
+  }
+
+  const allyCodeForm = <InputForm inline>
     <FormGroup className="mb-0 mr-1 w-100">
       <Input
         type="text"
@@ -152,12 +180,26 @@ export default function Account() {
         onChange={handleAllyCode}
       />
     </FormGroup>
-  </AllyCodeForm>;
+  </InputForm>;
 
-  const handleUnlinkPatreonAccount = () => {
-    unlinkPatreonAccount(user);
+  const discordIdForm = <InputForm inline>
+    <FormGroup className="mb-0 mr-1 w-100">
+      <Input
+        type="text"
+        name="discordId"
+        id="discordId"
+        bsSize="sm"
+        placeholder="Paste Discord Id"
+        className="w-100"
+        onChange={handleDiscordId}
+      />
+    </FormGroup>
+  </InputForm>;
+
+  function handleUnlinkPatreonAccount() {
+    unlinkPatreonAccount( user );
     unlinkPatreonAccountFromUser();
-  };
+  }
 
   const togglePatreonButton = !patreonId || !patronStatus
     ? <AccountButton className="btn-sm w-100" href={patreonLink}>
@@ -173,6 +215,13 @@ export default function Account() {
         onClick={clearAllyCode}
       >Clear Ally Code</AccountButton>
     : <AccountButton className="btn-sm w-100" type="submit" onClick={submitAllyCode}>Submit</AccountButton>;
+
+  const toggleDiscordIdButton = discordId
+    ? <AccountButton
+        className="btn-sm w-100"
+        onClick={clearDiscordId}
+      >Clear Discord Id</AccountButton>
+    : <AccountButton className="btn-sm w-100" type="submit" onClick={submitDiscordId}>Submit</AccountButton>;
 
   return (
     <ContainerColumn className="Account">
@@ -206,10 +255,15 @@ export default function Account() {
             <AccountCell className="col-3">{toggleAllyCodeButton}</AccountCell>
           </AccountRowOdd>
           <AccountRowEven className="text-left">
+            <AccountCell className="col-3">Discord Id: </AccountCell>
+            <AccountCell className="col-6">{discordId || discordIdForm}</AccountCell>
+            <AccountCell className="col-3">{toggleDiscordIdButton}</AccountCell>
+          </AccountRowEven>
+          <AccountRowOdd className="text-left">
             <AccountCell className="col-3">Patreon: </AccountCell>
             <AccountCell className="col-6">{patreonId && patronStatus ? patronStatus : 'Not Linked'}</AccountCell>
             <AccountCell className="col-3">{togglePatreonButton}</AccountCell>
-          </AccountRowEven>
+          </AccountRowOdd>
           {user.accessToken ? '' : <small className="alert alert-warning p-1 m-0">Patreon email must match {email || 'login email'}.  You may need to sign out of Patreon before trying to link, to ensure you are using the correct email address.</small>}
         </AccountDetails>
       </AccountWrapper>

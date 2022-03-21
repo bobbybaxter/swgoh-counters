@@ -11,6 +11,7 @@ import { colors } from 'src/styles/colors';
 import { getImage } from 'src/helpers';
 import ToonImg from 'src/components/shared/ToonImg';
 
+// TODO: increase row color for hard and soft counters.  they're currently a bit harder to see on desktop
 const CharacterTable = styled.div`
   display: flex;
   flex-direction: column;

@@ -26,7 +26,7 @@ export {
   unlinkPatreonAccount,
 } from './firebaseData';
 
-export { default as getPlayerData } from './playerData';
+export { default as getPlayerDataFromSwgoh } from './playerData';
 
 export {
   getSquadData,

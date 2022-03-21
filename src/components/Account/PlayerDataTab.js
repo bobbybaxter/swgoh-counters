@@ -1,18 +1,15 @@
+/* eslint-disable no-nested-ternary */
 import React, {
   memo, useEffect, useMemo, useState,
 } from 'react';
 import {
-  Button,
-  Form,
-  FormGroup,
-  Input,
   TabContent,
   Table,
   TabPane,
 } from 'reactstrap';
 import { useSortBy, useTable } from 'react-table';
 import { flatten, mergeCharacterAndPlayerData } from 'src/helpers';
-import { getPlayerData } from 'src/helpers/data';
+import { getPlayerDataFromSwgoh } from 'src/helpers/data';
 import styled from 'styled-components';
 
 const CharacterTable = styled.div`
@@ -56,7 +53,7 @@ const PlayerDataTab = ( { activeTab } ) => {
 
     async function getPlayerInfo() {
       try {
-        const response = await getPlayerData( '492912899', opts );
+        const response = await getPlayerDataFromSwgoh( '492912899', opts );
         const res = JSON.parse( response.contents );
         const transformedPlayerData = transformPlayerData( res );
         setCharacters( transformedPlayerData );
