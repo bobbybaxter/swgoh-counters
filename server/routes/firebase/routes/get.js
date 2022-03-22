@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 const _ = require( 'lodash' );
 
-const memberTiers = [ '', 'Carbonite', 'Bronzium', 'Chromium' ];
-const guildTiers = [ 'Aurodium' ];
+const memberTiers = [ '', 'Carbonite', 'Bronzium' ];
+const guildTiers = [ 'Chromium', 'Aurodium' ];
 
 const handleAddGuild = ( data, {
   id,
