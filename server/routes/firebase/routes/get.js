@@ -54,6 +54,7 @@ module.exports = ( { data, log } ) => ( {
   handler: async ( request, reply ) => {
     let accessToken,
       allyCode,
+      discordId,
       expiresIn,
       guildIdFromSWGOHGG,
       guildNameFromSWGOHGG,
@@ -169,6 +170,7 @@ module.exports = ( { data, log } ) => ( {
     const updatedUser = {
       ...user,
       accessToken,
+      discordId,
       expiresIn,
       refreshToken,
       guildId: guildIdFromSWGOHGG || '',
