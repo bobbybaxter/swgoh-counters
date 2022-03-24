@@ -170,7 +170,7 @@ module.exports = ( { data, log } ) => ( {
     const updatedUser = {
       ...user,
       accessToken,
-      discordId,
+      discordId: discordId || '',
       expiresIn,
       refreshToken,
       guildId: guildIdFromSWGOHGG || '',

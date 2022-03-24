@@ -1,7 +1,7 @@
 import React, {
   memo, useContext, useEffect, useState,
 } from 'react';
-import { Button, UncontrolledAlert } from 'reactstrap';
+import { Alert, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { useHistory } from 'react-router-dom';
@@ -156,9 +156,9 @@ const CountersPage = ( {
 
       <CountersPageWrapper>
         {
-          <UncontrolledAlert color="warning">
-            {_.sample( tips )}
-          </UncontrolledAlert>
+          <Alert color="danger">
+            In light of the news that swgoh.gg is discontinuing their public API, I'm forced to discontinue support for swgohcounters.com.  More details can be found on my Discord or Patreon.
+          </Alert>
         }
         {!isActivePatron && <PatreonButton />}
         {isRestricted && toggleAd( '2779553573' )}
