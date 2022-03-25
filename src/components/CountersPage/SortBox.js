@@ -31,7 +31,6 @@ const LeaderCheckboxWrapper = styled.div`
   }
 `;
 
-// TODO: look into reducing the size of the counter list instead of showing all in the list
 const SortBox = ( {
   characters,
   excludedCounters,

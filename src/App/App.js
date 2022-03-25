@@ -25,7 +25,6 @@ const Account = lazy(() => import( 'src/components/Account/Account' ));
 const Admin = lazy(() => import( 'src/components/Account/Admin' ));
 const CountersPage = lazy(() => import( 'src/components/CountersPage/CountersPage' ));
 const Login = lazy(() => import( 'src/components/Account/Login' ));
-// const Maintenance = lazy(() => import( 'src/components/Maintenance/Maintenance' ));
 const NotFound = lazy(() => import( 'src/components/NotFound/NotFound' ));
 const PatreonLink = lazy(() => import( 'src/components/PatreonLink/PatreonLink' ));
 const Search = lazy(() => import( 'src/components/Search/Search' ));
@@ -45,15 +44,12 @@ const AdminRoute = ( { component: Component, ...rest } ) => {
   const routeChecker = props => ( admin === true
     ? ( <Component {...props} {...rest} /> )
     : ( <Redirect to={{ pathname: '/', state: { from: props.location } }} /> ));
-    // : ( <Redirect to={{ pathname: '/maintenance', state: { from: props.location } }} /> ));
   return <Route {...rest} render={props => routeChecker( props )} />;
 };
 
 const storedCharacters = JSON.parse( sessionStorage.getItem( 'characters' )) || [];
 
 // TODO: go through endpoints to find unused endpoints
-// TODO: disconnect the calculation of counterStats from SQL queries (elasticache?)
-// TODO: update algorithm to account for nerfs due to GLs
 // TODO: load up site with saved Patreon stuff, then lazy load Patron status
 function App() {
   const [ characters, setCharacters ] = useState( [] );
@@ -110,14 +106,6 @@ function App() {
                       view={view}
                     />
                   )}/>
-                  {/* <AdminRoute exact path="/"
-                      component={CountersPage}
-                      characters={characters}
-                      handleViewBtn={handleViewBtn}
-                      reload={reload}
-                      size={'5v5'}
-                      view={view}
-                  /> */}
 
                   <Route exact path="/3v3" render={props => (
                     <CountersPage
@@ -129,14 +117,6 @@ function App() {
                       view={view}
                     />
                   )}/>
-                  {/* <AdminRoute exact path="/3v3"
-                    component={CountersPage}
-                    characters={characters}
-                    handleViewBtn={handleViewBtn}
-                    reload={reload}
-                    size={'3v3'}
-                    view={view}
-                  /> */}
 
                   <Route exact path="/search" render={props => (
                     <Search
@@ -160,11 +140,8 @@ function App() {
                     component={ Admin }
                   />
 
-                  {/* <Route exact path="/maintenance" component={ Maintenance } /> */}
-
                   <Route component={ NotFound } />
                   <Redirect from="*" to="/" />
-                  {/* <Redirect from="*" to="/maintenance" /> */}
                 </Switch>
               </Suspense>
             </div>
