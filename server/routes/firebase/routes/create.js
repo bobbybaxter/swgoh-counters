@@ -1,12 +1,12 @@
-module.exports = ({ data, server }) => ({
+module.exports = ( { data, server } ) => ( {
   method: 'POST',
   path: '/firebase',
-  preValidation: server.auth([server.firebaseAuth]),
-  handler: async (request, reply) => {
-    const user = await data.create(request.body);
+  preValidation: server.auth( [ server.firebaseAuth ] ),
+  handler: async ( request, reply ) => {
+    const user = await data.create( request.body );
     reply
-      .type('application/json')
-      .send(user);
+      .type( 'application/json' )
+      .send( user );
   },
   schema: {
     response: {
@@ -19,4 +19,4 @@ module.exports = ({ data, server }) => ({
       },
     },
   },
-});
+} );

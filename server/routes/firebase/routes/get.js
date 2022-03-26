@@ -157,7 +157,6 @@ module.exports = ( { data, log } ) => ( {
         await handleAddGuild( data, currentGuildInfo );
       }
 
-      // REVIEW: do i need to add !_.isEmpty(currentGuildInFirebase)?
       if ( wasGuildTier && isNowMemberTier ) {
         await handleRemoveGuild( data, oldGuildInfo );
       }

@@ -67,7 +67,7 @@ Server:
 
 ## Deprecation To-do List
 - [ ] Refund Annual Patrons
-- [ ] Deactivate DigitalOcean droplet for Discord Bot
+- [x] Deactivate DigitalOcean droplet for Discord Bot
 - [ ] Replace Patreon endpoints with mock data
 - [ ] Deactivate Patreon
 - [ ] Replace swgoh.gg endpoints with mock data

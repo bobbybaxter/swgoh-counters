@@ -1,20 +1,20 @@
-const _ = require('lodash');
+const _ = require( 'lodash' );
 
-module.exports = ({ data, log }) => ({
+module.exports = ( { data, log } ) => ( {
   method: 'GET',
   path: '/guild/:id',
-  handler: async (request, reply) => {
+  handler: async ( request, reply ) => {
     let formattedGuild = {};
     try {
-      const guild = await data.getByGuildId(request.params.id);
+      const guild = await data.getByGuildId( request.params.id );
 
-      if (_.isEmpty(guild)) {
+      if ( _.isEmpty( guild )) {
         return reply
-          .type('application/json')
-          .send(guild);
+          .type( 'application/json' )
+          .send( guild );
       }
 
-      const guildTierUsers = guild.guildTierUsers.split(',');
+      const guildTierUsers = guild.guildTierUsers.split( ',' );
 
       formattedGuild = {
         ...guild,
@@ -22,10 +22,10 @@ module.exports = ({ data, log }) => ({
       };
 
       return reply
-        .type('application/json')
-        .send(formattedGuild);
-    } catch (err) {
-      log.error(err);
+        .type( 'application/json' )
+        .send( formattedGuild );
+    } catch ( err ) {
+      log.error( err );
       return formattedGuild;
     }
   },
@@ -41,4 +41,4 @@ module.exports = ({ data, log }) => ({
       },
     },
   },
-});
+} );
