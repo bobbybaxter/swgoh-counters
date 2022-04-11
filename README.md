@@ -66,14 +66,15 @@ Server:
   - this will deploy the latest commit
 
 ## Deprecation To-do List
-- [ ] Refund Annual Patrons
-- [ ] Deactivate DigitalOcean droplet for Discord Bot
-- [ ] Replace Patreon endpoints with mock data
+- [ ] Refund Annual Patrons (nearly complete)
+- [x] Deactivate DigitalOcean droplet for Discord Bot
+- [x] Replace Patreon endpoints with mock data
+- [x] Replace swgoh.gg endpoints with mock data
+- [x] Replace Firebase endpoints with mock data
+- [x] Replace AWS endpoints with mock data
 - [ ] Deactivate Patreon
-- [ ] Replace swgoh.gg endpoints with mock data
-- [ ] Replace Firebase endpoints with mock data
-- [ ] Update login functionality to select mock roles to view site
-- [ ] Replace AWS endpoints with mock data
+- [ ] Update README on new mock site functionality
+
+if current model doesn't work:
 - [ ] Find free or low-cost hosting for site
 - [ ] Deactivate AWS services
-- [ ] Update README on new mock site functionality

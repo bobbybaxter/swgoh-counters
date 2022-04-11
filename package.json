@@ -56,6 +56,7 @@
     "idb": "^5.0.7",
     "jquery": "^3.5.1",
     "lodash": "^4.17.20",
+    "miragejs": "^0.1.43",
     "node-sass": "^4.0.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",

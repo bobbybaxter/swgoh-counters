@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { NavLink as RRNavLink } from 'react-router-dom';
+import { NavLink } from 'reactstrap';
 
-const StyledLinkButton = styled.a`
+const StyledLinkButton = styled( NavLink )`
   display: inline-block;
   background: rgba(255, 0, 0, 0.863);
   color: whitesmoke;
@@ -22,11 +24,16 @@ const StyledLinkButton = styled.a`
   }
 `;
 
-export default function PatreonRowButton() {
+export default function PatreonReverseButton() {
   return (
-    <StyledLinkButton href="https://patreon.com/saiastrange" className="btn col-2">
-      Reverse View<br/>
-      for Patrons
+  // <StyledLinkButton href="https://patreon.com/saiastrange" className="btn col-2">
+  //   Reverse View<br/>
+  //   for Patrons
+  // </StyledLinkButton>
+
+    <StyledLinkButton className="btn col-2" tag={RRNavLink} exact to="/login">
+      Log in for<br/>
+      Reverse View
     </StyledLinkButton>
   );
 }

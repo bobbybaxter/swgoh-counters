@@ -1,6 +1,7 @@
 /* eslint-disable no-return-await */
 const baseUrl = process.env.REACT_APP_LEADER_API_URL;
 
+// NOTE: this are used in the admin panel to update the leaders shown on the main pages
 export async function addLeader( leaderData ) {
   const response = await fetch( `${ baseUrl }`, {
     method: 'POST',

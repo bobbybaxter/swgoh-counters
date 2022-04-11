@@ -1,12 +1,12 @@
-module.exports = ({ data, log, server }) => ({
+module.exports = ( { data, log, server } ) => ( {
   method: 'DELETE',
   path: '/guild/:id',
-  preValidation: server.auth([server.firebaseAuth]),
-  handler: async (request, reply) => {
-    const response = await data.delete(request.params.id);
+  preValidation: server.auth( [ server.firebaseAuth ] ),
+  handler: async ( request, reply ) => {
+    const response = await data.delete( request.params.id );
     reply
-      .type('text/html')
-      .send(response);
+      .type( 'text/html' )
+      .send( response );
   },
   schema: {
     params: {
@@ -18,4 +18,4 @@ module.exports = ({ data, log, server }) => ({
       },
     },
   },
-});
+} );

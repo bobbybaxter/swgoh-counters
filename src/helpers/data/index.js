@@ -1,39 +1,40 @@
-export {
-  getAllCharacters,
-  importCharacterData,
-} from './characterData';
+export { default as getAllCharacters } from './characterData';
 
 export {
   deleteCounter,
-  getCounterById,
   getCounterVariations,
-  addCounter,
   updateCounter,
-  importCounterData,
+
   getCounterStubsBySquadIds,
 } from './countersData';
 
 export { default as firebaseConnection } from './firebaseConnection';
 
 export {
-  createGuild,
+  importCharacterData,
+  importCounterData,
+  importSquadData,
+} from './importData';
+
+export {
   createUser,
-  deleteGuild,
-  getGuildById,
   getUserByFirebaseAuthUid,
-  updateGuild,
   updateUserInfo,
   unlinkPatreonAccount,
 } from './firebaseData';
 
+export {
+  createGuild,
+  deleteGuild,
+  getGuildById,
+  updateGuild,
+} from './guildData';
+
 export { default as getPlayerDataFromSwgoh } from './playerData';
 
 export {
-  getSquadData,
-  addSquad,
   updateSquad,
   getSquadStubs,
-  importSquadData,
 } from './squadsData';
 
 export {

@@ -1,10 +1,10 @@
-module.exports = ({ data, server }) => ({
+module.exports = ( { data, server } ) => ( {
   method: 'PATCH',
   path: '/guild',
-  preValidation: server.auth([server.firebaseAuth]),
-  handler: async (request, reply) => {
-    const guild = await data.update(request.body);
-    reply.send(guild);
+  preValidation: server.auth( [ server.firebaseAuth ] ),
+  handler: async ( request, reply ) => {
+    const guild = await data.update( request.body );
+    reply.send( guild );
   },
   schema: {
     body: {
@@ -21,4 +21,4 @@ module.exports = ({ data, server }) => ({
       },
     },
   },
-});
+} );

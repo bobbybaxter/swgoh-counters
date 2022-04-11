@@ -11,13 +11,13 @@ const uiConfig = {
   // Alternatively you can provide a callbacks.signInSuccess function.
   signInSuccessUrl: '/',
   // We will display Google and Facebook as auth providers.
-  signInOptions: [{
+  signInOptions: [ {
     provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
   },
   {
     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
     requireDisplayName: false,
-  }],
+  } ],
 };
 
 function Login() {

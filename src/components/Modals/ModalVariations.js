@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import { colors } from 'src/styles/colors';
 import _ from 'lodash';
-import { Button } from 'reactstrap';
+import { NavLink as RRNavLink } from 'react-router-dom';
+import { Button, NavLink } from 'reactstrap';
 
 import { AuthContext } from 'src/contexts/userContext';
 import ToonImg from 'src/components/shared/ToonImg';
@@ -71,7 +72,7 @@ export const VariationSquad = styled.div`
   align-items: center;
 `;
 
-const StyledLinkButton = styled.a`
+const StyledLinkButton = styled( NavLink )`
   display: inline-block;
   background: rgba(255, 0, 0, 0.863);
   color: whitesmoke;
@@ -157,8 +158,8 @@ export default function ModalVariations( {
   }
 
   function buildSquads( counters, counterType ) {
-    const PatreonButton = <StyledLinkButton href="https://patreon.com/saiastrange" className="btn w-100">
-        Become a Patron
+    const PatreonButton = <StyledLinkButton tag={RRNavLink} exact to="/login" className="btn w-100">
+        Log In
       </StyledLinkButton>;
 
     return counters && counters.map(( x, i ) => {

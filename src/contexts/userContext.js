@@ -85,8 +85,8 @@ export function AuthProvider( { children } ) {
 
         setUserInfo( {
           allyCode: ally_code.toString(),
-          guildId: guild_id.toString() || '',
-          guildName: guild_name || '',
+          guildId: guild_id ? guild_id.toString() : '',
+          guildName: guild_name ? guild_name.toString() : '',
           username: name,
         } );
         return res.data;

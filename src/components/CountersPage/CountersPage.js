@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
 import React, {
   memo, useContext, useEffect, useState,
 } from 'react';
@@ -21,7 +23,6 @@ import ColorIndicator from './ColorIndicator';
 import CountersPageRow from './CountersPageRow';
 import SortBox from './SortBox';
 import { CountersPageWrapper } from './style';
-import tips from './tips';
 
 const isSnap = navigator.userAgent === 'ReactSnap';
 
@@ -62,7 +63,6 @@ const CountersPage = ( {
     checkForRedirect();
   }, [ history, user, user.accessToken, user.patreonId ] );
 
-  // TODO: add an effect to remove stale stubs - ones that have been removed from the leaderList
   useEffect(() => {
     const abortController = new AbortController();
     const opts = { signal: abortController.signal };
@@ -135,7 +135,7 @@ const CountersPage = ( {
                   view={view}
                 />
             </div>
-            {isRestricted && isAdRow && toggleAd( _.sample( inFeedAdSlots ))}
+            {isAdRow && toggleAd( _.sample( inFeedAdSlots ))}
           </div>
         </LazyLoad>
       );
@@ -157,11 +157,12 @@ const CountersPage = ( {
       <CountersPageWrapper>
         {
           <Alert color="danger">
-            In light of the news that swgoh.gg is discontinuing their public API, I'm forced to discontinue support for swgohcounters.com.  More details can be found on my Discord or Patreon.
+            In light of the news that swgoh.gg is discontinuing their public API, I'm forced to discontinue support for swgohcounters.com.  More details can be found on my Discord or Patreon. <br/><br/>
+            I'm working to the keep a snapshot of this site up, so you may experience issues during the process.
           </Alert>
         }
-        {!isActivePatron && <PatreonButton />}
-        {isRestricted && toggleAd( '2779553573' )}
+        {/* {!isActivePatron && <PatreonButton />} */}
+        {toggleAd( '2779553573' )}
 
         <ColorIndicator />
         <div>
@@ -208,9 +209,9 @@ const CountersPage = ( {
           {buildCountersPageRows || ''}
         </div>
 
-        <footer className="mb-3">
-          {!isActivePatron && <PatreonButton />}
-        </footer>
+        {/* <footer className="mb-3"> */}
+          {/* {!isActivePatron && <PatreonButton />} */}
+        {/* </footer> */}
       </CountersPageWrapper>
     </ContainerColumn>
   );

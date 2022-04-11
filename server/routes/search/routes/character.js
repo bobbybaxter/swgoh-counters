@@ -2,7 +2,7 @@
 module.exports = ( { data, server } ) => ( {
   method: 'POST',
   path: '/search/character',
-  preValidation: server.auth( [ server.firebaseAuth ] ),
+  // preValidation: server.auth( [ server.firebaseAuth ] ),
   handler: async ( request, reply ) => {
     const { body } = request;
     return await data.character( body );
