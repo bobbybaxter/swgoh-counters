@@ -1,0 +1,3074 @@
+{
+  "normal": [
+    {
+      "toon1Id": "ASAJVENTRESS",
+      "toon1Name": "Asajj Ventress",
+      "squads": [
+        {
+          "id": "jPuE83U9U4XTjC6cPVaRk",
+          "name": "Asajj L",
+          "toon1Id": "ASAJVENTRESS",
+          "toon1Name": "Asajj Ventress",
+          "toon2Id": "DAKA",
+          "toon2Name": "Old Daka",
+          "toon3Id": "MOTHERTALZIN",
+          "toon3Name": "Mother Talzin",
+          "toon4Id": "NIGHTSISTERSPIRIT",
+          "toon4Name": "Nightsister Spirit",
+          "toon5Id": "NIGHTSISTERZOMBIE",
+          "toon5Name": "Nightsister Zombie",
+          "description": "Infinite revives potential with Nightsister Zombie, damage through protection, healing, and cleansing.",
+          "generalStrategy": "Avoid Nightsister Zombie's constant taunting [dispel / buff immunity] or work around it [strong AoEs].  Having healers or high health steal is effective.  You want to kill Old Daka 3 times (to stop the auto revives and her revives), kill Mother Talzin, then kill Asajj Ventress (because she's more powerful now due to the deaths).  If no Enfys Nest, then kill whichever 4th character is used, then finally Nightsister Zombie.  If 4th is Nightsister Acolyte, you definitely want a dispeller or you can easily get caught between her stealth and Nightsister Zombie's taunt.  If Enfys Nest, save her for last.",
+          "latestVersionId": "6OufIsl24MkaLmaZvzvMF",
+          "createdOn": "2021-06-19T20:46:56.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        15
+      ]
+    },
+    {
+      "toon1Id": "BASTILASHAN",
+      "toon1Name": "Bastila Shan",
+      "squads": [
+        {
+          "id": "2BveEn0Tx_XhiuaidfL7n",
+          "name": "Bastila L 3.0",
+          "toon1Id": "BASTILASHAN",
+          "toon1Name": "Bastila Shan",
+          "toon2Id": "GRANDMASTERLUKE",
+          "toon2Name": "Jedi Master Luke Skywalker",
+          "toon3Id": "HERMITYODA",
+          "toon3Name": "Hermit Yoda",
+          "toon4Id": "JEDIKNIGHTLUKE",
+          "toon4Name": "Jedi Knight Luke Skywalker",
+          "toon5Id": "WATTAMBOR",
+          "toon5Name": "Wat Tambor",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "X36K7mD8k7uTWWgxO1mUv",
+          "createdOn": "2021-03-01T18:53:49.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        10
+      ]
+    },
+    {
+      "toon1Id": "BOKATAN",
+      "toon1Name": "Bo-Katan Kryze",
+      "squads": [
+        {
+          "id": "XQREKu-Ph6VpE9K1rzW1t",
+          "name": "",
+          "toon1Id": "BOKATAN",
+          "toon1Name": "Bo-Katan Kryze",
+          "toon2Id": "CANDEROUSORDO",
+          "toon2Name": "Canderous Ordo",
+          "toon3Id": "GARSAXON",
+          "toon3Name": "Gar Saxon",
+          "toon4Id": "IMPERIALSUPERCOMMANDO",
+          "toon4Name": "Imperial Super Commando",
+          "toon5Id": "SABINEWRENS3",
+          "toon5Name": "Sabine Wren",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "4BfztU2Btm1OJ-NE9aFil",
+          "createdOn": "2021-06-19T21:52:36.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        10
+      ]
+    },
+    {
+      "toon1Id": "BOSSK",
+      "toon1Name": "Bossk",
+      "squads": [
+        {
+          "id": "97v-e4q7JEPlYXeAWzQwR",
+          "name": "",
+          "toon1Id": "BOSSK",
+          "toon1Name": "Bossk",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "DENGAR",
+          "toon3Name": "Dengar",
+          "toon4Id": "JANGOFETT",
+          "toon4Name": "Jango Fett",
+          "toon5Id": "ZAMWESELL",
+          "toon5Name": "Zam Wesell",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "eOguY9ZsjNgDWNfOlTmgD",
+          "createdOn": "2021-06-19T20:46:59.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "FOQnGp5Ydb3yncrgkCToE",
+          "name": "Bossk L 1.0",
+          "toon1Id": "BOSSK",
+          "toon1Name": "Bossk",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "GREEFKARGA",
+          "toon3Name": "Greef Karga",
+          "toon4Id": "JANGOFETT",
+          "toon4Name": "Jango Fett",
+          "toon5Id": "THEMANDALORIAN",
+          "toon5Name": "The Mandalorian",
+          "description": "Bossk's leadership gives all Bounty Hunters extra protection, tenacity, and defense (while at full health). They recover health and protection when an enemy suffers or resists a debuff. When they fulfill their contract, all Bounty Hunters gain +50 speed for the rest of the battle on top of their own payouts.",
+          "generalStrategy": "Bossk's contract is exploitable. They need to damage the weakest enemy 10 times, so you can slow this down using taunters.\n\nYou'll want to deal with Bossk by having someone that can either dispel his taunt or apply ability block/buff immunity before he can taunt.\n\nYou'll need good single target damage because this team will heal frequently and the Fetts will revive, so you'll need to kill them twice.\n\nIf Greef is part of the team, need to account for his initial Stealth and the mass debuff cleanse, tenacity up and 50% TM gain on his third special, which can neutralize RJT led teams.\n\nKill order: Boba Fett, Jango Fett, and other Bounty Hunters, Bossk, then Dengar last (because he'll probably be in stealth until the end).",
+          "latestVersionId": "lUtgX-F5vqORDfV-gMe6a",
+          "createdOn": "2021-04-09T17:37:34.000Z",
+          "createdById": "HsxCKDZcxQadPzl3f9wLJ8Gik1f2",
+          "createdByName": "Gnervous"
+        }
+      ],
+      "counterVersion": [
+        14,
+        4
+      ]
+    },
+    {
+      "toon1Id": "CT7567",
+      "toon1Name": "CT-7567 \"Rex\"",
+      "squads": [
+        {
+          "id": "plMr02zXE9vdZSnuVZGKd",
+          "name": "Rex L w/ Barriss",
+          "toon1Id": "CT7567",
+          "toon1Name": "CT-7567 \"Rex\"",
+          "toon2Id": "ARCTROOPER501ST",
+          "toon2Name": "ARC Trooper",
+          "toon3Id": "BARRISSOFFEE",
+          "toon3Name": "Barriss Offee",
+          "toon4Id": "CT210408",
+          "toon4Name": "CT-21-0408 \"Echo\"",
+          "toon5Id": "CT5555",
+          "toon5Name": "CT-5555 \"Fives\"",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "YjiG-yQpJ9Jd2R0_YT7zD",
+          "createdOn": "2021-02-08T14:53:52.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        8
+      ]
+    },
+    {
+      "toon1Id": "PHASMA",
+      "toon1Name": "Captain Phasma",
+      "squads": [
+        {
+          "id": "2JPQ8hngSBjivE4nRGiQV",
+          "name": "Phasma L 1.0",
+          "toon1Id": "PHASMA",
+          "toon1Name": "Captain Phasma",
+          "toon2Id": "FIRSTORDEREXECUTIONER",
+          "toon2Name": "First Order Executioner",
+          "toon3Id": "FIRSTORDEROFFICERMALE",
+          "toon3Name": "First Order Officer",
+          "toon4Id": "FIRSTORDERSPECIALFORCESPILOT",
+          "toon4Name": "First Order SF TIE Pilot",
+          "toon5Id": "KYLOREN",
+          "toon5Name": "Kylo Ren",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ILY00FgBcPiab7wUbesD4",
+          "createdOn": "2021-02-28T04:34:40.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        11
+      ]
+    },
+    {
+      "toon1Id": "CARTHONASI",
+      "toon1Name": "Carth Onasi",
+      "squads": [
+        {
+          "id": "Bs5A-VvNQI-sonJ5fNA13",
+          "name": "Carth L",
+          "toon1Id": "CARTHONASI",
+          "toon1Name": "Carth Onasi",
+          "toon2Id": "CANDEROUSORDO",
+          "toon2Name": "Canderous Ordo",
+          "toon3Id": "JUHANI",
+          "toon3Name": "Juhani",
+          "toon4Id": "MISSIONVAO",
+          "toon4Name": "Mission Vao",
+          "toon5Id": "ZAALBAR",
+          "toon5Name": "Zaalbar",
+          "description": "Lot of damage over time and nice bonus synergy shared between each other [offense, tenacity, assists and defense/crit avoidance, protection recovery].",
+          "generalStrategy": "Stop the damage over time from spreading, dispel Zaalbar frequently from his taunt to focus on attackers/support first.  Can't rely on debuffs/have really high potency (Bastila Shan (Fallen) and Carth will have 80% tenacity, rest 30%).  Bypass the crit avoidance (Zaalbar+Mission have 55% Crit Avoidance, rest 30%).  Use their slow speed against them with turn meter gain, you should have speed advantage.  Kill order: Canderous Ordo, Carth Onasi or Mission Vao.",
+          "latestVersionId": "2QwwWBDgQMumlXwc2vWa1",
+          "createdOn": "2021-06-19T20:46:59.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        10
+      ]
+    },
+    {
+      "toon1Id": "CHIEFCHIRPA",
+      "toon1Name": "Chief Chirpa",
+      "squads": [
+        {
+          "id": "doSrQv66wooWiMN1TSmvT",
+          "name": "Ewoks",
+          "toon1Id": "CHIEFCHIRPA",
+          "toon1Name": "Chief Chirpa",
+          "toon2Id": "EWOKELDER",
+          "toon2Name": "Ewok Elder",
+          "toon3Id": "LOGRAY",
+          "toon3Name": "Logray",
+          "toon4Id": "PAPLOO",
+          "toon4Name": "Paploo",
+          "toon5Id": "WICKET",
+          "toon5Name": "Wicket",
+          "description": "Crit team with lot of assists, buffs, and usually daze and revive. High TM gain from Chief Chirpa's zeta lead.",
+          "generalStrategy": "",
+          "latestVersionId": "bFx5SjP09x_VJarMzxyW4",
+          "createdOn": "2021-06-19T20:47:00.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        15
+      ]
+    },
+    {
+      "toon1Id": "CHIEFNEBIT",
+      "toon1Name": "Chief Nebit",
+      "squads": [
+        {
+          "id": "AGi8k4g8bID-VAksI6K4V",
+          "name": "Jawas",
+          "toon1Id": "CHIEFNEBIT",
+          "toon1Name": "Chief Nebit",
+          "toon2Id": "DATHCHA",
+          "toon2Name": "Dathcha",
+          "toon3Id": "JAWA",
+          "toon3Name": "Jawa",
+          "toon4Id": "JAWAENGINEER",
+          "toon4Name": "Jawa Engineer",
+          "toon5Id": "JAWASCAVENGER",
+          "toon5Name": "Jawa Scavenger",
+          "description": "High damage if using IG-86 or IG-88,  turn meter gain, crit chance/damage gain, and healing from Jawa Engineer.",
+          "generalStrategy": "Daze and AoE, having crit avoidance.  Kill Jawa Engineer first, then IG-88, then the rest.",
+          "latestVersionId": "GwJbNPdx1v6IUdTy1UHCv",
+          "createdOn": "2021-06-19T20:47:00.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        9
+      ]
+    },
+    {
+      "toon1Id": "COMMANDERLUKESKYWALKER",
+      "toon1Name": "Commander Luke Skywalker",
+      "squads": [
+        {
+          "id": "ZFJmisWeFi1Sa0gcj8LRG",
+          "name": "CLS L 2.0",
+          "toon1Id": "COMMANDERLUKESKYWALKER",
+          "toon1Name": "Commander Luke Skywalker",
+          "toon2Id": "C3POCHEWBACCA",
+          "toon2Name": "Threepio & Chewie",
+          "toon3Id": "C3POLEGENDARY",
+          "toon3Name": "C-3PO",
+          "toon4Id": "CHEWBACCALEGENDARY",
+          "toon4Name": "Chewbacca",
+          "toon5Id": "HANSOLO",
+          "toon5Name": "Han Solo",
+          "description": "Primary members are Threepio & Chewie, Chewbacca, and Han Solo.\n\nRebel squad with high Counter Attack chance, high Crit Chance and Crit Damage, frequent assists, deal a lot of debuffs, start the battle with crippling attacks, and require a specific kill order.",
+          "generalStrategy": "\n- avoid using AoE attacks\n- follow the kill order:\n  - Threepio & Chewie\n  - Chewbacca\n  - Han Solo\n  - Commander Luke Skywalker",
+          "latestVersionId": "sjK_SUAMn0v1i86kV6kkX",
+          "createdOn": "2021-12-18T21:02:36.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        15
+      ]
+    },
+    {
+      "toon1Id": "COUNTDOOKU",
+      "toon1Name": "Count Dooku",
+      "squads": [
+        {
+          "id": "Q7BBxGyS_njYcV3OcLx0S",
+          "name": "",
+          "toon1Id": "COUNTDOOKU",
+          "toon1Name": "Count Dooku",
+          "toon2Id": "DROIDEKA",
+          "toon2Name": "Droideka",
+          "toon3Id": "ENFYSNEST",
+          "toon3Name": "Enfys Nest",
+          "toon4Id": "JANGOFETT",
+          "toon4Name": "Jango Fett",
+          "toon5Id": "WAMPA",
+          "toon5Name": "Wampa",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "xwrzV26lZZn7XCzcs2VTB",
+          "createdOn": "2021-06-19T20:47:01.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        12
+      ]
+    },
+    {
+      "toon1Id": "MAUL",
+      "toon1Name": "Darth Maul",
+      "squads": [
+        {
+          "id": "lt9uBYLnagoOdmGHrA4x9",
+          "name": "",
+          "toon1Id": "MAUL",
+          "toon1Name": "Darth Maul",
+          "toon2Id": "BASTILASHANDARK",
+          "toon2Name": "Bastila Shan (Fallen)",
+          "toon3Id": "DARTHMALAK",
+          "toon3Name": "Darth Malak",
+          "toon4Id": "DARTHREVAN",
+          "toon4Name": "Darth Revan",
+          "toon5Id": "SITHMARAUDER",
+          "toon5Name": "Sith Marauder",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "NmSRjXOQB2KKTp1FTBeff",
+          "createdOn": "2021-06-19T20:50:26.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        26
+      ]
+    },
+    {
+      "toon1Id": "DARTHREVAN",
+      "toon1Name": "Darth Revan",
+      "squads": [
+        {
+          "id": "djtfCavUsnN0P25xTZKDn",
+          "name": "DR L 3.0",
+          "toon1Id": "DARTHREVAN",
+          "toon1Name": "Darth Revan",
+          "toon2Id": "BASTILASHANDARK",
+          "toon2Name": "Bastila Shan (Fallen)",
+          "toon3Id": "DARTHMALAK",
+          "toon3Name": "Darth Malak",
+          "toon4Id": "SITHMARAUDER",
+          "toon4Name": "Sith Marauder",
+          "toon5Id": "SITHTROOPER",
+          "toon5Name": "Sith Empire Trooper",
+          "description": "Sith Empire are a debuff heavy squad with powerful Turn Meter manipulation mechanics, perks when defeating an enemy leader, and they gradually become more powerful throughout the battle.",
+          "generalStrategy": "You'll want a squad that can withstand the Turn Meter loss, frequent debuffs, and double Taunt.  Based on your counter squad, you'll either want to defeat Bastila Shan (Fallen) or HK-47 first.",
+          "latestVersionId": "3oFG5niEDpuAQMIvnZIEW",
+          "createdOn": "2022-01-07T15:26:04.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "jltJi5h_vZ1vFrVyHLfHQ",
+          "name": "",
+          "toon1Id": "DARTHREVAN",
+          "toon1Name": "Darth Revan",
+          "toon2Id": "BASTILASHANDARK",
+          "toon2Name": "Bastila Shan (Fallen)",
+          "toon3Id": "DARTHMALAK",
+          "toon3Name": "Darth Malak",
+          "toon4Id": "DARTHTALON",
+          "toon4Name": "Darth Talon",
+          "toon5Id": "SITHMARAUDER",
+          "toon5Name": "Sith Marauder",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "J6fMyyMzKgU7p0g67AQvE",
+          "createdOn": "2022-01-12T22:41:05.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "y_QQEGvxjVneN2qHzudnf",
+          "name": "DR L 2.0",
+          "toon1Id": "DARTHREVAN",
+          "toon1Name": "Darth Revan",
+          "toon2Id": "BASTILASHANDARK",
+          "toon2Name": "Bastila Shan (Fallen)",
+          "toon3Id": "DARTHMALAK",
+          "toon3Name": "Darth Malak",
+          "toon4Id": "HK47",
+          "toon4Name": "HK-47",
+          "toon5Id": "SITHMARAUDER",
+          "toon5Name": "Sith Marauder",
+          "description": "Sith Empire are a debuff heavy squad with powerful Turn Meter manipulation mechanics, perks when defeating an enemy leader, and they gradually become more powerful throughout the battle.",
+          "generalStrategy": "You'll want a squad that can withstand the Turn Meter loss and frequent debuffs.  Based on your counter squad, you'll either want to defeat Bastila Shan (Fallen) or HK-47 first.\n\nKill order:  Bastila Shan (Fallen) or HK-47, Darth Revan, Darth Malak, Sith Marauder",
+          "latestVersionId": "-vlrVm9oq78F2-MoA1TCG",
+          "createdOn": "2022-01-07T15:24:44.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        10,
+        3,
+        9
+      ]
+    },
+    {
+      "toon1Id": "DARTHTRAYA",
+      "toon1Name": "Darth Traya",
+      "squads": [
+        {
+          "id": "c-TaqicJ2PPEL677UoPS5",
+          "name": "Traya L 5.0 w/ Sidious and Maul",
+          "toon1Id": "DARTHTRAYA",
+          "toon1Name": "Darth Traya",
+          "toon2Id": "DARTHNIHILUS",
+          "toon2Name": "Darth Nihilus",
+          "toon3Id": "DARTHSIDIOUS",
+          "toon3Name": "Darth Sidious",
+          "toon4Id": "DARTHSION",
+          "toon4Name": "Darth Sion",
+          "toon5Id": "MAUL",
+          "toon5Name": "Darth Maul",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "Z51AlYwF8bXjp4T8VxE1k",
+          "createdOn": "2021-02-27T19:44:52.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "W6pitTZZQ112k6CkBGXk9",
+          "name": "Traya L 2.0",
+          "toon1Id": "DARTHTRAYA",
+          "toon1Name": "Darth Traya",
+          "toon2Id": "DARTHNIHILUS",
+          "toon2Name": "Darth Nihilus",
+          "toon3Id": "DARTHSION",
+          "toon3Name": "Darth Sion",
+          "toon4Id": "EMPERORPALPATINE",
+          "toon4Name": "Emperor Palpatine",
+          "toon5Id": "VADER",
+          "toon5Name": "Darth Vader",
+          "description": "Primary members are Darth Nihilus, Darth Sion, and Darth Vader.",
+          "generalStrategy": "",
+          "latestVersionId": "wQzsUVtsxQxwdt6ppT6Ez",
+          "createdOn": "2021-06-19T20:47:04.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        5,
+        7
+      ]
+    },
+    {
+      "toon1Id": "DASHRENDAR",
+      "toon1Name": "Dash Rendar",
+      "squads": [
+        {
+          "id": "5AjWN8_XLI9qYSz8zpZin",
+          "name": "",
+          "toon1Id": "DASHRENDAR",
+          "toon1Name": "Dash Rendar",
+          "toon2Id": "L3_37",
+          "toon2Name": "L3-37",
+          "toon3Id": "QIRA",
+          "toon3Name": "Qi'ra",
+          "toon4Id": "YOUNGCHEWBACCA",
+          "toon4Name": "Vandor Chewbacca",
+          "toon5Id": "YOUNGHAN",
+          "toon5Name": "Young Han Solo",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "_C3Cj6fAd4hTf8rhAyHVO",
+          "createdOn": "2022-01-12T22:41:17.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        15
+      ]
+    },
+    {
+      "toon1Id": "EMPERORPALPATINE",
+      "toon1Name": "Emperor Palpatine",
+      "squads": [
+        {
+          "id": "a6NdBZt_3khZjqNsYPdWo",
+          "name": "",
+          "toon1Id": "EMPERORPALPATINE",
+          "toon1Name": "Emperor Palpatine",
+          "toon2Id": "MARAJADE",
+          "toon2Name": "Mara Jade, The Emperor's Hand",
+          "toon3Id": "OLDBENKENOBI",
+          "toon3Name": "Obi-Wan Kenobi (Old Ben)",
+          "toon4Id": "STARKILLER",
+          "toon4Name": "Starkiller",
+          "toon5Id": "VISASMARR",
+          "toon5Name": "Visas Marr",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "0bzBR0fkHehkJ9RN3uCez",
+          "createdOn": "2022-01-12T22:41:29.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "oUhd-ZZZlEjlcW1UvrHVn",
+          "name": "EP L 1.0 w/ Vader",
+          "toon1Id": "EMPERORPALPATINE",
+          "toon1Name": "Emperor Palpatine",
+          "toon2Id": "DARTHNIHILUS",
+          "toon2Name": "Darth Nihilus",
+          "toon3Id": "DARTHSION",
+          "toon3Name": "Darth Sion",
+          "toon4Id": "DARTHTRAYA",
+          "toon4Name": "Darth Traya",
+          "toon5Id": "VADER",
+          "toon5Name": "Darth Vader",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "2sPvag-R_rSk6sOGiugdw",
+          "createdOn": "2021-06-20T17:11:05.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        6,
+        7
+      ]
+    },
+    {
+      "toon1Id": "FINN",
+      "toon1Name": "Finn",
+      "squads": [
+        {
+          "id": "avZvF_CNUY6Le6txTIEnu",
+          "name": "",
+          "toon1Id": "FINN",
+          "toon1Name": "Finn",
+          "toon2Id": "POE",
+          "toon2Name": "Poe Dameron",
+          "toon3Id": "RESISTANCEPILOT",
+          "toon3Name": "Resistance Pilot",
+          "toon4Id": "RESISTANCETROOPER",
+          "toon4Name": "Resistance Trooper",
+          "toon5Id": "ROSETICO",
+          "toon5Name": "Rose Tico",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "N_nkNog0pJAFrhbNi2NN9",
+          "createdOn": "2021-06-19T20:47:06.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "bcYXwJJIdW19kLeVpRp63",
+          "name": "Finn L 2.0",
+          "toon1Id": "FINN",
+          "toon1Name": "Finn",
+          "toon2Id": "POE",
+          "toon2Name": "Poe Dameron",
+          "toon3Id": "RESISTANCETROOPER",
+          "toon3Name": "Resistance Trooper",
+          "toon4Id": "SMUGGLERCHEWBACCA",
+          "toon4Name": "Veteran Smuggler Chewbacca",
+          "toon5Id": "SMUGGLERHAN",
+          "toon5Name": "Veteran Smuggler Han Solo",
+          "description": "Primary members are Poe Dameron, Veteran Smuggler Chewbacca, and Veteran Smuggler Han Solo.",
+          "generalStrategy": "",
+          "latestVersionId": "C4bW8vDSv6GjvFB4GWoOL",
+          "createdOn": "2021-02-28T18:17:00.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "dZVds8KCBRD6E8Hedvgoq",
+          "name": "Finn L 1.0",
+          "toon1Id": "FINN",
+          "toon1Name": "Finn",
+          "toon2Id": "EPIXFINN",
+          "toon2Name": "Resistance Hero Finn",
+          "toon3Id": "EPIXPOE",
+          "toon3Name": "Resistance Hero Poe",
+          "toon4Id": "SMUGGLERCHEWBACCA",
+          "toon4Name": "Veteran Smuggler Chewbacca",
+          "toon5Id": "SMUGGLERHAN",
+          "toon5Name": "Veteran Smuggler Han Solo",
+          "description": "Primary members are Resistance Hero Poe, Veteran Smuggler Chewbacca, and Veteran Smuggler Han Solo.",
+          "generalStrategy": "",
+          "latestVersionId": "ITVVNtHwoJBqhsVjq-VVB",
+          "createdOn": "2021-02-28T18:08:17.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        18,
+        9
+      ]
+    },
+    {
+      "toon1Id": "GRIEVOUS",
+      "toon1Name": "General Grievous",
+      "squads": [
+        {
+          "id": "A0c1gtPGGsv4W5mae500d",
+          "name": "GG L w/ Nute",
+          "toon1Id": "GRIEVOUS",
+          "toon1Name": "General Grievous",
+          "toon2Id": "B1BATTLEDROIDV2",
+          "toon2Name": "B1 Battle Droid",
+          "toon3Id": "B2SUPERBATTLEDROID",
+          "toon3Name": "B2 Super Battle Droid",
+          "toon4Id": "MAGNAGUARD",
+          "toon4Name": "IG-100 MagnaGuard",
+          "toon5Id": "NUTEGUNRAY",
+          "toon5Name": "Nute Gunray",
+          "description": "Separatist debuff team, specifically focusing on the use of Target Lock.  Nute Gunray is substituted in for Droideka to further weaken the enemy and strengthen his allies with his Extortion mechanic.",
+          "generalStrategy": "\n- use a squad that can easily resist or cleanse debuffs\n- target B2 Super Battle Droid first\n- target Grievous second, if possible",
+          "latestVersionId": "Ep-Doc7IxqaJW5SkSG_NK",
+          "createdOn": "2021-12-18T21:44:19.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "VAYVY2SeAvjmLaFJJ5_r3",
+          "name": "GG L (Sep Droids)",
+          "toon1Id": "GRIEVOUS",
+          "toon1Name": "General Grievous",
+          "toon2Id": "B1BATTLEDROIDV2",
+          "toon2Name": "B1 Battle Droid",
+          "toon3Id": "B2SUPERBATTLEDROID",
+          "toon3Name": "B2 Super Battle Droid",
+          "toon4Id": "DROIDEKA",
+          "toon4Name": "Droideka",
+          "toon5Id": "MAGNAGUARD",
+          "toon5Name": "IG-100 MagnaGuard",
+          "description": "Separatist debuff team, specifically focusing on the use of Target Lock.",
+          "generalStrategy": "\n- use a squad that can easily resist or cleanse debuffs\n- target B2 Super Battle Droid first\n- target Grievous second, if possible",
+          "latestVersionId": "kOW5MPP4OhQdbwtqvxBEa",
+          "createdOn": "2021-12-18T21:44:51.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        12,
+        19
+      ]
+    },
+    {
+      "toon1Id": "GENERALHUX",
+      "toon1Name": "General Hux",
+      "squads": [
+        {
+          "id": "DPZttVLBWC9vY0qupiqJ7",
+          "name": "Hux L 1.0",
+          "toon1Id": "GENERALHUX",
+          "toon1Name": "General Hux",
+          "toon2Id": "FIRSTORDEREXECUTIONER",
+          "toon2Name": "First Order Executioner",
+          "toon3Id": "FOSITHTROOPER",
+          "toon3Name": "Sith Trooper",
+          "toon4Id": "KYLOREN",
+          "toon4Name": "Kylo Ren",
+          "toon5Id": "KYLORENUNMASKED",
+          "toon5Name": "Kylo Ren (Unmasked)",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "i4YQVBb6F38k-dmsr-R5o",
+          "createdOn": "2021-02-07T23:11:03.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "rj-jjCvu-khilc8SxjioN",
+          "name": "Hux L 2.0",
+          "toon1Id": "GENERALHUX",
+          "toon1Name": "General Hux",
+          "toon2Id": "FIRSTORDERTROOPER",
+          "toon2Name": "First Order Stormtrooper",
+          "toon3Id": "FOSITHTROOPER",
+          "toon3Name": "Sith Trooper",
+          "toon4Id": "KYLOREN",
+          "toon4Name": "Kylo Ren",
+          "toon5Id": "KYLORENUNMASKED",
+          "toon5Name": "Kylo Ren (Unmasked)",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "qMVYwQgwPjL4g65-I91FR",
+          "createdOn": "2021-02-07T23:13:48.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        11,
+        19
+      ]
+    },
+    {
+      "toon1Id": "GENERALSKYWALKER",
+      "toon1Name": "General Skywalker",
+      "squads": [
+        {
+          "id": "bBuFtTnwso7t0kMH-oh7B",
+          "name": "GS L",
+          "toon1Id": "GENERALSKYWALKER",
+          "toon1Name": "General Skywalker",
+          "toon2Id": "ARCTROOPER501ST",
+          "toon2Name": "ARC Trooper",
+          "toon3Id": "CT210408",
+          "toon3Name": "CT-21-0408 \"Echo\"",
+          "toon4Id": "CT5555",
+          "toon4Name": "CT-5555 \"Fives\"",
+          "toon5Id": "CT7567",
+          "toon5Name": "CT-7567 \"Rex\"",
+          "description": "General Skywalker's leadership uses the Advance and Cover mechanics.  In Advance, if GAS has 501st allies, they can't lose health and he gets an undispellable taunt until his protection is dropped to 0%.  With 501st allies present and GAS's protection at 0%, then he goes into Cover where he can't be targeted and is immune to damage and status effects.",
+          "generalStrategy": "Ideally, you want to knock down General Skywalker by dropping his protection to 0%, then take out the clones before he returns from Cover.<br/><br/>\n\nTry to defeat CT-5555 \"Fives\" first.  Or else, he will sacrifice himself with his Tactical Awareness zeta, which will buff the remaining 501st Clone Troopers and may make it impossible to defeat the remaining allies before GAS returns from his first round of Cover.  Next take out CT-7567 \"Rex\" before he can get a big hit with Aerial Advantage., CT-24-0408 \"Echo\", the last ally, then General Skywalker last.<br/><br/>\n\nKill order: Fives, Rex, Echo, last ally, GAS",
+          "latestVersionId": "rV1S0n7BbggYPZ7IjZM7m",
+          "createdOn": "2021-06-19T20:47:08.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        14
+      ]
+    },
+    {
+      "toon1Id": "VEERS",
+      "toon1Name": "General Veers",
+      "squads": [
+        {
+          "id": "POYXoTV_PYkFJJ7v5dda9",
+          "name": "IT 1.0 w/ Gideon and Range",
+          "toon1Id": "VEERS",
+          "toon1Name": "General Veers",
+          "toon2Id": "ADMIRALPIETT",
+          "toon2Name": "Admiral Piett",
+          "toon3Id": "COLONELSTARCK",
+          "toon3Name": "Colonel Starck",
+          "toon4Id": "MOFFGIDEONS1",
+          "toon4Name": "Moff Gideon",
+          "toon5Id": "RANGETROOPER",
+          "toon5Name": "Range Trooper",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "rAdL9cBmjkYPnY6sCEZaO",
+          "createdOn": "2021-02-08T17:58:11.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        10
+      ]
+    },
+    {
+      "toon1Id": "GEONOSIANBROODALPHA",
+      "toon1Name": "Geonosian Brood Alpha",
+      "squads": [
+        {
+          "id": "Q57fFjLEO1iuwLsJCuwos",
+          "name": "Geos",
+          "toon1Id": "GEONOSIANBROODALPHA",
+          "toon1Name": "Geonosian Brood Alpha",
+          "toon2Id": "GEONOSIANSOLDIER",
+          "toon2Name": "Geonosian Soldier",
+          "toon3Id": "GEONOSIANSPY",
+          "toon3Name": "Geonosian Spy",
+          "toon4Id": "POGGLETHELESSER",
+          "toon4Name": "Poggle the Lesser",
+          "toon5Id": "SUNFAC",
+          "toon5Name": "Sun Fac",
+          "description": "Separatist squad that relies heavily on assists and can deal substantial damage to a single target.  They have increased Max Health and Protection, Health Steal, and they equalize their Health and Protection across the team whenever an enemy uses an ability.",
+          "generalStrategy": "\n- use a counter that can\n  - handle high amount of assists\n  - handle heavy single-target damage\n  - handle getting around a persistent Taunt\n  - can put out enough damage to work through extra Health and Protection, Health Steal, and Health and Protection recovery and equalization\n- target Geonosian Brood Alpha first\n- target Geonosian Spy second",
+          "latestVersionId": "IJzcmcMPOJTHj1E7jfWEZ",
+          "createdOn": "2021-12-18T21:38:57.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        32
+      ]
+    },
+    {
+      "toon1Id": "HERASYNDULLAS3",
+      "toon1Name": "Hera Syndulla",
+      "squads": [
+        {
+          "id": "CVplS7WrafMTGEAq-BDq3",
+          "name": "",
+          "toon1Id": "HERASYNDULLAS3",
+          "toon1Name": "Hera Syndulla",
+          "toon2Id": "CHOPPERS3",
+          "toon2Name": "Chopper",
+          "toon3Id": "KANANJARRUSS3",
+          "toon3Name": "Kanan Jarrus",
+          "toon4Id": "SABINEWRENS3",
+          "toon4Name": "Sabine Wren",
+          "toon5Id": "ZEBS3",
+          "toon5Name": "Garazeb \"Zeb\" Orrelios",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "s4dcDDXysnOCy14cY2irJ",
+          "createdOn": "2021-06-19T20:47:10.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "Wbz7SqY-CV8Mb1BQ8D5wi",
+          "name": "Phoenix 1.0 w/ Ezra",
+          "toon1Id": "HERASYNDULLAS3",
+          "toon1Name": "Hera Syndulla",
+          "toon2Id": "EZRABRIDGERS3",
+          "toon2Name": "Ezra Bridger",
+          "toon3Id": "KANANJARRUSS3",
+          "toon3Name": "Kanan Jarrus",
+          "toon4Id": "SABINEWRENS3",
+          "toon4Name": "Sabine Wren",
+          "toon5Id": "ZEBS3",
+          "toon5Name": "Garazeb \"Zeb\" Orrelios",
+          "description": "High synergy team with a lot of counter attacking, dispelling (or loving the debuffs), and HP + protection recovery. Be careful with G12 zeta Phoenix, use equally geared zeta'd teams.",
+          "generalStrategy": "Avoid getting countered [daze or attacking from stealth/assists]. Deal good damage in a single turn that surpasses their heals (calling assist/simply high damage/high turn meter gain).  There's no point in debuffing because of Kanan's unique (besides Daze/Stun).  Focus on one character at a time to remove the unique ability they are sharing with the team.  Killing Chopper removes health/protection regeneration.  Killing Ezra removes stacking offense up.  Killing Sabine removes increased crit chance and crit damage.  Killing Kanan removes counter chance and health regen on debuff.  Killing Zeb removes protection regen.  Killing Hera removes turn meter gain on using special ability.",
+          "latestVersionId": "HqD2atJvYyDTHYVZQCXKf",
+          "createdOn": "2021-06-19T20:47:10.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        6,
+        8
+      ]
+    },
+    {
+      "toon1Id": "BADBATCHHUNTER",
+      "toon1Name": "Hunter",
+      "squads": [
+        {
+          "id": "-BClrAUhfbk1b2khMJfcp",
+          "name": "",
+          "toon1Id": "BADBATCHHUNTER",
+          "toon1Name": "Hunter",
+          "toon2Id": "BADBATCHECHO",
+          "toon2Name": "Echo",
+          "toon3Id": "BADBATCHTECH",
+          "toon3Name": "Tech",
+          "toon4Id": "BADBATCHWRECKER",
+          "toon4Name": "Wrecker",
+          "toon5Id": "CC2224",
+          "toon5Name": "CC-2224 \"Cody\"",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "S1hjZ7CEaHMJsQvYzDRej",
+          "createdOn": "2021-06-19T21:52:26.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "iaV8Lb4DARerLekqJAF6Z",
+          "name": "",
+          "toon1Id": "BADBATCHHUNTER",
+          "toon1Name": "Hunter",
+          "toon2Id": "BADBATCHECHO",
+          "toon2Name": "Echo",
+          "toon3Id": "BADBATCHOMEGA",
+          "toon3Name": "Omega",
+          "toon4Id": "BADBATCHTECH",
+          "toon4Name": "Tech",
+          "toon5Id": "BADBATCHWRECKER",
+          "toon5Name": "Wrecker",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ZQUt_iQNsqI2UtO3w2eG2",
+          "createdOn": "2021-08-31T19:10:22.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        17,
+        7
+      ]
+    },
+    {
+      "toon1Id": "JANGOFETT",
+      "toon1Name": "Jango Fett",
+      "squads": [
+        {
+          "id": "YN9hzyuPRJIwQTGBBXEQC",
+          "name": "Jango L 1.0",
+          "toon1Id": "JANGOFETT",
+          "toon1Name": "Jango Fett",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "BOSSK",
+          "toon3Name": "Bossk",
+          "toon4Id": "GREEFKARGA",
+          "toon4Name": "Greef Karga",
+          "toon5Id": "THEMANDALORIAN",
+          "toon5Name": "The Mandalorian",
+          "description": "Primary members are Bossk, Greef Karga, and The Mandalorian.  Jango Fett's leadership gives Scoundrel allies +30 speed, punishes your team for putting debuffs them by lowering your potency and tenacity, and prevents turn meter for anyone with the Burning effect. When they fulfill their contract, all Bounty Hunters gain offense on top of their own payouts.",
+          "generalStrategy": "",
+          "latestVersionId": "9Yb9SUlqxlXN4Uz_5Q192",
+          "createdOn": "2021-02-27T02:38:01.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        13
+      ]
+    },
+    {
+      "toon1Id": "JEDIKNIGHTLUKE",
+      "toon1Name": "Jedi Knight Luke Skywalker",
+      "squads": [
+        {
+          "id": "SE0k4e6g4kNpcEY8Z2gno",
+          "name": "",
+          "toon1Id": "JEDIKNIGHTLUKE",
+          "toon1Name": "Jedi Knight Luke Skywalker",
+          "toon2Id": "BARRISSOFFEE",
+          "toon2Name": "Barriss Offee",
+          "toon3Id": "EZRABRIDGERS3",
+          "toon3Name": "Ezra Bridger",
+          "toon4Id": "OLDBENKENOBI",
+          "toon4Name": "Obi-Wan Kenobi (Old Ben)",
+          "toon5Id": "SHAAKTI",
+          "toon5Name": "Shaak Ti",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "UuxMO19YD3dq3InQoSw-2",
+          "createdOn": "2021-06-19T20:47:12.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        6
+      ]
+    },
+    {
+      "toon1Id": "JEDIKNIGHTREVAN",
+      "toon1Name": "Jedi Knight Revan",
+      "squads": [
+        {
+          "id": "CLznlHKvPDYj0O99JOv66",
+          "name": "JKR L 1.0",
+          "toon1Id": "JEDIKNIGHTREVAN",
+          "toon1Name": "Jedi Knight Revan",
+          "toon2Id": "BASTILASHAN",
+          "toon2Name": "Bastila Shan",
+          "toon3Id": "GRANDMASTERYODA",
+          "toon3Name": "Grand Master Yoda",
+          "toon4Id": "HERMITYODA",
+          "toon4Name": "Hermit Yoda",
+          "toon5Id": "JOLEEBINDO",
+          "toon5Name": "Jolee Bindo",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "-rk29Ul32ft2BV4wb2XvP",
+          "createdOn": "2021-06-19T20:47:13.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        8
+      ]
+    },
+    {
+      "toon1Id": "JEDIMASTERKENOBI",
+      "toon1Name": "Jedi Master Kenobi",
+      "squads": [
+        {
+          "id": "fQo_utGZH5dXyD9f8geFy",
+          "name": "",
+          "toon1Id": "JEDIMASTERKENOBI",
+          "toon1Name": "Jedi Master Kenobi",
+          "toon2Id": "AHSOKATANO",
+          "toon2Name": "Ahsoka Tano",
+          "toon3Id": "ANAKINKNIGHT",
+          "toon3Name": "Jedi Knight Anakin",
+          "toon4Id": "COMMANDERAHSOKA",
+          "toon4Name": "Commander Ahsoka Tano",
+          "toon5Id": "GENERALKENOBI",
+          "toon5Name": "General Kenobi",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "gnikqosQH3YjQCeJGj_CA",
+          "createdOn": "2021-08-31T19:15:16.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "V-IcTJjRLAg7LuDACmV_G",
+          "name": "",
+          "toon1Id": "JEDIMASTERKENOBI",
+          "toon1Name": "Jedi Master Kenobi",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "BVEior3lVoQSmT2MpIudz",
+          "createdOn": "2021-08-31T19:15:20.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        8
+      ]
+    },
+    {
+      "toon1Id": "GRANDMASTERLUKE",
+      "toon1Name": "Jedi Master Luke Skywalker",
+      "squads": [
+        {
+          "id": "5___QRaxaudErQpSgejOy",
+          "name": "",
+          "toon1Id": "GRANDMASTERLUKE",
+          "toon1Name": "Jedi Master Luke Skywalker",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "cSF6jsX7gTBRhiBDdZ3Yx",
+          "createdOn": "2021-06-19T20:53:38.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "aqomjWBmYmtwklid5yaGg",
+          "name": "JMLS L 1.0",
+          "toon1Id": "GRANDMASTERLUKE",
+          "toon1Name": "Jedi Master Luke Skywalker",
+          "toon2Id": "HERMITYODA",
+          "toon2Name": "Hermit Yoda",
+          "toon3Id": "JEDIKNIGHTLUKE",
+          "toon3Name": "Jedi Knight Luke Skywalker",
+          "toon4Id": "OLDBENKENOBI",
+          "toon4Name": "Obi-Wan Kenobi (Old Ben)",
+          "toon5Id": "SHAAKTI",
+          "toon5Name": "Shaak Ti",
+          "description": "Primary members are Jedi Knight Luke Skywalker, Obi-Wan Kenobi (Old Ben), and Shaak Ti.",
+          "generalStrategy": "",
+          "latestVersionId": "fjNbeYYOdxWqhkOjoCbz7",
+          "createdOn": "2021-02-26T16:42:15.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        16
+      ]
+    },
+    {
+      "toon1Id": "JYNERSO",
+      "toon1Name": "Jyn Erso",
+      "squads": [
+        {
+          "id": "lByU03ehPcJoewu3g2llp",
+          "name": "Rogue One",
+          "toon1Id": "JYNERSO",
+          "toon1Name": "Jyn Erso",
+          "toon2Id": "BAZEMALBUS",
+          "toon2Name": "Baze Malbus",
+          "toon3Id": "CASSIANANDOR",
+          "toon3Name": "Cassian Andor",
+          "toon4Id": "CHIRRUTIMWE",
+          "toon4Name": "Chirrut Îmwe",
+          "toon5Id": "K2SO",
+          "toon5Name": "K-2SO",
+          "description": "Team with heal, protection recovery (if zJyn Erso), lot of debuffs, and Chaze (Chirrut Îmwe and Baze Malbus) make this a formidable team.",
+          "generalStrategy": "Killing Chirrut Îmwe will stop the heal over time [or stop with Buff Immunity using Jedi Knight Anakin].  Need to dispel Baze's taunt while removing Chirrut's protection and focusing on Chirrut hard. [Veers Mass attack] Also try to avoid the debuffs from Cassian, K-2SO and Baze. [tenacity up/ high tenacity] another option is simply anti-rebel power [Wampa, DK, DT] or let them stack their heal over time buffs then use Boba's Execute.",
+          "latestVersionId": "PBpO0GgwTp18Sz9UrRnpj",
+          "createdOn": "2021-06-19T20:47:13.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        8
+      ]
+    },
+    {
+      "toon1Id": "KYLORENUNMASKED",
+      "toon1Name": "Kylo Ren (Unmasked)",
+      "squads": [
+        {
+          "id": "n6dMQq6sroixPd-ggOGd3",
+          "name": "KRU L 2.0 w/ FOS",
+          "toon1Id": "KYLORENUNMASKED",
+          "toon1Name": "Kylo Ren (Unmasked)",
+          "toon2Id": "FIRSTORDERTROOPER",
+          "toon2Name": "First Order Stormtrooper",
+          "toon3Id": "FOSITHTROOPER",
+          "toon3Name": "Sith Trooper",
+          "toon4Id": "GENERALHUX",
+          "toon4Name": "General Hux",
+          "toon5Id": "KYLOREN",
+          "toon5Name": "Kylo Ren",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "Q4-gc-0gDy4yO6uFBtUSS",
+          "createdOn": "2021-04-17T12:28:44.000Z",
+          "createdById": "bh4gBXqqD1fLN1iVExvZIU8iBA43",
+          "createdByName": "tje gunare"
+        },
+        {
+          "id": "svw8T-lzj2_qMmpPwlyAm",
+          "name": "KRU L 1.0",
+          "toon1Id": "KYLORENUNMASKED",
+          "toon1Name": "Kylo Ren (Unmasked)",
+          "toon2Id": "FIRSTORDEREXECUTIONER",
+          "toon2Name": "First Order Executioner",
+          "toon3Id": "FIRSTORDEROFFICERMALE",
+          "toon3Name": "First Order Officer",
+          "toon4Id": "FIRSTORDERTROOPER",
+          "toon4Name": "First Order Stormtrooper",
+          "toon5Id": "KYLOREN",
+          "toon5Name": "Kylo Ren",
+          "description": "Primary members are First Order Executioner, First Order Officer, and Kylo Ren.  Synergy team with counter attacking, dispelling (or loving the debuffs), healing + protection recovery, and high crit damage.",
+          "generalStrategy": "Avoid getting countered frequently (daze/attack from stealth and assists), dont rely on debuffs, and deal damage that surpass their heals with single big-hitters or turn meter gains.  Kill order: First Order Executioner, First Order Officer, First Order TIE Pilot.",
+          "latestVersionId": "hCznpwJPwI7QFusizcqEn",
+          "createdOn": "2021-06-19T20:47:14.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        18,
+        7
+      ]
+    },
+    {
+      "toon1Id": "LORDVADER",
+      "toon1Name": "Lord Vader",
+      "squads": [
+        {
+          "id": "_imostyFM3hZgHGNQKcuG",
+          "name": "",
+          "toon1Id": "LORDVADER",
+          "toon1Name": "Lord Vader",
+          "toon2Id": "MAULS7",
+          "toon2Name": "Maul",
+          "toon3Id": "ROYALGUARD",
+          "toon3Name": "Royal Guard",
+          "toon4Id": "SHORETROOPER",
+          "toon4Name": "Shoretrooper",
+          "toon5Id": "STORMTROOPER",
+          "toon5Name": "Stormtrooper",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "88PHGaBlyMaT50Zwkgeqe",
+          "createdOn": "2022-01-12T22:43:00.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "6N1NstPzdeCbAC82EMaCa",
+          "name": "",
+          "toon1Id": "LORDVADER",
+          "toon1Name": "Lord Vader",
+          "toon2Id": "ROYALGUARD",
+          "toon2Name": "Royal Guard",
+          "toon3Id": "SHORETROOPER",
+          "toon3Name": "Shoretrooper",
+          "toon4Id": "STORMTROOPER",
+          "toon4Name": "Stormtrooper",
+          "toon5Id": "VADER",
+          "toon5Name": "Darth Vader",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "w9ybDH4PEWyY9ALlO80X0",
+          "createdOn": "2021-11-05T22:17:51.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "H4NZRpDOL4UND5RbHIZ_O",
+          "name": "",
+          "toon1Id": "LORDVADER",
+          "toon1Name": "Lord Vader",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "7tnsgs524I-l_K68Iug0T",
+          "createdOn": "2021-11-05T22:17:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        12,
+        3
+      ]
+    },
+    {
+      "toon1Id": "MAULS7",
+      "toon1Name": "Maul",
+      "squads": [
+        {
+          "id": "FWy7Z4Fajr3xaua36alST",
+          "name": "",
+          "toon1Id": "MAULS7",
+          "toon1Name": "Maul",
+          "toon2Id": "ARMORER",
+          "toon2Name": "The Armorer",
+          "toon3Id": "BOKATAN",
+          "toon3Name": "Bo-Katan Kryze",
+          "toon4Id": "CANDEROUSORDO",
+          "toon4Name": "Canderous Ordo",
+          "toon5Id": "JANGOFETT",
+          "toon5Name": "Jango Fett",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ogSAXL_GKvUdlIzR0Ipk2",
+          "createdOn": "2022-01-12T22:43:13.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "MONMOTHMA",
+      "toon1Name": "Mon Mothma",
+      "squads": [
+        {
+          "id": "2T1FrQxIWKSNA07sr7V5Z",
+          "name": "MM L 3.0",
+          "toon1Id": "MONMOTHMA",
+          "toon1Name": "Mon Mothma",
+          "toon2Id": "BISTAN",
+          "toon2Name": "Bistan",
+          "toon3Id": "CARADUNE",
+          "toon3Name": "Cara Dune",
+          "toon4Id": "HOTHREBELSCOUT",
+          "toon4Name": "Hoth Rebel Scout",
+          "toon5Id": "PAO",
+          "toon5Name": "Pao",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "prjJogqegUvlO1aK2r3dj",
+          "createdOn": "2021-02-08T17:08:57.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "PqGqrM3UlOmcJiPAnWJfr",
+          "name": "MM L 1.0",
+          "toon1Id": "MONMOTHMA",
+          "toon1Name": "Mon Mothma",
+          "toon2Id": "BAZEMALBUS",
+          "toon2Name": "Baze Malbus",
+          "toon3Id": "BIGGSDARKLIGHTER",
+          "toon3Name": "Biggs Darklighter",
+          "toon4Id": "CHIRRUTIMWE",
+          "toon4Name": "Chirrut Îmwe",
+          "toon5Id": "WEDGEANTILLES",
+          "toon5Name": "Wedge Antilles",
+          "description": "Primary members are Biggs and Wedge",
+          "generalStrategy": "",
+          "latestVersionId": "GnBPvd8HyoU7gw0CJOm5d",
+          "createdOn": "2021-02-08T17:06:15.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "V3feplOAWT-noDP9ZYFGg",
+          "name": "",
+          "toon1Id": "MONMOTHMA",
+          "toon1Name": "Mon Mothma",
+          "toon2Id": "CARADUNE",
+          "toon2Name": "Cara Dune",
+          "toon3Id": "HOTHREBELSCOUT",
+          "toon3Name": "Hoth Rebel Scout",
+          "toon4Id": "KYLEKATARN",
+          "toon4Name": "Kyle Katarn",
+          "toon5Id": "PAO",
+          "toon5Name": "Pao",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "oTCu9YCbYmgqrfat0gBLt",
+          "createdOn": "2022-01-12T22:43:19.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        11,
+        11,
+        34
+      ]
+    },
+    {
+      "toon1Id": "MOTHERTALZIN",
+      "toon1Name": "Mother Talzin",
+      "squads": [
+        {
+          "id": "S8TdG_gXVqGRyM_cWc-6C",
+          "name": "Talzin L",
+          "toon1Id": "MOTHERTALZIN",
+          "toon1Name": "Mother Talzin",
+          "toon2Id": "ASAJVENTRESS",
+          "toon2Name": "Asajj Ventress",
+          "toon3Id": "DAKA",
+          "toon3Name": "Old Daka",
+          "toon4Id": "NIGHTSISTERSPIRIT",
+          "toon4Name": "Nightsister Spirit",
+          "toon5Id": "NIGHTSISTERZOMBIE",
+          "toon5Name": "Nightsister Zombie",
+          "description": "Infinite revives potential with Nightsister Zombie, damage through protection, healing, and cleansing.",
+          "generalStrategy": "Avoid Nightsister Zombie's constant taunting [dispel / buff immunity] or work around it [strong AoEs].  Having healers or high health steal is effective.  You want to kill Old Daka 3 times (to stop the auto revives and her revives), kill Mother Talzin, then kill Asajj Ventress (because she's more powerful now due to the deaths).  If no Enfys Nest, then kill whichever 4th character is used, then finally Nightsister Zombie.  If 4th is Nightsister Acolyte, you definitely want a dispeller or you can easily get caught between her stealth and Nightsister Zombie's taunt.  If Enfys Nest, save her for last.",
+          "latestVersionId": "oX63OzT8N-rTA07t3Sqxf",
+          "createdOn": "2021-06-19T20:47:15.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        28
+      ]
+    },
+    {
+      "toon1Id": "NUTEGUNRAY",
+      "toon1Name": "Nute Gunray",
+      "squads": [
+        {
+          "id": "z-P_wMcY3WJbr_bM3Q4PF",
+          "name": "Nute L 1.0",
+          "toon1Id": "NUTEGUNRAY",
+          "toon1Name": "Nute Gunray",
+          "toon2Id": "COUNTDOOKU",
+          "toon2Name": "Count Dooku",
+          "toon3Id": "DROIDEKA",
+          "toon3Name": "Droideka",
+          "toon4Id": "ENFYSNEST",
+          "toon4Name": "Enfys Nest",
+          "toon5Id": "JANGOFETT",
+          "toon5Name": "Jango Fett",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "mQzbLhu_CR89kDMlDFS5-",
+          "createdOn": "2021-02-27T19:57:46.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        22
+      ]
+    },
+    {
+      "toon1Id": "PADMEAMIDALA",
+      "toon1Name": "Padmé Amidala",
+      "squads": [
+        {
+          "id": "OSkKALjV8nGJwATutz5tE",
+          "name": "GR 1.0",
+          "toon1Id": "PADMEAMIDALA",
+          "toon1Name": "Padmé Amidala",
+          "toon2Id": "AHSOKATANO",
+          "toon2Name": "Ahsoka Tano",
+          "toon3Id": "ANAKINKNIGHT",
+          "toon3Name": "Jedi Knight Anakin",
+          "toon4Id": "C3POLEGENDARY",
+          "toon4Name": "C-3PO",
+          "toon5Id": "GENERALKENOBI",
+          "toon5Name": "General Kenobi",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "7Z3dL3iXiGka7voX-Ny4U",
+          "createdOn": "2021-06-19T20:47:17.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "sWD7hIWm2lsiBU5JAW_Cc",
+          "name": "GR 1.0 w/ Barriss",
+          "toon1Id": "PADMEAMIDALA",
+          "toon1Name": "Padmé Amidala",
+          "toon2Id": "AHSOKATANO",
+          "toon2Name": "Ahsoka Tano",
+          "toon3Id": "ANAKINKNIGHT",
+          "toon3Name": "Jedi Knight Anakin",
+          "toon4Id": "BARRISSOFFEE",
+          "toon4Name": "Barriss Offee",
+          "toon5Id": "GENERALKENOBI",
+          "toon5Name": "General Kenobi",
+          "description": "Primary members are Ahsoka Tano, Jedi Knight Anakin, and General Kenobi.  Super tanky team, immunity to debuffs (with many options to dispel), protection-up spamming, damage based on % of target's health, and benefits when enemies attack out of turn.",
+          "generalStrategy": "Buff immunities (+Isolate + Fracture + zeta Imperial Probe Droid) to deny buffing and stacking of protection-up and bonus % damage.  Kill order: Padmé Amidala, Jedi Knight Anakin.",
+          "latestVersionId": "RCWqaGgwFKjNsKzP8jfr2",
+          "createdOn": "2021-06-19T20:47:17.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        11,
+        7
+      ]
+    },
+    {
+      "toon1Id": "QIRA",
+      "toon1Name": "Qi'ra",
+      "squads": [
+        {
+          "id": "DV2JOwWr5HZUFM-SLV9D5",
+          "name": "Qi'ra L 1.0",
+          "toon1Id": "QIRA",
+          "toon1Name": "Qi'ra",
+          "toon2Id": "L3_37",
+          "toon2Name": "L3-37",
+          "toon3Id": "MISSIONVAO",
+          "toon3Name": "Mission Vao",
+          "toon4Id": "YOUNGCHEWBACCA",
+          "toon4Name": "Vandor Chewbacca",
+          "toon5Id": "ZAALBAR",
+          "toon5Name": "Zaalbar",
+          "description": "Heals, revives, protection regeneration, and lot of taunts.  This is a very hard team to beat.",
+          "generalStrategy": "Requires dispelling, healing immunity, lot of turn meter gain, and AoE attackers.  Kill Vandor Chewbacca first and don't let him revive his allies.  Keep Zaalbar and L3-37 shutdown by dispelling them.  Kill order: Vandor Chewbacca, Qi'ra/Mission Vao/Young Han Solo/Young Lando Calrissian, L3-37, Enfys Nest, Zaalbar.",
+          "latestVersionId": "FGNit2VTq3UpivIKM51vk",
+          "createdOn": "2021-06-19T20:47:18.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        12
+      ]
+    },
+    {
+      "toon1Id": "HOTHLEIA",
+      "toon1Name": "Rebel Officer Leia Organa",
+      "squads": [
+        {
+          "id": "0Bekd5gTuTvPC87ZqWokl",
+          "name": "",
+          "toon1Id": "HOTHLEIA",
+          "toon1Name": "Rebel Officer Leia Organa",
+          "toon2Id": "ADMINISTRATORLANDO",
+          "toon2Name": "Lando Calrissian",
+          "toon3Id": "BIGGSDARKLIGHTER",
+          "toon3Name": "Biggs Darklighter",
+          "toon4Id": "HOTHHAN",
+          "toon4Name": "Captain Han Solo",
+          "toon5Id": "WEDGEANTILLES",
+          "toon5Name": "Wedge Antilles",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "aOIIrjS7s5NtvFFGJ9nlp",
+          "createdOn": "2021-06-19T20:47:10.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "9SnzD_1yPE2potiNr5zQe",
+          "name": "",
+          "toon1Id": "HOTHLEIA",
+          "toon1Name": "Rebel Officer Leia Organa",
+          "toon2Id": "ADMINISTRATORLANDO",
+          "toon2Name": "Lando Calrissian",
+          "toon3Id": "BAZEMALBUS",
+          "toon3Name": "Baze Malbus",
+          "toon4Id": "CHIRRUTIMWE",
+          "toon4Name": "Chirrut Îmwe",
+          "toon5Id": "HOTHHAN",
+          "toon5Name": "Captain Han Solo",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "8qVYGxny0mAandbjDSbTQ",
+          "createdOn": "2021-06-19T20:47:10.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        13,
+        6
+      ]
+    },
+    {
+      "toon1Id": "GLREY",
+      "toon1Name": "Rey",
+      "squads": [
+        {
+          "id": "2OKiFWG6d5i5srau-ZZXK",
+          "name": "Rey (solo)",
+          "toon1Id": "GLREY",
+          "toon1Name": "Rey",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "vH2pukz11tdWtiOS3S0OH",
+          "createdOn": "2021-02-06T14:17:56.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "gPtmhQxHi8lNcPI-bqaSJ",
+          "name": "Rey L 1.0",
+          "toon1Id": "GLREY",
+          "toon1Name": "Rey",
+          "toon2Id": "AMILYNHOLDO",
+          "toon2Name": "Amilyn Holdo",
+          "toon3Id": "EPIXFINN",
+          "toon3Name": "Resistance Hero Finn",
+          "toon4Id": "EPIXPOE",
+          "toon4Name": "Resistance Hero Poe",
+          "toon5Id": "L3_37",
+          "toon5Name": "L3-37",
+          "description": "Primary members are Amilyn Holdo, Resistance Hero Finn, and Resistance Hero Poe",
+          "generalStrategy": "",
+          "latestVersionId": "dzYx5YuBIfJWJeybU9Q_K",
+          "createdOn": "2021-02-24T18:26:29.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        12
+      ]
+    },
+    {
+      "toon1Id": "REYJEDITRAINING",
+      "toon1Name": "Rey (Jedi Training)",
+      "squads": [
+        {
+          "id": "sW8JHGuEsNHOcD3hyZ8Wd",
+          "name": "JTR L 2.0",
+          "toon1Id": "REYJEDITRAINING",
+          "toon1Name": "Rey (Jedi Training)",
+          "toon2Id": "BB8",
+          "toon2Name": "BB-8",
+          "toon3Id": "EPIXFINN",
+          "toon3Name": "Resistance Hero Finn",
+          "toon4Id": "EPIXPOE",
+          "toon4Name": "Resistance Hero Poe",
+          "toon5Id": "R2D2_LEGENDARY",
+          "toon5Name": "R2-D2",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "coy0Wl1PhErq0oMN71b1-",
+          "createdOn": "2021-02-26T22:54:08.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        25
+      ]
+    },
+    {
+      "toon1Id": "SHAAKTI",
+      "toon1Name": "Shaak Ti",
+      "squads": [
+        {
+          "id": "hAUcFbZgAh6sM5noxcPhG",
+          "name": "Shaak Ti L 2.0",
+          "toon1Id": "SHAAKTI",
+          "toon1Name": "Shaak Ti",
+          "toon2Id": "ARCTROOPER501ST",
+          "toon2Name": "ARC Trooper",
+          "toon3Id": "CT210408",
+          "toon3Name": "CT-21-0408 \"Echo\"",
+          "toon4Id": "CT5555",
+          "toon4Name": "CT-5555 \"Fives\"",
+          "toon5Id": "CT7567",
+          "toon5Name": "CT-7567 \"Rex\"",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "n7v102ZTNMwxCTf5hfuI6",
+          "createdOn": "2021-02-08T14:36:09.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        14
+      ]
+    },
+    {
+      "toon1Id": "SITHPALPATINE",
+      "toon1Name": "Sith Eternal Emperor",
+      "squads": [
+        {
+          "id": "dfwInraSoWWfzBon58zf9",
+          "name": "SEE L 2.0",
+          "toon1Id": "SITHPALPATINE",
+          "toon1Name": "Sith Eternal Emperor",
+          "toon2Id": "COUNTDOOKU",
+          "toon2Name": "Count Dooku",
+          "toon3Id": "DARTHSIDIOUS",
+          "toon3Name": "Darth Sidious",
+          "toon4Id": "MAUL",
+          "toon4Name": "Darth Maul",
+          "toon5Id": "SITHTROOPER",
+          "toon5Name": "Sith Empire Trooper",
+          "description": "Primary members are Count Dooku, Darth Sidious, and Sith Empire Trooper",
+          "generalStrategy": "",
+          "latestVersionId": "2702yV3MFhqojkFh8Yu8z",
+          "createdOn": "2021-02-26T16:12:17.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "lO_CMqBM0Xhw_DbdC6vzE",
+          "name": "SEE L 1.0",
+          "toon1Id": "SITHPALPATINE",
+          "toon1Name": "Sith Eternal Emperor",
+          "toon2Id": "DARTHNIHILUS",
+          "toon2Name": "Darth Nihilus",
+          "toon3Id": "DARTHSION",
+          "toon3Name": "Darth Sion",
+          "toon4Id": "DARTHTRAYA",
+          "toon4Name": "Darth Traya",
+          "toon5Id": "SITHTROOPER",
+          "toon5Name": "Sith Empire Trooper",
+          "description": "Primary members are Darth Nihilus, Darth Sion, and Darth Traya",
+          "generalStrategy": "",
+          "latestVersionId": "EXSfQWH-cglKr-IUDwETI",
+          "createdOn": "2021-02-26T16:11:39.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "PK62vv0576XYF5KuuVcuR",
+          "name": "Sith Eternal Emperor (solo)",
+          "toon1Id": "SITHPALPATINE",
+          "toon1Name": "Sith Eternal Emperor",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "7jHHtIOBLWwuzQlPnu3xg",
+          "createdOn": "2021-02-24T16:11:08.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        6,
+        9
+      ]
+    },
+    {
+      "toon1Id": "SUPREMELEADERKYLOREN",
+      "toon1Name": "Supreme Leader Kylo Ren",
+      "squads": [
+        {
+          "id": "-D9ec0jF4yAMwXFWgl_Gi",
+          "name": "SLKR L 1.0",
+          "toon1Id": "SUPREMELEADERKYLOREN",
+          "toon1Name": "Supreme Leader Kylo Ren",
+          "toon2Id": "FIRSTORDERTROOPER",
+          "toon2Name": "First Order Stormtrooper",
+          "toon3Id": "FOSITHTROOPER",
+          "toon3Name": "Sith Trooper",
+          "toon4Id": "GENERALHUX",
+          "toon4Name": "General Hux",
+          "toon5Id": "KYLORENUNMASKED",
+          "toon5Name": "Kylo Ren (Unmasked)",
+          "description": "Primary members are First Order Stormtrooper, Sith Trooper, and General Hux",
+          "generalStrategy": "",
+          "latestVersionId": "XHMzl68bGGNQv6Lano-tN",
+          "createdOn": "2021-02-26T16:17:13.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "vMPwe19pqGdV_d_MBMOfo",
+          "name": "SLKR (solo)",
+          "toon1Id": "SUPREMELEADERKYLOREN",
+          "toon1Name": "Supreme Leader Kylo Ren",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "KkPyKlV7A189U0GjJ_ZJr",
+          "createdOn": "2021-02-05T19:27:56.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        17
+      ]
+    },
+    {
+      "toon1Id": "THEMANDALORIAN",
+      "toon1Name": "The Mandalorian",
+      "squads": [
+        {
+          "id": "lz5H5rOY3etWohMwwg0-b",
+          "name": "",
+          "toon1Id": "THEMANDALORIAN",
+          "toon1Name": "The Mandalorian",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "BOSSK",
+          "toon3Name": "Bossk",
+          "toon4Id": "GREEFKARGA",
+          "toon4Name": "Greef Karga",
+          "toon5Id": "JANGOFETT",
+          "toon5Name": "Jango Fett",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "_Halzb5Q3KAlMEU4mMNG2",
+          "createdOn": "2021-06-19T20:47:21.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        4
+      ]
+    },
+    {
+      "toon1Id": "THEMANDALORIANBESKARARMOR",
+      "toon1Name": "The Mandalorian (Beskar Armor)",
+      "squads": [
+        {
+          "id": "ddPz8J49TTPr02RDaRN_3",
+          "name": "",
+          "toon1Id": "THEMANDALORIANBESKARARMOR",
+          "toon1Name": "The Mandalorian (Beskar Armor)",
+          "toon2Id": "ENFYSNEST",
+          "toon2Name": "Enfys Nest",
+          "toon3Id": "IG11",
+          "toon3Name": "IG-11",
+          "toon4Id": "KUIIL",
+          "toon4Name": "Kuiil",
+          "toon5Id": "L3_37",
+          "toon5Name": "L3-37",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "hCJupx6y8X5IXnlivoChV",
+          "createdOn": "2021-06-19T20:58:11.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        20
+      ]
+    }
+  ],
+  "reverse": [
+    {
+      "toon1Id": "ASAJVENTRESS",
+      "toon1Name": "Asajj Ventress",
+      "squads": [
+        {
+          "id": "jPuE83U9U4XTjC6cPVaRk",
+          "name": "Asajj L",
+          "toon1Id": "ASAJVENTRESS",
+          "toon1Name": "Asajj Ventress",
+          "toon2Id": "DAKA",
+          "toon2Name": "Old Daka",
+          "toon3Id": "MOTHERTALZIN",
+          "toon3Name": "Mother Talzin",
+          "toon4Id": "NIGHTSISTERSPIRIT",
+          "toon4Name": "Nightsister Spirit",
+          "toon5Id": "NIGHTSISTERZOMBIE",
+          "toon5Name": "Nightsister Zombie",
+          "description": "Infinite revives potential with Nightsister Zombie, damage through protection, healing, and cleansing.",
+          "generalStrategy": "Avoid Nightsister Zombie's constant taunting [dispel / buff immunity] or work around it [strong AoEs].  Having healers or high health steal is effective.  You want to kill Old Daka 3 times (to stop the auto revives and her revives), kill Mother Talzin, then kill Asajj Ventress (because she's more powerful now due to the deaths).  If no Enfys Nest, then kill whichever 4th character is used, then finally Nightsister Zombie.  If 4th is Nightsister Acolyte, you definitely want a dispeller or you can easily get caught between her stealth and Nightsister Zombie's taunt.  If Enfys Nest, save her for last.",
+          "latestVersionId": "6OufIsl24MkaLmaZvzvMF",
+          "createdOn": "2021-06-19T20:46:56.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        16
+      ]
+    },
+    {
+      "toon1Id": "AURRA_SING",
+      "toon1Name": "Aurra Sing",
+      "squads": [
+        {
+          "id": "j1mCvxht-dZbpoW23GWsa",
+          "name": "",
+          "toon1Id": "AURRA_SING",
+          "toon1Name": "Aurra Sing",
+          "toon2Id": "BOSSK",
+          "toon2Name": "Bossk",
+          "toon3Id": "GREEFKARGA",
+          "toon3Name": "Greef Karga",
+          "toon4Id": "THEMANDALORIAN",
+          "toon4Name": "The Mandalorian",
+          "toon5Id": "ZAMWESELL",
+          "toon5Name": "Zam Wesell",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "6YiwzizQO1IZGZkVRvbir",
+          "createdOn": "2021-11-05T21:08:24.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        29
+      ]
+    },
+    {
+      "toon1Id": "BASTILASHAN",
+      "toon1Name": "Bastila Shan",
+      "squads": [
+        {
+          "id": "s6C96iVj-Wl5OO0rxkeUW",
+          "name": "Bastila L 1.0",
+          "toon1Id": "BASTILASHAN",
+          "toon1Name": "Bastila Shan",
+          "toon2Id": "GRANDMASTERYODA",
+          "toon2Name": "Grand Master Yoda",
+          "toon3Id": "HERMITYODA",
+          "toon3Name": "Hermit Yoda",
+          "toon4Id": "JEDIKNIGHTREVAN",
+          "toon4Name": "Jedi Knight Revan",
+          "toon5Id": "JOLEEBINDO",
+          "toon5Name": "Jolee Bindo",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "XkPcc3MA81lYVOmt8t_Dp",
+          "createdOn": "2021-02-08T14:32:48.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        5
+      ]
+    },
+    {
+      "toon1Id": "BOSSK",
+      "toon1Name": "Bossk",
+      "squads": [
+        {
+          "id": "FOQnGp5Ydb3yncrgkCToE",
+          "name": "Bossk L 1.0",
+          "toon1Id": "BOSSK",
+          "toon1Name": "Bossk",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "GREEFKARGA",
+          "toon3Name": "Greef Karga",
+          "toon4Id": "JANGOFETT",
+          "toon4Name": "Jango Fett",
+          "toon5Id": "THEMANDALORIAN",
+          "toon5Name": "The Mandalorian",
+          "description": "Bossk's leadership gives all Bounty Hunters extra protection, tenacity, and defense (while at full health). They recover health and protection when an enemy suffers or resists a debuff. When they fulfill their contract, all Bounty Hunters gain +50 speed for the rest of the battle on top of their own payouts.",
+          "generalStrategy": "Bossk's contract is exploitable. They need to damage the weakest enemy 10 times, so you can slow this down using taunters.\n\nYou'll want to deal with Bossk by having someone that can either dispel his taunt or apply ability block/buff immunity before he can taunt.\n\nYou'll need good single target damage because this team will heal frequently and the Fetts will revive, so you'll need to kill them twice.\n\nIf Greef is part of the team, need to account for his initial Stealth and the mass debuff cleanse, tenacity up and 50% TM gain on his third special, which can neutralize RJT led teams.\n\nKill order: Boba Fett, Jango Fett, and other Bounty Hunters, Bossk, then Dengar last (because he'll probably be in stealth until the end).",
+          "latestVersionId": "lUtgX-F5vqORDfV-gMe6a",
+          "createdOn": "2021-04-09T17:37:34.000Z",
+          "createdById": "HsxCKDZcxQadPzl3f9wLJ8Gik1f2",
+          "createdByName": "Gnervous"
+        },
+        {
+          "id": "J9EA2JWUTX-rdz4vCiqZU",
+          "name": "",
+          "toon1Id": "BOSSK",
+          "toon1Name": "Bossk",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "FENNECSHAND",
+          "toon3Name": "Fennec Shand",
+          "toon4Id": "GREEFKARGA",
+          "toon4Name": "Greef Karga",
+          "toon5Id": "THEMANDALORIAN",
+          "toon5Name": "The Mandalorian",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "U2TjcODcnkhyHMC4t95Db",
+          "createdOn": "2022-01-12T22:40:31.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "jGuktE3TPQXQmnb7ORUJ_",
+          "name": "",
+          "toon1Id": "BOSSK",
+          "toon1Name": "Bossk",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "GREEFKARGA",
+          "toon3Name": "Greef Karga",
+          "toon4Id": "THEMANDALORIAN",
+          "toon4Name": "The Mandalorian",
+          "toon5Id": "ZAMWESELL",
+          "toon5Name": "Zam Wesell",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "W2IRIfImswdkvHRg0Mdjk",
+          "createdOn": "2021-06-19T21:52:38.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        20,
+        33,
+        5
+      ]
+    },
+    {
+      "toon1Id": "CHIEFNEBIT",
+      "toon1Name": "Chief Nebit",
+      "squads": [
+        {
+          "id": "AGi8k4g8bID-VAksI6K4V",
+          "name": "Jawas",
+          "toon1Id": "CHIEFNEBIT",
+          "toon1Name": "Chief Nebit",
+          "toon2Id": "DATHCHA",
+          "toon2Name": "Dathcha",
+          "toon3Id": "JAWA",
+          "toon3Name": "Jawa",
+          "toon4Id": "JAWAENGINEER",
+          "toon4Name": "Jawa Engineer",
+          "toon5Id": "JAWASCAVENGER",
+          "toon5Name": "Jawa Scavenger",
+          "description": "High damage if using IG-86 or IG-88,  turn meter gain, crit chance/damage gain, and healing from Jawa Engineer.",
+          "generalStrategy": "Daze and AoE, having crit avoidance.  Kill Jawa Engineer first, then IG-88, then the rest.",
+          "latestVersionId": "GwJbNPdx1v6IUdTy1UHCv",
+          "createdOn": "2021-06-19T20:47:00.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        7
+      ]
+    },
+    {
+      "toon1Id": "COMMANDERLUKESKYWALKER",
+      "toon1Name": "Commander Luke Skywalker",
+      "squads": [
+        {
+          "id": "ZFJmisWeFi1Sa0gcj8LRG",
+          "name": "CLS L 2.0",
+          "toon1Id": "COMMANDERLUKESKYWALKER",
+          "toon1Name": "Commander Luke Skywalker",
+          "toon2Id": "C3POCHEWBACCA",
+          "toon2Name": "Threepio & Chewie",
+          "toon3Id": "C3POLEGENDARY",
+          "toon3Name": "C-3PO",
+          "toon4Id": "CHEWBACCALEGENDARY",
+          "toon4Name": "Chewbacca",
+          "toon5Id": "HANSOLO",
+          "toon5Name": "Han Solo",
+          "description": "Primary members are Threepio & Chewie, Chewbacca, and Han Solo.\n\nRebel squad with high Counter Attack chance, high Crit Chance and Crit Damage, frequent assists, deal a lot of debuffs, start the battle with crippling attacks, and require a specific kill order.",
+          "generalStrategy": "\n- avoid using AoE attacks\n- follow the kill order:\n  - Threepio & Chewie\n  - Chewbacca\n  - Han Solo\n  - Commander Luke Skywalker",
+          "latestVersionId": "sjK_SUAMn0v1i86kV6kkX",
+          "createdOn": "2021-12-18T21:02:36.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        497
+      ]
+    },
+    {
+      "toon1Id": "DARTHMALAK",
+      "toon1Name": "Darth Malak",
+      "squads": [
+        {
+          "id": "Lk_RS5JjwxqXYyZszx-Mi",
+          "name": "Darth Malak (solo)",
+          "toon1Id": "DARTHMALAK",
+          "toon1Name": "Darth Malak",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ba0zrBYNApBpy1nQMLdrw",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        69
+      ]
+    },
+    {
+      "toon1Id": "DARTHREVAN",
+      "toon1Name": "Darth Revan",
+      "squads": [
+        {
+          "id": "y_QQEGvxjVneN2qHzudnf",
+          "name": "DR L 2.0",
+          "toon1Id": "DARTHREVAN",
+          "toon1Name": "Darth Revan",
+          "toon2Id": "BASTILASHANDARK",
+          "toon2Name": "Bastila Shan (Fallen)",
+          "toon3Id": "DARTHMALAK",
+          "toon3Name": "Darth Malak",
+          "toon4Id": "HK47",
+          "toon4Name": "HK-47",
+          "toon5Id": "SITHMARAUDER",
+          "toon5Name": "Sith Marauder",
+          "description": "Sith Empire are a debuff heavy squad with powerful Turn Meter manipulation mechanics, perks when defeating an enemy leader, and they gradually become more powerful throughout the battle.",
+          "generalStrategy": "You'll want a squad that can withstand the Turn Meter loss and frequent debuffs.  Based on your counter squad, you'll either want to defeat Bastila Shan (Fallen) or HK-47 first.\n\nKill order:  Bastila Shan (Fallen) or HK-47, Darth Revan, Darth Malak, Sith Marauder",
+          "latestVersionId": "-vlrVm9oq78F2-MoA1TCG",
+          "createdOn": "2022-01-07T15:24:44.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        103
+      ]
+    },
+    {
+      "toon1Id": "DARTHTRAYA",
+      "toon1Name": "Darth Traya",
+      "squads": [
+        {
+          "id": "eXsSNndw04UHXTdOY1MEC",
+          "name": "",
+          "toon1Id": "DARTHTRAYA",
+          "toon1Name": "Darth Traya",
+          "toon2Id": "DARTHNIHILUS",
+          "toon2Name": "Darth Nihilus",
+          "toon3Id": "DARTHSION",
+          "toon3Name": "Darth Sion",
+          "toon4Id": "DARTHTALON",
+          "toon4Name": "Darth Talon",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "TkSixTDnFcVYcEPkcNgez",
+          "createdOn": "2022-01-12T22:41:14.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "fasExOM2__oNYcY01aTbh",
+          "name": "Traya L 3v3 w/ Nihilus and Sion",
+          "toon1Id": "DARTHTRAYA",
+          "toon1Name": "Darth Traya",
+          "toon2Id": "DARTHNIHILUS",
+          "toon2Name": "Darth Nihilus",
+          "toon3Id": "DARTHSION",
+          "toon3Name": "Darth Sion",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "2_IlKusQOYZWupgE4cm8L",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2,
+        32
+      ]
+    },
+    {
+      "toon1Id": "VADER",
+      "toon1Name": "Darth Vader",
+      "squads": [
+        {
+          "id": "iI0AkVNlWMJaDD0yMq_X5",
+          "name": "Vader L 6.0",
+          "toon1Id": "VADER",
+          "toon1Name": "Darth Vader",
+          "toon2Id": "EMPERORPALPATINE",
+          "toon2Name": "Emperor Palpatine",
+          "toon3Id": "GRANDADMIRALTHRAWN",
+          "toon3Name": "Grand Admiral Thrawn",
+          "toon4Id": "GRANDMOFFTARKIN",
+          "toon4Name": "Grand Moff Tarkin",
+          "toon5Id": "SHORETROOPER",
+          "toon5Name": "Shoretrooper",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "VRxZieL_m_sFrI7IMdLgA",
+          "createdOn": "2021-02-27T20:00:18.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "xhP8BRBeVa1oiUPa-ykGg",
+          "name": "Vader L 3.0 (4-man team)",
+          "toon1Id": "VADER",
+          "toon1Name": "Darth Vader",
+          "toon2Id": "EMPERORPALPATINE",
+          "toon2Name": "Emperor Palpatine",
+          "toon3Id": "GRANDADMIRALTHRAWN",
+          "toon3Name": "Grand Admiral Thrawn",
+          "toon4Id": "WATTAMBOR",
+          "toon4Name": "Wat Tambor",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "8A1ZEEfIrneFwKF5Ystvg",
+          "createdOn": "2021-02-08T17:00:05.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2,
+        2
+      ]
+    },
+    {
+      "toon1Id": "EMPERORPALPATINE",
+      "toon1Name": "Emperor Palpatine",
+      "squads": [
+        {
+          "id": "HZpJ-kF3UzlJqq3C9rUA8",
+          "name": "",
+          "toon1Id": "EMPERORPALPATINE",
+          "toon1Name": "Emperor Palpatine",
+          "toon2Id": "GRANDADMIRALTHRAWN",
+          "toon2Name": "Grand Admiral Thrawn",
+          "toon3Id": "GRANDMOFFTARKIN",
+          "toon3Name": "Grand Moff Tarkin",
+          "toon4Id": "MARAJADE",
+          "toon4Name": "Mara Jade, The Emperor's Hand",
+          "toon5Id": "VADER",
+          "toon5Name": "Darth Vader",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "OzA4O-BgNVse0Kau9iVnm",
+          "createdOn": "2022-01-12T22:41:26.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "oUhd-ZZZlEjlcW1UvrHVn",
+          "name": "EP L 1.0 w/ Vader",
+          "toon1Id": "EMPERORPALPATINE",
+          "toon1Name": "Emperor Palpatine",
+          "toon2Id": "DARTHNIHILUS",
+          "toon2Name": "Darth Nihilus",
+          "toon3Id": "DARTHSION",
+          "toon3Name": "Darth Sion",
+          "toon4Id": "DARTHTRAYA",
+          "toon4Name": "Darth Traya",
+          "toon5Id": "VADER",
+          "toon5Name": "Darth Vader",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "2sPvag-R_rSk6sOGiugdw",
+          "createdOn": "2021-06-20T17:11:05.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        11,
+        6
+      ]
+    },
+    {
+      "toon1Id": "ENFYSNEST",
+      "toon1Name": "Enfys Nest",
+      "squads": [
+        {
+          "id": "EYC5MJZxSvlDVY1DC3iz3",
+          "name": "Enfys Nest (solo)",
+          "toon1Id": "ENFYSNEST",
+          "toon1Name": "Enfys Nest",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "Enfys Nest (solo) excels against teams that have a high attack rate but low power output.  She has a high counter chance and ignores taunts.  She gains stacking crit chance and protection every time she is damaged before her turn (these reset at the end of her turn).  And throughout the encounter, she also gains crit damage and health steal whenever an enemy loses a buff or debuff.",
+          "generalStrategy": "You want teams/characters with Daze, Stun, Stealth, Thermal Detonators, and/or possibly Tenacity Down.  You don't want to use teams that reduce her turn meter, as it'll delay her from shedding the undispellable Protection Up on her turn, which could cause a time-out situation.<br/><br/>\n\nThe ideal strategy for most teams is to either apply debuffs or use a basic attack (tryin not to reduce turn meter or prompt assists) until she takes a turn, then the next time you deal damage should be a high-damage single target attack.  It may be beneficial to save abilities that don't deal damage for this moment, so you don't waste your first damage-dealing attack after her turn with a low-damage attack that she could easily heal from.",
+          "latestVersionId": "DkkXDxzNhvg6qmFHl9iJK",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        14
+      ]
+    },
+    {
+      "toon1Id": "GRIEVOUS",
+      "toon1Name": "General Grievous",
+      "squads": [
+        {
+          "id": "A0c1gtPGGsv4W5mae500d",
+          "name": "GG L w/ Nute",
+          "toon1Id": "GRIEVOUS",
+          "toon1Name": "General Grievous",
+          "toon2Id": "B1BATTLEDROIDV2",
+          "toon2Name": "B1 Battle Droid",
+          "toon3Id": "B2SUPERBATTLEDROID",
+          "toon3Name": "B2 Super Battle Droid",
+          "toon4Id": "MAGNAGUARD",
+          "toon4Name": "IG-100 MagnaGuard",
+          "toon5Id": "NUTEGUNRAY",
+          "toon5Name": "Nute Gunray",
+          "description": "Separatist debuff team, specifically focusing on the use of Target Lock.  Nute Gunray is substituted in for Droideka to further weaken the enemy and strengthen his allies with his Extortion mechanic.",
+          "generalStrategy": "\n- use a squad that can easily resist or cleanse debuffs\n- target B2 Super Battle Droid first\n- target Grievous second, if possible",
+          "latestVersionId": "Ep-Doc7IxqaJW5SkSG_NK",
+          "createdOn": "2021-12-18T21:44:19.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "VAYVY2SeAvjmLaFJJ5_r3",
+          "name": "GG L (Sep Droids)",
+          "toon1Id": "GRIEVOUS",
+          "toon1Name": "General Grievous",
+          "toon2Id": "B1BATTLEDROIDV2",
+          "toon2Name": "B1 Battle Droid",
+          "toon3Id": "B2SUPERBATTLEDROID",
+          "toon3Name": "B2 Super Battle Droid",
+          "toon4Id": "DROIDEKA",
+          "toon4Name": "Droideka",
+          "toon5Id": "MAGNAGUARD",
+          "toon5Name": "IG-100 MagnaGuard",
+          "description": "Separatist debuff team, specifically focusing on the use of Target Lock.",
+          "generalStrategy": "\n- use a squad that can easily resist or cleanse debuffs\n- target B2 Super Battle Droid first\n- target Grievous second, if possible",
+          "latestVersionId": "kOW5MPP4OhQdbwtqvxBEa",
+          "createdOn": "2021-12-18T21:44:51.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        22,
+        55
+      ]
+    },
+    {
+      "toon1Id": "GENERALSKYWALKER",
+      "toon1Name": "General Skywalker",
+      "squads": [
+        {
+          "id": "bBuFtTnwso7t0kMH-oh7B",
+          "name": "GS L",
+          "toon1Id": "GENERALSKYWALKER",
+          "toon1Name": "General Skywalker",
+          "toon2Id": "ARCTROOPER501ST",
+          "toon2Name": "ARC Trooper",
+          "toon3Id": "CT210408",
+          "toon3Name": "CT-21-0408 \"Echo\"",
+          "toon4Id": "CT5555",
+          "toon4Name": "CT-5555 \"Fives\"",
+          "toon5Id": "CT7567",
+          "toon5Name": "CT-7567 \"Rex\"",
+          "description": "General Skywalker's leadership uses the Advance and Cover mechanics.  In Advance, if GAS has 501st allies, they can't lose health and he gets an undispellable taunt until his protection is dropped to 0%.  With 501st allies present and GAS's protection at 0%, then he goes into Cover where he can't be targeted and is immune to damage and status effects.",
+          "generalStrategy": "Ideally, you want to knock down General Skywalker by dropping his protection to 0%, then take out the clones before he returns from Cover.<br/><br/>\n\nTry to defeat CT-5555 \"Fives\" first.  Or else, he will sacrifice himself with his Tactical Awareness zeta, which will buff the remaining 501st Clone Troopers and may make it impossible to defeat the remaining allies before GAS returns from his first round of Cover.  Next take out CT-7567 \"Rex\" before he can get a big hit with Aerial Advantage., CT-24-0408 \"Echo\", the last ally, then General Skywalker last.<br/><br/>\n\nKill order: Fives, Rex, Echo, last ally, GAS",
+          "latestVersionId": "rV1S0n7BbggYPZ7IjZM7m",
+          "createdOn": "2021-06-19T20:47:08.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        272
+      ]
+    },
+    {
+      "toon1Id": "VEERS",
+      "toon1Name": "General Veers",
+      "squads": [
+        {
+          "id": "c77qmrvDg75_FyDzaOzCN",
+          "name": "IT 1.0",
+          "toon1Id": "VEERS",
+          "toon1Name": "General Veers",
+          "toon2Id": "ADMIRALPIETT",
+          "toon2Name": "Admiral Piett",
+          "toon3Id": "COLONELSTARCK",
+          "toon3Name": "Colonel Starck",
+          "toon4Id": "DEATHTROOPER",
+          "toon4Name": "Death Trooper",
+          "toon5Id": "RANGETROOPER",
+          "toon5Name": "Range Trooper",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "XVd4bJtRJ4RgJcYOi2Dfd",
+          "createdOn": "2021-02-08T17:25:05.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "POYXoTV_PYkFJJ7v5dda9",
+          "name": "IT 1.0 w/ Gideon and Range",
+          "toon1Id": "VEERS",
+          "toon1Name": "General Veers",
+          "toon2Id": "ADMIRALPIETT",
+          "toon2Name": "Admiral Piett",
+          "toon3Id": "COLONELSTARCK",
+          "toon3Name": "Colonel Starck",
+          "toon4Id": "MOFFGIDEONS1",
+          "toon4Name": "Moff Gideon",
+          "toon5Id": "RANGETROOPER",
+          "toon5Name": "Range Trooper",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "rAdL9cBmjkYPnY6sCEZaO",
+          "createdOn": "2021-02-08T17:58:11.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        103,
+        31
+      ]
+    },
+    {
+      "toon1Id": "GEONOSIANBROODALPHA",
+      "toon1Name": "Geonosian Brood Alpha",
+      "squads": [
+        {
+          "id": "Q57fFjLEO1iuwLsJCuwos",
+          "name": "Geos",
+          "toon1Id": "GEONOSIANBROODALPHA",
+          "toon1Name": "Geonosian Brood Alpha",
+          "toon2Id": "GEONOSIANSOLDIER",
+          "toon2Name": "Geonosian Soldier",
+          "toon3Id": "GEONOSIANSPY",
+          "toon3Name": "Geonosian Spy",
+          "toon4Id": "POGGLETHELESSER",
+          "toon4Name": "Poggle the Lesser",
+          "toon5Id": "SUNFAC",
+          "toon5Name": "Sun Fac",
+          "description": "Separatist squad that relies heavily on assists and can deal substantial damage to a single target.  They have increased Max Health and Protection, Health Steal, and they equalize their Health and Protection across the team whenever an enemy uses an ability.",
+          "generalStrategy": "\n- use a counter that can\n  - handle high amount of assists\n  - handle heavy single-target damage\n  - handle getting around a persistent Taunt\n  - can put out enough damage to work through extra Health and Protection, Health Steal, and Health and Protection recovery and equalization\n- target Geonosian Brood Alpha first\n- target Geonosian Spy second",
+          "latestVersionId": "IJzcmcMPOJTHj1E7jfWEZ",
+          "createdOn": "2021-12-18T21:38:57.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        232
+      ]
+    },
+    {
+      "toon1Id": "BADBATCHHUNTER",
+      "toon1Name": "Hunter",
+      "squads": [
+        {
+          "id": "DeCnFjd9ob12y5IHGflUH",
+          "name": "",
+          "toon1Id": "BADBATCHHUNTER",
+          "toon1Name": "Hunter",
+          "toon2Id": "BADBATCHECHO",
+          "toon2Name": "Echo",
+          "toon3Id": "BADBATCHTECH",
+          "toon3Name": "Tech",
+          "toon4Id": "BADBATCHWRECKER",
+          "toon4Name": "Wrecker",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "qyODDJz5cNJkybAYc8gdX",
+          "createdOn": "2021-06-19T21:52:26.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        58
+      ]
+    },
+    {
+      "toon1Id": "JANGOFETT",
+      "toon1Name": "Jango Fett",
+      "squads": [
+        {
+          "id": "YN9hzyuPRJIwQTGBBXEQC",
+          "name": "Jango L 1.0",
+          "toon1Id": "JANGOFETT",
+          "toon1Name": "Jango Fett",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "BOSSK",
+          "toon3Name": "Bossk",
+          "toon4Id": "GREEFKARGA",
+          "toon4Name": "Greef Karga",
+          "toon5Id": "THEMANDALORIAN",
+          "toon5Name": "The Mandalorian",
+          "description": "Primary members are Bossk, Greef Karga, and The Mandalorian.  Jango Fett's leadership gives Scoundrel allies +30 speed, punishes your team for putting debuffs them by lowering your potency and tenacity, and prevents turn meter for anyone with the Burning effect. When they fulfill their contract, all Bounty Hunters gain offense on top of their own payouts.",
+          "generalStrategy": "",
+          "latestVersionId": "9Yb9SUlqxlXN4Uz_5Q192",
+          "createdOn": "2021-02-27T02:38:01.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        23
+      ]
+    },
+    {
+      "toon1Id": "JEDIKNIGHTREVAN",
+      "toon1Name": "Jedi Knight Revan",
+      "squads": [
+        {
+          "id": "CLznlHKvPDYj0O99JOv66",
+          "name": "JKR L 1.0",
+          "toon1Id": "JEDIKNIGHTREVAN",
+          "toon1Name": "Jedi Knight Revan",
+          "toon2Id": "BASTILASHAN",
+          "toon2Name": "Bastila Shan",
+          "toon3Id": "GRANDMASTERYODA",
+          "toon3Name": "Grand Master Yoda",
+          "toon4Id": "HERMITYODA",
+          "toon4Name": "Hermit Yoda",
+          "toon5Id": "JOLEEBINDO",
+          "toon5Name": "Jolee Bindo",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "-rk29Ul32ft2BV4wb2XvP",
+          "createdOn": "2021-06-19T20:47:13.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        45
+      ]
+    },
+    {
+      "toon1Id": "JEDIMASTERKENOBI",
+      "toon1Name": "Jedi Master Kenobi",
+      "squads": [
+        {
+          "id": "fQo_utGZH5dXyD9f8geFy",
+          "name": "",
+          "toon1Id": "JEDIMASTERKENOBI",
+          "toon1Name": "Jedi Master Kenobi",
+          "toon2Id": "AHSOKATANO",
+          "toon2Name": "Ahsoka Tano",
+          "toon3Id": "ANAKINKNIGHT",
+          "toon3Name": "Jedi Knight Anakin",
+          "toon4Id": "COMMANDERAHSOKA",
+          "toon4Name": "Commander Ahsoka Tano",
+          "toon5Id": "GENERALKENOBI",
+          "toon5Name": "General Kenobi",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "gnikqosQH3YjQCeJGj_CA",
+          "createdOn": "2021-08-31T19:15:16.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "V-IcTJjRLAg7LuDACmV_G",
+          "name": "",
+          "toon1Id": "JEDIMASTERKENOBI",
+          "toon1Name": "Jedi Master Kenobi",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "BVEior3lVoQSmT2MpIudz",
+          "createdOn": "2021-08-31T19:15:20.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "XKx9fiuvLif-v3uGvckA9",
+          "name": "",
+          "toon1Id": "JEDIMASTERKENOBI",
+          "toon1Name": "Jedi Master Kenobi",
+          "toon2Id": "AHSOKATANO",
+          "toon2Name": "Ahsoka Tano",
+          "toon3Id": "ANAKINKNIGHT",
+          "toon3Name": "Jedi Knight Anakin",
+          "toon4Id": "GENERALKENOBI",
+          "toon4Name": "General Kenobi",
+          "toon5Id": "PADMEAMIDALA",
+          "toon5Name": "Padmé Amidala",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "Z60xu7UX_ZsHTydtjTCZm",
+          "createdOn": "2021-08-31T19:15:16.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        13,
+        2,
+        8
+      ]
+    },
+    {
+      "toon1Id": "GRANDMASTERLUKE",
+      "toon1Name": "Jedi Master Luke Skywalker",
+      "squads": [
+        {
+          "id": "5___QRaxaudErQpSgejOy",
+          "name": "",
+          "toon1Id": "GRANDMASTERLUKE",
+          "toon1Name": "Jedi Master Luke Skywalker",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "cSF6jsX7gTBRhiBDdZ3Yx",
+          "createdOn": "2021-06-19T20:53:38.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "aqomjWBmYmtwklid5yaGg",
+          "name": "JMLS L 1.0",
+          "toon1Id": "GRANDMASTERLUKE",
+          "toon1Name": "Jedi Master Luke Skywalker",
+          "toon2Id": "HERMITYODA",
+          "toon2Name": "Hermit Yoda",
+          "toon3Id": "JEDIKNIGHTLUKE",
+          "toon3Name": "Jedi Knight Luke Skywalker",
+          "toon4Id": "OLDBENKENOBI",
+          "toon4Name": "Obi-Wan Kenobi (Old Ben)",
+          "toon5Id": "SHAAKTI",
+          "toon5Name": "Shaak Ti",
+          "description": "Primary members are Jedi Knight Luke Skywalker, Obi-Wan Kenobi (Old Ben), and Shaak Ti.",
+          "generalStrategy": "",
+          "latestVersionId": "fjNbeYYOdxWqhkOjoCbz7",
+          "createdOn": "2021-02-26T16:42:15.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        16,
+        17
+      ]
+    },
+    {
+      "toon1Id": "KYLOREN",
+      "toon1Name": "Kylo Ren",
+      "squads": [
+        {
+          "id": "IHLquUkEk27HjItpLMyFh",
+          "name": "Kylo Ren (solo)",
+          "toon1Id": "KYLOREN",
+          "toon1Name": "Kylo Ren",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "PKVGo2ymmEdYArTsD041e",
+          "createdOn": "2021-05-03T17:36:16.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        11
+      ]
+    },
+    {
+      "toon1Id": "LORDVADER",
+      "toon1Name": "Lord Vader",
+      "squads": [
+        {
+          "id": "H4NZRpDOL4UND5RbHIZ_O",
+          "name": "",
+          "toon1Id": "LORDVADER",
+          "toon1Name": "Lord Vader",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "7tnsgs524I-l_K68Iug0T",
+          "createdOn": "2021-11-05T22:17:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        29
+      ]
+    },
+    {
+      "toon1Id": "MONMOTHMA",
+      "toon1Name": "Mon Mothma",
+      "squads": [
+        {
+          "id": "V3feplOAWT-noDP9ZYFGg",
+          "name": "",
+          "toon1Id": "MONMOTHMA",
+          "toon1Name": "Mon Mothma",
+          "toon2Id": "CARADUNE",
+          "toon2Name": "Cara Dune",
+          "toon3Id": "HOTHREBELSCOUT",
+          "toon3Name": "Hoth Rebel Scout",
+          "toon4Id": "KYLEKATARN",
+          "toon4Name": "Kyle Katarn",
+          "toon5Id": "PAO",
+          "toon5Name": "Pao",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "oTCu9YCbYmgqrfat0gBLt",
+          "createdOn": "2022-01-12T22:43:19.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        9
+      ]
+    },
+    {
+      "toon1Id": "MOTHERTALZIN",
+      "toon1Name": "Mother Talzin",
+      "squads": [
+        {
+          "id": "S8TdG_gXVqGRyM_cWc-6C",
+          "name": "Talzin L",
+          "toon1Id": "MOTHERTALZIN",
+          "toon1Name": "Mother Talzin",
+          "toon2Id": "ASAJVENTRESS",
+          "toon2Name": "Asajj Ventress",
+          "toon3Id": "DAKA",
+          "toon3Name": "Old Daka",
+          "toon4Id": "NIGHTSISTERSPIRIT",
+          "toon4Name": "Nightsister Spirit",
+          "toon5Id": "NIGHTSISTERZOMBIE",
+          "toon5Name": "Nightsister Zombie",
+          "description": "Infinite revives potential with Nightsister Zombie, damage through protection, healing, and cleansing.",
+          "generalStrategy": "Avoid Nightsister Zombie's constant taunting [dispel / buff immunity] or work around it [strong AoEs].  Having healers or high health steal is effective.  You want to kill Old Daka 3 times (to stop the auto revives and her revives), kill Mother Talzin, then kill Asajj Ventress (because she's more powerful now due to the deaths).  If no Enfys Nest, then kill whichever 4th character is used, then finally Nightsister Zombie.  If 4th is Nightsister Acolyte, you definitely want a dispeller or you can easily get caught between her stealth and Nightsister Zombie's taunt.  If Enfys Nest, save her for last.",
+          "latestVersionId": "oX63OzT8N-rTA07t3Sqxf",
+          "createdOn": "2021-06-19T20:47:15.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        137
+      ]
+    },
+    {
+      "toon1Id": "DAKA",
+      "toon1Name": "Old Daka",
+      "squads": [
+        {
+          "id": "PR7oUKN5Cclmwob4hPAE5",
+          "name": "NS (Daka L) 2.0",
+          "toon1Id": "DAKA",
+          "toon1Name": "Old Daka",
+          "toon2Id": "ASAJVENTRESS",
+          "toon2Name": "Asajj Ventress",
+          "toon3Id": "MOTHERTALZIN",
+          "toon3Name": "Mother Talzin",
+          "toon4Id": "NIGHTSISTERSPIRIT",
+          "toon4Name": "Nightsister Spirit",
+          "toon5Id": "NIGHTSISTERZOMBIE",
+          "toon5Name": "Nightsister Zombie",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "PtFcSiT3u1ZeXppajPxln",
+          "createdOn": "2021-02-08T15:31:13.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        4
+      ]
+    },
+    {
+      "toon1Id": "PADMEAMIDALA",
+      "toon1Name": "Padmé Amidala",
+      "squads": [
+        {
+          "id": "OSkKALjV8nGJwATutz5tE",
+          "name": "GR 1.0",
+          "toon1Id": "PADMEAMIDALA",
+          "toon1Name": "Padmé Amidala",
+          "toon2Id": "AHSOKATANO",
+          "toon2Name": "Ahsoka Tano",
+          "toon3Id": "ANAKINKNIGHT",
+          "toon3Name": "Jedi Knight Anakin",
+          "toon4Id": "C3POLEGENDARY",
+          "toon4Name": "C-3PO",
+          "toon5Id": "GENERALKENOBI",
+          "toon5Name": "General Kenobi",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "7Z3dL3iXiGka7voX-Ny4U",
+          "createdOn": "2021-06-19T20:47:17.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "sWD7hIWm2lsiBU5JAW_Cc",
+          "name": "GR 1.0 w/ Barriss",
+          "toon1Id": "PADMEAMIDALA",
+          "toon1Name": "Padmé Amidala",
+          "toon2Id": "AHSOKATANO",
+          "toon2Name": "Ahsoka Tano",
+          "toon3Id": "ANAKINKNIGHT",
+          "toon3Name": "Jedi Knight Anakin",
+          "toon4Id": "BARRISSOFFEE",
+          "toon4Name": "Barriss Offee",
+          "toon5Id": "GENERALKENOBI",
+          "toon5Name": "General Kenobi",
+          "description": "Primary members are Ahsoka Tano, Jedi Knight Anakin, and General Kenobi.  Super tanky team, immunity to debuffs (with many options to dispel), protection-up spamming, damage based on % of target's health, and benefits when enemies attack out of turn.",
+          "generalStrategy": "Buff immunities (+Isolate + Fracture + zeta Imperial Probe Droid) to deny buffing and stacking of protection-up and bonus % damage.  Kill order: Padmé Amidala, Jedi Knight Anakin.",
+          "latestVersionId": "RCWqaGgwFKjNsKzP8jfr2",
+          "createdOn": "2021-06-19T20:47:17.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        5,
+        5
+      ]
+    },
+    {
+      "toon1Id": "GLREY",
+      "toon1Name": "Rey",
+      "squads": [
+        {
+          "id": "2OKiFWG6d5i5srau-ZZXK",
+          "name": "Rey (solo)",
+          "toon1Id": "GLREY",
+          "toon1Name": "Rey",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "vH2pukz11tdWtiOS3S0OH",
+          "createdOn": "2021-02-06T14:17:56.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        40
+      ]
+    },
+    {
+      "toon1Id": "REYJEDITRAINING",
+      "toon1Name": "Rey (Jedi Training)",
+      "squads": [
+        {
+          "id": "nnC_1yK4mwFI-Slkik1c9",
+          "name": "JTR L 4.0",
+          "toon1Id": "REYJEDITRAINING",
+          "toon1Name": "Rey (Jedi Training)",
+          "toon2Id": "BB8",
+          "toon2Name": "BB-8",
+          "toon3Id": "FINN",
+          "toon3Name": "Finn",
+          "toon4Id": "RESISTANCETROOPER",
+          "toon4Name": "Resistance Trooper",
+          "toon5Id": "REY",
+          "toon5Name": "Rey (Scavenger)",
+          "description": "Turn meter gain, high damage and assists from BB-8, annoying foresights and recoveries from Rey (Jedi Training).  Crit team built on exposes for the turn meter.",
+          "generalStrategy": "Stopping BB-8 and Rey (Jedi Training) is key. The damage is from crits and exposes, so crit avoidance works well and reduced damage from exposes as well.  Hard to daze them because of foresights, so need to stop the turn meter train in other ways (disabling BB-8, crit avoidance) or exploit the high amount of turns (Plague).  Kill order: BB-8/Resistance Trooper, Rey (Scavenger), Rey (Jedi Training).",
+          "latestVersionId": "_QtAKXtKg96w0B9V0cqF4",
+          "createdOn": "2021-06-19T20:47:19.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        13
+      ]
+    },
+    {
+      "toon1Id": "SHAAKTI",
+      "toon1Name": "Shaak Ti",
+      "squads": [
+        {
+          "id": "hAUcFbZgAh6sM5noxcPhG",
+          "name": "Shaak Ti L 2.0",
+          "toon1Id": "SHAAKTI",
+          "toon1Name": "Shaak Ti",
+          "toon2Id": "ARCTROOPER501ST",
+          "toon2Name": "ARC Trooper",
+          "toon3Id": "CT210408",
+          "toon3Name": "CT-21-0408 \"Echo\"",
+          "toon4Id": "CT5555",
+          "toon4Name": "CT-5555 \"Fives\"",
+          "toon5Id": "CT7567",
+          "toon5Name": "CT-7567 \"Rex\"",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "n7v102ZTNMwxCTf5hfuI6",
+          "createdOn": "2021-02-08T14:36:09.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        49
+      ]
+    },
+    {
+      "toon1Id": "SITHPALPATINE",
+      "toon1Name": "Sith Eternal Emperor",
+      "squads": [
+        {
+          "id": "gA1vgfNbioXVyx1V_MfJL",
+          "name": "SEE L 3v3 w/ Wat",
+          "toon1Id": "SITHPALPATINE",
+          "toon1Name": "Sith Eternal Emperor",
+          "toon2Id": "WATTAMBOR",
+          "toon2Name": "Wat Tambor",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "zBjxGReDLMNbBnvsM76qZ",
+          "createdOn": "2021-02-24T17:41:06.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "PK62vv0576XYF5KuuVcuR",
+          "name": "Sith Eternal Emperor (solo)",
+          "toon1Id": "SITHPALPATINE",
+          "toon1Name": "Sith Eternal Emperor",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "7jHHtIOBLWwuzQlPnu3xg",
+          "createdOn": "2021-02-24T16:11:08.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        100,
+        172
+      ]
+    },
+    {
+      "toon1Id": "SUPREMELEADERKYLOREN",
+      "toon1Name": "Supreme Leader Kylo Ren",
+      "squads": [
+        {
+          "id": "o5IiMvII6RUUOAJ24s-nP",
+          "name": "SLKR L 1.0 w/ FOO",
+          "toon1Id": "SUPREMELEADERKYLOREN",
+          "toon1Name": "Supreme Leader Kylo Ren",
+          "toon2Id": "FIRSTORDEROFFICERMALE",
+          "toon2Name": "First Order Officer",
+          "toon3Id": "FOSITHTROOPER",
+          "toon3Name": "Sith Trooper",
+          "toon4Id": "GENERALHUX",
+          "toon4Name": "General Hux",
+          "toon5Id": "KYLORENUNMASKED",
+          "toon5Name": "Kylo Ren (Unmasked)",
+          "description": "Primary members are Sith Trooper, General Hux, and Kylo Ren (Unmasked)",
+          "generalStrategy": "",
+          "latestVersionId": "3S1EBpkoM-ikLoUo_3WPm",
+          "createdOn": "2021-03-25T22:14:04.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "vMPwe19pqGdV_d_MBMOfo",
+          "name": "SLKR (solo)",
+          "toon1Id": "SUPREMELEADERKYLOREN",
+          "toon1Name": "Supreme Leader Kylo Ren",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "KkPyKlV7A189U0GjJ_ZJr",
+          "createdOn": "2021-02-05T19:27:56.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        23,
+        96
+      ]
+    },
+    {
+      "toon1Id": "THEMANDALORIANBESKARARMOR",
+      "toon1Name": "The Mandalorian (Beskar Armor)",
+      "squads": [
+        {
+          "id": "4NZICDguqHhT95-RwMiK0",
+          "name": "",
+          "toon1Id": "THEMANDALORIANBESKARARMOR",
+          "toon1Name": "The Mandalorian (Beskar Armor)",
+          "toon2Id": "CARADUNE",
+          "toon2Name": "Cara Dune",
+          "toon3Id": "ENFYSNEST",
+          "toon3Name": "Enfys Nest",
+          "toon4Id": "IG11",
+          "toon4Name": "IG-11",
+          "toon5Id": "KUIIL",
+          "toon5Name": "Kuiil",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "kPvRfimfdQS6RWYpgUI8W",
+          "createdOn": "2021-06-19T20:58:11.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        4
+      ]
+    }
+  ]
+}

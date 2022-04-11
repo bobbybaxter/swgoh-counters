@@ -7,13 +7,16 @@ import './styles/index.scss';
 import ReactGA from 'react-ga';
 import { AuthProvider } from 'src/contexts/userContext';
 import { AccordionProvider } from 'src/contexts/accordionContext';
+import mockServer from 'src/mockServer'; // NOTE: remove to allow for dev or prod environments
 import App from './App/App';
 import * as serviceWorker from './serviceWorker';
 
-ReactGA.initialize('UA-170978501-1');
+mockServer(); // NOTE: remove to allow for dev or prod environments
 
-const rootElement = document.getElementById('root');
-if (rootElement.hasChildNodes()) {
+ReactGA.initialize( 'UA-170978501-1' );
+
+const rootElement = document.getElementById( 'root' );
+if ( rootElement.hasChildNodes()) {
   hydrate(
     <AuthProvider>
       <AccordionProvider>

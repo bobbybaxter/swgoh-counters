@@ -84,7 +84,7 @@ export default function Search( {
           ? searchComponent
           : <ContainerColumn className="m-3">
               <ContainerColumn>
-                <div>
+                {/* <div>
                   Are you looking for a counter that isn't listed?
                 </div>
 
@@ -115,7 +115,9 @@ export default function Search( {
                     <em>number of battles seen</em>,
                     <em>average win percentage</em>, and
                     <em>average banners</em> for each counter!
-                </div>
+                </div> */}
+
+                <PatreonButton />
               </ContainerColumn>
           </ContainerColumn>
       }

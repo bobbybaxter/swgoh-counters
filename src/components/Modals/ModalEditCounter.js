@@ -278,7 +278,7 @@ export default function ModalEditCounter( {
       }
 
       toggle();
-      reload();
+      // reload(); // NOTE: in dev/prod, remove this so the counter gets updated
     }
   };
 

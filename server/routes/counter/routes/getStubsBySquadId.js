@@ -6,7 +6,6 @@ module.exports = ( { data } ) => ( {
   path: '/counter/getStubsBySquadIds/:id',
   handler: async ( request, reply ) => {
     let stubs;
-    // const leaderId = request.params.id;
     const { view, size, squadIds } = request.query;
 
     const squadIdsArray = squadIds.split( ',' );

@@ -1,0 +1,1513 @@
+[
+  {
+      "id": "AAYLASECURA",
+      "name": "Aayla Secura",
+      "zetas": []
+  },
+  {
+      "id": "ADMINISTRATORLANDO",
+      "name": "Lando Calrissian",
+      "zetas": []
+  },
+  {
+      "id": "ADMIRALACKBAR",
+      "name": "Admiral Ackbar",
+      "zetas": []
+  },
+  {
+      "id": "ADMIRALPIETT",
+      "name": "Admiral Piett",
+      "zetas": [
+          "Suborbital Strike",
+          "The Emperor's Trap"
+      ]
+  },
+  {
+      "id": "AHSOKATANO",
+      "name": "Ahsoka Tano",
+      "zetas": [
+          "Daring Padawan"
+      ]
+  },
+  {
+      "id": "AMILYNHOLDO",
+      "name": "Amilyn Holdo",
+      "zetas": [
+          "Quiet Confidence"
+      ]
+  },
+  {
+      "id": "ANAKINKNIGHT",
+      "name": "Jedi Knight Anakin",
+      "zetas": [
+          "Righteous Fury"
+      ]
+  },
+  {
+      "id": "ARCTROOPER501ST",
+      "name": "ARC Trooper",
+      "zetas": [
+          "ARC Arsenal"
+      ]
+  },
+  {
+      "id": "ARMORER",
+      "name": "The Armorer",
+      "zetas": [
+          "Earn Your Signet"
+      ]
+  },
+  {
+      "id": "ASAJVENTRESS",
+      "name": "Asajj Ventress",
+      "zetas": [
+          "Rampage",
+          "Nightsister Swiftness"
+      ]
+  },
+  {
+      "id": "AURRA_SING",
+      "name": "Aurra Sing",
+      "zetas": [
+          "Snipers Expertise",
+          "Game Plan"
+      ]
+  },
+  {
+      "id": "B1BATTLEDROIDV2",
+      "name": "B1 Battle Droid",
+      "zetas": [
+          "Droid Battalion"
+      ]
+  },
+  {
+      "id": "B2SUPERBATTLEDROID",
+      "name": "B2 Super Battle Droid",
+      "zetas": [
+          "Reactive Protocol"
+      ]
+  },
+  {
+      "id": "BADBATCHECHO",
+      "name": "Echo",
+      "zetas": [
+          "One That Survives"
+      ]
+  },
+  {
+      "id": "BADBATCHHUNTER",
+      "name": "Hunter",
+      "zetas": [
+          "A Different Path"
+      ]
+  },
+  {
+      "id": "BADBATCHOMEGA",
+      "name": "Omega",
+      "zetas": [
+          "Part of the Squad",
+          "Adaptive Learner"
+      ]
+  },
+  {
+      "id": "BADBATCHTECH",
+      "name": "Tech",
+      "zetas": [
+          "Clone Interpreter"
+      ]
+  },
+  {
+      "id": "BADBATCHWRECKER",
+      "name": "Wrecker",
+      "zetas": [
+          "Dauntless Commando"
+      ]
+  },
+  {
+      "id": "BARRISSOFFEE",
+      "name": "Barriss Offee",
+      "zetas": [
+          "Swift Recovery"
+      ]
+  },
+  {
+      "id": "BASTILASHAN",
+      "name": "Bastila Shan",
+      "zetas": [
+          "Initiative"
+      ]
+  },
+  {
+      "id": "BASTILASHANDARK",
+      "name": "Bastila Shan (Fallen)",
+      "zetas": [
+          "Sith Apprentice"
+      ]
+  },
+  {
+      "id": "BAZEMALBUS",
+      "name": "Baze Malbus",
+      "zetas": []
+  },
+  {
+      "id": "BB8",
+      "name": "BB-8",
+      "zetas": [
+          "Roll with the Punches",
+          "Self-Preservation Protocol"
+      ]
+  },
+  {
+      "id": "BIGGSDARKLIGHTER",
+      "name": "Biggs Darklighter",
+      "zetas": []
+  },
+  {
+      "id": "BISTAN",
+      "name": "Bistan",
+      "zetas": []
+  },
+  {
+      "id": "BLANK",
+      "name": "Blank",
+      "zetas": []
+  },
+  {
+      "id": "BOBAFETT",
+      "name": "Boba Fett",
+      "zetas": [
+          "Bounty Hunter's Resolve"
+      ]
+  },
+  {
+      "id": "BOBAFETTSCION",
+      "name": "Boba Fett, Scion of Jango",
+      "zetas": [
+          "Fett Legacy"
+      ]
+  },
+  {
+      "id": "BODHIROOK",
+      "name": "Bodhi Rook",
+      "zetas": [
+          "Double Duty"
+      ]
+  },
+  {
+      "id": "BOKATAN",
+      "name": "Bo-Katan Kryze",
+      "zetas": [
+          "Stronger Together"
+      ]
+  },
+  {
+      "id": "BOSSK",
+      "name": "Bossk",
+      "zetas": [
+          "On The Hunt",
+          "Trandoshan Rage"
+      ]
+  },
+  {
+      "id": "C3POCHEWBACCA",
+      "name": "Threepio & Chewie",
+      "zetas": [
+          "Chewie's Rage"
+      ]
+  },
+  {
+      "id": "C3POLEGENDARY",
+      "name": "C-3PO",
+      "zetas": [
+          "Wait for Me!",
+          "Oh My Goodness!"
+      ]
+  },
+  {
+      "id": "CADBANE",
+      "name": "Cad Bane",
+      "zetas": []
+  },
+  {
+      "id": "CANDEROUSORDO",
+      "name": "Canderous Ordo",
+      "zetas": [
+          "I Like a Challenge"
+      ]
+  },
+  {
+      "id": "CARADUNE",
+      "name": "Cara Dune",
+      "zetas": [
+          "Ex-Rebel Shock Trooper"
+      ]
+  },
+  {
+      "id": "CARTHONASI",
+      "name": "Carth Onasi",
+      "zetas": [
+          "Soldier of the Old Republic"
+      ]
+  },
+  {
+      "id": "CASSIANANDOR",
+      "name": "Cassian Andor",
+      "zetas": [
+          "Groundwork"
+      ]
+  },
+  {
+      "id": "CC2224",
+      "name": "CC-2224 \"Cody\"",
+      "zetas": [
+          "Ghost Company Commander"
+      ]
+  },
+  {
+      "id": "CHEWBACCALEGENDARY",
+      "name": "Chewbacca",
+      "zetas": [
+          "Raging Wookiee",
+          "Loyal Friend"
+      ]
+  },
+  {
+      "id": "CHIEFCHIRPA",
+      "name": "Chief Chirpa",
+      "zetas": [
+          "Simple Tactics"
+      ]
+  },
+  {
+      "id": "CHIEFNEBIT",
+      "name": "Chief Nebit",
+      "zetas": []
+  },
+  {
+      "id": "CHIRRUTIMWE",
+      "name": "Chirrut Îmwe",
+      "zetas": []
+  },
+  {
+      "id": "CHOPPERS3",
+      "name": "Chopper",
+      "zetas": []
+  },
+  {
+      "id": "CLONESERGEANTPHASEI",
+      "name": "Clone Sergeant - Phase I",
+      "zetas": []
+  },
+  {
+      "id": "CLONEWARSCHEWBACCA",
+      "name": "Clone Wars Chewbacca",
+      "zetas": [
+          "Defiant Roar"
+      ]
+  },
+  {
+      "id": "COLONELSTARCK",
+      "name": "Colonel Starck",
+      "zetas": [
+          "Imperial Intelligence"
+      ]
+  },
+  {
+      "id": "COMMANDERAHSOKA",
+      "name": "Commander Ahsoka Tano",
+      "zetas": [
+          "Shien",
+          "Force Leap",
+          "Her Own Path"
+      ]
+  },
+  {
+      "id": "COMMANDERLUKESKYWALKER",
+      "name": "Commander Luke Skywalker",
+      "zetas": [
+          "Rebel Maneuvers",
+          "Learn Control",
+          "It Binds All Things"
+      ]
+  },
+  {
+      "id": "CORUSCANTUNDERWORLDPOLICE",
+      "name": "Coruscant Underworld Police",
+      "zetas": []
+  },
+  {
+      "id": "COUNTDOOKU",
+      "name": "Count Dooku",
+      "zetas": [
+          "Flawless Riposte"
+      ]
+  },
+  {
+      "id": "CT210408",
+      "name": "CT-21-0408 \"Echo\"",
+      "zetas": [
+          "Domino Squad"
+      ]
+  },
+  {
+      "id": "CT5555",
+      "name": "CT-5555 \"Fives\"",
+      "zetas": [
+          "Domino Squad",
+          "Tactical Awareness"
+      ]
+  },
+  {
+      "id": "CT7567",
+      "name": "CT-7567 \"Rex\"",
+      "zetas": [
+          "Captain of the 501st"
+      ]
+  },
+  {
+      "id": "DAKA",
+      "name": "Old Daka",
+      "zetas": [
+          "Serve Again"
+      ]
+  },
+  {
+      "id": "DARKTROOPER",
+      "name": "Dark Trooper",
+      "zetas": [
+          "Bombarding Reinforcements"
+      ]
+  },
+  {
+      "id": "DARTHMALAK",
+      "name": "Darth Malak",
+      "zetas": [
+          "Jaws of Life",
+          "Gnawing Terror"
+      ]
+  },
+  {
+      "id": "DARTHNIHILUS",
+      "name": "Darth Nihilus",
+      "zetas": [
+          "Strength of the Void",
+          "Lord of Hunger"
+      ]
+  },
+  {
+      "id": "DARTHREVAN",
+      "name": "Darth Revan",
+      "zetas": [
+          "Conqueror",
+          "Lord of the Sith",
+          "Villain"
+      ]
+  },
+  {
+      "id": "DARTHSIDIOUS",
+      "name": "Darth Sidious",
+      "zetas": [
+          "Sadistic Glee"
+      ]
+  },
+  {
+      "id": "DARTHSION",
+      "name": "Darth Sion",
+      "zetas": [
+          "Lord of Pain"
+      ]
+  },
+  {
+      "id": "DARTHTALON",
+      "name": "Darth Talon",
+      "zetas": [
+          "Proven Loyalty"
+      ]
+  },
+  {
+      "id": "DARTHTRAYA",
+      "name": "Darth Traya",
+      "zetas": [
+          "Lord of Betrayal",
+          "Compassion is Weakness"
+      ]
+  },
+  {
+      "id": "DASHRENDAR",
+      "name": "Dash Rendar",
+      "zetas": [
+          "Hotshot"
+      ]
+  },
+  {
+      "id": "DATHCHA",
+      "name": "Dathcha",
+      "zetas": []
+  },
+  {
+      "id": "DEATHTROOPER",
+      "name": "Death Trooper",
+      "zetas": [
+          "Krennic's Guard"
+      ]
+  },
+  {
+      "id": "DENGAR",
+      "name": "Dengar",
+      "zetas": [
+          "Grizzled Veteran"
+      ]
+  },
+  {
+      "id": "DIRECTORKRENNIC",
+      "name": "Director Krennic",
+      "zetas": [
+          "Director of Advanced Weapons Research"
+      ]
+  },
+  {
+      "id": "DROIDEKA",
+      "name": "Droideka",
+      "zetas": [
+          "Deflector Shield Generator"
+      ]
+  },
+  {
+      "id": "EETHKOTH",
+      "name": "Eeth Koth",
+      "zetas": []
+  },
+  {
+      "id": "EMBO",
+      "name": "Embo",
+      "zetas": [
+          "The Quiet Assassin",
+          "Way of the Kyuzo"
+      ]
+  },
+  {
+      "id": "EMPERORPALPATINE",
+      "name": "Emperor Palpatine",
+      "zetas": [
+          "Crackling Doom",
+          "Emperor of the Galactic Empire"
+      ]
+  },
+  {
+      "id": "ENFYSNEST",
+      "name": "Enfys Nest",
+      "zetas": [
+          "Fighting Instinct"
+      ]
+  },
+  {
+      "id": "EPIXFINN",
+      "name": "Resistance Hero Finn",
+      "zetas": [
+          "Spark of Resistance"
+      ]
+  },
+  {
+      "id": "EPIXPOE",
+      "name": "Resistance Hero Poe",
+      "zetas": [
+          "Spark of Resistance"
+      ]
+  },
+  {
+      "id": "EWOKELDER",
+      "name": "Ewok Elder",
+      "zetas": []
+  },
+  {
+      "id": "EWOKSCOUT",
+      "name": "Ewok Scout",
+      "zetas": []
+  },
+  {
+      "id": "EZRABRIDGERS3",
+      "name": "Ezra Bridger",
+      "zetas": [
+          "Flourish"
+      ]
+  },
+  {
+      "id": "FENNECSHAND",
+      "name": "Fennec Shand",
+      "zetas": [
+          "Making an Impression"
+      ]
+  },
+  {
+      "id": "FINN",
+      "name": "Finn",
+      "zetas": [
+          "Balanced Tactics"
+      ]
+  },
+  {
+      "id": "FIRSTORDEREXECUTIONER",
+      "name": "First Order Executioner",
+      "zetas": []
+  },
+  {
+      "id": "FIRSTORDEROFFICERMALE",
+      "name": "First Order Officer",
+      "zetas": []
+  },
+  {
+      "id": "FIRSTORDERSPECIALFORCESPILOT",
+      "name": "First Order SF TIE Pilot",
+      "zetas": []
+  },
+  {
+      "id": "FIRSTORDERTIEPILOT",
+      "name": "First Order TIE Pilot",
+      "zetas": [
+          "Keen Eye"
+      ]
+  },
+  {
+      "id": "FIRSTORDERTROOPER",
+      "name": "First Order Stormtrooper",
+      "zetas": [
+          "Return Fire"
+      ]
+  },
+  {
+      "id": "FOSITHTROOPER",
+      "name": "Sith Trooper",
+      "zetas": [
+          "Emperor's Legacy"
+      ]
+  },
+  {
+      "id": "FULCRUMAHSOKA",
+      "name": "Ahsoka Tano (Fulcrum)",
+      "zetas": [
+          "Whirlwind"
+      ]
+  },
+  {
+      "id": "GAMORREANGUARD",
+      "name": "Gamorrean Guard",
+      "zetas": []
+  },
+  {
+      "id": "GARSAXON",
+      "name": "Gar Saxon",
+      "zetas": [
+          "Mandalorian Retaliation"
+      ]
+  },
+  {
+      "id": "GENERALHUX",
+      "name": "General Hux",
+      "zetas": [
+          "Boundless Ambition"
+      ]
+  },
+  {
+      "id": "GENERALKENOBI",
+      "name": "General Kenobi",
+      "zetas": [
+          "Soresu"
+      ]
+  },
+  {
+      "id": "GENERALSKYWALKER",
+      "name": "General Skywalker",
+      "zetas": [
+          "Furious Slash",
+          "Hero with no Fear",
+          "General of the 501st",
+          "The Chosen One"
+      ]
+  },
+  {
+      "id": "GEONOSIANBROODALPHA",
+      "name": "Geonosian Brood Alpha",
+      "zetas": [
+          "Queen's Will",
+          "Geonosian Swarm"
+      ]
+  },
+  {
+      "id": "GEONOSIANSOLDIER",
+      "name": "Geonosian Soldier",
+      "zetas": []
+  },
+  {
+      "id": "GEONOSIANSPY",
+      "name": "Geonosian Spy",
+      "zetas": []
+  },
+  {
+      "id": "GLREY",
+      "name": "Rey",
+      "zetas": [
+          "Manifest Inspiration",
+          "Sudden Whirlwind",
+          "Relentless Advance",
+          "Wisdom of the Sacred Texts",
+          "Lifeblood",
+          "Galactic Legend"
+      ]
+  },
+  {
+      "id": "GRANDADMIRALTHRAWN",
+      "name": "Grand Admiral Thrawn",
+      "zetas": [
+          "Ebb and Flow",
+          "Legendary Strategist"
+      ]
+  },
+  {
+      "id": "GRANDMASTERLUKE",
+      "name": "Jedi Master Luke Skywalker",
+      "zetas": [
+          "Legend of the Jedi",
+          "Indomitable Blast",
+          "Jedi Legacy",
+          "Galactic Legend",
+          "Efflux",
+          "They Grow Beyond"
+      ]
+  },
+  {
+      "id": "GRANDMASTERYODA",
+      "name": "Grand Master Yoda",
+      "zetas": [
+          "Battle Meditation",
+          "Grand Master's Guidance"
+      ]
+  },
+  {
+      "id": "GRANDMOFFTARKIN",
+      "name": "Grand Moff Tarkin",
+      "zetas": [
+          "Callous Conviction",
+          "Tighten the Grip"
+      ]
+  },
+  {
+      "id": "GREEDO",
+      "name": "Greedo",
+      "zetas": [
+          "Threaten"
+      ]
+  },
+  {
+      "id": "GREEFKARGA",
+      "name": "Greef Karga",
+      "zetas": [
+          "Sweeten the Deal",
+          "Bring Them in Cold"
+      ]
+  },
+  {
+      "id": "GRIEVOUS",
+      "name": "General Grievous",
+      "zetas": [
+          "Daunting Presence",
+          "Metalloid Monstrosity"
+      ]
+  },
+  {
+      "id": "HANSOLO",
+      "name": "Han Solo",
+      "zetas": [
+          "Shoots First"
+      ]
+  },
+  {
+      "id": "HERASYNDULLAS3",
+      "name": "Hera Syndulla",
+      "zetas": [
+          "Play to Strengths"
+      ]
+  },
+  {
+      "id": "HERMITYODA",
+      "name": "Hermit Yoda",
+      "zetas": [
+          "Do or Do Not",
+          "Strength Flows From the Force"
+      ]
+  },
+  {
+      "id": "HK47",
+      "name": "HK-47",
+      "zetas": [
+          "Self-Reconstruction",
+          "Loyalty to the Maker"
+      ]
+  },
+  {
+      "id": "HOTHHAN",
+      "name": "Captain Han Solo",
+      "zetas": [
+          "Nick of Time"
+      ]
+  },
+  {
+      "id": "HOTHLEIA",
+      "name": "Rebel Officer Leia Organa",
+      "zetas": [
+          "Dauntless"
+      ]
+  },
+  {
+      "id": "HOTHREBELSCOUT",
+      "name": "Hoth Rebel Scout",
+      "zetas": []
+  },
+  {
+      "id": "HOTHREBELSOLDIER",
+      "name": "Hoth Rebel Soldier",
+      "zetas": []
+  },
+  {
+      "id": "HUMANTHUG",
+      "name": "Mob Enforcer",
+      "zetas": []
+  },
+  {
+      "id": "IDENVERSIOEMPIRE",
+      "name": "Iden Versio",
+      "zetas": [
+          "First In, Last Out"
+      ]
+  },
+  {
+      "id": "IG11",
+      "name": "IG-11",
+      "zetas": [
+          "Child's Favor"
+      ]
+  },
+  {
+      "id": "IG86SENTINELDROID",
+      "name": "IG-86 Sentinel Droid",
+      "zetas": []
+  },
+  {
+      "id": "IG88",
+      "name": "IG-88",
+      "zetas": [
+          "Adaptive Aim Algorithm"
+      ]
+  },
+  {
+      "id": "IMAGUNDI",
+      "name": "Ima-Gun Di",
+      "zetas": []
+  },
+  {
+      "id": "IMPERIALPROBEDROID",
+      "name": "Imperial Probe Droid",
+      "zetas": [
+          "Imperial Logistics"
+      ]
+  },
+  {
+      "id": "IMPERIALSUPERCOMMANDO",
+      "name": "Imperial Super Commando",
+      "zetas": []
+  },
+  {
+      "id": "JANGOFETT",
+      "name": "Jango Fett",
+      "zetas": [
+          "Anything to Get Ahead",
+          "Notorious Reputation"
+      ]
+  },
+  {
+      "id": "JAWA",
+      "name": "Jawa",
+      "zetas": []
+  },
+  {
+      "id": "JAWAENGINEER",
+      "name": "Jawa Engineer",
+      "zetas": []
+  },
+  {
+      "id": "JAWASCAVENGER",
+      "name": "Jawa Scavenger",
+      "zetas": []
+  },
+  {
+      "id": "JEDIKNIGHTCONSULAR",
+      "name": "Jedi Consular",
+      "zetas": []
+  },
+  {
+      "id": "JEDIKNIGHTGUARDIAN",
+      "name": "Jedi Knight Guardian",
+      "zetas": []
+  },
+  {
+      "id": "JEDIKNIGHTLUKE",
+      "name": "Jedi Knight Luke Skywalker",
+      "zetas": [
+          "Jedi Knight's Resolve",
+          "Return of the Jedi"
+      ]
+  },
+  {
+      "id": "JEDIKNIGHTREVAN",
+      "name": "Jedi Knight Revan",
+      "zetas": [
+          "General",
+          "Hero",
+          "Direct Focus"
+      ]
+  },
+  {
+      "id": "JEDIMASTERKENOBI",
+      "name": "Jedi Master Kenobi",
+      "zetas": [
+          "Galactic Legend",
+          "Ardent Bladework",
+          "May The Force Be With You",
+          "Hello There",
+          "I Will Do What I Must",
+          "Harmonious Will"
+      ]
+  },
+  {
+      "id": "JOLEEBINDO",
+      "name": "Jolee Bindo",
+      "zetas": [
+          "That Looks Pretty Bad"
+      ]
+  },
+  {
+      "id": "JUHANI",
+      "name": "Juhani",
+      "zetas": [
+          "Cathar Resilience"
+      ]
+  },
+  {
+      "id": "JYNERSO",
+      "name": "Jyn Erso",
+      "zetas": [
+          "Fierce Determination",
+          "Into the Fray"
+      ]
+  },
+  {
+      "id": "K2SO",
+      "name": "K-2SO",
+      "zetas": [
+          "Reprogrammed Imperial Droid"
+      ]
+  },
+  {
+      "id": "KANANJARRUSS3",
+      "name": "Kanan Jarrus",
+      "zetas": [
+          "Total Defense"
+      ]
+  },
+  {
+      "id": "KIADIMUNDI",
+      "name": "Ki-Adi-Mundi",
+      "zetas": [
+          "Jedi Council"
+      ]
+  },
+  {
+      "id": "KITFISTO",
+      "name": "Kit Fisto",
+      "zetas": []
+  },
+  {
+      "id": "KUIIL",
+      "name": "Kuiil",
+      "zetas": [
+          "Frontier Wisdom"
+      ]
+  },
+  {
+      "id": "KYLEKATARN",
+      "name": "Kyle Katarn",
+      "zetas": [
+          "Power of the Valley"
+      ]
+  },
+  {
+      "id": "KYLOREN",
+      "name": "Kylo Ren",
+      "zetas": [
+          "Outrage"
+      ]
+  },
+  {
+      "id": "KYLORENUNMASKED",
+      "name": "Kylo Ren (Unmasked)",
+      "zetas": [
+          "Scarred",
+          "Merciless Pursuit"
+      ]
+  },
+  {
+      "id": "L3_37",
+      "name": "L3-37",
+      "zetas": [
+          "For the Droids"
+      ]
+  },
+  {
+      "id": "LOBOT",
+      "name": "Lobot",
+      "zetas": []
+  },
+  {
+      "id": "LOGRAY",
+      "name": "Logray",
+      "zetas": [
+          "Shaman's Insight"
+      ]
+  },
+  {
+      "id": "LORDVADER",
+      "name": "Lord Vader",
+      "zetas": [
+          "Dark Harbinger",
+          "Vindictive Storm",
+          "Twisted Prophecy",
+          "Unshackled Emotions",
+          "Galactic Legend",
+          "My New Empire"
+      ]
+  },
+  {
+      "id": "LUKESKYWALKER",
+      "name": "Luke Skywalker (Farmboy)",
+      "zetas": [
+          "Draw a Bead",
+          "A New Hope"
+      ]
+  },
+  {
+      "id": "LUMINARAUNDULI",
+      "name": "Luminara Unduli",
+      "zetas": [
+          "Elegant Steps"
+      ]
+  },
+  {
+      "id": "MACEWINDU",
+      "name": "Mace Windu",
+      "zetas": []
+  },
+  {
+      "id": "MAGMATROOPER",
+      "name": "Magmatrooper",
+      "zetas": []
+  },
+  {
+      "id": "MAGNAGUARD",
+      "name": "IG-100 MagnaGuard",
+      "zetas": [
+          "Stunning Strike"
+      ]
+  },
+  {
+      "id": "MARAJADE",
+      "name": "Mara Jade, The Emperor's Hand",
+      "zetas": [
+          "Ultimate Predator",
+          "Infiltrate and Disrupt"
+      ]
+  },
+  {
+      "id": "MAUL",
+      "name": "Darth Maul",
+      "zetas": [
+          "Dancing Shadows"
+      ]
+  },
+  {
+      "id": "MAULS7",
+      "name": "Maul",
+      "zetas": [
+          "Bound By Hatred",
+          "Seething Rage",
+          "Fervent Rush"
+      ]
+  },
+  {
+      "id": "MISSIONVAO",
+      "name": "Mission Vao",
+      "zetas": [
+          "Me and Big Z Forever"
+      ]
+  },
+  {
+      "id": "MOFFGIDEONS1",
+      "name": "Moff Gideon",
+      "zetas": [
+          "Control the Situation",
+          "Tactical Deployment"
+      ]
+  },
+  {
+      "id": "MONMOTHMA",
+      "name": "Mon Mothma",
+      "zetas": [
+          "This Is Our Rebellion",
+          "Alliance Chancellor"
+      ]
+  },
+  {
+      "id": "MOTHERTALZIN",
+      "name": "Mother Talzin",
+      "zetas": [
+          "Plaguebearer",
+          "The Great Mother"
+      ]
+  },
+  {
+      "id": "NIGHTSISTERACOLYTE",
+      "name": "Nightsister Acolyte",
+      "zetas": []
+  },
+  {
+      "id": "NIGHTSISTERINITIATE",
+      "name": "Nightsister Initiate",
+      "zetas": [
+          "Nightsister Retaliation"
+      ]
+  },
+  {
+      "id": "NIGHTSISTERSPIRIT",
+      "name": "Nightsister Spirit",
+      "zetas": []
+  },
+  {
+      "id": "NIGHTSISTERZOMBIE",
+      "name": "Nightsister Zombie",
+      "zetas": []
+  },
+  {
+      "id": "NINTHSISTER",
+      "name": "Ninth Sister",
+      "zetas": [
+          "Can't Stop the Empire",
+          "Ground Pound"
+      ]
+  },
+  {
+      "id": "NUTEGUNRAY",
+      "name": "Nute Gunray",
+      "zetas": [
+          "Viceroy's Reach"
+      ]
+  },
+  {
+      "id": "OLDBENKENOBI",
+      "name": "Obi-Wan Kenobi (Old Ben)",
+      "zetas": [
+          "If You Strike Me Down",
+          "Devoted Protector"
+      ]
+  },
+  {
+      "id": "PADMEAMIDALA",
+      "name": "Padmé Amidala",
+      "zetas": [
+          "Unwavering Courage",
+          "Always a Choice"
+      ]
+  },
+  {
+      "id": "PAO",
+      "name": "Pao",
+      "zetas": [
+          "For Pipada"
+      ]
+  },
+  {
+      "id": "PAPLOO",
+      "name": "Paploo",
+      "zetas": [
+          "Don't Hold Back"
+      ]
+  },
+  {
+      "id": "PHASMA",
+      "name": "Captain Phasma",
+      "zetas": [
+          "Fire at Will"
+      ]
+  },
+  {
+      "id": "PLOKOON",
+      "name": "Plo Koon",
+      "zetas": []
+  },
+  {
+      "id": "POE",
+      "name": "Poe Dameron",
+      "zetas": []
+  },
+  {
+      "id": "POGGLETHELESSER",
+      "name": "Poggle the Lesser",
+      "zetas": []
+  },
+  {
+      "id": "PRINCESSLEIA",
+      "name": "Princess Leia",
+      "zetas": [
+          "Against All Odds"
+      ]
+  },
+  {
+      "id": "QIRA",
+      "name": "Qi'ra",
+      "zetas": [
+          "Insult to Injury"
+      ]
+  },
+  {
+      "id": "QUIGONJINN",
+      "name": "Qui-Gon Jinn",
+      "zetas": [
+          "Agility Training"
+      ]
+  },
+  {
+      "id": "R2D2_LEGENDARY",
+      "name": "R2-D2",
+      "zetas": [
+          "Combat Analysis",
+          "Number Crunch"
+      ]
+  },
+  {
+      "id": "RANGETROOPER",
+      "name": "Range Trooper",
+      "zetas": []
+  },
+  {
+      "id": "RESISTANCEPILOT",
+      "name": "Resistance Pilot",
+      "zetas": []
+  },
+  {
+      "id": "RESISTANCETROOPER",
+      "name": "Resistance Trooper",
+      "zetas": []
+  },
+  {
+      "id": "REY",
+      "name": "Rey (Scavenger)",
+      "zetas": [
+          "Focused Strikes"
+      ]
+  },
+  {
+      "id": "REYJEDITRAINING",
+      "name": "Rey (Jedi Training)",
+      "zetas": [
+          "Insight",
+          "Virtuous Protector",
+          "Inspirational Presence"
+      ]
+  },
+  {
+      "id": "ROSETICO",
+      "name": "Rose Tico",
+      "zetas": [
+          "Valiant Spirit"
+      ]
+  },
+  {
+      "id": "ROYALGUARD",
+      "name": "Royal Guard",
+      "zetas": [
+          "Unyielding Defender"
+      ]
+  },
+  {
+      "id": "SABINEWRENS3",
+      "name": "Sabine Wren",
+      "zetas": [
+          "Demolish"
+      ]
+  },
+  {
+      "id": "SAVAGEOPRESS",
+      "name": "Savage Opress",
+      "zetas": [
+          "Brute"
+      ]
+  },
+  {
+      "id": "SCARIFREBEL",
+      "name": "Scarif Rebel Pathfinder",
+      "zetas": []
+  },
+  {
+      "id": "SECONDSISTER",
+      "name": "Second Sister",
+      "zetas": [
+          "Everyone is Expendable"
+      ]
+  },
+  {
+      "id": "SHAAKTI",
+      "name": "Shaak Ti",
+      "zetas": [
+          "Heightened Reflexes",
+          "Unity Wins War"
+      ]
+  },
+  {
+      "id": "SHORETROOPER",
+      "name": "Shoretrooper",
+      "zetas": []
+  },
+  {
+      "id": "SITHASSASSIN",
+      "name": "Sith Assassin",
+      "zetas": []
+  },
+  {
+      "id": "SITHMARAUDER",
+      "name": "Sith Marauder",
+      "zetas": []
+  },
+  {
+      "id": "SITHPALPATINE",
+      "name": "Sith Eternal Emperor",
+      "zetas": [
+          "Sow Discord",
+          "Deception",
+          "Unraveled Destiny",
+          "Sith Eternal",
+          "So Be It, Jedi",
+          "Galactic Legend"
+      ]
+  },
+  {
+      "id": "SITHTROOPER",
+      "name": "Sith Empire Trooper",
+      "zetas": []
+  },
+  {
+      "id": "SMUGGLERCHEWBACCA",
+      "name": "Veteran Smuggler Chewbacca",
+      "zetas": [
+          "Let the Wookiee Win"
+      ]
+  },
+  {
+      "id": "SMUGGLERHAN",
+      "name": "Veteran Smuggler Han Solo",
+      "zetas": [
+          "Swindle"
+      ]
+  },
+  {
+      "id": "SNOWTROOPER",
+      "name": "Snowtrooper",
+      "zetas": []
+  },
+  {
+      "id": "STARKILLER",
+      "name": "Starkiller",
+      "zetas": [
+          "Imbued Lightsaber Strike",
+          "Force Energy"
+      ]
+  },
+  {
+      "id": "STORMTROOPER",
+      "name": "Stormtrooper",
+      "zetas": [
+          "Wall of Stormtroopers"
+      ]
+  },
+  {
+      "id": "STORMTROOPERHAN",
+      "name": "Stormtrooper Han",
+      "zetas": [
+          "Bluff"
+      ]
+  },
+  {
+      "id": "SUNFAC",
+      "name": "Sun Fac",
+      "zetas": []
+  },
+  {
+      "id": "SUPREMELEADERKYLOREN",
+      "name": "Supreme Leader Kylo Ren",
+      "zetas": [
+          "Stasis Strike",
+          "Galactic Legend",
+          "Press the Advantage",
+          "Brutal Assault",
+          "Supreme Leader",
+          "Furious Onslaught"
+      ]
+  },
+  {
+      "id": "T3_M4",
+      "name": "T3-M4",
+      "zetas": [
+          "Combat Logic Upgrade",
+          "Master Gearhead"
+      ]
+  },
+  {
+      "id": "TALIA",
+      "name": "Talia",
+      "zetas": []
+  },
+  {
+      "id": "TEEBO",
+      "name": "Teebo",
+      "zetas": []
+  },
+  {
+      "id": "THEMANDALORIAN",
+      "name": "The Mandalorian",
+      "zetas": [
+          "Disciplined Bounty Hunter",
+          "Asset Acquisition"
+      ]
+  },
+  {
+      "id": "THEMANDALORIANBESKARARMOR",
+      "name": "The Mandalorian (Beskar Armor)",
+      "zetas": [
+          "Protective Intuition",
+          "Seasoned Tactics"
+      ]
+  },
+  {
+      "id": "TIEFIGHTERPILOT",
+      "name": "TIE Fighter Pilot",
+      "zetas": []
+  },
+  {
+      "id": "TUSKENRAIDER",
+      "name": "Tusken Raider",
+      "zetas": []
+  },
+  {
+      "id": "TUSKENSHAMAN",
+      "name": "Tusken Shaman",
+      "zetas": []
+  },
+  {
+      "id": "UGNAUGHT",
+      "name": "Ugnaught",
+      "zetas": []
+  },
+  {
+      "id": "URORRURRR",
+      "name": "URoRRuR'R'R",
+      "zetas": []
+  },
+  {
+      "id": "VADER",
+      "name": "Darth Vader",
+      "zetas": [
+          "Inspiring Through Fear",
+          "No Escape",
+          "Merciless Massacre"
+      ]
+  },
+  {
+      "id": "VEERS",
+      "name": "General Veers",
+      "zetas": [
+          "Aggressive Tactician"
+      ]
+  },
+  {
+      "id": "VISASMARR",
+      "name": "Visas Marr",
+      "zetas": [
+          "Returned to the Light"
+      ]
+  },
+  {
+      "id": "WAMPA",
+      "name": "Wampa",
+      "zetas": [
+          "Cornered Beast",
+          "Furious Foe"
+      ]
+  },
+  {
+      "id": "WATTAMBOR",
+      "name": "Wat Tambor",
+      "zetas": [
+          "Mass Manufacture"
+      ]
+  },
+  {
+      "id": "WEDGEANTILLES",
+      "name": "Wedge Antilles",
+      "zetas": []
+  },
+  {
+      "id": "WICKET",
+      "name": "Wicket",
+      "zetas": [
+          "Furtive Tactics"
+      ]
+  },
+  {
+      "id": "YOUNGCHEWBACCA",
+      "name": "Vandor Chewbacca",
+      "zetas": [
+          "Ferocious Protector"
+      ]
+  },
+  {
+      "id": "YOUNGHAN",
+      "name": "Young Han Solo",
+      "zetas": [
+          "Ready For Anything"
+      ]
+  },
+  {
+      "id": "YOUNGLANDO",
+      "name": "Young Lando Calrissian",
+      "zetas": [
+          "Perfect Timing"
+      ]
+  },
+  {
+      "id": "ZAALBAR",
+      "name": "Zaalbar",
+      "zetas": [
+          "Mission's Guardian"
+      ]
+  },
+  {
+      "id": "ZAMWESELL",
+      "name": "Zam Wesell",
+      "zetas": [
+          "Shapeshifter"
+      ]
+  },
+  {
+      "id": "ZEBS3",
+      "name": "Garazeb \"Zeb\" Orrelios",
+      "zetas": [
+          "Staggering Sweep"
+      ]
+  }
+]

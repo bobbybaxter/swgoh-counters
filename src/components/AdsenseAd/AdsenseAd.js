@@ -61,7 +61,7 @@ class AdsenseAd extends React.Component {
             border: '.5rem blue solid',
           }}
         >
-          {this.props.adSlot}
+          advertisement: {this.props.adSlot}
         </span>
       </div>
     </div>

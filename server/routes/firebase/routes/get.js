@@ -54,7 +54,6 @@ module.exports = ( { data, log } ) => ( {
   handler: async ( request, reply ) => {
     let accessToken,
       allyCode,
-      discordId,
       expiresIn,
       guildIdFromSWGOHGG,
       guildNameFromSWGOHGG,
@@ -69,7 +68,9 @@ module.exports = ( { data, log } ) => ( {
       return reply.send( user ); // returns a null user so a new one can be created
     }
 
-    const { guildId, id, tier } = user;
+    const {
+      discordId, guildId, id, tier,
+    } = user;
     ( {
       accessToken,
       allyCode,

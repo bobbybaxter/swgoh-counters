@@ -85,8 +85,8 @@ export function AuthProvider( { children } ) {
 
         setUserInfo( {
           allyCode: ally_code.toString(),
-          guildId: guild_id.toString() || '',
-          guildName: guild_name || '',
+          guildId: guild_id ? guild_id.toString() : '',
+          guildName: guild_name ? guild_name.toString() : '',
           username: name,
         } );
         return res.data;
@@ -159,28 +159,9 @@ export function AuthProvider( { children } ) {
   }, [ validateAccount ] );
 
   useEffect(() => {
-    // NOTE: mock
-    /*
-      this mock solution was designed to preserve the integrity of the
-      original code by avoiding rewriting the login/logout functionality
-      or adding additional state to a component; however, the downside
-      is that the user will always be logged in when in the mock environment
-      because the state of that status in the original code was dictated
-      through the firebase library's functionality
-
-      because of that, the mocked user will have full access to the site
-      based on being in a certain Patreon tier.  users without a Patreon
-      tier have restrictions to certain functionality
-    */
-    const unsubscribe = authenticateUser( {
-      id: 'PATREONUSER',
-      email: 'PATREONUSER@mockemail.com',
-    } );
-
-    // NOTE: deprecated
-    // const unsubscribe = firebase
-    //   .auth()
-    //   .onAuthStateChanged( authUser => authenticateUser( authUser ));
+    const unsubscribe = firebase
+      .auth()
+      .onAuthStateChanged( authUser => authenticateUser( authUser ));
 
     return () => {
       unsubscribe();

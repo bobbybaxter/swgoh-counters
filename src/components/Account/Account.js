@@ -129,7 +129,7 @@ export default function Account() {
       username: selectUsername(),
     };
     await updateUserInfo( userToUpdate );
-    window.location.reload();
+    // window.location.reload();
   }, [ accessToken, allyCode, discordId, email, expiresIn, guildId, guildName, id, patreonId, patronStatus, refreshToken, setPlayerData, tier, username ] ); // eslint-disable-line max-len
 
   function clearAllyCode() {

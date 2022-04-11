@@ -1,0 +1,3832 @@
+{
+  "normal": [
+    {
+      "toon1Id": "ASAJVENTRESS",
+      "toon1Name": "Asajj Ventress",
+      "squads": [
+        {
+          "id": "7Jiyfas8BPhSZWc2pHjRx",
+          "name": "Asajj L 3v3 w/ Daka & Spirit",
+          "toon1Id": "ASAJVENTRESS",
+          "toon1Name": "Asajj Ventress",
+          "toon2Id": "DAKA",
+          "toon2Name": "Old Daka",
+          "toon3Id": "NIGHTSISTERSPIRIT",
+          "toon3Name": "Nightsister Spirit",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "3GfnRn8oZNexYKHKtN8cV",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "fYsBL6MOfPNHYwJ0Sxf98",
+          "name": "Asajj L 3v3 w/ Acolyte & Zombie",
+          "toon1Id": "ASAJVENTRESS",
+          "toon1Name": "Asajj Ventress",
+          "toon2Id": "NIGHTSISTERACOLYTE",
+          "toon2Name": "Nightsister Acolyte",
+          "toon3Id": "NIGHTSISTERZOMBIE",
+          "toon3Name": "Nightsister Zombie",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "0QazON8y-QlJ9v68ZX13E",
+          "createdOn": "2021-03-25T17:41:41.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "rSIPZHXUgUvBikicRWR1D",
+          "name": "Asajj L 3v3 w/ Daka & Zombie",
+          "toon1Id": "ASAJVENTRESS",
+          "toon1Name": "Asajj Ventress",
+          "toon2Id": "DAKA",
+          "toon2Name": "Old Daka",
+          "toon3Id": "NIGHTSISTERZOMBIE",
+          "toon3Name": "Nightsister Zombie",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "aJgWo3hvtYRbVUK_70jvz",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "toon1Id": "BASTILASHAN",
+      "toon1Name": "Bastila Shan",
+      "squads": [
+        {
+          "id": "dQzB9uqcWx-OJ5O4jIs0_",
+          "name": "Bastila L 3v3 w/ JMLS and Wat",
+          "toon1Id": "BASTILASHAN",
+          "toon1Name": "Bastila Shan",
+          "toon2Id": "GRANDMASTERLUKE",
+          "toon2Name": "Jedi Master Luke Skywalker",
+          "toon3Id": "WATTAMBOR",
+          "toon3Name": "Wat Tambor",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "4y9KH_ODmwQcTX20yJIUu",
+          "createdOn": "2021-03-01T01:11:34.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "BOKATAN",
+      "toon1Name": "Bo-Katan Kryze",
+      "squads": [
+        {
+          "id": "2b_jFEFOGuIs77e8QWCk9",
+          "name": "",
+          "toon1Id": "BOKATAN",
+          "toon1Name": "Bo-Katan Kryze",
+          "toon2Id": "ARMORER",
+          "toon2Name": "The Armorer",
+          "toon3Id": "CANDEROUSORDO",
+          "toon3Name": "Canderous Ordo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "3F8xM3mXd9Z-544zJkykA",
+          "createdOn": "2021-06-19T21:49:39.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "BOSSK",
+      "toon1Name": "Bossk",
+      "squads": [
+        {
+          "id": "GEUZ273OIq1nVqPViBKOn",
+          "name": "BH (Bossk L) 3v3 w/ Greef and Mando",
+          "toon1Id": "BOSSK",
+          "toon1Name": "Bossk",
+          "toon2Id": "GREEFKARGA",
+          "toon2Name": "Greef Karga",
+          "toon3Id": "THEMANDALORIAN",
+          "toon3Name": "The Mandalorian",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "NJ1yaUeJ8DCKMGj2qhVgB",
+          "createdOn": "2021-02-06T14:03:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "khFDXEnyM9oxGz1lRCPeD",
+          "name": "BH (Bossk L) 3v3 w/ Boba and Dengar",
+          "toon1Id": "BOSSK",
+          "toon1Name": "Bossk",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "DENGAR",
+          "toon3Name": "Dengar",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "Bossk's leadership gives all Bounty Hunters extra protection, tenacity, and defence (while at full health).  They recover health and protection when an enemy suffers or resists a debuff.  When they fulfill their contract, all Bounty Hunters gain +50 speed for the rest of the battle on top of their own payouts.",
+          "generalStrategy": "Bossk's contract is exploitable.  They need to damage the weaknes enemy 10 times, so you can slow this down using taunters.<br/><br/>\n\nYou'll want to deal with Bossk by having someone that can either dispel his taunt or apply ability block/buff immunity before he can taunt.<br/><br/>\n\nYou'll need good single target damage because this team will heal frequently and the Fetts will revive, so you'll need to kill them twice.<br/><br/>\n\nKill order: Boba Fett, Jango Fett, and other Bounty Hunters, Bossk, then Dengar last (because he'll probably be in stealth until the end).",
+          "latestVersionId": "urMPltaUwB9N2-6mi7-PK",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "yeiINANU1cEtMrWu1MjWs",
+          "name": "BH (Bossk L) 3v3 w/ Boba and Jango",
+          "toon1Id": "BOSSK",
+          "toon1Name": "Bossk",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "JANGOFETT",
+          "toon3Name": "Jango Fett",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "7eTXw6wa8zkL5SHPMap71",
+          "createdOn": "2021-02-06T15:25:49.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "CT7567",
+      "toon1Name": "CT-7567 \"Rex\"",
+      "squads": [
+        {
+          "id": "unliq2_3liHGKjpl1k88E",
+          "name": "Rex L 3v3 w/ Echo and Fives",
+          "toon1Id": "CT7567",
+          "toon1Name": "CT-7567 \"Rex\"",
+          "toon2Id": "CT210408",
+          "toon2Name": "CT-21-0408 \"Echo\"",
+          "toon3Id": "CT5555",
+          "toon3Name": "CT-5555 \"Fives\"",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "SgjHPtnLep0TQ9wysD79q",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "wEHyecB95VTxrg_6BaDBi",
+          "name": "Rex L 3v3 w/ Barriss and Fives",
+          "toon1Id": "CT7567",
+          "toon1Name": "CT-7567 \"Rex\"",
+          "toon2Id": "BARRISSOFFEE",
+          "toon2Name": "Barriss Offee",
+          "toon3Id": "CT5555",
+          "toon3Name": "CT-5555 \"Fives\"",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "Ae2WHnLVkUPWhh769Ez2d",
+          "createdOn": "2021-03-01T15:53:21.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2,
+        2
+      ]
+    },
+    {
+      "toon1Id": "PHASMA",
+      "toon1Name": "Captain Phasma",
+      "squads": [
+        {
+          "id": "05Lw9bOtM6XTSmJk3zzsr",
+          "name": "Phasma L 3v3 w/ FOSFTP and FOTP",
+          "toon1Id": "PHASMA",
+          "toon1Name": "Captain Phasma",
+          "toon2Id": "FIRSTORDERSPECIALFORCESPILOT",
+          "toon2Name": "First Order SF TIE Pilot",
+          "toon3Id": "FIRSTORDERTIEPILOT",
+          "toon3Name": "First Order TIE Pilot",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "0KYpUTP_NPp9MqdRFxiSW",
+          "createdOn": "2021-03-25T20:05:56.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "CARTHONASI",
+      "toon1Name": "Carth Onasi",
+      "squads": [
+        {
+          "id": "xExB7rsJtm4wIfvMSug5f",
+          "name": "Carth L 3v3 w/ Mission and Zaalbar",
+          "toon1Id": "CARTHONASI",
+          "toon1Name": "Carth Onasi",
+          "toon2Id": "MISSIONVAO",
+          "toon2Name": "Mission Vao",
+          "toon3Id": "ZAALBAR",
+          "toon3Name": "Zaalbar",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "Kill order: Carth or Mission, then Zaalbar",
+          "latestVersionId": "-DmqaeECIirxLt3s-7i-h",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "CHIEFNEBIT",
+      "toon1Name": "Chief Nebit",
+      "squads": [
+        {
+          "id": "i-uoyNp8EpYSWQ51ISwTN",
+          "name": "Jawas 3v3 w/ JE and JS",
+          "toon1Id": "CHIEFNEBIT",
+          "toon1Name": "Chief Nebit",
+          "toon2Id": "JAWAENGINEER",
+          "toon2Name": "Jawa Engineer",
+          "toon3Id": "JAWASCAVENGER",
+          "toon3Name": "Jawa Scavenger",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ajTmjgb8THOnwIY8aLSUf",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "COMMANDERLUKESKYWALKER",
+      "toon1Name": "Commander Luke Skywalker",
+      "squads": [
+        {
+          "id": "hbTXzPP28vQ6bIB5GyWhw",
+          "name": "CLS L 3v3 w/ Han and Chewie",
+          "toon1Id": "COMMANDERLUKESKYWALKER",
+          "toon1Name": "Commander Luke Skywalker",
+          "toon2Id": "CHEWBACCALEGENDARY",
+          "toon2Name": "Chewbacca",
+          "toon3Id": "HANSOLO",
+          "toon3Name": "Han Solo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "h_jxWi11D87LIVMnKUPQ6",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "rzyzPbesx5rQdbjsMGwfy",
+          "name": "CLS L 3v3 w/ Threepio and C-3PO",
+          "toon1Id": "COMMANDERLUKESKYWALKER",
+          "toon1Name": "Commander Luke Skywalker",
+          "toon2Id": "C3POCHEWBACCA",
+          "toon2Name": "Threepio & Chewie",
+          "toon3Id": "C3POLEGENDARY",
+          "toon3Name": "C-3PO",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "IucBtGke2UWGEAqKjH8ZW",
+          "createdOn": "2021-02-06T14:55:39.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "COUNTDOOKU",
+      "toon1Name": "Count Dooku",
+      "squads": [
+        {
+          "id": "-Pm9y0TE3GHvlQSyTAFQf",
+          "name": "Dooku L 3v3 w/ Droideka and Magna",
+          "toon1Id": "COUNTDOOKU",
+          "toon1Name": "Count Dooku",
+          "toon2Id": "DROIDEKA",
+          "toon2Name": "Droideka",
+          "toon3Id": "MAGNAGUARD",
+          "toon3Name": "IG-100 MagnaGuard",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "gY2tSqGgiU4DVYP5HsiUn",
+          "createdOn": "2021-03-25T19:24:59.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "eM7QDUQkY979yvmCpYLt_",
+          "name": "Dooku L 3v3 w/ Nest and Jango",
+          "toon1Id": "COUNTDOOKU",
+          "toon1Name": "Count Dooku",
+          "toon2Id": "ENFYSNEST",
+          "toon2Name": "Enfys Nest",
+          "toon3Id": "JANGOFETT",
+          "toon3Name": "Jango Fett",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "rcqh45j1m-YivE6EqbYnZ",
+          "createdOn": "2021-03-25T19:37:31.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "MAUL",
+      "toon1Name": "Darth Maul",
+      "squads": [
+        {
+          "id": "FoQfK-vQsLba2yVGO4l4D",
+          "name": "",
+          "toon1Id": "MAUL",
+          "toon1Name": "Darth Maul",
+          "toon2Id": "DARTHSIDIOUS",
+          "toon2Name": "Darth Sidious",
+          "toon3Id": "SITHMARAUDER",
+          "toon3Name": "Sith Marauder",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "9Vmq7ahI287k0v3kUlRev",
+          "createdOn": "2021-06-19T20:53:54.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "DARTHREVAN",
+      "toon1Name": "Darth Revan",
+      "squads": [
+        {
+          "id": "k0zP40qXYPHhZOI7ckvVd",
+          "name": "DR L 3v3 w/ BSF and Malak",
+          "toon1Id": "DARTHREVAN",
+          "toon1Name": "Darth Revan",
+          "toon2Id": "BASTILASHANDARK",
+          "toon2Name": "Bastila Shan (Fallen)",
+          "toon3Id": "DARTHMALAK",
+          "toon3Name": "Darth Malak",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "2jEkYvwp5Iphb31QFwBOK",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "SRcGz3B986cC9rZ5tCvod",
+          "name": "DR L 3v3 w/ BSF and SET",
+          "toon1Id": "DARTHREVAN",
+          "toon1Name": "Darth Revan",
+          "toon2Id": "BASTILASHANDARK",
+          "toon2Name": "Bastila Shan (Fallen)",
+          "toon3Id": "SITHTROOPER",
+          "toon3Name": "Sith Empire Trooper",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "o5apwUsEskCP3eeMV1mon",
+          "createdOn": "2021-03-01T16:04:15.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "DARTHTRAYA",
+      "toon1Name": "Darth Traya",
+      "squads": [
+        {
+          "id": "fasExOM2__oNYcY01aTbh",
+          "name": "Traya L 3v3 w/ Nihilus and Sion",
+          "toon1Id": "DARTHTRAYA",
+          "toon1Name": "Darth Traya",
+          "toon2Id": "DARTHNIHILUS",
+          "toon2Name": "Darth Nihilus",
+          "toon3Id": "DARTHSION",
+          "toon3Name": "Darth Sion",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "2_IlKusQOYZWupgE4cm8L",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "VADER",
+      "toon1Name": "Darth Vader",
+      "squads": [
+        {
+          "id": "3nDyKcVseWsNA_ZR-M3H1",
+          "name": "Vader L 3v3 w/ Mission and Zaalbar",
+          "toon1Id": "VADER",
+          "toon1Name": "Darth Vader",
+          "toon2Id": "MISSIONVAO",
+          "toon2Name": "Mission Vao",
+          "toon3Id": "ZAALBAR",
+          "toon3Name": "Zaalbar",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "Darth Vader's leadership gives Empire and Sith allies offense and a chance to remove turn meter.  While Vader is alive, enemies immediately regain Damage Over Time for 2 turns whenever it expires on them.",
+          "generalStrategy": "The best counters will be able to either exploit or cleanse the massive amounts of Damage Over Time that Darth Vader, Mission Vao, and Zaalbar will be applying, not including the other status effects they apply.<br/><br/>\n\nYou'll also need a way to either dispel or attack around Zaalbar's taunt, or else you'll be stuck getting counterattacked from him while the others continuously debuff you.<br/><br/>\n\nKill order: Vader or Vao, Zaalbar",
+          "latestVersionId": "F5jrBXtgRxLfzAWpk8E5H",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "EMPERORPALPATINE",
+      "toon1Name": "Emperor Palpatine",
+      "squads": [
+        {
+          "id": "sup3iBiY7uGIEGSb0tU_4",
+          "name": "EP L 3v3 w/ BSF and Malak",
+          "toon1Id": "EMPERORPALPATINE",
+          "toon1Name": "Emperor Palpatine",
+          "toon2Id": "BASTILASHANDARK",
+          "toon2Name": "Bastila Shan (Fallen)",
+          "toon3Id": "DARTHMALAK",
+          "toon3Name": "Darth Malak",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "Emperor Palpatine's leadership grants Empire and Sith allies potency and max health.  It reduces potency and evasion for Jedi and Rebel enemies.  This is a debuff-driven team, granting Empire allies turn meter for applying debuffs, Sith allies health for applying debuffs, and turn meter for both when enemy debuffs expire.",
+          "generalStrategy": "You'll need to stop the turn meter gain with Daze, Tenacity Up, and/or by outspeeding them.<br/><br/>\n\nThis is a tough battle that could easily take two or more teams to clear.<br/><br/.\n\nKill order: BSF, Emperor Palpatine, Darth Malak",
+          "latestVersionId": "J5lR7Zr5GAiCLhHVnfinV",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "FINN",
+      "toon1Name": "Finn",
+      "squads": [
+        {
+          "id": "-zBE9cnyCPt13Nl9vYAyy",
+          "name": "Finn L 3v3 w/ Heroes",
+          "toon1Id": "FINN",
+          "toon1Name": "Finn",
+          "toon2Id": "EPIXFINN",
+          "toon2Name": "Resistance Hero Finn",
+          "toon3Id": "EPIXPOE",
+          "toon3Name": "Resistance Hero Poe",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "a_DUq6S0OCvTwZs763uqa",
+          "createdOn": "2021-03-01T16:03:00.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "GRIEVOUS",
+      "toon1Name": "General Grievous",
+      "squads": [
+        {
+          "id": "3T99VQ0kVkeqhOuMSEFAY",
+          "name": "GG L 3v3 w/ B1 and B2",
+          "toon1Id": "GRIEVOUS",
+          "toon1Name": "General Grievous",
+          "toon2Id": "B1BATTLEDROIDV2",
+          "toon2Name": "B1 Battle Droid",
+          "toon3Id": "B2SUPERBATTLEDROID",
+          "toon3Name": "B2 Super Battle Droid",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "Kill order: B2, GG, B1",
+          "latestVersionId": "L778cVGGBqPg5rcCG9W4O",
+          "createdOn": "2021-02-06T14:26:44.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "6d6pTaGK2QCsSFIli27wu",
+          "name": "GG L 3v3 w/ B2 and Magna",
+          "toon1Id": "GRIEVOUS",
+          "toon1Name": "General Grievous",
+          "toon2Id": "B2SUPERBATTLEDROID",
+          "toon2Name": "B2 Super Battle Droid",
+          "toon3Id": "MAGNAGUARD",
+          "toon3Name": "IG-100 MagnaGuard",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "IW5FW0-TPSDprxedUQfqp",
+          "createdOn": "2021-02-06T14:27:08.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "H24qZ9XPma0FBA9gTzzWY",
+          "name": "GG L 3v3 w/ B1 and Magna",
+          "toon1Id": "GRIEVOUS",
+          "toon1Name": "General Grievous",
+          "toon2Id": "B1BATTLEDROIDV2",
+          "toon2Name": "B1 Battle Droid",
+          "toon3Id": "MAGNAGUARD",
+          "toon3Name": "IG-100 MagnaGuard",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "BSrcuAi_TGPtpjWASaw2h",
+          "createdOn": "2021-02-06T14:27:42.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "GENERALHUX",
+      "toon1Name": "General Hux",
+      "squads": [
+        {
+          "id": "NwQkVm0XXYNMob3rxLAFl",
+          "name": "Hux L 3v3 w/ FOE and FOST",
+          "toon1Id": "GENERALHUX",
+          "toon1Name": "General Hux",
+          "toon2Id": "FIRSTORDEREXECUTIONER",
+          "toon2Name": "First Order Executioner",
+          "toon3Id": "FIRSTORDERTROOPER",
+          "toon3Name": "First Order Stormtrooper",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ZMO4smGNklneohb0cTZTu",
+          "createdOn": "2021-03-01T16:54:49.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "Q2rCAU60N4hZvFqUGH0iQ",
+          "name": "Hux L 3v3 w/ FOST and Sith Trooper",
+          "toon1Id": "GENERALHUX",
+          "toon1Name": "General Hux",
+          "toon2Id": "FIRSTORDERTROOPER",
+          "toon2Name": "First Order Stormtrooper",
+          "toon3Id": "FOSITHTROOPER",
+          "toon3Name": "Sith Trooper",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "2ubebb29l32OysIcaVoC0",
+          "createdOn": "2021-03-01T16:52:45.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "GENERALSKYWALKER",
+      "toon1Name": "General Skywalker",
+      "squads": [
+        {
+          "id": "ogRpIw5Dj_qNW4OnFwPNU",
+          "name": "GS L 3v3 w/ Fives and Rex",
+          "toon1Id": "GENERALSKYWALKER",
+          "toon1Name": "General Skywalker",
+          "toon2Id": "CT5555",
+          "toon2Name": "CT-5555 \"Fives\"",
+          "toon3Id": "CT7567",
+          "toon3Name": "CT-7567 \"Rex\"",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "iLJw2Kj6jo6I1kLt3a-ao",
+          "createdOn": "2021-02-06T13:51:04.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "vW5RE1-uog0t7cBnJJBGL",
+          "name": "GS L 3v3 w/ ARC and Echo",
+          "toon1Id": "GENERALSKYWALKER",
+          "toon1Name": "General Skywalker",
+          "toon2Id": "ARCTROOPER501ST",
+          "toon2Name": "ARC Trooper",
+          "toon3Id": "CT210408",
+          "toon3Name": "CT-21-0408 \"Echo\"",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "HdDapEiF_rSwDo2pfoDC_",
+          "createdOn": "2021-02-06T15:24:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "VEERS",
+      "toon1Name": "General Veers",
+      "squads": [
+        {
+          "id": "YjYu8rey13UZbY6Ze4iOS",
+          "name": "IT 3v3 w/ Piett and Starck",
+          "toon1Id": "VEERS",
+          "toon1Name": "General Veers",
+          "toon2Id": "ADMIRALPIETT",
+          "toon2Name": "Admiral Piett",
+          "toon3Id": "COLONELSTARCK",
+          "toon3Name": "Colonel Starck",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "oAlZLEMWKlfPnL0AfoEES",
+          "createdOn": "2021-03-25T16:31:18.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "GEONOSIANBROODALPHA",
+      "toon1Name": "Geonosian Brood Alpha",
+      "squads": [
+        {
+          "id": "2KsPN6rpD5TqfjOdNR_gJ",
+          "name": "Geos 3v3 w/ Soldier and Spy",
+          "toon1Id": "GEONOSIANBROODALPHA",
+          "toon1Name": "Geonosian Brood Alpha",
+          "toon2Id": "GEONOSIANSOLDIER",
+          "toon2Name": "Geonosian Soldier",
+          "toon3Id": "GEONOSIANSPY",
+          "toon3Name": "Geonosian Spy",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "FMyedt4TZosUbkAD9-oU7",
+          "createdOn": "2021-02-06T14:33:21.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "LKj8AZBK4xxLzUcEtCxDz",
+          "name": "Geos 3v3 w/ Spy and Sun Fac",
+          "toon1Id": "GEONOSIANBROODALPHA",
+          "toon1Name": "Geonosian Brood Alpha",
+          "toon2Id": "GEONOSIANSPY",
+          "toon2Name": "Geonosian Spy",
+          "toon3Id": "SUNFAC",
+          "toon3Name": "Sun Fac",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "KqBqwvyz0O8ZL0GqwFgn6",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2,
+        2
+      ]
+    },
+    {
+      "toon1Id": "BADBATCHHUNTER",
+      "toon1Name": "Hunter",
+      "squads": [
+        {
+          "id": "77ed0IR6mwWg8jvV2vP6V",
+          "name": "",
+          "toon1Id": "BADBATCHHUNTER",
+          "toon1Name": "Hunter",
+          "toon2Id": "BADBATCHECHO",
+          "toon2Name": "Echo",
+          "toon3Id": "BADBATCHWRECKER",
+          "toon3Name": "Wrecker",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "Io2lX_nbjPUxpg8585D0I",
+          "createdOn": "2021-06-19T21:52:26.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "Ewr6abMb0Uh_8gueG1jpr",
+          "name": "",
+          "toon1Id": "BADBATCHHUNTER",
+          "toon1Name": "Hunter",
+          "toon2Id": "BADBATCHTECH",
+          "toon2Name": "Tech",
+          "toon3Id": "BADBATCHWRECKER",
+          "toon3Name": "Wrecker",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "J-GirBfeMHV5y-UfJpMpa",
+          "createdOn": "2021-06-19T21:52:26.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "JANGOFETT",
+      "toon1Name": "Jango Fett",
+      "squads": [
+        {
+          "id": "VEF70OwFXWj6sVlLXjsFw",
+          "name": "BH (Jango L) 3v3 w/ Boba and Bossk",
+          "toon1Id": "JANGOFETT",
+          "toon1Name": "Jango Fett",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "BOSSK",
+          "toon3Name": "Bossk",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "fZdKvMv_wO20nT3V-SEWM",
+          "createdOn": "2021-03-25T17:52:49.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "JEDIKNIGHTLUKE",
+      "toon1Name": "Jedi Knight Luke Skywalker",
+      "squads": [
+        {
+          "id": "rvRV1Ykzj4jtablyMXQVa",
+          "name": "JKLS L 3v3 w/ Hoda and Old Ben",
+          "toon1Id": "JEDIKNIGHTLUKE",
+          "toon1Name": "Jedi Knight Luke Skywalker",
+          "toon2Id": "HERMITYODA",
+          "toon2Name": "Hermit Yoda",
+          "toon3Id": "OLDBENKENOBI",
+          "toon3Name": "Obi-Wan Kenobi (Old Ben)",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "nSKiE5uiizI2jee0GR9Rh",
+          "createdOn": "2021-02-07T22:19:36.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "JEDIKNIGHTREVAN",
+      "toon1Name": "Jedi Knight Revan",
+      "squads": [
+        {
+          "id": "hF3sqqCzW9Sk2lwj4ELeT",
+          "name": "JKR L 3v3 w/ GMY and Jolee",
+          "toon1Id": "JEDIKNIGHTREVAN",
+          "toon1Name": "Jedi Knight Revan",
+          "toon2Id": "GRANDMASTERYODA",
+          "toon2Name": "Grand Master Yoda",
+          "toon3Id": "JOLEEBINDO",
+          "toon3Name": "Jolee Bindo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "AW8wGshnLQReI_CEBBnSW",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "JEDIMASTERKENOBI",
+      "toon1Name": "Jedi Master Kenobi",
+      "squads": [
+        {
+          "id": "IbPW686rERmuf75SolSWw",
+          "name": "",
+          "toon1Id": "JEDIMASTERKENOBI",
+          "toon1Name": "Jedi Master Kenobi",
+          "toon2Id": "COMMANDERAHSOKA",
+          "toon2Name": "Commander Ahsoka Tano",
+          "toon3Id": "GENERALKENOBI",
+          "toon3Name": "General Kenobi",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "e0G1Cl56IUeQwSzEqf3QJ",
+          "createdOn": "2021-09-27T13:34:44.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "GRANDMASTERLUKE",
+      "toon1Name": "Jedi Master Luke Skywalker",
+      "squads": [
+        {
+          "id": "YSBn6pSx5nbgtmFtgEDzN",
+          "name": "JMLS L 3v3 w/ Hoda and JKLS",
+          "toon1Id": "GRANDMASTERLUKE",
+          "toon1Name": "Jedi Master Luke Skywalker",
+          "toon2Id": "HERMITYODA",
+          "toon2Name": "Hermit Yoda",
+          "toon3Id": "JEDIKNIGHTLUKE",
+          "toon3Name": "Jedi Knight Luke Skywalker",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "hgJDRi8Dp6va999t5QopQ",
+          "createdOn": "2021-02-28T23:12:36.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "JYNERSO",
+      "toon1Name": "Jyn Erso",
+      "squads": [
+        {
+          "id": "dYyUlGyFtyalaUvaQ5ioM",
+          "name": "Rogue One 3v3 w/ Chaze",
+          "toon1Id": "JYNERSO",
+          "toon1Name": "Jyn Erso",
+          "toon2Id": "BAZEMALBUS",
+          "toon2Name": "Baze Malbus",
+          "toon3Id": "CHIRRUTIMWE",
+          "toon3Name": "Chirrut Îmwe",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "v54gLq6KvFVS4Rtdxu6Tc",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "KYLORENUNMASKED",
+      "toon1Name": "Kylo Ren (Unmasked)",
+      "squads": [
+        {
+          "id": "9fIGb0ii8UAywtflmCxbY",
+          "name": "KRU L 3v3 w/ Sith Trooper and Kylo",
+          "toon1Id": "KYLORENUNMASKED",
+          "toon1Name": "Kylo Ren (Unmasked)",
+          "toon2Id": "FOSITHTROOPER",
+          "toon2Name": "Sith Trooper",
+          "toon3Id": "KYLOREN",
+          "toon3Name": "Kylo Ren",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "1UT3Yi61EgzXG2mMqjU8n",
+          "createdOn": "2021-02-07T22:06:43.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "i-5WLjiJzo17NCkUEqOqw",
+          "name": "KRU L 3v3 w/ FOE and Kylo",
+          "toon1Id": "KYLORENUNMASKED",
+          "toon1Name": "Kylo Ren (Unmasked)",
+          "toon2Id": "FIRSTORDEREXECUTIONER",
+          "toon2Name": "First Order Executioner",
+          "toon3Id": "KYLOREN",
+          "toon3Name": "Kylo Ren",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "CQ_uwVz7r4GZLiU0tB-yq",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "YK9ff8GEEI33j44iqBtOZ",
+          "name": "KRU L 3v3 w/ FOST and Kylo",
+          "toon1Id": "KYLORENUNMASKED",
+          "toon1Name": "Kylo Ren (Unmasked)",
+          "toon2Id": "FIRSTORDERTROOPER",
+          "toon2Name": "First Order Stormtrooper",
+          "toon3Id": "KYLOREN",
+          "toon3Name": "Kylo Ren",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "yTEHWSl88du_OLUKKtxno",
+          "createdOn": "2021-02-07T22:16:14.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "LORDVADER",
+      "toon1Name": "Lord Vader",
+      "squads": [
+        {
+          "id": "1GXSDZflBQpXv3-sHJ2PM",
+          "name": "",
+          "toon1Id": "LORDVADER",
+          "toon1Name": "Lord Vader",
+          "toon2Id": "MAULS7",
+          "toon2Name": "Maul",
+          "toon3Id": "ROYALGUARD",
+          "toon3Name": "Royal Guard",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "pBm1PvA73ysbA_AWSqSOv",
+          "createdOn": "2021-12-02T20:53:51.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "MONMOTHMA",
+      "toon1Name": "Mon Mothma",
+      "squads": [
+        {
+          "id": "HMmaPSv-8guRbKGQS5a0y",
+          "name": "MM L 3v3 w/ Cara and Pao",
+          "toon1Id": "MONMOTHMA",
+          "toon1Name": "Mon Mothma",
+          "toon2Id": "CARADUNE",
+          "toon2Name": "Cara Dune",
+          "toon3Id": "PAO",
+          "toon3Name": "Pao",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "gfg6T1L-Lx5XXifgpTmCp",
+          "createdOn": "2021-03-25T16:34:14.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "RR0pPAYxb07fOFlwjW-F1",
+          "name": "MM L 3v3 w/ Wiggs",
+          "toon1Id": "MONMOTHMA",
+          "toon1Name": "Mon Mothma",
+          "toon2Id": "BIGGSDARKLIGHTER",
+          "toon2Name": "Biggs Darklighter",
+          "toon3Id": "WEDGEANTILLES",
+          "toon3Name": "Wedge Antilles",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "qW3EbNVOCfiOEo4xkRTi8",
+          "createdOn": "2021-03-25T15:52:30.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "MOTHERTALZIN",
+      "toon1Name": "Mother Talzin",
+      "squads": [
+        {
+          "id": "lJ3wtLm0UC0SfnJSRBhih",
+          "name": "NS (Talzin L) 3v3 w/ Daka and Spirit",
+          "toon1Id": "MOTHERTALZIN",
+          "toon1Name": "Mother Talzin",
+          "toon2Id": "DAKA",
+          "toon2Name": "Old Daka",
+          "toon3Id": "NIGHTSISTERSPIRIT",
+          "toon3Name": "Nightsister Spirit",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "xutUH6cYTnFZfw_H4PaxL",
+          "createdOn": "2021-02-06T13:54:49.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "rKOrLygmLe3vPakmk_k4J",
+          "name": "NS (Talzin L) 3v3 w/ Acolyte and Zombie",
+          "toon1Id": "MOTHERTALZIN",
+          "toon1Name": "Mother Talzin",
+          "toon2Id": "NIGHTSISTERACOLYTE",
+          "toon2Name": "Nightsister Acolyte",
+          "toon3Id": "NIGHTSISTERZOMBIE",
+          "toon3Name": "Nightsister Zombie",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "IsEpqTYzglqy69ikiBHjW",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "wZ4CefuMG8Fol7afQ6S1A",
+          "name": "NS (Talzin L) 3v3 w/ Daka and Zombie",
+          "toon1Id": "MOTHERTALZIN",
+          "toon1Name": "Mother Talzin",
+          "toon2Id": "DAKA",
+          "toon2Name": "Old Daka",
+          "toon3Id": "NIGHTSISTERZOMBIE",
+          "toon3Name": "Nightsister Zombie",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ZrCdvPEI7c3SsF8WQuh6V",
+          "createdOn": "2021-02-06T00:25:41.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "NUTEGUNRAY",
+      "toon1Name": "Nute Gunray",
+      "squads": [
+        {
+          "id": "GQDMBArQmtU4zJEZxbS1z",
+          "name": "Nute L 3v3 w/ Dooku and Jango",
+          "toon1Id": "NUTEGUNRAY",
+          "toon1Name": "Nute Gunray",
+          "toon2Id": "COUNTDOOKU",
+          "toon2Name": "Count Dooku",
+          "toon3Id": "JANGOFETT",
+          "toon3Name": "Jango Fett",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "C7zcmpE19yWBVdhgIGl-p",
+          "createdOn": "2021-06-19T20:43:03.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "Raep5tClbMikZTQVH6paR",
+          "name": "Nute L 3v3 w/ Droideka and Magna",
+          "toon1Id": "NUTEGUNRAY",
+          "toon1Name": "Nute Gunray",
+          "toon2Id": "DROIDEKA",
+          "toon2Name": "Droideka",
+          "toon3Id": "MAGNAGUARD",
+          "toon3Name": "IG-100 MagnaGuard",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "2UQ7BhRIylNaCOANYJuZa",
+          "createdOn": "2021-02-06T14:30:00.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "sYZOgkvYabdSTCIEa3vs7",
+          "name": "Nute L 3v3 w/ Nest and Jango",
+          "toon1Id": "NUTEGUNRAY",
+          "toon1Name": "Nute Gunray",
+          "toon2Id": "ENFYSNEST",
+          "toon2Name": "Enfys Nest",
+          "toon3Id": "JANGOFETT",
+          "toon3Name": "Jango Fett",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "_qq-O06Eo1GK6hIs-R0Fn",
+          "createdOn": "2021-02-06T14:49:55.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "PADMEAMIDALA",
+      "toon1Name": "Padmé Amidala",
+      "squads": [
+        {
+          "id": "-2eSCqDSweQfy5fu5gijG",
+          "name": "GR 3v3 w/ Ahsoka and JKA",
+          "toon1Id": "PADMEAMIDALA",
+          "toon1Name": "Padmé Amidala",
+          "toon2Id": "AHSOKATANO",
+          "toon2Name": "Ahsoka Tano",
+          "toon3Id": "ANAKINKNIGHT",
+          "toon3Name": "Jedi Knight Anakin",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "Kill order: Anakin, Ahsoka, Padmé",
+          "latestVersionId": "x3GrWI3PoHkDU_5Vj3bwu",
+          "createdOn": "2021-06-19T20:43:03.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "ifL2TsGLg8NFbFqbjMWUR",
+          "name": "GR 3v3 w/ JKA and GK",
+          "toon1Id": "PADMEAMIDALA",
+          "toon1Name": "Padmé Amidala",
+          "toon2Id": "ANAKINKNIGHT",
+          "toon2Name": "Jedi Knight Anakin",
+          "toon3Id": "GENERALKENOBI",
+          "toon3Name": "General Kenobi",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "uoH0g6ZUnJoST5zUjto-t",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "POE",
+      "toon1Name": "Poe Dameron",
+      "squads": [
+        {
+          "id": "cblhiHeiVbKn3cCcnAGri",
+          "name": "",
+          "toon1Id": "POE",
+          "toon1Name": "Poe Dameron",
+          "toon2Id": "SMUGGLERCHEWBACCA",
+          "toon2Name": "Veteran Smuggler Chewbacca",
+          "toon3Id": "SMUGGLERHAN",
+          "toon3Name": "Veteran Smuggler Han Solo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "qIb-xzFFceFZHEHBHMScO",
+          "createdOn": "2021-06-19T20:43:03.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "POGGLETHELESSER",
+      "toon1Name": "Poggle the Lesser",
+      "squads": [
+        {
+          "id": "CASJLwVBqwLWwxni3fRho",
+          "name": "",
+          "toon1Id": "POGGLETHELESSER",
+          "toon1Name": "Poggle the Lesser",
+          "toon2Id": "B1BATTLEDROIDV2",
+          "toon2Name": "B1 Battle Droid",
+          "toon3Id": "DROIDEKA",
+          "toon3Name": "Droideka",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "vaNF56XgXG_NbGKbr8kz0",
+          "createdOn": "2021-06-19T20:43:03.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "QIRA",
+      "toon1Name": "Qi'ra",
+      "squads": [
+        {
+          "id": "njzHHizwfjHq-0wTpmKmu",
+          "name": "",
+          "toon1Id": "QIRA",
+          "toon1Name": "Qi'ra",
+          "toon2Id": "ENFYSNEST",
+          "toon2Name": "Enfys Nest",
+          "toon3Id": "L3_37",
+          "toon3Name": "L3-37",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "4aw7K4qJw9s9XH-lWO4vz",
+          "createdOn": "2021-06-19T20:43:03.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "HOTHLEIA",
+      "toon1Name": "Rebel Officer Leia Organa",
+      "squads": [
+        {
+          "id": "gYsmoZRyWM56xhvKqp1Zc",
+          "name": "",
+          "toon1Id": "HOTHLEIA",
+          "toon1Name": "Rebel Officer Leia Organa",
+          "toon2Id": "ADMINISTRATORLANDO",
+          "toon2Name": "Lando Calrissian",
+          "toon3Id": "HOTHHAN",
+          "toon3Name": "Captain Han Solo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "FkXJF3SHRS4wsnivC4dhS",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "GLREY",
+      "toon1Name": "Rey",
+      "squads": [
+        {
+          "id": "dr-cHaCn4Eq88vWCWlsk_",
+          "name": "Rey L 3v3 w/ Chewbacca and Han Solo",
+          "toon1Id": "GLREY",
+          "toon1Name": "Rey",
+          "toon2Id": "CHEWBACCALEGENDARY",
+          "toon2Name": "Chewbacca",
+          "toon3Id": "HANSOLO",
+          "toon3Name": "Han Solo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "JZEmzRGozzTOZ9CPSAukG",
+          "createdOn": "2021-03-01T00:03:57.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "fbUcWM2c6NpHxWKpa19Cv",
+          "name": "Rey L 3v3 w/ Holdo and L3-37",
+          "toon1Id": "GLREY",
+          "toon1Name": "Rey",
+          "toon2Id": "AMILYNHOLDO",
+          "toon2Name": "Amilyn Holdo",
+          "toon3Id": "L3_37",
+          "toon3Name": "L3-37",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "GCknvd-JG_zLTWtZiEr17",
+          "createdOn": "2021-02-28T23:57:19.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "pRfYQqxEA1DflXpl8c5la",
+          "name": "Rey L 3v3 w/ Heroes",
+          "toon1Id": "GLREY",
+          "toon1Name": "Rey",
+          "toon2Id": "EPIXFINN",
+          "toon2Name": "Resistance Hero Finn",
+          "toon3Id": "EPIXPOE",
+          "toon3Name": "Resistance Hero Poe",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "8q1SeXQBXQTHQceueRZUp",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "REYJEDITRAINING",
+      "toon1Name": "Rey (Jedi Training)",
+      "squads": [
+        {
+          "id": "MgBHECscoD8tu7UY1gENg",
+          "name": "JTR L 3v3 w/ BB-8 and R2-D2",
+          "toon1Id": "REYJEDITRAINING",
+          "toon1Name": "Rey (Jedi Training)",
+          "toon2Id": "BB8",
+          "toon2Name": "BB-8",
+          "toon3Id": "R2D2_LEGENDARY",
+          "toon3Name": "R2-D2",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "6OT0w9EZOBSDmMhE7bcwR",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "SHAAKTI",
+      "toon1Name": "Shaak Ti",
+      "squads": [
+        {
+          "id": "Br4kRa7nBHdkSKSt98OQ4",
+          "name": "Shaak Ti L 3v3 w/ Fives and Rex",
+          "toon1Id": "SHAAKTI",
+          "toon1Name": "Shaak Ti",
+          "toon2Id": "CT5555",
+          "toon2Name": "CT-5555 \"Fives\"",
+          "toon3Id": "CT7567",
+          "toon3Name": "CT-7567 \"Rex\"",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "Shaak Ti's leadership gives Clone Troopers speed, health and protection recovery when attacking out of turn, and an increase in max health, protection, and offense.  She also gives Retribution to herself or Clones when they take damage.",
+          "generalStrategy": "The best counters are teams that exploit assists/attacks out-of turn, apply mass buff immunity, or can withstand the high damage.<br/><br/>\n\nTry to defeat CT-5555 \"Fives\" first.  Or else, he will sacrifice himself with his Tactical Awareness zeta, which will buff CT-7567 \"Rex\".  Next take out Rex before he can get a big hit with Aerial Advantage.<br/><br/>\n\nKill order: Fives, Rex, Shaak Ti",
+          "latestVersionId": "tiJfo1H2fUikfpldS0Dhp",
+          "createdOn": "2021-06-19T20:43:03.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "P2qYl1RqGPEfOXsnaiyBJ",
+          "name": "Shaak Ti L 3v3 w/ ARC and Echo",
+          "toon1Id": "SHAAKTI",
+          "toon1Name": "Shaak Ti",
+          "toon2Id": "ARCTROOPER501ST",
+          "toon2Name": "ARC Trooper",
+          "toon3Id": "CT210408",
+          "toon3Name": "CT-21-0408 \"Echo\"",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "fMlnJ_XYXWRyy4NVS686Z",
+          "createdOn": "2021-02-06T14:43:59.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "SITHPALPATINE",
+      "toon1Name": "Sith Eternal Emperor",
+      "squads": [
+        {
+          "id": "pewILDeClHxIGswRDTlAn",
+          "name": "SEE L 3v3 w/ Marauder and SET",
+          "toon1Id": "SITHPALPATINE",
+          "toon1Name": "Sith Eternal Emperor",
+          "toon2Id": "SITHMARAUDER",
+          "toon2Name": "Sith Marauder",
+          "toon3Id": "SITHTROOPER",
+          "toon3Name": "Sith Empire Trooper",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "aSRWkQYnDT32F5GE6NTjn",
+          "createdOn": "2021-03-01T00:26:27.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "SUPREMELEADERKYLOREN",
+      "toon1Name": "Supreme Leader Kylo Ren",
+      "squads": [
+        {
+          "id": "L24bmf-I8cqM7bZq6XmLx",
+          "name": "SLKR L 3v3 w/ Daka and Zombie",
+          "toon1Id": "SUPREMELEADERKYLOREN",
+          "toon1Name": "Supreme Leader Kylo Ren",
+          "toon2Id": "DAKA",
+          "toon2Name": "Old Daka",
+          "toon3Id": "NIGHTSISTERZOMBIE",
+          "toon3Name": "Nightsister Zombie",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "MA1xm3wNjMpJ-SccYuCNm",
+          "createdOn": "2021-02-28T23:11:04.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "THEMANDALORIANBESKARARMOR",
+      "toon1Name": "The Mandalorian (Beskar Armor)",
+      "squads": [
+        {
+          "id": "BFU5A3y-hDIWVmWWrNUyM",
+          "name": "",
+          "toon1Id": "THEMANDALORIANBESKARARMOR",
+          "toon1Name": "The Mandalorian (Beskar Armor)",
+          "toon2Id": "IG11",
+          "toon2Name": "IG-11",
+          "toon3Id": "KUIIL",
+          "toon3Name": "Kuiil",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "YKcGRnsqbkqStGeh7hwgy",
+          "createdOn": "2021-06-19T21:46:35.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    }
+  ],
+  "reverse": [
+    {
+      "toon1Id": "ADMIRALACKBAR",
+      "toon1Name": "Admiral Ackbar",
+      "squads": [
+        {
+          "id": "MguIXG527LIWeVaj4OreC",
+          "name": "AA L w/ Chewie and Han",
+          "toon1Id": "ADMIRALACKBAR",
+          "toon1Name": "Admiral Ackbar",
+          "toon2Id": "CHEWBACCALEGENDARY",
+          "toon2Name": "Chewbacca",
+          "toon3Id": "HANSOLO",
+          "toon3Name": "Han Solo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "H4oqFwCS_tPuUfvO_f_WR",
+          "createdOn": "2021-03-01T16:13:41.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "AURRA_SING",
+      "toon1Name": "Aurra Sing",
+      "squads": [
+        {
+          "id": "0Z5mw9zwRjhbbmZeY0pP3",
+          "name": "",
+          "toon1Id": "AURRA_SING",
+          "toon1Name": "Aurra Sing",
+          "toon2Id": "GREEFKARGA",
+          "toon2Name": "Greef Karga",
+          "toon3Id": "THEMANDALORIAN",
+          "toon3Name": "The Mandalorian",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ZC-UgXKrZLaLuAoUBOifk",
+          "createdOn": "2021-06-19T20:43:01.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "BASTILASHAN",
+      "toon1Name": "Bastila Shan",
+      "squads": [
+        {
+          "id": "DSDAjZ8YA-R8lfDmaitDL",
+          "name": "Bastila L 3v3 w/ GMY and JKR",
+          "toon1Id": "BASTILASHAN",
+          "toon1Name": "Bastila Shan",
+          "toon2Id": "GRANDMASTERYODA",
+          "toon2Name": "Grand Master Yoda",
+          "toon3Id": "JEDIKNIGHTREVAN",
+          "toon3Name": "Jedi Knight Revan",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "mrLolFSl-DkEcoLg-XXKB",
+          "createdOn": "2021-06-19T20:43:01.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "BOSSK",
+      "toon1Name": "Bossk",
+      "squads": [
+        {
+          "id": "GEUZ273OIq1nVqPViBKOn",
+          "name": "BH (Bossk L) 3v3 w/ Greef and Mando",
+          "toon1Id": "BOSSK",
+          "toon1Name": "Bossk",
+          "toon2Id": "GREEFKARGA",
+          "toon2Name": "Greef Karga",
+          "toon3Id": "THEMANDALORIAN",
+          "toon3Name": "The Mandalorian",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "NJ1yaUeJ8DCKMGj2qhVgB",
+          "createdOn": "2021-02-06T14:03:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "khFDXEnyM9oxGz1lRCPeD",
+          "name": "BH (Bossk L) 3v3 w/ Boba and Dengar",
+          "toon1Id": "BOSSK",
+          "toon1Name": "Bossk",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "DENGAR",
+          "toon3Name": "Dengar",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "Bossk's leadership gives all Bounty Hunters extra protection, tenacity, and defence (while at full health).  They recover health and protection when an enemy suffers or resists a debuff.  When they fulfill their contract, all Bounty Hunters gain +50 speed for the rest of the battle on top of their own payouts.",
+          "generalStrategy": "Bossk's contract is exploitable.  They need to damage the weaknes enemy 10 times, so you can slow this down using taunters.<br/><br/>\n\nYou'll want to deal with Bossk by having someone that can either dispel his taunt or apply ability block/buff immunity before he can taunt.<br/><br/>\n\nYou'll need good single target damage because this team will heal frequently and the Fetts will revive, so you'll need to kill them twice.<br/><br/>\n\nKill order: Boba Fett, Jango Fett, and other Bounty Hunters, Bossk, then Dengar last (because he'll probably be in stealth until the end).",
+          "latestVersionId": "urMPltaUwB9N2-6mi7-PK",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "yeiINANU1cEtMrWu1MjWs",
+          "name": "BH (Bossk L) 3v3 w/ Boba and Jango",
+          "toon1Id": "BOSSK",
+          "toon1Name": "Bossk",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "JANGOFETT",
+          "toon3Name": "Jango Fett",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "7eTXw6wa8zkL5SHPMap71",
+          "createdOn": "2021-02-06T15:25:49.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "toon1Id": "CT7567",
+      "toon1Name": "CT-7567 \"Rex\"",
+      "squads": [
+        {
+          "id": "unliq2_3liHGKjpl1k88E",
+          "name": "Rex L 3v3 w/ Echo and Fives",
+          "toon1Id": "CT7567",
+          "toon1Name": "CT-7567 \"Rex\"",
+          "toon2Id": "CT210408",
+          "toon2Name": "CT-21-0408 \"Echo\"",
+          "toon3Id": "CT5555",
+          "toon3Name": "CT-5555 \"Fives\"",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "SgjHPtnLep0TQ9wysD79q",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "CHIEFNEBIT",
+      "toon1Name": "Chief Nebit",
+      "squads": [
+        {
+          "id": "i-uoyNp8EpYSWQ51ISwTN",
+          "name": "Jawas 3v3 w/ JE and JS",
+          "toon1Id": "CHIEFNEBIT",
+          "toon1Name": "Chief Nebit",
+          "toon2Id": "JAWAENGINEER",
+          "toon2Name": "Jawa Engineer",
+          "toon3Id": "JAWASCAVENGER",
+          "toon3Name": "Jawa Scavenger",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ajTmjgb8THOnwIY8aLSUf",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "COMMANDERLUKESKYWALKER",
+      "toon1Name": "Commander Luke Skywalker",
+      "squads": [
+        {
+          "id": "hbTXzPP28vQ6bIB5GyWhw",
+          "name": "CLS L 3v3 w/ Han and Chewie",
+          "toon1Id": "COMMANDERLUKESKYWALKER",
+          "toon1Name": "Commander Luke Skywalker",
+          "toon2Id": "CHEWBACCALEGENDARY",
+          "toon2Name": "Chewbacca",
+          "toon3Id": "HANSOLO",
+          "toon3Name": "Han Solo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "h_jxWi11D87LIVMnKUPQ6",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "rzyzPbesx5rQdbjsMGwfy",
+          "name": "CLS L 3v3 w/ Threepio and C-3PO",
+          "toon1Id": "COMMANDERLUKESKYWALKER",
+          "toon1Name": "Commander Luke Skywalker",
+          "toon2Id": "C3POCHEWBACCA",
+          "toon2Name": "Threepio & Chewie",
+          "toon3Id": "C3POLEGENDARY",
+          "toon3Name": "C-3PO",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "IucBtGke2UWGEAqKjH8ZW",
+          "createdOn": "2021-02-06T14:55:39.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "DARTHMALAK",
+      "toon1Name": "Darth Malak",
+      "squads": [
+        {
+          "id": "Lk_RS5JjwxqXYyZszx-Mi",
+          "name": "Darth Malak (solo)",
+          "toon1Id": "DARTHMALAK",
+          "toon1Name": "Darth Malak",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ba0zrBYNApBpy1nQMLdrw",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "DARTHREVAN",
+      "toon1Name": "Darth Revan",
+      "squads": [
+        {
+          "id": "jaHVt2uLxZXjTokYng03d",
+          "name": "DR L 3v3 w/ BSF and Marauder",
+          "toon1Id": "DARTHREVAN",
+          "toon1Name": "Darth Revan",
+          "toon2Id": "BASTILASHANDARK",
+          "toon2Name": "Bastila Shan (Fallen)",
+          "toon3Id": "SITHMARAUDER",
+          "toon3Name": "Sith Marauder",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "zpmifjZqK5sYyt5dNiuaH",
+          "createdOn": "2021-03-01T01:04:06.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "k0zP40qXYPHhZOI7ckvVd",
+          "name": "DR L 3v3 w/ BSF and Malak",
+          "toon1Id": "DARTHREVAN",
+          "toon1Name": "Darth Revan",
+          "toon2Id": "BASTILASHANDARK",
+          "toon2Name": "Bastila Shan (Fallen)",
+          "toon3Id": "DARTHMALAK",
+          "toon3Name": "Darth Malak",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "2jEkYvwp5Iphb31QFwBOK",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "TsrsADhr2ABzdTka4nh47",
+          "name": "DR L 3v3 w/ BSF and HK-47",
+          "toon1Id": "DARTHREVAN",
+          "toon1Name": "Darth Revan",
+          "toon2Id": "BASTILASHANDARK",
+          "toon2Name": "Bastila Shan (Fallen)",
+          "toon3Id": "HK47",
+          "toon3Name": "HK-47",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "7aU6N8GjB6Y1oylAlgdHc",
+          "createdOn": "2021-02-06T13:57:30.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "DARTHTRAYA",
+      "toon1Name": "Darth Traya",
+      "squads": [
+        {
+          "id": "19pzlO38mPnSXfnoJindy",
+          "name": "Traya L 3v3 w/ Sion",
+          "toon1Id": "DARTHTRAYA",
+          "toon1Name": "Darth Traya",
+          "toon2Id": "DARTHSION",
+          "toon2Name": "Darth Sion",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "tbS1htj_DRQ_34MMJ6v7Y",
+          "createdOn": "2021-02-09T00:24:53.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "fasExOM2__oNYcY01aTbh",
+          "name": "Traya L 3v3 w/ Nihilus and Sion",
+          "toon1Id": "DARTHTRAYA",
+          "toon1Name": "Darth Traya",
+          "toon2Id": "DARTHNIHILUS",
+          "toon2Name": "Darth Nihilus",
+          "toon3Id": "DARTHSION",
+          "toon3Name": "Darth Sion",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "2_IlKusQOYZWupgE4cm8L",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "VVMR9EFpZ9Hud212FRbc1",
+          "name": "Traya L 3v3 w/ GAT and Nihilus",
+          "toon1Id": "DARTHTRAYA",
+          "toon1Name": "Darth Traya",
+          "toon2Id": "DARTHNIHILUS",
+          "toon2Name": "Darth Nihilus",
+          "toon3Id": "GRANDADMIRALTHRAWN",
+          "toon3Name": "Grand Admiral Thrawn",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "43W2dV5USTdfSYikE4WB4",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "VADER",
+      "toon1Name": "Darth Vader",
+      "squads": [
+        {
+          "id": "CPW4d0i0uVGVi5yWSJBSk",
+          "name": "Vader L 3v3 w/ Wat",
+          "toon1Id": "VADER",
+          "toon1Name": "Darth Vader",
+          "toon2Id": "WATTAMBOR",
+          "toon2Name": "Wat Tambor",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "DCOvunIbvVMfcKWAZP6F_",
+          "createdOn": "2021-02-08T18:10:07.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "rBnVVfnyVesmt9-aEfuQh",
+          "name": "Vader L 3v3 w/ EP and GAT",
+          "toon1Id": "VADER",
+          "toon1Name": "Darth Vader",
+          "toon2Id": "EMPERORPALPATINE",
+          "toon2Name": "Emperor Palpatine",
+          "toon3Id": "GRANDADMIRALTHRAWN",
+          "toon3Name": "Grand Admiral Thrawn",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "MzhHxuDKdUQtBgE4w_GCR",
+          "createdOn": "2021-02-06T15:41:14.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "xUej7y1pQlky2yvWGBzSL",
+          "name": "Vader L 3v3 w/ GAT and Wat",
+          "toon1Id": "VADER",
+          "toon1Name": "Darth Vader",
+          "toon2Id": "GRANDADMIRALTHRAWN",
+          "toon2Name": "Grand Admiral Thrawn",
+          "toon3Id": "WATTAMBOR",
+          "toon3Name": "Wat Tambor",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "3xKV_XUn3FSdcL0fWkt80",
+          "createdOn": "2021-02-09T00:26:30.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "EMPERORPALPATINE",
+      "toon1Name": "Emperor Palpatine",
+      "squads": [
+        {
+          "id": "BV4K4Bj7_fiYviBd6u9xM",
+          "name": "EP L 3v3 w/ Vader and Wat",
+          "toon1Id": "EMPERORPALPATINE",
+          "toon1Name": "Emperor Palpatine",
+          "toon2Id": "VADER",
+          "toon2Name": "Darth Vader",
+          "toon3Id": "WATTAMBOR",
+          "toon3Name": "Wat Tambor",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "yhfdjJzU2YIjp-qkPxjUv",
+          "createdOn": "2021-02-09T00:27:13.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "RKp2pPCNvMzb1yldoqUhy",
+          "name": "EP L 3v3 w/ Shoretrooper and Vader",
+          "toon1Id": "EMPERORPALPATINE",
+          "toon1Name": "Emperor Palpatine",
+          "toon2Id": "SHORETROOPER",
+          "toon2Name": "Shoretrooper",
+          "toon3Id": "VADER",
+          "toon3Name": "Darth Vader",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ohYMlMXKGuep6tMplWFrF",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "Sfs1HAkpC72jYVITbO-mi",
+          "name": "EP L 3v3 w/ GAT and Vader",
+          "toon1Id": "EMPERORPALPATINE",
+          "toon1Name": "Emperor Palpatine",
+          "toon2Id": "GRANDADMIRALTHRAWN",
+          "toon2Name": "Grand Admiral Thrawn",
+          "toon3Id": "VADER",
+          "toon3Name": "Darth Vader",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "IrykMgCaJm0ODon-6VvHm",
+          "createdOn": "2021-02-06T15:00:25.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "ENFYSNEST",
+      "toon1Name": "Enfys Nest",
+      "squads": [
+        {
+          "id": "EYC5MJZxSvlDVY1DC3iz3",
+          "name": "Enfys Nest (solo)",
+          "toon1Id": "ENFYSNEST",
+          "toon1Name": "Enfys Nest",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "Enfys Nest (solo) excels against teams that have a high attack rate but low power output.  She has a high counter chance and ignores taunts.  She gains stacking crit chance and protection every time she is damaged before her turn (these reset at the end of her turn).  And throughout the encounter, she also gains crit damage and health steal whenever an enemy loses a buff or debuff.",
+          "generalStrategy": "You want teams/characters with Daze, Stun, Stealth, Thermal Detonators, and/or possibly Tenacity Down.  You don't want to use teams that reduce her turn meter, as it'll delay her from shedding the undispellable Protection Up on her turn, which could cause a time-out situation.<br/><br/>\n\nThe ideal strategy for most teams is to either apply debuffs or use a basic attack (tryin not to reduce turn meter or prompt assists) until she takes a turn, then the next time you deal damage should be a high-damage single target attack.  It may be beneficial to save abilities that don't deal damage for this moment, so you don't waste your first damage-dealing attack after her turn with a low-damage attack that she could easily heal from.",
+          "latestVersionId": "DkkXDxzNhvg6qmFHl9iJK",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "FINN",
+      "toon1Name": "Finn",
+      "squads": [
+        {
+          "id": "-zBE9cnyCPt13Nl9vYAyy",
+          "name": "Finn L 3v3 w/ Heroes",
+          "toon1Id": "FINN",
+          "toon1Name": "Finn",
+          "toon2Id": "EPIXFINN",
+          "toon2Name": "Resistance Hero Finn",
+          "toon3Id": "EPIXPOE",
+          "toon3Name": "Resistance Hero Poe",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "a_DUq6S0OCvTwZs763uqa",
+          "createdOn": "2021-03-01T16:03:00.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "GRIEVOUS",
+      "toon1Name": "General Grievous",
+      "squads": [
+        {
+          "id": "3T99VQ0kVkeqhOuMSEFAY",
+          "name": "GG L 3v3 w/ B1 and B2",
+          "toon1Id": "GRIEVOUS",
+          "toon1Name": "General Grievous",
+          "toon2Id": "B1BATTLEDROIDV2",
+          "toon2Name": "B1 Battle Droid",
+          "toon3Id": "B2SUPERBATTLEDROID",
+          "toon3Name": "B2 Super Battle Droid",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "Kill order: B2, GG, B1",
+          "latestVersionId": "L778cVGGBqPg5rcCG9W4O",
+          "createdOn": "2021-02-06T14:26:44.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "GENERALHUX",
+      "toon1Name": "General Hux",
+      "squads": [
+        {
+          "id": "Q2rCAU60N4hZvFqUGH0iQ",
+          "name": "Hux L 3v3 w/ FOST and Sith Trooper",
+          "toon1Id": "GENERALHUX",
+          "toon1Name": "General Hux",
+          "toon2Id": "FIRSTORDERTROOPER",
+          "toon2Name": "First Order Stormtrooper",
+          "toon3Id": "FOSITHTROOPER",
+          "toon3Name": "Sith Trooper",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "2ubebb29l32OysIcaVoC0",
+          "createdOn": "2021-03-01T16:52:45.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "GENERALSKYWALKER",
+      "toon1Name": "General Skywalker",
+      "squads": [
+        {
+          "id": "krMmBdinyD1QBXpByiMc9",
+          "name": "General Skywalker (solo)",
+          "toon1Id": "GENERALSKYWALKER",
+          "toon1Name": "General Skywalker",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "fCRFpAstwXSHIbH7wUeoQ",
+          "createdOn": "2021-02-07T22:01:29.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "ogRpIw5Dj_qNW4OnFwPNU",
+          "name": "GS L 3v3 w/ Fives and Rex",
+          "toon1Id": "GENERALSKYWALKER",
+          "toon1Name": "General Skywalker",
+          "toon2Id": "CT5555",
+          "toon2Name": "CT-5555 \"Fives\"",
+          "toon3Id": "CT7567",
+          "toon3Name": "CT-7567 \"Rex\"",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "iLJw2Kj6jo6I1kLt3a-ao",
+          "createdOn": "2021-02-06T13:51:04.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "vW5RE1-uog0t7cBnJJBGL",
+          "name": "GS L 3v3 w/ ARC and Echo",
+          "toon1Id": "GENERALSKYWALKER",
+          "toon1Name": "General Skywalker",
+          "toon2Id": "ARCTROOPER501ST",
+          "toon2Name": "ARC Trooper",
+          "toon3Id": "CT210408",
+          "toon3Name": "CT-21-0408 \"Echo\"",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "HdDapEiF_rSwDo2pfoDC_",
+          "createdOn": "2021-02-06T15:24:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "VEERS",
+      "toon1Name": "General Veers",
+      "squads": [
+        {
+          "id": "OUlsZwIqXFJRMhaiBrhCq",
+          "name": "",
+          "toon1Id": "VEERS",
+          "toon1Name": "General Veers",
+          "toon2Id": "ADMIRALPIETT",
+          "toon2Name": "Admiral Piett",
+          "toon3Id": "DARKTROOPER",
+          "toon3Name": "Dark Trooper",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "jztgXUzmphFWIXA2W7eU0",
+          "createdOn": "2021-06-19T21:50:55.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "vY65AnwmOEEr0H0vfFyD1",
+          "name": "Imperial Troopers 3v3",
+          "toon1Id": "VEERS",
+          "toon1Name": "General Veers",
+          "toon2Id": "COLONELSTARCK",
+          "toon2Name": "Colonel Starck",
+          "toon3Id": "RANGETROOPER",
+          "toon3Name": "Range Trooper",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ZlRzcflKkgxS6U_MhT3qI",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "YjYu8rey13UZbY6Ze4iOS",
+          "name": "IT 3v3 w/ Piett and Starck",
+          "toon1Id": "VEERS",
+          "toon1Name": "General Veers",
+          "toon2Id": "ADMIRALPIETT",
+          "toon2Name": "Admiral Piett",
+          "toon3Id": "COLONELSTARCK",
+          "toon3Name": "Colonel Starck",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "oAlZLEMWKlfPnL0AfoEES",
+          "createdOn": "2021-03-25T16:31:18.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "toon1Id": "GEONOSIANBROODALPHA",
+      "toon1Name": "Geonosian Brood Alpha",
+      "squads": [
+        {
+          "id": "2KsPN6rpD5TqfjOdNR_gJ",
+          "name": "Geos 3v3 w/ Soldier and Spy",
+          "toon1Id": "GEONOSIANBROODALPHA",
+          "toon1Name": "Geonosian Brood Alpha",
+          "toon2Id": "GEONOSIANSOLDIER",
+          "toon2Name": "Geonosian Soldier",
+          "toon3Id": "GEONOSIANSPY",
+          "toon3Name": "Geonosian Spy",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "FMyedt4TZosUbkAD9-oU7",
+          "createdOn": "2021-02-06T14:33:21.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "LKj8AZBK4xxLzUcEtCxDz",
+          "name": "Geos 3v3 w/ Spy and Sun Fac",
+          "toon1Id": "GEONOSIANBROODALPHA",
+          "toon1Name": "Geonosian Brood Alpha",
+          "toon2Id": "GEONOSIANSPY",
+          "toon2Name": "Geonosian Spy",
+          "toon3Id": "SUNFAC",
+          "toon3Name": "Sun Fac",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "KqBqwvyz0O8ZL0GqwFgn6",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2,
+        2
+      ]
+    },
+    {
+      "toon1Id": "GRANDADMIRALTHRAWN",
+      "toon1Name": "Grand Admiral Thrawn",
+      "squads": [
+        {
+          "id": "mCTmwwMayYRGHTKGkWfMZ",
+          "name": "",
+          "toon1Id": "GRANDADMIRALTHRAWN",
+          "toon1Name": "Grand Admiral Thrawn",
+          "toon2Id": "SHORETROOPER",
+          "toon2Name": "Shoretrooper",
+          "toon3Id": "VADER",
+          "toon3Name": "Darth Vader",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "fflp-YuK4p4s6cpxGaSqE",
+          "createdOn": "2021-06-19T21:45:57.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "BADBATCHHUNTER",
+      "toon1Name": "Hunter",
+      "squads": [
+        {
+          "id": "jz5JUonB3LIdCeseoEeIb",
+          "name": "",
+          "toon1Id": "BADBATCHHUNTER",
+          "toon1Name": "Hunter",
+          "toon2Id": "BADBATCHECHO",
+          "toon2Name": "Echo",
+          "toon3Id": "BADBATCHTECH",
+          "toon3Name": "Tech",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "OKaiG9ZN-1Nhe_GdiUtIt",
+          "createdOn": "2021-06-19T21:52:26.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "JANGOFETT",
+      "toon1Name": "Jango Fett",
+      "squads": [
+        {
+          "id": "VEF70OwFXWj6sVlLXjsFw",
+          "name": "BH (Jango L) 3v3 w/ Boba and Bossk",
+          "toon1Id": "JANGOFETT",
+          "toon1Name": "Jango Fett",
+          "toon2Id": "BOBAFETT",
+          "toon2Name": "Boba Fett",
+          "toon3Id": "BOSSK",
+          "toon3Name": "Bossk",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "fZdKvMv_wO20nT3V-SEWM",
+          "createdOn": "2021-03-25T17:52:49.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "JEDIKNIGHTLUKE",
+      "toon1Name": "Jedi Knight Luke Skywalker",
+      "squads": [
+        {
+          "id": "6fAXmsw9kcJmC51qMT0g7",
+          "name": "",
+          "toon1Id": "JEDIKNIGHTLUKE",
+          "toon1Name": "Jedi Knight Luke Skywalker",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "2gLa4N3mbMJG1m3hS3NJ6",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "rvRV1Ykzj4jtablyMXQVa",
+          "name": "JKLS L 3v3 w/ Hoda and Old Ben",
+          "toon1Id": "JEDIKNIGHTLUKE",
+          "toon1Name": "Jedi Knight Luke Skywalker",
+          "toon2Id": "HERMITYODA",
+          "toon2Name": "Hermit Yoda",
+          "toon3Id": "OLDBENKENOBI",
+          "toon3Name": "Obi-Wan Kenobi (Old Ben)",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "nSKiE5uiizI2jee0GR9Rh",
+          "createdOn": "2021-02-07T22:19:36.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "zpjZwIx-1Tl8fOv_hUvrY",
+          "name": "JKLS L 3v3 w/ Hoda",
+          "toon1Id": "JEDIKNIGHTLUKE",
+          "toon1Name": "Jedi Knight Luke Skywalker",
+          "toon2Id": "HERMITYODA",
+          "toon2Name": "Hermit Yoda",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "s8kh4lXxPA28-ZlkdY_Mf",
+          "createdOn": "2021-03-25T15:52:30.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "JEDIKNIGHTREVAN",
+      "toon1Name": "Jedi Knight Revan",
+      "squads": [
+        {
+          "id": "eyu3nHj3ujFZ41d_5-gvW",
+          "name": "JKR L 3v3 w/ GMY and Hoda",
+          "toon1Id": "JEDIKNIGHTREVAN",
+          "toon1Name": "Jedi Knight Revan",
+          "toon2Id": "GRANDMASTERYODA",
+          "toon2Name": "Grand Master Yoda",
+          "toon3Id": "HERMITYODA",
+          "toon3Name": "Hermit Yoda",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "mufPfkeGNAd8_7C1sKtoA",
+          "createdOn": "2021-02-06T14:10:22.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "hF3sqqCzW9Sk2lwj4ELeT",
+          "name": "JKR L 3v3 w/ GMY and Jolee",
+          "toon1Id": "JEDIKNIGHTREVAN",
+          "toon1Name": "Jedi Knight Revan",
+          "toon2Id": "GRANDMASTERYODA",
+          "toon2Name": "Grand Master Yoda",
+          "toon3Id": "JOLEEBINDO",
+          "toon3Name": "Jolee Bindo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "AW8wGshnLQReI_CEBBnSW",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "MIyTlMx-43LH6b0Tik3gd",
+          "name": "JKR L 3v3 w/ Bastila and GMY",
+          "toon1Id": "JEDIKNIGHTREVAN",
+          "toon1Name": "Jedi Knight Revan",
+          "toon2Id": "BASTILASHAN",
+          "toon2Name": "Bastila Shan",
+          "toon3Id": "GRANDMASTERYODA",
+          "toon3Name": "Grand Master Yoda",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "GFn93UGd0mkIqhW7Gbf8K",
+          "createdOn": "2021-02-06T14:02:47.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "JEDIMASTERKENOBI",
+      "toon1Name": "Jedi Master Kenobi",
+      "squads": [
+        {
+          "id": "IbPW686rERmuf75SolSWw",
+          "name": "",
+          "toon1Id": "JEDIMASTERKENOBI",
+          "toon1Name": "Jedi Master Kenobi",
+          "toon2Id": "COMMANDERAHSOKA",
+          "toon2Name": "Commander Ahsoka Tano",
+          "toon3Id": "GENERALKENOBI",
+          "toon3Name": "General Kenobi",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "e0G1Cl56IUeQwSzEqf3QJ",
+          "createdOn": "2021-09-27T13:34:44.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "iRuA0tn0bwBXzTHP53iH9",
+          "name": "",
+          "toon1Id": "JEDIMASTERKENOBI",
+          "toon1Name": "Jedi Master Kenobi",
+          "toon2Id": "COMMANDERAHSOKA",
+          "toon2Name": "Commander Ahsoka Tano",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "KW2tbtyUBq5K1SHPLoy6B",
+          "createdOn": "2021-08-31T19:15:20.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "UJfSs2PQgceBI_9PpG9Gb",
+          "name": "",
+          "toon1Id": "JEDIMASTERKENOBI",
+          "toon1Name": "Jedi Master Kenobi",
+          "toon2Id": "COMMANDERAHSOKA",
+          "toon2Name": "Commander Ahsoka Tano",
+          "toon3Id": "MACEWINDU",
+          "toon3Name": "Mace Windu",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "bFmt7KU2H70N7bPnIpXZc",
+          "createdOn": "2021-09-27T13:34:44.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "toon1Id": "GRANDMASTERLUKE",
+      "toon1Name": "Jedi Master Luke Skywalker",
+      "squads": [
+        {
+          "id": "5___QRaxaudErQpSgejOy",
+          "name": "",
+          "toon1Id": "GRANDMASTERLUKE",
+          "toon1Name": "Jedi Master Luke Skywalker",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "cSF6jsX7gTBRhiBDdZ3Yx",
+          "createdOn": "2021-06-19T20:53:38.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "YSBn6pSx5nbgtmFtgEDzN",
+          "name": "JMLS L 3v3 w/ Hoda and JKLS",
+          "toon1Id": "GRANDMASTERLUKE",
+          "toon1Name": "Jedi Master Luke Skywalker",
+          "toon2Id": "HERMITYODA",
+          "toon2Name": "Hermit Yoda",
+          "toon3Id": "JEDIKNIGHTLUKE",
+          "toon3Name": "Jedi Knight Luke Skywalker",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "hgJDRi8Dp6va999t5QopQ",
+          "createdOn": "2021-02-28T23:12:36.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "KYLOREN",
+      "toon1Name": "Kylo Ren",
+      "squads": [
+        {
+          "id": "IHLquUkEk27HjItpLMyFh",
+          "name": "Kylo Ren (solo)",
+          "toon1Id": "KYLOREN",
+          "toon1Name": "Kylo Ren",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "PKVGo2ymmEdYArTsD041e",
+          "createdOn": "2021-05-03T17:36:16.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "KYLORENUNMASKED",
+      "toon1Name": "Kylo Ren (Unmasked)",
+      "squads": [
+        {
+          "id": "i-5WLjiJzo17NCkUEqOqw",
+          "name": "KRU L 3v3 w/ FOE and Kylo",
+          "toon1Id": "KYLORENUNMASKED",
+          "toon1Name": "Kylo Ren (Unmasked)",
+          "toon2Id": "FIRSTORDEREXECUTIONER",
+          "toon2Name": "First Order Executioner",
+          "toon3Id": "KYLOREN",
+          "toon3Name": "Kylo Ren",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "CQ_uwVz7r4GZLiU0tB-yq",
+          "createdOn": "2021-06-19T20:43:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "ADMINISTRATORLANDO",
+      "toon1Name": "Lando Calrissian",
+      "squads": [
+        {
+          "id": "yxYyPaeGNX7TuZnw-jz4u",
+          "name": "Lando L w/ Chewbacca and Han",
+          "toon1Id": "ADMINISTRATORLANDO",
+          "toon1Name": "Lando Calrissian",
+          "toon2Id": "CHEWBACCALEGENDARY",
+          "toon2Name": "Chewbacca",
+          "toon3Id": "HANSOLO",
+          "toon3Name": "Han Solo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "OcMfjGrHihEcTeftQev1I",
+          "createdOn": "2021-03-01T16:14:41.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "MONMOTHMA",
+      "toon1Name": "Mon Mothma",
+      "squads": [
+        {
+          "id": "QgmC-7zZalCoFhH7zTO5I",
+          "name": "",
+          "toon1Id": "MONMOTHMA",
+          "toon1Name": "Mon Mothma",
+          "toon2Id": "CASSIANANDOR",
+          "toon2Name": "Cassian Andor",
+          "toon3Id": "K2SO",
+          "toon3Name": "K-2SO",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "FZW4CMOuXC-rXNLfRfxqn",
+          "createdOn": "2021-06-19T20:53:54.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "RR0pPAYxb07fOFlwjW-F1",
+          "name": "MM L 3v3 w/ Wiggs",
+          "toon1Id": "MONMOTHMA",
+          "toon1Name": "Mon Mothma",
+          "toon2Id": "BIGGSDARKLIGHTER",
+          "toon2Name": "Biggs Darklighter",
+          "toon3Id": "WEDGEANTILLES",
+          "toon3Name": "Wedge Antilles",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "qW3EbNVOCfiOEo4xkRTi8",
+          "createdOn": "2021-03-25T15:52:30.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1
+      ]
+    },
+    {
+      "toon1Id": "MOTHERTALZIN",
+      "toon1Name": "Mother Talzin",
+      "squads": [
+        {
+          "id": "lJ3wtLm0UC0SfnJSRBhih",
+          "name": "NS (Talzin L) 3v3 w/ Daka and Spirit",
+          "toon1Id": "MOTHERTALZIN",
+          "toon1Name": "Mother Talzin",
+          "toon2Id": "DAKA",
+          "toon2Name": "Old Daka",
+          "toon3Id": "NIGHTSISTERSPIRIT",
+          "toon3Name": "Nightsister Spirit",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "xutUH6cYTnFZfw_H4PaxL",
+          "createdOn": "2021-02-06T13:54:49.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "wZ4CefuMG8Fol7afQ6S1A",
+          "name": "NS (Talzin L) 3v3 w/ Daka and Zombie",
+          "toon1Id": "MOTHERTALZIN",
+          "toon1Name": "Mother Talzin",
+          "toon2Id": "DAKA",
+          "toon2Name": "Old Daka",
+          "toon3Id": "NIGHTSISTERZOMBIE",
+          "toon3Name": "Nightsister Zombie",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "ZrCdvPEI7c3SsF8WQuh6V",
+          "createdOn": "2021-02-06T00:25:41.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "PADMEAMIDALA",
+      "toon1Name": "Padmé Amidala",
+      "squads": [
+        {
+          "id": "-2eSCqDSweQfy5fu5gijG",
+          "name": "GR 3v3 w/ Ahsoka and JKA",
+          "toon1Id": "PADMEAMIDALA",
+          "toon1Name": "Padmé Amidala",
+          "toon2Id": "AHSOKATANO",
+          "toon2Name": "Ahsoka Tano",
+          "toon3Id": "ANAKINKNIGHT",
+          "toon3Name": "Jedi Knight Anakin",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "Kill order: Anakin, Ahsoka, Padmé",
+          "latestVersionId": "x3GrWI3PoHkDU_5Vj3bwu",
+          "createdOn": "2021-06-19T20:43:03.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "1w97C2MmZffQ2F9-MQDH2",
+          "name": "GR 3v3 w/ Ahsoka and GK",
+          "toon1Id": "PADMEAMIDALA",
+          "toon1Name": "Padmé Amidala",
+          "toon2Id": "AHSOKATANO",
+          "toon2Name": "Ahsoka Tano",
+          "toon3Id": "GENERALKENOBI",
+          "toon3Name": "General Kenobi",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "yGNcSDBwMQXBTe2cbPOt7",
+          "createdOn": "2021-02-06T14:00:17.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "ifL2TsGLg8NFbFqbjMWUR",
+          "name": "GR 3v3 w/ JKA and GK",
+          "toon1Id": "PADMEAMIDALA",
+          "toon1Name": "Padmé Amidala",
+          "toon2Id": "ANAKINKNIGHT",
+          "toon2Name": "Jedi Knight Anakin",
+          "toon3Id": "GENERALKENOBI",
+          "toon3Name": "General Kenobi",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "uoH0g6ZUnJoST5zUjto-t",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "QIRA",
+      "toon1Name": "Qi'ra",
+      "squads": [
+        {
+          "id": "JdQ089rd2TOVPqbtwTkDS",
+          "name": "Qi'ra L 3v3 w/ Nest",
+          "toon1Id": "QIRA",
+          "toon1Name": "Qi'ra",
+          "toon2Id": "ENFYSNEST",
+          "toon2Name": "Enfys Nest",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "txEp4jPSQhcUawitgY21k",
+          "createdOn": "2021-02-09T00:51:29.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "o1CzGgvuv9hOpAY7BH4p_",
+          "name": "Qi'ra L 3v3 w/ Chewbacca and Han",
+          "toon1Id": "QIRA",
+          "toon1Name": "Qi'ra",
+          "toon2Id": "CHEWBACCALEGENDARY",
+          "toon2Name": "Chewbacca",
+          "toon3Id": "HANSOLO",
+          "toon3Name": "Han Solo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "OaX0yUM47SPG2siDkS8It",
+          "createdOn": "2021-03-01T16:15:31.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "HOTHLEIA",
+      "toon1Name": "Rebel Officer Leia Organa",
+      "squads": [
+        {
+          "id": "Gl9w5jdEj_OWFCurYckzM",
+          "name": "ROLO L 3v3 w/ Chewbacca and Han",
+          "toon1Id": "HOTHLEIA",
+          "toon1Name": "Rebel Officer Leia Organa",
+          "toon2Id": "CHEWBACCALEGENDARY",
+          "toon2Name": "Chewbacca",
+          "toon3Id": "HANSOLO",
+          "toon3Name": "Han Solo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "XPEoT3m1d7edirVcVJLfk",
+          "createdOn": "2021-03-01T16:06:58.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "GLREY",
+      "toon1Name": "Rey",
+      "squads": [
+        {
+          "id": "2OKiFWG6d5i5srau-ZZXK",
+          "name": "Rey (solo)",
+          "toon1Id": "GLREY",
+          "toon1Name": "Rey",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "vH2pukz11tdWtiOS3S0OH",
+          "createdOn": "2021-02-06T14:17:56.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "3a3_0Ebx-gJ4nxT-KkKqN",
+          "name": "Rey L 3v3 w/ Bastila and Hoda",
+          "toon1Id": "GLREY",
+          "toon1Name": "Rey",
+          "toon2Id": "BASTILASHAN",
+          "toon2Name": "Bastila Shan",
+          "toon3Id": "HERMITYODA",
+          "toon3Name": "Hermit Yoda",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "hEckv_tX4olT5wTq_Cslr",
+          "createdOn": "2021-03-01T00:11:52.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "pRfYQqxEA1DflXpl8c5la",
+          "name": "Rey L 3v3 w/ Heroes",
+          "toon1Id": "GLREY",
+          "toon1Name": "Rey",
+          "toon2Id": "EPIXFINN",
+          "toon2Name": "Resistance Hero Finn",
+          "toon3Id": "EPIXPOE",
+          "toon3Name": "Resistance Hero Poe",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "8q1SeXQBXQTHQceueRZUp",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "REYJEDITRAINING",
+      "toon1Name": "Rey (Jedi Training)",
+      "squads": [
+        {
+          "id": "-5NAb7bqjPMSOZXqsX_r_",
+          "name": "JTR L 3v3 w/ BB-8 and C-3PO",
+          "toon1Id": "REYJEDITRAINING",
+          "toon1Name": "Rey (Jedi Training)",
+          "toon2Id": "BB8",
+          "toon2Name": "BB-8",
+          "toon3Id": "C3POLEGENDARY",
+          "toon3Name": "C-3PO",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "1_RJarsojFrNQvjPAx48b",
+          "createdOn": "2021-02-07T21:56:18.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "MgBHECscoD8tu7UY1gENg",
+          "name": "JTR L 3v3 w/ BB-8 and R2-D2",
+          "toon1Id": "REYJEDITRAINING",
+          "toon1Name": "Rey (Jedi Training)",
+          "toon2Id": "BB8",
+          "toon2Name": "BB-8",
+          "toon3Id": "R2D2_LEGENDARY",
+          "toon3Name": "R2-D2",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "6OT0w9EZOBSDmMhE7bcwR",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "mqhC90gvT97wWfvfJx_Ez",
+          "name": "JTR L 3v3 w/ BB-8 and Rey (Scav)",
+          "toon1Id": "REYJEDITRAINING",
+          "toon1Name": "Rey (Jedi Training)",
+          "toon2Id": "BB8",
+          "toon2Name": "BB-8",
+          "toon3Id": "REY",
+          "toon3Name": "Rey (Scavenger)",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "X4iulU-7hYyiBGo6E41Br",
+          "createdOn": "2021-02-07T21:59:36.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "SAVAGEOPRESS",
+      "toon1Name": "Savage Opress",
+      "squads": [
+        {
+          "id": "xBmfAu_CcieME9-RyO_WK",
+          "name": "Savage L 3v3 w/ Malak",
+          "toon1Id": "SAVAGEOPRESS",
+          "toon1Name": "Savage Opress",
+          "toon2Id": "DARTHMALAK",
+          "toon2Name": "Darth Malak",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "9mtoYs7in_g8Iqwdg9Bsv",
+          "createdOn": "2021-03-01T17:20:17.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "SHAAKTI",
+      "toon1Name": "Shaak Ti",
+      "squads": [
+        {
+          "id": "Br4kRa7nBHdkSKSt98OQ4",
+          "name": "Shaak Ti L 3v3 w/ Fives and Rex",
+          "toon1Id": "SHAAKTI",
+          "toon1Name": "Shaak Ti",
+          "toon2Id": "CT5555",
+          "toon2Name": "CT-5555 \"Fives\"",
+          "toon3Id": "CT7567",
+          "toon3Name": "CT-7567 \"Rex\"",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "Shaak Ti's leadership gives Clone Troopers speed, health and protection recovery when attacking out of turn, and an increase in max health, protection, and offense.  She also gives Retribution to herself or Clones when they take damage.",
+          "generalStrategy": "The best counters are teams that exploit assists/attacks out-of turn, apply mass buff immunity, or can withstand the high damage.<br/><br/>\n\nTry to defeat CT-5555 \"Fives\" first.  Or else, he will sacrifice himself with his Tactical Awareness zeta, which will buff CT-7567 \"Rex\".  Next take out Rex before he can get a big hit with Aerial Advantage.<br/><br/>\n\nKill order: Fives, Rex, Shaak Ti",
+          "latestVersionId": "tiJfo1H2fUikfpldS0Dhp",
+          "createdOn": "2021-06-19T20:43:03.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "P2qYl1RqGPEfOXsnaiyBJ",
+          "name": "Shaak Ti L 3v3 w/ ARC and Echo",
+          "toon1Id": "SHAAKTI",
+          "toon1Name": "Shaak Ti",
+          "toon2Id": "ARCTROOPER501ST",
+          "toon2Name": "ARC Trooper",
+          "toon3Id": "CT210408",
+          "toon3Name": "CT-21-0408 \"Echo\"",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "fMlnJ_XYXWRyy4NVS686Z",
+          "createdOn": "2021-02-06T14:43:59.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "SITHPALPATINE",
+      "toon1Name": "Sith Eternal Emperor",
+      "squads": [
+        {
+          "id": "gA1vgfNbioXVyx1V_MfJL",
+          "name": "SEE L 3v3 w/ Wat",
+          "toon1Id": "SITHPALPATINE",
+          "toon1Name": "Sith Eternal Emperor",
+          "toon2Id": "WATTAMBOR",
+          "toon2Name": "Wat Tambor",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "zBjxGReDLMNbBnvsM76qZ",
+          "createdOn": "2021-02-24T17:41:06.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "PK62vv0576XYF5KuuVcuR",
+          "name": "Sith Eternal Emperor (solo)",
+          "toon1Id": "SITHPALPATINE",
+          "toon1Name": "Sith Eternal Emperor",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "7jHHtIOBLWwuzQlPnu3xg",
+          "createdOn": "2021-02-24T16:11:08.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "QaiubECGPS9bb1YWbxIvF",
+          "name": "",
+          "toon1Id": "SITHPALPATINE",
+          "toon1Name": "Sith Eternal Emperor",
+          "toon2Id": "ARMORER",
+          "toon2Name": "The Armorer",
+          "toon3Id": "WATTAMBOR",
+          "toon3Name": "Wat Tambor",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "J9S5vhhYwpv1SukCyn4SL",
+          "createdOn": "2021-06-19T21:48:45.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "SUPREMELEADERKYLOREN",
+      "toon1Name": "Supreme Leader Kylo Ren",
+      "squads": [
+        {
+          "id": "V44S6SCJcRPeVowTDsyuf",
+          "name": "SLKR L 3v3 w/ Hux and GAT",
+          "toon1Id": "SUPREMELEADERKYLOREN",
+          "toon1Name": "Supreme Leader Kylo Ren",
+          "toon2Id": "GENERALHUX",
+          "toon2Name": "General Hux",
+          "toon3Id": "GRANDADMIRALTHRAWN",
+          "toon3Name": "Grand Admiral Thrawn",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "vuoZr6ahjfmJCfT8jR-C9",
+          "createdOn": "2021-03-01T00:02:47.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "vMPwe19pqGdV_d_MBMOfo",
+          "name": "SLKR (solo)",
+          "toon1Id": "SUPREMELEADERKYLOREN",
+          "toon1Name": "Supreme Leader Kylo Ren",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "KkPyKlV7A189U0GjJ_ZJr",
+          "createdOn": "2021-02-05T19:27:56.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        },
+        {
+          "id": "w9Nl0qRU4PPyfdvI_nncV",
+          "name": "SLKR L 3v3 w/ FOO and Hux",
+          "toon1Id": "SUPREMELEADERKYLOREN",
+          "toon1Name": "Supreme Leader Kylo Ren",
+          "toon2Id": "FIRSTORDEROFFICERMALE",
+          "toon2Name": "First Order Officer",
+          "toon3Id": "GENERALHUX",
+          "toon3Name": "General Hux",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "togEijl-T6hmWByrqOtNh",
+          "createdOn": "2021-02-28T23:24:38.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "toon1Id": "THEMANDALORIANBESKARARMOR",
+      "toon1Name": "The Mandalorian (Beskar Armor)",
+      "squads": [
+        {
+          "id": "BFU5A3y-hDIWVmWWrNUyM",
+          "name": "",
+          "toon1Id": "THEMANDALORIANBESKARARMOR",
+          "toon1Name": "The Mandalorian (Beskar Armor)",
+          "toon2Id": "IG11",
+          "toon2Name": "IG-11",
+          "toon3Id": "KUIIL",
+          "toon3Name": "Kuiil",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "YKcGRnsqbkqStGeh7hwgy",
+          "createdOn": "2021-06-19T21:46:35.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        1
+      ]
+    },
+    {
+      "toon1Id": "WAMPA",
+      "toon1Name": "Wampa",
+      "squads": [
+        {
+          "id": "it8Ncf3k_q3z28Cafzt1m",
+          "name": "Wampa (solo)",
+          "toon1Id": "WAMPA",
+          "toon1Name": "Wampa",
+          "toon2Id": "BLANK",
+          "toon2Name": "Blank",
+          "toon3Id": "BLANK",
+          "toon3Name": "Blank",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "H60zXP7UAbBgQ4j_RXPMo",
+          "createdOn": "2021-02-04T04:48:50.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    },
+    {
+      "toon1Id": "WEDGEANTILLES",
+      "toon1Name": "Wedge Antilles",
+      "squads": [
+        {
+          "id": "UKh90dRWonHSLCi2uO0Oi",
+          "name": "Wedge L 3v3 w/ Chewie and Han",
+          "toon1Id": "WEDGEANTILLES",
+          "toon1Name": "Wedge Antilles",
+          "toon2Id": "CHEWBACCALEGENDARY",
+          "toon2Name": "Chewbacca",
+          "toon3Id": "HANSOLO",
+          "toon3Name": "Han Solo",
+          "toon4Id": "BLANK",
+          "toon4Name": "Blank",
+          "toon5Id": "BLANK",
+          "toon5Name": "Blank",
+          "description": "",
+          "generalStrategy": "",
+          "latestVersionId": "rxB4HQG8Ko9jZarzxkuI6",
+          "createdOn": "2021-03-01T16:57:02.000Z",
+          "createdById": "5CGfev2mQxVnLoXsWhV5yu2oTgw1",
+          "createdByName": "Saia Strange"
+        }
+      ],
+      "counterVersion": [
+        2
+      ]
+    }
+  ]
+}
