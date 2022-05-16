@@ -1,15 +1,15 @@
-const url = require('url');
+const url = require( 'url' );
 
-module.exports = function context(req, res, next) {
+module.exports = function context( req, res, next ) {
   const { protocol, hostname } = req;
-  const location = url.format({
+  const location = url.format( {
     protocol,
     host: hostname,
     pathname: req.originalUrl,
-  });
+  } );
 
-  const { origin } = (new url.URL(location));
-  const pathnameValue = req.url.substr(1);
+  const { origin } = ( new url.URL( location ));
+  const pathnameValue = req.url.substr( 1 );
 
   req.context = {
     // userId: req.user.id,
@@ -20,7 +20,7 @@ module.exports = function context(req, res, next) {
     now: new Date(),
   };
 
-  console.info('context :>>', new Date(), `- ${req.method} ${location}`);
+  console.info( 'context :>>', new Date(), `- ${ req.method } ${ location }` );
 
   return next();
 };

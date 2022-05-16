@@ -5,12 +5,15 @@
   "main": "index.js",
   "proxy": "http://127.0.0.1:5000",
   "scripts": {
-    "test": "jest --coverage",
-    "test:ci": "jest",
-    "test:watch": "jest --watch",
-    "cover:show": "open ./coverage/index.html",
-    "start": "node index.js",
     "dev": "LOG_LEVEL=debug nodemon index.js",
+    "start": "node index.js",
+    "test": "npm run cover",
+    "test:only": "NODE_OPTIONS='--unhandled-rejections=warn' jest --coverage --no-cache",
+    "test:config": "jest --showConfig",
+    "test:ci": "jest --ci",
+    "test:watch": "NODE_OPTIONS=--'unhandled-rejections=warn' jest --coverage --no-cache --watch",
+    "cover": "yarn test:only",
+    "cover:show": "open ./coverage/index.html",
     "fix-node-modules": "find ./node_modules/* -mtime +10950 -exec touch {} \\;"
   },
   "repository": {
@@ -47,7 +50,10 @@
     "require-directory": "^2.1.1"
   },
   "devDependencies": {
-    "jest": "^26.0.1",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "babel-jest": "^28.1.0",
+    "jest": "28",
     "jest-circus": "^26.0.1",
     "pino-pretty": "^4.0.0"
   }
