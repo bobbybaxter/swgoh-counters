@@ -1,13 +1,11 @@
 module.exports = {
-  automock: true,
-  clearMocks: true,
   collectCoverageFrom: [
-    '**/*.test.js',
+    '**/*.spec.js',
     '!**/node_modules/**',
   ],
   coverageDirectory: 'coverage',
-  modulePaths: ['./'],
-  testPathIgnorePatterns: ['server'],
+  modulePaths: [ './' ],
+  testPathIgnorePatterns: [ 'server' ],
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
   },

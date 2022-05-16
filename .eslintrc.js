@@ -13,7 +13,9 @@ module.exports = {
   globals: {
     "document": true,
     "window": true,
-    "allowTemplateLiterals": true
+    "allowTemplateLiterals": true,
+    "testHelpers": true,
+    "_require": true
   },
   settings: {
     "import/resolver": {
@@ -29,16 +31,7 @@ module.exports = {
   reportUnusedDisableDirectives: true,
   root: true,
   rules: {
-    "no-console": [
-      1,
-      {
-        "allow": [
-          "error",
-          "info",
-          "log"
-        ]
-      }
-    ],
+    "no-console": [ 1, { "allow": [ "error", "info", "log" ] } ],
     "no-debugger": 1,
     "class-methods-use-this": 0,
     "linebreak-style": 0,

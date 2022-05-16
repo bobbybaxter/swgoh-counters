@@ -1,7 +1,7 @@
-const context = require('./context');
-const auth = require('./auth');
+const context = require( './context' );
+const auth = require( './auth' );
 
-module.exports = () => ({
+module.exports = () => ( {
   auth,
   context,
-});
+} );
